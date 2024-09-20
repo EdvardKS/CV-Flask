@@ -1,15 +1,23 @@
 from flask import Flask, render_template, request, jsonify
 from flask_mail import Mail, Message
 import json
+import os
+from dotenv import load_dotenv
+import logging
 
+# Configura logging
+logging.basicConfig(level=logging.DEBUG)
+
+load_dotenv()
 app = Flask(__name__)
 
 # Configure Flask-Mail
-app.config['MAIL_SERVER'] = 'smtp.example.com'  # Replace with your SMTP server
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your_username'  # Replace with your email username
-app.config['MAIL_PASSWORD'] = 'your_password'  # Replace with your email password
+app.config['MAIL_SERVER'] = 'smtp.mail.ovh.ca'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = False  # Cambiado de TLS a SSL
+app.config['MAIL_USE_TLS'] = True  # Desactivar TLS
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = 'info@edvardks.com'
 
 mail = Mail(app)
@@ -26,22 +34,42 @@ def get_cv_data():
 
 @app.route('/submit_contact', methods=['POST'])
 def submit_contact():
-    data = request.json
-    name = data.get('name')
-    email = data.get('email')
-    message = data.get('message')
-
-    msg = Message(
-        subject=f"New contact from {name}",
-        recipients=['info@edvardks.com'],
-        body=f"Name: {name}\nEmail: {email}\nMessage: {message}"
-    )
-
     try:
+        data = request.json
+        name = data.get('name')
+        email = data.get('email')
+        message = data.get('message')
+
+        # Validación básica
+        if not all([name, email, message]):
+            return jsonify({'status': 'error', 'message': 'Missing required fields'}), 400
+
+        logging.info(f"Attempting to send email from {email}")
+
+        msg = Message(
+            subject=f"New contact from {name}",
+            recipients=['edwar_@outlook.com'],
+            body=f"Name: {name}\nEmail: {email}\nMessage: {message}"
+        )
+
         mail.send(msg)
-        return jsonify({'status': 'success', 'message': 'Your message has been sent successfully!'}), 200
+        logging.info("Email sent successfully")
+        return jsonify({'status': 'success', 'message': 'Your message has been sent'}), 200
+
     except Exception as e:
-        return jsonify({'status': 'error', 'message': 'An error occurred while sending your message.'}), 500
+        logging.error(f"Error in submit_contact: {str(e)}")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+@app.route('/test_mail')
+def test_mail():
+    try:
+        msg = Message("Test Email", recipients=["edwar_@outlook.com"])
+        msg.body = "This is a test email."
+        mail.send(msg)
+        return "Test email sent successfully!"
+    except Exception as e:
+        logging.error(f"Error in test_mail: {str(e)}")
+        return f"Error sending test email: {str(e)}"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(debug=True)

@@ -147,6 +147,7 @@ const observerOptions = {
 
 const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+
         if (entry.isIntersecting) {
             entry.target.classList.add('active');
             updateActiveNavItem(entry.target.id);
@@ -168,5 +169,213 @@ function updateActiveNavItem(sectionId) {
         }
     });
 }
+
+
+
+
+
+
+
+
+
+function updateEducation() {
+    const educationList = document.getElementById('education-list');
+    educationList.innerHTML = ''; // Limpiar contenido anterior
+
+    const carouselInner = document.getElementById('carousel-inner');
+    carouselInner.innerHTML = ''; // Limpiar contenido del carrusel
+
+    cvData.translations.education.entries.forEach((entry, index) => {
+        // Crear un elemento para el carrusel
+        const carouselItem = document.createElement('div');
+        carouselItem.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+
+        // Ruta de la imagen basada en el nombre del certificado
+        const imagePath = `./static/data/certs/${entry.certificado}.jpg`;
+        const image = new Image();
+
+        // Comprobar si la imagen existe
+        image.src = imagePath;
+        image.onerror = () => {
+            image.src = './static/data/default.png'; // Imagen por defecto si no existe
+        };
+        
+        image.className = 'd-block w-1/2 mx-auto';
+        image.alt = `${entry.degree[currentLanguage]} from ${entry.institution}`;
+
+        // Añadir imagen al carrusel
+        carouselItem.appendChild(image);
+        
+        // Crear un contenedor para la información educativa
+        const infoContainer = document.createElement('div');
+        infoContainer.className = 'text-center mt-4';
+
+        const institution = document.createElement('h3');
+        institution.className = 'text-xl font-semibold mb-2';
+        institution.textContent = entry.institution;
+
+        const degree = document.createElement('p');
+        degree.className = 'text-lg text-blue-600';
+        degree.textContent = entry.degree[currentLanguage];
+
+        const period = document.createElement('p');
+        period.className = 'text-sm text-gray-500';
+        period.textContent = `Period: ${entry.period}`;
+
+        const location = document.createElement('p');
+        location.className = 'text-sm text-gray-500';
+        location.textContent = `Location: ${entry.location[currentLanguage]}`;
+
+        // Añadir información al contenedor
+        infoContainer.appendChild(institution);
+        infoContainer.appendChild(degree);
+        infoContainer.appendChild(period);
+        infoContainer.appendChild(location);
+
+        // Añadir contenedor de información al carrusel
+        carouselItem.appendChild(infoContainer);
+        carouselInner.appendChild(carouselItem);
+    });
+}
+
+// Llamar a la función cuando se cargue la página o cuando se necesiten los datos
+document.addEventListener('DOMContentLoaded', updateEducation);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function updateExperience() {
+    const imagenes = ["./static/data/bs.jpeg", "./static/data/psz.png"];
+
+    const defaultImage = "./static/data/default.png";
+    const experienceList = document.getElementById('experience-list');
+    experienceList.innerHTML = ''; // Limpiar el contenido previo
+
+    cvData.translations.workExperience.entries.forEach(entry => {
+        const colDiv = document.createElement('div');
+        colDiv.className = 'col-md-4';
+
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'card mb-4';
+
+        const img = document.createElement('img');
+        img.className = 'card-img-top rounded-3xl w-1/2 mx-auto mt-2';
+        img.alt = entry.position[currentLanguage]; // Alternativa descriptiva
+
+        // Determinar la fuente de la imagen
+        let imageUrl;
+
+        if (entry.company === "Business Solutions d.o.o.") {
+            imageUrl = imagenes[0];
+        } else if (entry.company === "Posiziona Tecnologías de la información, S.L.") {
+            imageUrl = imagenes[1];
+        } else {
+            imageUrl = defaultImage; // Imagen por defecto
+        }
+
+        // Comprobar si la imagen existe
+        checkImageExists(imageUrl).then(exists => {
+            img.src = exists ? imageUrl : defaultImage;
+        });
+
+        const cardBodyDiv = document.createElement('div');
+        cardBodyDiv.className = 'card-body';
+
+        const cardTitle = document.createElement('h5');
+        cardTitle.className = 'card-title text-center fs-4 my-3';
+        cardTitle.textContent = entry.position[currentLanguage];
+
+        const companyName = document.createElement('h6');
+        companyName.className = 'card-subtitle my-2 text-muted text-center my-1';
+        companyName.textContent = entry.company; // Nombre de la empresa
+
+        const cardText = document.createElement('p');
+        cardText.className = 'card-text';
+        cardText.textContent = entry.responsibilities[currentLanguage];
+
+        const dateDiv = document.createElement('div');
+        dateDiv.className = 'experience-date mt-2 color-azulito fs-5 text-center';
+        dateDiv.textContent = ` ${entry.period}`; // Suponiendo que period está en tu entrada
+
+        // Agregar los elementos a la tarjeta
+        cardBodyDiv.appendChild(cardTitle);
+        cardBodyDiv.appendChild(companyName); // Agregar nombre de la empresa
+        cardBodyDiv.appendChild(cardText);
+        cardBodyDiv.appendChild(dateDiv);
+        cardDiv.appendChild(img);
+        cardDiv.appendChild(cardBodyDiv);
+        colDiv.appendChild(cardDiv);
+
+        // Agregar la tarjeta a la lista de experiencias
+        experienceList.appendChild(colDiv);
+    });
+}
+
+// Función para comprobar si la imagen existe
+function checkImageExists(url) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+    });
+}
+
+
+function updateSkills() {
+    const skillsList = document.getElementById('skills-list');
+    skillsList.innerHTML = '';
+    const skills = cvData.translations.skills.list[currentLanguage].split(', ');
+
+    skills.forEach(skill => {
+        const skillCard = document.createElement('div');
+        skillCard.className = 'col-md-4 mb-4'; // Ajusta según el diseño deseado
+        skillCard.innerHTML = `
+            <div class="card h-100 shadow-sm border-light rounded" style="border-left: 5px solid rgba(59,130,246,var(--tw-text-opacity));">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                    <i class="fas fa-tools fa-2x mb-3" style="color: rgba(59,130,246,var(--tw-text-opacity));"></i>
+                    <h5 class="card-title" style="color: rgba(59,130,246,var(--tw-text-opacity));">${skill}</h5>
+                    <p class="card-text">Descripción breve sobre la habilidad.</p>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    <small style="color: rgba(59,130,246,var(--tw-text-opacity));">Nivel: Intermedio</small>
+                </div>
+            </div>
+        `;
+        skillsList.appendChild(skillCard);
+    });
+}
+
 
 fetchCVData();

@@ -1,0 +1,9 @@
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Login
+Flask-WTF
+requests
+gunicorn  # (opcional, para producción)
+Flask-Mail
+python-dotenv

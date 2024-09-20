@@ -4,26 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edvard Khachatryan Sahakyan - CV</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
 </head>
+
+
 <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-    <nav class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-md z-10">
-        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
-            <h1 class="text-xl font-bold" id="nav-name"></h1>
-            <div class="flex items-center">
-                <select id="language-selector" class="mr-4 p-2 rounded border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="sl">Slovenščina</option>
-                    <option value="hy">Հայերեն</option>
-                </select>
-                <button id="dark-mode-toggle" class="mr-4 p-2 rounded-full bg-gray-200 dark:bg-gray-600">
-                    <i class="fas fa-moon dark:text-yellow-300"></i>
-                </button>
+    <nav class="">
+        <div class="container-fluid mx-auto px-4 py-2 flex justify-evenly items-center">
+
+
+            <div id="esteAparece" class="text-center flex justify-evenly items-center">
+                <img src="{{ url_for('static', filename='data/1713730445414.jpeg') }}" alt="Edvard Khachatryan Sahakyan" class="img-fluid rounded-circle" style="max-height: 60px; object-fit: cover;">
+                <span class="text-xl font-bold ms-3" id="nav-name"></span>
+            </div>
+
+            <div class="flex items-center justify-center">
                 <ul class="flex space-x-4">
-                    <li><a href="#photo" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-photo">Photo</a></li>
+                    <li><a href="#photo" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-photo">Home</a></li>
                     <li><a href="#summary" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-summary">Summary</a></li>
                     <li><a href="#education" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-education">Education</a></li>
                     <li><a href="#experience" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-experience">Experience</a></li>
@@ -31,52 +33,93 @@
                     <li><a href="#contact" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-contact">Contact</a></li>
                 </ul>
             </div>
+
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="flex justify-center space-x-4 mx-3">
+                    <a href="https://www.linkedin.com/in/edvardks/" class="text-blue-500 hover:text-blue-600"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <a href="https://github.com/edvardks/" class="text-gray-700 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"><i class="fab fa-github fa-2x"></i></a>
+                    <a href="https://www.facebook.com/edvardks" class="text-blue-400 hover:text-blue-500"><i class="fab fa-facebook fa-2x"></i></a>
+                </div>
+                <select id="language-selector" class="mr-4 p-2 rounded border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="sl">Slovenščina</option>
+                    <option value="hy">Հայերեն</option>
+                </select>
+                <button id="dark-mode-toggle" class="mr-4 rounded-full bg-gray-300 dark:bg-gray-600 elemento-redondo">
+                    <i class="fas m-2 fa-moon dark:text-yellow-300"></i>
+                </button>
+            </div>
+
         </div>
     </nav>
 
     <main class="snap-y snap-mandatory h-screen overflow-y-scroll">
         <section id="photo" class="h-screen flex items-center justify-center snap-start">
             <div class="text-center">
-                <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt="Edvard Khachatryan Sahakyan" class="w-64 h-64 rounded-full mx-auto mb-4 object-cover">
+                <img src="{{ url_for('static', filename='data/1713730445414.jpeg') }}" alt="Edvard Khachatryan Sahakyan" class="w-64 h-64 rounded-full mx-auto mb-4 object-cover">
                 <h2 class="text-2xl font-bold mb-2" id="photo-name"></h2>
                 <p class="text-xl mb-4" id="photo-title"></p>
                 <div class="flex justify-center space-x-4">
-                    <a href="#" class="text-blue-500 hover:text-blue-600"><i class="fab fa-linkedin fa-2x"></i></a>
-                    <a href="#" class="text-gray-700 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"><i class="fab fa-github fa-2x"></i></a>
-                    <a href="#" class="text-blue-400 hover:text-blue-500"><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href="https://www.linkedin.com/in/edvardks/" class="text-blue-500 hover:text-blue-600"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <a href="https://github.com/edvardks/" class="text-gray-700 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"><i class="fab fa-github fa-2x"></i></a>
+                    <a href="https://www.facebook.com/edvardks" class="text-blue-400 hover:text-blue-500"><i class="fab fa-facebook fa-2x"></i></a>
                 </div>
             </div>
         </section>
 
+        <script>
+
+        </script>
+
         <section id="summary" class="h-screen flex items-center justify-center snap-start">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-4" data-translate="summary-title">Summary</h2>
-                <p id="summary-content" class="text-gray-700 dark:text-gray-300"></p>
+                <div id="summary-content" ></div>
             </div>
         </section>
 
         <section id="education" class="h-screen flex items-center justify-center snap-start">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-4" data-translate="education-title">Education</h2>
-                <div id="education-list"></div>
+                <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-inner" id="carousel-inner">
+                        <!-- Las imágenes se insertarán aquí -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div id="education-list" class="mt-4">
+                    <!-- Aquí se añadirá la lista de educación -->
+                </div>
             </div>
         </section>
+        
 
         <section id="experience" class="h-screen flex items-center justify-center snap-start">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-4" data-translate="experience-title">Work Experience</h2>
-                <div id="experience-list"></div>
+                <div class="row timeline" id="experience-list"></div> <!-- Asegúrate de que este ID coincida -->
+
             </div>
         </section>
 
         <section id="skills" class="h-screen flex items-center justify-center snap-start">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-4" data-translate="skills-title">Skills</h2>
-                <ul id="skills-list" class="list-disc list-inside"></ul>
+                <div class="row" id="skills-list">
+                    <!-- Aquí se insertarán las cards con JavaScript -->
+                </div>
             </div>
         </section>
 
-        <section id="contact" class="h-screen flex items-center justify-center snap-start">
+        <section id="contact" class="container h-screen flex items-center justify-center flex-row snap-start">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-4" data-translate="contact-title">Contact</h2>
                 <form id="contact-form" class="max-w-lg">
@@ -94,6 +137,10 @@
                     </div>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700" data-translate="contact-submit">Send Message</button>
                 </form>
+            </div>
+
+            <div class="container mx-auto px-4">
+                sggfsg
             </div>
         </section>
     </main>

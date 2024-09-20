@@ -7,6 +7,12 @@ body {
     overflow-y: hidden;
 }
 
+/* Modo Claro */
+body {
+    background: linear-gradient(135deg, #A9A9A9, #E0E0E0);
+    color: #333333;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -19,7 +25,7 @@ nav {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(181, 181, 181, 0.2);
     backdrop-filter: blur(5px);
 }
 
@@ -59,30 +65,37 @@ section.active {
     }
 }
 
+
+
+.elemento-redondo {
+    background-color: azul;
+    border-radius: 50%;
+}
+
 /* Dark mode styles */
 .dark {
-    background-color: #1a202c;
-    color: #e2e8f0;
+    background: linear-gradient(135deg, #1A1A1A, #4A4A4A) !important;
+    color: #EAEAEA;
 }
 
 .dark nav {
-    background-color: rgba(45, 55, 72, 0.9);
+    background-color: rgba(37, 37, 37, 0.2); /* Modo oscuro */
 }
 
 .dark input,
 .dark textarea,
 .dark select {
-    background-color: #4a5568;
+    background-color: #4A5568;
     border-color: #718096;
-    color: #e2e8f0;
+    color: #EAEAEA;
 }
 
 .dark button {
-    background-color: #4299e1;
+    background-color: #858585;
 }
 
 .dark button:hover {
-    background-color: #3182ce;
+    background-color: #3182CE;
 }
 
 /* Add a subtle animation to the navigation items */
@@ -107,4 +120,189 @@ nav ul li:hover {
 .section-transition.entered {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Estilo para la barra de desplazamiento en navegadores WebKit (Chrome, Safari) */
+body::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Color del track */
+    border-radius: 10px; /* Esquinas redondeadas */
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5); /* Color de la barra */
+    border-radius: 10px; /* Esquinas redondeadas */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.7); /* Color de la barra al pasar el ratón */
+}
+
+/* Estilo para navegadores Firefox */
+body {
+    scrollbar-width: thin; /* Barra de desplazamiento delgada */
+    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Color de la barra y el track */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* EDUCVACION */
+
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px; /* Ajusta el ancho de las flechas */
+    height: 50px; /* Ajusta la altura de las flechas */
+    border-radius: 50%; /* Flechas redondeadas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s; /* Transición suave al pasar el ratón */
+    color: rgba(59, 130, 246, 0.5) !important; /* Color de las flechas */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    color: rgba(59, 130, 246, 1) !important; /* Color al pasar el ratón */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent !important; /* Fondo transparente para los íconos */
+}
+
+.carousel-control-prev-icon::before,
+.carousel-control-next-icon::before {
+    color: inherit; /* Heredar color de las flechas */
+    font-size: 1.5rem; /* Tamaño de las flechas */
+}
+
+.carousel-control-prev {
+    left: 10px; /* Posición de la flecha izquierda */
+}
+
+.carousel-control-next {
+    right: 10px; /* Posición de la flecha derecha */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* EXPERIENCIA */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.borde-card{
+    border-radius: 10px;
+}
+
+.color-azulito{
+    color: rgba(59, 130, 246, 1);
+}
+
+
+/* SKILLLS */
+
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .card {
+    
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.67);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5); /* Sombra del mismo color */
 }
