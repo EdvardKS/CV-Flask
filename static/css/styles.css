@@ -1,0 +1,110 @@
+/* Add any custom styles here */
+body {
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+}
+
+main {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul li {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Dark mode styles */
+.dark {
+    background-color: #1a202c;
+    color: #e2e8f0;
+}
+
+.dark nav {
+    background-color: rgba(45, 55, 72, 0.9);
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+    background-color: #4a5568;
+    border-color: #718096;
+    color: #e2e8f0;
+}
+
+.dark button {
+    background-color: #4299e1;
+}
+
+.dark button:hover {
+    background-color: #3182ce;
+}
+
+/* Add a subtle animation to the navigation items */
+nav ul li {
+    transition: transform 0.3s ease;
+}
+
+nav ul li:hover {
+    transform: translateY(-2px);
+}
+
+/* Smooth transition for sections */
+.section-transition {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section-transition.entering {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.section-transition.entered {
+    opacity: 1;
+    transform: translateY(0);
+}

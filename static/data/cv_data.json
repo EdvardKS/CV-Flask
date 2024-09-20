@@ -1,0 +1,209 @@
+{
+  "languages": ["en", "es", "sl", "hy"],
+  "translations": {
+    "name": {
+      "en": "Edvard Khachatryan Sahakyan",
+      "es": "Edvard Khachatryan Sahakyan",
+      "sl": "Edvard Khachatryan Sahakyan",
+      "hy": "Էդվարդ Խաչատրյան Սահակյան"
+    },
+    "title": {
+      "en": "Artificial Intelligence Engineer and Big Data Architect",
+      "es": "Ingeniero de inteligencia artificial y arquitecto de Big Data",
+      "sl": "Inženir umetne inteligence in arhitekt za Big Data",
+      "hy": "Արհեստական բանականության ինժեներ և Big Data ճարտարապետ"
+    },
+    "summary": {
+      "en": "Extensive experience in application development, deployment, and DevOps. Proficient in technologies such as Docker, AWS, Azure, TensorFlow, and PyTorch. Committed to continuous learning to drive the development of cutting-edge technology.",
+      "es": "Amplia experiencia en desarrollo de aplicaciones, implementación y DevOps. Competente en tecnologías como Docker, AWS, Azure, TensorFlow y PyTorch. Comprometido con el aprendizaje continuo para impulsar el desarrollo de tecnología de vanguardia.",
+      "sl": "Obsežne izkušnje pri razvoju aplikacij, uvajanju in DevOps. Obvlada tehnologije, kot so Docker, AWS, Azure, TensorFlow in PyTorch. Zavezan k nenehnemu učenju za razvoj najnovejše tehnologije.",
+      "hy": "Ունի լայն փորձ հավելվածների մշակման, տեղադրման և DevOps-ի ոլորտներում: Տիրապետում է տեխնոլոգիաներին, ինչպիսիք են Docker-ը, AWS-ը, Azure-ը, TensorFlow-ը և PyTorch-ը: Հավատարիմ է շարունակական ուսուցմանն` ի նպաստ առաջադեմ տեխնոլոգիաների զարգացմանը:"
+    },
+    "education": {
+      "title": {
+        "en": "Education and Training",
+        "es": "Educación y formación",
+        "sl": "Izobraževanje in usposabljanje",
+        "hy": "Կրթություն և ուսուցում"
+      },
+      "entries": [
+        {
+          "institution": "IES Abastos",
+          "period": "01/10/2023 – 31/05/2024",
+          "degree": {
+            "en": "Specialization in Artificial Intelligence and Big Data",
+            "es": "Especialización en Inteligencia Artificial y Big Data",
+            "sl": "Specializacija v umetni inteligenci in Big Data",
+            "hy": "Մասնագիտացում Արհեստական Բանականություն և Big Data"
+          },
+          "location": {
+            "en": "Valencia, Spain",
+            "es": "Valencia, España",
+            "sl": "Valencija, Španija",
+            "hy": "Վալենսիա, Իսպանիա"
+          }
+        },
+        {
+          "institution": "IES Hermanos Amorós",
+          "period": "01/09/2021 – 01/05/2023",
+          "degree": {
+            "en": "Web Application Developer, Deployment, and Full-stack",
+            "es": "Desarrollador de aplicaciones web, implementación y Full-stack",
+            "sl": "Razvijalec spletnih aplikacij, uvajanje in Full-stack",
+            "hy": "Վեբ հավելվածների մշակող, տեղադրում և Full-stack"
+          },
+          "location": {
+            "en": "Villena, Spain",
+            "es": "Villena, España",
+            "sl": "Villena, Španija",
+            "hy": "Վիլենա, Իսպանիա"
+          }
+        },
+        {
+          "institution": "Udacity - AWS",
+          "period": "01/05/2024 – 01/09/2024",
+          "degree": {
+            "en": "Verified Certificate Of Nanodegree Program Completion AI Programming with Python",
+            "es": "Certificado verificado de finalización del programa Nanodegree en Programación de IA con Python",
+            "sl": "Preverjeno potrdilo o zaključku nanodiplomskega programa Programiranje AI s Pythonom",
+            "hy": "Նանոդիպլոմի ծրագրի ավարտի հաստատված վկայագիր Python-ով ԱԻ ծրագրավորման"
+          },
+          "location": {
+            "en": "Nova Gorica, Slovenia",
+            "es": "Nova Gorica, Eslovenia",
+            "sl": "Nova Gorica, Slovenija",
+            "hy": "Նովա Գորիցա, Սլովենիա"
+          }
+        }
+      ]
+    },
+    "workExperience": {
+      "title": {
+        "en": "Work Experience",
+        "es": "Experiencia laboral",
+        "sl": "Delovne izkušnje",
+        "hy": "Աշխատանքային փորձ"
+      },
+      "entries": [
+        {
+          "position": {
+            "en": "Artificial Intelligence Engineer",
+            "es": "Ingeniero de inteligencia artificial",
+            "sl": "Inženir umetne inteligence",
+            "hy": "Արհեստական բանականության ինժեներ"
+          },
+          "company": "Business Solutions d.o.o.",
+          "period": "08/07/2024 – Current",
+          "location": {
+            "en": "Nova Gorica, Slovenia",
+            "es": "Nova Gorica, Eslovenia",
+            "sl": "Nova Gorica, Slovenija",
+            "hy": "Նովա Գորիցա, Սլովենիա"
+          },
+          "responsibilities": {
+            "en": "LLMOps, Generative AI, Temporal series, Image Classification, Deep Learning, Machine Learning",
+            "es": "LLMOps, IA Generativa, Series temporales, Clasificación de imágenes, Deep Learning, Machine Learning",
+            "sl": "LLMOps, Generativna umetna inteligenca, časovne serije, prepoznavanje slik, globoko učenje, strojno učenje",
+            "hy": "LLMOps, Սերնդային ԱԲ, Ժամանակային շարքեր, Պատկերի դասակարգում, Խորը ուսուցում, Մեքենայական ուսուցում"
+          }
+        },
+        {
+          "position": {
+            "en": "Web Developer",
+            "es": "Desarrollador web",
+            "sl": "Spletni razvijalec",
+            "hy": "Վեբ ծրագրավորող"
+          },
+          "company": "Posiziona Tecnologías de la información, S.L.",
+          "period": "01/05/2022 – 30/04/2023",
+          "location": {
+            "en": "Villena, Spain",
+            "es": "Villena, España",
+            "sl": "Villena, Španija",
+            "hy": "Վիլենա, Իսպանիա"
+          },
+          "responsibilities": {
+            "en": "Laravel development, Prestashop API integrations, Module and plugin development for WP and PS, VUE and VITE development",
+            "es": "Desarrollo con Laravel, integraciones con API de Prestashop, desarrollo de módulos y plugins para WP y PS, desarrollo con VUE y VITE",
+            "sl": "Razvoj z Laravelom, integracije s Prestashop API, razvoj modulov in vtičnikov za WP in PS, razvoj z VUE in VITE",
+            "hy": "Laravel-ով մշակում, Prestashop API ինտեգրումներ, Մոդուլների և WP ու PS պլագինների մշակում, VUE և VITE"
+          }
+        }
+      ]
+    },
+    "skills": {
+      "title": {
+        "en": "Digital Skills",
+        "es": "Habilidades digitales",
+        "sl": "Digitalne spretnosti",
+        "hy": "Թվային հմտություններ"
+      },
+      "list": {
+        "en": "Artificial Intelligence, Deep Learning, Machine Learning, Temporal series, Python, Data analysis, Cloud technologies, Git, Docker, SQL, JavaScript, PHP",
+        "es": "Inteligencia artificial, Deep Learning, Machine Learning, Series temporales, Python, análisis de datos, tecnologías en la nube, Git, Docker, SQL, JavaScript, PHP",
+        "sl": "Umetna inteligenca, globoko učenje, strojno učenje, časovne serije, Python, analiza podatkov, oblačne tehnologije, Git, Docker, SQL, JavaScript, PHP",
+        "hy": "Արհեստական բանականություն, Խորը ուսուցում, Մեքենայական ուսուցում, Ժամանակային շարքեր, Python, Տվյալների վերլուծություն, Ամպային տեխնոլոգիաներ, Git, Docker, SQL, JavaScript, PHP"
+      }
+    },
+    "nav-summary": {
+      "en": "Summary",
+      "es": "Resumen",
+      "sl": "Povzetek",
+      "hy": "Ամփոփում"
+    },
+    "nav-education": {
+      "en": "Education",
+      "es": "Educación",
+      "sl": "Izobraževanje",
+      "hy": "Կրթություն"
+    },
+    "nav-experience": {
+      "en": "Experience",
+      "es": "Experiencia",
+      "sl": "Izkušnje",
+      "hy": "Փորձ"
+    },
+    "nav-skills": {
+      "en": "Skills",
+      "es": "Habilidades",
+      "sl": "Spretnosti",
+      "hy": "Հմտություններ"
+    },
+    "nav-contact": {
+      "en": "Contact",
+      "es": "Contacto",
+      "sl": "Kontakt",
+      "hy": "Կապ"
+    },
+    "contact-title": {
+      "en": "Contact",
+      "es": "Contacto",
+      "sl": "Kontakt",
+      "hy": "Կապ"
+    },
+    "contact-name": {
+      "en": "Name",
+      "es": "Nombre",
+      "sl": "Ime",
+      "hy": "Անուն"
+    },
+    "contact-email": {
+      "en": "Email",
+      "es": "Correo electrónico",
+      "sl": "E-pošta",
+      "hy": "Էլ. փոստ"
+    },
+    "contact-message": {
+      "en": "Message",
+      "es": "Mensaje",
+      "sl": "Sporočilo",
+      "hy": "Հաղորդագրություն"
+    },
+    "contact-submit": {
+      "en": "Send Message",
+      "es": "Enviar mensaje",
+      "sl": "Pošlji sporočilo",
+      "hy": "Ուղարկել հաղորդագրություն"
+    }
+  }
+}

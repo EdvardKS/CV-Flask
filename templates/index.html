@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edvard Khachatryan Sahakyan - CV</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <nav class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-md z-10">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <h1 class="text-xl font-bold" id="nav-name"></h1>
+            <div class="flex items-center">
+                <select id="language-selector" class="mr-4 p-2 rounded border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="sl">Slovenščina</option>
+                    <option value="hy">Հայերեն</option>
+                </select>
+                <button id="dark-mode-toggle" class="mr-4 p-2 rounded-full bg-gray-200 dark:bg-gray-600">
+                    <i class="fas fa-moon dark:text-yellow-300"></i>
+                </button>
+                <ul class="flex space-x-4">
+                    <li><a href="#photo" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-photo">Photo</a></li>
+                    <li><a href="#summary" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-summary">Summary</a></li>
+                    <li><a href="#education" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-education">Education</a></li>
+                    <li><a href="#experience" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-experience">Experience</a></li>
+                    <li><a href="#skills" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-skills">Skills</a></li>
+                    <li><a href="#contact" class="hover:text-blue-500 dark:hover:text-blue-300" data-translate="nav-contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="snap-y snap-mandatory h-screen overflow-y-scroll">
+        <section id="photo" class="h-screen flex items-center justify-center snap-start">
+            <div class="text-center">
+                <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt="Edvard Khachatryan Sahakyan" class="w-64 h-64 rounded-full mx-auto mb-4 object-cover">
+                <h2 class="text-2xl font-bold mb-2" id="photo-name"></h2>
+                <p class="text-xl mb-4" id="photo-title"></p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="text-blue-500 hover:text-blue-600"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <a href="#" class="text-gray-700 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"><i class="fab fa-github fa-2x"></i></a>
+                    <a href="#" class="text-blue-400 hover:text-blue-500"><i class="fab fa-twitter fa-2x"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary" class="h-screen flex items-center justify-center snap-start">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl font-bold mb-4" data-translate="summary-title">Summary</h2>
+                <p id="summary-content" class="text-gray-700 dark:text-gray-300"></p>
+            </div>
+        </section>
+
+        <section id="education" class="h-screen flex items-center justify-center snap-start">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl font-bold mb-4" data-translate="education-title">Education</h2>
+                <div id="education-list"></div>
+            </div>
+        </section>
+
+        <section id="experience" class="h-screen flex items-center justify-center snap-start">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl font-bold mb-4" data-translate="experience-title">Work Experience</h2>
+                <div id="experience-list"></div>
+            </div>
+        </section>
+
+        <section id="skills" class="h-screen flex items-center justify-center snap-start">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl font-bold mb-4" data-translate="skills-title">Skills</h2>
+                <ul id="skills-list" class="list-disc list-inside"></ul>
+            </div>
+        </section>
+
+        <section id="contact" class="h-screen flex items-center justify-center snap-start">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl font-bold mb-4" data-translate="contact-title">Contact</h2>
+                <form id="contact-form" class="max-w-lg">
+                    <div class="mb-4">
+                        <label for="name" class="block mb-2" data-translate="contact-name">Name</label>
+                        <input type="text" id="name" name="name" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block mb-2" data-translate="contact-email">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block mb-2" data-translate="contact-message">Message</label>
+                        <textarea id="message" name="message" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700" data-translate="contact-submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
