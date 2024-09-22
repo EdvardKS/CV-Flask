@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34;
+}
+
+/* Bola con efecto de rastro */
+.ball {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,0,0,0.5) 100%);
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 60px rgba(255, 0, 0, 0.6);
+  opacity: 0.9;
+  transition: box-shadow 0.1s linear;  /* Para suavizar el efecto de movimiento */
+}
+
+.ball.z-movement {
+  background: radial-gradient(circle, rgba(0,0,255,1) 0%, rgba(0,0,255,0.5) 100%);
+  box-shadow: 0 0 30px rgba(0, 0, 255, 0.8), 0 0 60px rgba(0, 0, 255, 0.6);
+}
+
+.trail {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.2);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+
+
+.ball312 {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(0, 157, 255, 0.7);
+  box-shadow: 0 0 100px rgb(0, 68, 179, 0.7), 0 0 30px rgb(45, 218, 230, 0.6);
+}
