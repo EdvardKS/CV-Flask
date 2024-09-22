@@ -1,9 +1,9 @@
-.env
-.replit
-.pythonlibs
-.upm
-.local
-.cache
-.ccls-cache
+/.env
+/.replit
+/.pythonlibs
+/.upm
+/.local
+/.cache
+/.ccls-cache
 replit.nix
-./__pycache__
+
