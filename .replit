@@ -1,4 +1,4 @@
-modules = ["python-3.11"]
+modules = ["python-3.11", "nodejs-20", "web", "c-clang14"]
 
 [nix]
 channel = "stable-24_05"
@@ -33,3 +33,4 @@ run = ["sh", "-c", "python main.py"]
 [[ports]]
 localPort = 5000
 externalPort = 80
+exposeLocalhost = true

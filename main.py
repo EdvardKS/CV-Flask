@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from flask_mail import Mail, Message
 import json
 import os
@@ -11,7 +11,10 @@ logging.basicConfig(level=logging.DEBUG)
 load_dotenv()
 app = Flask(__name__)
 
-# Configure Flask-Mail
+# Configurar clave secreta para la sesión
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'mysecret')
+
+# Configurar Flask-Mail
 app.config['MAIL_SERVER'] = 'smtp.mail.ovh.ca'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = False  # Cambiado de TLS a SSL
@@ -22,8 +25,26 @@ app.config['MAIL_DEFAULT_SENDER'] = 'info@edvardks.com'
 
 mail = Mail(app)
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['password'] == os.getenv('ACCESS_PASSWORD'):
+            session['logged_in'] = True
+            return redirect(url_for('index'))
+        else:
+            error = 'Invalid password'
+    return render_template('login.html', error=error)
+
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    return redirect(url_for('login'))
+
 @app.route('/')
 def index():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
     return render_template('index.html')
 
 @app.route('/get_cv_data')
