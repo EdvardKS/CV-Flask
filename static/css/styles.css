@@ -1,25 +1,21 @@
-/* Add any custom styles here */
-/* Add any custom styles here */
+/* Estilos globales */
 body {
     font-family: Arial, sans-serif;
     transition: background-color 0.3s, color 0.3s;
     margin: 0;
     padding: 0;
     overflow-y: hidden;
-}
-
-/* Modo Claro */
-body {
-    background: linear-gradient(135deg, #A9A9A9, #E0E0E0);
+    scrollbar-width: thin; /* Barra de desplazamiento delgada */
+    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Color de la barra y el track */
+    background: linear-gradient(90deg, #d6d6d6,rgba(59,130,246,0.5),rgba(59,130,246,0.9));
     color: #333333;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+body::before {
+    background: linear-gradient(90deg, #A1A1A1,#D1D5DB,rgba(59,130,246,0.5));
 }
 
+/* Estilos de navegación */
 nav {
     position: fixed;
     top: 0;
@@ -30,6 +26,22 @@ nav {
     backdrop-filter: blur(5px);
 }
 
+nav ul li {
+    transition: transform 0.3s ease;
+}
+
+nav ul li:hover {
+    transform: translateY(-2px);
+}
+
+/* Estilos de contenedores */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilos principales */
 main {
     height: 100vh;
     overflow-y: scroll;
@@ -55,32 +67,25 @@ section.active {
     transform: translateY(0);
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav ul li {
-        margin-bottom: 0.5rem;
-    }
-}
-
-
-
-.elemento-redondo {
-    background-color: azul;
-    border-radius: 50%;
-}
-
-/* Dark mode styles */
+/* Estilos para modo oscuro */
 .dark {
-    background: linear-gradient(135deg, #1A1A1A, #4A4A4A) !important;
+    background: linear-gradient(90deg, #4B5563,#1F2937,#111827);
     color: #EAEAEA;
+}
+.dark::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(1, 54, 111, 0.1); /* Color del difuminado */
+      filter: blur(15px); /* Ajusta el nivel de difuminado */
+      z-index: 1; /* Asegúrate de que esté por encima del fondo */
 }
 
 .dark nav {
-    background-color: rgba(37, 37, 37, 0.2); /* Modo oscuro */
+    background-color: rgba(37, 37, 37, 0.2);
 }
 
 .dark input,
@@ -99,218 +104,85 @@ section.active {
     background-color: #3182CE;
 }
 
-/* Add a subtle animation to the navigation items */
-nav ul li {
-    transition: transform 0.3s ease;
+/* Estilos para elementos redondos */
+.elemento-redondo {
+    background-color: azul;
+    border-radius: 50%;
 }
 
-nav ul li:hover {
-    transform: translateY(-2px);
-}
-
-/* Smooth transition for sections */
-.section-transition {
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.section-transition.entering {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.section-transition.entered {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Estilo para la barra de desplazamiento en navegadores WebKit (Chrome, Safari) */
+/* Estilos para la barra de desplazamiento en navegadores WebKit */
 body::-webkit-scrollbar {
-    width: 12px; /* Ancho de la barra de desplazamiento */
+    width: 12px;
 }
 
 body::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1); /* Color del track */
-    border-radius: 10px; /* Esquinas redondeadas */
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 body::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.5); /* Color de la barra */
-    border-radius: 10px; /* Esquinas redondeadas */
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.7); /* Color de la barra al pasar el ratón */
+    background: rgba(0, 0, 0, 0.7);
 }
 
-/* Estilo para navegadores Firefox */
-body {
-    scrollbar-width: thin; /* Barra de desplazamiento delgada */
-    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Color de la barra y el track */
-}
-
-
-
-
-
-
-
-
-
-
-
-/* EDUCVACION */
-
-
-
+/* Estilos de carrusel */
 .carousel-control-prev,
 .carousel-control-next {
-    width: 50px; /* Ajusta el ancho de las flechas */
-    height: 50px; /* Ajusta la altura de las flechas */
-    border-radius: 50%; /* Flechas redondeadas */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.3s; /* Transición suave al pasar el ratón */
-    color: rgba(59, 130, 246, 0.5) !important; /* Color de las flechas */
+    transition: color 0.3s;
+    color: rgba(59, 130, 246, 0.5) !important;
 }
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-    color: rgba(59, 130, 246, 1) !important; /* Color al pasar el ratón */
+    color: rgba(59, 130, 246, 1) !important;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: transparent !important; /* Fondo transparente para los íconos */
+    background-color: transparent !important;
 }
 
 .carousel-control-prev-icon::before,
 .carousel-control-next-icon::before {
-    color: inherit; /* Heredar color de las flechas */
-    font-size: 1.5rem; /* Tamaño de las flechas */
+    color: inherit;
+    font-size: 1.5rem;
 }
 
+/* Posicionamiento de flechas */
 .carousel-control-prev {
-    left: 10px; /* Posición de la flecha izquierda */
+    left: 10px;
 }
 
 .carousel-control-next {
-    right: 10px; /* Posición de la flecha derecha */
+    right: 10px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* EXPERIENCIA */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.borde-card{
-    border-radius: 10px;
-}
-
-.color-azulito{
-    color: rgba(59, 130, 246, 1);
-}
-
-
-/* SKILLLS */
-
+/* Estilos de tarjetas */
 .card {
     transition: transform 0.3s, box-shadow 0.3s;
-    /* From https://css.glass */
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.dark .card {
-    
-    transition: transform 0.3s, box-shadow 0.3s;
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.67);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-  
 }
 
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5); /* Sombra del mismo color */
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
 }
 
-
-
-
-
-
-
+/* Estilos para modo oscuro en tarjetas */
+.dark .card {
+    background: rgba(255, 255, 255, 0.67);
+}
