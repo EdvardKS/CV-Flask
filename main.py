@@ -4,6 +4,9 @@ import json
 import os
 from dotenv import load_dotenv
 import logging
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 # Configura logging
 logging.basicConfig(level=logging.DEBUG)
@@ -14,16 +17,59 @@ app = Flask(__name__)
 # Configurar clave secreta para la sesión
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'mysecret')
 
-# Configurar Flask-Mail
-app.config['MAIL_SERVER'] = 'smtp.mail.ovh.ca'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USE_SSL'] = False  # Cambiado de TLS a SSL
-app.config['MAIL_USE_TLS'] = True  # Desactivar TLS
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = 'info@edvardks.com'
+#######################################################################
+#######################################################################
+#######################################################################
+# Configurar el servidor de correo electrónico
+SMTP_USERNAME = os.getenv('MAIL_USERNAME')  
+SMTP_PASSWORD = os.getenv('MAIL_PASSWORD')  
+SENDER_EMAIL = 'info@edvardks.com'
+RECIPIENT_EMAIL = 'edwar_@outlook.com'
+SMTP_SERVER = 'ssl0.ovh.net'
+SMTP_PORT = 587
 
-mail = Mail(app)
+#######################################################################
+#######################################################################
+#######################################################################
+
+@app.route('/submit_contact', methods=['POST'])
+def submit_contact():
+    try:
+        data = request.json
+        if not data:
+            return jsonify({'status': 'error', 'message': 'Invalid JSON'}), 400
+        name = data.get('name')
+        email = data.get('email')
+        message = data.get('message')
+        # Validación básica
+        if not all([name, email, message]):
+            return jsonify({'status': 'error', 'message': 'Missing required fields'}), 400
+        logging.info(f"Attempting to send email from {email}")
+        # Crear el mensaje
+        msg = MIMEMultipart()
+        msg['From'] = SENDER_EMAIL
+        msg['To'] = RECIPIENT_EMAIL
+        msg['Subject'] = f"New contact from {name}"
+        body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+        msg.attach(MIMEText(body, 'plain'))
+        # Conectar y enviar el correo usando smtplib
+        if SMTP_USERNAME and SMTP_PASSWORD:
+            with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+                server.starttls()
+                server.login(SMTP_USERNAME, SMTP_PASSWORD)
+                server.sendmail(SENDER_EMAIL, RECIPIENT_EMAIL, msg.as_string())
+            logging.info("Email sent successfully")
+            return jsonify({'status': 'success', 'message': 'Your message has been sent successfully'}), 200
+        else:
+            logging.error("SMTP credentials not set")
+            return jsonify({'status': 'error', 'message': 'SMTP credentials not set'}), 500
+    except Exception as e:
+        logging.error(f"Error in submit_contact: {str(e)}")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+#######################################################################
+#######################################################################
+#######################################################################
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -36,10 +82,18 @@ def login():
             error = 'Invalid password'
     return render_template('login.html', error=error)
 
+#######################################################################
+#######################################################################
+#######################################################################
+
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
     return redirect(url_for('login'))
+
+#######################################################################
+#######################################################################
+#######################################################################
 
 @app.route('/')
 def index():
@@ -47,50 +101,20 @@ def index():
         return redirect(url_for('login'))
     return render_template('index.html')
 
+#######################################################################
+#######################################################################
+#######################################################################
+
 @app.route('/get_cv_data')
 def get_cv_data():
     with open('static/data/cv_data.json', 'r', encoding='utf-8') as file:
         cv_data = json.load(file)
     return jsonify(cv_data)
 
-@app.route('/submit_contact', methods=['POST'])
-def submit_contact():
-    try:
-        data = request.json
-        name = data.get('name')
-        email = data.get('email')
-        message = data.get('message')
 
-        # Validación básica
-        if not all([name, email, message]):
-            return jsonify({'status': 'error', 'message': 'Missing required fields'}), 400
-
-        logging.info(f"Attempting to send email from {email}")
-
-        msg = Message(
-            subject=f"New contact from {name}",
-            recipients=['edwar_@outlook.com'],
-            body=f"Name: {name}\nEmail: {email}\nMessage: {message}"
-        )
-
-        mail.send(msg)
-        logging.info("Email sent successfully")
-        return jsonify({'status': 'success', 'message': 'Your message has been sent'}), 200
-
-    except Exception as e:
-        logging.error(f"Error in submit_contact: {str(e)}")
-        return jsonify({'status': 'error', 'message': str(e)}), 500
-
-@app.route('/test_mail')
-def test_mail():
-    try:
-        msg = Message("Test Email", recipients=["edwar_@outlook.com"])
-        msg.body = "This is a test email."
-        mail.send(msg)
-        return "Test email sent successfully!"
-    except Exception as e:
-        logging.error(f"Error in test_mail: {str(e)}")
-        return f"Error sending test email: {str(e)}"
+#######################################################################
+#######################################################################
+#######################################################################
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
