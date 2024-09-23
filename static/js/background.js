@@ -82,7 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (distance < attractionDistance) {
                 // Si el círculo está dentro del rango de atracción, sigue al ratón
                 circleData.isFollowingMouse = true;
-                const followFactor = 0.05; // Velocidad de seguimiento
+                const followFactor = 0.005; // Velocidad de seguimiento
+
+                
                 const translateX = (mouseX - circleX) * followFactor;
                 const translateY = (mouseY - circleY) * followFactor;
                 circle.style.transform = `translate(${translateX}px, ${translateY}px)`;

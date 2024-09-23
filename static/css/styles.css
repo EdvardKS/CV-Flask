@@ -1,18 +1,22 @@
+/* Asegurarse de que las transiciones están bien definidas en el CSS */
+html {
+    scroll-behavior: smooth;
+}
 /* Estilos globales */
 body {
     font-family: Arial, sans-serif;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.5s, color 0.5s;
     margin: 0;
     padding: 0;
-    overflow-y: hidden;
-    scrollbar-width: thin; /* Barra de desplazamiento delgada */
-    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Color de la barra y el track */
-    background: linear-gradient(90deg, #d6d6d6,rgba(59,130,246,0.5),rgba(59,130,246,0.9));
+    overflow-y: hidden; 
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); 
+    background: linear-gradient(70deg, #d6d6d6 ,rgb(148, 181, 235,0.5),rgb(117, 170, 255,0.9));
     color: #333333;
 }
 
 body::before {
-    background: linear-gradient(90deg, #A1A1A1,#D1D5DB,rgba(59,130,246,0.5));
+    background: linear-gradient(70deg, #A1A1A1,#D1D5DB,rgba(59,130,246,0.5));
 }
 
 /* Estilos de navegación */
@@ -27,7 +31,7 @@ nav {
 }
 
 nav ul li {
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 nav ul li:hover {
@@ -56,7 +60,7 @@ section {
     flex-direction: column;
     justify-content: center;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(0px);
     transition: opacity 0.5s ease, transform 0.5s ease;
     padding: 20px;
     box-sizing: border-box;
@@ -69,12 +73,11 @@ section.active {
 
 /* Estilos para modo oscuro */
 .dark {
-    background: linear-gradient(90deg, #4B5563,#1F2937,#111827);
+    background: linear-gradient(70deg, #4B5563,#1F2937,#111827);
     color: #EAEAEA;
 }
 .dark::before {
       content: '';
-      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
@@ -186,3 +189,16 @@ body::-webkit-scrollbar-thumb:hover {
 .dark .card {
     background: rgba(255, 255, 255, 0.67);
 }
+
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Asegura que ocupen todo el alto del carrusel */
+    background-color: transparent !important;
+}
+
+

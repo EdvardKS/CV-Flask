@@ -2,20 +2,37 @@ let cvData;
 let currentLanguage = 'en';
 
 async function fetchCVData() {
-    const response = await fetch('/get_cv_data');
-    cvData = await response.json();
-    updateContent();
+    // Check if data is in localStorage
+    if (localStorage.getItem('cvData')) {
+        cvData = JSON.parse(localStorage.getItem('cvData'));
+        updateContent();
+    } else {
+        try {
+            const response = await fetch('/get_cv_data');
+            cvData = await response.json();
+            // Store in localStorage
+            localStorage.setItem('cvData', JSON.stringify(cvData));
+            updateContent();
+        } catch (error) {
+            console.error('Error fetching CV data:', error);
+        }
+    }
 }
 
 function updateContent() {
     document.getElementById('nav-name').textContent = cvData.translations.name[currentLanguage];
     document.getElementById('photo-name').textContent = cvData.translations.name[currentLanguage];
     document.getElementById('photo-title').textContent = cvData.translations.title[currentLanguage];
-    document.getElementById('summary-content').textContent = cvData.translations.summary[currentLanguage];
-    
+
+    // Update summary-content with line breaks
+    const summaryElement = document.getElementById('summary-content');
+    const summaryText = cvData.translations.summary[currentLanguage].replace(/\n/g, '<br>');
+    summaryElement.innerHTML = summaryText;
+
     updateEducation();
     updateExperience();
     updateSkills();
+
     updateTranslations();
 }
 
@@ -142,7 +159,7 @@ const navItems = document.querySelectorAll('nav ul li a');
 const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.5
+    threshold: 0.1
 };
 
 const sectionObserver = new IntersectionObserver((entries) => {
@@ -171,13 +188,7 @@ function updateActiveNavItem(sectionId) {
 }
 
 
-
-
-
-
-
-
-
+// Funcion que coloca la información sobre mi educación
 function updateEducation() {
     const educationList = document.getElementById('education-list');
     educationList.innerHTML = ''; // Limpiar contenido anterior
@@ -238,43 +249,7 @@ function updateEducation() {
     });
 }
 
-// Llamar a la función cuando se cargue la página o cuando se necesiten los datos
-document.addEventListener('DOMContentLoaded', updateEducation);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Funcion que coloca las cards de Experience
 function updateExperience() {
     const imagenes = ["./static/data/bs.jpeg", "./static/data/psz.png"];
 
@@ -352,7 +327,7 @@ function checkImageExists(url) {
     });
 }
 
-
+// Función que muestra mis habilidades
 function updateSkills() {
     const skillsList = document.getElementById('skills-list');
     skillsList.innerHTML = '';
@@ -378,4 +353,5 @@ function updateSkills() {
 }
 
 
+// Recoge toda la información de la ruta que flask ha servido mi información
 fetchCVData();

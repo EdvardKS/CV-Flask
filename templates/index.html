@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
+    <script>
+        localStorage.setItem('darkMode', 'enabled');
+    </script>
 </head>
 
 
@@ -57,6 +59,7 @@
     </nav>
 
     <main class="snap-y snap-mandatory h-screen overflow-y-scroll">
+        
         <section id="photo" class="h-screen flex items-center justify-center snap-start">
             <div class="text-center">
                 <img src="{{ url_for('static', filename='data/1713730445414.jpeg') }}" alt="Edvard Khachatryan Sahakyan" class="w-64 h-64 rounded-full mx-auto mb-4 object-cover">
@@ -70,41 +73,36 @@
             </div>
         </section>
 
-        <script>
-
-        </script>
-
-        <section id="summary" class="h-screen flex items-center justify-center snap-start">
+        <section id="summary" class="section-transition h-screen flex items-center justify-center snap-start">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-4" data-translate="summary-title">Summary</h2>
                 <div id="summary-content" ></div>
             </div>
         </section>
 
-        <section id="education" class="h-screen flex items-center justify-center snap-start">
+        <section id="education" class="section-transition h-screen flex items-center justify-center snap-start">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-4" data-translate="education-title">Education</h2>
-                <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+                <div id="caruselEducacion" class="carousel slide" data-bs-ride="true">
                     <div class="carousel-inner" id="carousel-inner">
                         <!-- Las imágenes se insertarán aquí -->
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#caruselEducacion" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#caruselEducacion" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
                 <div id="education-list" class="mt-4">
-                    <!-- Aquí se añadirá la lista de educación -->
+                    <!-- Aquí se añadirá la info de educación -->
                 </div>
             </div>
         </section>
         
-
-        <section id="experience" class="h-screen flex items-center justify-center snap-start">
+        <section id="experience" class="section-transition h-screen flex items-center justify-center snap-start">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-4" data-translate="experience-title">Work Experience</h2>
                 <div class="row timeline" id="experience-list"></div> <!-- Asegúrate de que este ID coincida -->
@@ -112,7 +110,7 @@
             </div>
         </section>
 
-        <section id="skills" class="h-screen flex items-center justify-center snap-start">
+        <section id="skills" class="section-transition h-screen flex items-center justify-center snap-start">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-4" data-translate="skills-title">Skills</h2>
                 <div class="row" id="skills-list">
@@ -121,7 +119,7 @@
             </div>
         </section>
 
-        <section id="contact" class="container h-screen flex items-center justify-center flex-row snap-start">
+        <section id="contact" class="section-transition container h-screen flex items-center justify-center flex-row snap-start">
             <div class="container mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-4" data-translate="contact-title">Contact</h2>
                 <form id="contact-form" class="max-w-lg">
@@ -145,8 +143,10 @@
                 sggfsg
             </div>
         </section>
+        
     </main>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
 </body>
 </html>
