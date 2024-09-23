@@ -73,18 +73,18 @@ section.active {
 
 /* Estilos para modo oscuro */
 .dark {
-    background: linear-gradient(70deg, #4B5563,#1F2937,#111827);
+    background: linear-gradient(70deg, #4B5563, #1F2937, #111827);
     color: #EAEAEA;
 }
 .dark::before {
-      content: '';
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgb(1, 54, 111, 0.1); /* Color del difuminado */
-      filter: blur(15px); /* Ajusta el nivel de difuminado */
-      z-index: 1; /* Asegúrate de que esté por encima del fondo */
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(1, 54, 111, 0.1); /* Color del difuminado */
+    filter: blur(15px); /* Ajusta el nivel de difuminado */
+    z-index: 1; /* Asegúrate de que esté por encima del fondo */
 }
 
 .dark nav {
@@ -190,8 +190,6 @@ body::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.67);
 }
 
-
-
 .carousel-control-prev,
 .carousel-control-next {
     display: flex;
@@ -201,4 +199,20 @@ body::-webkit-scrollbar-thumb:hover {
     background-color: transparent !important;
 }
 
+/* Asegurar transición en botón */
+.btn-transition {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
+/* Estilos para botón en modo oscuro */
+.dark .btn-transition.bg-blue-500 {
+    background-color: #3182CE; /* Ajustar azul para modo oscuro */
+}
+
+.dark .btn-transition.bg-green-500 {
+    background-color: #48BB78; /* Ajustar verde para modo oscuro */
+}
+
+.dark .btn-transition.bg-red-500 {
+    background-color: #E53E3E; /* Ajustar rojo para modo oscuro */
+}

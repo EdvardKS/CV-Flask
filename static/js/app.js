@@ -94,31 +94,6 @@ document.getElementById('language-selector').addEventListener('change', (event) 
     updateContent();
 });
 
-document.getElementById('contact-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-        const response = await fetch('/submit_contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        const result = await response.json();
-        alert(result.message);
-        if (result.status === 'success') {
-            event.target.reset();
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while sending your message. Please try again later.');
-    }
-});
-
 // Dark mode toggle functionality
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 const body = document.body;
@@ -178,6 +153,7 @@ sections.forEach(section => {
     sectionObserver.observe(section);
 });
 
+// Mantiene colorido la seccion activa
 function updateActiveNavItem(sectionId) {
     navItems.forEach(item => {
         item.classList.remove('text-blue-500');
@@ -186,7 +162,6 @@ function updateActiveNavItem(sectionId) {
         }
     });
 }
-
 
 // Funcion que coloca la información sobre mi educación
 function updateEducation() {
@@ -350,6 +325,70 @@ function updateSkills() {
         `;
         skillsList.appendChild(skillCard);
     });
+}
+
+// Función para ver el mensaje de resultado al enviar mail de contacto
+document.getElementById('contact-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    updateButtonState(submitButton, 'sending');
+    try {
+        const response = await fetch('/submit_contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        const result = await response.json();
+        if (result.status === 'success') {
+            updateButtonState(submitButton, 'success');
+            event.target.reset();
+        } else {
+            updateButtonState(submitButton, 'error');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        updateButtonState(submitButton, 'error');
+    }
+});
+function updateButtonState(button, state) {
+    button.classList.add('btn-transition'); // Ensure the transition class is added
+    switch(state) {
+        case 'sending':
+            button.textContent = 'Sending...';
+            button.classList.remove('bg-green-500', 'bg-red-500');
+            button.classList.add('bg-blue-500');
+            button.disabled = true;
+            break;
+        case 'success':
+            button.textContent = 'Message Sent!';
+            button.classList.remove('bg-blue-500', 'bg-red-500');
+            button.classList.add('bg-green-500');
+            button.disabled = false;
+            resetButtonAfterTimeout(button);
+            break;
+        case 'error':
+            button.textContent = 'Error, try later...';
+            button.classList.remove('bg-blue-500', 'bg-green-500');
+            button.classList.add('bg-red-500');
+            button.disabled = false;
+            resetButtonAfterTimeout(button);
+            break;
+        case 'reset':
+            button.textContent = 'Send Message';
+            button.classList.remove('bg-green-500', 'bg-red-500', 'bg-blue-500');
+            button.classList.add('bg-blue-500');
+            button.disabled = false;
+            break;
+    }
+}
+function resetButtonAfterTimeout(button) {
+    setTimeout(() => {
+        updateButtonState(button, 'reset');
+    }, 10000); // Reset button after 10 seconds
 }
 
 
