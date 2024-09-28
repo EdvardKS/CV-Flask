@@ -15,18 +15,20 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgb(1, 54, 111, 0.1); /* Color del difuminado */
-  filter: blur(15px); /* Ajusta el nivel de difuminado */
-  z-index: 1; /* Asegúrate de que esté por encima del fondo */
+  background: rgb(1, 54, 111, 0.1);
+  filter: blur(15px);
+  z-index: 1;
 }
-
 
 .circle {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   pointer-events: none;
   transition: transform 0.2s ease-out;
+  background: rgba(255, 255, 255, 0.5); /* Color de fondo similar al Neomorfismo */
+  box-shadow: 
+    inset 8px 8px 16px rgba(0, 0, 0, 0.2), /* Sombra oscura interna */
+    inset -8px -8px 16px rgba(255, 255, 255, 0.5); /* Sombra clara interna */
 }
 
 .circle-small {

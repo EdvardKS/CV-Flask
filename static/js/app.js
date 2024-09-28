@@ -102,19 +102,23 @@ function setDarkMode(isDark) {
     if (isDark) {
         body.classList.add('dark');
         localStorage.setItem('darkMode', 'enabled');
+        darkModeToggle.checked = true;
     } else {
         body.classList.remove('dark');
         localStorage.setItem('darkMode', 'disabled');
+        darkModeToggle.checked = false;
     }
 }
 
 // Check for user's preference
 if (localStorage.getItem('darkMode') === 'enabled') {
     setDarkMode(true);
+} else {
+    setDarkMode(false);
 }
 
-darkModeToggle.addEventListener('click', () => {
-    setDarkMode(!body.classList.contains('dark'));
+darkModeToggle.addEventListener('change', () => {
+    setDarkMode(darkModeToggle.checked);
 });
 
 // Add smooth scrolling functionality

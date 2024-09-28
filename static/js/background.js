@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const background = document.getElementById('background-elements');
-    const numberOfCircles = 52;
-    const attractionDistance = 300; // Distancia en la que los círculos comenzarán a seguir al ratón
-    const releaseDistance = 300; // Distancia para que los círculos vuelvan a ser libres
+    const numberOfCircles = 74;
+    const attractionDistance = 100; // Distancia en la que los círculos comenzarán a seguir al ratón
+    const releaseDistance = 100; // Distancia para que los círculos vuelvan a ser libres
 
     const sizes = ['circle-small', 'circle-medium', 'circle-large'];
     const circles = [];
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 circleData.isFollowingMouse = true;
                 const followFactor = 0.005; // Velocidad de seguimiento
 
-                
+
                 const translateX = (mouseX - circleX) * followFactor;
                 const translateY = (mouseY - circleY) * followFactor;
                 circle.style.transform = `translate(${translateX}px, ${translateY}px)`;
