@@ -7,3 +7,5 @@
 /.ccls-cache
 replit.nix
 
+/.login (copy).html
+/.main (copy).py
