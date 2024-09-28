@@ -48,7 +48,7 @@ def submit_contact():
             return jsonify({'status': 'error', 'message': 'Missing required fields'}), 400
         logging.info(f"Attempting to send email from {email}")
         msg = MIMEMultipart()
-        msg['From'] = SENDER_EMAIL
+        msg['From'] = SENDER_EMAIL  # Use the SENDER_EMAIL as the sender
         msg['To'] = RECIPIENT_EMAIL
         msg['Subject'] = f"New contact from {name}"
         body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
@@ -104,6 +104,7 @@ def send_email(recipient_email, selected_num):
     msg_user['To'] = recipient_email
     msg_user['Subject'] = subject_user
     msg_user.attach(MIMEText(body_user, 'plain'))
+    
     # Correo a ti para notificar acceso
     subject_self = "Nuevo Acceso a la Web"
     body_self = f"El usuario con el email {recipient_email} está accediendo a la web."

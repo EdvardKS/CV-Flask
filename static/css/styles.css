@@ -425,3 +425,7 @@ body::-webkit-scrollbar-thumb:hover {
 .dark a.text-blue-400 {
     color: #63b3ed; /* Azul más claro en modo oscuro */
 }
+
+.navbar{
+    position:fixed;
+}

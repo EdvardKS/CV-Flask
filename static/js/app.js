@@ -358,6 +358,7 @@ document.getElementById('contact-form').addEventListener('submit', async (event)
         updateButtonState(submitButton, 'error');
     }
 });
+
 function updateButtonState(button, state) {
     button.classList.add('btn-transition'); // Ensure the transition class is added
     switch(state) {
@@ -389,12 +390,22 @@ function updateButtonState(button, state) {
             break;
     }
 }
+
 function resetButtonAfterTimeout(button) {
     setTimeout(() => {
         updateButtonState(button, 'reset');
     }, 10000); // Reset button after 10 seconds
 }
 
-
 // Recoge toda la información de la ruta que flask ha servido mi información
 fetchCVData();
+
+
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+        const navbar = document.getElementById('navbarNav');
+        if (navbar.classList.contains('show')) {
+            new bootstrap.Collapse(navbar).toggle();
+        }
+    });
+});
