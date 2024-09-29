@@ -319,7 +319,7 @@ function updateExperience() {
 
             // Crear el contenido HTML para el modal
             const company = entry.company;
-            const period = entry.period ? entry.period : '-';
+            const period = entry.period ? entry.period : '';
             const location = entry.location[currentLanguage];
             const responsibilities = entry.responsibilities[currentLanguage];
 
@@ -506,3 +506,9 @@ document.querySelectorAll('.nav-link').forEach(link => {
         }
     });
 });
+
+
+// #############################################################
+// #############################################################
+// #############################################################
+

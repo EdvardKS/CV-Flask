@@ -1,0 +1,51 @@
+/* From Uiverse.io by joe-watson-sbf */ 
+.btnA {
+  font-size: 17px;
+  background: transparent;
+  border: none;
+  padding: 1em 1.5em;
+  color: rgba(59,130,246,1);
+  text-transform: uppercase;
+  position: relative;
+  transition: 0.5s ease;
+  cursor: pointer;
+  background-color: transparent !important;
+}
+
+.btnA::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: rgba(59,130,246,0.5);
+  transition: 0.5s ease;
+}
+
+.btnA:hover {
+  color: #1e1e2b;
+  transition-delay: 0.5s;
+}
+
+.btnA:hover::before {
+  width: 100%;
+}
+
+.btnA::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: rgba(59,130,246,0.5);
+  transition: 0.4s ease;
+  z-index: -1;
+}
+
+.btnA:hover::after {
+  height: 100%;
+  transition-delay: 0.4s;
+  color: aliceblue;
+}

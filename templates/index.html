@@ -33,6 +33,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/carga.css') }}"> 
         <link rel="stylesheet" href="{{ url_for('static', filename='css/imagenes.css') }}"> 
         <link rel="stylesheet" href="{{ url_for('static', filename='css/skills.css') }}"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/btnAviso.css') }}"> 
         
         <!-- Ajustado Modo Dark en LocalStorage -->
         <script>localStorage.setItem('darkMode', 'enabled');</script>
@@ -148,6 +149,7 @@
                     <div class="container mx-auto px-4">
                         <h2 class="text-2xl font-bold mb-4" data-translate="summary-title">Summary</h2>
                         <div id="summary-content" ></div>
+                        
                     </div>
                 </section>
                 
@@ -156,44 +158,23 @@
                         <h2 class="text-2xl font-bold mb-4" data-translate="experience-title">Work Experience</h2>
                         <div id="experience-list" class="containerExpr"></div>
     
+                        <div class="modal fade " id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered ">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body ">
+                                <p id="modalBodyText" >Modal body text goes here.</p>
+                              </div>
+                              <div class="modal-footer">
+                                <p id="modalFooterText">Modal body text goes here.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
     
-    
-    
-    
-    
-    
-    <div class="modal fade " id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="myModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body ">
-            <p id="modalBodyText" >Modal body text goes here.</p>
-          </div>
-          <div class="modal-footer">
-            <p id="modalFooterText">Modal body text goes here.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-    
-                        
-    
-    
-                        
-    
-    
-    
-    
-                        
-    
-    
-                        
                     </div>
                 </section>
     
@@ -290,24 +271,113 @@
                     </div>
                 </section>
     
-                <section id="contact" class="section-transition container h-screen flex items-center justify-center flex-row snap-start">
-                    <div class="container mx-auto px-4">
-                        <h2 class="text-2xl font-bold mb-4" data-translate="contact-title">Contact</h2>
-                        <form id="contact-form" class="max-w-lg">
-                            <div class="mb-4">
-                                <label for="name" class="block mb-2" data-translate="contact-name">Name</label>
-                                <input type="text" id="name" name="name" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
-                            </div>
-                            <div class="mb-4">
-                                <label for="email" class="block mb-2" data-translate="contact-email">Email</label>
-                                <input type="email" id="email" name="email" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
-                            </div>
-                            <div class="mb-4">
-                                <label for="message" class="block mb-2" data-translate="contact-message">Message</label>
-                                <textarea id="message" name="message" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" rows="4"></textarea>
-                            </div>
-                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700" data-translate="contact-submit">Send Message</button>
-                        </form>
+                <section id="contact" class="section-transition container h-screen snap-start">
+                    <div class="row px-4">
+                            
+                        <div class="col-12 col-lg-6">
+                            <h2 class="text-2xl font-bold mb-4" data-translate="contact-title">Contact</h2>
+                            <form id="contact-form" class="max-w-lg">
+                                <div class="mb-4">
+                                    <label for="name" class="block mb-2" data-translate="contact-name">Name</label>
+                                    <input type="text" id="name" name="name" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="block mb-2" data-translate="contact-email">Email</label>
+                                    <input type="email" id="email" name="email" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="message" class="block mb-2" data-translate="contact-message">Message</label>
+                                    <textarea id="message" name="message" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" rows="4"></textarea>
+                                </div>
+                                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700" data-translate="contact-submit">Send Message</button>
+                            </form>
+                        </div>
+                        
+                        <div class="col-12 col-lg-6">
+                            <footer class="">
+
+                                <!-- Cookie Notice Button -->
+                                <button class="btnA" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookie Notice</button>
+
+                                <!-- Cookie Notice Modal -->
+                                <div class="modal mt-20 text-dark" id="cookieModal" tabindex="-1">
+                                  <div class="modal-dialog w-100 h-50">
+                                    <div class="modal-content  w-100">
+                                      <div class="modal-header  w-100">
+                                        <h5 class="modal-title ">Cookie Notice</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body w-100">
+                                        <p>We use cookies to improve your experience on our website. Cookies are small text files that are stored on your device when you visit our site. By providing your email and accessing our site, you consent to our use of cookies as outlined below:</p>
+
+                                        <ol>
+                                            <li><strong>Essential Cookies</strong>: These cookies are necessary for the website to function properly and cannot be disabled in our systems. They are usually set in response to actions you take, such as setting your privacy preferences or filling out forms.</li>
+
+                                            <li><strong>Analytics Cookies</strong>: We use Google Analytics to help us understand how visitors interact with our website. These cookies collect information about your use of the site, such as the pages you visit and the time you spend on each page. This helps us to improve our website's performance and user experience.</li>
+
+                                            <li><strong>Advertising Cookies</strong>: These cookies may be used to deliver advertisements that are relevant to you and your interests. They are also used to limit the number of times you see an advertisement and to measure the effectiveness of advertising campaigns.</li>
+                                        </ol>
+
+                                        <p>By providing your email and continuing to use our website, you are agreeing to our use of cookies. You can change your cookie preferences at any time by adjusting your browser settings. For more information, please read our <a href="#cookie-policy">Cookie Policy</a> and <a href="#privacy-policy">Privacy Policy</a>.</p>
+
+                                        <p>If you have any questions about our use of cookies, feel free to contact us at <a href="mailto:info@edvardks.com">info@edvardks.com</a>.</p>
+
+                                        <p>Thank you for visiting our website!</p>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Accept</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!-- Legal Notice Button -->
+                                <button class="btnA" data-bs-toggle="modal" data-bs-target="#legalModal">Legal Notice</button>
+
+                                <!-- Legal Notice Modal -->
+                                <div class="modal mt-20 text-dark" id="legalModal" tabindex="-1">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title">Legal Notice</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                        <div class="modal-body">
+                                            <p>By using this website, you agree to our <a href="#cookie-policy">Cookie Policy</a> and <a href="#privacy-policy">Privacy Policy</a>. We are committed to protecting your personal data and respecting your privacy.</p>
+
+                                            <b>Information We Collect</b>
+                                            <p>We may collect personal data such as your name, email address, and other information when you fill out forms on our site. This information is used to provide services, improve our website, and communicate with you.</p>
+
+                                            <b>Use of Your Information</b>
+                                            <p>Your information may be used for the following purposes:</p>
+                                           
+                                                <i>To respond to your inquiries and provide customer support.</i>
+                                                <i>To improve our website and services based on user feedback.</i>
+                                                <i>To send periodic emails regarding your order or other products and services.</i>
+                                                <i>To comply with legal obligations and protect our rights.</i>
+                                         
+
+                                            <b>Data Protection Rights</b>
+                                            <p>You have the right to request access to the personal data we hold about you, as well as the right to request the correction or deletion of your data. To exercise these rights, please contact us at <a href="mailto:info@edvardks.com">info@edvardks.com</a>.</p>
+
+                                            <b>Third-Party Services</b>
+                                            <p>We may use third-party services, such as Google Analytics, to help us understand how our users engage with the website. These services may collect information sent by your browser as part of a web page request. For more information, please refer to their privacy policies.</p>
+
+                                            <b>Changes to This Legal Notice</b>
+                                            <p>We may update this legal notice from time to time. We will notify you of any changes by posting the new notice on this page. You are advised to review this notice periodically for any changes.</p>
+
+                                        </div>
+
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Accept</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                            </footer>
+                        </div>
+                        
                     </div>
                 </section>
                 
@@ -318,6 +388,8 @@
         <script src="{{ url_for('static', filename='js/mouse.js') }}"></script>
         <script src="{{ url_for('static', filename='js/carga.js') }}"></script>
         <script src="{{ url_for('static', filename='js/imagenes.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/btnAviso.js') }}"></script>
+
         
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
