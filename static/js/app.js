@@ -290,11 +290,11 @@ function updateExperience() {
 
         // Crear el elemento <img> para el SVG
         const imgElement = document.createElement('img');
-        imgElement.src = `/static/data/${entry.img_name}`; // Asumiendo que entry.img_name contiene el nombre del archivo SVG
-        imgElement.alt = entry.position[currentLanguage]; // Texto alternativo para accesibilidad
+        imgElement.src = `/static/data/${entry.img_name}`; 
+        imgElement.alt = entry.company[currentLanguage]; // Texto alternativo para accesibilidad
         imgElement.style.height = "5em"; // Establecer la altura deseada
         imgElement.style.width = "auto"; // Mantener la relación de aspecto
-        imgElement.className = 'mb-5 rounded';
+        imgElement.className = 'mb-5 rounded img-fluid';
 
         // Agregar el <img> a la tarjeta
         cardExpr.appendChild(imgElement);
@@ -327,21 +327,21 @@ function updateExperience() {
             const modalImg = document.createElement('img');
             modalImg.src = `/static/data/${entry.img_name}`; // Usar el mismo nombre de imagen
             modalImg.alt = entry.position[currentLanguage];
-            modalImg.style.width = '100%'; // Ajustar al ancho del modal
+            modalImg.style.width = '7em'; // Ajustar al ancho del modal
             modalImg.style.height = 'auto'; // Mantener la relación de aspecto
-            modalImg.className = 'mb-3'; // Margen inferior
+            modalImg.className = 'mb-3 rounded '; // Margen inferior
 
             // Crear un contenedor para el modal que imite la tarjeta
             const modalCard = document.createElement('div');
-            modalCard.className = 'text-center';
+            modalCard.className = 'text-center d-flex justify-content-center align-items-center flex-column';
             modalCard.style.position = 'relative';
-            modalCard.style.width = '300px'; // Ajusta el ancho según sea necesario
+            modalCard.style.width = 'auto'; // Ajusta el ancho según sea necesario
             modalCard.style.height = 'auto'; // Permitir que la altura se ajuste automáticamente
             modalCard.style.margin = '0 auto'; // Centrar la tarjeta
 
             // Agregar contenido al cuerpo del modal
             modalCard.innerHTML = `
-                <h2 class="text-grey-500 fs-1">${company}</h2><br>
+                <h2 class="text-grey-500 fs-3">${company}</h2><br>
                 ${period}<br>
                  ${location}<br><br>
             `;
@@ -354,7 +354,7 @@ function updateExperience() {
             modalCard.prepend(modalImg);
 
             // Limpiar el cuerpo anterior y añadir la nueva tarjeta
-            modalBodyText.innerHTML = ''; 
+            modalBodyText.innerHTML = '';  
             modalBodyText.appendChild(modalCard); 
             
             modalFooterText.innerHTML = ''; 
