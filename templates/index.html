@@ -1,307 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edvard Khachatryan Sahakyan - CV</title>
+    <head>
+        <!-- Titulo -->
+        <title>Edvard Khachatryan Sahakyan Website</title>
     
-    <script>localStorage.setItem('darkMode', 'enabled');</script>
+        <!-- Metas -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Meta Descripción -->
+        <meta name="description" content="Explore the website of Edvard Khachatryan Sahakyan, where you can find a summary of my background, professional experience, education, skills, useful links, and contact information.">
+        
+        <!-- SearchConsole -->
+        <meta name="google-site-verification" content="kFbj5Q2wIECy_Zt63Z9WnHIOi-DbfezJ82_epIMjVeM" />
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        
+        <!-- Tailwind -->
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        
+        <!-- Estilos Propios -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/mouse.css') }}"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/carga.css') }}"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/imagenes.css') }}"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/skills.css') }}"> 
+        
+        <!-- Ajustado Modo Dark en LocalStorage -->
+        <script>localStorage.setItem('darkMode', 'enabled');</script>
+        
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSYLFBPRHG"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
     
-    <!-- Tailwind -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+          gtag('config', 'G-KSYLFBPRHG');
+        </script>
+        <!-- Fin de Google Analytics -->
+    </head>
+
+    <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
     
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <!-- Pantalla de Carga -->
+        <div id="background-elements"></div>
+        <div id="loading-screen" class="active">
+            <div class="dark"></div>
+            <div class="loader"></div>
+        </div>
     
-    <!-- Estilos Propios -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/mouse.css') }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/carga.css') }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/imagenes.css') }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/media.css') }}"> 
-
-</head>
-
-<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-
-    <!-- Pantalla de Carga -->
-    <div id="background-elements"></div>
-    <div id="loading-screen" class="active">
-        <div class="dark"></div>
-        <div class="loader"></div>
-    </div>
-
-    <!-- Contenido Principal -->
-    <div id="main-content" style="display: none;">
-
-        <nav id="navbar" class="navbar navbar-expand-lg ">
-            <div class="container-fluid mx-auto px-4 py-2">
+        <!-- Contenido Principal -->
+        <div id="main-content" style="display: none;">
+    
+            <nav id="navbar" class="navbar navbar-expand-lg ">
+                <div class="container-fluid mx-auto px-4 py-2">
+                    
+                    <div id="esteAparece" class="text-center d-flex justify-content-between align-items-center order-1 order-md-2">
+                        <img src="{{ url_for('static', filename='data/1713730445414.jpeg') }}" alt="Edvard Khachatryan Sahakyan" class="img-fluid rounded-circle d-none d-md-block" style="max-height: 60px; object-fit: cover;">
+                        <span class="font-bold ms-3 text-break" id="nav-name"></span>
+                    </div>
+    
+                    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon order-2 order-md-1"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse order-3" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><a href="#photo" class="nav-link" data-translate="nav-photo">Home</a></li>
+                            <li class="nav-item"><a href="#summary" class="nav-link" data-translate="nav-summary">Summary</a></li>
+                            <li class="nav-item"><a href="#experience" class="nav-link" data-translate="nav-experience">Experience</a></li>
+                            <li class="nav-item"><a href="#education" class="nav-link" data-translate="nav-education">Education</a></li>
+                            <li class="nav-item"><a href="#skills" class="nav-link" data-translate="nav-skills">Skills</a></li>
+                            <li class="nav-item"><a href="#contact" class="nav-link" data-translate="nav-contact">Contact</a></li>
+                        </ul>
+    
+                        <div class="d-flex align-items-center">
+                            <div class="flex justify-center space-x-4 mx-3">
+                                <a href="https://www.linkedin.com/in/edvardks/" class="text-blue-500 hover:text-blue-600"><i class="fab fa-linkedin fa-2x"></i></a>
+                                <a href="https://github.com/edvardks/" class="text-gray-700 hover:text-gray-800"><i class="fab fa-github fa-2x"></i></a>
+                                <a href="https://www.facebook.com/edvardks" class="text-blue-400 hover:text-blue-500"><i class="fab fa-facebook fa-2x"></i></a>
+                            </div>
+                            <select id="language-selector" class="mr-4 p-2 rounded border border-gray-300">
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="sl">Slovenščina</option>
+                                <option value="hy">Հայերեն</option>
+                            </select>
+                            <label class="labelb">
+                                <input value="on" name="dark-mode-toggle" id="dark-mode-toggle" type="checkbox" class="bubble">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+    
+            <main class="snap-y snap-mandatory h-screen overflow-y-scroll">
                 
-                <div id="esteAparece" class="text-center d-flex justify-content-between align-items-center order-1 order-md-2">
-                    <img src="{{ url_for('static', filename='data/1713730445414.jpeg') }}" alt="Edvard Khachatryan Sahakyan" class="img-fluid rounded-circle d-none d-md-block" style="max-height: 60px; object-fit: cover;">
-                    <span class="font-bold ms-3 text-break" id="nav-name"></span>
-                </div>
-
-                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon order-2 order-md-1"></span>
-                </button>
-
-                <div class="collapse navbar-collapse order-3" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a href="#photo" class="nav-link" data-translate="nav-photo">Home</a></li>
-                        <li class="nav-item"><a href="#summary" class="nav-link" data-translate="nav-summary">Summary</a></li>
-                        <li class="nav-item"><a href="#experience" class="nav-link" data-translate="nav-experience">Experience</a></li>
-                        <li class="nav-item"><a href="#education" class="nav-link" data-translate="nav-education">Education</a></li>
-                        <li class="nav-item"><a href="#skills" class="nav-link" data-translate="nav-skills">Skills</a></li>
-                        <li class="nav-item"><a href="#contact" class="nav-link" data-translate="nav-contact">Contact</a></li>
-                    </ul>
-
-                    <div class="d-flex align-items-center">
-                        <div class="flex justify-center space-x-4 mx-3">
+                <section id="photo" class="h-screen flex items-center justify-center snap-start">
+                    <div class="text-center">
+    
+                        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner w-100">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='data/1713730445414.jpeg') }}" alt="Imagen 1" class="w-64 h-64 rounded-full mx-auto mb-4 object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='data/15134123643.png') }}" alt="Imagen 2" class="w-64 h-64 rounded-full mx-auto mb-4 object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='data/63452345.png') }}" alt="Imagen 3" class="w-64 h-64 rounded-full mx-auto mb-4 object-cover">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+    
+                        <h2 class="text-2xl font-bold mb-2" id="photo-name"></h2>
+                        <p class="text-xl mb-4" id="photo-title"></p>
+    
+                        <div class="flex justify-center space-x-4">
+                            
                             <a href="https://www.linkedin.com/in/edvardks/" class="text-blue-500 hover:text-blue-600"><i class="fab fa-linkedin fa-2x"></i></a>
-                            <a href="https://github.com/edvardks/" class="text-gray-700 hover:text-gray-800"><i class="fab fa-github fa-2x"></i></a>
+                            <a href="https://github.com/edvardks/" class="text-gray-700 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"><i class="fab fa-github fa-2x"></i></a>
                             <a href="https://www.facebook.com/edvardks" class="text-blue-400 hover:text-blue-500"><i class="fab fa-facebook fa-2x"></i></a>
+                            
                         </div>
-                        <select id="language-selector" class="mr-4 p-2 rounded border border-gray-300">
-                            <option value="en">English</option>
-                            <option value="es">Español</option>
-                            <option value="sl">Slovenščina</option>
-                            <option value="hy">Հայերեն</option>
-                        </select>
-                        <label class="labelb">
-                            <input value="on" name="dark-mode-toggle" id="dark-mode-toggle" type="checkbox" class="bubble">
-                        </label>
+    
                     </div>
-                </div>
-            </div>
-        </nav>
-
-        <main class="snap-y snap-mandatory h-screen overflow-y-scroll">
-            
-            <section id="photo" class="h-screen flex items-center justify-center snap-start">
-                <div class="text-center">
-
-                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner w-100">
-                            <div class="carousel-item active">
-                                <img src="{{ url_for('static', filename='data/1713730445414.jpeg') }}" alt="Imagen 1" class="w-64 h-64 rounded-full mx-auto mb-4 object-cover">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='data/15134123643.png') }}" alt="Imagen 2" class="w-64 h-64 rounded-full mx-auto mb-4 object-cover">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='data/63452345.png') }}" alt="Imagen 3" class="w-64 h-64 rounded-full mx-auto mb-4 object-cover">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                </section>
+    
+                <section id="summary" class="section-transition h-screen flex items-center justify-center snap-start">
+                    <div class="container mx-auto px-4">
+                        <h2 class="text-2xl font-bold mb-4" data-translate="summary-title">Summary</h2>
+                        <div id="summary-content" ></div>
                     </div>
-
-                    <h2 class="text-2xl font-bold mb-2" id="photo-name"></h2>
-                    <p class="text-xl mb-4" id="photo-title"></p>
-
-                    <div class="flex justify-center space-x-4">
-                        
-                        <a href="https://www.linkedin.com/in/edvardks/" class="text-blue-500 hover:text-blue-600"><i class="fab fa-linkedin fa-2x"></i></a>
-                        <a href="https://github.com/edvardks/" class="text-gray-700 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200"><i class="fab fa-github fa-2x"></i></a>
-                        <a href="https://www.facebook.com/edvardks" class="text-blue-400 hover:text-blue-500"><i class="fab fa-facebook fa-2x"></i></a>
-                        
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="summary" class="section-transition h-screen flex items-center justify-center snap-start">
-                <div class="container mx-auto px-4">
-                    <h2 class="text-2xl font-bold mb-4" data-translate="summary-title">Summary</h2>
-                    <div id="summary-content" ></div>
-                </div>
-            </section>
-            
-            <section id="experience" class="section-transition h-screen flex items-center justify-center snap-start">
-                <div class="container mx-auto px-4">
-                    <h2 class="text-2xl font-bold mb-4" data-translate="experience-title">Work Experience</h2>
-                    <div id="experience-list" class="containerExpr"></div>
-
-
-
-
-
-
-
-<div class="modal fade " id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered ">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body ">
-        <p id="modalBodyText" >Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <p id="modalFooterText">Modal body text goes here.</p>
+                </section>
+                
+                <section id="experience" class="section-transition h-screen flex items-center justify-center snap-start">
+                    <div class="container mx-auto px-4">
+                        <h2 class="text-2xl font-bold mb-4" data-translate="experience-title">Work Experience</h2>
+                        <div id="experience-list" class="containerExpr"></div>
+    
+    
+    
+    
+    
+    
+    
+    <div class="modal fade " id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body ">
+            <p id="modalBodyText" >Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <p id="modalFooterText">Modal body text goes here.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-
-
-
-                    
-
-
-                    
-
-
-
-
-                    
-
-
-                    
-                </div>
-            </section>
-
-            <section id="education" class="section-transition h-screen flex items-center justify-center snap-start">
-                <div class="container mx-auto px-4">
-                    <h2 class="text-2xl font-bold mb-4" data-translate="education-title">Education</h2>
-                    <div id="caruselEducacion" class="carousel slide" data-bs-ride="true">
-                        <div class="carousel-inner" id="carousel-inner">
-                            <!-- Las imágenes se insertarán aquí -->
+    
+    
+    
+    
+                        
+    
+    
+                        
+    
+    
+    
+    
+                        
+    
+    
+                        
+                    </div>
+                </section>
+    
+                <section id="education" class="section-transition h-screen flex items-center justify-center snap-start">
+                    <div class="container mx-auto px-4">
+                        <h2 class="text-2xl font-bold mb-4" data-translate="education-title">Education</h2>
+                        <div id="caruselEducacion" class="carousel slide" data-bs-ride="true">
+                            <div class="carousel-inner" id="carousel-inner">
+                                <!-- Las imágenes se insertarán aquí -->
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#caruselEducacion" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#caruselEducacion" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#caruselEducacion" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#caruselEducacion" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                        <div id="education-list" class="mt-4">
+                            <!-- Aquí se añadirá la info de educación -->
+                        </div>
                     </div>
-                    <div id="education-list" class="mt-4">
-                        <!-- Aquí se añadirá la info de educación -->
-                    </div>
-                </div>
-            </section>
-
-            <section id="skills" class="section-transition h-screen flex items-center justify-center snap-start">
-                <div class="container mx-auto px-4">
-                    <h2 class="text-2xl font-bold mb-4" data-translate="skills-title">Skills</h2>
-                    
-                    <div class="card_skill">
-                      <div class="wrap_skill">
-                        <div class="terminal">
-                          <hgroup class="head_skill">
-                            <p class="title">
-                              <svg
-                                width="16px"
-                                height="16px"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                stroke-linejoin="round"
-                                stroke-linecap="round"
-                                stroke-width="2"
-                                stroke="currentColor"
-                                fill="none"
-                              >
-                                <path
-                                  d="M7 15L10 12L7 9M13 15H17M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z"
-                                ></path>
-                              </svg>
-                              Terminal
-                            </p>
-
-                            <button class="copy_toggle" tabindex="-1" type="button">
-                              <svg
-                                width="16px"
-                                height="16px"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                stroke-linejoin="round"
-                                stroke-linecap="round"
-                                stroke-width="2"
-                                stroke="currentColor"
-                                fill="none"
-                              >
-                                <path
-                                  d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"
-                                ></path>
-                                <path
-                                  d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
-                                ></path>
-                              </svg>
-                            </button> 
-                          </hgroup>
-
-                          <div class="body_skills" id="body_skills">
-
-                              
-                            <pre class="pre">          
-                              <code>-&nbsp;</code>
-                              <code>pip&nbsp;</code>
-                              <code class="install_p">install&nbsp;</code>
-                              <code class="cmd" data-cmd="create-react-app@latest"></code>
-                            </pre>
-
-                              
-                              
+                </section>
+    
+                <section id="skills" class="section-transition h-screen flex items-center justify-center snap-start">
+                    <div class="container mx-auto px-4">
+                        <h2 class="text-2xl font-bold mb-4" data-translate="skills-title">Skills</h2>
+                        
+                        <div class="card_skill">
+                          <div class="wrap_skill">
+                            <div class="terminal">
+                              <hgroup class="head_skill">
+                                <p class="title">
+                                  <svg
+                                    width="16px"
+                                    height="16px"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    stroke-linejoin="round"
+                                    stroke-linecap="round"
+                                    stroke-width="2"
+                                    stroke="currentColor"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M7 15L10 12L7 9M13 15H17M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z"
+                                    ></path>
+                                  </svg>
+                                  Terminal
+                                </p>
+    
+                                <button class="copy_toggle" tabindex="-1" type="button">
+                                  <svg
+                                    width="16px"
+                                    height="16px"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    stroke-linejoin="round"
+                                    stroke-linecap="round"
+                                    stroke-width="2"
+                                    stroke="currentColor"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"
+                                    ></path>
+                                    <path
+                                      d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
+                                    ></path>
+                                  </svg>
+                                </button> 
+                              </hgroup>
+    
+                              <div class="body_skills" id="body_skills">
+    
+                                  
+                                <pre class="pre">          
+                                  <code>-&nbsp;</code>
+                                  <code>pip&nbsp;</code>
+                                  <code class="install_p">install&nbsp;</code>
+                                  <code class="cmd" data-cmd="create-react-app@latest"></code>
+                                </pre>
+    
+                                  
+                                  
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="contact" class="section-transition container h-screen flex items-center justify-center flex-row snap-start">
-                <div class="container mx-auto px-4">
-                    <h2 class="text-2xl font-bold mb-4" data-translate="contact-title">Contact</h2>
-                    <form id="contact-form" class="max-w-lg">
-                        <div class="mb-4">
-                            <label for="name" class="block mb-2" data-translate="contact-name">Name</label>
-                            <input type="text" id="name" name="name" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block mb-2" data-translate="contact-email">Email</label>
-                            <input type="email" id="email" name="email" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
-                        </div>
-                        <div class="mb-4">
-                            <label for="message" class="block mb-2" data-translate="contact-message">Message</label>
-                            <textarea id="message" name="message" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700" data-translate="contact-submit">Send Message</button>
-                    </form>
-                </div>
-            </section>
-            
-        </main>
-    </div>
-
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/mouse.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/carga.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/imagenes.js') }}"></script>
     
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    </div>
+                </section>
+    
+                <section id="contact" class="section-transition container h-screen flex items-center justify-center flex-row snap-start">
+                    <div class="container mx-auto px-4">
+                        <h2 class="text-2xl font-bold mb-4" data-translate="contact-title">Contact</h2>
+                        <form id="contact-form" class="max-w-lg">
+                            <div class="mb-4">
+                                <label for="name" class="block mb-2" data-translate="contact-name">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block mb-2" data-translate="contact-email">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block mb-2" data-translate="contact-message">Message</label>
+                                <textarea id="message" name="message" required class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700" data-translate="contact-submit">Send Message</button>
+                        </form>
+                    </div>
+                </section>
+                
+            </main>
+        </div>
+    
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/mouse.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/carga.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/imagenes.js') }}"></script>
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    
+    </body>
 
-
-</body>
 </html>
