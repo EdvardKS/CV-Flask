@@ -150,51 +150,77 @@
         "hy": "Աշխատանքային փորձ"
       },
       "entries": [
-        {
-          "position": {
-            "en": "Artificial Intelligence Engineer",
-            "es": "Ingeniero de inteligencia artificial",
-            "sl": "Inženir umetne inteligence",
-            "hy": "Արհեստական բանականության ինժեներ"
+          {
+              "position": {
+                  "en": "Web Developer",
+                  "es": "Desarrollador web",
+                  "sl": "Spletni razvijalec",
+                  "hy": "Վեբ ծրագրավորող"
+              },
+              "company": "Posiziona Tecnologías de la información, S.L.",
+              "period": "01/05/2022 – 30/04/2023",
+              "location": {
+                  "en": "Villena, Spain",
+                  "es": "Villena, España",
+                  "sl": "Villena, Španija",
+                  "hy": "Վիլենա, Իսպանիա"
+              },
+              "responsibilities": {
+                  "en": "Laravel development, Prestashop API integrations, Module and plugin development for WP and PS, VUE and VITE development",
+                  "es": "Desarrollo con Laravel, integraciones con API de Prestashop, desarrollo de módulos y plugins para WP y PS, desarrollo con VUE y VITE",
+                  "sl": "Razvoj z Laravelom, integracije s Prestashop API, razvoj modulov in vtičnikov za WP in PS, razvoj z VUE in VITE",
+                  "hy": "Laravel-ով մշակում, Prestashop API ինտեգրումներ, Մոդուլների և WP ու PS պլագինների մշակում, VUE և VITE"
+              },
+              "img_name": "psz.png"
           },
-          "company": "Business Solutions d.o.o.",
-          "period": "08/07/2024 – Current",
-          "location": {
-            "en": "Nova Gorica, Slovenia",
-            "es": "Nova Gorica, Eslovenia",
-            "sl": "Nova Gorica, Slovenija",
-            "hy": "Նովա Գորիցա, Սլովենիա"
+            {
+              "position": {
+                  "en": "Artificial Intelligence Engineer",
+                  "es": "Ingeniero de inteligencia artificial",
+                  "sl": "Inženir umetne inteligence",
+                  "hy": "Արհեստական բանականության ինժեներ"
+              },
+              "company": "Business Solutions d.o.o.",
+              "period": "08/07/2024 – Current",
+              "location": {
+                  "en": "Nova Gorica, Slovenia",
+                  "es": "Nova Gorica, Eslovenia",
+                  "sl": "Nova Gorica, Slovenija",
+                  "hy": "Նովա Գորիցա, Սլովենիա"
+              },
+              "responsibilities": {
+                  "en": "LLMOps, Generative AI, Temporal series, Image Classification, Deep Learning, Machine Learning",
+                  "es": "LLMOps, IA Generativa, Series temporales, Clasificación de imágenes, Deep Learning, Machine Learning",
+                  "sl": "LLMOps, Generativna umetna inteligenca, časovne serije, prepoznavanje slik, globoko učenje, strojno učenje",
+                  "hy": "LLMOps, Սերնդային ԱԲ, Ժամանակային շարքեր, Պատկերի դասակարգում, Խորը ուսուցում, Մեքենայական ուսուցում"
+              },
+              "img_name": "bs.jpeg"
           },
-          "responsibilities": {
-            "en": "LLMOps, Generative AI, Temporal series, Image Classification, Deep Learning, Machine Learning",
-            "es": "LLMOps, IA Generativa, Series temporales, Clasificación de imágenes, Deep Learning, Machine Learning",
-            "sl": "LLMOps, Generativna umetna inteligenca, časovne serije, prepoznavanje slik, globoko učenje, strojno učenje",
-            "hy": "LLMOps, Սերնդային ԱԲ, Ժամանակային շարքեր, Պատկերի դասակարգում, Խորը ուսուցում, Մեքենայական ուսուցում"
+          {
+              "position": {
+                  "en": "Freelance Computer Science Instructor",
+                  "es": "Profesor freelance de informática",
+                  "sl": "Freelance učitelj računalništva",
+                  "hy": "Անձնական Տեղեկատվական Հիմունքների Դասավանդող"
+              },
+              "company": "Freelance",
+              "period": "",
+              "location": {
+                  "en": "Online or in-person",
+                  "es": "En línea o presencial",
+                  "sl": "Spletno ali osebno",
+                  "hy": "Օնլայն կամ առկա"
+              },
+              "responsibilities": {
+                  "en": "Teaching students interested in computer science, sharing knowledge and shaping the next generation of tech experts.",
+                  "es": "Enseñar a estudiantes interesados en informática, compartiendo conocimientos y formando la próxima generación de expertos en tecnología.",
+                  "sl": "Učim študente, ki jih zanima računalništvo, delim znanje in oblikujem naslednjo generacijo tehnoloških strokovnjakov.",
+                  "hy": "Դասավանդում եմ ուսանողներին, ովքեր հետաքրքրված են տեղեկատվական տեխնոլոգիաներով, կիսելով գիտելիքները և ձևավորելով տեխնոլոգիական մասնագետների հաջորդ սերունդը."
+              },
+              "img_name": "freelance_instructor.png"
           }
-        },
-        {
-          "position": {
-            "en": "Web Developer",
-            "es": "Desarrollador web",
-            "sl": "Spletni razvijalec",
-            "hy": "Վեբ ծրագրավորող"
-          },
-          "company": "Posiziona Tecnologías de la información, S.L.",
-          "period": "01/05/2022 – 30/04/2023",
-          "location": {
-            "en": "Villena, Spain",
-            "es": "Villena, España",
-            "sl": "Villena, Španija",
-            "hy": "Վիլենա, Իսպանիա"
-          },
-          "responsibilities": {
-            "en": "Laravel development, Prestashop API integrations, Module and plugin development for WP and PS, VUE and VITE development",
-            "es": "Desarrollo con Laravel, integraciones con API de Prestashop, desarrollo de módulos y plugins para WP y PS, desarrollo con VUE y VITE",
-            "sl": "Razvoj z Laravelom, integracije s Prestashop API, razvoj modulov in vtičnikov za WP in PS, razvoj z VUE in VITE",
-            "hy": "Laravel-ով մշակում, Prestashop API ինտեգրումներ, Մոդուլների և WP ու PS պլագինների մշակում, VUE և VITE"
-          }
-        }
       ]
+
     },
     "skills": {
       "title": {

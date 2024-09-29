@@ -220,12 +220,12 @@ body::-webkit-scrollbar-thumb:hover {
 
 
 
-
-
+/* ############################################################################################## */
+/* ############################################################################################## */
+/* ############################################################################################## */
 
 /* BOTON DARK */
 
-/* From Uiverse.io by Nawsome */ 
 .labelb, .bubble {
   display: block;
   -webkit-tap-highlight-color: transparent;
@@ -381,19 +381,9 @@ body::-webkit-scrollbar-thumb:hover {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*  */
+/* ############################################################################################## */
+/* ############################################################################################## */
+/* ############################################################################################## */
 
 /* Modo oscuro - Corrección de color de texto */
 .dark .nav-link {
@@ -425,8 +415,73 @@ body::-webkit-scrollbar-thumb:hover {
 .dark a.text-blue-400 {
     color: #63b3ed; /* Azul más claro en modo oscuro */
 }
-
+/* ############################################################################################## */
+/* ############################################################################################## */
+/* ############################################################################################## */
+/* AJUSTE DE NAVBAR */
 .navbar{
     position:fixed;
 }
+
+/* ############################################################################################## */
+/* ############################################################################################## */
+/* ############################################################################################## */
+
+.containerExpr {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerExpr .glassExpr {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  background: linear-gradient(#fff2, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  border-radius: 10px;
+  margin: 0 -45px;
+  backdrop-filter: blur(10px);
+  transform: rotate(calc(var(--r) * 1deg));
+}
+
+.containerExpr:hover .glassExpr {
+  transform: rotate(0deg);
+  margin: 0 10px;
+}
+
+.containerExpr .glassExpr::before {
+  content: attr(data-text);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 74px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.containerExpr .glassExpr svg {
+  font-size: 2.5em;
+  fill: #fff;
+}
+
+/* afdsfadsafdsfaeas vbra */
+
+
+.modal-content {
+  background: linear-gradient(to bottom, transparent, #cbd2e2,#cbd2e2, transparent);
+}
+
+.dark2 {
+  background: linear-gradient(to bottom, transparent, #1c2333, transparent) !important;
+}
+
 

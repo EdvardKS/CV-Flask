@@ -97,14 +97,17 @@ document.getElementById('language-selector').addEventListener('change', (event) 
 // Dark mode toggle functionality
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 const body = document.body;
+const modalDialog22 = document.querySelector('.modal-content');
 
 function setDarkMode(isDark) {
     if (isDark) {
         body.classList.add('dark');
+        modalDialog22.classList.add('dark2');
         localStorage.setItem('darkMode', 'enabled');
         darkModeToggle.checked = true;
     } else {
         body.classList.remove('dark');
+        modalDialog22.classList.remove('dark2');
         localStorage.setItem('darkMode', 'disabled');
         darkModeToggle.checked = false;
     }
@@ -270,69 +273,108 @@ function updateEducation() {
 
 // Funcion que coloca las cards de Experience
 function updateExperience() {
-    const imagenes = ["./static/data/bs.jpeg", "./static/data/psz.png"];
-
-    const defaultImage = "./static/data/default.png";
+    const estilos = ["-15", "5", "25"];
+    let i = 0;
     const experienceList = document.getElementById('experience-list');
     experienceList.innerHTML = ''; // Limpiar el contenido previo
 
     cvData.translations.workExperience.entries.forEach(entry => {
-        const colDiv = document.createElement('div');
-        colDiv.className = 'col-md-4';
+        const containerExpr = document.createElement('div');
+        containerExpr.className = 'containerExpr';
+        containerExpr.style.cursor = 'pointer'; // Cambiar el cursor para indicar que es clickeable
 
-        const cardDiv = document.createElement('div');
-        cardDiv.className = 'card mb-4';
+        const cardExpr = document.createElement('div');
+        cardExpr.className = 'glassExpr text-center';
+        cardExpr.setAttribute('data-text', `${entry.position[currentLanguage]}`);
+        cardExpr.style.setProperty('--r', estilos[i]);
 
-        const img = document.createElement('img');
-        img.className = 'card-img-top rounded-3xl w-1/2 mx-auto mt-2';
-        img.alt = entry.position[currentLanguage]; // Alternativa descriptiva
+        // Crear el elemento <img> para el SVG
+        const imgElement = document.createElement('img');
+        imgElement.src = `/static/data/${entry.img_name}`; // Asumiendo que entry.img_name contiene el nombre del archivo SVG
+        imgElement.alt = entry.position[currentLanguage]; // Texto alternativo para accesibilidad
+        imgElement.style.height = "5em"; // Establecer la altura deseada
+        imgElement.style.width = "auto"; // Mantener la relación de aspecto
+        imgElement.className = 'mb-5 rounded';
 
-        // Determinar la fuente de la imagen
-        let imageUrl;
+        // Agregar el <img> a la tarjeta
+        cardExpr.appendChild(imgElement);
 
-        if (entry.company === "Business Solutions d.o.o.") {
-            imageUrl = imagenes[0];
-        } else if (entry.company === "Posiziona Tecnologías de la información, S.L.") {
-            imageUrl = imagenes[1];
-        } else {
-            imageUrl = defaultImage; // Imagen por defecto
-        }
+        // Agregar la tarjeta al contenedor
+        containerExpr.appendChild(cardExpr);
+        // Agregar el contenedor a la lista de experiencias
+        experienceList.appendChild(containerExpr);
 
-        // Comprobar si la imagen existe
-        checkImageExists(imageUrl).then(exists => {
-            img.src = exists ? imageUrl : defaultImage;
+        // Agregar evento de clic para abrir el modal
+        containerExpr.addEventListener('click', () => {
+            // Actualizar el contenido del modal
+            const modalTitle = document.getElementById('myModalLabel');
+            const modalBodyText = document.getElementById('modalBodyText');
+            const modalFooterText = document.getElementById('modalFooterText');
+
+            // Limpiar el contenido previo
+            modalBodyText.innerHTML = ""; 
+
+            // Título del modal
+            modalTitle.textContent = entry.position[currentLanguage]; 
+
+            // Crear el contenido HTML para el modal
+            const company = entry.company;
+            const period = entry.period ? entry.period : '-';
+            const location = entry.location[currentLanguage];
+            const responsibilities = entry.responsibilities[currentLanguage];
+
+            // Crear el elemento de imagen para el modal
+            const modalImg = document.createElement('img');
+            modalImg.src = `/static/data/${entry.img_name}`; // Usar el mismo nombre de imagen
+            modalImg.alt = entry.position[currentLanguage];
+            modalImg.style.width = '100%'; // Ajustar al ancho del modal
+            modalImg.style.height = 'auto'; // Mantener la relación de aspecto
+            modalImg.className = 'mb-3'; // Margen inferior
+
+            // Crear un contenedor para el modal que imite la tarjeta
+            const modalCard = document.createElement('div');
+            modalCard.className = 'text-center';
+            modalCard.style.position = 'relative';
+            modalCard.style.width = '300px'; // Ajusta el ancho según sea necesario
+            modalCard.style.height = 'auto'; // Permitir que la altura se ajuste automáticamente
+            modalCard.style.margin = '0 auto'; // Centrar la tarjeta
+
+            // Agregar contenido al cuerpo del modal
+            modalCard.innerHTML = `
+                <h2 class="text-grey-500 fs-1">${company}</h2><br>
+                ${period}<br>
+                 ${location}<br><br>
+            `;
+
+            const modalFooter = document.createElement('div');
+            modalFooter.className = 'text-justify';
+            modalFooter.innerHTML = `${responsibilities}`;
+            
+            // Agregar la imagen a la tarjeta del modal
+            modalCard.prepend(modalImg);
+
+            // Limpiar el cuerpo anterior y añadir la nueva tarjeta
+            modalBodyText.innerHTML = ''; 
+            modalBodyText.appendChild(modalCard); 
+            
+            modalFooterText.innerHTML = ''; 
+            modalFooterText.appendChild(modalFooter); 
+
+            // Mostrar el modal
+            const myModal = new bootstrap.Modal(document.getElementById('myModal'));
+            myModal.show();
+
+            // Eliminar el backdrop
+            const backdrop = document.querySelector('.modal-backdrop');
+            if (backdrop) {
+                backdrop.style.position = "absolute"; // Cambia la posición a absoluta
+                backdrop.style.zIndex = "-1"; // Establece z-index detrás de todo
+                backdrop.remove();
+            }
+
         });
 
-        const cardBodyDiv = document.createElement('div');
-        cardBodyDiv.className = 'card-body';
-
-        const cardTitle = document.createElement('h5');
-        cardTitle.className = 'card-title text-center fs-4 my-3';
-        cardTitle.textContent = entry.position[currentLanguage];
-
-        const companyName = document.createElement('h6');
-        companyName.className = 'card-subtitle my-2 text-muted text-center my-1';
-        companyName.textContent = entry.company; // Nombre de la empresa
-
-        const cardText = document.createElement('p');
-        cardText.className = 'card-text';
-        cardText.textContent = entry.responsibilities[currentLanguage];
-
-        const dateDiv = document.createElement('div');
-        dateDiv.className = 'experience-date mt-2 color-azulito fs-5 text-center';
-        dateDiv.textContent = ` ${entry.period}`; // Suponiendo que period está en tu entrada
-
-        // Agregar los elementos a la tarjeta
-        cardBodyDiv.appendChild(cardTitle);
-        cardBodyDiv.appendChild(companyName); // Agregar nombre de la empresa
-        cardBodyDiv.appendChild(cardText);
-        cardBodyDiv.appendChild(dateDiv);
-        cardDiv.appendChild(img);
-        cardDiv.appendChild(cardBodyDiv);
-        colDiv.appendChild(cardDiv);
-
-        // Agregar la tarjeta a la lista de experiencias
-        experienceList.appendChild(colDiv);
+        i++; // Incrementar el índice para el siguiente estilo
     });
 }
 
