@@ -173,29 +173,6 @@
               },
               "img_name": "psz.png"
           },
-            {
-              "position": {
-                  "en": "Artificial Intelligence Engineer",
-                  "es": "Ingeniero de inteligencia artificial",
-                  "sl": "Inženir umetne inteligence",
-                  "hy": "Արհեստական բանականության ինժեներ"
-              },
-              "company": "Business Solutions d.o.o.",
-              "period": "08/07/2024 – Current",
-              "location": {
-                  "en": "Nova Gorica, Slovenia",
-                  "es": "Nova Gorica, Eslovenia",
-                  "sl": "Nova Gorica, Slovenija",
-                  "hy": "Նովա Գորիցա, Սլովենիա"
-              },
-              "responsibilities": {
-                  "en": "LLMOps, Generative AI, Temporal series, Image Classification, Deep Learning, Machine Learning",
-                  "es": "LLMOps, IA Generativa, Series temporales, Clasificación de imágenes, Deep Learning, Machine Learning",
-                  "sl": "LLMOps, Generativna umetna inteligenca, časovne serije, prepoznavanje slik, globoko učenje, strojno učenje",
-                  "hy": "LLMOps, Սերնդային ԱԲ, Ժամանակային շարքեր, Պատկերի դասակարգում, Խորը ուսուցում, Մեքենայական ուսուցում"
-              },
-              "img_name": "bs.jpeg"
-          },
           {
               "position": {
                   "en": "Freelance Computer Science Instructor",
@@ -218,7 +195,30 @@
                   "hy": "Դասավանդում եմ ուսանողներին, ովքեր հետաքրքրված են տեղեկատվական տեխնոլոգիաներով, կիսելով գիտելիքները և ձևավորելով տեխնոլոգիական մասնագետների հաջորդ սերունդը."
               },
               "img_name": "freelance_instructor.png"
-          }
+          },
+          {
+            "position": {
+                "en": "Artificial Intelligence Engineer",
+                "es": "Ingeniero de inteligencia artificial",
+                "sl": "Inženir umetne inteligence",
+                "hy": "Արհեստական բանականության ինժեներ"
+            },
+            "company": "Business Solutions d.o.o.",
+            "period": "08/07/2024 – Current",
+            "location": {
+                "en": "Nova Gorica, Slovenia",
+                "es": "Nova Gorica, Eslovenia",
+                "sl": "Nova Gorica, Slovenija",
+                "hy": "Նովա Գորիցա, Սլովենիա"
+            },
+            "responsibilities": {
+                "en": "LLMOps, Generative AI, Temporal series, Image Classification, Deep Learning, Machine Learning",
+                "es": "LLMOps, IA Generativa, Series temporales, Clasificación de imágenes, Deep Learning, Machine Learning",
+                "sl": "LLMOps, Generativna umetna inteligenca, časovne serije, prepoznavanje slik, globoko učenje, strojno učenje",
+                "hy": "LLMOps, Սերնդային ԱԲ, Ժամանակային շարքեր, Պատկերի դասակարգում, Խորը ուսուցում, Մեքենայական ուսուցում"
+            },
+            "img_name": "bs.jpeg"
+        }
       ]
 
     },
@@ -230,10 +230,10 @@
         "hy": "Թվային հմտություններ"
       },
       "list": {
-        "en": "Artificial Intelligence, Deep Learning, Machine Learning, Temporal series, Python, Data analysis, Cloud technologies, Git, Docker, SQL, JavaScript, PHP",
-        "es": "Inteligencia artificial, Deep Learning, Machine Learning, Series temporales, Python, análisis de datos, tecnologías en la nube, Git, Docker, SQL, JavaScript, PHP",
-        "sl": "Umetna inteligenca, globoko učenje, strojno učenje, časovne serije, Python, analiza podatkov, oblačne tehnologije, Git, Docker, SQL, JavaScript, PHP",
-        "hy": "Արհեստական բանականություն, Խորը ուսուցում, Մեքենայական ուսուցում, Ժամանակային շարքեր, Python, Տվյալների վերլուծություն, Ամպային տեխնոլոգիաներ, Git, Docker, SQL, JavaScript, PHP"
+        "en": "Python, SQL, PHP, JavaScript, Git, Docker, Data analysis, Temporal series, Machine Learning, Deep Learning, Artificial Intelligence, Cloud technologies",
+        "es": "Python, SQL, PHP, JavaScript, Git, Docker, análisis de datos, series temporales, Machine Learning, Deep Learning, Inteligencia artificial, tecnologías en la nube",
+        "sl": "Python, SQL, PHP, JavaScript, Git, Docker, Analiza podatkov, Časovne serije, Strojno učenje, Globoko učenje, Umetna inteligenca, Oblačne tehnologije",
+        "hy": "Python, SQL, PHP, JavaScript, Git, Docker, Տվյալների վերլուծություն, Ժամանակային շարքեր, Մեքենայական ուսուցում, Խորը ուսուցում, Արհեստական բանականություն, Ամպային տեխնոլոգիաներ"
       }
     },
     "nav-summary": {

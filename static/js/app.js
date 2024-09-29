@@ -390,28 +390,43 @@ function checkImageExists(url) {
 
 // Función que muestra mis habilidades
 function updateSkills() {
-    const skillsList = document.getElementById('skills-list');
+    const skillsList = document.getElementById('body_skills');
     skillsList.innerHTML = '';
     const skills = cvData.translations.skills.list[currentLanguage].split(', ');
+    
+    skills.forEach((skill, index) => {
+        // Crear el elemento <pre>
+        const preElement = document.createElement('pre');
+        preElement.className = 'pre';
+        
 
-    skills.forEach(skill => {
-        const skillCard = document.createElement('div');
-        skillCard.className = 'col-md-4 mb-4'; // Ajusta según el diseño deseado
-        skillCard.innerHTML = `
-            <div class="card h-100 shadow-sm border-light rounded" style="border-left: 5px solid rgba(59,130,246,var(--tw-text-opacity));">
-                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                    <i class="fas fa-tools fa-2x mb-3" style="color: rgba(59,130,246,var(--tw-text-opacity));"></i>
-                    <h5 class="card-title" style="color: rgba(59,130,246,var(--tw-text-opacity));">${skill}</h5>
-                    <p class="card-text">Descripción breve sobre la habilidad.</p>
-                </div>
-                <div class="card-footer text-muted text-center">
-                    <small style="color: rgba(59,130,246,var(--tw-text-opacity));">Nivel: Intermedio</small>
-                </div>
-            </div>
-        `;
-        skillsList.appendChild(skillCard);
+        // Determinamos si es el último elemento
+        const isLastElement = index === skills.length - 1;
+
+        if (isLastElement){
+            preElement.innerHTML = `
+                <code>-&nbsp;</code>
+                <code>pip&nbsp;</code>
+                <code class="install_p">install&nbsp;</code>
+                <code class="cmd" data-cmd="${skill.replace(/\s+/g, '-')}"></code>
+            `;
+        }else{
+            preElement.innerHTML = `
+                <code>-&nbsp;</code>
+                <code>pip&nbsp;</code>
+                <code class="install_p">install&nbsp;</code>
+                <code class="cmd2" data-cmd="${skill.replace(/\s+/g, '-')}"></code>
+            `;
+        }
+
+        
+        skillsList.appendChild(preElement);
+        
     });
 }
+
+
+
 
 // Función para ver el mensaje de resultado al enviar mail de contacto
 document.getElementById('contact-form').addEventListener('submit', async (event) => {
