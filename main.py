@@ -137,7 +137,7 @@ def verify():
         session.pop('selected_num', None)
         session['logged_in'] = True
         return jsonify({'status': 'success'})
-    return jsonify({'status': 'error', 'message': 'Verification failed'})
+    return jsonify({'status': 'error', 'message': 'Verification failed'}), 401
 
 ####################################################################################################
 ####################################################################################################

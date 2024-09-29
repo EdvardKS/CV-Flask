@@ -227,7 +227,8 @@
                     if (data.status === 'success') {
                         window.location.href = '/';
                     } else {
-                        alert('Verification failed. Please try again.');
+                        alert('Verification failed.');
+                        window.location.href = '/login';
                     }
                 });
             }

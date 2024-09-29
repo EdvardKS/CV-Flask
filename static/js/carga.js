@@ -6,5 +6,5 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
         loadingScreen.classList.add('hidden');
         mainContent.style.display = 'block';
-    }, 30); // Retarda la desaparición de la pantalla de carga 8 segundos
+    }, 2000); // Retarda la desaparición de la pantalla de carga 8 segundos
 });
