@@ -46,7 +46,9 @@
             "es": "Valencia, España",
             "sl": "Valencija, Španija",
             "hy": "Վալենսիա, Իսպանիա"
-          }
+          },
+          "certificate_image": "1718197426470.jpg",
+          "certificate_pdf_link": "1718197426470.jpg"
         },
         {
           "institution": "IES Hermanos Amorós",
@@ -62,7 +64,9 @@
             "es": "Villena, España",
             "sl": "Villena, Španija",
             "hy": "Վիլենա, Իսպանիա"
-          }
+          },
+          "certificate_image": "ies.png",
+          "certificate_pdf_link": "ies.png"
         },
         {
           "institution": "Udacity - AWS",
@@ -78,10 +82,66 @@
             "es": "Nova Gorica, Eslovenia",
             "sl": "Nova Gorica, Slovenija",
             "hy": "Նովա Գորիցա, Սլովենիա"
-          }
-        }
-      ]
-    },
+          },
+          "certificate_image": "Udacity_Nanodegree.png",
+          "certificate_pdf_link": "Udacity_Nanodegree.pdf"
+        },
+            {
+              "institution": "OpenWebinars",
+              "period": "",
+              "degree": {
+                "en": "Various Specializations in Development, DevOps, and Artificial Intelligence / Data Science",
+                "es": "Varias especializaciones en Desarrollo, DevOps e Inteligencia Artificial / Científico de datos",
+                "sl": "Različne specializacije v spletnem razvoju, DevOps in umetni inteligenci / Data Science",
+                "hy": "Տարբեր մասնագիտացումներ զարգացման, DevOps-ի և արհեստական բանականության ոլորտներում / Data Science"
+              },
+              "location": {
+                "en": "Online",
+                "es": "En línea",
+                "sl": "Na spletu",
+                "hy": "Առցանց"
+              },
+              "certificate_image": "openwebinarsnet@bx9D59gv.png",
+              "certificate_pdf_link": "https://openwebinars.net/@bx9D59gv"
+            },
+            {
+              "institution": "Credly",
+              "period": "",
+              "degree": {
+                "en": "Various Verified Digital Badges and Certificates",
+                "es": "Varias insignias y certificados digitales verificados",
+                "sl": "Različne preverjene digitalne značke in potrdila",
+                "hy": "Տարբեր հաստատված թվային նշաններ և հավաստագրեր"
+              },
+              "location": {
+                "en": "Online",
+                "es": "En línea",
+                "sl": "Na spletu",
+                "hy": "Առցանց"
+              },
+              "certificate_image": "credly.comusersedvardks.png",
+              "certificate_pdf_link": "https://www.credly.com/users/edvardks"
+            },
+            {
+              "institution": "Linkedin Learning",
+              "period": "",
+              "degree": {
+                "en": "Project Management and Project Management Ethics",
+                "es": "Gestión de proyectos y Ética en la Gestión de proyectos ",
+                "sl": "Osnove upravljanja projektov in Osnove upravljanja projektov: etika",
+                "hy": "Նախագծերի կառավարման հիմունքներ և Նախագծերի կառավարման հիմունքներ. Էթիկա"
+              },
+              "location": {
+                "en": "Online",
+                "es": "En línea",
+                "sl": "Na spletu",
+                "hy": "Առցանց"
+              },
+              "certificate_image": "linkedinleraning.png",
+              "certificate_pdf_link": "https://linkedin.com/in/edvardks"
+            }
+          ]
+        },
     "workExperience": {
       "title": {
         "en": "Work Experience",

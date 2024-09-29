@@ -167,7 +167,7 @@ function updateActiveNavItem(sectionId) {
     });
 }
 
-// Funcion que coloca la información sobre mi educación
+// Función que coloca la información sobre mi educación
 function updateEducation() {
     const educationList = document.getElementById('education-list');
     educationList.innerHTML = ''; // Limpiar contenido anterior
@@ -181,21 +181,21 @@ function updateEducation() {
         carouselItem.className = `carousel-item ${index === 0 ? 'active' : ''}`;
 
         // Ruta de la imagen basada en el nombre del certificado
-        const imagePath = `./static/data/certs/${entry.certificado}.jpg`;
+        const imagePath = `/static/data/certs/${entry.certificate_image}`;
         const image = new Image();
 
         // Comprobar si la imagen existe
         image.src = imagePath;
         image.onerror = () => {
-            image.src = './static/data/default.png'; // Imagen por defecto si no existe
+            image.src = '/static/data/default.png'; // Imagen por defecto si no existe
         };
-        
-        image.className = 'd-block w-1/2 mx-auto';
+
+        image.className = 'mx-auto rounded d-block w-90 h-64 object-fit-contain';
         image.alt = `${entry.degree[currentLanguage]} from ${entry.institution}`;
 
         // Añadir imagen al carrusel
         carouselItem.appendChild(image);
-        
+
         // Crear un contenedor para la información educativa
         const infoContainer = document.createElement('div');
         infoContainer.className = 'text-center mt-4';
@@ -221,6 +221,46 @@ function updateEducation() {
         infoContainer.appendChild(degree);
         infoContainer.appendChild(period);
         infoContainer.appendChild(location);
+
+        // Comprobar si es una URL o un PDF local
+        const isUrl = (path) => {
+            try {
+                new URL(path);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        };
+
+        const pdfPath = `./static/data/pdf/${entry.certificate_pdf_link}`;
+        const certificateLink = entry.certificate_pdf_link;
+
+        if (isUrl(certificateLink)) {
+            // Si es una URL, crea un enlace que lleve a la URL
+            const urlLink = document.createElement('a');
+            urlLink.href = certificateLink;
+            urlLink.textContent = 'View Certificate';
+            urlLink.className = 'text-blue-600 underline mt-2 block';
+            urlLink.target = '_blank'; // Abre en una nueva pestaña
+            infoContainer.appendChild(urlLink);
+        } else {
+            // Si es un PDF local, verifica si existe el archivo y permite descargarlo
+            fetch(pdfPath, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        const pdfLink = document.createElement('a');
+                        pdfLink.href = pdfPath;
+                        pdfLink.textContent = 'View Certificate';
+                        pdfLink.className = 'text-blue-600 underline mt-2 block';
+                        pdfLink.download = entry.certificate_pdf_link; // Opción para descargar
+                        infoContainer.appendChild(pdfLink);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking PDF:', error);
+                });
+        }
+
 
         // Añadir contenedor de información al carrusel
         carouselItem.appendChild(infoContainer);
