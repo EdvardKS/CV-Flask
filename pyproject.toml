@@ -2,7 +2,7 @@
 name = "repl-nix-personalpresentationwebsite"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Edvard Khachatryan Sahakyan <info@edvardks.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
