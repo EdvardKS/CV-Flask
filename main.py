@@ -106,7 +106,7 @@ def send_email(recipient_email, selected_num):
         return  # Optionally, you may want to return or raise again
 
     try:
-        send_self_notification_email(SMTP_USERNAME, SMTP_USERNAME, SMTP_PASSWORD, SMTP_SERVER)
+        send_self_notification_email(recipient_email, SMTP_USERNAME, SMTP_PASSWORD, SMTP_SERVER)
         print(f"Self-notification email sent to {SMTP_USERNAME}")
     except Exception as e:
         print(f"Error in send_self_notification_email: {e}")
