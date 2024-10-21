@@ -9,3 +9,8 @@ replit.nix
 
 /.login (copy).html
 /.main (copy).py
+
+
+.yml
+/nginx/*
+.toml
