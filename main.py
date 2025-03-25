@@ -171,8 +171,6 @@ def logout():
 
 @app.route('/')
 def index():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
     return render_template('index.html')
 
 ####################################################################################################
