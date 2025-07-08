@@ -1,0 +1,10 @@
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1997:5000"       # Mapea puerto 5000 del contenedor al 1997 del host
+    environment:
+      - FLASK_ENV=production
+    restart: unless-stopped
