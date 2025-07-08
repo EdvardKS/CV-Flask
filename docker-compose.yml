@@ -1,19 +1,7 @@
 services:
-flask:
-  build:
-    context: .
-    dockerfile: Dockerfile  
-  expose:
-    - "5000"
-
-nginx:
-  build:
-    context: ./nginx
-    dockerfile: nginx.Dockerfile
-  ports:
-    - "80:80"
-    - "443:443"
-  volumes:
-    - /etc/letsencrypt:/etc/letsencrypt  
-  depends_on:
-    - flask
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile  
+    ports:
+      - "5000:5000"
