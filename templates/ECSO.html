@@ -8,6 +8,8 @@
         #quiz-container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 850px; }
         .stats { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 20px; font-size: 1.1rem; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; }
         .question-box { background: #ffffff; border: 2px solid #e2e8f0; padding: 20px; border-radius: 12px; margin-bottom: 20px; position: relative; }
+        .question-text { margin-right: 55px; line-height: 1.5; white-space: pre-wrap; }
+        .code-block { margin-top: 12px; background: #0f172a; color: #e2e8f0; padding: 12px; border-radius: 8px; font-family: 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.95rem; white-space: pre; overflow-x: auto; }
         .google-ask { position: absolute; top: 15px; right: 15px; background: #f0f7ff; border: 1px solid #c3dafe; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 24px; transition: 0.3s; text-decoration: none; }
         .google-ask:hover { background: #ebf4ff; transform: scale(1.1); border-color: #3182ce; }
         .option { display: block; width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #e2e8f0; border-radius: 10px; cursor: pointer; text-align: left; background: #fff; font-size: 1rem; transition: 0.2s; }
@@ -65,9 +67,10 @@
         </div>
         
         <div class="question-box">
-            <h3 id="question-text" style="margin-right: 55px; line-height: 1.5;"></h3>
+            <b>
+            <div id="question-text" class="question-text"></div>
+            </b>
             <a id="ia-btn" href="#" target="_blank" class="google-ask" title="Explicación con Google IA">🤖</a>
-            <small style="color: #718096;">Puedes pedir una pista con IA o buscar en Google.</small>
             <div> 
                 <div id="hint-box" class="ai-hint-box"></div>
             </div>
@@ -86,24 +89,24 @@
 <script>
     const preguntasEstructura = [
   {
-    "q": "Los transistores pertenecen a la generación de computadores ...",
+    "q": "A la hora de ejecutarse un programa, ¿qué fases sigue?",
     "options": [
-      "Tercera.",
-      "Primera.",
-      "Cuarta.",
-      "Segunda."
-    ],
-    "correctIndex": 3
-  },
-  {
-    "q": "En una memoria:",
-    "options": [
-      "Tenemos tantos bits almacenados como 2 elevado al número de líneas.",
-      "La cantidad total de datos almacenada es potencia de 2.",
-      "En cada posición de memoria hay almacenado un dato útil.",
-      "El número de posiciones de memoria es 2 elevado al número de bits de su entrada de datos."
+      "Lectura de la instrucción, carga inicial, ejecución de la instrucción e incremento del PC.",
+      "Carga inicial, lectura de la instrucción, ejecución de la instrucción, incremento del PC y repetición de ciclo.",
+      "Lectura de la instrucción, carga inicial,, ejecución de la instrucción, incremento del PC y repetición de ciclo.",
+      "Lectura de la instrucción, ejecución de la instrucción, incremento del PC y repetición de ciclo."
     ],
     "correctIndex": 1
+  },
+  {
+    "q": "Al respecto del procesador MIPS32:",
+    "options": [
+      "Para sumar dos posiciones de memoria no hace falta cargarlas en registros.",
+      "Tiene un ancho de palabra de 2 bytes.",
+      "El modo kernel es el modo de funcionamiento con más permisos sobre el hardware.",
+      "Trabaja con códigos más complejos por tener más instrucciones."
+    ],
+    "correctIndex": 2
   },
   {
     "q": "Como estudiantes recién graduados, en nuestro primer trabajo, nos piden diseñar una computadora para un sistema empotrado, ¿qué tipo de arquitectura recomendarías utilizar?",
@@ -116,32 +119,22 @@
     "correctIndex": 1
   },
   {
-    "q": "Respecto a la arquitectura de un computador:",
+    "q": "Con la aplicación de la Ley Amdahl, podemos asegurar que",
     "options": [
-      "Es von Neumann si el bus de datos y el de instrucciones es compartido.",
-      "Es Harvard si los datos y el control comparten bus.",
-      "Es Harvard si las instrucciones tienen el mismo tamaño que los datos y viajan por el mismo bus.",
-      "Es Harvard si el ancho de palabra no es igual al tamaño de instrucción."
+      "Más procesadores no implica más rendimiento.",
+      "Hay que evitar la programación secuencial.",
+      "Ninguna de las respuestas es válida.",
+      "No existen problemas de tamaño de memoria."
     ],
     "correctIndex": 0
   },
   {
-    "q": "Una memoria volátil se caracteriza por ...",
+    "q": "DMA (Direct Memory Access) permite:",
     "options": [
-      "Parte del computador donde se almacenan datos.",
-      "Se pierde la información si se interrumpe el flujo eléctrico.",
-      "No necesitar energía para perdurar.",
-      "Ninguna de las otras respuestas."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "El registro de instrucción ...",
-    "options": [
-      "Contiene los valores sobre los que se va a ejecutar la instrucción.",
-      "Ninguna de las otras respuestas.",
-      "Contiene la siguiente instrucción a ejecutar en código ensamblador.",
-      "Contiene la actual instrucción a ejecutar en código ensamblador."
+      "Que la CPU haga todo el trabajo de E/S.",
+      "Que los periféricos accedan a la memoria principal sin intervención constante de la CPU.",
+      "Que la memoria sea más rápida.",
+      "Que no se use memoria RAM."
     ],
     "correctIndex": 1
   },
@@ -156,612 +149,12 @@
     "correctIndex": 0
   },
   {
-    "q": "El lenguaje máquina ...",
+    "q": "El ancho de banda de memoria es:",
     "options": [
-      "Ninguna de las otras respuestas.",
-      "Es un lenguaje de bajo nivel.",
-      "Es un lenguaje de muy alto nivel.",
-      "Es un lenguaje de alto nivel."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "La primera generación de computadores se caracterizó por usar:",
-    "options": [
-      "Circuitos integrados.",
-      "Tubos al vacío.",
-      "Transistores.",
-      "Chips."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "Respecto al reloj de un procesador:",
-    "options": [
-      "Es difícil comparar dos procesadores de dos arquitecturas distintas.",
-      "El procesador con más frecuencia de reloj es el más rápido del mercado en ejecutar todas las tareas.",
-      "La señal de reloj de un procesador es una sinusoidal entre 0 y 5 voltios.",
-      "El procesador con más MIPS es el procesador más rápido del mercado en ejecutar todas las tareas."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Respecto al CPI:",
-    "options": [
-      "A mayor CPI menos MIPS.",
-      "El computador que tiene más ciclos por instrucción es el más lento a la hora de ejecutar cualquier tarea.",
-      "Depende de la frecuencia de reloj.",
-      "Todas las instrucciones tienen los mismos ciclos."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Cuál es el valor de MIPS de un procesador que funciona a 2 MHz y es capaz de ejecutar una media de 3 instrucciones por ciclo?",
-    "options": [
-      "6.",
-      "3/2.",
-      "No podemos saber el valor de MIPS.",
-      "2000/3."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Señala la falsa:",
-    "options": [
-      "Los MIPS dependen de la frecuencia de reloj.",
-      "Los MIPS son millones de instrucciones por segundo.",
-      "La velocidad de reloj permite comparar arquitecturas",
-      "Hay que promediar los ciclos de cada instrucción para obtener el CPI medio."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "Sobre arquitectura de computadores:",
-    "options": [
-      "El paralelismo se detecta antes de la ejecución.",
-      "Las máquinas superescalares proporcionan compatibilidad a nivel de código objeto con las másquinas escalares.",
-      "Un procesador superescalar de grado m tiene un CPI de m.",
-      "Los procesadores superescalares se utilizan en tareas intensivas de cálculo"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "q": "Un ciclo de 1 ns son:",
-    "options": [
-      "10 G de frecuencia de reloj.",
-      "1G de frecuencia de reloj.",
-      "No podemos saber la frecuencia de reloj.",
-      "2 G de frecuencia de reloj."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "Los MFLOPS:",
-    "options": [
-      "Es un parámetro de rendimiento universal para todas las arquitecturas.",
-      "A más MFLOPS más rápido es un computador al ejecutar cualquier tarea.",
-      "Está relacionados con el CPI.",
-      "Miden todo tipo de operaciones."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "Sobre las técnicas para evitar problemas de dependencias en la segmentación:",
-    "options": [
-      "Se puede solucionar con instrucciones NOP.",
-      "Son solo hardware.",
-      "Son solo software.",
-      "Si se reordenan las instrucciones se solucionan siempre las dependencia."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "El lenguaje ensamblador:",
-    "options": [
-      "Es poco parecido entre procesadores distintos, aunque depende de la arquitectura.",
-      "Es lo mismo que el código máquina.",
-      "Se llama de bajo nivel porque está más cerca del hardware.",
-      "Se usa a menudo en la programación corriente."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "¿Cuál es la característica principal de la arquitectura MIPS32?",
-    "options": [
-      "No soporta operaciones aritméticas.",
-      "Utiliza un conjunto de instrucciones complejo.",
-      "Tiene un conjunto reducido de instrucciones.",
-      "Es una arquitectura CISC."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "¿Qué instrucción en MIPS32 se utiliza para sumar dos registros?",
-    "options": [
-      "SUB",
-      "ADD",
-      "DIV",
-      "MUL"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "¿Qué modo de direccionamiento utiliza un registro base más un valor de desplazamiento?",
-    "options": [
-      "Direccionamiento inmediato.",
-      "Direccionamiento directo a registro.",
-      "Direccionamiento implícito.",
-      "Direccionamiento indirecto a registro con desplazamiento."
-    ],
-    "correctIndex": 3
-  },
-  {
-    "q": "Señala la verdadera:",
-    "options": [
-      "La CPU trabaja internamente en ensamblador.",
-      "Si se introduce el código máquina en una memoria, el procesador puede ejecutar ese programa directamente sin necesidad de compilador.",
-      "Si se introduce un código en ensamblador en un compilador, obtenemos el código de alto nivel correspondiente.",
-      "Un programa en ensamblador se escribe en código máquina."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "¿Qué significa ‘Little Endian’ en la ordenación de datos?",
-    "options": [
-      "No hay una ordenación específica.",
-      "Los bytes se ordenan de manera aleatoria.",
-      "El byte menos significativo se coloca en la primera posición.",
-      "El byte más significativo se coloca en la primera posición."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "Señala la verdadera al respecto del MIPS32:",
-    "options": [
-      "Es CISC.",
-      "Direcciona los periféricos como registros.",
-      "Su arquitectura es de carga/almacenamiento.",
-      "Trabaja indistintamente en cualquier modo."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "¿Qué es una pseudoinstrucción en MIPS32?",
-    "options": [
-      "Una instrucción que se corresponde directamente con una instrucción máquina.",
-      "Una instrucción que se utiliza solo en modo kernel.",
-      "Una instrucción que el ensamblador traduce a una o más instrucciones máquina.",
-      "Una instrucción que no tiene una representación binaria específica."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "Al respecto del procesador MIPS32:",
-    "options": [
-      "Para sumar dos posiciones de memoria no hace falta cargarlas en registros.",
-      "Tiene un ancho de palabra de 2 bytes.",
-      "El modo kernel es el modo de funcionamiento con más permisos sobre el hardware.",
-      "Trabaja con códigos más complejos por tener más instrucciones."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "¿Qué hace este código? (mul $t2, $t0, $t1)",
-    "options": [
-      "Multiplica a y b y almacena el resultado en",
-      "d. Resta b de a y almacena el resultado en c.",
-      "MUL",
-      "Para sumar dos posiciones de memoria no hace falta cargarlas en registros."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué hace la instrucción 'lb' en MIPS32?",
-    "options": [
-      "Almacena un byte (8 bits) desde un registro en la memoria.",
-      "Carga una palabra (32 bits) desde la memoria en un registro.",
-      "Carga un byte (8 bits) desde la memoria en un registro, extendiéndolo con signo.",
-      "Almacena una palabra (32 bits) desde un registro en la memoria."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "¿Qué hace este código? (sub $t2, $t0, $t1)",
-    "options": [
-      "Divide los valores de a y b y almacena el resultado en",
-      "d. Suma los valores de a y b y almacena el resultado en c.",
-      "SUB",
-      "Para sumar dos posiciones de memoria no hace falta cargarlas en registros."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "¿Qué instrucción en MIPS32 se utiliza para cargar un byte desde la memoria en un registro, extendiéndolo con ceros (sin signo)?",
-    "options": [
-      "lbu",
-      "lw",
-      "lb",
-      "sb"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué hace este código? (beq $t0, $t1)",
-    "options": [
-      "Compara x e y, almacena 0 en z si son iguales, de lo contrario almacena 1.",
-      "Suma x e y y almacena el resultado en z.",
-      "Compara x e y, almacena 1 en z si son iguales, de lo contrario almacena 0.",
-      "Resta y de x y almacena el resultado en z."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "¿Qué instrucción en MIPS32 se utiliza para cargar una palabra desde la memoria en un registro?",
-    "options": [
-      "lb",
-      "sb",
-      "sw",
-      "lw"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "q": "¿Qué instrucción en MIPS32 se utiliza para cargar un valor inmediato en un registro?",
-    "options": [
-      "sw",
-      "sb",
-      "li",
-      "lw"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "¿Qué característica tiene el formato de instrucciones en MIPS32?",
-    "options": [
-      "Formato variable de 8 a 32 bits.",
-      "Formato variable de 16 a 64 bits.",
-      "Formato fijo de 64 bits.",
-      "Formato fijo de 32 bits."
-    ],
-    "correctIndex": 3
-  },
-  {
-    "q": "¿Qué instrucción en MIPS32 se utiliza para almacenar un byte desde un registro en la memoria?",
-    "options": [
-      "sw",
-      "sb",
-      "lb",
-      "lw"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "¿Qué hace este código? (mfhi $t2)",
-    "options": [
-      "Suma val y 4 y almacena el resultado en res.",
-      "Divide val por 4 y almacena el residuo en res.",
-      "Divide val por 4 y almacena el cociente en res.",
-      "Resta 4 de val y almacena el resultado en res."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "¿Qué es la unidad de control en un procesador?",
-    "options": [
-      "La parte del procesador que maneja la entrada y salida de datos.",
-      "La parte del procesador que gestiona y coordina las operaciones.",
-      "La parte del procesador que almacena datos.",
-      "La parte del procesador que realiza operaciones aritméticas."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "La unidad de control:",
-    "options": [
-      "Solo tiene circuitos combinacionales.",
-      "No extrae información de la ruta de datos.",
-      "Puede cambiar el salto a su siguiente estado dependiendo de la ruta de datos.",
-      "Trabaja sin reloj."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "Sobre el reloj del procesador:",
-    "options": [
-      "Es una señal cuadrada (ceros y unos).",
-      "Es una señal sinusoidal.",
-      "Puede tener cualquier velocidad.",
-      "Es una señal diente de sierra."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué es el bus de comunicación en un computador?",
-    "options": [
-      "Un conjunto de líneas de transmisión que permiten la comunicación entre los componentes del hardware.",
-      "Un dispositivo de almacenamiento.",
-      "Un tipo de memoria de acceso aleatorio.",
-      "Un dispositivo de entrada y salida."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué se hace en la fase de búsqueda de instrucción (FETCH)?",
-    "options": [
-      "Se busca la instrucción en la memoria principal.",
-      "Se ejecuta la instrucción.",
-      "Se decodifica la instrucción.",
-      "Se almacena el resultado de la instrucción."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Sobre la fase Fetch de ejecución de una instrucción:",
-    "options": [
-      "Carga datos de memoria.",
-      "Carga datos en memoria.",
-      "No involucra a la memoria puesto que es la fase en la que traemos la instrucción.",
-      "Involucra al banco de registros."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La ruta de datos:",
-    "options": [
-      "Contiene registros.",
-      "Solo alberga circuitos secuenciales.",
-      "Es una máquina moore.",
-      "Mueve datos sin ayuda de ningún dispositvo."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La ALU:",
-    "options": [
-      "Solamente opera con registros.",
-      "Trabaja directamente con la memoria.",
-      "La entrada zero pone a cero la ALU.",
-      "Los bits del código de operación de la instrucción le indican directamente qué operación debe realizar."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué es la memoria volátil?",
-    "options": [
-      "Memoria que pierde los datos cuando se apaga el sistema.",
-      "Memoria utilizada solo para la caché.",
-      "Memoria que retiene los datos incluso sin energía.",
-      "Memoria utilizada solo para almacenamiento externo."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué es un fallo de caché?",
-    "options": [
-      "Cuando el bloque solicitado no se encuentra en la caché.",
-      "Cuando la caché almacena datos permanentemente.",
-      "Cuando la caché no necesita ser refrescada.",
-      "Cuando el bloque solicitado ya está en la caché."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué tipo de memoria es más rápida pero también más cara y con menor densidad de almacenamiento?",
-    "options": [
-      "SRAM.",
-      "Memoria flash.",
-      "DRAM.",
-      "Memoria magnética."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué principio sugiere que si se accede a un dato, es probable que se accedan a otros datos cercanos en la memoria?",
-    "options": [
-      "Localidad espacial.",
-      "Localidad temporal.",
-      "Acceso directo.",
-      "Acceso aleatorio."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Sobre el módulo de E/S señala la falsa:",
-    "options": [
-      "Nunca almacena datos.",
-      "Gestiona la comunicación con el periférico.",
-      "Realiza el control y temporización para evitar pérdidas de información.",
-      "Gestiona la comunicación con la CPU."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué tipo de memoria es volátil?",
-    "options": [
-      "Memoria RAM.",
-      "Memoria flash.",
-      "Memoria ROM.",
-      "Discos duros."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué política de reemplazo de caché selecciona al azar un bloque para ser reemplazado?",
-    "options": [
-      "Reemplazo aleatorio.",
-      "Reemplazo LRU.",
-      "Reemplazo directo.",
-      "Reemplazo FIFO."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Sobre el programa:",
-    "options": [
-      "Se ejecutan leyendo las instrucciones de la memoria principal.",
-      "Se ejecuta leyendo las instrucciones del disco.",
-      "Se compila desde el disco para ejecutarse.",
-      "Está escrito en lenguajes de alto nivel siempre."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué tipo de memoria se utiliza principalmente para almacenamiento externo y ofrece alta capacidad a un costo bajo?",
-    "options": [
-      "Memoria magnética.",
-      "Memoria óptica.",
-      "Memoria de semiconductores.",
-      "Memoria magneto-óptica."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Cuál es una característica de la memoria caché?",
-    "options": [
-      "Almacena temporalmente los datos más frecuentemente utilizados.",
-      "Es utilizada solo para almacenamiento externo.",
-      "Es más lenta que la memoria principal.",
-      "Almacena datos de manera permanente."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Para acelerar el tiempo de ejecución en la suma de dos números de n bits ...",
-    "options": [
-      "Se puede usar un sumador con anticipación de acarreo.",
-      "No se puede acelerar.",
-      "Se usan n sumadores completos.",
-      "Se usan n semisumadores."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "En el sistema de representación binaria, para representar números negativos se suele usar ...",
-    "options": [
-      "Complemento a dos.",
-      "Signo y magnitud.",
-      "Complemento a uno.",
-      "Exceso a 2 elevado a n."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Cuál es la función del registro de estado (FLAGS) en la CPU?",
-    "options": [
-      "Indicar condiciones de la última operación de la ALU (acarreo, cero, signo, desbordamiento).",
-      "Almacenar el resultado de la operación.",
-      "Controlar el flujo del programa.",
-      "Almacenar la dirección de la siguiente instrucción."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "En un computador con jerarquía de memoria, la memoria virtual permite ...",
-    "options": [
-      "Utilizar almacenamiento secundario como si fuera parte de la memoria principal.",
-      "Aumentar la velocidad de la caché.",
-      "Reducir el número de registros en la CPU.",
-      "Eliminar la necesidad de RAM física."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "¿Qué técnica se usa para permitir que varios dispositivos de E/S transfieran datos directamente a la memoria sin intervención constante de la CPU?",
-    "options": [
-      "DMA (Acceso Directo a Memoria).",
-      "Interrupciones por hardware.",
-      "Encuesta (Polling).",
-      "Segmentación de instrucciones."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Indica la respuesta verdadera:",
-    "options": [
-      "El ENIAC fue el primer computador de la historia.",
-      "El ábaco es el primer computador de la historia.",
-      "La máquina analítica de Babbage fue el primer computador de la historia.",
-      "Ninguna de las otras respuestas."
-    ],
-    "correctIndex": 3
-  },
-  {
-    "q": "La unidad mínima de información que se puede representar en un ordenador es:",
-    "options": [
-      "El bit.",
-      "El byte.",
-      "La palabra.",
-      "El nibble."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Indica cuál de las siguientes afirmaciones es correcta:",
-    "options": [
-      "Un computador Harvard tiene un bus de datos compartido con instrucciones.",
-      "Un computador von Neumann tiene un bus de datos separado del de instrucciones.",
-      "Un computador Harvard tiene memoria de datos separada de la de instrucciones.",
-      "Ninguna de las otras respuestas."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "En el formato de representación en coma flotante IEEE 754 de simple precisión:",
-    "options": [
-      "El exponente tiene 8 bits y la mantisa 23 bits.",
-      "El exponente tiene 11 bits y la mantisa 52 bits.",
-      "El exponente tiene 8 bits y la mantisa 24 bits.",
-      "El exponente tiene 11 bits y la mantisa 53 bits."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La ley de Moore establece que:",
-    "options": [
-      "El número de transistores en un microprocesador se duplica cada 18-24 meses.",
-      "La velocidad de los procesadores se duplica cada 18-24 meses.",
-      "El coste de los transistores se duplica cada 18-24 meses.",
-      "El consumo de energía se reduce a la mitad cada 18-24 meses."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "El registro PC (Program Counter) contiene:",
-    "options": [
-      "La instrucción que se está ejecutando.",
-      "La dirección de la siguiente instrucción a ejecutar.",
-      "El estado del procesador.",
-      "El resultado de la última operación."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "La memoria caché se utiliza para:",
-    "options": [
-      "Aumentar la capacidad de almacenamiento del disco duro.",
-      "Reducir el tiempo de acceso a la memoria principal.",
-      "Almacenar permanentemente los datos del usuario.",
-      "Ninguna de las otras respuestas."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "Un sistema operativo es:",
-    "options": [
-      "Un programa que gestiona los recursos del hardware y provee servicios a los programas de aplicación.",
-      "Un conjunto de circuitos electrónicos.",
-      "Un dispositivo de entrada/salida.",
-      "Un tipo de memoria."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La ALU (Arithmetic Logic Unit) se encarga de:",
-    "options": [
-      "Controlar el flujo de datos.",
-      "Realizar operaciones aritméticas y lógicas.",
-      "Almacenar instrucciones.",
-      "Gestionar la memoria."
+      "El tiempo de acceso.",
+      "La cantidad de datos que pueden transferirse por unidad de tiempo.",
+      "El número de pines del módulo de memoria.",
+      "La capacidad total de almacenamiento."
     ],
     "correctIndex": 1
   },
@@ -776,12 +169,22 @@
     "correctIndex": 1
   },
   {
-    "q": "En un sistema de numeración posicional, el valor de un dígito depende de:",
+    "q": "El chipset es:",
     "options": [
-      "Su posición dentro del número.",
-      "Su valor absoluto solamente.",
-      "El número de dígitos totales.",
-      "La base del sistema únicamente."
+      "Un conjunto de chips que gestionan el flujo de datos entre los componentes de la placa base.",
+      "El ventilador del procesador.",
+      "La fuente de alimentación.",
+      "El disco duro."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "El ciclo de instrucción comprende las fases de:",
+    "options": [
+      "Búsqueda y Ejecución.",
+      "Lectura y Escritura.",
+      "Entrada y Salida.",
+      "Compilación y Enlace."
     ],
     "correctIndex": 0
   },
@@ -796,282 +199,12 @@
     "correctIndex": 1
   },
   {
-    "q": "Una interrupción es:",
-    "options": [
-      "Un fallo en el hardware.",
-      "Una señal enviada a la CPU para detener su ejecución actual y atender un evento.",
-      "Un tipo de instrucción de salto.",
-      "El proceso de apagar el computador."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "El ciclo de instrucción comprende las fases de:",
-    "options": [
-      "Búsqueda y Ejecución.",
-      "Lectura y Escritura.",
-      "Entrada y Salida.",
-      "Compilación y Enlace."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La jerarquía de memoria busca:",
-    "options": [
-      "Maximizar la capacidad y minimizar el coste y tiempo de acceso.",
-      "Minimizar la capacidad y maximizar la velocidad.",
-      "Usar solo memoria caché.",
-      "Usar solo discos duros."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Un periférico de entrada es:",
-    "options": [
-      "El monitor.",
-      "La impresora.",
-      "El teclado.",
-      "Los altavoces."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "La memoria ROM es:",
-    "options": [
-      "Volátil y de lectura/escritura.",
-      "No volátil y de solo lectura.",
-      "Volátil y de solo lectura.",
-      "No volátil y de lectura/escritura."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "El sistema binario utiliza los dígitos:",
-    "options": [
-      "0 a 9.",
-      "0 y 1.",
-      "0 a 7.",
-      "0 a F."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "Un Gigabyte (GB) equivale a:",
-    "options": [
-      "1024 Megabytes.",
-      "1000 Megabytes.",
-      "1024 Kilobytes.",
-      "1000 Kilobytes."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La frecuencia de reloj de una CPU se mide en:",
-    "options": [
-      "Bytes.",
-      "Herzios (Hz).",
-      "Julios.",
-      "Bits por segundo."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "El chipset es:",
-    "options": [
-      "Un conjunto de chips que gestionan el flujo de datos entre los componentes de la placa base.",
-      "El ventilador del procesador.",
-      "La fuente de alimentación.",
-      "El disco duro."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Un puerto USB permite:",
-    "options": [
-      "Conectar periféricos al computador.",
-      "Aumentar la memoria RAM.",
-      "Refrigerar el sistema.",
-      "Conectar el computador a la corriente eléctrica."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La BIOS es:",
-    "options": [
-      "Un sistema operativo completo.",
-      "Un firmware que inicializa el hardware durante el arranque.",
-      "Un programa de edición de texto.",
-      "Un virus informático."
-    ],
-    "correctIndex": 1
-  },
-  {
     "q": "El código máquina es:",
     "options": [
       "Un lenguaje de alto nivel.",
       "El lenguaje que entiende directamente el hardware de la CPU.",
       "Un lenguaje de script.",
       "Un lenguaje ensamblador."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "Un compilador traduce:",
-    "options": [
-      "Código máquina a ensamblador.",
-      "Código fuente de alto nivel a código máquina.",
-      "Código máquina a código fuente.",
-      "Texto a voz."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "La memoria virtual permite:",
-    "options": [
-      "Ejecutar programas más grandes que la memoria física disponible.",
-      "Aumentar la velocidad del procesador.",
-      "Almacenar datos en la nube.",
-      "Reducir el consumo de energía."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Un bus de datos de 32 bits puede transmitir:",
-    "options": [
-      "32 bytes a la vez.",
-      "32 bits a la vez.",
-      "32 instrucciones a la vez.",
-      "32 direcciones a la vez."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "La arquitectura CISC se caracteriza por:",
-    "options": [
-      "Tener un conjunto reducido de instrucciones simples.",
-      "Tener un conjunto amplio de instrucciones complejas.",
-      "No utilizar memoria caché.",
-      "Ser más rápida que RISC en todos los casos."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "La arquitectura RISC se caracteriza por:",
-    "options": [
-      "Instrucciones de longitud variable.",
-      "Instrucciones simples y de longitud fija.",
-      "Mayor complejidad en el hardware que CISC.",
-      "Menor número de registros."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "El pipelining (segmentación) permite:",
-    "options": [
-      "Ejecutar múltiples instrucciones simultáneamente en diferentes etapas.",
-      "Aumentar el tamaño de la memoria.",
-      "Reducir la frecuencia de reloj.",
-      "Eliminar las interrupciones."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Un procesador multicore tiene:",
-    "options": [
-      "Un solo núcleo de procesamiento.",
-      "Múltiples núcleos de procesamiento en un solo chip.",
-      "Múltiples chips en la placa base.",
-      "Ninguna de las anteriores."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "La latencia de memoria es:",
-    "options": [
-      "La cantidad de datos transferidos por segundo.",
-      "El tiempo que transcurre desde que se solicita un dato hasta que se recibe.",
-      "El tamaño de la memoria.",
-      "La frecuencia de reloj de la memoria."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "El ancho de banda de memoria es:",
-    "options": [
-      "El tiempo de acceso.",
-      "La cantidad de datos que pueden transferirse por unidad de tiempo.",
-      "El número de pines del módulo de memoria.",
-      "La capacidad total de almacenamiento."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "El formato complemento a 2 se utiliza para:",
-    "options": [
-      "Representar caracteres.",
-      "Representar números enteros con signo.",
-      "Representar imágenes.",
-      "Representar instrucciones."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "Un desbordamiento (overflow) ocurre cuando:",
-    "options": [
-      "El resultado de una operación excede el rango de representación disponible.",
-      "Se divide por cero.",
-      "Se accede a una dirección de memoria inválida.",
-      "Se interrumpe el procesador."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La unidad de control genera:",
-    "options": [
-      "Señales de control para coordinar el hardware.",
-      "Resultados aritméticos.",
-      "Direcciones de memoria.",
-      "Interrupciones."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Los registros de propósito general sirven para:",
-    "options": [
-      "Almacenar datos temporales y operandos durante la ejecución.",
-      "Controlar el flujo del programa únicamente.",
-      "Almacenar el sistema operativo.",
-      "Conectar con periféricos."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "El registro IR (Instruction Register) almacena:",
-    "options": [
-      "La dirección de la siguiente instrucción.",
-      "La instrucción que se está decodificando o ejecutando actualmente.",
-      "El resultado de la ALU.",
-      "El estado de las banderas."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "Las banderas (flags) de estado indican:",
-    "options": [
-      "El fabricante del procesador.",
-      "Condiciones como cero, negativo, acarreo o desbordamiento tras una operación.",
-      "La cantidad de memoria libre.",
-      "La temperatura del procesador."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "El direccionamiento inmediato significa que:",
-    "options": [
-      "El operando está en un registro.",
-      "El operando es una constante incluida en la propia instrucción.",
-      "La dirección del operando está en memoria.",
-      "La dirección del operando es relativa al PC."
     ],
     "correctIndex": 1
   },
@@ -1096,102 +229,42 @@
     "correctIndex": 0
   },
   {
-    "q": "Una instrucción de salto condicional:",
+    "q": "El direccionamiento inmediato significa que:",
     "options": [
-      "Siempre altera el flujo del programa.",
-      "Altera el flujo del programa solo si se cumple una condición (basada en flags).",
-      "Detiene el programa.",
-      "Llama a una subrutina."
+      "El operando está en un registro.",
+      "El operando es una constante incluida en la propia instrucción.",
+      "La dirección del operando está en memoria.",
+      "La dirección del operando es relativa al PC."
     ],
     "correctIndex": 1
   },
   {
-    "q": "El stack (pila) se utiliza para:",
+    "q": "El formato complemento a 2 se utiliza para:",
     "options": [
-      "Almacenar variables locales y direcciones de retorno de subrutinas.",
-      "Almacenar el código del programa.",
-      "Almacenar archivos grandes.",
-      "La memoria de vídeo."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La operación PUSH en una pila:",
-    "options": [
-      "Saca un elemento.",
-      "Introduce un elemento en la cima.",
-      "Lee el elemento de la cima sin sacarlo.",
-      "Borra la pila."
+      "Representar caracteres.",
+      "Representar números enteros con signo.",
+      "Representar imágenes.",
+      "Representar instrucciones."
     ],
     "correctIndex": 1
   },
   {
-    "q": "La operación POP en una pila:",
+    "q": "El lenguaje ensamblador:",
     "options": [
-      "Saca el elemento de la cima.",
-      "Introduce un elemento.",
-      "Duplica el elemento.",
-      "Invierte la pila."
+      "Es poco parecido entre procesadores distintos, aunque depende de la arquitectura.",
+      "Es lo mismo que el código máquina.",
+      "Se llama de bajo nivel porque está más cerca del hardware.",
+      "Se usa a menudo en la programación corriente."
     ],
-    "correctIndex": 0
+    "correctIndex": 2
   },
   {
-    "q": "DMA (Direct Memory Access) permite:",
+    "q": "El lenguaje máquina ...",
     "options": [
-      "Que la CPU haga todo el trabajo de E/S.",
-      "Que los periféricos accedan a la memoria principal sin intervención constante de la CPU.",
-      "Que la memoria sea más rápida.",
-      "Que no se use memoria RAM."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "Un bus serie transmite datos:",
-    "options": [
-      "Bit a bit por un solo canal.",
-      "Varios bits simultáneamente por varios canales.",
-      "Solo en una dirección.",
-      "Sin señal de reloj."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Un bus paralelo transmite datos:",
-    "options": [
-      "Bit a bit.",
-      "Varios bits simultáneamente (ej. 8, 16, 32 líneas).",
-      "Inalámbricamente.",
-      "Solo para impresoras."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "La memoria SRAM es más rápida pero más cara que la DRAM:",
-    "options": [
-      "Verdadero.",
-      "Falso.",
-      "Que la memoria sea más rápida.",
-      "Una memoria más rápida y pequeña que almacena instrucciones y datos frecuentemente utilizados."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La memoria DRAM necesita refresco periódico de datos:",
-    "options": [
-      "Verdadero.",
-      "Falso.",
-      "Un computador Harvard tiene memoria de datos separada de la de instrucciones.",
-      "Carga datos en memoria."
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "La memoria caché suele ser de tipo:",
-    "options": [
-      "DRAM.",
-      "SRAM.",
-      "ROM.",
-      "Flash."
+      "Ninguna de las otras respuestas.",
+      "Es un lenguaje de bajo nivel.",
+      "Es un lenguaje de muy alto nivel.",
+      "Es un lenguaje de alto nivel."
     ],
     "correctIndex": 1
   },
@@ -1204,6 +277,16 @@
       "Memoria virtual."
     ],
     "correctIndex": 1
+  },
+  {
+    "q": "El pipelining (segmentación) permite:",
+    "options": [
+      "Ejecutar múltiples instrucciones simultáneamente en diferentes etapas.",
+      "Aumentar el tamaño de la memoria.",
+      "Reducir la frecuencia de reloj.",
+      "Eliminar las interrupciones."
+    ],
+    "correctIndex": 0
   },
   {
     "q": "El principio de localidad espacial dice que:",
@@ -1226,12 +309,63 @@
     "correctIndex": 0
   },
   {
-    "q": "Un fallo de caché (cache miss) ocurre cuando:",
+    "q": "El programa siguiente verifica si un número es mayor a una constante y almacena diferentes valores en función de esa constante. ¿Qué constante es?",
+    "code": ".data\nx: .word 7\nresult: .word 0\n.text\nmain:\n  lw $t0, x\n  li $t1, 5\n  blt $t0, $t1, else_block\nif_block:\n  li $t2, 1\n  sw $t2, result\n  j end_if\nelse_block:\n  li $t2, 0\n  sw $t2, result\nend_if:\n  li $v0, 10\n  syscall",
     "options": [
-      "El dato solicitado no se encuentra en la caché y hay que buscarlo en memoria principal.",
-      "La caché se rompe.",
-      "El dato está en la caché.",
-      "La CPU se detiene."
+      "3",
+      "5",
+      "7",
+      "10"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El registro IR (Instruction Register) almacena:",
+    "options": [
+      "La dirección de la siguiente instrucción.",
+      "La instrucción que se está decodificando o ejecutando actualmente.",
+      "El resultado de la ALU.",
+      "El estado de las banderas."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El registro PC (Program Counter) contiene:",
+    "options": [
+      "La instrucción que se está ejecutando.",
+      "La dirección de la siguiente instrucción a ejecutar.",
+      "El estado del procesador.",
+      "El resultado de la última operación."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El registro de instrucción ...",
+    "options": [
+      "Contiene los valores sobre los que se va a ejecutar la instrucción.",
+      "Ninguna de las otras respuestas.",
+      "Contiene la siguiente instrucción a ejecutar en código ensamblador.",
+      "Contiene la actual instrucción a ejecutar en código ensamblador."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El sistema binario utiliza los dígitos:",
+    "options": [
+      "0 a 9.",
+      "0 y 1.",
+      "0 a 7.",
+      "0 a F."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El stack (pila) se utiliza para:",
+    "options": [
+      "Almacenar variables locales y direcciones de retorno de subrutinas.",
+      "Almacenar el código del programa.",
+      "Almacenar archivos grandes.",
+      "La memoria de vídeo."
     ],
     "correctIndex": 0
   },
@@ -1246,172 +380,72 @@
     "correctIndex": 0
   },
   {
-    "q": "La memoria principal se conecta a la CPU a través del:",
+    "q": "En el formato de representación en coma flotante IEEE 754 de simple precisión:",
     "options": [
-      "Bus del sistema (front-side bus o similar).",
-      "Cable USB.",
-      "Puerto serie.",
-      "Red Wi-Fi."
+      "El exponente tiene 8 bits y la mantisa 23 bits.",
+      "El exponente tiene 11 bits y la mantisa 52 bits.",
+      "El exponente tiene 8 bits y la mantisa 24 bits.",
+      "El exponente tiene 11 bits y la mantisa 53 bits."
     ],
     "correctIndex": 0
   },
   {
-    "q": "Una GPU está especializada en:",
+    "q": "En el sistema de representación binaria, para representar números negativos se suele usar ...",
     "options": [
-      "Procesamiento de texto.",
-      "Procesamiento gráfico y paralelo masivo.",
-      "Gestión de archivos.",
-      "Ejecutar el sistema operativo."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "Respecto a las arquitecturas que mejoran el rendimiento:",
-    "options": [
-      "Los multiprocesadores trabajan con total independencia entre si.",
-      "Las segmentadas siempre son mejores.",
-      "Los procesadores vectoriales son adecuados si las tareas tienen muchas iteraciones aritméticas.",
-      "Un procesador superescalar apenas tiene dependencias."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "Con la aplicación de la Ley Amdahl, podemos asegurar que",
-    "options": [
-      "Más procesadores no implica más rendimiento.",
-      "Hay que evitar la programación secuencial.",
-      "Ninguna de las respuestas es válida.",
-      "No existen problemas de tamaño de memoria."
+      "Complemento a dos.",
+      "Signo y magnitud.",
+      "Complemento a uno.",
+      "Exceso a 2 elevado a n."
     ],
     "correctIndex": 0
   },
   {
-    "q": "Los multicomputadores tienen memoria compartida.",
+    "q": "En la unidad de control:",
     "options": [
-      "Los multicomputadores tienen memoria compartida.",
-      "Los procesadores segmentados requieren un gran ancho de banda en la memoria.",
-      "Los procesadores vectoriales ahorran bucles de ejecución.",
-      "Los procesadores vectoriales trabajan sobre vectores de resultados y datos."
+      "Activa unos y otros bloques de la ruta de datos dependiendo de la fase de ejecución en la que estemos.",
+      "Los datos fluyen dentro de sus componentes.",
+      "Está basado en una máquina de estados Mealy.",
+      "Es un circuito combinacional con muchas entradas."
     ],
     "correctIndex": 0
   },
   {
-    "q": "La unidad de medida utilizada para evaluar el rendimiento FLOPS indica:",
+    "q": "En un computador con jerarquía de memoria, la memoria virtual permite ...",
     "options": [
-      "El número de accesos a memoria por segundo.",
-      "El número de operaciones de coma flotante por segundo.",
-      "La frecuencia de reloj (número de pulsos por segundo).",
-      "El número de instrucciones por segundo."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "¿Qué es la memoria no volátil?",
-    "options": [
-      "Memoria que se utiliza solo para almacenamiento temporal.",
-      "Memoria que pierde los datos cuando se apaga el sistema.",
-      "Memoria que se utiliza solo para la caché.",
-      "Memoria que retiene los datos incluso sin energia."
-    ],
-    "correctIndex": 3
-  },
-  {
-    "q": "¿Qué tipo de memoria se utiliza para la memoria principal debido a su alta densidad de almacenamiento?",
-    "options": [
-      "Memoria flash.",
-      "DRAM.",
-      "Memoria magnética.",
-      "SRAM."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "Un computador digital:",
-    "options": [
-      "Los resultados dependen solo de los datos almacenados.",
-      "No trabaja con información hexadecimal.",
-      "Puede leer de la memoria datos de mayor tamaño que el ancho de palabra.",
-      "Trabaja internamente con valores de tensión analógicos."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "¿Qué es la jerarquia de memoria?",
-    "options": [
-      "Un tipo de memoria volátil.",
-      "Una estrategia para combinar diferentes tipos de memoria en un sistema.",
-      "Un tipo de memoria no volátil.",
-      "Un método de acceso secuencial."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "¿Qué política de escritura en caché realiza la escritura tanto en la caché como en la memoria principal?",
-    "options": [
-      "Escritura directa.",
-      "Escritura diferida.",
-      "Escritura aleatoria.",
-      "Escritura secuencial."
+      "Utilizar almacenamiento secundario como si fuera parte de la memoria principal.",
+      "Aumentar la velocidad de la caché.",
+      "Reducir el número de registros en la CPU.",
+      "Eliminar la necesidad de RAM física."
     ],
     "correctIndex": 0
   },
   {
-    "q": "¿Qué tipo de memoria utiliza transistores para almacenar datos en un estado estable?",
+    "q": "En un sistema de numeración posicional, el valor de un dígito depende de:",
     "options": [
-      "Memoria flash.",
-      "SRAM.",
-      "Mernoria magnética.",
-      "DRAM."
+      "Su posición dentro del número.",
+      "Su valor absoluto solamente.",
+      "El número de dígitos totales.",
+      "La base del sistema únicamente."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En una memoria:",
+    "options": [
+      "Tenemos tantos bits almacenados como 2 elevado al número de líneas.",
+      "La cantidad total de datos almacenada es potencia de 2.",
+      "En cada posición de memoria hay almacenado un dato útil.",
+      "El número de posiciones de memoria es 2 elevado al número de bits de su entrada de datos."
     ],
     "correctIndex": 1
   },
   {
-    "q": "¿Qué registro en MIPS32 se utiliza como puntero de pila?",
+    "q": "Es Harvard si las instrucciones pueden tener distinto tamaño que los datos.",
     "options": [
-      "$fp",
-      "$ra",
-      "$gp",
-      "$sp"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "q": "¿Qué instrucción en ensamblador se utiliza para mover datos en MIPS32?",
-    "options": [
-      "SW",
-      "MOV",
-      "ADD",
-      "LW"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "¿Qué significa 'Little Endian' en la ordenación de datos?",
-    "options": [
-      "El byte más significativo se coloca en la primera posición.",
-      "El byte menos significativo se coloca en la primera posición.",
-      "No hay una ordenación específica.",
-      "Los bytes se ordenan de manera aleatoria."
-    ],
-    "correctIndex": 1
-  },
-  {
-    "q": "¿Cuál es una ventaja del lenguaje ensamblador?",
-    "options": [
-      "Alta portabilidad entre diferentes arquitecturas.",
-      "Independencia del hardware específico.",
-      "Facilidad de escritura y legibilidad.",
-      "Control y precisión sobre el hardware."
-    ],
-    "correctIndex": 3
-  },
-  {
-    "q": "¿Qué registro se utiliza para almacenar la dirección de retorno de las subrutinas en MIPS32?",
-    "options": [
-      "$sp",
-      "$ra",
-      "$gp",
-      "$fp"
+      "Es Harvard si las instrucciones no pueden tener distinto tamaño que los datos.",
+      "Es Harvard si las instrucciones pueden tener distinto tamaño que los datos.",
+      "Es von Neumann si el bus de datos y el de instrucciones son bidireccionales.",
+      "Es Harvard si usamos el mismo bus para control que para datos."
     ],
     "correctIndex": 1
   },
@@ -1426,6 +460,413 @@
     "correctIndex": 0
   },
   {
+    "q": "Indica cuál de las siguientes afirmaciones es correcta:",
+    "options": [
+      "Un computador Harvard tiene un bus de datos compartido con instrucciones.",
+      "Un computador von Neumann tiene un bus de datos separado del de instrucciones.",
+      "Un computador Harvard tiene memoria de datos separada de la de instrucciones.",
+      "Ninguna de las otras respuestas."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Indica la respuesta verdadera:",
+    "options": [
+      "El ENIAC fue el primer computador de la historia.",
+      "El ábaco es el primer computador de la historia.",
+      "La máquina analítica de Babbage fue el primer computador de la historia.",
+      "Ninguna de las otras respuestas."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "La ALU (Arithmetic Logic Unit) se encarga de:",
+    "options": [
+      "Controlar el flujo de datos.",
+      "Realizar operaciones aritméticas y lógicas.",
+      "Almacenar instrucciones.",
+      "Gestionar la memoria."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La ALU, es una parte de:",
+    "options": [
+      "La memoria.",
+      "El bus de operaciones.",
+      "La CPU.",
+      "El multiplexor de entrada."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "La ALU:",
+    "options": [
+      "Solamente opera con registros.",
+      "Trabaja directamente con la memoria.",
+      "La entrada zero pone a cero la ALU.",
+      "Los bits del código de operación de la instrucción le indican directamente qué operación debe realizar."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La BIOS es:",
+    "options": [
+      "Un sistema operativo completo.",
+      "Un firmware que inicializa el hardware durante el arranque.",
+      "Un programa de edición de texto.",
+      "Un virus informático."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La arquitectura CISC se caracteriza por:",
+    "options": [
+      "Tener un conjunto reducido de instrucciones simples.",
+      "Tener un conjunto amplio de instrucciones complejas.",
+      "No utilizar memoria caché.",
+      "Ser más rápida que RISC en todos los casos."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La arquitectura RISC se caracteriza por:",
+    "options": [
+      "Instrucciones de longitud variable.",
+      "Instrucciones simples y de longitud fija.",
+      "Mayor complejidad en el hardware que CISC.",
+      "Menor número de registros."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La frecuencia de reloj de una CPU se mide en:",
+    "options": [
+      "Bytes.",
+      "Herzios (Hz).",
+      "Julios.",
+      "Bits por segundo."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La jerarquía de memoria busca:",
+    "options": [
+      "Maximizar la capacidad y minimizar el coste y tiempo de acceso.",
+      "Minimizar la capacidad y maximizar la velocidad.",
+      "Usar solo memoria caché.",
+      "Usar solo discos duros."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La latencia de memoria es:",
+    "options": [
+      "La cantidad de datos transferidos por segundo.",
+      "El tiempo que transcurre desde que se solicita un dato hasta que se recibe.",
+      "El tamaño de la memoria.",
+      "La frecuencia de reloj de la memoria."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La ley de Moore establece que:",
+    "options": [
+      "El número de transistores en un microprocesador se duplica cada 18-24 meses.",
+      "La velocidad de los procesadores se duplica cada 18-24 meses.",
+      "El coste de los transistores se duplica cada 18-24 meses.",
+      "El consumo de energía se reduce a la mitad cada 18-24 meses."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La memoria DRAM necesita refresco periódico de datos:",
+    "options": [
+      "Verdadero",
+      "Falso"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La memoria ROM es:",
+    "options": [
+      "Volátil y de lectura/escritura.",
+      "No volátil y de solo lectura.",
+      "Volátil y de solo lectura.",
+      "No volátil y de lectura/escritura."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La memoria SRAM es más rápida pero más cara que la DRAM:",
+    "options": [
+      "Verdadero",
+      "Falso"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La memoria caché se utiliza para:",
+    "options": [
+      "Aumentar la capacidad de almacenamiento del disco duro.",
+      "Reducir el tiempo de acceso a la memoria principal.",
+      "Almacenar permanentemente los datos del usuario.",
+      "Ninguna de las otras respuestas."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La memoria caché suele ser de tipo:",
+    "options": [
+      "DRAM.",
+      "SRAM.",
+      "ROM.",
+      "Flash."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La memoria principal se conecta a la CPU a través del:",
+    "options": [
+      "Bus del sistema (front-side bus o similar).",
+      "Cable USB.",
+      "Puerto serie.",
+      "Red Wi-Fi."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La memoria virtual permite:",
+    "options": [
+      "Ejecutar programas más grandes que la memoria física disponible.",
+      "Aumentar la velocidad del procesador.",
+      "Almacenar datos en la nube.",
+      "Reducir el consumo de energía."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La operación POP en una pila:",
+    "options": [
+      "Saca el elemento de la cima.",
+      "Introduce un elemento.",
+      "Duplica el elemento.",
+      "Invierte la pila."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La operación PUSH en una pila:",
+    "options": [
+      "Saca un elemento.",
+      "Introduce un elemento en la cima.",
+      "Lee el elemento de la cima sin sacarlo.",
+      "Borra la pila."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La primera generación de computadores se caracterizó por usar:",
+    "options": [
+      "Circuitos integrados.",
+      "Tubos al vacío.",
+      "Transistores.",
+      "Chips."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La ruta de datos:",
+    "options": [
+      "Contiene registros.",
+      "Solo alberga circuitos secuenciales.",
+      "Es una máquina moore.",
+      "Mueve datos sin ayuda de ningún dispositvo."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La unidad de control genera:",
+    "options": [
+      "Señales de control para coordinar el hardware.",
+      "Resultados aritméticos.",
+      "Direcciones de memoria.",
+      "Interrupciones."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La unidad de control:",
+    "options": [
+      "Solo tiene circuitos combinacionales.",
+      "No extrae información de la ruta de datos.",
+      "Puede cambiar el salto a su siguiente estado dependiendo de la ruta de datos.",
+      "Trabaja sin reloj."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "La unidad de medida utilizada para evaluar el rendimiento FLOPS indica:",
+    "options": [
+      "El número de accesos a memoria por segundo.",
+      "El número de operaciones de coma flotante por segundo.",
+      "La frecuencia de reloj (número de pulsos por segundo).",
+      "El número de instrucciones por segundo."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La unidad mínima de información que se puede representar en un ordenador es:",
+    "options": [
+      "El bit.",
+      "El byte.",
+      "La palabra.",
+      "El nibble."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Las banderas (flags) de estado indican:",
+    "options": [
+      "El fabricante del procesador.",
+      "Condiciones como cero, negativo, acarreo o desbordamiento tras una operación.",
+      "La cantidad de memoria libre.",
+      "La temperatura del procesador."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Los MFLOPS:",
+    "options": [
+      "Es un parámetro de rendimiento universal para todas las arquitecturas.",
+      "A más MFLOPS más rápido es un computador al ejecutar cualquier tarea.",
+      "Está relacionados con el CPI.",
+      "Miden todo tipo de operaciones."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Los multicomputadores tienen memoria compartida.",
+    "options": [
+      "Los multicomputadores tienen memoria compartida.",
+      "Los procesadores segmentados requieren un gran ancho de banda en la memoria.",
+      "Los procesadores vectoriales ahorran bucles de ejecución.",
+      "Los procesadores vectoriales trabajan sobre vectores de resultados y datos."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Los registros de propósito general sirven para:",
+    "options": [
+      "Almacenar datos temporales y operandos durante la ejecución.",
+      "Controlar el flujo del programa únicamente.",
+      "Almacenar el sistema operativo.",
+      "Conectar con periféricos."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Los transistores pertenecen a la generación de computadores ...",
+    "options": [
+      "Tercera.",
+      "Primera.",
+      "Cuarta.",
+      "Segunda."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Para acelerar el tiempo de ejecución en la suma de dos números de n bits ...",
+    "options": [
+      "Se puede usar un sumador con anticipación de acarreo.",
+      "No se puede acelerar.",
+      "Se usan n sumadores completos.",
+      "Se usan n semisumadores."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Respecto a la arquitectura de un computador:",
+    "options": [
+      "Es von Neumann si el bus de datos y el de instrucciones es compartido.",
+      "Es Harvard si los datos y el control comparten bus.",
+      "Es Harvard si las instrucciones tienen el mismo tamaño que los datos y viajan por el mismo bus.",
+      "Es Harvard si el ancho de palabra no es igual al tamaño de instrucción."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Respecto a las arquitecturas que mejoran el rendimiento:",
+    "options": [
+      "Los multiprocesadores trabajan con total independencia entre si.",
+      "Las segmentadas siempre son mejores.",
+      "Los procesadores vectoriales son adecuados si las tareas tienen muchas iteraciones aritméticas.",
+      "Un procesador superescalar apenas tiene dependencias."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Respecto al CPI:",
+    "options": [
+      "A mayor CPI menos MIPS.",
+      "El computador que tiene más ciclos por instrucción es el más lento a la hora de ejecutar cualquier tarea.",
+      "Depende de la frecuencia de reloj.",
+      "Todas las instrucciones tienen los mismos ciclos."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Respecto al reloj de un procesador:",
+    "options": [
+      "Es difícil comparar dos procesadores de dos arquitecturas distintas.",
+      "El procesador con más frecuencia de reloj es el más rápido del mercado en ejecutar todas las tareas.",
+      "La señal de reloj de un procesador es una sinusoidal entre 0 y 5 voltios.",
+      "El procesador con más MIPS es el procesador más rápido del mercado en ejecutar todas las tareas."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Señala la falsa:",
+    "options": [
+      "Los MIPS dependen de la frecuencia de reloj.",
+      "Los MIPS son millones de instrucciones por segundo.",
+      "La velocidad de reloj permite comparar arquitecturas",
+      "Hay que promediar los ciclos de cada instrucción para obtener el CPI medio."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Señala la verdadera al respecto del MIPS32:",
+    "options": [
+      "Es CISC.",
+      "Direcciona los periféricos como registros.",
+      "Su arquitectura es de carga/almacenamiento.",
+      "Trabaja indistintamente en cualquier modo."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Señala la verdadera:",
+    "options": [
+      "La CPU trabaja internamente en ensamblador.",
+      "Si se introduce el código máquina en una memoria, el procesador puede ejecutar ese programa directamente sin necesidad de compilador.",
+      "Si se introduce un código en ensamblador en un compilador, obtenemos el código de alto nivel correspondiente.",
+      "Un programa en ensamblador se escribe en código máquina."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Señalar el valor de $s1 tras el siguiente código",
+    "code": "LI $S0, 10\nMOVE $S1, $ZERO\nETIQ1:\n  BGT $S1, $S0, END\n  ADDI $S1, $S1, 2\n  J ETIQ1\nEND:",
+    "options": [
+      "8",
+      "10",
+      "12",
+      "14"
+    ],
+    "correctIndex": 2
+  },
+  {
     "q": "Si se introduce un código en ensamblador en un compilador, se obtiene un código máquina ejecutable.",
     "options": [
       "Si se introduce un código en ensamblador en un compilador, se obtiene un código máquina ejecutable.",
@@ -1436,54 +877,64 @@
     "correctIndex": 0
   },
   {
-    "q": "¿Qué es la memoria caché?",
+    "q": "Sobre arquitectura de computadores:",
     "options": [
-      "Un bus de comunicación.",
-      "Una memoria más rápida y pequeña que almacena instrucciones y datos frecuentemente utilizados.",
-      "Un tipo de memoria de almacenamiento permanente.",
-      "Un dispositivo de entrada y salida."
+      "El paralelismo se detecta antes de la ejecución.",
+      "Las máquinas superescalares proporcionan compatibilidad a nivel de código objeto con las másquinas escalares.",
+      "Un procesador superescalar de grado m tiene un CPI de m.",
+      "Los procesadores superescalares se utilizan en tareas intensivas de cálculo"
     ],
-    "correctIndex": 1
+    "correctIndex": 3
   },
   {
-    "q": "¿Cuál es la función principal de la memoria RAM en un computador?",
+    "q": "Sobre el módulo de E/S señala la falsa:",
     "options": [
-      "Coordinar las operaciones del sistema.",
-      "Almacenar datos de manera permanente.",
-      "Almacenar temporalmente las instrucciones y datos que la CPU necesita.",
-      "Realizar operaciones aritméticas y lógicas."
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "En la unidad de control:",
-    "options": [
-      "Activa unos y otros bloques de la ruta de datos dependiendo de la fase de ejecución en la que estemos.",
-      "Los datos fluyen dentro de sus componentes.",
-      "Está basado en una máquina de estados Mealy.",
-      "Es un circuito combinacional con muchas entradas."
+      "Nunca almacena datos.",
+      "Gestiona la comunicación con el periférico.",
+      "Realiza el control y temporización para evitar pérdidas de información.",
+      "Gestiona la comunicación con la CPU."
     ],
     "correctIndex": 0
   },
   {
-    "q": "¿Qué componente es conocido como el \"cerebro\" del computador?",
+    "q": "Sobre el programa:",
     "options": [
-      "La unidad de control.",
-      "La memoria RAM.",
-      "La unidad central de procesamiento (CPU).",
-      "El disco duro."
+      "Se ejecutan leyendo las instrucciones de la memoria principal.",
+      "Se ejecuta leyendo las instrucciones del disco.",
+      "Se compila desde el disco para ejecutarse.",
+      "Está escrito en lenguajes de alto nivel siempre."
     ],
-    "correctIndex": 2
+    "correctIndex": 0
   },
   {
-    "q": "¿Cuál es la función principal de la ruta de datos en un procesador?",
+    "q": "Sobre el reloj del procesador:",
     "options": [
-      "Gestionar y coordinar las operaciones.",
-      "Almacenar instrucciones.",
-      "Mover y procesar datos.",
-      "Realizar operaciones aritméticas y lógicas."
+      "Es una señal cuadrada (ceros y unos).",
+      "Es una señal sinusoidal.",
+      "Puede tener cualquier velocidad.",
+      "Es una señal diente de sierra."
     ],
-    "correctIndex": 2
+    "correctIndex": 0
+  },
+  {
+    "q": "Sobre la fase Fetch de ejecución de una instrucción:",
+    "options": [
+      "Carga datos de memoria.",
+      "Carga datos en memoria.",
+      "No involucra a la memoria puesto que es la fase en la que traemos la instrucción.",
+      "Involucra al banco de registros."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Sobre las técnicas para evitar problemas de dependencias en la segmentación:",
+    "options": [
+      "Se puede solucionar con instrucciones NOP.",
+      "Son solo hardware.",
+      "Son solo software.",
+      "Si se reordenan las instrucciones se solucionan siempre las dependencia."
+    ],
+    "correctIndex": 0
   },
   {
     "q": "Solamente opera con registros.",
@@ -1492,6 +943,66 @@
       "Solamente opera con registros.",
       "Trabaja directamente con la memoria.",
       "La entrada zero pone a cero la ALU."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Un Gigabyte (GB) equivale a:",
+    "options": [
+      "1024 Megabytes.",
+      "1000 Megabytes.",
+      "1024 Kilobytes.",
+      "1000 Kilobytes."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Un bus de datos de 32 bits puede transmitir:",
+    "options": [
+      "32 bytes a la vez.",
+      "32 bits a la vez.",
+      "32 instrucciones a la vez.",
+      "32 direcciones a la vez."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Un bus paralelo transmite datos:",
+    "options": [
+      "Bit a bit.",
+      "Varios bits simultáneamente (ej. 8, 16, 32 líneas).",
+      "Inalámbricamente.",
+      "Solo para impresoras."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Un bus serie transmite datos:",
+    "options": [
+      "Bit a bit por un solo canal.",
+      "Varios bits simultáneamente por varios canales.",
+      "Solo en una dirección.",
+      "Sin señal de reloj."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Un ciclo de 1 ns son:",
+    "options": [
+      "10 G de frecuencia de reloj.",
+      "1G de frecuencia de reloj.",
+      "No podemos saber la frecuencia de reloj.",
+      "2 G de frecuencia de reloj."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Un compilador traduce:",
+    "options": [
+      "Código máquina a ensamblador.",
+      "Código fuente de alto nivel a código máquina.",
+      "Código máquina a código fuente.",
+      "Texto a voz."
     ],
     "correctIndex": 1
   },
@@ -1506,72 +1017,143 @@
     "correctIndex": 0
   },
   {
-    "q": "Es Harvard si las instrucciones pueden tener distinto tamaño que los datos.",
+    "q": "Un computador digital:",
     "options": [
-      "Es Harvard si las instrucciones no pueden tener distinto tamaño que los datos.",
-      "Es Harvard si las instrucciones pueden tener distinto tamaño que los datos.",
-      "Es von Neumann si el bus de datos y el de instrucciones son bidireccionales.",
-      "Es Harvard si usamos el mismo bus para control que para datos."
+      "Los resultados dependen solo de los datos almacenados.",
+      "No trabaja con información hexadecimal.",
+      "Puede leer de la memoria datos de mayor tamaño que el ancho de palabra.",
+      "Trabaja internamente con valores de tensión analógicos."
     ],
-    "correctIndex": 1
+    "correctIndex": 2
   },
   {
-    "q": "El lenguaje máquina...",
+    "q": "Un desbordamiento (overflow) ocurre cuando:",
     "options": [
-      "Es un lenguaje de bajo nivel.",
-      "Es un lenguaje de muy alto nivel.",
-      "Es un lenguaje de alto nivel.",
-      "Ninguna de las otras respuestas."
+      "El resultado de una operación excede el rango de representación disponible.",
+      "Se divide por cero.",
+      "Se accede a una dirección de memoria inválida.",
+      "Se interrumpe el procesador."
     ],
     "correctIndex": 0
   },
   {
-    "q": "La ALU, es una parte de:",
+    "q": "Un fallo de caché (cache miss) ocurre cuando:",
     "options": [
-      "La memoria.",
-      "El bus de operaciones.",
-      "La CPU.",
-      "El multiplexor de entrada."
+      "El dato solicitado no se encuentra en la caché y hay que buscarlo en memoria principal.",
+      "La caché se rompe.",
+      "El dato está en la caché.",
+      "La CPU se detiene."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Un periférico de entrada es:",
+    "options": [
+      "El monitor.",
+      "La impresora.",
+      "El teclado.",
+      "Los altavoces."
     ],
     "correctIndex": 2
   },
   {
-    "q": "A la hora de ejecutarse un programa, ¿qué fases sigue?",
+    "q": "Un procesador multicore tiene:",
     "options": [
-      "Lectura de la instrucción, carga inicial, ejecución de la instrucción e incremento del PC.",
-      "Carga inicial, lectura de la instrucción, ejecución de la instrucción, incremento del PC y repetición de ciclo.",
-      "Lectura de la instrucción, carga inicial,, ejecución de la instrucción, incremento del PC y repetición de ciclo.",
-      "Lectura de la instrucción, ejecución de la instrucción, incremento del PC y repetición de ciclo."
+      "Un solo núcleo de procesamiento.",
+      "Múltiples núcleos de procesamiento en un solo chip.",
+      "Múltiples chips en la placa base.",
+      "Ninguna de las anteriores."
     ],
     "correctIndex": 1
   },
   {
-    "q": "¿Qué hace este código? .data x: word 10 y: word 2 z: word 0 text main: Iw $t0, x Iw $t1, y div $t0, $t1 mflo $t2 sw $t2, z li $v0, 10 syscall",
+    "q": "Un puerto USB permite:",
     "options": [
-      "Resta y de x y almacena el resultado en z.",
-      "Divide x por y y almacena el residuo en z.",
-      "Divide x por y y almacena el cociente en z.",
-      "Sumax e y y almacena el resultado en z."
+      "Conectar periféricos al computador.",
+      "Aumentar la memoria RAM.",
+      "Refrigerar el sistema.",
+      "Conectar el computador a la corriente eléctrica."
     ],
-    "correctIndex": 2
+    "correctIndex": 0
   },
   {
-    "q": "¿Qué hace este código? data val: word 16. res: word 0 text main: Iw $t0, val li St1, 4 div $to, $t1 mfhi $t2 sw $t2, res li $v0, 10 syscall",
+    "q": "Un sistema operativo es:",
     "options": [
-      "Resta 4 de val y almacena el resultado en res.",
-      "Suma val y 4 y almacena el resultado en res.",
-      "Divide val por 4 y almacena el cociente en res.",
-      "Divide val por 4 y almacena el residuo en res."
+      "Un programa que gestiona los recursos del hardware y provee servicios a los programas de aplicación.",
+      "Un conjunto de circuitos electrónicos.",
+      "Un dispositivo de entrada/salida.",
+      "Un tipo de memoria."
     ],
-    "correctIndex": 3
+    "correctIndex": 0
   },
   {
-    "q": "¿Qué hace este código? data i: word 3 sum: .word 0 text main: lw $t0, i Iw $t1, sum loop: add $t1, $t1, Sto addi $to, $t0, -1 bnez $t0, loop sw $t1, sum li $v0, 10 syscall",
+    "q": "Una GPU está especializada en:",
     "options": [
-      "Resta los valores de i desde 3 hasta 1 y almacena el resultado en sum.",
-      "Multiplica los valores de i desde 3 hasta 1 y almacena el resultado en sum.",
-      "Suma los valores de i desde 3 hasta 1 y almacena el resultado en sum.",
-      "Divide los valores de i desde 3 hasta 1 y almacena el resultado en sum."
+      "Procesamiento de texto.",
+      "Procesamiento gráfico y paralelo masivo.",
+      "Gestión de archivos.",
+      "Ejecutar el sistema operativo."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Una instrucción de salto condicional:",
+    "options": [
+      "Siempre altera el flujo del programa.",
+      "Altera el flujo del programa solo si se cumple una condición (basada en flags).",
+      "Detiene el programa.",
+      "Llama a una subrutina."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Una instrucción es \"lw $t1, 4($t2)\" en MIPS32",
+    "code": "lw $t1, 4($t2)",
+    "options": [
+      "Tipo R",
+      "Tipo I",
+      "Tipo J",
+      "Tipo S"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Una interrupción es:",
+    "options": [
+      "Un fallo en el hardware.",
+      "Una señal enviada a la CPU para detener su ejecución actual y atender un evento.",
+      "Un tipo de instrucción de salto.",
+      "El proceso de apagar el computador."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Una memoria volátil se caracteriza por ...",
+    "options": [
+      "Parte del computador donde se almacenan datos.",
+      "Se pierde la información si se interrumpe el flujo eléctrico.",
+      "No necesitar energía para perdurar.",
+      "Ninguna de las otras respuestas."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "¿Cuál es el valor de MIPS de un procesador que funciona a 2 MHz y es capaz de ejecutar una media de 3 instrucciones por ciclo?",
+    "options": [
+      "6.",
+      "3/2.",
+      "No podemos saber el valor de MIPS.",
+      "2000/3."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Cuál es la característica principal de la arquitectura MIPS32?",
+    "options": [
+      "No soporta operaciones aritméticas.",
+      "Utiliza un conjunto de instrucciones complejo.",
+      "Tiene un conjunto reducido de instrucciones.",
+      "Es una arquitectura CISC."
     ],
     "correctIndex": 2
   },
@@ -1586,6 +1168,86 @@
     "correctIndex": 1
   },
   {
+    "q": "¿Cuál es la función del registro de estado (FLAGS) en la CPU?",
+    "options": [
+      "Indicar condiciones de la última operación de la ALU (acarreo, cero, signo, desbordamiento).",
+      "Almacenar el resultado de la operación.",
+      "Controlar el flujo del programa.",
+      "Almacenar la dirección de la siguiente instrucción."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Cuál es la función principal de la memoria RAM en un computador?",
+    "options": [
+      "Coordinar las operaciones del sistema.",
+      "Almacenar datos de manera permanente.",
+      "Almacenar temporalmente las instrucciones y datos que la CPU necesita.",
+      "Realizar operaciones aritméticas y lógicas."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "¿Cuál es la función principal de la ruta de datos en un procesador?",
+    "options": [
+      "Gestionar y coordinar las operaciones.",
+      "Almacenar instrucciones.",
+      "Mover y procesar datos.",
+      "Realizar operaciones aritméticas y lógicas."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "¿Cuál es una característica de la memoria caché?",
+    "options": [
+      "Almacena temporalmente los datos más frecuentemente utilizados.",
+      "Es utilizada solo para almacenamiento externo.",
+      "Es más lenta que la memoria principal.",
+      "Almacena datos de manera permanente."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Cuál es una ventaja del lenguaje ensamblador?",
+    "options": [
+      "Alta portabilidad entre diferentes arquitecturas.",
+      "Independencia del hardware específico.",
+      "Facilidad de escritura y legibilidad.",
+      "Control y precisión sobre el hardware."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "¿Qué característica tiene el formato de instrucciones en MIPS32?",
+    "options": [
+      "Formato variable de 8 a 32 bits.",
+      "Formato variable de 16 a 64 bits.",
+      "Formato fijo de 64 bits.",
+      "Formato fijo de 32 bits."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "¿Qué componente es conocido como el \"cerebro\" del computador?",
+    "options": [
+      "La unidad de control.",
+      "La memoria RAM.",
+      "La unidad central de procesamiento (CPU).",
+      "El disco duro."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "¿Qué es el bus de comunicación en un computador?",
+    "options": [
+      "Un conjunto de líneas de transmisión que permiten la comunicación entre los componentes del hardware.",
+      "Un dispositivo de almacenamiento.",
+      "Un tipo de memoria de acceso aleatorio.",
+      "Un dispositivo de entrada y salida."
+    ],
+    "correctIndex": 0
+  },
+  {
     "q": "¿Qué es el juego de instrucciones del MIPS32?",
     "options": [
       "Un conjunto de comandos que el procesador MIPS32 puede ejecutar directamente.",
@@ -1596,14 +1258,238 @@
     "correctIndex": 0
   },
   {
-    "q": "¿Qué instrucción se utiliza para cargar la dirección de una etiqueta o variable en un registro en MIPS32?",
+    "q": "¿Qué es la jerarquia de memoria?",
     "options": [
-      "li",
-      "la",
-      "Iw",
-      "sw"
+      "Un tipo de memoria volátil.",
+      "Una estrategia para combinar diferentes tipos de memoria en un sistema.",
+      "Un tipo de memoria no volátil.",
+      "Un método de acceso secuencial."
     ],
     "correctIndex": 1
+  },
+  {
+    "q": "¿Qué es la memoria caché?",
+    "options": [
+      "Un bus de comunicación.",
+      "Una memoria más rápida y pequeña que almacena instrucciones y datos frecuentemente utilizados.",
+      "Un tipo de memoria de almacenamiento permanente.",
+      "Un dispositivo de entrada y salida."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "¿Qué es la memoria no volátil?",
+    "options": [
+      "Memoria que se utiliza solo para almacenamiento temporal.",
+      "Memoria que pierde los datos cuando se apaga el sistema.",
+      "Memoria que se utiliza solo para la caché.",
+      "Memoria que retiene los datos incluso sin energia."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "¿Qué es la memoria volátil?",
+    "options": [
+      "Memoria que pierde los datos cuando se apaga el sistema.",
+      "Memoria utilizada solo para la caché.",
+      "Memoria que retiene los datos incluso sin energía.",
+      "Memoria utilizada solo para almacenamiento externo."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué es la unidad de control en un procesador?",
+    "options": [
+      "La parte del procesador que maneja la entrada y salida de datos.",
+      "La parte del procesador que gestiona y coordina las operaciones.",
+      "La parte del procesador que almacena datos.",
+      "La parte del procesador que realiza operaciones aritméticas."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "¿Qué es un fallo de caché?",
+    "options": [
+      "Cuando el bloque solicitado no se encuentra en la caché.",
+      "Cuando la caché almacena datos permanentemente.",
+      "Cuando la caché no necesita ser refrescada.",
+      "Cuando el bloque solicitado ya está en la caché."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué es una pseudoinstrucción en MIPS32?",
+    "options": [
+      "Una instrucción que se corresponde directamente con una instrucción máquina.",
+      "Una instrucción que se utiliza solo en modo kernel.",
+      "Una instrucción que el ensamblador traduce a una o más instrucciones máquina.",
+      "Una instrucción que no tiene una representación binaria específica."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "options": [
+      "Multiplica a y b y almacena el resultado en c.",
+      "Suma a y b y almacena el resultado en c.",
+      "Divide a por b y almacena el resultado en c.",
+      "Resta b de a y almacena el resultado en c."
+    ],
+    "correctIndex": 0,
+    "code": "mul $t2, $t0, $t1"
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "options": [
+      "Divide los valores de a y b y almacena el resultado en c.",
+      "Resta el valor de b de a y almacena el resultado en c.",
+      "Multiplica los valores de a y b y almacena el resultado en c.",
+      "Suma los valores de a y b y almacena el resultado en c."
+    ],
+    "correctIndex": 1,
+    "code": "sub $t2, $t0, $t1"
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "options": [
+      "Compara x e y, almacena 0 en z si son iguales, de lo contrario almacena 1.",
+      "Suma x e y y almacena el resultado en z.",
+      "Compara x e y, almacena 1 en z si son iguales, de lo contrario almacena 0.",
+      "Resta y de x y almacena el resultado en z."
+    ],
+    "correctIndex": 2,
+    "code": ".data\nx: .word 7\ny: .word 5\nz: .word 0\n.text\nmain:\n  lw $t0, x\n  lw $t1, y\n  beq $t0, $t1, equal\n  bne $t0, $t1, notequal\nequal:\n  li $t2, 1\n  j end\nnotequal:\n  li $t2, 0\nend:\n  sw $t2, z\n  li $v0, 10\n  syscall"
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "options": [
+      "Suma val y 4 y almacena el resultado en res.",
+      "Divide val por 4 y almacena el residuo en res.",
+      "Divide val por 4 y almacena el cociente en res.",
+      "Resta 4 de val y almacena el resultado en res."
+    ],
+    "correctIndex": 1,
+    "code": "div $t0, $t1\nmfhi $t2"
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "options": [
+      "Suma los valores de a y b y almacena el resultado en c.",
+      "Divide los valores de a y b y almacena el resultado en c.",
+      "Resta el valor de b de a y almacena el resultado en c.",
+      "Multiplica los valores de a y b y almacena el resultado en c."
+    ],
+    "correctIndex": 2,
+    "code": ".data\na: .word 8\nb: .word 3\nc: .word 0\n.text\nmain:\n  lw $t0, a\n  lw $t1, b\n  sub $t2, $t0, $t1\n  sw $t2, c\n  li $v0, 10\n  syscall"
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "options": [
+      "Resta y de x y almacena el resultado en z.",
+      "Divide x por y y almacena el residuo en z.",
+      "Divide x por y y almacena el cociente en z.",
+      "Suma x e y y almacena el resultado en z."
+    ],
+    "correctIndex": 2,
+    "code": ".data\nx: .word 10\ny: .word 2\nz: .word 0\n.text\nmain:\n  lw $t0, x\n  lw $t1, y\n  div $t0, $t1\n  mflo $t2\n  sw $t2, z\n  li $v0, 10\n  syscall"
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "options": [
+      "Resta los valores de i desde 3 hasta 1 y almacena el resultado en sum.",
+      "Multiplica los valores de i desde 3 hasta 1 y almacena el resultado en sum.",
+      "Suma los valores de i desde 3 hasta 1 y almacena el resultado en sum.",
+      "Divide los valores de i desde 3 hasta 1 y almacena el resultado en sum."
+    ],
+    "correctIndex": 2,
+    "code": ".data\ni: .word 3\nsum: .word 0\n.text\nmain:\n  lw $t0, i\n  lw $t1, sum\nloop:\n  add $t1, $t1, $t0\n  addi $t0, $t0, -1\n  bnez $t0, loop\n  sw $t1, sum\n  li $v0, 10\n  syscall"
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "options": [
+      "Resta 4 de val y almacena el resultado en res.",
+      "Suma val y 4 y almacena el resultado en res.",
+      "Divide val por 4 y almacena el cociente en res.",
+      "Divide val por 4 y almacena el residuo en res."
+    ],
+    "correctIndex": 3,
+    "code": ".data\nval: .word 16\nres: .word 0\n.text\nmain:\n  lw $t0, val\n  li $t1, 4\n  div $t0, $t1\n  mfhi $t2\n  sw $t2, res\n  li $v0, 10\n  syscall"
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "code": ".data\ni: .word 4\nsum: .word 0\n.text\nmain:\n  lw $t0, i\n  lw $t1, sum\nloop:\n  add $t1, $t1, $t0\n  addi $t0, $t0, -1\n  bnez $t0, loop\n  sw $t1, sum\n  li $v0, 10\n  syscall",
+    "options": [
+      "Suma los valores de i desde 4 hasta 1 y almacena el resultado en sum.",
+      "Divide los valores de i desde 4 hasta 1 y almacena el resultado en sum.",
+      "Multiplica los valores de i desde 4 hasta 1 y almacena el resultado en sum.",
+      "Resta los valores de i desde 4 hasta 1 y almacena el resultado en sum."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "code": ".data\nval: .word 12\nres: .word 0\n.text\nmain:\n  lw $t0, val\n  li $t1, 4\n  div $t0, $t1\n  mfhi $t2\n  sw $t2, res\n  li $v0, 10\n  syscall",
+    "options": [
+      "Divide val por 4 y almacena el residuo en res.",
+      "Divide val por 4 y almacena el cociente en res.",
+      "Suma val y 4 y almacena el resultado en res.",
+      "Resta 4 de val y almacena el resultado en res."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "code": ".data\na: .word 10\nb: .word 20\nc: .word 0\n.text\nmain:\n  lw $t0, a\n  lw $t1, b\n  slt $t2, $t0, $t1\n  sw $t2, c\n  li $v0, 10\n  syscall",
+    "options": [
+      "Compara si a es menor que b y almacena 1 en c si es verdadero, de lo contrario almacena 0.",
+      "Resta el valor de b de a y almacena el resultado en c.",
+      "Suma los valores de a y b y almacena el resultado en c.",
+      "Divide a entre b y almacena el cociente en c."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "code": ".data\nx: .word 5\ny: .word 10\nz: .word 0\n.text\nmain:\n  lw $t0, x\n  lw $t1, y\n  add $t2, $t0, $t1\n  sw $t2, z\n  li $v0, 10\n  syscall",
+    "options": [
+      "Suma los valores de x e y y almacena el resultado en z.",
+      "Resta y de x y almacena el resultado en z.",
+      "Divide x por y y almacena el cociente en z.",
+      "Multiplica x por y y almacena el resultado en z."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "code": ".data\nval: .word 9\nres: .word 0\n.text\nmain:\n  lw $t0, val\n  li $t1, 3\n  div $t0, $t1\n  mflo $t2\n  sw $t2, res\n  li $v0, 10\n  syscall",
+    "options": [
+      "Divide el valor de val por 3 y almacena el resultado en res.",
+      "Divide el valor de val por 3 y almacena el residuo en res.",
+      "Suma val y 3 y almacena el resultado en res.",
+      "Resta 3 de val y almacena el resultado en res."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "code": ".data\ni: .word 1\nsum: .word 0\n.text\nmain:\n  lw $t0, i\n  lw $t1, sum\n  add $t1, $t1, $t0\n  sw $t1, sum\n  li $v0, 10\n  syscall",
+    "options": [
+      "Suma el valor de i a sum y almacena el resultado en sum.",
+      "Resta el valor de i a sum y almacena el resultado en sum.",
+      "Multiplica el valor de i por sum y almacena el resultado en sum.",
+      "Divide el valor de sum entre i y almacena el resultado en sum."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué hace la instrucción 'lb' en MIPS32?",
+    "options": [
+      "Almacena un byte (8 bits) desde un registro en la memoria.",
+      "Carga una palabra (32 bits) desde la memoria en un registro.",
+      "Carga un byte (8 bits) desde la memoria en un registro, extendiéndolo con signo.",
+      "Almacena una palabra (32 bits) desde un registro en la memoria."
+    ],
+    "correctIndex": 2
   },
   {
     "q": "¿Qué hace la instrucción 'lbu' en MIPS32?",
@@ -1616,14 +1502,225 @@
     "correctIndex": 0
   },
   {
-    "q": "¿Qué hace este código? data a: .word 8 b: word 3 c:.word 0 text main: lw $t0, a lw $t1, b sub $t2, $t0, $t1 sw $t2, c li $v0, 10 syscall",
+    "q": "¿Qué instrucción en MIPS32 se utiliza para almacenar un byte desde un registro en la memoria?",
     "options": [
-      "Suma los valores de a y b y almacena el resultado en",
-      "d. Multiplica los valores de a y b y almacena el resultado en c.",
-      "Para sumar dos posiciones de memoria no hace falta cargarlas en registros.",
-      "SUB"
+      "sw",
+      "sb",
+      "lb",
+      "lw"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "¿Qué instrucción en MIPS32 se utiliza para cargar un byte desde la memoria en un registro, extendiéndolo con ceros (sin signo)?",
+    "options": [
+      "lbu",
+      "lw",
+      "lb",
+      "sb"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué instrucción en MIPS32 se utiliza para cargar un valor inmediato en un registro?",
+    "options": [
+      "sw",
+      "sb",
+      "li",
+      "lw"
     ],
     "correctIndex": 2
+  },
+  {
+    "q": "¿Qué instrucción en MIPS32 se utiliza para cargar una palabra desde la memoria en un registro?",
+    "options": [
+      "lb",
+      "sb",
+      "sw",
+      "lw"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "¿Qué instrucción en MIPS32 se utiliza para sumar dos registros?",
+    "options": [
+      "SUB",
+      "ADD",
+      "DIV",
+      "MUL"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "¿Qué instrucción en ensamblador se utiliza para mover datos en MIPS32?",
+    "options": [
+      "SW",
+      "MOV",
+      "ADD",
+      "LW"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "¿Qué instrucción se utiliza para cargar la dirección de una etiqueta o variable en un registro en MIPS32?",
+    "options": [
+      "li",
+      "la",
+      "Iw",
+      "sw"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "¿Qué modo de direccionamiento utiliza un registro base más un valor de desplazamiento?",
+    "options": [
+      "Direccionamiento inmediato.",
+      "Direccionamiento directo a registro.",
+      "Direccionamiento implícito.",
+      "Direccionamiento indirecto a registro con desplazamiento."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "¿Qué política de escritura en caché realiza la escritura tanto en la caché como en la memoria principal?",
+    "options": [
+      "Escritura directa.",
+      "Escritura diferida.",
+      "Escritura aleatoria.",
+      "Escritura secuencial."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué política de reemplazo de caché selecciona al azar un bloque para ser reemplazado?",
+    "options": [
+      "Reemplazo aleatorio.",
+      "Reemplazo LRU.",
+      "Reemplazo directo.",
+      "Reemplazo FIFO."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué principio sugiere que si se accede a un dato, es probable que se accedan a otros datos cercanos en la memoria?",
+    "options": [
+      "Localidad espacial.",
+      "Localidad temporal.",
+      "Acceso directo.",
+      "Acceso aleatorio."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué registro en MIPS32 se utiliza como puntero de pila?",
+    "options": [
+      "$fp",
+      "$ra",
+      "$gp",
+      "$sp"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "¿Qué registro se utiliza para almacenar la dirección de retorno de las subrutinas en MIPS32?",
+    "options": [
+      "$sp",
+      "$ra",
+      "$gp",
+      "$fp"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "¿Qué se hace en la fase de búsqueda de instrucción (FETCH)?",
+    "options": [
+      "Se busca la instrucción en la memoria principal.",
+      "Se ejecuta la instrucción.",
+      "Se decodifica la instrucción.",
+      "Se almacena el resultado de la instrucción."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué significa ‘Little Endian’ en la ordenación de datos?",
+    "options": [
+      "No hay una ordenación específica.",
+      "Los bytes se ordenan de manera aleatoria.",
+      "El byte menos significativo se coloca en la primera posición.",
+      "El byte más significativo se coloca en la primera posición."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "¿Qué tipo de memoria es más rápida pero también más cara y con menor densidad de almacenamiento?",
+    "options": [
+      "SRAM.",
+      "Memoria flash.",
+      "DRAM.",
+      "Memoria magnética."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué tipo de memoria es volátil?",
+    "options": [
+      "Memoria RAM.",
+      "Memoria flash.",
+      "Memoria ROM.",
+      "Discos duros."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué tipo de memoria se utiliza para la memoria principal debido a su alta densidad de almacenamiento?",
+    "options": [
+      "Memoria flash.",
+      "DRAM.",
+      "Memoria magnética.",
+      "SRAM."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "¿Qué tipo de memoria se utiliza principalmente para almacenamiento externo y ofrece alta capacidad a un costo bajo?",
+    "options": [
+      "Memoria magnética.",
+      "Memoria óptica.",
+      "Memoria de semiconductores.",
+      "Memoria magneto-óptica."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué tipo de memoria utiliza transistores para almacenar datos en un estado estable?",
+    "options": [
+      "Memoria flash.",
+      "SRAM.",
+      "Mernoria magnética.",
+      "DRAM."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "¿Qué técnica se usa para permitir que varios dispositivos de E/S transfieran datos directamente a la memoria sin intervención constante de la CPU?",
+    "options": [
+      "DMA (Acceso Directo a Memoria).",
+      "Interrupciones por hardware.",
+      "Encuesta (Polling).",
+      "Segmentación de instrucciones."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "¿Qué hace este código?",
+    "code": ".data\nx: .word 15\ny: .word 5\nz: .word 0\n.text\nmain:\n  lw $t0, x\n  lw $t1, y\n  div $t0, $t1\n  mflo $t2\n  sw $t2, z\n  li $v0, 10\n  syscall",
+    "options": [
+      "Divide x por y y almacena el cociente en z.",
+      "Divide x por y y almacena el residuo en z.",
+      "Suma x e y y almacena el resultado en z.",
+      "Resta y de x y almacena el resultado en z."
+    ],
+    "correctIndex": 0
   }
 ];
 
@@ -2734,7 +2831,7 @@
         const rng = mulberry32(seed);
         const base = DATASETS[datasetId] || [];
         const order = shuffle([...Array(base.length).keys()], rng);
-        const optionOrder = base.map(() => shuffle([0, 1, 2, 3], rng));
+        const optionOrder = base.map((item) => shuffle([...Array(item.options.length).keys()], rng));
         session = {
             dataset: datasetId,
             seed,
@@ -2756,6 +2853,13 @@
             const parsed = JSON.parse(raw);
             if (!parsed || parsed.dataset !== datasetId) return null;
             if (!Array.isArray(parsed.order) || !Array.isArray(parsed.optionOrder)) return null;
+
+            const base = DATASETS[datasetId] || [];
+            if (parsed.order.length !== base.length) return null;
+            if (parsed.optionOrder.length !== base.length) return null;
+            const orderOk = parsed.optionOrder.every((ord, i) => Array.isArray(ord) && ord.length === base[i].options.length);
+            if (!orderOk) return null;
+
             return parsed;
         } catch (e) {
             return null;
@@ -2780,7 +2884,23 @@
         const options = order.map((i) => base.options[i]);
         const correctIndex = order.indexOf(base.correctIndex);
         const selectedIndex = session.answers[baseIndex];
-        return { baseIndex, q: base.q, options, correctIndex, selectedIndex };
+        return { baseIndex, q: base.q, code: base.code, options, correctIndex, selectedIndex };
+    }
+
+    function escapeHtml(text) {
+        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+        return String(text).replace(/[&<>"']/g, (m) => map[m]);
+    }
+
+    function renderQuestion(qData) {
+        const questionEl = document.getElementById('question-text');
+        if (qData.code) {
+            const safeQ = escapeHtml(qData.q);
+            const safeCode = escapeHtml(qData.code);
+            questionEl.innerHTML = `${safeQ}<pre class="code-block">${safeCode}</pre>`;
+            return;
+        }
+        questionEl.textContent = qData.q;
     }
 
     function renderOptions(qData) {
@@ -2821,7 +2941,7 @@
         const qData = getQuestionByIndex(session.currentIdx);
         document.getElementById('q-idx').innerText = session.currentIdx + 1;
         document.getElementById('q-total').innerText = session.order.length;
-        document.getElementById('question-text').innerText = qData.q;
+        renderQuestion(qData);
         resetHint();
 
         const topic = session.dataset === 'so' ? 'sistemas operativos' : 'estructura de computadores';
@@ -2897,7 +3017,7 @@
             session.completed = true;
             saveState();
             recordHistory();
-            alert(`?Test finalizado!
+            alert(`¡Test finalizado!
 Aciertos: ${session.hits}
 Fallos: ${session.misses}`);
         }
@@ -2941,17 +3061,22 @@ Fallos: ${session.misses}`);
         hintBox.textContent = 'Generando pista...';
 
         const qData = getQuestionByIndex(session.currentIdx);
+        const promptLines = [
+            'Eres un tutor. Da una pista breve (2-4 frases) basada en teoría.',
+            'No digas la respuesta ni la letra correcta.',
+            'Pregunta y opciones:',
+            `Pregunta: ${qData.q}`,
+            `Opciones: ${qData.options.map((opt, i) => `${letrasOpciones[i]}. ${opt}`).join(' | ')}`
+        ];
+        if (qData.code) {
+            promptLines.splice(4, 0, `Código:\n${qData.code}`);
+        }
+
         const payload = {
             contents: [{
                 role: 'user',
                 parts: [{
-                    text: [
-                        'Eres un tutor. Da una pista breve (2-4 frases) basada en teoría.',
-                        'No digas la respuesta ni la letra correcta.',
-                        'Pregunta y opciones:',
-                        `Pregunta: ${qData.q}`,
-                        `Opciones: ${qData.options.map((opt, i) => `${letrasOpciones[i]}. ${opt}`).join(' | ')}`
-                    ].join('\\n')
+                    text: promptLines.join('\n')
                 }]
             }]
         };

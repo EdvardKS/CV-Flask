@@ -14,3 +14,5 @@ replit.nix
 .yml
 /nginx/*
 .toml
+
+tmp_*
