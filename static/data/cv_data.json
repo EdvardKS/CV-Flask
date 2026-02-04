@@ -1,5 +1,9 @@
 {
-  "languages": ["en", "es", "hy"],
+  "languages": [
+    "en",
+    "es",
+    "hy"
+  ],
   "translations": {
     "name": {
       "en": "Edvard Khachatryan Sahakyan",
@@ -12,9 +16,9 @@
       "hy": "Արհեստական բանականության ինժեներ և Data Science ճարտարապետ"
     },
     "summary": {
-      "es": "Soy una persona proactiva y enfocada en mantenerme, junto con mi empresa, a la vanguardia de la tecnología en el campo de la inteligencia artificial. \n\n  Mi experiencia abarca la dirección y organización de proyectos, respaldada por múltiples certificaciones en gestión de equipos, metodologías ágiles y de cascada, y una sólida ética profesional. \n\n Como experto en Python, manejo de manera avanzada todas las librerías relacionadas con IA, como PyTorch, Transformers, y APIs de Azure, además de frameworks como Django y Flask. También soy competente en PHP y JavaScript, con amplio dominio de frameworks como Laravel, Node.js y Express. Mi conocimiento se extiende a bases de datos relacionales y no relacionales, y actualmente me especializo en ERP y CRM utilizando Business Central, a la par que profundizo en finanzas y sigo avanzando en mi formación en inteligencia artificial. Fuera del ámbito profesional, disfruto de varias pasiones. Soy entrenador de baloncesto desde los 17 años, y la competición me motiva de forma saludable. \n\n También soy un entusiasta de las motocicletas y la fotografía, y disfruto de actividades que me permitan mantenerme activo, como el ejercicio y juegos de estrategia como el ajedrez. Mi curiosidad constante y la disposición a aprender de mis errores me impulsan a mejorar en cada área de mi vida.",
-      "en": "I am a proactive individual focused on keeping myself and my company at the forefront of technology in the field of artificial intelligence. \n\n My experience encompasses project management and organization, supported by multiple certifications in team management, agile and waterfall methodologies, and a strong professional ethic. \n\n As a Python expert, I have advanced proficiency in all AI-related libraries such as PyTorch, Transformers, and Azure APIs, as well as frameworks like Django and Flask. I am also competent in PHP and JavaScript, with extensive mastery of frameworks such as Laravel, Node.js, and Express. My knowledge extends to relational and non-relational databases, and I currently specialize in ERP and CRM using Business Central, while deepening my understanding of finance and continuing to advance my training in artificial intelligence. \n\n Outside of the professional realm, I enjoy several passions. I have been a basketball coach since I was 17, and competition motivates me in a healthy way. I am also an enthusiast of motorcycles and photography, and I enjoy activities that allow me to stay active, such as exercise and strategy games like chess. My constant curiosity and willingness to learn from my mistakes drive me to improve in every area of my life.",
-      "hy": "Ես պրոակտիվ անձնավորություն եմ, որը կենտրոնացած է ինձ և իմ ընկերությունը արհեստական ինտելեկտի ոլորտում տեխնոլոգիայի առաջատար դիրքում պահելու վրա: \n\n  Իմ փորձառությունը ներառում է նախագծերի ղեկավարում և կազմակերպում, որը ամրապնդված է թիմի կառավարման, Agile և Waterfall մեթոդաբանությունների բազմաթիվ սերտիֆիկատներով և ամուր մասնագիտական էթիկայով: \n\n Որպես Python-ի փորձագետ՝ ես ունեմ խորացված գիտելիքներ ԱԻ-ի հետ կապված բոլոր գրադարաններում, ինչպիսիք են՝ PyTorch-ը, Transformers-ը և Azure API-ները, ինչպես նաև Django և Flask ֆրեյմվորքերում: Բացի այդ, տիրապետում եմ PHP-ին և JavaScript-ին՝ ունենալով խորացված գիտելիքներ Laravel, Node.js և Express ֆրեյմվորքերի վերաբերյալ: Իմ փորձառությունը ընդգրկում է հարաբերակցային և ոչ հարաբերակցային տվյալների բազաները, և ես ներկայումս մասնագիտանում եմ ERP և CRM ոլորտներում՝ օգտագործելով Business Central-ը, միաժամանակ խորացնելով իմ ֆինանսական գիտելիքները և շարունակելով իմ առաջընթացը ԱԻ-ի ուսուցման մեջ: Մասնագիտական ոլորտից դուրս ես մի շարք կրքեր ունեմ: Ես 17 տարեկանից մարզիչ եմ աշխատում բասկետբոլում, և մրցակցությունը առողջ կերպով դրդում է ինձ առաջ: \n\n Ես նաև մոտոցիկլետների և լուսանկարչության էնտուզիաստ եմ, և սիրում եմ այնպիսի գործունեություն, որն ինձ ակտիվ է պահում, ինչպիսիք են՝ ֆիզիկական վարժությունները և ռազմավարական խաղերը, օրինակ՝ շախմատը: Իմ մշտական հետաքրքրասիրությունն ու իմ սխալներից սովորելու պատրաստակամությունը մղում են ինձ կատարելագործվել կյանքի յուրաքանչյուր ոլորտում:"
+      "es": "Soy científico de datos con una mentalidad muy analítica, curiosa y orientada a la mejora continua. Me considero una persona proactiva, responsable y muy enfocada en aportar valor real al negocio: me gusta entender el problema, traducirlo a datos y construir soluciones útiles, claras y sostenibles. En mi día a día trabajo con Análisis de datos, modelado y desarrollo de soluciones de IA a medida, además de acompañar a clientes en consultorías donde el objetivo es que la solución sea entendible y mantenible. He crecido profesionalmente desde un rol junior en Navegatel hasta mi posición actual como científico de datos middle en JNC Sistemas Informáticos SL, ganando experiencia, calidad y criterio técnico. Tengo base en MLOps/LLMOps y uso herramientas como Python, SQL, Docker y plataformas cloud cuando el proyecto lo requiere. Actualmente curso Ingeniería Informática en la Universidad Alfonso X el Sabio y sigo formándome para combinar solidez técnica con una visión práctica enfocada en resultados.",
+      "en": "I'm a data scientist with an analytical mindset, strong curiosity, and a continuous-improvement attitude. I'm proactive, responsible, and focused on delivering real business value: I like to understand the problem, translate it into data, and build clear, sustainable solutions. My daily work includes data analysis, modeling, and custom AI development, as well as consulting where the goal is to deliver solutions that are understandable and maintainable. I have grown from a junior role at Navegatel to my current position as a mid-level data scientist at JNC Sistemas Informáticos SL, gaining experience, quality, and technical judgment. I also have a foundation in MLOps/LLMOps and use tools like Python, SQL, Docker, and cloud platforms when needed. I am currently pursuing Computer Engineering at Universidad Alfonso X el Sabio and keep training to combine solid technical skills with a practical, results-focused vision.",
+      "hy": "I'm a data scientist with an analytical mindset, strong curiosity, and a continuous-improvement attitude. I'm proactive, responsible, and focused on delivering real business value: I like to understand the problem, translate it into data, and build clear, sustainable solutions. My daily work includes data analysis, modeling, and custom AI development, as well as consulting where the goal is to deliver solutions that are understandable and maintainable. I have grown from a junior role at Navegatel to my current position as a mid-level data scientist at JNC Sistemas Informáticos SL, gaining experience, quality, and technical judgment. I also have a foundation in MLOps/LLMOps and use tools like Python, SQL, Docker, and cloud platforms when needed. I am currently pursuing Computer Engineering at Universidad Alfonso X el Sabio and keep training to combine solid technical skills with a practical, results-focused vision."
     },
     "education": {
       "title": {
@@ -23,6 +27,22 @@
         "hy": "Կրթություն և ուսուցում"
       },
       "entries": [
+        {
+          "institution": "Universidad Alfonso X el Sabio",
+          "period": "09/2025 - Current",
+          "degree": {
+            "en": "Computer Engineering",
+            "es": "Ingeniería Informática",
+            "hy": "Computer Engineering"
+          },
+          "location": {
+            "en": "Madrid, Spain",
+            "es": "Madrid, España",
+            "hy": "Madrid, Spain"
+          },
+          "certificate_image": "uax.png",
+          "certificate_pdf_link": "uax.png"
+        },
         {
           "institution": "IES Abastos",
           "period": "01/10/2023 – 31/05/2024",
@@ -128,6 +148,46 @@
         "hy": "Աշխատանքային փորձ"
       },
       "entries": [
+        {
+          "position": {
+            "en": "Data Scientist (Mid-level)",
+            "es": "científico de datos middle",
+            "hy": "Data Scientist (Mid-level)"
+          },
+          "company": "JNC Sistemas Informáticos SL",
+          "period": "09/2025 - Current",
+          "location": {
+            "en": "Spain",
+            "es": "España",
+            "hy": "Spain"
+          },
+          "responsibilities": {
+            "en": "Data analysis, custom AI development, and consulting with higher quality and deeper experience.",
+            "es": "Análisis de datos, desarrollo de IA a medida y consultorías con mayor calidad y experiencia.",
+            "hy": "Data analysis, custom AI development, and consulting with higher quality and deeper experience."
+          },
+          "img_name": "jnc.png"
+        },
+        {
+          "position": {
+            "en": "Junior Data Scientist",
+            "es": "científico de datos junior",
+            "hy": "Junior Data Scientist"
+          },
+          "company": "Navegatel",
+          "period": "09/2024 - 09/2025",
+          "location": {
+            "en": "Spain",
+            "es": "España",
+            "hy": "Spain"
+          },
+          "responsibilities": {
+            "en": "Data analysis, custom AI development, and consulting.",
+            "es": "Análisis de datos, programación a medida de IA y consultorías.",
+            "hy": "Data analysis, custom AI development, and consulting."
+          },
+          "img_name": "navegatel.jpg"
+        },
         {
           "position": {
             "en": "Web Developer",

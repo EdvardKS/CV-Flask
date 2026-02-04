@@ -1,5 +1,9 @@
 {
-  "languages": ["en", "es", "hy"],
+  "languages": [
+    "en",
+    "es",
+    "hy"
+  ],
   "translations": {
     "name": {
       "en": "Edvard Khachatryan Sahakyan",
@@ -12,36 +16,9 @@
       "hy": "Արհեստական բանականության ինժեներ և Data Science ճարտարապետ"
     },
     "summary": {
-      "en": "Extensive experience in application development, deployment, and DevOps. Proficient in technologies such as Docker, AWS, Azure, TensorFlow, and PyTorch. Committed to continuous learning to drive the development of cutting-edge technology.",
-      "es": "Amplia experiencia en desarrollo de aplicaciones, implementación y DevOps. Competente en tecnologías como Docker, AWS, Azure, TensorFlow y PyTorch. Comprometido con el aprendizaje continuo para impulsar el desarrollo de tecnología de vanguardia.",
-      "hy": "Ունի լայն փորձ հավելվածների մշակման, տեղադրման և DevOps-ի ոլորտներում: Տիրապետում է տեխնոլոգիաներին, ինչպիսիք են Docker-ը, AWS-ը, Azure-ը, TensorFlow-ը և PyTorch-ը: Հավատարիմ է շարունակական ուսուցմանն` ի նպաստ առաջադեմ տեխնոլոգիաների զարգացմանը:"
-    },
-    "personalInfo": {
-      "dateOfBirth": {
-        "en": "Date of birth",
-        "es": "Fecha de nacimiento",
-        "hy": "Ծննդյան ամսաթիվ"
-      },
-      "nationality": {
-        "en": "Nationality",
-        "es": "Nacionalidad",
-        "hy": "Ազգություն"
-      },
-      "contact": {
-        "en": "Contact",
-        "es": "Contacto",
-        "hy": "Կոնտակտ"
-      },
-      "mobile": {
-        "en": "Mobile",
-        "es": "Móvil",
-        "hy": "Բջջային"
-      },
-      "email": {
-        "en": "Email",
-        "es": "Correo electrónico",
-        "hy": "Էլ. հասցե"
-      }
+      "es": "Soy científico de datos con una mentalidad muy analítica, curiosa y orientada a la mejora continua. Me considero una persona proactiva, responsable y muy enfocada en aportar valor real al negocio: me gusta entender el problema, traducirlo a datos y construir soluciones útiles, claras y sostenibles. En mi día a día trabajo con Análisis de datos, modelado y desarrollo de soluciones de IA a medida, además de acompañar a clientes en consultorías donde el objetivo es que la solución sea entendible y mantenible. He crecido profesionalmente desde un rol junior en Navegatel hasta mi posición actual como científico de datos middle en JNC Sistemas Informáticos SL, ganando experiencia, calidad y criterio técnico. Tengo base en MLOps/LLMOps y uso herramientas como Python, SQL, Docker y plataformas cloud cuando el proyecto lo requiere. Actualmente curso Ingeniería Informática en la Universidad Alfonso X el Sabio y sigo formándome para combinar solidez técnica con una visión práctica enfocada en resultados.",
+      "en": "I'm a data scientist with an analytical mindset, strong curiosity, and a continuous-improvement attitude. I'm proactive, responsible, and focused on delivering real business value: I like to understand the problem, translate it into data, and build clear, sustainable solutions. My daily work includes data analysis, modeling, and custom AI development, as well as consulting where the goal is to deliver solutions that are understandable and maintainable. I have grown from a junior role at Navegatel to my current position as a mid-level data scientist at JNC Sistemas Informáticos SL, gaining experience, quality, and technical judgment. I also have a foundation in MLOps/LLMOps and use tools like Python, SQL, Docker, and cloud platforms when needed. I am currently pursuing Computer Engineering at Universidad Alfonso X el Sabio and keep training to combine solid technical skills with a practical, results-focused vision.",
+      "hy": "I'm a data scientist with an analytical mindset, strong curiosity, and a continuous-improvement attitude. I'm proactive, responsible, and focused on delivering real business value: I like to understand the problem, translate it into data, and build clear, sustainable solutions. My daily work includes data analysis, modeling, and custom AI development, as well as consulting where the goal is to deliver solutions that are understandable and maintainable. I have grown from a junior role at Navegatel to my current position as a mid-level data scientist at JNC Sistemas Informáticos SL, gaining experience, quality, and technical judgment. I also have a foundation in MLOps/LLMOps and use tools like Python, SQL, Docker, and cloud platforms when needed. I am currently pursuing Computer Engineering at Universidad Alfonso X el Sabio and keep training to combine solid technical skills with a practical, results-focused vision."
     },
     "education": {
       "title": {
@@ -50,6 +27,22 @@
         "hy": "Կրթություն և ուսուցում"
       },
       "entries": [
+        {
+          "institution": "Universidad Alfonso X el Sabio",
+          "period": "09/2025 - Current",
+          "degree": {
+            "en": "Computer Engineering",
+            "es": "Ingeniería Informática",
+            "hy": "Computer Engineering"
+          },
+          "location": {
+            "en": "Madrid, Spain",
+            "es": "Madrid, España",
+            "hy": "Madrid, Spain"
+          },
+          "certificate_image": "uax.png",
+          "certificate_pdf_link": "uax.png"
+        },
         {
           "institution": "IES Abastos",
           "period": "01/10/2023 – 31/05/2024",
@@ -62,7 +55,9 @@
             "en": "Valencia, Spain",
             "es": "Valencia, España",
             "hy": "Վալենսիա, Իսպանիա"
-          }
+          },
+          "certificate_image": "1718197426470.jpg",
+          "certificate_pdf_link": "1718197426470.jpg"
         },
         {
           "institution": "IES Hermanos Amorós",
@@ -76,7 +71,9 @@
             "en": "Villena, Spain",
             "es": "Villena, España",
             "hy": "Վիլենա, Իսպանիա"
-          }
+          },
+          "certificate_image": "ies.png",
+          "certificate_pdf_link": "ies.png"
         },
         {
           "institution": "Udacity - AWS",
@@ -90,7 +87,57 @@
             "en": "Nova Gorica, Slovenia",
             "es": "Nova Gorica, Eslovenia",
             "hy": "Նովա Գորիցա, Սլովենիա"
-          }
+          },
+          "certificate_image": "Udacity_Nanodegree.png",
+          "certificate_pdf_link": "Udacity_Nanodegree.pdf"
+        },
+        {
+          "institution": "OpenWebinars",
+          "period": "",
+          "degree": {
+            "en": "Various Specializations in Development, DevOps, and Artificial Intelligence / Data Science",
+            "es": "Varias especializaciones en Desarrollo, DevOps e Inteligencia Artificial / Científico de datos",
+            "hy": "Տարբեր մասնագիտացումներ զարգացման, DevOps-ի և արհեստական բանականության ոլորտներում / Data Science"
+          },
+          "location": {
+            "en": "Online",
+            "es": "En línea",
+            "hy": "Առցանց"
+          },
+          "certificate_image": "openwebinarsnet@bx9D59gv.png",
+          "certificate_pdf_link": "https://openwebinars.net/@bx9D59gv"
+        },
+        {
+          "institution": "Credly",
+          "period": "",
+          "degree": {
+            "en": "Various Verified Digital Badges and Certificates",
+            "es": "Varias insignias y certificados digitales verificados",
+            "hy": "Տարբեր հաստատված թվային նշաններ և հավաստագրեր"
+          },
+          "location": {
+            "en": "Online",
+            "es": "En línea",
+            "hy": "Առցանց"
+          },
+          "certificate_image": "credly.comusersedvardks.png",
+          "certificate_pdf_link": "https://www.credly.com/users/edvardks"
+        },
+        {
+          "institution": "Linkedin Learning",
+          "period": "",
+          "degree": {
+            "en": "Project Management and Project Management Ethics",
+            "es": "Gestión de proyectos y Ética en la Gestión de proyectos ",
+            "hy": "Նախագծերի կառավարման հիմունքներ և Նախագծերի կառավարման հիմունքներ. Էթիկա"
+          },
+          "location": {
+            "en": "Online",
+            "es": "En línea",
+            "hy": "Առցանց"
+          },
+          "certificate_image": "linkedinleraning.png",
+          "certificate_pdf_link": "https://linkedin.com/in/edvardks"
         }
       ]
     },
@@ -103,22 +150,43 @@
       "entries": [
         {
           "position": {
-            "en": "Artificial Intelligence Engineer",
-            "es": "Ingeniero de inteligencia artificial",
-            "hy": "Արհեստական բանականության ինժեներ"
+            "en": "Data Scientist (Mid-level)",
+            "es": "científico de datos middle",
+            "hy": "Data Scientist (Mid-level)"
           },
-          "company": "Business Solutions d.o.o.",
-          "period": "08/07/2024 – Current",
+          "company": "JNC Sistemas Informáticos SL",
+          "period": "09/2025 - Current",
           "location": {
-            "en": "Nova Gorica, Slovenia",
-            "es": "Nova Gorica, Eslovenia",
-            "hy": "Նովա Գորիցա, Սլովենիա"
+            "en": "Spain",
+            "es": "España",
+            "hy": "Spain"
           },
           "responsibilities": {
-            "en": "LLMOps, Generative AI, Temporal series, Image Classification, Deep Learning, Machine Learning",
-            "es": "LLMOps, IA Generativa, Series temporales, Clasificación de imágenes, Deep Learning, Machine Learning",
-            "hy": "LLMOps, Սերնդային ԱԲ, Ժամանակային շարքեր, Պատկերի դասակարգում, Խորը ուսուցում, Մեքենայական ուսուցում"
-          }
+            "en": "Data analysis, custom AI development, and consulting with higher quality and deeper experience.",
+            "es": "Análisis de datos, desarrollo de IA a medida y consultorías con mayor calidad y experiencia.",
+            "hy": "Data analysis, custom AI development, and consulting with higher quality and deeper experience."
+          },
+          "img_name": "jnc.png"
+        },
+        {
+          "position": {
+            "en": "Junior Data Scientist",
+            "es": "científico de datos junior",
+            "hy": "Junior Data Scientist"
+          },
+          "company": "Navegatel",
+          "period": "09/2024 - 09/2025",
+          "location": {
+            "en": "Spain",
+            "es": "España",
+            "hy": "Spain"
+          },
+          "responsibilities": {
+            "en": "Data analysis, custom AI development, and consulting.",
+            "es": "Análisis de datos, programación a medida de IA y consultorías.",
+            "hy": "Data analysis, custom AI development, and consulting."
+          },
+          "img_name": "navegatel.jpg"
         },
         {
           "position": {
@@ -137,7 +205,48 @@
             "en": "Laravel development, Prestashop API integrations, Module and plugin development for WP and PS, VUE and VITE development",
             "es": "Desarrollo con Laravel, integraciones con API de Prestashop, desarrollo de módulos y plugins para WP y PS, desarrollo con VUE y VITE",
             "hy": "Laravel-ով մշակում, Prestashop API ինտեգրումներ, Մոդուլների և WP ու PS պլագինների մշակում, VUE և VITE"
-          }
+          },
+          "img_name": "psz.png"
+        },
+        {
+          "position": {
+            "en": "Freelance Computer Science Instructor",
+            "es": "Profesor freelance de informática",
+            "hy": "Անձնական Տեղեկատվական Հիմունքների Դասավանդող"
+          },
+          "company": "Freelance",
+          "period": "",
+          "location": {
+            "en": "Online or in-person",
+            "es": "En línea o presencial",
+            "hy": "Օնլայն կամ առկա"
+          },
+          "responsibilities": {
+            "en": "Teaching students interested in computer science, sharing knowledge and shaping the next generation of tech experts.",
+            "es": "Enseñar a estudiantes interesados en informática, compartiendo conocimientos y formando la próxima generación de expertos en tecnología.",
+            "hy": "Դասավանդում եմ ուսանողներին, ովքեր հետաքրքրված են տեղեկատվական տեխնոլոգիաներով, կիսելով գիտելիքները և ձևավորելով տեխնոլոգիական մասնագետների հաջորդ սերունդը."
+          },
+          "img_name": "freelance_instructor.png"
+        },
+        {
+          "position": {
+            "en": "Artificial Intelligence Engineer",
+            "es": "Ingeniero de inteligencia artificial",
+            "hy": "Արհեստական բանականության ինժեներ"
+          },
+          "company": "Business Solutions d.o.o.",
+          "period": "08/07/2024 – Current",
+          "location": {
+            "en": "Nova Gorica, Slovenia",
+            "es": "Nova Gorica, Eslovenia",
+            "hy": "Նովա Գորիցա, Սլովենիա"
+          },
+          "responsibilities": {
+            "en": "LLMOps, Generative AI, Temporal series, Image Classification, Deep Learning, Machine Learning",
+            "es": "LLMOps, IA Generativa, Series temporales, Clasificación de imágenes, Deep Learning, Machine Learning",
+            "hy": "LLMOps, Սերնդային ԱԲ, Ժամանակային շարքեր, Պատկերի դասակարգում, Խորը ուսուցում, Մեքենայական ուսուցում"
+          },
+          "img_name": "bs.jpeg"
         }
       ]
     },
@@ -148,89 +257,60 @@
         "hy": "Թվային հմտություններ"
       },
       "list": {
-        "en": "Artificial Intelligence, Deep Learning, Machine Learning, Temporal series, Python, Data analysis, Cloud technologies, Git, Docker, SQL, JavaScript, PHP",
-        "es": "Inteligencia artificial, Deep Learning, Machine Learning, Series temporales, Python, análisis de datos, tecnologías en la nube, Git, Docker, SQL, JavaScript, PHP",
-        "hy": "Արհեստական բանականություն, Խորը ուսուցում, Մեքենայական ուսուցում, Ժամանակային շարքեր, Python, Տվյալների վերլուծություն, Ամպային տեխնոլոգիաներ, Git, Docker, SQL, JavaScript, PHP"
+        "en": "Python, SQL, PHP, JavaScript, Git, Docker, Data analysis, Temporal series, Machine Learning, Deep Learning, Artificial Intelligence, Cloud technologies",
+        "es": "Python, SQL, PHP, JavaScript, Git, Docker, análisis de datos, series temporales, Machine Learning, Deep Learning, Inteligencia artificial, tecnologías en la nube",
+        "hy": "Python, SQL, PHP, JavaScript, Git, Docker, Տվյալների վերլուծություն, Ժամանակային շարքեր, Մեքենայական ուսուցում, Խորը ուսուցում, Արհեստական բանականություն, Ամպային տեխնոլոգիաներ"
       }
     },
-    "languages": {
-      "title": {
-        "en": "Language Skills",
-        "es": "Idiomas",
-        "hy": "Լեզուների տիրապետում"
-      },
-      "motherTongue": {
-        "en": "Mother tongue(s)",
-        "es": "Lengua(s) materna(s)",
-        "hy": "Մայրենի լեզուներ"
-      },
-      "otherLanguages": {
-        "en": "Other language(s)",
-        "es": "Otros idiomas",
-        "hy": "Այլ լեզուներ"
-      },
-      "nativeLanguages": [
-        {
-          "en": "Spanish",
-          "es": "Español",
-          "hy": "Իսպաներեն"
-        },
-        {
-          "en": "Armenian",
-          "es": "Armenio",
-          "hy": "Հայերեն"
-        }
-      ],
-      "foreignLanguages": [
-        {
-          "language": {
-            "en": "English",
-            "es": "Inglés",
-            "hy": "Անգլերեն"
-          },
-          "listening": "B1",
-          "speaking": "B1",
-          "writing": "B1"
-        }
-      ]
+    "nav-summary": {
+      "en": "Summary",
+      "es": "Resumen",
+      "hy": "Ամփոփում"
     },
-    "interests": {
-      "title": {
-        "en": "Interests",
-        "es": "Intereses",
-        "hy": "Հետաքրքրություններ"
-      },
-      "list": [
-        {
-          "en": "Basketball Coach",
-          "es": "Entrenador de baloncesto",
-          "hy": "Բասկետբոլի մարզիչ"
-        },
-        {
-          "en": "Attending technology events",
-          "es": "Asistencia a eventos tecnológicos",
-          "hy": "Տեխնոլոգիական միջոցառումների մասնակցություն"
-        },
-        {
-          "en": "Motorcycling",
-          "es": "Motociclista",
-          "hy": "Մոտոցիկլ վարել"
-        }
-      ]
+    "nav-education": {
+      "en": "Education",
+      "es": "Educación",
+      "hy": "Կրթություն"
     },
-    "drivingLicense": {
-      "title": {
-        "en": "Driving License",
-        "es": "Licencias de conducir",
-        "hy": "Վարորդական իրավունքներ"
-      },
-      "categories": [
-        "A",
-        "B",
-        "BE",
-        "C",
-        "CE"
-      ]
+    "nav-experience": {
+      "en": "Experience",
+      "es": "Experiencia",
+      "hy": "Փորձ"
+    },
+    "nav-skills": {
+      "en": "Skills",
+      "es": "Habilidades",
+      "hy": "Հմտություններ"
+    },
+    "nav-contact": {
+      "en": "Contact",
+      "es": "Contacto",
+      "hy": "Կապ"
+    },
+    "contact-title": {
+      "en": "Contact",
+      "es": "Contacto",
+      "hy": "Կապ"
+    },
+    "contact-name": {
+      "en": "Name",
+      "es": "Nombre",
+      "hy": "Անուն"
+    },
+    "contact-email": {
+      "en": "Email",
+      "es": "Correo electrónico",
+      "hy": "Էլ. փոստ"
+    },
+    "contact-message": {
+      "en": "Message",
+      "es": "Mensaje",
+      "hy": "Հաղորդագրություն"
+    },
+    "contact-submit": {
+      "en": "Send Message",
+      "es": "Enviar mensaje",
+      "hy": "Ուղարկել հաղորդագրություն"
     }
   }
 }
