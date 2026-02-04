@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador de Examen - Ayuda con Google IA</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f4f8; display: flex; justify-content: center; padding: 20px; }
+        #quiz-container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 850px; }
+        .stats { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 20px; font-size: 1.1rem; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; }
+        .question-box { background: #ffffff; border: 2px solid #e2e8f0; padding: 20px; border-radius: 12px; margin-bottom: 20px; position: relative; }
+        .google-ask { position: absolute; top: 15px; right: 15px; background: #f0f7ff; border: 1px solid #c3dafe; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 24px; transition: 0.3s; text-decoration: none; }
+        .google-ask:hover { background: #ebf4ff; transform: scale(1.1); border-color: #3182ce; }
+        .option { display: block; width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #e2e8f0; border-radius: 10px; cursor: pointer; text-align: left; background: #fff; font-size: 1rem; transition: 0.2s; }
+        .option:hover { background: #f7fafc; border-color: #4299e1; }
+        .correct { background: #c6f6d5 !important; border-color: #38a169 !important; color: #22543d; font-weight: bold; }
+        .wrong { background: #fed7d7 !important; border-color: #e53e3e !important; color: #742a2a; }
+        #next-btn { display: none; margin-top: 20px; padding: 12px 30px; background: #3182ce; color: white; border: none; border-radius: 8px; cursor: pointer; float: right; font-weight: bold; }
+
+        .setup-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+        .setup-btn { padding: 12px 24px; background: #3182ce; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .setup-btn:hover { background: #2b6cb0; }
+        .setup-btn:disabled { background: #a0aec0; cursor: not-allowed; }
+
+        .quiz-actions { display: flex; justify-content: flex-end; gap: 12px; margin-bottom: 12px; }
+        .action-btn { padding: 8px 16px; border: 2px solid #cbd5e0; background: #fff; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .action-btn:hover { background: #f7fafc; border-color: #a0aec0; }
+        .action-btn.danger { color: #c53030; border-color: #feb2b2; background: #fff5f5; }
+        .action-btn.danger:hover { background: #fed7d7; border-color: #f56565; }
+    </style>
+</head>
+<body>
+
+<div id="quiz-container">
+    <div id="setup" style="text-align:center; padding: 40px;">
+        <h2>📚 Preparador de Examen Dinámico</h2>
+        <p>Selecciona el bloque de preguntas para comenzar.</p>
+        <div class="setup-actions">
+            <button id="load-ec" class="setup-btn">Cargar Estructura de computadores</button>
+            <button id="load-so" class="setup-btn">Cargar Sistemas Operativos</button>
+        </div>
+    </div>
+
+    <div id="quiz-game" style="display:none;">
+        <div class="stats">
+            <span>Pregunta: <span id="q-idx">0</span> / <span id="q-total">0</span></span>
+            <div>
+                <span style="color:#38a169">Aciertos: <span id="hits">0</span></span> | 
+                <span style="color:#e53e3e">Fallos: <span id="miss">0</span></span>
+            </div>
+
+        <div class="quiz-actions">
+            <button id="exit-btn" class="action-btn">Salir</button>
+            <button id="restart-btn" class="action-btn danger">Recomenzar</button>
+        </div>
+
+        </div>
+        
+        <div class="question-box">
+            <h3 id="question-text" style="margin-right: 55px; line-height: 1.5;"></h3>
+            <a id="ia-btn" href="#" target="_blank" class="google-ask" title="Explicación con Google IA">🤖</a>
+            <small style="color: #718096;">Pulsa el robot para buscar una explicación en Google.</small>
+        </div>
+
+        <div id="options-container"></div>
+        <button id="next-btn" onclick="nextQuestion()">Siguiente Pregunta ➡</button>
+    </div>
+</div>
+
+<script>
+    const preguntasEstructura = [
+      {
+        "q": "Los transistores pertenecen a la generación de computadores ...",
+        "options": [
+          "a. Tercera.",
+          "b. Primera.",
+          "c. Cuarta.",
+          "d. Segunda."
+        ],
+        "correct": "d"
+      },
+      {
+        "q": "En una memoria:",
+        "options": [
+          "a. Tenemos tantos bits almacenados como 2 elevado al número de líneas.",
+          "b. La cantidad total de datos almacenada es potencia de 2.",
+          "c. En cada posición de memoria hay almacenado un dato útil.",
+          "d. El número de posiciones de memoria es 2 elevado al número de bits de su entrada de datos."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Como estudiantes recién graduados, en nuestro primer trabajo, nos piden diseñar una computadora para un sistema empotrado, ¿qué tipo de arquitectura recomendarías utilizar?",
+        "options": [
+          "a. Un Macintosh.",
+          "b. Harvard.",
+          "c. Von Neumann.",
+          "d. Un servidor Windows."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Respecto a la arquitectura de un computador:",
+        "options": [
+          "a. Es von Neumann si el bus de datos y el de instrucciones es compartido.",
+          "b. Es Harvard si los datos y el control comparten bus.",
+          "c. Es Harvard si las instrucciones tienen el mismo tamaño que los datos y viajan por el mismo bus.",
+          "d. Es Harvard si el ancho de palabra no es igual al tamaño de instrucción."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Una memoria volátil se caracteriza por ...",
+        "options": [
+          "a. Parte del computador donde se almacenan datos.",
+          "b. Se pierde la información si se interrumpe el flujo eléctrico.",
+          "c. No necesitar energía para perdurar.",
+          "d. Ninguna de las otras respuestas."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Indica la respuesta verdadera:",
+        "options": [
+          "a. El ENIAC fue el primer computador de la historia.",
+          "b. El ábaco es el primer computador de la historia.",
+          "c. La máquina analítica de Babbage fue el primer computador de la historia.",
+          "d. Ninguna de las otras respuestas."
+        ],
+        "correct": "d"
+      },
+      {
+        "q": "La unidad mínima de información que se puede representar en un ordenador es:",
+        "options": [
+          "a. El bit.",
+          "b. El byte.",
+          "c. La palabra.",
+          "d. El nibble."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Indica cuál de las siguientes afirmaciones es correcta:",
+        "options": [
+          "a. Un computador Harvard tiene un bus de datos compartido con instrucciones.",
+          "b. Un computador von Neumann tiene un bus de datos separado del de instrucciones.",
+          "c. Un computador Harvard tiene memoria de datos separada de la de instrucciones.",
+          "d. Ninguna de las otras respuestas."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "En el formato de representación en coma flotante IEEE 754 de simple precisión:",
+        "options": [
+          "a. El exponente tiene 8 bits y la mantisa 23 bits.",
+          "b. El exponente tiene 11 bits y la mantisa 52 bits.",
+          "c. El exponente tiene 8 bits y la mantisa 24 bits.",
+          "d. El exponente tiene 11 bits y la mantisa 53 bits."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La ley de Moore establece que:",
+        "options": [
+          "a. El número de transistores en un microprocesador se duplica cada 18-24 meses.",
+          "b. La velocidad de los procesadores se duplica cada 18-24 meses.",
+          "c. El coste de los transistores se duplica cada 18-24 meses.",
+          "d. El consumo de energía se reduce a la mitad cada 18-24 meses."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El registro PC (Program Counter) contiene:",
+        "options": [
+          "a. La instrucción que se está ejecutando.",
+          "b. La dirección de la siguiente instrucción a ejecutar.",
+          "c. El estado del procesador.",
+          "d. El resultado de la última operación."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "La memoria caché se utiliza para:",
+        "options": [
+          "a. Aumentar la capacidad de almacenamiento del disco duro.",
+          "b. Reducir el tiempo de acceso a la memoria principal.",
+          "c. Almacenar permanentemente los datos del usuario.",
+          "d. Ninguna de las otras respuestas."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Un sistema operativo es:",
+        "options": [
+          "a. Un programa que gestiona los recursos del hardware y provee servicios a los programas de aplicación.",
+          "b. Un conjunto de circuitos electrónicos.",
+          "c. Un dispositivo de entrada/salida.",
+          "d. Un tipo de memoria."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La ALU (Arithmetic Logic Unit) se encarga de:",
+        "options": [
+          "a. Controlar el flujo de datos.",
+          "b. Realizar operaciones aritméticas y lógicas.",
+          "c. Almacenar instrucciones.",
+          "d. Gestionar la memoria."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El bus de direcciones:",
+        "options": [
+          "a. Transmite los datos entre la CPU y la memoria.",
+          "b. Indica la dirección de memoria o dispositivo de E/S con el que la CPU quiere comunicarse.",
+          "c. Transmite las señales de control.",
+          "d. Es bidireccional."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "En un sistema de numeración posicional, el valor de un dígito depende de:",
+        "options": [
+          "a. Su posición dentro del número.",
+          "b. Su valor absoluto solamente.",
+          "c. El número de dígitos totales.",
+          "d. La base del sistema únicamente."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El código ASCII se utiliza para:",
+        "options": [
+          "a. Representar números en coma flotante.",
+          "b. Representar caracteres alfanuméricos.",
+          "c. Comprimir datos.",
+          "d. Encriptar información."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Una interrupción es:",
+        "options": [
+          "a. Un fallo en el hardware.",
+          "b. Una señal enviada a la CPU para detener su ejecución actual y atender un evento.",
+          "c. Un tipo de instrucción de salto.",
+          "d. El proceso de apagar el computador."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El ciclo de instrucción comprende las fases de:",
+        "options": [
+          "a. Búsqueda y Ejecución.",
+          "b. Lectura y Escritura.",
+          "c. Entrada y Salida.",
+          "d. Compilación y Enlace."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La jerarquía de memoria busca:",
+        "options": [
+          "a. Maximizar la capacidad y minimizar el coste y tiempo de acceso.",
+          "b. Minimizar la capacidad y maximizar la velocidad.",
+          "c. Usar solo memoria caché.",
+          "d. Usar solo discos duros."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un periférico de entrada es:",
+        "options": [
+          "a. El monitor.",
+          "b. La impresora.",
+          "c. El teclado.",
+          "d. Los altavoces."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "La memoria ROM es:",
+        "options": [
+          "a. Volátil y de lectura/escritura.",
+          "b. No volátil y de solo lectura.",
+          "c. Volátil y de solo lectura.",
+          "d. No volátil y de lectura/escritura."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El sistema binario utiliza los dígitos:",
+        "options": [
+          "a. 0 a 9.",
+          "b. 0 y 1.",
+          "c. 0 a 7.",
+          "d. 0 a F."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Un Gigabyte (GB) equivale a:",
+        "options": [
+          "a. 1024 Megabytes.",
+          "b. 1000 Megabytes.",
+          "c. 1024 Kilobytes.",
+          "d. 1000 Kilobytes."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La frecuencia de reloj de una CPU se mide en:",
+        "options": [
+          "a. Bytes.",
+          "b. Herzios (Hz).",
+          "c. Julios.",
+          "d. Bits por segundo."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El chipset es:",
+        "options": [
+          "a. Un conjunto de chips que gestionan el flujo de datos entre los componentes de la placa base.",
+          "b. El ventilador del procesador.",
+          "c. La fuente de alimentación.",
+          "d. El disco duro."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un puerto USB permite:",
+        "options": [
+          "a. Conectar periféricos al computador.",
+          "b. Aumentar la memoria RAM.",
+          "c. Refrigerar el sistema.",
+          "d. Conectar el computador a la corriente eléctrica."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La BIOS es:",
+        "options": [
+          "a. Un sistema operativo completo.",
+          "b. Un firmware que inicializa el hardware durante el arranque.",
+          "c. Un programa de edición de texto.",
+          "d. Un virus informático."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El código máquina es:",
+        "options": [
+          "a. Un lenguaje de alto nivel.",
+          "b. El lenguaje que entiende directamente el hardware de la CPU.",
+          "c. Un lenguaje de script.",
+          "d. Un lenguaje ensamblador."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Un compilador traduce:",
+        "options": [
+          "a. Código máquina a ensamblador.",
+          "b. Código fuente de alto nivel a código máquina.",
+          "c. Código máquina a código fuente.",
+          "d. Texto a voz."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "La memoria virtual permite:",
+        "options": [
+          "a. Ejecutar programas más grandes que la memoria física disponible.",
+          "b. Aumentar la velocidad del procesador.",
+          "c. Almacenar datos en la nube.",
+          "d. Reducir el consumo de energía."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un bus de datos de 32 bits puede transmitir:",
+        "options": [
+          "a. 32 bytes a la vez.",
+          "b. 32 bits a la vez.",
+          "c. 32 instrucciones a la vez.",
+          "d. 32 direcciones a la vez."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "La arquitectura CISC se caracteriza por:",
+        "options": [
+          "a. Tener un conjunto reducido de instrucciones simples.",
+          "b. Tener un conjunto amplio de instrucciones complejas.",
+          "c. No utilizar memoria caché.",
+          "d. Ser más rápida que RISC en todos los casos."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "La arquitectura RISC se caracteriza por:",
+        "options": [
+          "a. Instrucciones de longitud variable.",
+          "b. Instrucciones simples y de longitud fija.",
+          "c. Mayor complejidad en el hardware que CISC.",
+          "d. Menor número de registros."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El pipelining (segmentación) permite:",
+        "options": [
+          "a. Ejecutar múltiples instrucciones simultáneamente en diferentes etapas.",
+          "b. Aumentar el tamaño de la memoria.",
+          "c. Reducir la frecuencia de reloj.",
+          "d. Eliminar las interrupciones."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un procesador multicore tiene:",
+        "options": [
+          "a. Un solo núcleo de procesamiento.",
+          "b. Múltiples núcleos de procesamiento en un solo chip.",
+          "c. Múltiples chips en la placa base.",
+          "d. Ninguna de las anteriores."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "La latencia de memoria es:",
+        "options": [
+          "a. La cantidad de datos transferidos por segundo.",
+          "b. El tiempo que transcurre desde que se solicita un dato hasta que se recibe.",
+          "c. El tamaño de la memoria.",
+          "d. La frecuencia de reloj de la memoria."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El ancho de banda de memoria es:",
+        "options": [
+          "a. El tiempo de acceso.",
+          "b. La cantidad de datos que pueden transferirse por unidad de tiempo.",
+          "c. El número de pines del módulo de memoria.",
+          "d. La capacidad total de almacenamiento."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El formato complemento a 2 se utiliza para:",
+        "options": [
+          "a. Representar caracteres.",
+          "b. Representar números enteros con signo.",
+          "c. Representar imágenes.",
+          "d. Representar instrucciones."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Un desbordamiento (overflow) ocurre cuando:",
+        "options": [
+          "a. El resultado de una operación excede el rango de representación disponible.",
+          "b. Se divide por cero.",
+          "c. Se accede a una dirección de memoria inválida.",
+          "d. Se interrumpe el procesador."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La unidad de control genera:",
+        "options": [
+          "a. Señales de control para coordinar el hardware.",
+          "b. Resultados aritméticos.",
+          "c. Direcciones de memoria.",
+          "d. Interrupciones."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Los registros de propósito general sirven para:",
+        "options": [
+          "a. Almacenar datos temporales y operandos durante la ejecución.",
+          "b. Controlar el flujo del programa únicamente.",
+          "c. Almacenar el sistema operativo.",
+          "d. Conectar con periféricos."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El registro IR (Instruction Register) almacena:",
+        "options": [
+          "a. La dirección de la siguiente instrucción.",
+          "b. La instrucción que se está decodificando o ejecutando actualmente.",
+          "c. El resultado de la ALU.",
+          "d. El estado de las banderas."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Las banderas (flags) de estado indican:",
+        "options": [
+          "a. El fabricante del procesador.",
+          "b. Condiciones como cero, negativo, acarreo o desbordamiento tras una operación.",
+          "c. La cantidad de memoria libre.",
+          "d. La temperatura del procesador."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El direccionamiento inmediato significa que:",
+        "options": [
+          "a. El operando está en un registro.",
+          "b. El operando es una constante incluida en la propia instrucción.",
+          "c. La dirección del operando está en memoria.",
+          "d. La dirección del operando es relativa al PC."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El direccionamiento directo significa que:",
+        "options": [
+          "a. La instrucción contiene la dirección de memoria del operando.",
+          "b. El operando está en un registro.",
+          "c. Se usa un puntero.",
+          "d. Se usa una pila."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El direccionamiento indirecto usa:",
+        "options": [
+          "a. Una dirección que apunta a otra dirección donde está el dato.",
+          "b. El dato directamente.",
+          "c. Un registro como índice.",
+          "d. Ninguna de las anteriores."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Una instrucción de salto condicional:",
+        "options": [
+          "a. Siempre altera el flujo del programa.",
+          "b. Altera el flujo del programa solo si se cumple una condición (basada en flags).",
+          "c. Detiene el programa.",
+          "d. Llama a una subrutina."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El stack (pila) se utiliza para:",
+        "options": [
+          "a. Almacenar variables locales y direcciones de retorno de subrutinas.",
+          "b. Almacenar el código del programa.",
+          "c. Almacenar archivos grandes.",
+          "d. La memoria de vídeo."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La operación PUSH en una pila:",
+        "options": [
+          "a. Saca un elemento.",
+          "b. Introduce un elemento en la cima.",
+          "c. Lee el elemento de la cima sin sacarlo.",
+          "d. Borra la pila."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "La operación POP en una pila:",
+        "options": [
+          "a. Saca el elemento de la cima.",
+          "b. Introduce un elemento.",
+          "c. Duplica el elemento.",
+          "d. Invierte la pila."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "DMA (Direct Memory Access) permite:",
+        "options": [
+          "a. Que la CPU haga todo el trabajo de E/S.",
+          "b. Que los periféricos accedan a la memoria principal sin intervención constante de la CPU.",
+          "c. Que la memoria sea más rápida.",
+          "d. Que no se use memoria RAM."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Un bus serie transmite datos:",
+        "options": [
+          "a. Bit a bit por un solo canal.",
+          "b. Varios bits simultáneamente por varios canales.",
+          "c. Solo en una dirección.",
+          "d. Sin señal de reloj."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un bus paralelo transmite datos:",
+        "options": [
+          "a. Bit a bit.",
+          "b. Varios bits simultáneamente (ej. 8, 16, 32 líneas).",
+          "c. Inalámbricamente.",
+          "d. Solo para impresoras."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "La memoria SRAM es más rápida pero más cara que la DRAM:",
+        "options": [
+          "a. Verdadero.",
+          "b. Falso."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La memoria DRAM necesita refresco periódico de datos:",
+        "options": [
+          "a. Verdadero.",
+          "b. Falso."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La memoria caché suele ser de tipo:",
+        "options": [
+          "a. DRAM.",
+          "b. SRAM.",
+          "c. ROM.",
+          "d. Flash."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El nivel L1 de caché es:",
+        "options": [
+          "a. El más grande y lento.",
+          "b. El más pequeño y rápido, integrado en el núcleo.",
+          "c. Externo al procesador.",
+          "d. Memoria virtual."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El principio de localidad espacial dice que:",
+        "options": [
+          "a. Si se accede a una dirección, es probable que se acceda a las cercanas pronto.",
+          "b. Si se accede a un dato, se volverá a acceder al mismo pronto.",
+          "c. La memoria debe estar en el espacio.",
+          "d. Los datos se guardan aleatoriamente."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El principio de localidad temporal dice que:",
+        "options": [
+          "a. Si se accede a un dato, es probable que se vuelva a acceder al mismo en un futuro próximo.",
+          "b. Los datos cercanos se usarán pronto.",
+          "c. El tiempo de acceso es constante.",
+          "d. La memoria es volátil."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un fallo de caché (cache miss) ocurre cuando:",
+        "options": [
+          "a. El dato solicitado no se encuentra en la caché y hay que buscarlo en memoria principal.",
+          "b. La caché se rompe.",
+          "c. El dato está en la caché.",
+          "d. La CPU se detiene."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El tiempo de acceso medio a memoria depende de:",
+        "options": [
+          "a. La tasa de aciertos (hit rate) y los tiempos de acceso de caché y memoria principal.",
+          "b. Solo del tamaño de la RAM.",
+          "c. Solo de la velocidad del disco.",
+          "d. Del sistema operativo."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La memoria principal se conecta a la CPU a través del:",
+        "options": [
+          "a. Bus del sistema (front-side bus o similar).",
+          "b. Cable USB.",
+          "c. Puerto serie.",
+          "d. Red Wi-Fi."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Una GPU está especializada en:",
+        "options": [
+          "a. Procesamiento de texto.",
+          "b. Procesamiento gráfico y paralelo masivo.",
+          "c. Gestión de archivos.",
+          "d. Ejecutar el sistema operativo."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Respecto a las arquitecturas que mejoran el rendimiento:",
+        "options": [
+          "a. Los multiprocesadores trabajan con total independencia entre si.",
+          "b. Las segmentadas siempre son mejores.",
+          "c. Los procesadores vectoriales son adecuados si las tareas tienen muchas iteraciones aritméticas.",
+          "d. Un procesador superescalar apenas tiene dependencias."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "Los MFLOPS:",
+        "options": [
+          "a. Está relacionados con el CPI.",
+          "b. Miden todo tipo de operaciones.",
+          "c. A más MFLOPS más rápido es un computador al ejecutar cualquier tarea.",
+          "d. Es un parámetro de rendimiento universal para todas las arquitecturas."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Respecto al CPI:",
+        "options": [
+          "a. A mayor CPI menos MIPS.",
+          "b. El computador que tiene más ciclos por instrucción es el más lento a la hora de ejecutar cualquier tarea.",
+          "c. Depende de la frecuencia de reloj.",
+          "d. Todas las instrucciones tienen los mismos ciclos."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Con la aplicación de la Ley Amdahl, podemos asegurar que",
+        "options": [
+          "a. Más procesadores no implica más rendimiento.",
+          "b. Hay que evitar la programación secuencial.",
+          "c. Ninguna de las respuestas es válida.",
+          "d. No existen problemas de tamaño de memoria."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Señala la falsa:",
+        "options": [
+          "a. Los MIPS dependen de la frecuencia de reloj.",
+          "b. La velocidad de reloj permite comparar arquitecturas.",
+          "c. Los MIPS son millones de instrucciones por segundo.",
+          "d. Hay que promediar los ciclos de cada instrucción para obtener el CPI medio."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Sobre arquitectura de computadores:",
+        "options": [
+          "a. El paralelismo se detecta antes de la ejecución.",
+          "b. Las máquinas superescalares proporcionan compatibilidad a nivel de código objeto con las másquinas escalares.",
+          "c. Un procesador superescalar de grado m tiene un CPI de m.",
+          "d. Los procesadores superescalares se utilizan en tareas intensivas de cálculo."
+        ],
+        "correct": "d"
+      },
+      {
+        "q": "Un ciclo de 1 ns son:",
+        "options": [
+          "a. 10 G de frecuencia de reloj.",
+          "b. 1G de frecuencia de reloj.",
+          "c. 2 G de frecuencia de reloj.",
+          "d. No podemos saber la frecuencia de reloj."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Los multicomputadores tienen memoria compartida.",
+        "options": [
+          "a. Los multicomputadores tienen memoria compartida.",
+          "b. Los procesadores segmentados requieren un gran ancho de banda en la memoria.",
+          "c. Los procesadores vectoriales ahorran bucles de ejecución.",
+          "d. Los procesadores vectoriales trabajan sobre vectores de resultados y datos."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La unidad de medida utilizada para evaluar el rendimiento FLOPS indica:",
+        "options": [
+          "a. El número de accesos a memoria por segundo.",
+          "b. El número de operaciones de coma flotante por segundo.",
+          "c. La frecuencia de reloj (número de pulsos por segundo).",
+          "d. El número de instrucciones por segundo."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Respecto al reloj de un procesador:",
+        "options": [
+          "a. El procesador con más MIPS es el procesador más rápido del mercado en ejecutar todas las tareas.",
+          "b. La señal de reloj de un procesador es una sinusoidal entre 0 y 5 voltios.",
+          "c. Es difícil comparar dos procesadores de dos arquitecturas distintas.",
+          "d. El procesador con más frecuencia de reloj es el más rápido del mercado en ejecutar todas las tareas."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "En una memoria:",
+        "options": [
+          "a. En cada posición hay necesariamente almacenado un dato de tamaño el ancho de palabra del computador.",
+          "b. Tenemos tantos bytes almacenados como 2 elevado al número de líneas.",
+          "c. El número de posiciones de memoria es 2 elevado al ancho de palabra en bits.",
+          "d. La cantidad total de datos almacenada es siempre 2 elevado al número de lineas por el tamaño de cada posición de memoria."
+        ],
+        "correct": "d"
+      },
+      {
+        "q": "¿Qué es la memoria no volátil?",
+        "options": [
+          "a. Memoria que se utiliza solo para almacenamiento temporal.",
+          "b. Memoria que pierde los datos cuando se apaga el sistema.",
+          "c. Memoria que se utiliza solo para la caché.",
+          "d. Memoria que retiene los datos incluso sin energia."
+        ],
+        "correct": "d"
+      },
+      {
+        "q": "¿Qué tipo de memoria se utiliza para la memoria principal debido a su alta densidad de almacenamiento?",
+        "options": [
+          "a. Memoria flash.",
+          "b. DRAM.",
+          "c. Memoria magnética.",
+          "d. SRAM."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Un computador digital:",
+        "options": [
+          "a. Los resultados dependen solo de los datos almacenados.",
+          "b. No trabaja con información hexadecimal.",
+          "c. Puede leer de la memoria datos de mayor tamaño que el ancho de palabra.",
+          "d. Trabaja internamente con valores de tensión analógicos."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "Sobre el módulo de E/S señala la falsa:",
+        "options": [
+          "a. Nunca almacena datos.",
+          "b. Realiza el control y temporización para evitar pérdidas de información.",
+          "c. Gestiona la comunicación con la CPU.",
+          "d. Gestiona la comunicación con el periférico."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Qué es la jerarquia de memoria?",
+        "options": [
+          "a. Un tipo de memoria volátil.",
+          "b. Una estrategia para combinar diferentes tipos de memoria en un sistema.",
+          "c. Un tipo de memoria no volátil.",
+          "d. Un método de acceso secuencial."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "¿Qué principio sugiere que si se accede a un dato, es probable que se accedan a otros datos cercanos en la memoria?",
+        "options": [
+          "a. Acceso directo.",
+          "b. Localidad temporal.",
+          "c. Acceso aleatorio.",
+          "d. Localidad espacial."
+        ],
+        "correct": "d"
+      },
+      {
+        "q": "¿Qué política de reemplazo de caché selecciona al azar un bloque para ser reemplazado?",
+        "options": [
+          "a. Reemplazo LRU.",
+          "b. Reemplazo FIFO.",
+          "c. Reemplazo aleatorio.",
+          "d. Reemplazo directo."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "¿Qué política de escritura en caché realiza la escritura tanto en la caché como en la memoria principal?",
+        "options": [
+          "a. Escritura directa.",
+          "b. Escritura diferida.",
+          "c. Escritura aleatoria.",
+          "d. Escritura secuencial."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Qué tipo de memoria utiliza transistores para almacenar datos en un estado estable?",
+        "options": [
+          "a. Memoria flash.",
+          "b. SRAM.",
+          "c. Mernoria magnética.",
+          "d. DRAM."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El lenguaje ensamblador:",
+        "options": [
+          "a. Es lo mismo que el código máquina.",
+          "b. Se llama de bajo nivel porque está más cerca del hardware.",
+          "c. Es poco parecido entre procesadores distintos, aunque depende de la arquitectura.",
+          "d. Se usa a menudo en la programación corriente."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "¿Qué registro en MIPS32 se utiliza como puntero de pila?",
+        "options": [
+          "a. $fp",
+          "b. $ra",
+          "c. $gp",
+          "d. $sp"
+        ],
+        "correct": "d"
+      },
+      {
+        "q": "¿Qué instrucción en ensamblador se utiliza para mover datos en MIPS32?",
+        "options": [
+          "a. SW",
+          "b. MOV C. ADD",
+          "d. LW"
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "¿Qué significa 'Little Endian' en la ordenación de datos?",
+        "options": [
+          "a. El byte más significativo se coloca en la primera posición.",
+          "b. El byte menos significativo se coloca en la primera posición.",
+          "c. No hay una ordenación específica.",
+          "d. Los bytes se ordenan de manera aleatoria."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "¿Cuál es la característica principal de la arquitectura MIPS32?",
+        "options": [
+          "a. Es una arquitectura CISC.",
+          "b. No soporta operaciones aritméticas.",
+          "c. Tiene un conjunto reducido de instrucciones.",
+          "d. Utiliza un conjunto de instrucciones complejo."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "¿Cuál es una ventaja del lenguaje ensamblador?",
+        "options": [
+          "a. Alta portabilidad entre diferentes arquitecturas.",
+          "b. Independencia del hardware específico.",
+          "c. Facilidad de escritura y legibilidad.",
+          "d. Control y precisión sobre el hardware."
+        ],
+        "correct": "d"
+      },
+      {
+        "q": "¿Qué registro se utiliza para almacenar la dirección de retorno de las subrutinas en MIPS32?",
+        "options": [
+          "a. $sp",
+          "b. $ra",
+          "c. $gp",
+          "d. $fp"
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Señala la verdadera:",
+        "options": [
+          "a. Si se introduce un código en ensamblador en un compilador, obtenemos el código de alto nivel correspondiente.",
+          "b. Un programa en ensamblador se escribe en código máquina.",
+          "c. Si se introduce el código máquina en una memoria, el procesador puede ejecutar ese programa directamente sin necesidad de compilador.",
+          "d. La CPU trabaja internamente en ensamblador."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "Al respecto del procesador MIPS32:",
+        "options": [
+          "a. Tiene un ancho de palabra de 2 bytes.",
+          "b. El modo kernel es el modo de funcionamiento con más permisos sobre el hardware.",
+          "c. Trabaja con códigos más complejos por tener más instrucciones.",
+          "d. Para sumar dos posiciones de memoria no hace falta cargarlas en registros."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Es muy parecido entre procesadores distintos, aunque depende de la arquitectura.",
+        "options": [
+          "a. Es muy parecido entre procesadores distintos, aunque depende de la arquitectura.",
+          "b. Permite programar un computador sin preocuparse de su arquitectura.",
+          "c. Es más fácil de programar, por eso se llama de bajo nivel.",
+          "d. Es muy frecuentemente utilizado cuando no nos importa la eficiencia del código."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si se introduce un código en ensamblador en un compilador, se obtiene un código máquina ejecutable.",
+        "options": [
+          "a. Si se introduce un código en ensamblador en un compilador, se obtiene un código máquina ejecutable.",
+          "b. Un programa es un conjunto de instrucciones que se ejecutan secuencialmente tal cual están escritas en código máquina.",
+          "c. La CPU entiende directamente ensamblador porque está muy próximo al código máquina.",
+          "d. Si se introduce el código máquina en un compilador, el ensamblador correspondiente puede ejecutar las instrucciones."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Qué es la memoria caché?",
+        "options": [
+          "a. Un bus de comunicación.",
+          "b. Una memoria más rápida y pequeña que almacena instrucciones y datos frecuentemente utilizados.",
+          "c. Un tipo de memoria de almacenamiento permanente.",
+          "d. Un dispositivo de entrada y salida."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "¿Qué es el bus de comunicación en un computador?",
+        "options": [
+          "a. Un conjunto de líneas de transmisión que permiten la comunicación entre los componentes del hardware.",
+          "b. Un dispositivo de almacenamiento.",
+          "c. Un tipo de memoria de acceso aleatorio.",
+          "d. Un dispositivo de entrada y salida."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Cuál es la función principal de la memoria RAM en un computador?",
+        "options": [
+          "a. Coordinar las operaciones del sistema.",
+          "b. Almacenar datos de manera permanente.",
+          "c. Almacenar temporalmente las instrucciones y datos que la CPU necesita.",
+          "d. Realizar operaciones aritméticas y lógicas."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "En la unidad de control:",
+        "options": [
+          "a. Activa unos y otros bloques de la ruta de datos dependiendo de la fase de ejecución en la que estemos.",
+          "b. Los datos fluyen dentro de sus componentes.",
+          "c. Está basado en una máquina de estados Mealy.",
+          "d. Es un circuito combinacional con muchas entradas."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Qué componente es conocido como el cerebro del computador?",
+        "options": [
+          "a. La unidad de control.",
+          "b. La memoria RAM.",
+          "c. La unidad central de procesamiento (CPU).",
+          "d. El disco duro."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "La ALU:",
+        "options": [
+          "a. La entrada Zero resetea la ruta de datos.",
+          "b. Trabaja solo con inmediatos.",
+          "c. Los bits del código de operación de la instrucción no le indican directamente qué operación debe realizar.",
+          "d. No trabaja directamente con la memoria por lo que hay que hacer un load antes."
+        ],
+        "correct": "d"
+      },
+      {
+        "q": "¿Cuál es la función principal de la ruta de datos en un procesador?",
+        "options": [
+          "a. Gestionar y coordinar las operaciones.",
+          "b. Almacenar instrucciones.",
+          "c. Mover y procesar datos.",
+          "d. Realizar operaciones aritméticas y lógicas."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "Señala la verdadera al respecto del MIPS32:",
+        "options": [
+          "a. Tiene 24 registros útiles.",
+          "b. Tiene un ancho del bus de direcciones de 4 bytes.",
+          "c. Trabaja indistintamente en cualquier modo.",
+          "d. Tiene un ancho de palabra de 8 bytes."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Solamente opera con registros.",
+        "options": [
+          "a. Los bits del código de operación de la instrucción le indican directamente qué operación debe realizar.",
+          "b. Solamente opera con registros.",
+          "c. Trabaja directamente con la memoria.",
+          "d. La entrada zero pone a cero la ALU."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "Un compilador...",
+        "options": [
+          "a. Convierte todo el código fuente a código máquina antes de su ejecución.",
+          "b. Convierte todo el código máquina a código ensamblador antes de su ejecución.",
+          "c. Ejecuta el código del lenguaje de alto nivel linea a línea.",
+          "d. Es lo mismo que un intérprete."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Es Harvard si las instrucciones pueden tener distinto tamaño que los datos.",
+        "options": [
+          "a. Es Harvard si las instrucciones no pueden tener distinto tamaño que los datos.",
+          "b. Es Harvard si las instrucciones pueden tener distinto tamaño que los datos.",
+          "c. Es von Neumann si el bus de datos y el de instrucciones son bidireccionales.",
+          "d. Es Harvard si usamos el mismo bus para control que para datos."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "El lenguaje máquina...",
+        "options": [
+          "a. Es un lenguaje de bajo nivel.",
+          "b. Es un lenguaje de muy alto nivel.",
+          "c. Es un lenguaje de alto nivel.",
+          "d. Ninguna de las otras respuestas."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En una memoria:",
+        "options": [
+          "a. Tenemos tantos bits almacenados como 2 elevado al número de lineas.",
+          "b. El número de posiciones de memoria es 2 elevado al número de bits de su entrada de datos.",
+          "c. La cantidad total de datos almacenada es potencia de 2.",
+          "d. En cada posición de memoria hay almacenado un dato útil."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "La ALU, es una parte de:",
+        "options": [
+          "a. La memoria.",
+          "b. El bus de operaciones.",
+          "c. La CPU.",
+          "d. El multiplexor de entrada."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "A la hora de ejecutarse un programa, ¿qué fases sigue?",
+        "options": [
+          "a. Lectura de la instrucción, carga inicial, ejecución de la instrucción e incremento del PC.",
+          "b. Carga inicial, lectura de la instrucción, ejecución de la instrucción, incremento del PC y repetición de ciclo.",
+          "c. Lectura de la instrucción, carga inicial,, ejecución de la instrucción, incremento del PC y repetición de ciclo.",
+          "d. Lectura de la instrucción, ejecución de la instrucción, incremento del PC y repetición de ciclo."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "¿Qué hace este código? .data x: word 10 y: word 2 z: word 0 text main: Iw $t0, x Iw $t1, y div $t0, $t1 mflo $t2 sw $t2, z li $v0, 10 syscall",
+        "options": [
+          "a. Resta y de x y almacena el resultado en z.",
+          "b. Divide x por y y almacena el residuo en z.",
+          "c. Divide x por y y almacena el cociente en z.",
+          "d. Sumax e y y almacena el resultado en z."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "¿Qué hace este código? data val: word 16. res: word 0 text main: Iw $t0, val li St1, 4 div $to, $t1 mfhi $t2 sw $t2, res li $v0, 10 syscall",
+        "options": [
+          "a. Resta 4 de val y almacena el resultado en res.",
+          "b. Suma val y 4 y almacena el resultado en res.",
+          "c. Divide val por 4 y almacena el cociente en res.",
+          "d. Divide val por 4 y almacena el residuo en res."
+        ],
+        "correct": "d"
+      },
+      {
+        "q": "¿Qué hace este código? data i: word 3 sum: .word 0 text main: lw $t0, i Iw $t1, sum loop: add $t1, $t1, Sto addi $to, $t0, -1 bnez $t0, loop sw $t1, sum li $v0, 10 syscall",
+        "options": [
+          "a. Resta los valores de i desde 3 hasta 1 y almacena el resultado en sum.",
+          "b. Multiplica los valores de i desde 3 hasta 1 y almacena el resultado en sum.",
+          "c. Suma los valores de i desde 3 hasta 1 y almacena el resultado en sum.",
+          "d. Divide los valores de i desde 3 hasta 1 y almacena el resultado en sum."
+        ],
+        "correct": "c"
+      },
+      {
+        "q": "¿Cuál es la filosofía del diseño RISC?",
+        "options": [
+          "a. Complejidad y eficiencia.",
+          "b. Simplicidad y eficiencia.",
+          "c. Simplicidad y lentitud.",
+          "d. Complejidad y lentitud."
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "¿Qué es el juego de instrucciones del MIPS32?",
+        "options": [
+          "a. Un conjunto de comandos que el procesador MIPS32 puede ejecutar directamente.",
+          "b. Un conjunto de comandos para procesadores CISC.",
+          "c. Un conjunto de comandos para sistemas operativos.",
+          "d. Un conjunto de comandos que el procesador MIPS32 no puede ejecutar."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Qué instrucción se utiliza para cargar la dirección de una etiqueta o variable en un registro en MIPS32?",
+        "options": [
+          "a. li",
+          "b. la",
+          "c. Iw",
+          "d. sw"
+        ],
+        "correct": "b"
+      },
+      {
+        "q": "¿Qué hace la instrucción 'lbu' en MIPS32?",
+        "options": [
+          "a. Carga un byte (8 bits) desde la memoria en un registro, extendiéndolo con ceros (sin signo).",
+          "b. Carga una palabra (32 bits) desde la memoria en un registro.",
+          "c. Almacena un byte (8 bits) desde un registro en la memoria.",
+          "d. Almacena una palabra (32 bits) desde un registro en la memoria."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Qué hace este código? data a: .word 8 b: word 3 c:.word 0 text main: lw $t0, a lw $t1, b sub $t2, $t0, $t1 sw $t2, c li $v0, 10  syscall",
+        "options": [
+          "a. Suma los valores de a y b y almacena el resultado en",
+          "b. Divide los valores de a y b y almacena el resultado en",
+          "c. Resta el valor de b de a y almacena el resultado en",
+          "d. Multiplica los valores de a y b y almacena el resultado en c."
+        ],
+        "correct": "c"
+      }
+    ];
+    const preguntasSistemasOperativos = [
+      {
+        "q": "Si el registro de instrucción de un procesador de 32 bits almacena la instrucción 0 de un programa ¿Qué valor almacenará el contador de programa?",
+        "options": [
+          "a. 4"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si en el código tenemos la sentencia a[0]=1",
+        "options": [
+          "a. a es igual a &(a[0])"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si en el código tenemos la sentencia a[0]=1",
+        "options": [
+          "a. *a es igual a 1"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si en el código tenemos la sentencia char **p",
+        "options": [
+          "a. strlen(*p) es una sentencia correcta"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un intento de división entre cero causará",
+        "options": [
+          "a. Una excepción hardware síncrona"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Dónde se almacena la máscara de interrupciones?",
+        "options": [
+          "a. En el registro de estado de la unidad de control"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El falso que la función printf",
+        "options": [
+          "a. Utiliza %d para mostrar cadenas"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Es falso que la función printf",
+        "options": [
+          "a. Utiliza %c para mostrar cadenas de caracteres"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En la sentencia int p[10]: es falso que:",
+        "options": [
+          "a. El valor de *p es igual a p[0]"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El falso que la función printf",
+        "options": [
+          "a. Se define en stdlib.h"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Cuál de los siguientes no es un registro de la Unidad de Control?",
+        "options": [
+          "a. Registro de datos"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Cuál es el mecanismo que no permite cambiar el modo de ejecución de usuario a núcleo?",
+        "options": [
+          "a. La instrucción RETI"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Qué estrategias existen para desarrollar las operaciones de E/S?",
+        "options": [
+          "a. E/S basada en controladores y E/S basada en manejadores"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un intento de división entre cero causará:",
+        "options": [
+          "a. Una excepción hardware síncrona"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un archivo de cabecera contiene",
+        "options": [
+          "a. Prototipos de funciones"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En un procesador con registros de 32 bits donde la primera palabara en memoria es la palabra 0 ¿Cuál sería la dirección de la palabra 1?",
+        "options": [
+          "a. 4"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿En qué generación de los sistemas operativos aparece el concepto de lote de trabajos?",
+        "options": [
+          "a. 2"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿El sistema operativo interviene en la operación de la memoria caché?",
+        "options": [
+          "a. No, es gestionada exclusivamente por el hardware."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La instrucción RETI:",
+        "options": [
+          "a. Restaura el estado de ejecución a partir de la pila del sistema."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si se declara una variable p como puntero a un valor entero",
+        "options": [
+          "a. La variable p no puede contener valores enteros."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El BCP de un proceso en situación de Bloqueado y Suspendido:",
+        "options": [
+          "a. Deberá ser actualizado y cambiado de lista cuando tenga lugar el suceso que bloqueó al proceso"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Se dice que entre los dos procesos existe una relación padre-hijo si",
+        "options": [
+          "a. Uno ha sido creado por el sistema operativo a instancia del otro"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si un proceso se encuentra en estado de ejecución",
+        "options": [
+          "a. Su estado hardware se almacena en los registros del procesador"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Es falso que el BCP de un proceso pueda encontrarse",
+        "options": [
+          "a. En memoria secundaria"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Es falso que el BCP de un proceso almacene",
+        "options": [
+          "a. Los identificadores de sus procesos hijos"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Después de realizar una orden fork() desde un proceso",
+        "options": [
+          "a. El proceso padre y el proceso hijo ejecutan el código que sigue a la realización de la llamada"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El cuarto parámetro de la función pthread_create indica",
+        "options": [
+          "a. Los atributos con que se llamará a la función sobre la que se crea una hebra"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La imagen de memoria de un proceso en un sistema con memoria virtual",
+        "options": [
+          "a. Puede tener elementos almacenados en espacio de almacenamiento secundario"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Cuál de la siguiente información NO es almacenado por el BCP de un proceso?",
+        "options": [
+          "a. Última instrucción ejecutada"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La función pthread_join sirve para",
+        "options": [
+          "a. Esperar a una hebra"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El primer parámetro de la función pthread_create indica",
+        "options": [
+          "a. La estructura que almacenará los datos de la hebra"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un proceso en estado bloquea",
+        "options": [
+          "a. Ha pasado al menos una vez por el estado de ejecución"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Las hebras definidas sobre un proceso",
+        "options": [
+          "a. Tienen cada una su propio estado del procesador."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El segundo parámetro de la función pthread_create indica",
+        "options": [
+          "a. Los atributos con que se llamará a la función sobre la que se crea una hebra"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "¿Cuál de las siguientes afirmaciones es falsa para las hebras definidas en un proceso?",
+        "options": [
+          "a. Comparten el espacio de pila del proceso."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si un proceso se encuentra en estado listo",
+        "options": [
+          "a. Su estado hardware se almacena en su BCP."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El BCP contendrá",
+        "options": [
+          "a. Elementos de tamaño fijo"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un proceso es",
+        "options": [
+          "a. Una entidad lógica creada por el Sistema Operativo."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si una hebra accede al valor de una variable del segmento de datos del proceso",
+        "options": [
+          "a. Deberá sincronizar su ejecución con otras hebras."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Que un proceso esté suspendido significa:",
+        "options": [
+          "a. Que su imagen de memoria al completo se encuentra en memoria secundaria."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:u w:val=\"single\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\"> El tiempo de retorno es un parámetro de rendimiento que significa",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El tiempo requerido para su ejecución más el tiempo que permanece a la espera de los recursos solicitados"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El planificador a corto plazo",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Se ejecuta para decidir qué proceso en estado de listo toma el control del procesador"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Suponga una política de planificación basada en FCFS",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si un proceso ocupa el procesador puede ejecutar hasta terminar"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Suponga una política de planificación basada en FCFS",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si un proceso es desbloqueado puede tener que esperar a que acaben todos los insertados en la cola de listos."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"both\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Suponga una política de planificación Round-Robin con quantum q=6",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El sistema operativo se ejecutará como mínimo cada 6 u.t"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Suponga una política de planificación Round-Robin con quantum q=6 y n procesos en la cola de procesos listos",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Un nuevo proceso esperará como máximo n * 6 u.t"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Suponga una política de planificación Round-Robin con quantum q=6 y n procesos en la cola de procesos listos:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Un proceso nuevo se inserta al final de la cola en cualquier caso."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Suponga una política de planificación Round-Robin con quantum q=4",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si un proceso termina antes del quantum, otro proceso puede ocupar el procesador durante 4 u.t"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Suponga una política de planificación Round-Robin con quantum q=4 y n procesos bloqueados",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Un proceso bloqueado que pase a listo se insertará en la cola después que un nuevo proceso"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Suponga una política de planificación de colas multinivel y prioridad estática",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Los procesos pueden ejecutar durante un quantum distinto en función de la cola."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El algoritmo de planificación Round-Robin consiste en",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Asignar circularmente el mismo tiempo de CPU a todos los procesos del sistema"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El primer parámetro de la función sched_setaffinity determina",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El pid del proceso"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El parámetro de planificación denominado Tiempo de Retorno indica",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El tiempo total de permanencia de un proceso en el sistema"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">La función sched_setaffinity",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">No tiene efecto si hay un solo procesador"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">La función del planificador a largo plazo consiste en",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Dar entrada al sistema a nuevos procesos."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">En una política de planificación expropiativa",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El sistema operativo puede tomar el control del procesador en cualquier momento."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Considerando prioridades estáticas y dinámicas, el número total de niveles de prioridad en un sistema POSIX será",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"160\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">139"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El sistema de prioridad nice",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Es un sistema de prioridades dinámicas."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">La función sched_getaffinity:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"160\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Puede asignar una máscaras de procesadores a un puntero."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El entrelazado de ejecución de un conjunto de procesos",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Lo establece el programador de las aplicaciones"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">En una variable de condición",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El bloqueo de un proceso conlleva el desbloqueo de un cerrojo"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:u w:val=\"single\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\"> Si un semáforo general tiene valor 0",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Ningún proceso que invoque a wait podrá entrar en región crítica"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si un semáforo general tiene valor 2",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Una llamada a wait lo dejará a 1"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Sea una región crítica donde puede haber hasta tres procesos en ejecución",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si la región es controlada por un semáforo general este puede tomar el valor 2"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Sea una región crítica donde puede haber hasta tres procesos en ejecución",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si la región es controlada por un semáforo general este puede tomar valor -4"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">La llamada send",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si es síncrona es bloqueante"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si un semáforo general tiene valor 1",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Una llamada a wait lo dejará a 0"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El quinto parámetro de la primitiva mmap corresponde a",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El archivo que se proyectará"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El segundo parámetro de la llamada a pthread_cond_wait corresponde a un mutex que",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Se liberará en la llamada"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si un semáforo general tiene valor 1:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Una llamada a wait lo dejará a cero."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si un semáforo general tiene valor 2:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Una llamada a wait lo dejará a 1"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si un semáforo general tiene valor 2",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Puede haber procesos en la región crítica que controle"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">En un semáforo general",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">La llamada signal siempre incrementará el contador del semáforo."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si un semáforo general tiene valor 0",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Ningún proceso que invoque a wait podrá entrar en región crítica"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si un proceso recibe una señal:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Se alterará su flujo de ejecución si la señal no se ignora"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El entrelazado de ejecución de un conjunto de procesos",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"2124\" w:right=\"0\" w:hanging=\"1044\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Lo establece el programador de las aplicaciones"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Un recurso crítico, necesariamente",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Tiene que ser accedido dentro de una región crítica."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/></w:rPr></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"1\"/><w:bCs w:val=\"1\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"single\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El primer parámetro de la primitiva mmap corresponde a:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">La zona de memoria compartida"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">En la llamada a read sobre un pipe:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">En un pipe:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">No se puede establecer comunicación entre procesos ubicados en máquinas distintas."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Si utilizamos un cerrojo para proteger una sección crítica:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">No podrá haber más que un proceso en la sección crítica."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">Sea una región crítica donde puede haber hasta dos procesos en ejecución:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">La región no puede ser controlada por un semáforo binario."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "<w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"0\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"720\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">En la llamada a write sobre un pipe:",
+        "options": [
+          "a. <w:left w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:bottom w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:right w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/><w:between w:space=\"0\" w:sz=\"0\" w:val=\"nil\"/></w:pBdr><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:spacing w:after=\"160\" w:before=\"0\" w:line=\"259\" w:lineRule=\"auto\"/><w:ind w:left=\"1440\" w:right=\"0\" w:hanging=\"360\"/><w:jc w:val=\"left\"/><w:rPr/></w:pPr><w:r w:rsidDel=\"00000000\" w:rsidR=\"00000000\" w:rsidRPr=\"00000000\"><w:rPr><w:rFonts w:ascii=\"Calibri\" w:cs=\"Calibri\" w:eastAsia=\"Calibri\" w:hAnsi=\"Calibri\"/><w:b w:val=\"0\"/><w:bCs w:val=\"0\"/><w:i w:val=\"0\"/><w:iCs w:val=\"0\"/><w:smallCaps w:val=\"0\"/><w:strike w:val=\"0\"/><w:color w:val=\"000000\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/><w:u w:val=\"none\"/><w:shd w:fill=\"auto\" w:val=\"clear\"/><w:vertAlign w:val=\"baseline\"/><w:rtl w:val=\"0\"/></w:rPr><w:t xml:space=\"preserve\">El segundo parámetro indica la posición de memoria que se escribirá en el pipe."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Una zona de memoria compartida",
+        "options": [
+          "a. Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En un esquema de memoria virtual basado en segmentación",
+        "options": [
+          "a. Cada segmento puede tener distintos permisos de acceso"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En un esquema de memoria virtual basado en segmentación",
+        "options": [
+          "a. Cada segmento tendrá sus propios permisos de acceso"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En un esquema de memoria virtual basado en segmentación",
+        "options": [
+          "a. El desplazamiento tiene que ser comparado con la longitud de éste"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En un esquema de memoria virtual basado en segmentación.",
+        "options": [
+          "a. Los segmentos pueden diferir en tamaño."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Es un esquema de memoria virtual basado en segmentación",
+        "options": [
+          "a. Los segmentos pueden diferir en tamaño"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Las direcciones lógicas de un proceso",
+        "options": [
+          "a. Son la entrada a la MMU"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Las direcciones lógicas de un proceso",
+        "options": [
+          "a. Comienzan siempre en la posición 0"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Con particiones dinámicas",
+        "options": [
+          "a. No hay fragmentación interna"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En memoria virtual que utilice un esquema de paginación",
+        "options": [
+          "a. Las direcciones resultantes de la MMU son direcciones físicas"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En memoria virtual que utilice un esquema de paginación",
+        "options": [
+          "a. El número de posiciones de una página es elevado a 2 a n"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En memoria virtual que utilice un esquema de paginación",
+        "options": [
+          "a. No existe fragmentación externa"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En memoria virtual que utilice un esquema de paginación",
+        "options": [
+          "a. Las direcciones lógicas coinciden con las direcciones secuenciales del proceso"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En memoria virtual que utilice un esquema de paginación",
+        "options": [
+          "a. Existe fragmentación interna"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Una zona de memoria compartida",
+        "options": [
+          "a. Pueden contener direcciones físicas referenciadas por direcciones lógicas distintas en los espacios de memoria de los procesos que la comparten"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Las funciones de bibliotecas dinámicas",
+        "options": [
+          "a. Se invocan a través de una llamada al sistema operativo"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Con particiones fijas de distinto tamaño",
+        "options": [
+          "a. Hay fragmentación externa"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Con particiones fijas del mismo tamaño:",
+        "options": [
+          "a. La eficiencia del almacenamiento no depende de la partición en la que se ubique cada proceso."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Las direcciones lógicas de un proceso:",
+        "options": [
+          "a. Son la entrada a la MMU"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Las direcciones lógicas de un proceso:",
+        "options": [
+          "a. Comienzan siempre en la posición 0."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Las funciones de bibliotecas estáticas",
+        "options": [
+          "a. Se integran en los archivos ejecutables"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La imagen de memoria de un proceso:",
+        "options": [
+          "a. Se construye directamente sobre memoria virtual."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si se utiliza una entrada/salida por interrupciones",
+        "options": [
+          "a. El proceso que solicita una operación de entrada/salida puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si se utiliza una entrada/salida por interrupciones",
+        "options": [
+          "a. Sólo se puede atender a una interrupción cuando se ejecute un proceso de usuario"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si se utiliza una entrada/salida por interrupciones:",
+        "options": [
+          "a. La atención de una interrupción siempre se realiza en modo núcleo."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si se utiliza una entrada/salida por interrupciones:",
+        "options": [
+          "a. El proceso interrumpido no puede ser el mismo que solicitó la operación"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si se utiliza una entrada/salida por DMA",
+        "options": [
+          "a. Se emite una interrupción cuando los datos están en memoria"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Si se utiliza una entrada/salida por DMA:",
+        "options": [
+          "a. El proceso que solicita una operación queda bloqueado hasta que ésta se complete."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un enlace blando es",
+        "options": [
+          "a. Que un archivo contenga la ruta completa de otro"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Un enlace blando es",
+        "options": [
+          "a. Un archivo que contiene la ruta de otro"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En S_ISDIR(m)",
+        "options": [
+          "a. M corresponde al modo del archivo a comprobar"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Cuando se crea un nuevo proceso en los sistemas Unix/Linux",
+        "options": [
+          "a. Su tabla de archivos abiertos contendrá enlaces a inodo con bloques vacíos"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "Cuando se crea un nuevo proceso en los sistemas Unix/Linux",
+        "options": [
+          "a. Su tabla de archivos abiertos contendrá como mínimo 3 entradas"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En los sistemas de archivos basados en inodos",
+        "options": [
+          "a. Crear un enlace duro a un archivo es equivalente a crear un nuevo nombre de archivo"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En los sistemas de archivos basados en inodos:",
+        "options": [
+          "a. Un bloque referenciado desde otro puede contener datos o direcciones a otros bloques"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En los sistemas de archivos basados en inodos:",
+        "options": [
+          "a. Ninguna de las opciones es correcta.",
+          "b. Crear un enlace duro a un archivo da lugar a un nuevo inodo.",
+          "c. Crear un enlace blando a un archivo da lugar a un nuevo archivo abierto.",
+          "d. Crear un enlace duro a un archivo da lugar a un nuevo archivo abierto."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En los sistemas de archivos basados en inodos",
+        "options": [
+          "a. La información contenida en un bloque puede tener varios nombres"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El primer parámetro de la llamada al sistema write",
+        "options": [
+          "a. Especifica la entrada en la tabla de archivos abiertos del archivo sobre el que se va a escribir"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El primer parámetro de la llamada al sistema read",
+        "options": [
+          "a. Especifica la entrada en tabla de archivos abiertos del archivo sobre el que se va a leer"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El segundo parámetro de la llamada al sistema read",
+        "options": [
+          "a. Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El tercer parámetro de la llamada al sistema open",
+        "options": [
+          "a. Sólo tiene sentido si el archivo indicado no existe."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "En la llamada readdir(p):",
+        "options": [
+          "a. Se obtiene un puntero a una estructura dirent."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La llamada al sistema lseek(4, 0, SEEK_SET)",
+        "options": [
+          "a. Sitúa el puntero al principio del segundo archivo abierto desde el proceso."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "La llamada al sistema lseek(3, 0, SEEK_END)",
+        "options": [
+          "a. Sitúa el puntero al final del primer archivo abierto desde el proceso."
+        ],
+        "correct": "a"
+      },
+      {
+        "q": "El controlador de un dispositivo:",
+        "options": [
+          "a. Es el hardware integrado en el dispositivo para su manejo."
+        ],
+        "correct": "a"
+      }
+    ];
+
+    
+    const letrasOpciones = ['a', 'b', 'c', 'd'];
+
+    function stripOptionPrefix(text) {
+        return text.replace(/^[a-d]\.\s*/i, '').trim();
+    }
+
+    const STOPWORDS = new Set([
+        'de', 'la', 'el', 'los', 'las', 'y', 'o', 'en', 'un', 'una', 'que', 'se', 'del', 'al',
+        'por', 'para', 'con', 'sin', 'sobre', 'a', 'es', 'son', 'no', 'si', 'qué', 'cual', 'cuál',
+        'cuando', 'donde', 'dónde', 'como', 'cómo', 'su', 'sus', 'este', 'esta', 'estos', 'estas',
+        'puede', 'pueden', 'ser', 'se', 'lo'
+    ]);
+
+    function tokenize(text) {
+        const tokens = text.toLowerCase().match(/[a-záéíóúñü0-9]+/gi) || [];
+        const filtered = tokens.filter((t) => t.length > 2 && !STOPWORDS.has(t));
+        return new Set(filtered);
+    }
+
+    function hashString(value) {
+        let h = 0;
+        for (let i = 0; i < value.length; i++) {
+            h = (h * 31 + value.charCodeAt(i)) >>> 0;
+        }
+        return h;
+    }
+
+    function pickDistractors(pool, exclude, count, qTokens, seed) {
+        if (!pool.length) return [];
+        const candidates = [];
+        pool.forEach((text) => {
+            if (exclude.has(text)) return;
+            const tokens = tokenize(text);
+            let score = 0;
+            tokens.forEach((t) => {
+                if (qTokens.has(t)) score++;
+            });
+            const tie = hashString(text + seed) / 0xffffffff;
+            candidates.push({ text, score, tie });
+        });
+
+        candidates.sort((a, b) => {
+            if (b.score !== a.score) return b.score - a.score;
+            return b.tie - a.tie;
+        });
+
+        return candidates.slice(0, count).map((c) => c.text);
+    }
+
+    function normalizeSOQuestions(source) {
+        const poolSet = new Set();
+        source.forEach((q) => {
+            (q.options || []).forEach((opt) => {
+                const cleaned = stripOptionPrefix(opt);
+                if (cleaned) poolSet.add(cleaned);
+            });
+        });
+        const pool = Array.from(poolSet);
+
+        return source.map((q, index) => {
+            const optionTexts = (q.options || []).map(stripOptionPrefix).filter(Boolean);
+            if (optionTexts.length >= 4) {
+                return q;
+            }
+            const correctIndex = Math.max(0, letrasOpciones.indexOf((q.correct || '').toLowerCase()));
+            const correctText = optionTexts[correctIndex] || optionTexts[0] || '';
+            const exclude = new Set(optionTexts);
+            const qTokens = tokenize(q.q);
+            const seed = hashString(q.q + correctText + index);
+            const extras = pickDistractors(pool, exclude, 4 - optionTexts.length, qTokens, seed);
+
+            while (optionTexts.length + extras.length < 4) {
+                extras.push(`Opcion ${optionTexts.length + extras.length + 1}`);
+            }
+
+            const finalTexts = optionTexts.concat(extras).slice(0, 4);
+            const finalOptions = finalTexts.map((t, i) => `${letrasOpciones[i]}. ${t}`);
+            const finalCorrectIndex = Math.max(0, finalTexts.indexOf(correctText));
+            const finalCorrect = letrasOpciones[finalCorrectIndex] || 'a';
+            return { ...q, options: finalOptions, correct: finalCorrect };
+        });
+    }
+
+    const preguntasSistemasOperativosNormalizadas = normalizeSOQuestions(preguntasSistemasOperativos);
+
+    const STORAGE_KEY_PREFIX = 'ec-quiz-state-v1:';
+    const STORAGE_LAST_KEY = 'ec-quiz-last-dataset';
+    const DATASETS = { ec: preguntasEstructura, so: preguntasSistemasOperativosNormalizadas };
+
+    let selectedDataset = null;
+
+    let questions = [];
+    let currentIdx = 0;
+    let aciertos = 0;
+    let fallos = 0;
+    let respondido = false;
+    document.getElementById('load-ec').addEventListener('click', () => startFromSelection('ec'));
+    document.getElementById('load-so').addEventListener('click', () => startFromSelection('so'));
+    document.getElementById('exit-btn').addEventListener('click', exitQuiz);
+    document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+
+    const storedLast = localStorage.getItem(STORAGE_LAST_KEY);
+    if (storedLast && Array.isArray(DATASETS[storedLast]) && DATASETS[storedLast].length > 0) {
+        const storedState = getStoredState(storedLast);
+        if (storedState) {
+            loadQuestionsById(storedLast, { restore: true, saved: storedState });
+        }
+    }
+
+    window.addEventListener('beforeunload', saveState);
+
+    
+    function getStorageKey(id) {
+        return `${STORAGE_KEY_PREFIX}${id}`;
+    }
+
+    function getStoredState(id) {
+        if (!id) {
+            return null;
+        }
+        try {
+            const raw = localStorage.getItem(getStorageKey(id));
+            return raw ? JSON.parse(raw) : null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function saveState() {
+        if (!selectedDataset || !Array.isArray(questions) || questions.length === 0) {
+            return;
+        }
+        const state = { dataset: selectedDataset, currentIdx, aciertos, fallos };
+        localStorage.setItem(getStorageKey(selectedDataset), JSON.stringify(state));
+        localStorage.setItem(STORAGE_LAST_KEY, selectedDataset);
+    }
+
+    function clearState(id = selectedDataset) {
+        if (!id) {
+            return;
+        }
+        localStorage.removeItem(getStorageKey(id));
+        if (localStorage.getItem(STORAGE_LAST_KEY) === id) {
+            localStorage.removeItem(STORAGE_LAST_KEY);
+        }
+    }
+
+    function startFromSelection(id) {
+        const saved = getStoredState(id);
+        if (saved) {
+            loadQuestionsById(id, { restore: true, saved });
+        } else {
+            loadQuestionsById(id);
+        }
+    }
+
+    function loadQuestionsById(id, options = {}) {
+        const dataset = DATASETS[id] || [];
+        if (!Array.isArray(dataset) || dataset.length === 0) {
+            return;
+        }
+        selectedDataset = id;
+        questions = dataset;
+        if (options.restore && options.saved) {
+            const saved = options.saved;
+            currentIdx = Math.min(Math.max(0, saved.currentIdx || 0), questions.length - 1);
+            aciertos = saved.aciertos || 0;
+            fallos = saved.fallos || 0;
+        } else {
+            currentIdx = 0;
+            aciertos = 0;
+            fallos = 0;
+        }
+        document.getElementById('hits').innerText = aciertos;
+        document.getElementById('miss').innerText = fallos;
+        startQuiz();
+        saveState();
+    }
+
+    function exitQuiz() {
+        saveState();
+        document.getElementById('quiz-game').style.display = 'none';
+        document.getElementById('setup').style.display = 'block';
+    }
+
+    function restartQuiz() {
+        clearState();
+        selectedDataset = null;
+        questions = [];
+        currentIdx = 0;
+        aciertos = 0;
+        fallos = 0;
+        respondido = false;
+        document.getElementById('hits').innerText = 0;
+        document.getElementById('miss').innerText = 0;
+        document.getElementById('q-idx').innerText = 0;
+        document.getElementById('q-total').innerText = 0;
+        document.getElementById('question-text').innerText = '';
+        document.getElementById('options-container').innerHTML = '';
+        document.getElementById('next-btn').style.display = 'none';
+        document.getElementById('quiz-game').style.display = 'none';
+        document.getElementById('setup').style.display = 'block';
+    }
+
+    function showQuestion() {
+        respondido = false;
+        const q = questions[currentIdx];
+        document.getElementById('q-idx').innerText = currentIdx + 1;
+        document.getElementById('question-text').innerText = q.q;
+        document.getElementById('next-btn').style.display = 'none';
+        
+        // Configurar b?squeda en Google con el prompt deseado
+        const query = `quiero que expliques a un estudiante de estructura de computadores el siguiente concepto: "${q.q}"`;
+        document.getElementById('ia-btn').href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+
+        q.options.forEach((optText) => {
+            const letter = optText.charAt(0).toLowerCase();
+            const btn = document.createElement('button');
+            btn.className = 'option';
+            btn.innerText = optText;
+            btn.onclick = () => checkAnswer(letter, btn);
+            container.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(letter, btn) {
+        if(respondido) return;
+        respondido = true;
+        const correctLetter = questions[currentIdx].correct;
+
+        if(letter === correctLetter) {
+            btn.classList.add('correct');
+            aciertos++;
+            document.getElementById('hits').innerText = aciertos;
+        } else {
+            btn.classList.add('wrong');
+            fallos++;
+            document.getElementById('miss').innerText = fallos;
+            
+            Array.from(document.getElementsByClassName('option')).forEach(b => {
+                if(b.innerText.toLowerCase().startsWith(correctLetter + '.')) {
+                    b.classList.add('correct');
+                }
+            });
+        }
+        saveState();
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function startQuiz() {
+        document.getElementById('setup').style.display = 'none';
+        document.getElementById('quiz-game').style.display = 'block';
+        document.getElementById('q-total').innerText = questions.length;
+        showQuestion();
+    }
+
+    
+    function nextQuestion() {
+        currentIdx++;
+        if(currentIdx < questions.length) {
+            saveState();
+            showQuestion();
+        } else {
+            clearState();
+            alert(`?Test finalizado!
+Aciertos: ${aciertos}
+Fallos: ${fallos}`);
+            location.reload();
+        }
+    }
+
+</script>
+</body>
+</html>
