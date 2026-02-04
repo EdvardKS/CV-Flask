@@ -37,6 +37,35 @@
         .action-btn:hover { background: #f7fafc; border-color: #a0aec0; }
         .action-btn.danger { color: #c53030; border-color: #feb2b2; background: #fff5f5; }
         .action-btn.danger:hover { background: #fed7d7; border-color: #f56565; }
+
+        @media (max-width: 900px) {
+            body { padding: 14px; }
+            #quiz-container { padding: 22px; }
+            .stats { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .quiz-actions { justify-content: flex-start; flex-wrap: wrap; }
+            .question-box { padding: 16px; }
+            .question-text { margin-right: 50px; }
+            .google-ask { width: 40px; height: 40px; font-size: 20px; }
+            .option { padding: 12px; font-size: 0.98rem; }
+            .nav-btn { padding: 12px 22px; }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            #quiz-container { padding: 18px; border-radius: 12px; }
+            .stats { font-size: 1rem; }
+            .question-text { margin-right: 0; }
+            .google-ask { position: static; margin-top: 10px; align-self: flex-start; }
+            .question-box { display: flex; flex-direction: column; gap: 10px; }
+            .option { padding: 12px; font-size: 0.95rem; }
+            .nav-buttons { flex-direction: column; }
+            .nav-btn { width: 100%; }
+            .setup-actions { flex-direction: column; }
+            .setup-btn { width: 100%; }
+            .quiz-actions { flex-direction: column; align-items: stretch; }
+            .action-btn { width: 100%; }
+            .ai-hint-btn { width: 100%; }
+        }
     </style>
 </head>
 <body>
