@@ -196,7 +196,11 @@ function updateEducation() {
         // Comprobar si la imagen existe
         image.src = imagePath;
         image.onerror = () => {
-            image.src = '/static/data/default.png'; // Imagen por defecto si no existe
+            // Fallback to /static/data/ if not found in /certs
+            image.onerror = () => {
+                image.src = '/static/data/default.png'; // Imagen por defecto si no existe
+            };
+            image.src = `/static/data/${entry.certificate_image}`;
         };
 
         image.className = 'mx-auto rounded d-block w-90 h-64 object-fit-contain';
