@@ -1729,9 +1729,9 @@
     "q": "Si el registro de instrucción de un procesador de 32 bits almacena la instrucción 0 de un programa ¿Qué valor almacenará el contador de programa?",
     "options": [
       "4",
-      "Su estado hardware se almacena en los registros del procesador",
-      "Si un proceso ocupa el procesador puede ejecutar hasta terminar",
-      "La estructura que almacenará los datos de la hebra"
+      "3",
+      "5",
+      "6"
     ],
     "correctIndex": 0
   },
@@ -1739,9 +1739,19 @@
     "q": "Si en el código tenemos la sentencia a[0]=1",
     "options": [
       "a es igual a &(a[0])",
-      "El proceso padre y el proceso hijo ejecutan el código que sigue a la realización de la llamada",
-      "strlen(*p) es una sentencia correcta",
-      "Hay fragmentación externa"
+      "a es igual a &(a[-1])",
+      "a es igual a &(a[1])",
+      "a es igual a &(a[2])"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Si en el código tenemos la sentencia a[0]=1",
+    "options": [
+      "*a es igual a 1",
+      "*a es igual a 0",
+      "*a es igual a 2",
+      "*a es igual a 3"
     ],
     "correctIndex": 0
   },
@@ -1749,9 +1759,9 @@
     "q": "Si en el código tenemos la sentencia char **p",
     "options": [
       "strlen(*p) es una sentencia correcta",
-      "El proceso padre y el proceso hijo ejecutan el código que sigue a la realización de la llamada",
-      "Si es síncrona es bloqueante",
-      "La región no puede ser controlada por un semáforo binario."
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -1759,9 +1769,9 @@
     "q": "Un intento de división entre cero causará",
     "options": [
       "Una excepción hardware síncrona",
-      "No se puede establecer comunicación entre procesos ubicados en máquinas distintas.",
-      "Una llamada a wait lo dejará a cero.",
-      "El pid del proceso"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -1769,9 +1779,9 @@
     "q": "¿Dónde se almacena la máscara de interrupciones?",
     "options": [
       "En el registro de estado de la unidad de control",
-      "Su estado hardware se almacena en los registros del procesador",
-      "Su estado hardware se almacena en su BCP.",
-      "Es un sistema de prioridades dinámicas."
+      "La CPU debe realizar sondeo continuo hasta finalizar la E/S.",
+      "No se generan interrupciones al finalizar la transferencia.",
+      "El proceso solicitante queda bloqueado siempre en cualquier caso."
     ],
     "correctIndex": 0
   },
@@ -1779,9 +1789,9 @@
     "q": "El falso que la función printf",
     "options": [
       "Utiliza %d para mostrar cadenas",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro",
-      "Que un archivo contenga la ruta completa de otro"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -1789,9 +1799,9 @@
     "q": "Es falso que la función printf",
     "options": [
       "Utiliza %c para mostrar cadenas de caracteres",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "El archivo que se proyectará",
-      "Los procesos pueden ejecutar durante un quantum distinto en función de la cola."
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -1799,9 +1809,19 @@
     "q": "En la sentencia int p[10]: es falso que:",
     "options": [
       "El valor de *p es igual a p[0]",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten",
-      "Ningún proceso que invoque a wait podrá entrar en región crítica",
-      "Especifica la entrada en la tabla de archivos abiertos del archivo sobre el que se va a escribir"
+      "El valor de *p es igual a p[-1]",
+      "El valor de *p es igual a p[1]",
+      "El valor de *p es igual a p[2]"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "El falso que la función printf",
+    "options": [
+      "Se define en stdlib.h",
+      "No se define en stdlib.h",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -1809,9 +1829,9 @@
     "q": "¿Cuál de los siguientes no es un registro de la Unidad de Control?",
     "options": [
       "Registro de datos",
-      "En el registro de estado de la unidad de control",
-      "Su estado hardware se almacena en los registros del procesador",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -1819,9 +1839,9 @@
     "q": "¿Cuál es el mecanismo que no permite cambiar el modo de ejecución de usuario a núcleo?",
     "options": [
       "La instrucción RETI",
-      "El tiempo requerido para su ejecución más el tiempo que permanece a la espera de los recursos solicitados",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten",
-      "El proceso padre y el proceso hijo ejecutan el código que sigue a la realización de la llamada"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -1829,9 +1849,9 @@
     "q": "¿Qué estrategias existen para desarrollar las operaciones de E/S?",
     "options": [
       "E/S basada en controladores y E/S basada en manejadores",
-      "Se ejecuta para decidir qué proceso en estado de listo toma el control del procesador",
-      "Utiliza %d para mostrar cadenas",
-      "Utiliza %c para mostrar cadenas de caracteres"
+      "La CPU debe realizar sondeo continuo hasta finalizar la E/S.",
+      "No se generan interrupciones al finalizar la transferencia.",
+      "El proceso solicitante queda bloqueado siempre en cualquier caso."
     ],
     "correctIndex": 0
   },
@@ -1839,9 +1859,9 @@
     "q": "Un intento de división entre cero causará:",
     "options": [
       "Una excepción hardware síncrona",
-      "No se puede establecer comunicación entre procesos ubicados en máquinas distintas.",
-      "Una llamada a wait lo dejará a cero.",
-      "La atención de una interrupción siempre se realiza en modo núcleo."
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -1849,9 +1869,9 @@
     "q": "Un archivo de cabecera contiene",
     "options": [
       "Prototipos de funciones",
-      "Crear un enlace duro a un archivo es equivalente a crear un nuevo nombre de archivo",
-      "M corresponde al modo del archivo a comprobar",
-      "Especifica la entrada en tabla de archivos abiertos del archivo sobre el que se va a leer"
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
     ],
     "correctIndex": 0
   },
@@ -1859,9 +1879,9 @@
     "q": "En un procesador con registros de 32 bits donde la primera palabara en memoria es la palabra 0 ¿Cuál sería la dirección de la palabra 1?",
     "options": [
       "4",
-      "Su estado hardware se almacena en los registros del procesador",
-      "Que su imagen de memoria al completo se encuentra en memoria secundaria.",
-      "El sistema operativo puede tomar el control del procesador en cualquier momento."
+      "3",
+      "5",
+      "6"
     ],
     "correctIndex": 0
   },
@@ -1869,9 +1889,9 @@
     "q": "¿En qué generación de los sistemas operativos aparece el concepto de lote de trabajos?",
     "options": [
       "2",
-      "Se integran en los archivos ejecutables",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+      "1",
+      "3",
+      "4"
     ],
     "correctIndex": 0
   },
@@ -1879,9 +1899,9 @@
     "q": "¿El sistema operativo interviene en la operación de la memoria caché?",
     "options": [
       "No, es gestionada exclusivamente por el hardware.",
-      "Una entidad lógica creada por el Sistema Operativo.",
-      "Se invocan a través de una llamada al sistema operativo",
-      "El sistema operativo se ejecutará como mínimo cada 6 u.t"
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema.",
+      "La traducci?n la realiza el compilador, no el hardware."
     ],
     "correctIndex": 0
   },
@@ -1889,9 +1909,9 @@
     "q": "La instrucción RETI:",
     "options": [
       "Restaura el estado de ejecución a partir de la pila del sistema.",
-      "La instrucción RETI",
-      "Última instrucción ejecutada",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -1899,9 +1919,9 @@
     "q": "Si se declara una variable p como puntero a un valor entero",
     "options": [
       "La variable p no puede contener valores enteros.",
-      "Puede asignar una máscaras de procesadores a un puntero.",
-      "Se obtiene un puntero a una estructura dirent.",
-      "Un nuevo proceso esperará como máximo n * 6 u.t"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -1909,9 +1929,9 @@
     "q": "El BCP de un proceso en situación de Bloqueado y Suspendido:",
     "options": [
       "Deberá ser actualizado y cambiado de lista cuando tenga lugar el suceso que bloqueó al proceso",
-      "El proceso que solicita una operación queda bloqueado hasta que ésta se complete.",
-      "Un proceso bloqueado que pase a listo se insertará en la cola después que un nuevo proceso",
-      "Se ejecuta para decidir qué proceso en estado de listo toma el control del procesador"
+      "Deberá ser actualizado y cambiado de lista cuando tenga lugar el suceso que bloqueó al hebra",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -1919,9 +1939,9 @@
     "q": "Se dice que entre los dos procesos existe una relación padre-hijo si",
     "options": [
       "Uno ha sido creado por el sistema operativo a instancia del otro",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten"
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo.",
+      "Comparte el contador de programa entre todas las hebras."
     ],
     "correctIndex": 0
   },
@@ -1929,9 +1949,9 @@
     "q": "Si un proceso se encuentra en estado de ejecución",
     "options": [
       "Su estado hardware se almacena en los registros del procesador",
-      "Se ejecuta para decidir qué proceso en estado de listo toma el control del procesador",
-      "Restaura el estado de ejecución a partir de la pila del sistema.",
-      "Ha pasado al menos una vez por el estado de ejecución"
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo.",
+      "Comparte el contador de programa entre todas las hebras."
     ],
     "correctIndex": 0
   },
@@ -1939,9 +1959,9 @@
     "q": "Es falso que el BCP de un proceso pueda encontrarse",
     "options": [
       "En memoria secundaria",
-      "La eficiencia del almacenamiento no depende de la partición en la que se ubique cada proceso.",
-      "No podrá haber más que un proceso en la sección crítica.",
-      "Deberá ser actualizado y cambiado de lista cuando tenga lugar el suceso que bloqueó al proceso"
+      "En memoria principal",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -1949,9 +1969,9 @@
     "q": "Es falso que el BCP de un proceso almacene",
     "options": [
       "Los identificadores de sus procesos hijos",
-      "El proceso que solicita una operación queda bloqueado hasta que ésta se complete.",
-      "No podrá haber más que un proceso en la sección crítica.",
-      "El proceso padre y el proceso hijo ejecutan el código que sigue a la realización de la llamada"
+      "Los identificadores de sus hebras hijos",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -1959,9 +1979,9 @@
     "q": "Después de realizar una orden fork() desde un proceso",
     "options": [
       "El proceso padre y el proceso hijo ejecutan el código que sigue a la realización de la llamada",
-      "Sitúa el puntero al final del primer archivo abierto desde el proceso.",
-      "Sitúa el puntero al principio del segundo archivo abierto desde el proceso.",
-      "Un proceso bloqueado que pase a listo se insertará en la cola después que un nuevo proceso"
+      "El hebra padre y el hebra hijo ejecutan el código que sigue a la realización de la llamada",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -1969,9 +1989,9 @@
     "q": "El cuarto parámetro de la función pthread_create indica",
     "options": [
       "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+      "Los atributos con que se llamará a la función sobre la que se crea una proceso",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -1979,9 +1999,9 @@
     "q": "La imagen de memoria de un proceso en un sistema con memoria virtual",
     "options": [
       "Puede tener elementos almacenados en espacio de almacenamiento secundario",
-      "Que su imagen de memoria al completo se encuentra en memoria secundaria.",
-      "Se construye directamente sobre memoria virtual.",
-      "El tiempo total de permanencia de un proceso en el sistema"
+      "No puede tener elementos almacenados en espacio de almacenamiento secundario",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -1989,9 +2009,9 @@
     "q": "¿Cuál de la siguiente información NO es almacenado por el BCP de un proceso?",
     "options": [
       "Última instrucción ejecutada",
-      "Su estado hardware se almacena en su BCP.",
-      "Si la región es controlada por un semáforo general este puede tomar el valor 2",
-      "No, es gestionada exclusivamente por el hardware."
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo.",
+      "Comparte el contador de programa entre todas las hebras."
     ],
     "correctIndex": 0
   },
@@ -1999,9 +2019,9 @@
     "q": "La función pthread_join sirve para",
     "options": [
       "Esperar a una hebra",
-      "El tiempo requerido para su ejecución más el tiempo que permanece a la espera de los recursos solicitados",
-      "Utiliza %d para mostrar cadenas",
-      "Utiliza %c para mostrar cadenas de caracteres"
+      "Esperar a una proceso",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -2009,9 +2029,9 @@
     "q": "El primer parámetro de la función pthread_create indica",
     "options": [
       "La estructura que almacenará los datos de la hebra",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+      "La estructura que almacenará los datos de la proceso",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -2019,9 +2039,9 @@
     "q": "Un proceso en estado bloquea",
     "options": [
       "Ha pasado al menos una vez por el estado de ejecución",
-      "Se ejecuta para decidir qué proceso en estado de listo toma el control del procesador",
-      "En el registro de estado de la unidad de control",
-      "El tiempo total de permanencia de un proceso en el sistema"
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo.",
+      "Comparte el contador de programa entre todas las hebras."
     ],
     "correctIndex": 0
   },
@@ -2029,9 +2049,9 @@
     "q": "Las hebras definidas sobre un proceso",
     "options": [
       "Tienen cada una su propio estado del procesador.",
-      "Se ejecuta para decidir qué proceso en estado de listo toma el control del procesador",
-      "El bloqueo de un proceso conlleva el desbloqueo de un cerrojo",
-      "El proceso padre y el proceso hijo ejecutan el código que sigue a la realización de la llamada"
+      "No tienen cada una su propio estado del procesador.",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -2039,9 +2059,9 @@
     "q": "El segundo parámetro de la función pthread_create indica",
     "options": [
       "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+      "Los atributos con que se llamará a la función sobre la que se crea una proceso",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -2049,9 +2069,9 @@
     "q": "¿Cuál de las siguientes afirmaciones es falsa para las hebras definidas en un proceso?",
     "options": [
       "Comparten el espacio de pila del proceso.",
-      "Utiliza %d para mostrar cadenas",
-      "Deberá sincronizar su ejecución con otras hebras.",
-      "Es el hardware integrado en el dispositivo para su manejo."
+      "Comparten el espacio de pila del hebra.",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -2059,9 +2079,9 @@
     "q": "Si un proceso se encuentra en estado listo",
     "options": [
       "Su estado hardware se almacena en su BCP.",
-      "Se ejecuta para decidir qué proceso en estado de listo toma el control del procesador",
-      "Un proceso bloqueado que pase a listo se insertará en la cola después que un nuevo proceso",
-      "Su estado hardware se almacena en los registros del procesador"
+      "Su estado hardware se almacena en su tabla de p?ginas.",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -2069,9 +2089,9 @@
     "q": "El BCP contendrá",
     "options": [
       "Elementos de tamaño fijo",
-      "Su estado hardware se almacena en su BCP.",
-      "Su tabla de archivos abiertos contendrá enlaces a inodo con bloques vacíos",
-      "Que su imagen de memoria al completo se encuentra en memoria secundaria."
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo.",
+      "Comparte el contador de programa entre todas las hebras."
     ],
     "correctIndex": 0
   },
@@ -2079,9 +2099,9 @@
     "q": "Un proceso es",
     "options": [
       "Una entidad lógica creada por el Sistema Operativo.",
-      "El proceso que solicita una operación de entrada/salida puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido.",
-      "Un nuevo proceso esperará como máximo n * 6 u.t",
-      "El tiempo total de permanencia de un proceso en el sistema"
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo.",
+      "Comparte el contador de programa entre todas las hebras."
     ],
     "correctIndex": 0
   },
@@ -2089,9 +2109,9 @@
     "q": "Si una hebra accede al valor de una variable del segmento de datos del proceso",
     "options": [
       "Deberá sincronizar su ejecución con otras hebras.",
-      "El pid del proceso",
-      "El proceso que solicita una operación queda bloqueado hasta que ésta se complete.",
-      "Sitúa el puntero al principio del segundo archivo abierto desde el proceso."
+      "Deberá sincronizar su ejecución con otras procesos.",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -2099,9 +2119,9 @@
     "q": "Que un proceso esté suspendido significa:",
     "options": [
       "Que su imagen de memoria al completo se encuentra en memoria secundaria.",
-      "La eficiencia del almacenamiento no depende de la partición en la que se ubique cada proceso.",
-      "El proceso que solicita una operación queda bloqueado hasta que ésta se complete.",
-      "No podrá haber más que un proceso en la sección crítica."
+      "Que su imagen de memoria al completo se encuentra en memoria principal.",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -2109,9 +2129,9 @@
     "q": "El tiempo de retorno es un parámetro de rendimiento que significa",
     "options": [
       "El tiempo requerido para su ejecución más el tiempo que permanece a la espera de los recursos solicitados",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2119,9 +2139,9 @@
     "q": "El planificador a corto plazo",
     "options": [
       "Se ejecuta para decidir qué proceso en estado de listo toma el control del procesador",
-      "Esperar a una hebra",
-      "Su tabla de archivos abiertos contendrá enlaces a inodo con bloques vacíos",
-      "Lo establece el programador de las aplicaciones"
+      "Se ejecuta para decidir qué proceso en estado de bloqueado toma el control del procesador",
+      "Se ejecuta para decidir qué hebra en estado de listo toma el control del procesador",
+      "No se ejecuta para decidir qué proceso en estado de listo toma el control del procesador"
     ],
     "correctIndex": 0
   },
@@ -2129,9 +2149,19 @@
     "q": "Suponga una política de planificación basada en FCFS",
     "options": [
       "Si un proceso ocupa el procesador puede ejecutar hasta terminar",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "Una llamada a wait lo dejará a 0",
-      "Una llamada a wait lo dejará a 1"
+      "Si un hebra ocupa el procesador puede ejecutar hasta terminar",
+      "Lo decide el planificador a largo plazo, no el de corto plazo.",
+      "Asigna el mayor quantum al proceso con mayor prioridad en cada turno."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Suponga una política de planificación basada en FCFS",
+    "options": [
+      "Si un proceso es desbloqueado puede tener que esperar a que acaben todos los insertados en la cola de listos.",
+      "Si un proceso es desbloqueado puede tener que esperar a que acaben todos los insertados en la cola de bloqueados.",
+      "Si un proceso es deslisto puede tener que esperar a que acaben todos los insertados en la cola de listos.",
+      "Si un proceso es desejecuci?n puede tener que esperar a que acaben todos los insertados en la cola de listos."
     ],
     "correctIndex": 0
   },
@@ -2139,9 +2169,9 @@
     "q": "Suponga una política de planificación Round-Robin con quantum q=6",
     "options": [
       "El sistema operativo se ejecutará como mínimo cada 6 u.t",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "Una llamada a wait lo dejará a 1"
+      "El sistema operativo se ejecutará como mínimo cada 5 u.t",
+      "El sistema operativo se ejecutará como mínimo cada 7 u.t",
+      "El sistema operativo se ejecutará como mínimo cada 8 u.t"
     ],
     "correctIndex": 0
   },
@@ -2149,9 +2179,9 @@
     "q": "Suponga una política de planificación Round-Robin con quantum q=6 y n procesos en la cola de procesos listos",
     "options": [
       "Un nuevo proceso esperará como máximo n * 6 u.t",
-      "Los procesos pueden ejecutar durante un quantum distinto en función de la cola.",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra"
+      "Un nuevo proceso esperará como máximo n * 5 u.t",
+      "Un nuevo proceso esperará como máximo n * 7 u.t",
+      "Un nuevo proceso esperará como máximo n * 8 u.t"
     ],
     "correctIndex": 0
   },
@@ -2159,9 +2189,9 @@
     "q": "Suponga una política de planificación Round-Robin con quantum q=6 y n procesos en la cola de procesos listos:",
     "options": [
       "Un proceso nuevo se inserta al final de la cola en cualquier caso.",
-      "Los procesos pueden ejecutar durante un quantum distinto en función de la cola.",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra"
+      "Un hebra nuevo se inserta al final de la cola en cualquier caso.",
+      "Lo decide el planificador a largo plazo, no el de corto plazo.",
+      "Asigna el mayor quantum al proceso con mayor prioridad en cada turno."
     ],
     "correctIndex": 0
   },
@@ -2169,9 +2199,9 @@
     "q": "Suponga una política de planificación Round-Robin con quantum q=4",
     "options": [
       "Si un proceso termina antes del quantum, otro proceso puede ocupar el procesador durante 4 u.t",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "Una llamada a wait lo dejará a 0"
+      "Si un proceso termina antes del quantum, otro proceso puede ocupar el procesador durante 3 u.t",
+      "Si un proceso termina antes del quantum, otro proceso puede ocupar el procesador durante 5 u.t",
+      "Si un proceso termina antes del quantum, otro proceso puede ocupar el procesador durante 6 u.t"
     ],
     "correctIndex": 0
   },
@@ -2179,9 +2209,9 @@
     "q": "Suponga una política de planificación Round-Robin con quantum q=4 y n procesos bloqueados",
     "options": [
       "Un proceso bloqueado que pase a listo se insertará en la cola después que un nuevo proceso",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "Los procesos pueden ejecutar durante un quantum distinto en función de la cola.",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra"
+      "Un proceso bloqueado que pase a bloqueado se insertará en la cola después que un nuevo proceso",
+      "Un proceso listo que pase a listo se insertará en la cola después que un nuevo proceso",
+      "Un proceso ejecuci?n que pase a listo se insertará en la cola después que un nuevo proceso"
     ],
     "correctIndex": 0
   },
@@ -2189,9 +2219,9 @@
     "q": "Suponga una política de planificación de colas multinivel y prioridad estática",
     "options": [
       "Los procesos pueden ejecutar durante un quantum distinto en función de la cola.",
-      "Se emite una interrupción cuando los datos están en memoria",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "Una llamada a wait lo dejará a cero."
+      "Los hebras pueden ejecutar durante un quantum distinto en función de la cola.",
+      "Los procesos pueden ejecutar durante un prioridad distinto en función de la cola.",
+      "Lo decide el planificador a largo plazo, no el de corto plazo."
     ],
     "correctIndex": 0
   },
@@ -2199,9 +2229,9 @@
     "q": "El algoritmo de planificación Round-Robin consiste en",
     "options": [
       "Asignar circularmente el mismo tiempo de CPU a todos los procesos del sistema",
-      "Un nuevo proceso esperará como máximo n * 6 u.t",
-      "El proceso que solicita una operación queda bloqueado hasta que ésta se complete.",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten"
+      "Asignar circularmente el mismo tiempo de entrada/salida a todos los procesos del sistema",
+      "Asignar circularmente el mismo tiempo de CPU a todos los hebras del sistema",
+      "Lo decide el planificador a largo plazo, no el de corto plazo."
     ],
     "correctIndex": 0
   },
@@ -2209,9 +2239,9 @@
     "q": "El primer parámetro de la función sched_setaffinity determina",
     "options": [
       "El pid del proceso",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe."
+      "El pid del hebra",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2219,9 +2249,9 @@
     "q": "El parámetro de planificación denominado Tiempo de Retorno indica",
     "options": [
       "El tiempo total de permanencia de un proceso en el sistema",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+      "El tiempo total de permanencia de un hebra en el sistema",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2229,9 +2259,9 @@
     "q": "La función sched_setaffinity",
     "options": [
       "No tiene efecto si hay un solo procesador",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "Los procesos pueden ejecutar durante un quantum distinto en función de la cola.",
-      "En el registro de estado de la unidad de control"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2239,9 +2269,9 @@
     "q": "La función del planificador a largo plazo consiste en",
     "options": [
       "Dar entrada al sistema a nuevos procesos.",
-      "Tienen cada una su propio estado del procesador.",
-      "Sitúa el puntero al final del primer archivo abierto desde el proceso.",
-      "Uno ha sido creado por el sistema operativo a instancia del otro"
+      "Dar entrada al sistema a nuevos hebras.",
+      "Lo decide el planificador a largo plazo, no el de corto plazo.",
+      "Asigna el mayor quantum al proceso con mayor prioridad en cada turno."
     ],
     "correctIndex": 0
   },
@@ -2249,9 +2279,9 @@
     "q": "En una política de planificación expropiativa",
     "options": [
       "El sistema operativo puede tomar el control del procesador en cualquier momento.",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "Ningún proceso que invoque a wait podrá entrar en región crítica",
-      "Una entidad lógica creada por el Sistema Operativo."
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2259,9 +2289,9 @@
     "q": "Considerando prioridades estáticas y dinámicas, el número total de niveles de prioridad en un sistema POSIX será",
     "options": [
       "139",
-      "Es un sistema de prioridades dinámicas.",
-      "El tiempo total de permanencia de un proceso en el sistema",
-      "Tiene que ser accedido dentro de una región crítica."
+      "138",
+      "140",
+      "141"
     ],
     "correctIndex": 0
   },
@@ -2269,9 +2299,9 @@
     "q": "El sistema de prioridad nice",
     "options": [
       "Es un sistema de prioridades dinámicas.",
-      "Restaura el estado de ejecución a partir de la pila del sistema.",
-      "El sistema operativo se ejecutará como mínimo cada 6 u.t",
-      "Asignar circularmente el mismo tiempo de CPU a todos los procesos del sistema"
+      "Es un sistema de quantumes dinámicas.",
+      "No es un sistema de prioridades dinámicas.",
+      "Lo decide el planificador a largo plazo, no el de corto plazo."
     ],
     "correctIndex": 0
   },
@@ -2279,9 +2309,9 @@
     "q": "La función sched_getaffinity:",
     "options": [
       "Puede asignar una máscaras de procesadores a un puntero.",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "Los procesos pueden ejecutar durante un quantum distinto en función de la cola.",
-      "Dar entrada al sistema a nuevos procesos."
+      "No puede asignar una máscaras de procesadores a un puntero.",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2289,9 +2319,9 @@
     "q": "El entrelazado de ejecución de un conjunto de procesos",
     "options": [
       "Lo establece el programador de las aplicaciones",
-      "Asignar circularmente el mismo tiempo de CPU a todos los procesos del sistema",
-      "No se puede establecer comunicación entre procesos ubicados en máquinas distintas.",
-      "El tiempo requerido para su ejecución más el tiempo que permanece a la espera de los recursos solicitados"
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo.",
+      "Comparte el contador de programa entre todas las hebras."
     ],
     "correctIndex": 0
   },
@@ -2299,9 +2329,9 @@
     "q": "En una variable de condición",
     "options": [
       "El bloqueo de un proceso conlleva el desbloqueo de un cerrojo",
-      "Esperar a una hebra",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "Una llamada a wait lo dejará a 1"
+      "El bloqueo de un hebra conlleva el desbloqueo de un cerrojo",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2309,9 +2339,9 @@
     "q": "Si un semáforo general tiene valor 0",
     "options": [
       "Ningún proceso que invoque a wait podrá entrar en región crítica",
-      "Si la región es controlada por un semáforo general este puede tomar el valor 2",
-      "La llamada signal siempre incrementará el contador del semáforo.",
-      "La región no puede ser controlada por un semáforo binario."
+      "Ningún hebra que invoque a wait podrá entrar en región crítica",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2319,9 +2349,9 @@
     "q": "Si un semáforo general tiene valor 2",
     "options": [
       "Una llamada a wait lo dejará a 1",
-      "Si la región es controlada por un semáforo general este puede tomar el valor 2",
-      "La llamada signal siempre incrementará el contador del semáforo.",
-      "La región no puede ser controlada por un semáforo binario."
+      "Una llamada a wait lo dejará a 0",
+      "Una llamada a wait lo dejará a 2",
+      "Una llamada a wait lo dejará a 3"
     ],
     "correctIndex": 0
   },
@@ -2329,9 +2359,19 @@
     "q": "Sea una región crítica donde puede haber hasta tres procesos en ejecución",
     "options": [
       "Si la región es controlada por un semáforo general este puede tomar el valor 2",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "El proceso que solicita una operación de entrada/salida puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido.",
-      "No podrá haber más que un proceso en la sección crítica."
+      "Si la región es controlada por un semáforo general este puede tomar el valor 1",
+      "Si la región es controlada por un semáforo general este puede tomar el valor 3",
+      "Si la región es controlada por un semáforo general este puede tomar el valor 4"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Sea una región crítica donde puede haber hasta tres procesos en ejecución",
+    "options": [
+      "Si la región es controlada por un semáforo general este puede tomar valor -4",
+      "Si la región es controlada por un semáforo general este puede tomar valor -3",
+      "Si la región es controlada por un semáforo general este puede tomar valor -5",
+      "Si la región es controlada por un semáforo general este puede tomar valor -6"
     ],
     "correctIndex": 0
   },
@@ -2339,9 +2379,9 @@
     "q": "La llamada send",
     "options": [
       "Si es síncrona es bloqueante",
-      "Una llamada a wait lo dejará a 0",
-      "Una llamada a wait lo dejará a 1",
-      "Se liberará en la llamada"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2349,9 +2389,9 @@
     "q": "Si un semáforo general tiene valor 1",
     "options": [
       "Una llamada a wait lo dejará a 0",
-      "Si la región es controlada por un semáforo general este puede tomar el valor 2",
-      "La llamada signal siempre incrementará el contador del semáforo.",
-      "La región no puede ser controlada por un semáforo binario."
+      "Una llamada a wait lo dejará a -1",
+      "Una llamada a wait lo dejará a 1",
+      "Una llamada a wait lo dejará a 2"
     ],
     "correctIndex": 0
   },
@@ -2359,9 +2399,9 @@
     "q": "El quinto parámetro de la primitiva mmap corresponde a",
     "options": [
       "El archivo que se proyectará",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe."
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2369,9 +2409,9 @@
     "q": "El segundo parámetro de la llamada a pthread_cond_wait corresponde a un mutex que",
     "options": [
       "Se liberará en la llamada",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+      "No se liberará en la llamada",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -2379,9 +2419,9 @@
     "q": "Si un semáforo general tiene valor 1:",
     "options": [
       "Una llamada a wait lo dejará a cero.",
-      "Si la región es controlada por un semáforo general este puede tomar el valor 2",
-      "La llamada signal siempre incrementará el contador del semáforo.",
-      "La región no puede ser controlada por un semáforo binario."
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2389,9 +2429,19 @@
     "q": "Si un semáforo general tiene valor 2:",
     "options": [
       "Una llamada a wait lo dejará a 1",
-      "Si la región es controlada por un semáforo general este puede tomar el valor 2",
-      "La llamada signal siempre incrementará el contador del semáforo.",
-      "La región no puede ser controlada por un semáforo binario."
+      "Una llamada a wait lo dejará a 0",
+      "Una llamada a wait lo dejará a 2",
+      "Una llamada a wait lo dejará a 3"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Si un semáforo general tiene valor 2",
+    "options": [
+      "Puede haber procesos en la región crítica que controle",
+      "Puede haber hebras en la región crítica que controle",
+      "No puede haber procesos en la región crítica que controle",
+      "Depende de la configuraci?n del sistema."
     ],
     "correctIndex": 0
   },
@@ -2399,9 +2449,9 @@
     "q": "En un semáforo general",
     "options": [
       "La llamada signal siempre incrementará el contador del semáforo.",
-      "Si la región es controlada por un semáforo general este puede tomar el valor 2",
-      "La región no puede ser controlada por un semáforo binario.",
-      "Sitúa el puntero al principio del segundo archivo abierto desde el proceso."
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2409,9 +2459,9 @@
     "q": "Si un proceso recibe una señal:",
     "options": [
       "Se alterará su flujo de ejecución si la señal no se ignora",
-      "El proceso que solicita una operación queda bloqueado hasta que ésta se complete.",
-      "El proceso que solicita una operación de entrada/salida puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido.",
-      "Un proceso nuevo se inserta al final de la cola en cualquier caso."
+      "No se alterará su flujo de ejecución si la señal no se ignora",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
     ],
     "correctIndex": 0
   },
@@ -2419,9 +2469,9 @@
     "q": "Un recurso crítico, necesariamente",
     "options": [
       "Tiene que ser accedido dentro de una región crítica.",
-      "Que su imagen de memoria al completo se encuentra en memoria secundaria.",
-      "El sistema operativo se ejecutará como mínimo cada 6 u.t",
-      "No se puede establecer comunicación entre procesos ubicados en máquinas distintas."
+      "No tiene que ser accedido dentro de una región crítica.",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2429,9 +2479,9 @@
     "q": "El primer parámetro de la primitiva mmap corresponde a:",
     "options": [
       "La zona de memoria compartida",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe."
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2439,9 +2489,9 @@
     "q": "En la llamada a read sobre un pipe:",
     "options": [
       "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "Se construye directamente sobre memoria virtual.",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "Una llamada a wait lo dejará a 0"
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
     ],
     "correctIndex": 0
   },
@@ -2449,9 +2499,9 @@
     "q": "En un pipe:",
     "options": [
       "No se puede establecer comunicación entre procesos ubicados en máquinas distintas.",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "No, es gestionada exclusivamente por el hardware."
+      "No se puede establecer comunicación entre hebras ubicados en máquinas distintas.",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2459,9 +2509,9 @@
     "q": "Si utilizamos un cerrojo para proteger una sección crítica:",
     "options": [
       "No podrá haber más que un proceso en la sección crítica.",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "Se emite una interrupción cuando los datos están en memoria",
-      "Una llamada a wait lo dejará a 0"
+      "No podrá haber más que un hebra en la sección crítica.",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2469,9 +2519,9 @@
     "q": "Sea una región crítica donde puede haber hasta dos procesos en ejecución:",
     "options": [
       "La región no puede ser controlada por un semáforo binario.",
-      "Tiene que ser accedido dentro de una región crítica.",
-      "Si la región es controlada por un semáforo general este puede tomar el valor 2",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo.",
+      "Comparte el contador de programa entre todas las hebras."
     ],
     "correctIndex": 0
   },
@@ -2479,9 +2529,9 @@
     "q": "En la llamada a write sobre un pipe:",
     "options": [
       "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "Especifica la entrada en tabla de archivos abiertos del archivo sobre el que se va a leer",
-      "Especifica la entrada en la tabla de archivos abiertos del archivo sobre el que se va a escribir"
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
     ],
     "correctIndex": 0
   },
@@ -2489,9 +2539,9 @@
     "q": "Una zona de memoria compartida",
     "options": [
       "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten",
-      "La zona de memoria compartida",
-      "Se emite una interrupción cuando los datos están en memoria",
-      "Tienen cada una su propio estado del procesador."
+      "Tendrá las mismas direcciones físicas en los espacios de memoria de los hebras que lo comparten",
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema."
     ],
     "correctIndex": 0
   },
@@ -2499,9 +2549,29 @@
     "q": "En un esquema de memoria virtual basado en segmentación",
     "options": [
       "Cada segmento puede tener distintos permisos de acceso",
-      "Se construye directamente sobre memoria virtual.",
-      "Se emite una interrupción cuando los datos están en memoria",
-      "La zona de memoria compartida"
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema.",
+      "La traducci?n la realiza el compilador, no el hardware."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En un esquema de memoria virtual basado en segmentación",
+    "options": [
+      "Cada segmento tendrá sus propios permisos de acceso",
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema.",
+      "La traducci?n la realiza el compilador, no el hardware."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En un esquema de memoria virtual basado en segmentación",
+    "options": [
+      "El desplazamiento tiene que ser comparado con la longitud de éste",
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema.",
+      "La traducci?n la realiza el compilador, no el hardware."
     ],
     "correctIndex": 0
   },
@@ -2509,9 +2579,9 @@
     "q": "En un esquema de memoria virtual basado en segmentación.",
     "options": [
       "Los segmentos pueden diferir en tamaño.",
-      "Se construye directamente sobre memoria virtual.",
-      "Que su imagen de memoria al completo se encuentra en memoria secundaria.",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten"
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema.",
+      "La traducci?n la realiza el compilador, no el hardware."
     ],
     "correctIndex": 0
   },
@@ -2519,9 +2589,9 @@
     "q": "Es un esquema de memoria virtual basado en segmentación",
     "options": [
       "Los segmentos pueden diferir en tamaño",
-      "Se construye directamente sobre memoria virtual.",
-      "Se emite una interrupción cuando los datos están en memoria",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe."
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema.",
+      "La traducci?n la realiza el compilador, no el hardware."
     ],
     "correctIndex": 0
   },
@@ -2529,9 +2599,19 @@
     "q": "Las direcciones lógicas de un proceso",
     "options": [
       "Son la entrada a la MMU",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten",
-      "Las direcciones resultantes de la MMU son direcciones físicas",
-      "Ningún proceso que invoque a wait podrá entrar en región crítica"
+      "No son la entrada a la MMU",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Las direcciones lógicas de un proceso",
+    "options": [
+      "Comienzan siempre en la posición 0",
+      "Comienzan siempre en la posición -1",
+      "Comienzan siempre en la posición 1",
+      "Comienzan siempre en la posición 2"
     ],
     "correctIndex": 0
   },
@@ -2539,9 +2619,9 @@
     "q": "Con particiones dinámicas",
     "options": [
       "No hay fragmentación interna",
-      "Es un sistema de prioridades dinámicas.",
-      "Deberá sincronizar su ejecución con otras hebras.",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2549,9 +2629,59 @@
     "q": "En memoria virtual que utilice un esquema de paginación",
     "options": [
       "Las direcciones resultantes de la MMU son direcciones físicas",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten",
-      "Se construye directamente sobre memoria virtual.",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe."
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema.",
+      "La traducci?n la realiza el compilador, no el hardware."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En memoria virtual que utilice un esquema de paginación",
+    "options": [
+      "El número de posiciones de una página es elevado a 2 a n",
+      "El número de posiciones de una página es elevado a 1 a n",
+      "El número de posiciones de una página es elevado a 3 a n",
+      "El número de posiciones de una página es elevado a 4 a n"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En memoria virtual que utilice un esquema de paginación",
+    "options": [
+      "No existe fragmentación externa",
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema.",
+      "La traducci?n la realiza el compilador, no el hardware."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En memoria virtual que utilice un esquema de paginación",
+    "options": [
+      "Las direcciones lógicas coinciden con las direcciones secuenciales del proceso",
+      "Las direcciones lógicas coinciden con las direcciones secuenciales del hebra",
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En memoria virtual que utilice un esquema de paginación",
+    "options": [
+      "Existe fragmentación interna",
+      "Las direcciones resultantes de la MMU son siempre l?gicas.",
+      "No existe fragmentaci?n interna en este esquema.",
+      "La traducci?n la realiza el compilador, no el hardware."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Una zona de memoria compartida",
+    "options": [
+      "Pueden contener direcciones físicas referenciadas por direcciones lógicas distintas en los espacios de memoria de los procesos que la comparten",
+      "Pueden contener direcciones físicas referenciadas por direcciones lógicas distintas en los espacios de memoria de los hebras que la comparten",
+      "No pueden contener direcciones físicas referenciadas por direcciones lógicas distintas en los espacios de memoria de los procesos que la comparten",
+      "Las direcciones resultantes de la MMU son siempre l?gicas."
     ],
     "correctIndex": 0
   },
@@ -2559,9 +2689,9 @@
     "q": "Las funciones de bibliotecas dinámicas",
     "options": [
       "Se invocan a través de una llamada al sistema operativo",
-      "Es un sistema de prioridades dinámicas.",
-      "Prototipos de funciones",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten"
+      "No se invocan a través de una llamada al sistema operativo",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2569,9 +2699,9 @@
     "q": "Con particiones fijas de distinto tamaño",
     "options": [
       "Hay fragmentación externa",
-      "Los atributos con que se llamará a la función sobre la que se crea una hebra",
-      "Los procesos pueden ejecutar durante un quantum distinto en función de la cola.",
-      "Deberá sincronizar su ejecución con otras hebras."
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2579,9 +2709,9 @@
     "q": "Con particiones fijas del mismo tamaño:",
     "options": [
       "La eficiencia del almacenamiento no depende de la partición en la que se ubique cada proceso.",
-      "Asignar circularmente el mismo tiempo de CPU a todos los procesos del sistema",
-      "M corresponde al modo del archivo a comprobar",
-      "El sistema operativo puede tomar el control del procesador en cualquier momento."
+      "La eficiencia del almacenamiento no depende de la partición en la que se ubique cada hebra.",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2589,9 +2719,19 @@
     "q": "Las direcciones lógicas de un proceso:",
     "options": [
       "Son la entrada a la MMU",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten",
-      "Las direcciones resultantes de la MMU son direcciones físicas",
-      "Un proceso bloqueado que pase a listo se insertará en la cola después que un nuevo proceso"
+      "No son la entrada a la MMU",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Las direcciones lógicas de un proceso:",
+    "options": [
+      "Comienzan siempre en la posición 0.",
+      "Comienzan siempre en la posición -1.",
+      "Comienzan siempre en la posición 1.",
+      "Comienzan siempre en la posición 2."
     ],
     "correctIndex": 0
   },
@@ -2599,9 +2739,9 @@
     "q": "Las funciones de bibliotecas estáticas",
     "options": [
       "Se integran en los archivos ejecutables",
-      "Lo establece el programador de las aplicaciones",
-      "Se emite una interrupción cuando los datos están en memoria",
-      "Prototipos de funciones"
+      "No se integran en los archivos ejecutables",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   },
@@ -2609,9 +2749,9 @@
     "q": "La imagen de memoria de un proceso:",
     "options": [
       "Se construye directamente sobre memoria virtual.",
-      "Que su imagen de memoria al completo se encuentra en memoria secundaria.",
-      "Un proceso bloqueado que pase a listo se insertará en la cola después que un nuevo proceso",
-      "En memoria secundaria"
+      "Se construye directamente sobre memoria f?sica.",
+      "No se construye directamente sobre memoria virtual.",
+      "Se almacena ?nicamente en los registros generales del procesador."
     ],
     "correctIndex": 0
   },
@@ -2619,9 +2759,19 @@
     "q": "Si se utiliza una entrada/salida por interrupciones",
     "options": [
       "El proceso que solicita una operación de entrada/salida puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido.",
-      "Ha pasado al menos una vez por el estado de ejecución",
-      "Una entidad lógica creada por el Sistema Operativo.",
-      "El proceso que solicita una operación queda bloqueado hasta que ésta se complete."
+      "El proceso que solicita una operación de CPU puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido.",
+      "El hebra que solicita una operación de entrada/salida puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido.",
+      "La CPU debe realizar sondeo continuo hasta finalizar la E/S."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Si se utiliza una entrada/salida por interrupciones",
+    "options": [
+      "Sólo se puede atender a una interrupción cuando se ejecute un proceso de usuario",
+      "Sólo se puede atender a una interrupción cuando se ejecute un hebra de usuario",
+      "La CPU debe realizar sondeo continuo hasta finalizar la E/S.",
+      "No se generan interrupciones al finalizar la transferencia."
     ],
     "correctIndex": 0
   },
@@ -2629,9 +2779,19 @@
     "q": "Si se utiliza una entrada/salida por interrupciones:",
     "options": [
       "La atención de una interrupción siempre se realiza en modo núcleo.",
-      "El proceso que solicita una operación de entrada/salida puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido.",
-      "Ha pasado al menos una vez por el estado de ejecución",
-      "Una entidad lógica creada por el Sistema Operativo."
+      "La CPU debe realizar sondeo continuo hasta finalizar la E/S.",
+      "No se generan interrupciones al finalizar la transferencia.",
+      "El proceso solicitante queda bloqueado siempre en cualquier caso."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Si se utiliza una entrada/salida por interrupciones:",
+    "options": [
+      "El proceso interrumpido no puede ser el mismo que solicitó la operación",
+      "El hebra interrumpido no puede ser el mismo que solicitó la operación",
+      "La CPU debe realizar sondeo continuo hasta finalizar la E/S.",
+      "No se generan interrupciones al finalizar la transferencia."
     ],
     "correctIndex": 0
   },
@@ -2639,9 +2799,9 @@
     "q": "Si se utiliza una entrada/salida por DMA",
     "options": [
       "Se emite una interrupción cuando los datos están en memoria",
-      "El proceso que solicita una operación de entrada/salida puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido.",
-      "Ha pasado al menos una vez por el estado de ejecución",
-      "Una entidad lógica creada por el Sistema Operativo."
+      "No se emite una interrupción cuando los datos están en memoria",
+      "La CPU debe realizar sondeo continuo hasta finalizar la E/S.",
+      "No se generan interrupciones al finalizar la transferencia."
     ],
     "correctIndex": 0
   },
@@ -2649,9 +2809,9 @@
     "q": "Si se utiliza una entrada/salida por DMA:",
     "options": [
       "El proceso que solicita una operación queda bloqueado hasta que ésta se complete.",
-      "El proceso que solicita una operación de entrada/salida puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido.",
-      "Ha pasado al menos una vez por el estado de ejecución",
-      "Una entidad lógica creada por el Sistema Operativo."
+      "El proceso que solicita una operación queda listo hasta que ésta se complete.",
+      "El proceso que solicita una operación queda ejecuci?n hasta que ésta se complete.",
+      "El hebra que solicita una operación queda bloqueado hasta que ésta se complete."
     ],
     "correctIndex": 0
   },
@@ -2659,9 +2819,19 @@
     "q": "Un enlace blando es",
     "options": [
       "Que un archivo contenga la ruta completa de otro",
-      "Crear un enlace duro a un archivo es equivalente a crear un nuevo nombre de archivo",
-      "El archivo que se proyectará",
-      "Utiliza %d para mostrar cadenas"
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Un enlace blando es",
+    "options": [
+      "Un archivo que contiene la ruta de otro",
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
     ],
     "correctIndex": 0
   },
@@ -2669,9 +2839,9 @@
     "q": "En S_ISDIR(m)",
     "options": [
       "M corresponde al modo del archivo a comprobar",
-      "La estructura que almacenará los datos de la hebra",
-      "No hay fragmentación interna",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten"
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario.",
+      "Solo ocurre cuando el proceso finaliza."
     ],
     "correctIndex": 0
   },
@@ -2679,9 +2849,19 @@
     "q": "Cuando se crea un nuevo proceso en los sistemas Unix/Linux",
     "options": [
       "Su tabla de archivos abiertos contendrá enlaces a inodo con bloques vacíos",
-      "Un nuevo proceso esperará como máximo n * 6 u.t",
-      "Se emite una interrupción cuando los datos están en memoria",
-      "El proceso que solicita una operación de entrada/salida puede seguir ejecutando y se le enviará una interrupción cuando la solicitud haya concluido."
+      "Su tabla de archivos abiertos contendrá enlaces a bloque de datos con bloques vacíos",
+      "Se almacena ?nicamente en los registros generales del procesador.",
+      "Permanece siempre en memoria secundaria aunque el proceso est? activo."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Cuando se crea un nuevo proceso en los sistemas Unix/Linux",
+    "options": [
+      "Su tabla de archivos abiertos contendrá como mínimo 3 entradas",
+      "Su tabla de archivos abiertos contendrá como mínimo 2 entradas",
+      "Su tabla de archivos abiertos contendrá como mínimo 4 entradas",
+      "Su tabla de archivos abiertos contendrá como mínimo 5 entradas"
     ],
     "correctIndex": 0
   },
@@ -2689,9 +2869,9 @@
     "q": "En los sistemas de archivos basados en inodos",
     "options": [
       "Crear un enlace duro a un archivo es equivalente a crear un nuevo nombre de archivo",
-      "Se integran en los archivos ejecutables",
-      "Los procesos pueden ejecutar durante un quantum distinto en función de la cola.",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten"
+      "Crear un enlace blando a un archivo es equivalente a crear un nuevo nombre de archivo",
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir."
     ],
     "correctIndex": 0
   },
@@ -2699,9 +2879,29 @@
     "q": "En los sistemas de archivos basados en inodos:",
     "options": [
       "Un bloque referenciado desde otro puede contener datos o direcciones a otros bloques",
-      "Se integran en los archivos ejecutables",
-      "Tendrá las mismas direcciones físicas en los espacios de memoria de los procesos que lo comparten",
-      "Su estado hardware se almacena en los registros del procesador"
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Ninguna de las opciones es correcta.",
+    "options": [
+      "Crear un enlace duro a un archivo da lugar a un nuevo inodo.",
+      "Crear un enlace duro a un archivo da lugar a un nuevo bloque de datos.",
+      "Crear un enlace blando a un archivo da lugar a un nuevo inodo.",
+      "Depende de la configuraci?n del sistema."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En los sistemas de archivos basados en inodos",
+    "options": [
+      "La información contenida en un bloque puede tener varios nombres",
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
     ],
     "correctIndex": 0
   },
@@ -2709,9 +2909,9 @@
     "q": "El primer parámetro de la llamada al sistema write",
     "options": [
       "Especifica la entrada en la tabla de archivos abiertos del archivo sobre el que se va a escribir",
-      "Se invocan a través de una llamada al sistema operativo",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe."
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
     ],
     "correctIndex": 0
   },
@@ -2719,9 +2919,9 @@
     "q": "El primer parámetro de la llamada al sistema read",
     "options": [
       "Especifica la entrada en tabla de archivos abiertos del archivo sobre el que se va a leer",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "Se invocan a través de una llamada al sistema operativo",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro"
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
     ],
     "correctIndex": 0
   },
@@ -2729,9 +2929,9 @@
     "q": "El segundo parámetro de la llamada al sistema read",
     "options": [
       "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro",
-      "El segundo parámetro indica la posición de memoria que se escribirá en el pipe.",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe.",
-      "Se invocan a través de una llamada al sistema operativo"
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
     ],
     "correctIndex": 0
   },
@@ -2739,9 +2939,9 @@
     "q": "El tercer parámetro de la llamada al sistema open",
     "options": [
       "Sólo tiene sentido si el archivo indicado no existe.",
-      "Especifica un buffer donde se almacenarán los bytes leídos del archivo que indique el tercer parámetro",
-      "Se invocan a través de una llamada al sistema operativo",
-      "El segundo parámetro indica la posición de memoria sobre la que se escribirá lo leido del pipe."
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir.",
+      "Un enlace duro crea un nuevo inodo independiente."
     ],
     "correctIndex": 0
   },
@@ -2749,9 +2949,9 @@
     "q": "En la llamada readdir(p):",
     "options": [
       "Se obtiene un puntero a una estructura dirent.",
-      "El proceso padre y el proceso hijo ejecutan el código que sigue a la realización de la llamada",
-      "Se liberará en la llamada",
-      "Una llamada a wait lo dejará a 1"
+      "No se obtiene un puntero a una estructura dirent.",
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir."
     ],
     "correctIndex": 0
   },
@@ -2759,9 +2959,9 @@
     "q": "La llamada al sistema lseek(4, 0, SEEK_SET)",
     "options": [
       "Sitúa el puntero al principio del segundo archivo abierto desde el proceso.",
-      "Se invocan a través de una llamada al sistema operativo",
-      "El tiempo total de permanencia de un proceso en el sistema",
-      "Uno ha sido creado por el sistema operativo a instancia del otro"
+      "Sitúa el puntero al principio del segundo archivo abierto desde el hebra.",
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir."
     ],
     "correctIndex": 0
   },
@@ -2769,9 +2969,9 @@
     "q": "La llamada al sistema lseek(3, 0, SEEK_END)",
     "options": [
       "Sitúa el puntero al final del primer archivo abierto desde el proceso.",
-      "Se invocan a través de una llamada al sistema operativo",
-      "El sistema operativo puede tomar el control del procesador en cualquier momento.",
-      "El sistema operativo se ejecutará como mínimo cada 6 u.t"
+      "Sitúa el puntero al final del primer archivo abierto desde el hebra.",
+      "El primer par?metro es la direcci?n del buffer en memoria.",
+      "El tercer par?metro indica el n?mero de bytes a leer o escribir."
     ],
     "correctIndex": 0
   },
@@ -2779,9 +2979,9 @@
     "q": "El controlador de un dispositivo:",
     "options": [
       "Es el hardware integrado en el dispositivo para su manejo.",
-      "Si es síncrona es bloqueante",
-      "El pid del proceso",
-      "Última instrucción ejecutada"
+      "No es el hardware integrado en el dispositivo para su manejo.",
+      "Depende de la configuraci?n del sistema.",
+      "Se realiza ?nicamente en modo usuario."
     ],
     "correctIndex": 0
   }
