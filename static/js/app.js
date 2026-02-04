@@ -1,5 +1,11 @@
 let cvData;
-let currentLanguage = 'en';
+const supportedLanguages = ['en', 'es', 'hy'];
+const browserLanguage = (navigator.language || navigator.userLanguage || 'en').slice(0, 2);
+let currentLanguage = supportedLanguages.includes(browserLanguage) ? browserLanguage : 'en';
+const languageSelector = document.getElementById('language-selector');
+if (languageSelector) {
+    languageSelector.value = currentLanguage;
+}
 
 async function fetchCVData() {
     // Check if data is in localStorage
