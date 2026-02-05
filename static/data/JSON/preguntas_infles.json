@@ -1,0 +1,305 @@
+[
+  {
+    "q": "Which sentence is in the second conditional?",
+    "options": [
+      "If I were rich, I would travel the world.",
+      "If I was rich, I travel the world.",
+      "If I were rich, I travel the world.",
+      "If I will be rich, I would travel the world."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence uses the Present Continuous correctly?",
+    "options": [
+      "He has worked at the moment.",
+      "He is working at the moment.",
+      "He work at the moment.",
+      "He worked at the moment."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence is in the present simple tense?",
+    "options": [
+      "They were playing basketball yesterday.",
+      "She is singing a song right now.",
+      "I eat breakfast every morning.",
+      "He will finish his work by 5 PM."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Which modal verb is used to give advice?",
+    "options": [
+      "Must",
+      "Might",
+      "Should",
+      "Can"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What tense is used to describe actions that happened at a specific time in the past?",
+    "options": [
+      "Present tense",
+      "Past tense",
+      "Future tense",
+      "Present perfect tense"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the correct question tag for 'She is tired'?",
+    "options": [
+      "Hasn’t she?",
+      "Doesn’t she?",
+      "Isn’t she?",
+      "Didn’t she?"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Which sentence correctly uses a gerund?",
+    "options": [
+      "I enjoy to swim.",
+      "I enjoy swim.",
+      "I enjoy swimming.",
+      "I enjoy to swimming."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Which sentence is in the past simple?",
+    "options": [
+      "She finished her homework.",
+      "She is finishing her homework.",
+      "She has finished her homework.",
+      "She finishes her homework."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct form of the Present Simple for the sentence: \"She ___ (to work) every day.\"",
+    "options": [
+      "working",
+      "works",
+      "worked",
+      "has worked"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "have visited Paris many times,\" what tense is \"have visited\"?",
+    "options": [
+      "Future tense",
+      "Present perfect tense",
+      "Past tense",
+      "Present tense"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence uses reported speech correctly?",
+    "options": [
+      "I told him that he could leave early.",
+      "He said: \"I will go to the party.\"",
+      "They asked where was the nearest bus stop.",
+      "She said: \"He is studying for his exam.\""
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which option correctly changes \"I am going to the party\" into reported speech?",
+    "options": [
+      "He said that he went to the party.",
+      "He said that he goes to the party.",
+      "He said that he was going to the party.",
+      "He said that he is going to the party."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the reported form of \"I will visit my grandparents next week\"?",
+    "options": [
+      "He said that he will visit his grandparents next week.",
+      "He said that he would visit his grandparents the following week.",
+      "He said that he would visit his grandparents next week.",
+      "He said that he would visit my grandparents next the following week."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the reported speech of \"I have finished my homework\"?",
+    "options": [
+      "He said that he finishes his homework.",
+      "He said that he had finished his homework.",
+      "He said that he is finished his homework.",
+      "He said that he finish his homework."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "When do we use a relative clause?",
+    "options": [
+      "To give orders",
+      "To express wishes",
+      "To ask questions",
+      "To provide additional information about a noun"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the purpose of a relative pronoun?",
+    "options": [
+      "To indicate possession",
+      "To connect a dependent clause to its antecedent",
+      "To express a command",
+      "To link a verb to a subject"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the reporting counterpart of \"what time is it\"?",
+    "options": [
+      "She asked what time it was?",
+      "she asked what time is it",
+      "she asked what time it is",
+      "She asked what time it was"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Which sentence contains a correct relative clause?",
+    "options": [
+      "The man who is wearing a blue hat.",
+      "The woman bought some apples yesterday.",
+      "That book he read it last night.",
+      "She doesn’t know what is he doing."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the purpose of reported speech?",
+    "options": [
+      "To report the weather",
+      "To retell what someone else said",
+      "To tell a story about what someone said",
+      "To quote what someone said"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence correctly uses a relative pronoun?",
+    "options": [
+      "He is the one what finished first in the race.",
+      "The car who is parked outside is mine.",
+      "The girl that is reading a book is my sister.",
+      "This is the house whom we lived in last year."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Which of the following is the correct WH-question for asking about frequency?",
+    "options": [
+      "Why does she visit her parents?",
+      "What time does she arrive?",
+      "How often does she visit her parents?",
+      "Where does she usually go?"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Choose the correct yes/no question to inquire about someone’s experience:",
+    "options": [
+      "Have you never been to Paris?",
+      "Did you ever been to Paris?",
+      "Have you ever been to Paris?",
+      "You never go to Paris, don’t you?"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Which of these sentences is a tag question used to seek agreement?",
+    "options": [
+      "He can swim, isn’t he?",
+      "They will attend, isn’t it?",
+      "You're coming with us, aren’t you?",
+      "She sings beautifully, does she?"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Choose the correct yes/no question",
+    "options": [
+      "you know what time it is?",
+      "Do you know what time is it?",
+      "Have you known what time it is?",
+      "Do you know what time it is?"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Choose the correct form of a yes/no question to confirm a completed action:",
+    "options": [
+      "Is you finished your homework?",
+      "Did you finish your homework?",
+      "Has you finished your homework?",
+      "Are you finished your homework?"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Identify the correct WH-question to ask about the manner of doing something:",
+    "options": [
+      "How does she manage her time so well?",
+      "Where does she work?",
+      "What is she doing right now?",
+      "Why is she late?"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence is a tag question that checks for confirmation?",
+    "options": [
+      "He isn’t coming, isn’t he?",
+      "You don’t know him, do you?",
+      "They aren’t ready, are they?",
+      "She’s your friend, is she?"
+    ],
+    "correctIndex": [
+      1,
+      2
+    ]
+  },
+  {
+    "q": "Identify the correct WH-question to inquire about future plans:",
+    "options": [
+      "Where did you go last week?",
+      "How long have you been here?",
+      "What will you be doing tomorrow?",
+      "Why are you studying English?"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Identify the correct WH-question for asking about someone’s preferences:",
+    "options": [
+      "What do you like to do in your free time?",
+      "What did you do last weekend?",
+      "Where did you go last weekend?",
+      "How many times have you travelled by plane?"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence is a tag question used to express surprise?",
+    "options": [
+      "They are going, are they?",
+      "She didn’t call you, didn’t she?",
+      "He won’t be there, will they?",
+      "You aren’t leaving already, are you?"
+    ],
+    "correctIndex": 3
+  }
+]
