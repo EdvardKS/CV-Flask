@@ -301,5 +301,605 @@
       "You aren’t leaving already, are you?"
     ],
     "correctIndex": 3
+  },
+  {
+    "q": "Which sentence is in the past perfect tense?",
+    "options": [
+      "She had left before I arrived.",
+      "She left before I arrive.",
+      "She has left before I arrived.",
+      "She was leaving before I arrived."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence uses 'going to' for a future plan?",
+    "options": [
+      "I will go to the cinema yesterday.",
+      "I am going to visit my aunt tomorrow.",
+      "I go to visit my aunt tomorrow.",
+      "I visited my aunt tomorrow."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence shows a spontaneous decision?",
+    "options": [
+      "I am going to buy a new phone next week.",
+      "Look, it's raining. I'll take an umbrella.",
+      "I was going to buy a new phone next week.",
+      "I buy a new phone next week."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence is in the present perfect tense?",
+    "options": [
+      "I have visited Paris.",
+      "I visit Paris last year.",
+      "I visited Paris.",
+      "I am visiting Paris."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence is in the past continuous tense?",
+    "options": [
+      "They were watching TV when I called.",
+      "They watch TV when I called.",
+      "They have watched TV when I called.",
+      "They watched TV when I call."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence uses the present perfect continuous correctly?",
+    "options": [
+      "She has been studying for two hours.",
+      "She is studying for two hours.",
+      "She studied for two hours.",
+      "She has study for two hours."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence is a zero conditional?",
+    "options": [
+      "If it rains, we will stay inside.",
+      "If you heat ice, it melts.",
+      "If I had time, I would help you.",
+      "If she studied, she would pass."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence is a first conditional?",
+    "options": [
+      "If it rains, we stayed inside.",
+      "If it rains, we will stay inside.",
+      "If it rained, we would stay inside.",
+      "If it had rained, we would have stayed inside."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence is a third conditional?",
+    "options": [
+      "If I knew, I would tell you.",
+      "If I know, I will tell you.",
+      "If I had known, I would have told you.",
+      "If I was knowing, I would tell you."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Which sentence is in the passive voice (present simple)?",
+    "options": [
+      "They clean the room every day.",
+      "The room is cleaned every day.",
+      "The room cleaned every day.",
+      "The room is cleaning every day."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence is in the passive voice (past simple)?",
+    "options": [
+      "The cake baked yesterday.",
+      "The cake was baked yesterday.",
+      "The cake is baked yesterday.",
+      "The cake has baked yesterday."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence reports a question correctly?",
+    "options": [
+      "She asked where did I live.",
+      "She asked where I lived.",
+      "She asked where I live?",
+      "She asked where do I live."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which modal shows strong obligation?",
+    "options": [
+      "Should",
+      "May",
+      "Must",
+      "Might"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Which modal shows prohibition?",
+    "options": [
+      "Mustn't",
+      "Shouldn't",
+      "Might",
+      "Could"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which modal expresses ability?",
+    "options": [
+      "Can",
+      "May",
+      "Must",
+      "Would"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence uses 'used to' for a past habit?",
+    "options": [
+      "I use to play tennis.",
+      "I used to play tennis.",
+      "I was use to play tennis.",
+      "I am used to play tennis."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct form: There ___ a book on the table.",
+    "options": [
+      "are",
+      "is",
+      "were",
+      "be"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which article is correct? ___ hour",
+    "options": [
+      "a",
+      "an",
+      "the",
+      "no article"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which preposition is correct? I usually sleep ___ night.",
+    "options": [
+      "on",
+      "in",
+      "at",
+      "by"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Which phrasal verb means 'take care of'?",
+    "options": [
+      "look after",
+      "look for",
+      "look up",
+      "look down"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which phrasal verb means 'stop doing'?",
+    "options": [
+      "give up",
+      "give in",
+      "give out",
+      "give away"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct collocation: ___ a decision",
+    "options": [
+      "do",
+      "make",
+      "take",
+      "have"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct collocation: ___ homework",
+    "options": [
+      "make",
+      "do",
+      "take",
+      "give"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence uses 'fewer' correctly?",
+    "options": [
+      "There is fewer water today.",
+      "There are fewer students today.",
+      "There is fewer money today.",
+      "There are fewer furniture today."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which comparative is correct?",
+    "options": [
+      "more big",
+      "bigger",
+      "biggest",
+      "most big"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which superlative is correct?",
+    "options": [
+      "the best",
+      "the goodest",
+      "the more good",
+      "the most better"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct object pronoun: She invited ___ to the party.",
+    "options": [
+      "I",
+      "me",
+      "my",
+      "mine"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct possessive adjective: ___ car is red.",
+    "options": [
+      "She",
+      "Her",
+      "Hers",
+      "Him"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct demonstrative: Those are ___ shoes.",
+    "options": [
+      "this",
+      "that",
+      "these",
+      "those"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Which determiner fits? ___ student must bring an ID card.",
+    "options": [
+      "Each",
+      "Much",
+      "Many",
+      "Few"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct word: I don't like ___ of these options.",
+    "options": [
+      "either",
+      "neither",
+      "both",
+      "all"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct word: ___ of my parents work from home.",
+    "options": [
+      "Either",
+      "Neither",
+      "Both",
+      "None"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Choose the correct word: She has lived here ___ 2018.",
+    "options": [
+      "for",
+      "since",
+      "during",
+      "by"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct word: I have waited ___ two hours.",
+    "options": [
+      "since",
+      "for",
+      "by",
+      "from"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct word: I have ___ finished my homework.",
+    "options": [
+      "yet",
+      "already",
+      "still",
+      "never"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct word: Have you finished your homework ___?",
+    "options": [
+      "already",
+      "yet",
+      "still",
+      "since"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct word: He is ___ working on the project.",
+    "options": [
+      "still",
+      "already",
+      "yet",
+      "since"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which indirect question is correct?",
+    "options": [
+      "Could you tell me where is the station?",
+      "Could you tell me where the station is?",
+      "Could you tell me where does the station is?",
+      "Could you tell me where the station are?"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which relative pronoun refers to a place?",
+    "options": [
+      "who",
+      "which",
+      "where",
+      "whose"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Which relative pronoun shows possession?",
+    "options": [
+      "who",
+      "whose",
+      "which",
+      "where"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct verb form: I enjoy ___ books.",
+    "options": [
+      "read",
+      "to read",
+      "reading",
+      "reads"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Choose the correct verb form: She decided ___ a new job.",
+    "options": [
+      "to find",
+      "finding",
+      "find",
+      "found"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct form: I want ___ English.",
+    "options": [
+      "learn",
+      "to learn",
+      "learning",
+      "learned"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct word: She is ___ tired to go out.",
+    "options": [
+      "so",
+      "such",
+      "too",
+      "enough"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Choose the correct phrase: It was ___ good movie.",
+    "options": [
+      "so",
+      "such a",
+      "too",
+      "very"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct connector: I stayed home ___ it was raining.",
+    "options": [
+      "because",
+      "because of",
+      "despite",
+      "although"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct connector: I stayed home ___ the rain.",
+    "options": [
+      "because",
+      "because of",
+      "although",
+      "so"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct connector: ___ it was late, we kept working.",
+    "options": [
+      "Because",
+      "Although",
+      "So",
+      "Since of"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct form: She is old ___ to drive.",
+    "options": [
+      "too",
+      "enough",
+      "very",
+      "so"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct form: It is ___ hot to work outside.",
+    "options": [
+      "too",
+      "enough",
+      "so",
+      "such"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct quantifier: I have ___ time this week.",
+    "options": [
+      "a few",
+      "few",
+      "a little",
+      "many"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Choose the correct quantifier: There are ___ people at the meeting.",
+    "options": [
+      "a little",
+      "few",
+      "much",
+      "a few"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Choose the correct word: Is ___ there?",
+    "options": [
+      "somebody",
+      "anybody",
+      "nobody",
+      "everybody"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct form: There ___ some milk in the fridge.",
+    "options": [
+      "are",
+      "is",
+      "were",
+      "be"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct form: There ___ many cars outside.",
+    "options": [
+      "is",
+      "are",
+      "was",
+      "be"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence is an imperative?",
+    "options": [
+      "Close the door.",
+      "You closed the door.",
+      "Did you close the door?",
+      "You are closing the door."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct past simple form: work",
+    "options": [
+      "workt",
+      "worked",
+      "working",
+      "works"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Choose the correct past simple form: go",
+    "options": [
+      "goed",
+      "went",
+      "goes",
+      "gone"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence uses the passive voice correctly?",
+    "options": [
+      "The report wrote yesterday.",
+      "The report was written yesterday.",
+      "The report was write yesterday.",
+      "The report is writing yesterday."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence uses subject-verb agreement correctly?",
+    "options": [
+      "The list of items are on the table.",
+      "The list of items is on the table.",
+      "The list of items were on the table.",
+      "The list of items be on the table."
+    ],
+    "correctIndex": 1
   }
 ]
