@@ -901,5 +901,1095 @@
       "The list of items be on the table."
     ],
     "correctIndex": 1
+  },
+  {
+    "q": "Which sentence uses the present simple for routines?",
+    "options": [
+      "She goes to the gym every day.",
+      "She is going to the gym now.",
+      "She went to the gym yesterday.",
+      "She has gone to the gym."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence is in the present perfect tense?",
+    "options": [
+      "I have finished my report.",
+      "I finished my report yesterday.",
+      "I am finishing my report.",
+      "I finish my report every week."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct option: I ____ my homework yesterday.",
+    "options": [
+      "have finished",
+      "finished",
+      "has finished",
+      "have finish"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Which sentence is in the past simple tense?",
+    "options": [
+      "They watched a movie last night.",
+      "They are watching a movie now.",
+      "They have watched a movie.",
+      "They were watching a movie."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence is in the past continuous tense?",
+    "options": [
+      "I was reading when you called.",
+      "I read when you called.",
+      "I have read when you called.",
+      "I read every day."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct sentence:",
+    "options": [
+      "I was cooking when the phone rang.",
+      "I cooked when the phone was ringing.",
+      "I am cooking when the phone rang.",
+      "I have cooked when the phone rang."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence uses 'will' for a promise?",
+    "options": [
+      "I will call you tonight.",
+      "I am going to call you tonight.",
+      "I call you tonight.",
+      "I called you tonight."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence uses 'going to' for a plan?",
+    "options": [
+      "I am going to start a new course next week.",
+      "I will start a new course next week.",
+      "I start a new course next week.",
+      "I started a new course next week."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the best option: Look at those clouds! It ____ rain.",
+    "options": [
+      "is going to",
+      "will",
+      "goes to",
+      "is"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct form: By 2030, she ____ her degree.",
+    "options": [
+      "will have finished",
+      "will finish",
+      "has finished",
+      "finished"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence is in the second conditional?",
+    "options": [
+      "If I won the lottery, I would travel the world.",
+      "If I win the lottery, I will travel the world.",
+      "If I had won the lottery, I would have traveled the world.",
+      "If I am winning the lottery, I travel the world."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correctly punctuated second conditional sentence:",
+    "options": [
+      "If I had time, I would learn Japanese.",
+      "If I had time I would learn Japanese.",
+      "I would learn Japanese, if I had time.",
+      "If I had time; I would learn Japanese."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence is in reported speech?",
+    "options": [
+      "He said he was tired.",
+      "He said, \"I am tired.\"",
+      "He says, \"I was tired.\"",
+      "He is saying, \"I am tired.\""
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence uses 'said' or 'told' correctly?",
+    "options": [
+      "She told me the news.",
+      "She said me the news.",
+      "She told the news.",
+      "She said me."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct reported form: \"I am tired.\"",
+    "options": [
+      "He said he was tired.",
+      "He said he is tired.",
+      "He said he were tired.",
+      "He says he was tired."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Choose the correct question tag: You are coming, ___?",
+    "options": [
+      "aren't you",
+      "are you",
+      "do you",
+      "did you"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Which sentence uses a relative clause correctly?",
+    "options": [
+      "The woman who lives next door is a doctor.",
+      "The woman which lives next door is a doctor.",
+      "The woman where lives next door is a doctor.",
+      "The woman whose lives next door is a doctor."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct translation of 'technology'?",
+    "options": [
+      "en línea",
+      "tecnología",
+      "estar a la altura de",
+      "concentración"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'dispositivo' en ingl?s?",
+    "options": [
+      "tablet",
+      "social media",
+      "turn on",
+      "device"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'smartphone'?",
+    "options": [
+      "teléfono inteligente",
+      "herramienta",
+      "abandonar",
+      "llevar a cabo"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "?C?mo se dice 'tableta' en ingl?s?",
+    "options": [
+      "social media",
+      "to create",
+      "walk someone through",
+      "tablet"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'laptop'?",
+    "options": [
+      "ordenador portátil",
+      "salud mental",
+      "carga útil / contenido de datos",
+      "comunicarse"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "?C?mo se dice 'ordenador de sobremesa' en ingl?s?",
+    "options": [
+      "well-being",
+      "desktop computer",
+      "rack up",
+      "walk someone through"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the correct translation of 'screen'?",
+    "options": [
+      "Traducción al español",
+      "concentración",
+      "pantalla",
+      "hábitos"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "?C?mo se dice 'aplicación' en ingl?s?",
+    "options": [
+      "app (application)",
+      "payload",
+      "concentration",
+      "artist"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct translation of 'software'?",
+    "options": [
+      "tableta",
+      "expulsar",
+      "software",
+      "correo electrónico"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "?C?mo se dice 'hardware' en ingl?s?",
+    "options": [
+      "live up to",
+      "to avoid",
+      "hardware",
+      "originality"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'internet'?",
+    "options": [
+      "datos",
+      "crear",
+      "internet",
+      "reducir"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "?C?mo se dice 'en línea' en ingl?s?",
+    "options": [
+      "to improve",
+      "to avoid",
+      "stress",
+      "online"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'offline'?",
+    "options": [
+      "hábitos",
+      "cerrar sesión",
+      "humano",
+      "fuera de línea"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "?C?mo se dice 'redes sociales' en ingl?s?",
+    "options": [
+      "social media",
+      "artist",
+      "rack up",
+      "lifestyle"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct translation of 'website'?",
+    "options": [
+      "pantalla",
+      "sitio web",
+      "equilibrio",
+      "teléfono inteligente"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'correo electrónico' en ingl?s?",
+    "options": [
+      "to assist",
+      "artificial intelligence (AI)",
+      "email",
+      "technology"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'message'?",
+    "options": [
+      "mensaje",
+      "mejorar",
+      "comunicación",
+      "humano"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "?C?mo se dice 'comunicación' en ingl?s?",
+    "options": [
+      "communication",
+      "to log out",
+      "to connect",
+      "app (application)"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct translation of 'digital communication'?",
+    "options": [
+      "obra de arte",
+      "usuario",
+      "comunicación digital",
+      "hacer una copia de seguridad"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "?C?mo se dice 'comunicarse' en ingl?s?",
+    "options": [
+      "to communicate",
+      "message",
+      "to imitate",
+      "digital break"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct translation of 'to connect'?",
+    "options": [
+      "aplicación",
+      "conectar",
+      "equilibrio",
+      "reducir"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'compartir' en ingl?s?",
+    "options": [
+      "well-being",
+      "cut down (on)",
+      "design",
+      "to share"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'to download'?",
+    "options": [
+      "dispositivo",
+      "descargar",
+      "desconexión digital",
+      "sitio web"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'subir' en ingl?s?",
+    "options": [
+      "creativity",
+      "to upload",
+      "desktop computer",
+      "social media"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the correct translation of 'user'?",
+    "options": [
+      "apagar",
+      "usuario",
+      "humano",
+      "comunicación"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'datos' en ingl?s?",
+    "options": [
+      "back up",
+      "ethics",
+      "to limit",
+      "data"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'file'?",
+    "options": [
+      "atención",
+      "archivo",
+      "pantalla",
+      "inteligencia artificial"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'nube' en ingl?s?",
+    "options": [
+      "to share",
+      "design",
+      "cloud",
+      "laptop"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'cloud computing'?",
+    "options": [
+      "asistir / ayudar",
+      "computación en la nube",
+      "arte",
+      "saludable"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'carga útil / contenido de datos' en ingl?s?",
+    "options": [
+      "digital addiction",
+      "well-being",
+      "payload",
+      "offline"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'backup'?",
+    "options": [
+      "Traducción / significado",
+      "archivo",
+      "creatividad",
+      "copia de seguridad"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "?C?mo se dice 'hacer una copia de seguridad' en ingl?s?",
+    "options": [
+      "machine-generated",
+      "app (application)",
+      "to back up",
+      "risk"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'to log in'?",
+    "options": [
+      "ordenador de sobremesa",
+      "carga útil / contenido de datos",
+      "internet",
+      "iniciar sesión"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "?C?mo se dice 'cerrar sesión' en ingl?s?",
+    "options": [
+      "to disconnect",
+      "to log out",
+      "to log in",
+      "to create"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the correct translation of 'Inglés / Phrasal verb'?",
+    "options": [
+      "saludable",
+      "Traducción al español",
+      "inteligencia artificial",
+      "explicar paso a paso"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'desconexión digital' en ingl?s?",
+    "options": [
+      "machine",
+      "digital break",
+      "payload",
+      "ethical"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the correct translation of 'screen time'?",
+    "options": [
+      "tiempo de pantalla",
+      "máquina",
+      "mejorar",
+      "descargar"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "?C?mo se dice 'adicción' en ingl?s?",
+    "options": [
+      "authorship",
+      "give up",
+      "to share",
+      "addiction"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'digital addiction'?",
+    "options": [
+      "adicción digital",
+      "autoría",
+      "herramienta",
+      "estar a la altura de"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "?C?mo se dice 'desconectar' en ingl?s?",
+    "options": [
+      "turn on",
+      "Inglés",
+      "walk someone through",
+      "to disconnect"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'balance'?",
+    "options": [
+      "equilibrio",
+      "desventaja",
+      "hacer copia de seguridad",
+      "abandonar"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "?C?mo se dice 'salud mental' en ingl?s?",
+    "options": [
+      "mental health",
+      "artificial intelligence (AI)",
+      "message",
+      "design"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct translation of 'stress'?",
+    "options": [
+      "cerrar sesión",
+      "en línea",
+      "autoría",
+      "estrés"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "?C?mo se dice 'concentración' en ingl?s?",
+    "options": [
+      "to limit",
+      "to generate",
+      "email",
+      "concentration"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'attention'?",
+    "options": [
+      "ventaja",
+      "generado por máquina",
+      "redes sociales",
+      "atención"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "?C?mo se dice 'estilo de vida' en ingl?s?",
+    "options": [
+      "turn off",
+      "to relax",
+      "lifestyle",
+      "payload"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'habits'?",
+    "options": [
+      "autoría",
+      "hábitos",
+      "redes sociales",
+      "datos"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'saludable' en ingl?s?",
+    "options": [
+      "hardware",
+      "healthy",
+      "machine",
+      "communication"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the correct translation of 'unhealthy'?",
+    "options": [
+      "computación en la nube",
+      "poco saludable",
+      "hacer copia de seguridad",
+      "encender"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'reducir' en ingl?s?",
+    "options": [
+      "to reduce",
+      "online",
+      "digital addiction",
+      "turn on"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct translation of 'to improve'?",
+    "options": [
+      "Traducción al español",
+      "mejorar",
+      "reducir",
+      "salud mental"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'evitar' en ingl?s?",
+    "options": [
+      "live up to",
+      "to connect",
+      "to avoid",
+      "desktop computer"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'to limit'?",
+    "options": [
+      "ordenador portátil",
+      "limitar",
+      "Traducción al español",
+      "asistir / ayudar"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'relajarse' en ingl?s?",
+    "options": [
+      "to disconnect",
+      "to relax",
+      "app (application)",
+      "cloud"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the correct translation of 'well-being'?",
+    "options": [
+      "Traducción al español",
+      "bienestar",
+      "evitar",
+      "limitar"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'Traducción / significado' en ingl?s?",
+    "options": [
+      "digital break",
+      "hardware",
+      "Phrasal verb",
+      "creativity"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'back up'?",
+    "options": [
+      "generado por máquina",
+      "hacer copia de seguridad",
+      "conectar",
+      "hacer una copia de seguridad"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'expulsar' en ingl?s?",
+    "options": [
+      "rack up",
+      "to relax",
+      "kick out",
+      "communication"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'rack up'?",
+    "options": [
+      "pantalla",
+      "subir",
+      "acumular (deuda, puntos, tiempo)",
+      "máquina"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "?C?mo se dice 'estar a la altura de' en ingl?s?",
+    "options": [
+      "human",
+      "artwork",
+      "live up to",
+      "walk someone through"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'walk someone through'?",
+    "options": [
+      "adicción",
+      "explicar paso a paso",
+      "ventaja",
+      "hacer copia de seguridad"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'reducir' en ingl?s?",
+    "options": [
+      "app (application)",
+      "smartphone",
+      "cut down (on)",
+      "data"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'give up'?",
+    "options": [
+      "explicar paso a paso",
+      "equilibrio",
+      "abandonar",
+      "iniciar sesión"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "?C?mo se dice 'llevar a cabo' en ingl?s?",
+    "options": [
+      "screen time",
+      "stress",
+      "carry out",
+      "tablet"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'turn off'?",
+    "options": [
+      "apagar",
+      "hardware",
+      "estar a la altura de",
+      "nube"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "?C?mo se dice 'encender' en ingl?s?",
+    "options": [
+      "turn off",
+      "turn on",
+      "to generate",
+      "to share"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the correct translation of 'Inglés'?",
+    "options": [
+      "mejorar",
+      "compartir",
+      "Traducción al español",
+      "usuario"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "?C?mo se dice 'inteligencia artificial' en ingl?s?",
+    "options": [
+      "cloud computing",
+      "artificial intelligence (AI)",
+      "to upload",
+      "backup"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the correct translation of 'machine'?",
+    "options": [
+      "estilo de vida",
+      "máquina",
+      "hacer una copia de seguridad",
+      "autoría"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'algoritmo' en ingl?s?",
+    "options": [
+      "to relax",
+      "algorithm",
+      "to create",
+      "carry out"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "What is the correct translation of 'data'?",
+    "options": [
+      "datos",
+      "copia de seguridad",
+      "obra de arte",
+      "adicción digital"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "?C?mo se dice 'creatividad' en ingl?s?",
+    "options": [
+      "digital addiction",
+      "to back up",
+      "creativity",
+      "screen"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'creative'?",
+    "options": [
+      "originalidad",
+      "creativo",
+      "subir",
+      "creatividad"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'arte' en ingl?s?",
+    "options": [
+      "art",
+      "cloud computing",
+      "screen time",
+      "to log in"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct translation of 'artist'?",
+    "options": [
+      "artista",
+      "mensaje",
+      "compartir",
+      "teléfono inteligente"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "?C?mo se dice 'obra de arte' en ingl?s?",
+    "options": [
+      "tablet",
+      "offline",
+      "social media",
+      "artwork"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'design'?",
+    "options": [
+      "diseño",
+      "creatividad",
+      "acumular (deuda, puntos, tiempo)",
+      "datos"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "?C?mo se dice 'herramienta' en ingl?s?",
+    "options": [
+      "to log out",
+      "to download",
+      "walk someone through",
+      "tool"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'human'?",
+    "options": [
+      "limitar",
+      "humano",
+      "nube",
+      "bienestar"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'generado por máquina' en ingl?s?",
+    "options": [
+      "machine-generated",
+      "ethical",
+      "to create",
+      "machine"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct translation of 'originality'?",
+    "options": [
+      "limitar",
+      "ética",
+      "originalidad",
+      "reemplazar"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "?C?mo se dice 'autoría' en ingl?s?",
+    "options": [
+      "internet",
+      "carry out",
+      "to disconnect",
+      "authorship"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'to create'?",
+    "options": [
+      "creatividad",
+      "crear",
+      "hacer copia de seguridad",
+      "mensaje"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'generar' en ingl?s?",
+    "options": [
+      "carry out",
+      "to communicate",
+      "device",
+      "to generate"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'to imitate'?",
+    "options": [
+      "cerrar sesión",
+      "dispositivo",
+      "imitar",
+      "reemplazar"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "?C?mo se dice 'reemplazar' en ingl?s?",
+    "options": [
+      "app (application)",
+      "user",
+      "social media",
+      "to replace"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "What is the correct translation of 'to assist'?",
+    "options": [
+      "máquina",
+      "asistir / ayudar",
+      "cerrar sesión",
+      "herramienta"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "?C?mo se dice 'ético' en ingl?s?",
+    "options": [
+      "digital addiction",
+      "to download",
+      "ethical",
+      "device"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "What is the correct translation of 'ethics'?",
+    "options": [
+      "equilibrio",
+      "evitar",
+      "ética",
+      "mensaje"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "?C?mo se dice 'riesgo' en ingl?s?",
+    "options": [
+      "risk",
+      "healthy",
+      "art",
+      "habits"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "What is the correct translation of 'advantage'?",
+    "options": [
+      "usuario",
+      "subir",
+      "tecnología",
+      "ventaja"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "?C?mo se dice 'desventaja' en ingl?s?",
+    "options": [
+      "turn off",
+      "hardware",
+      "artificial intelligence (AI)",
+      "disadvantage"
+    ],
+    "correctIndex": 3
   }
 ]
