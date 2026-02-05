@@ -27,6 +27,7 @@
                         var(--bg);
             color: var(--text);
             display: flex;
+            align-items: center;
             justify-content: center;
             padding: 20px;
             min-height: 100vh;
@@ -41,7 +42,8 @@
             box-shadow: var(--shadow);
             width: 100%;
             max-width: 880px;
-            height: calc(100vh - 40px);
+            height: auto;
+            max-height: calc(100vh - 40px);
             animation: floatIn 0.35s ease;
             display: flex;
             flex-direction: column;
@@ -184,20 +186,12 @@
         .setup-btn:hover { background: var(--primary-dark); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18); transform: translateY(-1px); }
         .setup-btn:disabled { background: #a0aec0; cursor: not-allowed; box-shadow: none; }
 
-        #quiz-game,
-        #setup {
-            flex: 1 1 auto;
-            min-height: 0;
-        }
-
         #quiz-game {
             display: flex;
             flex-direction: column;
         }
 
         #options-container {
-            flex: 1 1 auto;
-            min-height: 0;
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: clamp(8px, 1.6vmin, 12px);
@@ -251,7 +245,7 @@
         }
 
         @media (max-height: 760px) {
-            #quiz-container { height: calc(100vh - 20px); }
+            #quiz-container { max-height: calc(100vh - 20px); }
             .stats { margin-bottom: 8px; padding-bottom: 8px; }
             .question-box { margin-bottom: 8px; }
             .nav-buttons { margin-top: 8px; }
