@@ -7,7 +7,8 @@
       "If I were rich, I travel the world.",
       "If I will be rich, I would travel the world."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses the Present Continuous correctly?",
@@ -17,7 +18,8 @@
       "He work at the moment.",
       "He worked at the moment."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence is in the present simple tense?",
@@ -27,7 +29,8 @@
       "I eat breakfast every morning.",
       "He will finish his work by 5 PM."
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Which modal verb is used to give advice?",
@@ -37,7 +40,8 @@
       "Should",
       "Can"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "What tense is used to describe actions that happened at a specific time in the past?",
@@ -47,7 +51,8 @@
       "Future tense",
       "Present perfect tense"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "What is the correct question tag for 'She is tired'?",
@@ -57,7 +62,8 @@
       "Isn’t she?",
       "Didn’t she?"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Which sentence correctly uses a gerund?",
@@ -67,7 +73,8 @@
       "I enjoy swimming.",
       "I enjoy to swimming."
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Which sentence is in the past simple?",
@@ -77,7 +84,8 @@
       "She has finished her homework.",
       "She finishes her homework."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "What is the correct form of the Present Simple for the sentence: \"She ___ (to work) every day.\"",
@@ -87,7 +95,8 @@
       "worked",
       "has worked"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "have visited Paris many times,\" what tense is \"have visited\"?",
@@ -97,7 +106,8 @@
       "Past tense",
       "Present tense"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses reported speech correctly?",
@@ -107,7 +117,8 @@
       "They asked where was the nearest bus stop.",
       "She said: \"He is studying for his exam.\""
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which option correctly changes \"I am going to the party\" into reported speech?",
@@ -117,7 +128,8 @@
       "He said that he was going to the party.",
       "He said that he is going to the party."
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "What is the reported form of \"I will visit my grandparents next week\"?",
@@ -127,7 +139,8 @@
       "He said that he would visit his grandparents next week.",
       "He said that he would visit my grandparents next the following week."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "What is the reported speech of \"I have finished my homework\"?",
@@ -137,7 +150,8 @@
       "He said that he is finished his homework.",
       "He said that he finish his homework."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "When do we use a relative clause?",
@@ -147,7 +161,8 @@
       "To ask questions",
       "To provide additional information about a noun"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": false
   },
   {
     "q": "What is the purpose of a relative pronoun?",
@@ -157,7 +172,8 @@
       "To express a command",
       "To link a verb to a subject"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "What is the reporting counterpart of \"what time is it\"?",
@@ -167,7 +183,8 @@
       "she asked what time it is",
       "She asked what time it was"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": false
   },
   {
     "q": "Which sentence contains a correct relative clause?",
@@ -177,7 +194,8 @@
       "That book he read it last night.",
       "She doesn’t know what is he doing."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "What is the purpose of reported speech?",
@@ -187,7 +205,8 @@
       "To tell a story about what someone said",
       "To quote what someone said"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence correctly uses a relative pronoun?",
@@ -197,7 +216,8 @@
       "The girl that is reading a book is my sister.",
       "This is the house whom we lived in last year."
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Which of the following is the correct WH-question for asking about frequency?",
@@ -207,7 +227,8 @@
       "How often does she visit her parents?",
       "Where does she usually go?"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Choose the correct yes/no question to inquire about someone’s experience:",
@@ -217,7 +238,8 @@
       "Have you ever been to Paris?",
       "You never go to Paris, don’t you?"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Which of these sentences is a tag question used to seek agreement?",
@@ -227,7 +249,8 @@
       "You're coming with us, aren’t you?",
       "She sings beautifully, does she?"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Choose the correct yes/no question",
@@ -237,7 +260,8 @@
       "Have you known what time it is?",
       "Do you know what time it is?"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": false
   },
   {
     "q": "Choose the correct form of a yes/no question to confirm a completed action:",
@@ -247,7 +271,8 @@
       "Has you finished your homework?",
       "Are you finished your homework?"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Identify the correct WH-question to ask about the manner of doing something:",
@@ -257,7 +282,8 @@
       "What is she doing right now?",
       "Why is she late?"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence is a tag question that checks for confirmation?",
@@ -270,7 +296,8 @@
     "correctIndex": [
       1,
       2
-    ]
+    ],
+    "isVocab": false
   },
   {
     "q": "Identify the correct WH-question to inquire about future plans:",
@@ -280,7 +307,8 @@
       "What will you be doing tomorrow?",
       "Why are you studying English?"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Identify the correct WH-question for asking about someone’s preferences:",
@@ -290,7 +318,8 @@
       "Where did you go last weekend?",
       "How many times have you travelled by plane?"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence is a tag question used to express surprise?",
@@ -300,7 +329,8 @@
       "He won’t be there, will they?",
       "You aren’t leaving already, are you?"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": false
   },
   {
     "q": "Which sentence is in the past perfect tense?",
@@ -310,7 +340,8 @@
       "She has left before I arrived.",
       "She was leaving before I arrived."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses 'going to' for a future plan?",
@@ -320,7 +351,8 @@
       "I go to visit my aunt tomorrow.",
       "I visited my aunt tomorrow."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence shows a spontaneous decision?",
@@ -330,7 +362,8 @@
       "I was going to buy a new phone next week.",
       "I buy a new phone next week."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence is in the present perfect tense?",
@@ -340,7 +373,8 @@
       "I visited Paris.",
       "I am visiting Paris."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence is in the past continuous tense?",
@@ -350,7 +384,8 @@
       "They have watched TV when I called.",
       "They watched TV when I call."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses the present perfect continuous correctly?",
@@ -360,7 +395,8 @@
       "She studied for two hours.",
       "She has study for two hours."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence is a zero conditional?",
@@ -370,7 +406,8 @@
       "If I had time, I would help you.",
       "If she studied, she would pass."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence is a first conditional?",
@@ -380,7 +417,8 @@
       "If it rained, we would stay inside.",
       "If it had rained, we would have stayed inside."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence is a third conditional?",
@@ -390,7 +428,8 @@
       "If I had known, I would have told you.",
       "If I was knowing, I would tell you."
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Which sentence is in the passive voice (present simple)?",
@@ -400,7 +439,8 @@
       "The room cleaned every day.",
       "The room is cleaning every day."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence is in the passive voice (past simple)?",
@@ -410,7 +450,8 @@
       "The cake is baked yesterday.",
       "The cake has baked yesterday."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence reports a question correctly?",
@@ -420,7 +461,8 @@
       "She asked where I live?",
       "She asked where do I live."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which modal shows strong obligation?",
@@ -430,7 +472,8 @@
       "Must",
       "Might"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Which modal shows prohibition?",
@@ -440,7 +483,8 @@
       "Might",
       "Could"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which modal expresses ability?",
@@ -450,7 +494,8 @@
       "Must",
       "Would"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses 'used to' for a past habit?",
@@ -460,7 +505,8 @@
       "I was use to play tennis.",
       "I am used to play tennis."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct form: There ___ a book on the table.",
@@ -470,7 +516,8 @@
       "were",
       "be"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which article is correct? ___ hour",
@@ -480,7 +527,8 @@
       "the",
       "no article"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which preposition is correct? I usually sleep ___ night.",
@@ -490,7 +538,8 @@
       "at",
       "by"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Which phrasal verb means 'take care of'?",
@@ -500,7 +549,8 @@
       "look up",
       "look down"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "Which phrasal verb means 'stop doing'?",
@@ -510,7 +560,8 @@
       "give out",
       "give away"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "Choose the correct collocation: ___ a decision",
@@ -520,7 +571,8 @@
       "take",
       "have"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct collocation: ___ homework",
@@ -530,7 +582,8 @@
       "take",
       "give"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses 'fewer' correctly?",
@@ -540,7 +593,8 @@
       "There is fewer money today.",
       "There are fewer furniture today."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which comparative is correct?",
@@ -550,7 +604,8 @@
       "biggest",
       "most big"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which superlative is correct?",
@@ -560,7 +615,8 @@
       "the more good",
       "the most better"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct object pronoun: She invited ___ to the party.",
@@ -570,7 +626,8 @@
       "my",
       "mine"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct possessive adjective: ___ car is red.",
@@ -580,7 +637,8 @@
       "Hers",
       "Him"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct demonstrative: Those are ___ shoes.",
@@ -590,7 +648,8 @@
       "these",
       "those"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": false
   },
   {
     "q": "Which determiner fits? ___ student must bring an ID card.",
@@ -600,7 +659,8 @@
       "Many",
       "Few"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct word: I don't like ___ of these options.",
@@ -610,7 +670,8 @@
       "both",
       "all"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct word: ___ of my parents work from home.",
@@ -620,7 +681,8 @@
       "Both",
       "None"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Choose the correct word: She has lived here ___ 2018.",
@@ -630,7 +692,8 @@
       "during",
       "by"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct word: I have waited ___ two hours.",
@@ -640,7 +703,8 @@
       "by",
       "from"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct word: I have ___ finished my homework.",
@@ -650,7 +714,8 @@
       "still",
       "never"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct word: Have you finished your homework ___?",
@@ -660,7 +725,8 @@
       "still",
       "since"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct word: He is ___ working on the project.",
@@ -670,7 +736,8 @@
       "yet",
       "since"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which indirect question is correct?",
@@ -680,7 +747,8 @@
       "Could you tell me where does the station is?",
       "Could you tell me where the station are?"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which relative pronoun refers to a place?",
@@ -690,7 +758,8 @@
       "where",
       "whose"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Which relative pronoun shows possession?",
@@ -700,7 +769,8 @@
       "which",
       "where"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct verb form: I enjoy ___ books.",
@@ -710,7 +780,8 @@
       "reading",
       "reads"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Choose the correct verb form: She decided ___ a new job.",
@@ -720,7 +791,8 @@
       "find",
       "found"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct form: I want ___ English.",
@@ -730,7 +802,8 @@
       "learning",
       "learned"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct word: She is ___ tired to go out.",
@@ -740,7 +813,8 @@
       "too",
       "enough"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Choose the correct phrase: It was ___ good movie.",
@@ -750,7 +824,8 @@
       "too",
       "very"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct connector: I stayed home ___ it was raining.",
@@ -760,7 +835,8 @@
       "despite",
       "although"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct connector: I stayed home ___ the rain.",
@@ -770,7 +846,8 @@
       "although",
       "so"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct connector: ___ it was late, we kept working.",
@@ -780,7 +857,8 @@
       "So",
       "Since of"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct form: She is old ___ to drive.",
@@ -790,7 +868,8 @@
       "very",
       "so"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct form: It is ___ hot to work outside.",
@@ -800,7 +879,8 @@
       "so",
       "such"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct quantifier: I have ___ time this week.",
@@ -810,7 +890,8 @@
       "a little",
       "many"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": false
   },
   {
     "q": "Choose the correct quantifier: There are ___ people at the meeting.",
@@ -820,7 +901,8 @@
       "much",
       "a few"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": false
   },
   {
     "q": "Choose the correct word: Is ___ there?",
@@ -830,7 +912,8 @@
       "nobody",
       "everybody"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct form: There ___ some milk in the fridge.",
@@ -840,7 +923,8 @@
       "were",
       "be"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct form: There ___ many cars outside.",
@@ -850,7 +934,8 @@
       "was",
       "be"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence is an imperative?",
@@ -860,7 +945,8 @@
       "Did you close the door?",
       "You are closing the door."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct past simple form: work",
@@ -870,7 +956,8 @@
       "working",
       "works"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Choose the correct past simple form: go",
@@ -880,7 +967,8 @@
       "goes",
       "gone"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses the passive voice correctly?",
@@ -890,7 +978,8 @@
       "The report was write yesterday.",
       "The report is writing yesterday."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses subject-verb agreement correctly?",
@@ -900,7 +989,8 @@
       "The list of items were on the table.",
       "The list of items be on the table."
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses the present simple for routines?",
@@ -910,17 +1000,8 @@
       "She went to the gym yesterday.",
       "She has gone to the gym."
     ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Which sentence is in the present perfect tense?",
-    "options": [
-      "I have finished my report.",
-      "I finished my report yesterday.",
-      "I am finishing my report.",
-      "I finish my report every week."
-    ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct option: I ____ my homework yesterday.",
@@ -930,7 +1011,8 @@
       "has finished",
       "have finish"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": false
   },
   {
     "q": "Which sentence is in the past simple tense?",
@@ -940,17 +1022,8 @@
       "They have watched a movie.",
       "They were watching a movie."
     ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Which sentence is in the past continuous tense?",
-    "options": [
-      "I was reading when you called.",
-      "I read when you called.",
-      "I have read when you called.",
-      "I read every day."
-    ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct sentence:",
@@ -960,7 +1033,8 @@
       "I am cooking when the phone rang.",
       "I have cooked when the phone rang."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses 'will' for a promise?",
@@ -970,7 +1044,8 @@
       "I call you tonight.",
       "I called you tonight."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses 'going to' for a plan?",
@@ -980,7 +1055,8 @@
       "I start a new course next week.",
       "I started a new course next week."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the best option: Look at those clouds! It ____ rain.",
@@ -990,7 +1066,8 @@
       "goes to",
       "is"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct form: By 2030, she ____ her degree.",
@@ -1000,17 +1077,8 @@
       "has finished",
       "finished"
     ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Which sentence is in the second conditional?",
-    "options": [
-      "If I won the lottery, I would travel the world.",
-      "If I win the lottery, I will travel the world.",
-      "If I had won the lottery, I would have traveled the world.",
-      "If I am winning the lottery, I travel the world."
-    ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correctly punctuated second conditional sentence:",
@@ -1020,7 +1088,8 @@
       "I would learn Japanese, if I had time.",
       "If I had time; I would learn Japanese."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence is in reported speech?",
@@ -1030,7 +1099,8 @@
       "He says, \"I was tired.\"",
       "He is saying, \"I am tired.\""
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses 'said' or 'told' correctly?",
@@ -1040,7 +1110,8 @@
       "She told the news.",
       "She said me."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct reported form: \"I am tired.\"",
@@ -1050,7 +1121,8 @@
       "He said he were tired.",
       "He says he was tired."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Choose the correct question tag: You are coming, ___?",
@@ -1060,7 +1132,8 @@
       "do you",
       "did you"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "Which sentence uses a relative clause correctly?",
@@ -1070,7 +1143,8 @@
       "The woman where lives next door is a doctor.",
       "The woman whose lives next door is a doctor."
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": false
   },
   {
     "q": "What is the correct translation of 'technology'?",
@@ -1080,7 +1154,8 @@
       "estar a la altura de",
       "concentración"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'dispositivo' en ingl?s?",
@@ -1090,7 +1165,8 @@
       "turn on",
       "device"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'smartphone'?",
@@ -1100,7 +1176,8 @@
       "abandonar",
       "llevar a cabo"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'tableta' en ingl?s?",
@@ -1110,7 +1187,8 @@
       "walk someone through",
       "tablet"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'laptop'?",
@@ -1120,7 +1198,8 @@
       "carga útil / contenido de datos",
       "comunicarse"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'ordenador de sobremesa' en ingl?s?",
@@ -1130,7 +1209,8 @@
       "rack up",
       "walk someone through"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'screen'?",
@@ -1140,7 +1220,8 @@
       "pantalla",
       "hábitos"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'aplicación' en ingl?s?",
@@ -1150,7 +1231,8 @@
       "concentration",
       "artist"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'software'?",
@@ -1160,7 +1242,8 @@
       "software",
       "correo electrónico"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'hardware' en ingl?s?",
@@ -1170,7 +1253,8 @@
       "hardware",
       "originality"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'internet'?",
@@ -1180,7 +1264,8 @@
       "internet",
       "reducir"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'en línea' en ingl?s?",
@@ -1190,7 +1275,8 @@
       "stress",
       "online"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'offline'?",
@@ -1200,7 +1286,8 @@
       "humano",
       "fuera de línea"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'redes sociales' en ingl?s?",
@@ -1210,7 +1297,8 @@
       "rack up",
       "lifestyle"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'website'?",
@@ -1220,7 +1308,8 @@
       "equilibrio",
       "teléfono inteligente"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'correo electrónico' en ingl?s?",
@@ -1230,7 +1319,8 @@
       "email",
       "technology"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'message'?",
@@ -1240,7 +1330,8 @@
       "comunicación",
       "humano"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'comunicación' en ingl?s?",
@@ -1250,7 +1341,8 @@
       "to connect",
       "app (application)"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'digital communication'?",
@@ -1260,7 +1352,8 @@
       "comunicación digital",
       "hacer una copia de seguridad"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'comunicarse' en ingl?s?",
@@ -1270,7 +1363,8 @@
       "to imitate",
       "digital break"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'to connect'?",
@@ -1280,7 +1374,8 @@
       "equilibrio",
       "reducir"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'compartir' en ingl?s?",
@@ -1290,7 +1385,8 @@
       "design",
       "to share"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'to download'?",
@@ -1300,7 +1396,8 @@
       "desconexión digital",
       "sitio web"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'subir' en ingl?s?",
@@ -1310,7 +1407,8 @@
       "desktop computer",
       "social media"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'user'?",
@@ -1320,7 +1418,8 @@
       "humano",
       "comunicación"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'datos' en ingl?s?",
@@ -1330,7 +1429,8 @@
       "to limit",
       "data"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'file'?",
@@ -1340,7 +1440,8 @@
       "pantalla",
       "inteligencia artificial"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'nube' en ingl?s?",
@@ -1350,7 +1451,8 @@
       "cloud",
       "laptop"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'cloud computing'?",
@@ -1360,7 +1462,8 @@
       "arte",
       "saludable"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'carga útil / contenido de datos' en ingl?s?",
@@ -1370,7 +1473,8 @@
       "payload",
       "offline"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'backup'?",
@@ -1380,7 +1484,8 @@
       "creatividad",
       "copia de seguridad"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'hacer una copia de seguridad' en ingl?s?",
@@ -1390,7 +1495,8 @@
       "to back up",
       "risk"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'to log in'?",
@@ -1400,7 +1506,8 @@
       "internet",
       "iniciar sesión"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'cerrar sesión' en ingl?s?",
@@ -1410,7 +1517,8 @@
       "to log in",
       "to create"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'Inglés / Phrasal verb'?",
@@ -1420,7 +1528,8 @@
       "inteligencia artificial",
       "explicar paso a paso"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'desconexión digital' en ingl?s?",
@@ -1430,7 +1539,8 @@
       "payload",
       "ethical"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'screen time'?",
@@ -1440,7 +1550,8 @@
       "mejorar",
       "descargar"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'adicción' en ingl?s?",
@@ -1450,7 +1561,8 @@
       "to share",
       "addiction"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'digital addiction'?",
@@ -1460,7 +1572,8 @@
       "herramienta",
       "estar a la altura de"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'desconectar' en ingl?s?",
@@ -1470,7 +1583,8 @@
       "walk someone through",
       "to disconnect"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'balance'?",
@@ -1480,7 +1594,8 @@
       "hacer copia de seguridad",
       "abandonar"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'salud mental' en ingl?s?",
@@ -1490,7 +1605,8 @@
       "message",
       "design"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'stress'?",
@@ -1500,7 +1616,8 @@
       "autoría",
       "estrés"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'concentración' en ingl?s?",
@@ -1510,7 +1627,8 @@
       "email",
       "concentration"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'attention'?",
@@ -1520,7 +1638,8 @@
       "redes sociales",
       "atención"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'estilo de vida' en ingl?s?",
@@ -1530,7 +1649,8 @@
       "lifestyle",
       "payload"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'habits'?",
@@ -1540,7 +1660,8 @@
       "redes sociales",
       "datos"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'saludable' en ingl?s?",
@@ -1550,7 +1671,8 @@
       "machine",
       "communication"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'unhealthy'?",
@@ -1560,7 +1682,8 @@
       "hacer copia de seguridad",
       "encender"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'reducir' en ingl?s?",
@@ -1570,7 +1693,8 @@
       "digital addiction",
       "turn on"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'to improve'?",
@@ -1580,7 +1704,8 @@
       "reducir",
       "salud mental"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'evitar' en ingl?s?",
@@ -1590,7 +1715,8 @@
       "to avoid",
       "desktop computer"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'to limit'?",
@@ -1600,7 +1726,8 @@
       "Traducción al español",
       "asistir / ayudar"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'relajarse' en ingl?s?",
@@ -1610,7 +1737,8 @@
       "app (application)",
       "cloud"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'well-being'?",
@@ -1620,7 +1748,8 @@
       "evitar",
       "limitar"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'Traducción / significado' en ingl?s?",
@@ -1630,7 +1759,8 @@
       "Phrasal verb",
       "creativity"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'back up'?",
@@ -1640,7 +1770,8 @@
       "conectar",
       "hacer una copia de seguridad"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'expulsar' en ingl?s?",
@@ -1650,7 +1781,8 @@
       "kick out",
       "communication"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'rack up'?",
@@ -1660,7 +1792,8 @@
       "acumular (deuda, puntos, tiempo)",
       "máquina"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'estar a la altura de' en ingl?s?",
@@ -1670,7 +1803,8 @@
       "live up to",
       "walk someone through"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'walk someone through'?",
@@ -1680,17 +1814,8 @@
       "ventaja",
       "hacer copia de seguridad"
     ],
-    "correctIndex": 1
-  },
-  {
-    "q": "?C?mo se dice 'reducir' en ingl?s?",
-    "options": [
-      "app (application)",
-      "smartphone",
-      "cut down (on)",
-      "data"
-    ],
-    "correctIndex": 2
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'give up'?",
@@ -1700,7 +1825,8 @@
       "abandonar",
       "iniciar sesión"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'llevar a cabo' en ingl?s?",
@@ -1710,7 +1836,8 @@
       "carry out",
       "tablet"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'turn off'?",
@@ -1720,7 +1847,8 @@
       "estar a la altura de",
       "nube"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'encender' en ingl?s?",
@@ -1730,7 +1858,8 @@
       "to generate",
       "to share"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'Inglés'?",
@@ -1740,7 +1869,8 @@
       "Traducción al español",
       "usuario"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'inteligencia artificial' en ingl?s?",
@@ -1750,7 +1880,8 @@
       "to upload",
       "backup"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'machine'?",
@@ -1760,7 +1891,8 @@
       "hacer una copia de seguridad",
       "autoría"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'algoritmo' en ingl?s?",
@@ -1770,7 +1902,8 @@
       "to create",
       "carry out"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'data'?",
@@ -1780,7 +1913,8 @@
       "obra de arte",
       "adicción digital"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'creatividad' en ingl?s?",
@@ -1790,7 +1924,8 @@
       "creativity",
       "screen"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'creative'?",
@@ -1800,7 +1935,8 @@
       "subir",
       "creatividad"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'arte' en ingl?s?",
@@ -1810,7 +1946,8 @@
       "screen time",
       "to log in"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'artist'?",
@@ -1820,7 +1957,8 @@
       "compartir",
       "teléfono inteligente"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'obra de arte' en ingl?s?",
@@ -1830,7 +1968,8 @@
       "social media",
       "artwork"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'design'?",
@@ -1840,7 +1979,8 @@
       "acumular (deuda, puntos, tiempo)",
       "datos"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'herramienta' en ingl?s?",
@@ -1850,7 +1990,8 @@
       "walk someone through",
       "tool"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'human'?",
@@ -1860,7 +2001,8 @@
       "nube",
       "bienestar"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'generado por máquina' en ingl?s?",
@@ -1870,7 +2012,8 @@
       "to create",
       "machine"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'originality'?",
@@ -1880,7 +2023,8 @@
       "originalidad",
       "reemplazar"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'autoría' en ingl?s?",
@@ -1890,7 +2034,8 @@
       "to disconnect",
       "authorship"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'to create'?",
@@ -1900,7 +2045,8 @@
       "hacer copia de seguridad",
       "mensaje"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'generar' en ingl?s?",
@@ -1910,7 +2056,8 @@
       "device",
       "to generate"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'to imitate'?",
@@ -1920,7 +2067,8 @@
       "imitar",
       "reemplazar"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'reemplazar' en ingl?s?",
@@ -1930,7 +2078,8 @@
       "social media",
       "to replace"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'to assist'?",
@@ -1940,7 +2089,8 @@
       "cerrar sesión",
       "herramienta"
     ],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'ético' en ingl?s?",
@@ -1950,7 +2100,8 @@
       "ethical",
       "device"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'ethics'?",
@@ -1960,7 +2111,8 @@
       "ética",
       "mensaje"
     ],
-    "correctIndex": 2
+    "correctIndex": 2,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'riesgo' en ingl?s?",
@@ -1970,7 +2122,8 @@
       "art",
       "habits"
     ],
-    "correctIndex": 0
+    "correctIndex": 0,
+    "isVocab": true
   },
   {
     "q": "What is the correct translation of 'advantage'?",
@@ -1980,7 +2133,8 @@
       "tecnología",
       "ventaja"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
   },
   {
     "q": "?C?mo se dice 'desventaja' en ingl?s?",
@@ -1990,6 +2144,319 @@
       "artificial intelligence (AI)",
       "disadvantage"
     ],
-    "correctIndex": 3
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "Which word is a relative pronoun?",
+    "options": [
+      "Yet",
+      "And",
+      "But",
+      "Which"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the future continuous tense?",
+    "options": [
+      "I will eat lunch at noon.",
+      "She will be reading a book tomorrow afternoon.",
+      "He is going to be playing the piano.",
+      "They are going to study for the exam last night."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which of the following sentences is in Future Simple?",
+    "options": [
+      "She has finished the project tomorrow.",
+      "She will finish the project tomorrow.",
+      "She finishes the project tomorrow.",
+      "She is finishing the project tomorrow."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the future continuous?",
+    "options": [
+      "She travels next week.",
+      "She will be traveling next week.",
+      "She has traveled next week.",
+      "She will travel next week."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the present perfect?",
+    "options": [
+      "She has visited Spain twice.",
+      "She visited Spain twice.",
+      "She is visiting Spain.",
+      "She will visit Spain."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "In \"They have visited Paris many times,\" what tense is \"have visited\"?",
+    "options": [
+      "Past tense",
+      "Future tense",
+      "Present tense",
+      "Present perfect tense"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "What is the main idea of the text?",
+    "options": [
+      "People should forget negative experiences",
+      "Memories are always accurate",
+      "Memories shape our identities and relationships",
+      "Childhood is the best time of life"
+    ],
+    "correctIndex": 2,
+    "code": "Part 1: Verb Tenses (4 points)\nComplete the sentences using the correct form of the verb in parentheses.\n1. She usually Respuesta 1 Pregunta 1 (to check) her emails in the morning.\n2. At the moment, I Respuesta 2 Pregunta 1 (to read) an article about the impact of social media.\n3. They Respuesta 3 Pregunta 1 (to finish) the report yesterday.\n4. By the time the meeting started, I Respuesta 4 Pregunta 1 (to send) the email to the client.\n5. Next year, I Respuesta 5 Pregunta 1 (to attend) a conference on communication technologies.\n6. I Respuesta 6 Pregunta 1 (to work) on my project when my internet connection failed.\n7. We Respuesta 7 Pregunta 1 (to develop) a new app by the end of this month.\n8. Tomorrow at this time, I Respuesta 8 Pregunta 1 (to present) our findings at the meeting.\nRetroalimentación\nParcialmente correcta\nPuntos para este envío: 3,00/4,00. Contando con los intentos anteriores, daría 3,50/4,00.\nPregunta 2\nCorrecta\nSe puntúa 2,00 sobre 2,00\nMarcar pregunta\nEnunciado de la pregunta\nPart 2: Vocabulary (2 points) Match each term related to technology communication with its correct definition.\nThe use of various forms of communication, such as text, audio, and video.\nRespuesta 1 Pregunta 2 A. Cloud Computing B. Multimedia C. Social Media D. Digital Literacy.\nPlatforms like Facebook and Twitter that allow users to interact and share content.\nRespuesta 2 Pregunta 2 A. Cloud Computing B. Multimedia C. Social Media D. Digital Literacy.\nThe ability to understand and use digital tools effectively.\nRespuesta 3 Pregunta 2 A. Cloud Computing B. Multimedia C. Social Media D. Digital Literacy.\nThe technology that allows data to be stored and accessed remotely on the internet.\nRespuesta 4 Pregunta 2 A. Cloud Computing B. Multimedia C. Social Media D. Digital Literacy.\nRetroalimentación\nCorrecta\nPuntos para este envío: 2,00/2,00.\nPregunta 3\nCorrecta\nSe puntúa 2,00 sobre 2,00\nMarcar pregunta\nEnunciado de la pregunta\nRead the following text and answer the questions below.\nText:\nIn today's world, technological communication plays a crucial role in both personal and professional environments. The ability to communicate effectively using digital tools is a key skill for success. One of the most important aspects of technological communication is the use of multimedia, which combines text, video, and audio to convey messages more effectively. Cloud computing is another essential element, enabling users to store and access information from anywhere, at any time. As we become more reliant on digital tools, having strong digital literacy is essential to navigate the complex digital world.\nRetroalimentación\nLa respuesta correcta es:\nWhat does \"cloud computing\" allow users to do? → It allows users to store and access information from anywhere.,\nAccording to the text, why is technological communication important? → It plays a crucial role in both personal and professional environments.,\nWhat are two key elements of technological communication mentioned in the text? → Multimedia and cloud computing.,\nWhat combines text, video, and audio to convey messages more effectively? → multimedia\nCorrecta\nPuntos para este envío: 2,00/2,00.\nPregunta 4\nFinalizado\nSe puntúa 2,00 sobre 2,00\nMarcar pregunta\nEnunciado de la pregunta\nPart 4: Short Answer (2 points)\nWrite a short paragraph (100-120 words) explaining how technological communication has changed the way we interact with others. Include examples of tools or platforms you use regularly.\nTexto de la respuesta Pregunta 4\nTechnological communication has drastically transformed how we interact,bridging geographical gaps and enabling instant connectivity. In the past, professional and personal exchanges were sloweb and location-dependent.\nToday, tools like WhatsApp allow for inmediate personal updates, while platforms such as Microsoft Teams or Zoom have revolutionized professional collaboration, making remote work viable. As an engineering student, I also use Discord and GitHub to coordinate projects and share code in real time.\nAlthough this shift has reduced face-to-face contact, it has undeniably increased efficiency and global accessibility, allowing us to maintain relationships and work flows regardless of physical distance.\nConsequently, mastering these digital channelsl is now a fundamental requirement for any successful engineer.\nCLE 2 Feedback U2Final del formulario\nPregunta 1\nCorrecta\nSe puntúa 1,00 sobre 1,00\nMarcar pregunta\nEnunciado de la pregunta\nMemories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "How can memories strengthen relationships?",
+    "options": [
+      "By helping people forget shared experiences",
+      "By focusing on individual achievements",
+      "By creating conflicts over different perspectives",
+      "By recalling and sharing past experiences"
+    ],
+    "correctIndex": 3,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "Which phrase best describes how memories are described in the text?",
+    "options": [
+      "Irrelevant to our present lives",
+      "Personal interpretations influenced by emotions",
+      "Unchangeable facts",
+      "Objective recordings of events"
+    ],
+    "correctIndex": 1,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "Why might memories of an event change over time?",
+    "options": [
+      "Because they are forgotten completely",
+      "Because they were too perfect to be true",
+      "Because they were recorded incorrectly",
+      "Because time and emotions alter our perception"
+    ],
+    "correctIndex": 3,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "Why do people often remember difficult times more positively later on?",
+    "options": [
+      "Because those times were actually easy",
+      "Because they forget the bad parts",
+      "Because they grow and learn from those experiences",
+      "Because they have no other memories"
+    ],
+    "correctIndex": 2,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "Which of these could be an example of a \"shared sense of identity\" mentioned in the text?",
+    "options": [
+      "Someone studying for an exam",
+      "A person reading a book alone",
+      "Watching a new movie by oneself",
+      "People celebrating a holiday they all remember fondly"
+    ],
+    "correctIndex": 3,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "What is an example of a joyful memory motivating someone, mentioned in the text?",
+    "options": [
+      "Missing a school dance",
+      "Failing an interview",
+      "Visiting a friend",
+      "Winning a sports match"
+    ],
+    "correctIndex": 3,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "What might the phrase \"the good old days\" imply in the text?",
+    "options": [
+      "A time that was very boring",
+      "A period that people look back on fondly",
+      "A difficult time that nobody wants to remember",
+      "A future time that is hoped for"
+    ],
+    "correctIndex": 1,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "What does the text suggest about memories and the sense of self?",
+    "options": [
+      "Memories should be forgotten to grow",
+      "Memories are the only thing that defines us",
+      "Memories help shape our identity and relationships",
+      "Memories are not important to who we are"
+    ],
+    "correctIndex": 2,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": true
+  },
+  {
+    "q": "What does the author suggest about the reliability of memories?",
+    "options": [
+      "They can be altered by emotions and time",
+      "They are always accurate",
+      "They are recorded like a video",
+      "They are often perfect and complete"
+    ],
+    "correctIndex": 0,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": true
+  },
+  {
+    "q": "How might current emotions affect past memories, according to the text?",
+    "options": [
+      "They make memories clearer",
+      "They make memories disappear",
+      "They can change how we remember an event",
+      "They always make memories negative"
+    ],
+    "correctIndex": 2,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "How can memories influence our decisions today?",
+    "options": [
+      "By always giving us the correct answer",
+      "By making us live in the past",
+      "By helping us avoid repeating past mistakes",
+      "By preventing us from trying new things"
+    ],
+    "correctIndex": 2,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "What does the word \"nostalgia\" mean in the context of the text?",
+    "options": [
+      "Fear of the future",
+      "Regret for lost opportunities",
+      "Satisfaction with the present",
+      "Longing for the past"
+    ],
+    "correctIndex": 3,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": true
+  },
+  {
+    "q": "Which of the following might evoke a memory of childhood, according to the text?",
+    "options": [
+      "A familiar smell",
+      "A new song",
+      "A photograph of a stranger",
+      "An old book"
+    ],
+    "correctIndex": 0,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.\nMemories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "What is the meaning of \"reminiscing\" in the context of the text?",
+    "options": [
+      "Forgetting past events",
+      "Reflecting on the past",
+      "Ignoring old experiences",
+      "Imagining the future"
+    ],
+    "correctIndex": 1,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": true
+  },
+  {
+    "q": "Identify the correct WH-question for asking about someone's preferences:",
+    "options": [
+      "What do you like to do in your free time?",
+      "How many times have you travelled by plane?",
+      "Where did you go last weekend?",
+      "What did you do last weekend?"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct yes/no question to inquire about someone's experience:",
+    "options": [
+      "Did you ever been to Paris?",
+      "You never go to Paris, don't you?",
+      "Have you never been to Paris?",
+      "Have you ever been to Paris?"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence follows the zero conditional structure?",
+    "options": [
+      "If you heat ice, it melts.",
+      "If you heat ice, it will melt.",
+      "If you heat ice, it would melt.",
+      "If you heated ice, it would melt."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly uses the present continuous?",
+    "options": [
+      "She studying English now.",
+      "She studied English now.",
+      "She is studying English now.",
+      "She studies English now."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses Future Continuous correctly?",
+    "options": [
+      "I studied at this time tomorrow.",
+      "I will be studying at this time tomorrow.",
+      "I have been studying at this time tomorrow.",
+      "I am studying at this time tomorrow."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct yes/no question:",
+    "options": [
+      "Have you known what time it is?",
+      "Do you know what time is it?",
+      "Do you know what time it is?",
+      "you know what time it is?"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
   }
 ]

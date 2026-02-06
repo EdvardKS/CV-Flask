@@ -198,6 +198,29 @@
             overflow: hidden;
         }
 
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: clamp(8px, 1.6vmin, 12px);
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toggle input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
         #setup {
             text-align: center;
             padding: clamp(16px, 4vmin, 40px) !important;
@@ -294,7 +317,14 @@
         </div>
 
         </div>
-        
+
+        <div id="filters" class="filter-bar" style="display:none;">
+            <label class="toggle">
+                <input type="checkbox" id="toggle-vocab">
+                <span>Ocultar preguntas de vocabulario</span>
+            </label>
+        </div>
+
         <div class="question-box">
             <div id="question-text" class="question-text"></div>
             <a id="ia-btn" href="#" target="_blank" class="google-ask" title="Explicación con Google IA">🤖</a>
@@ -321,6 +351,29 @@
     };
 
     const DATASETS = { ec: null, so: null, en: null };
+    const STORAGE_HIDE_VOCAB = 'ecso-hide-vocab';
+    let hideVocabulary = localStorage.getItem(STORAGE_HIDE_VOCAB) === '1';
+
+    function isVocabularyQuestion(item) {
+        if (item && typeof item.isVocab === 'boolean') {
+            return item.isVocab;
+        }
+        const text = (item?.q || '').toLowerCase();
+        if (text.match(/translation|como se dice|c\u00f3mo se dice|how do you say|meaning of|traducci|phrasal verb|in english/)) {
+            return true;
+        }
+        const opts = item?.options || [];
+        const spanishish = opts.filter(opt => /[\u00e1\u00e9\u00ed\u00f3\u00fa\u00f1\u00bf\u00a1]/i.test(opt) || /\b(el|la|los|las|un|una|unos|unas)\b/i.test(opt)).length;
+        return spanishish >= 2;
+    }
+
+    function getFilteredDataset(id) {
+        const base = DATASETS[id] || [];
+        if (id !== 'en' || !hideVocabulary) {
+            return base;
+        }
+        return base.filter((q) => !isVocabularyQuestion(q));
+    }
 
     async function loadDataset(id) {
         if (Array.isArray(DATASETS[id]) && DATASETS[id].length > 0) {
@@ -385,7 +438,7 @@
     function buildSession(datasetId) {
         const seed = Date.now();
         const rng = mulberry32(seed);
-        const base = DATASETS[datasetId] || [];
+        const base = getFilteredDataset(datasetId);
         const order = shuffle([...Array(base.length).keys()], rng);
         const optionOrder = base.map((item) => shuffle([...Array(item.options.length).keys()], rng));
         session = {
@@ -410,7 +463,7 @@
             if (!parsed || parsed.dataset !== datasetId) return null;
             if (!Array.isArray(parsed.order) || !Array.isArray(parsed.optionOrder)) return null;
 
-            const base = DATASETS[datasetId] || [];
+            const base = getFilteredDataset(datasetId);
             if (parsed.order.length !== base.length) return null;
             if (parsed.optionOrder.length !== base.length) return null;
             const orderOk = parsed.optionOrder.every((ord, i) => Array.isArray(ord) && ord.length === base[i].options.length);
@@ -554,13 +607,14 @@
     async function startFromSelection(id) {
         try {
             await loadDataset(id);
+            updateFilterVisibility(id);
             const saved = loadSession(id);
             if (saved) {
                 session = saved;
             } else {
                 buildSession(id);
             }
-            questions = DATASETS[id] || [];
+            questions = getFilteredDataset(id);
             startQuiz();
         } catch (err) {
             alert('No se pudo cargar las preguntas. Intentalo de nuevo.');
@@ -619,8 +673,39 @@ Fallos: ${session.misses}`);
         recordHistory();
         const datasetId = session.dataset;
         buildSession(datasetId);
-        questions = DATASETS[datasetId] || [];
+        questions = getFilteredDataset(datasetId);
         startQuiz();
+    }
+
+    function updateFilterVisibility(datasetId) {
+        const filterBar = document.getElementById('filters');
+        if (!filterBar) return;
+        if (datasetId === 'en') {
+            filterBar.style.display = 'flex';
+            const toggle = document.getElementById('toggle-vocab');
+            if (toggle) {
+                toggle.checked = hideVocabulary;
+            }
+        } else {
+            filterBar.style.display = 'none';
+        }
+    }
+
+    async function handleVocabToggle(event) {
+        hideVocabulary = event.target.checked;
+        localStorage.setItem(STORAGE_HIDE_VOCAB, hideVocabulary ? '1' : '0');
+        if (session && session.dataset === 'en') {
+            try {
+                await loadDataset('en');
+            } catch (e) {
+                alert('No se pudo recargar el dataset de inglés.');
+                return;
+            }
+            localStorage.removeItem(getStorageKey('en'));
+            buildSession('en');
+            questions = getFilteredDataset('en');
+            startQuiz();
+        }
     }
 
     function resetHint() {
@@ -683,7 +768,15 @@ Fallos: ${session.misses}`);
     document.getElementById('load-en').addEventListener('click', () => startFromSelection('en'));
     document.getElementById('exit-btn').addEventListener('click', exitQuiz);
     document.getElementById('restart-btn').addEventListener('click', restartQuiz);
-    document.getElementById('hint-btn').addEventListener('click', requestHint);
+    const hintBtn = document.getElementById('hint-btn');
+    if (hintBtn) {
+        hintBtn.addEventListener('click', requestHint);
+    }
+    const vocabToggle = document.getElementById('toggle-vocab');
+    if (vocabToggle) {
+        vocabToggle.checked = hideVocabulary;
+        vocabToggle.addEventListener('change', handleVocabToggle);
+    }
 
     async function resumeLastSession() {
         const storedLast = localStorage.getItem(STORAGE_LAST_KEY);
@@ -694,10 +787,11 @@ Fallos: ${session.misses}`);
             return;
         }
         if (Array.isArray(DATASETS[storedLast]) && DATASETS[storedLast].length > 0) {
+            updateFilterVisibility(storedLast);
             const storedSession = loadSession(storedLast);
             if (storedSession) {
                 session = storedSession;
-                questions = DATASETS[storedLast] || [];
+                questions = getFilteredDataset(storedLast);
                 startQuiz();
             }
         }
