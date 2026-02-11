@@ -2458,5 +2458,489 @@
     ],
     "correctIndex": 2,
     "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the present simple tense?",
+    "options": [
+      "She works at a bank.",
+      "She will work tomorrow.",
+      "She is working on a project.",
+      "She was working late."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for a defining relative clause.",
+    "options": [
+      "The dog that is sleeping is mine.",
+      "The dog sleeping is mine.",
+      "The dog, which is sleeping, is mine.",
+      "The dog which is sleeping is mine."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure.",
+    "options": [
+      "The dog let out.",
+      "Whom let the dogs out?",
+      "Who the dog out?",
+      "Who let the dogs out?"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 25.Which one uses inversion for emphasis?",
+    "options": [
+      "I have never seen such a beautiful sunset.",
+      "Never I have seen such a beautiful sunset.",
+      "Never I seen such a beautiful sunset.",
+      "Never have I seen such a beautiful sunset."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct structure to fill the gap with present perfect: They ___ (never/see) a ghost before.",
+    "options": [
+      "They have never sawn a ghost before.",
+      "They never saw a ghost before.",
+      "They have seen never a ghost before.",
+      "They have never seen a ghost before."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the future continuous?",
+    "options": [
+      "Next year, we will finish college.",
+      "Next year, we will have finished college.",
+      "Next year, we will be finishing college.",
+      "Next year, we will finishing college."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the right definition for APPROPRIATION",
+    "options": [
+      "The action of stealing someone else's property.",
+      "Accidentally or without intending to do so.",
+      "The act of taking something for one's own use, typically without permission.",
+      "State or assert that something is the case, typically without providing evidence or proof."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 26. Direct Speech: \"I want to learn Spanish,\" she said. Reported Speech: She said that she ___________ to learn Spanish.",
+    "options": [
+      "She said that she will want to learn Spanish.",
+      "She said that she had wanted to learn Spanish.",
+      "She said that she wanted to learn Spanish.",
+      "She said that she would learn Spanish."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the past perfect tense?",
+    "options": [
+      "She had already left when I arrived.",
+      "She is leaving when I arrive.",
+      "She left when I arrived.",
+      "She was leaving when I arrived."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which word best fits this sentence: 'The ______ of AI-generated images raises ethical concerns.'",
+    "options": [
+      "luxurious",
+      "creation",
+      "theft",
+      "use"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 23. Direct Speech: \"We will visit London next summer,\" they said. Reported Speech: They said that they ___________ London...",
+    "options": [
+      "They said that they would go to London the following Summer",
+      "They said that they would visit London next Summer",
+      "They said that they would not visit London the following Summer",
+      "They said that they would visit London the following Summer"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 27. They ___ (leave) by the time I arrived.",
+    "options": [
+      "They had left by the time I arrived.",
+      "They will have left by the time I arrived.",
+      "They will leave by the time I arrived.",
+      "They had leaved by the time I arrived."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct tag question structure for Challenge 14.",
+    "options": [
+      "Which AI created the most famous painting? did it?",
+      "I seen such a beautiful sunset. Have you?",
+      "Never have I seen such a beautiful sunset, have they?",
+      "You're coming to the party, aren't you?"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct question structure for Challenge 12: A choice question.",
+    "options": [
+      "Which color do you prefer?",
+      "You prefer red, don't you?\"",
+      "What color do you prefer, red?",
+      "Which color do you prefer, red or blue?"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which modal verb expresses necessity?",
+    "options": [
+      "Need",
+      "Should",
+      "Can",
+      "Might"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct option for Challenge 20. Choose the correct definition for RISING",
+    "options": [
+      "Extreme or very strong in degree or strength.",
+      "The act of taking something for one's own use, typically without permission.",
+      "Going up, increasing.",
+      "Extremely comfortable, elegant, and expensive."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct definition for THEFT.",
+    "options": [
+      "Happening or done without delay; instant.",
+      "The act of taking something for one's own use, typically without permission.",
+      "Extremely comfortable, elegant, and expensive.",
+      "The action of stealing someone else's property."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct structure to fill the gaps with present perfect: I ___ (just/finish) my homework.",
+    "options": [
+      "I just have finished my homework.",
+      "I just finished my homework.",
+      "I have just finished my homework.",
+      "I have just finish my homework."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct option for Challenge 21. Choose the correct definition for UNINTENTIONALLY.",
+    "options": [
+      "Happening or done without delay; instant.",
+      "The act of taking something for one's own use, typically without permission.",
+      "State or assert that something is the case, typically without providing evidence or proof.",
+      "Accidentally or without intending to do so."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly uses the past continuous?",
+    "options": [
+      "She sleeps when I call.",
+      "She slept when I called.",
+      "She was sleeping when I called.",
+      "She is sleeping when I called."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Find the correct Non-restrictive (=non-defining) relative clause.",
+    "options": [
+      "My brother who lives in London , is coming to visit next week.",
+      "My brother, who lives in London , is coming to visit next week.",
+      "My brother, who lives in London is coming to visit next week.",
+      "My brother who lives in London is coming to visit next week."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the future perfect?",
+    "options": [
+      "She will complete the project by Monday.",
+      "She will have completed the project by Monday.",
+      "She has completed the project by Monday.",
+      "She completes the project by Monday."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly uses the future simple?",
+    "options": [
+      "She has called you later.",
+      "She was calling you later.",
+      "She is calling you later.",
+      "She will call you later."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly converts direct speech to indirect speech? \"I am happy\", she said.",
+    "options": [
+      "She said that she was happy.",
+      "She said that she will be happy.",
+      "She says that she was happy.",
+      "She said she is happy."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 21. He ___ (go) to the store yesterday.",
+    "options": [
+      "He will go to the store yesterday.",
+      "He has gone to the store yesterday.",
+      "He gone to the store yesterday.",
+      "He went to the store yesterday."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in indirect speech?",
+    "options": [
+      "He said that Mark wrote the book.",
+      "\"Mark wrote the book,\" he said.",
+      "He said \"The book was written by Mark.\"",
+      "He said: \"Mark writes the book.\""
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly forms a choice question?",
+    "options": [
+      "Coffee or tea, do you like?",
+      "Do you prefer coffee or tea?",
+      "Do you prefer coffee and tea?",
+      "Do prefer coffee you or tea?"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct structure for Challenge 15.",
+    "options": [
+      "This bag is too heavy enough for me to carry.",
+      "This bag too is heavy for me to carry.",
+      "This bag is too heavy for me to carry.",
+      "This bag is enough heavy for me to carry."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "What kind of structure is this? My sister, who is sitting at the front, is very intelligent.",
+    "options": [
+      "Non-restrictive relative clause",
+      "Non-restrictive embedded clause",
+      "Restrictive conditional clause",
+      "Restrictive relative clause"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the past perfect?",
+    "options": [
+      "By the time we arrived, the movie was starting .",
+      "When we arrived, the movie started.",
+      "When we arrived, the movie has started .",
+      "By the time we arrived, the movie had started ."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct structure for Challenge 11. The restaurant ___________ we ate at last night was expensive.",
+    "options": [
+      "The restaurant which we ate at last night was expensive.",
+      "The restaurant which we ate at last night was expensive.",
+      "The restaurant we ate last night was expensive.",
+      "The restaurant where we ate last night was expensive."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for future plans This week we (meet) ________ at 5 PM on Wednesday in the cafeteria.",
+    "options": [
+      "This week we shall meet at 5pm on Wednesday in the cafeteria.",
+      "This week, we will meet at 5 pm on Wednesday in the cafeteria.",
+      "This week, we are having a meeting at 5 pm on Wednesday in the cafeteria.",
+      "This week we are meeting at 5 pm on Wednesday in the cafeteria."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for a non-defining relative clause.",
+    "options": [
+      "The dog, which is sleeping, is mine.",
+      "The dog that is sleeping is mine.",
+      "The dog which is sleeping is mine.",
+      "The dog, that is sleeping, is mine."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 22. She ___ (already/eat) before we got there.",
+    "options": [
+      "She has already eaten before we got there.",
+      "She ate before already we got there.",
+      "She already had eaten before we got there.",
+      "She had already eaten before we got there."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the most suitable verb to fill the gap. The Earth ___ (orbit) around the sun.",
+    "options": [
+      "The earth orbit around the sun.",
+      "The earth orbited around the sun.",
+      "The earth orbits around the sun.",
+      "The earth is orbitig around the sun."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly uses a relative in indirect speech?",
+    "options": [
+      "He asked me what time did I go to bed.",
+      "He asked me who the man that had come the day before was.",
+      "She asked me who was the man who came the day before.",
+      "He asked me who was the man, who was wearing a black shirt."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the incorrect structure for Challenge 16.",
+    "options": [
+      "He is enough strong to lift that box.",
+      "The weather is too cold to go outside.",
+      "She isn’t fast enough to win the race.",
+      "This room is big enough for all of us."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the most appropriate sentence according to the context.`",
+    "options": [
+      "We are having dinner at a restaurant tonight.",
+      "Look! It is going to rain next year.",
+      "Look! It will rain outside right now. .",
+      "It is snowing, it is so hot and dry outside."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "In \"She will have completed the project by next Friday,\" what tense is \"will have completed\"?",
+    "options": [
+      "Future perfect tense",
+      "Perfect tense",
+      "Future tense",
+      "Present tense"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct form of the Past Simple for the sentence: \"I ___ (to see) that movie last week.\"",
+    "options": [
+      "saw",
+      "seeing",
+      "see",
+      "have seen"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct question structure for Challenge 13.",
+    "options": [
+      "The coffee is enough hot to drink.",
+      "The coffee is hot too to drink.",
+      "The coffee is too hot to drink.",
+      "The coffee is too hot enough to drink."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for My sister ___ (work) in a bank since 1999.",
+    "options": [
+      "My siter works in a bank since 1999.",
+      "My siter has worked in a bank since 1999.",
+      "My siter is working in a bank since 1999.",
+      "My siter worked in a bank since 1999."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct option for Challenge 18. Choose the correct definition for INTENSE.",
+    "options": [
+      "Extreme or very strong in degree or strength.",
+      "State or assert that something is the case, typically without providing evidence or proof.",
+      "Happening or done without delay; instant.",
+      "Extremely comfortable, elegant, and expensive."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct option for Challenge 19. Choose the correct definition for CLAIM.",
+    "options": [
+      "Increasing in amount, number, value, or level.",
+      "State or assert that something is the case, typically without providing evidence or proof.",
+      "The act of taking something for one's own use, typically without permission.",
+      "Happening or done without delay; instant."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
   }
 ]
