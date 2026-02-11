@@ -1,0 +1,319 @@
+FILE: Test 1 Sist Op Avanzados Corregido.pdf
+\n=== PAGE 1 ===
+001	0.8911735117435455	6/12/25, 9:48
+002	0.9103210214841164	Cuestionario deAutoevaluacion UD1:Revision del intentoIUAX
+003	0.7790793180465698	Estado
+004	0.863489340652119	Finalizado
+005	0.8452634155750275	Comenzado
+006	0.8763157599850705	sabado, 6 de diciembre de 2025, 09:39
+007	0.8754553307186473	Completado
+008	0.8686937623553805	sabado,6 de diciembre de 2025,09:48
+009	0.8284672300020853	Duracion
+010	0.8527221052270186	8minutos52segundos
+011	0.8180368627820697	Puntos
+012	0.8630389521519343	14,00/20,00
+013	0.8810610679479746	Calificacion
+014	0.8295318484306335	7,00 de 10,00 (70%)
+015	0.8299359028989618	Pregunta 1
+016	0.8974987214261835	Incorrecta
+017	0.8743912692253406	Se puntua 0,00 sobre 1,00
+018	0.8970553393059588	Enunprocesador con soporteparahyper-threading:
+019	0.6631026069323221	a.
+020	0.903925808146596	Existendos unidades de control.
+021	0.6472061475118002	b.
+022	0.9443620636656478	Existendosunidadesaritmetico-logicas
+023	0.6486130158106486	C.
+024	0.9106882694694731	Existen dos contadores de programa.
+025	0.9298282764174721	Puede haber en ejecucion threads de distintos procesos
+026	0.5575861732165018	d.
+027	0.9191553803051219	simultaneamente.
+028	0.910224917434877	La respuesta correcta es: Existen dos contadores de programa.
+029	0.8967864405025135	Pregunta 2
+030	0.7894414994451735	Correcta
+031	0.9157517712849838	Se puntua 1,00 sobre 1,00
+032	0.9119707893352119	La incorporaciondehebras resulta ventajosaporque
+033	0.5182791550954183	a.
+034	0.9007714611032734	La imagendememoria del proceso es maspequena.
+035	0.6652233997980753	b.
+036	0.9539907375971476	Loscambiosdecontextoentreprocesossonmasrapidos.
+037	0.6065592368443807	C.
+038	0.9256498113922451	Loscambiosdecontextoentrehebrassonmasrapidos.
+039	0.6614628434181213	d.
+040	0.8935169892651694	Laejecuciondelosprocesosseacelera.
+041	0.8884312834809808	Larespuesta correcta es: Los cambios de contexto entrehebras sonmas
+042	0.887520432472229	rapidos.
+043	0.931153050599954	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4075996&cmid=1517930
+\n=== PAGE 2 ===
+001	0.9132236930040213	6/12/25,9:48
+002	0.917509323564069	Cuestionario deAutoevaluacion UD1:Revisiondel intentoIUAX
+003	0.8838990709998391	Pregunta 3
+004	0.8629863153804432	Incorrecta
+005	0.867158992932393	Se puntua 0.00 sobre 1,00
+006	0.881061297395955	Las arquitecturasMIMD:
+007	0.5244204799334208	a.
+008	0.9488302545669751	Secuencianvariosflujosdeinstrucciones.
+009	0.6326578458150228	b.
+010	0.9263308559145246	Seasocianalprocesamientovectorial.
+011	0.6280476649602255	C.
+012	0.9348405083505119	Incorporan varias unidades de control. @
+013	0.646707812945048	d.
+014	0.9314151656243109	Seasocianaunidadessegmentadas.
+015	0.9246147862379102	La respuesta correcta es: Secuencian varios flujos de instrucciones.
+016	0.8816331733356823	Pregunta 4
+017	0.8395347197850546	Correcta
+018	0.9058507933066442	Se puntua 1,00 sobre 1,00
+019	0.9229930330967081	Sienunaarquitecturaserealizanlasmismas operacionesdeforma
+020	0.8847364270024829	redundante sobre un flujo de datos:
+021	0.6645115812619528	a.
+022	0.8687675543453383	EsunaarquitecturaMisD.
+023	0.5792724887530009	b.
+024	0.890146042989648	EsunaarquitecturaSIMD.
+025	0.6301357746124268	C.
+026	0.8736476531395545	Es una arquitectura SISD.
+027	0.6619510849316915	d.
+028	0.8967349024919363	Es una arquitectura MIMD.
+029	0.8739480009445777	La respuesta correcta es: Es una arquitectura MisD.
+030	0.7999317700212653	Pregunta 5
+031	0.8580793804592557	Correcta
+032	0.7984893192415652	Sepuntua1,00 sobre1,00
+033	0.9151603579521179	Por multithreading se entiende:
+034	0.6613681316375732	a.
+035	0.9426184341089049	Soporte para la creacion y administracion de hilos de ejecucion. O
+036	0.6642706990242004	b.
+037	0.8958706016443214	Mecanismosparaevitaraccesosconcurrentesarecursos
+038	0.8406878618093637	compartidos.
+039	0.6498873035113016	C.
+040	0.9211043836893859	Mecanismosparaevitaraccesosconcurrentesazonadememoria
+041	0.8771138240893682	compartida.
+042	0.6423396269480387	d.
+043	0.8625625240802764	Soportepara variosprocesosactivossimultaneamente.
+044	0.8479410750525338	de ejecucion.
+045	0.931153050599954	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4075996&cmid=1517930
+046	0.6415474116802216	2/7
+\n=== PAGE 3 ===
+001	0.908803254365921	6/12/25, 9:48
+002	0.9170121745816593	Cuestionario deAutoevaluacion UD1:Revisiondel intentoIUAX
+003	0.8725980682806536	Pregunta 6
+004	0.8392393191655477	Correcta
+005	0.8797575074892777	Se puntua 1,00 sobre 1,00
+006	0.8987706683833023	Sien una arquitectura existen varias unidades de control:
+007	0.5819206833839417	a.
+008	0.8434148097038269	Es una arquitectura MISD
+009	0.6646833221117655	b.
+010	0.8734213136709653	Es una arquitectura SISD.
+011	0.6298110087712606	C.
+012	0.88338942023424	Es una arquitectura SIMD.
+013	0.6415887276331583	d.
+014	0.893612405528193	EsunaarquitecturaMIMD.
+015	0.9126964620515412	La respuesta correcta es: Es una arquitectura MIMD
+016	0.879432737827301	Pregunta 7
+017	0.8394885526763068	Correcta
+018	0.9036375880241394	Se puntua 1,00 sobre 1,00
+019	0.9045664509948419	El modelo Von-Newman tradicional de computacion:
+020	0.6639312505722046	a.
+021	0.89672051505609	EsunaarquitecturaMIMD
+022	0.5707370241483053	b.
+023	0.8457615201671919	Es unaarquitectura MiSD
+024	0.6550153493881226	C.
+025	0.8501324835030929	EsunaarquitecturaSiSD.
+026	0.6538080970446268	d.
+027	0.8781541356673608	Es una arquitectura SIMD.
+028	0.8891399245636136	La respuesta correcta es: Es una arquitectura SisD
+029	0.8619601943276145	Pregunta 8
+030	0.7924148705270555	Correcta
+031	0.9103962801969968	Se puntua 1,00 sobre 1,00
+032	0.8337992685181754	En un sistema MiMD donde toda la memoria es compartida:
+033	0.6639192899068197	a.
+034	0.8950334539016088	Es forzosamente un sistemafuertemente acoplado.
+035	0.6258463462193807	b.
+036	0.9207029841666998	Esforzosamenteunsistemadebilmenteacoplado.
+037	0.6469272573788961	C.
+038	0.9196172595024109	EsforzosamenteunasistemaNUMA.
+039	0.5675883293151855	d.
+040	0.9226107788937432	EsforzosamenteunsistemaUMA.
+041	0.9137489914894104	Larespuesta correctaes: Esforzosamenteun sistemafuertemente
+042	0.8974027037620544	acoplado.
+043	0.931153050599954	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4075996&cmid=1517930
+044	0.6042931973934174	3/7
+\n=== PAGE 4 ===
+001	0.9132236930040213	6/12/25,9:48
+002	0.9162404668533196	Cuestionario deAutoevaluacion UD1:Revision del intentoIUAX
+003	0.9010548374869607	Pregunta 9
+004	0.887965288427141	Correcta
+005	0.8709786511384524	Se puntua 1,00 sobre 1.00
+006	0.8702296381411345	En una red multietapa:
+007	0.538234015305837	a.
+008	0.9347708578012428	Cualquiercaminoesposibleenun instantedeterminado
+009	0.5420161286989847	b.
+010	0.9142802550836846	No todos los caminos son posibles en cada instante. O
+011	0.6363967259724935	C.
+012	0.945428158228214	Nopuedehaberlasmismasetapasqueconmutadoresporetapa.
+013	0.6074987252553304	d.
+014	0.938482777745116	Siempre hay mas etapas que conmutadores por etapa.
+015	0.8968854467658436	La respuesta correcta es: No todos los caminos son posibles en cada
+016	0.8717314720153808	instante.
+017	0.9083410302797953	Pregunta 10
+018	0.856728176275889	Correcta
+019	0.8265751341114873	Sepuntua1,00 sobre1,00
+020	0.9421274954417966	La incorporacion de hebras resulta ventajosa porque:
+021	0.5627123514811198	a.
+022	0.9437575916449229	Elcontextodelprocesosereduce.
+023	0.5858310461044312	b.
+024	0.9175791783766313	La imagen de memoria del proceso ahora puede copiarse.
+025	0.610964834690094	C.
+026	0.9297981937726338	funcionalidad.
+027	0.9243266437111831	La ejecucion de los procesos se acelera.
+028	0.8532896614074708	una misma funcionalidad.
+029	0.9007159868876139	Pregunta 11
+030	0.9010853929953142	Incorrecta
+031	0.8950330729667957	Se puntua 0,00 sobre 1,00
+032	0.9215295960505804	Las arquitecturas SIMD:
+033	0.6640724142392477	a.
+034	0.9255575550927057	Incorporanredundanciaenlosrecursosdeproceso.
+035	0.6647743185361227	b.
+036	0.8963912223066602	Se asocian a unidades segmentadas.
+037	0.6042066613833109	C.
+038	0.9213642303536578	Incorporan varias unidades de control. @
+039	0.6654869516690572	d.
+040	0.903011585390845	Secuencian varios flujos de instrucciones.
+041	0.8389998012118869	proceso.
+042	0.9311330647040637	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4075996&cmid=1517930
+043	0.7465256899595261	4/7
+\n=== PAGE 5 ===
+001	0.9045988000356234	6/12/25,9:48
+002	0.916042354147313	Cuestionario deAutoevaluacion UD1:Revision del intentoIUAX
+003	0.8445137441158295	Pregunta 12
+004	0.8633854389190674	Incorrecta
+005	0.8552018266457778	Se puntua 0.00 sobre 1,00
+006	0.9014670372009277	todos los modulos de memoria:
+007	0.653281569480896	a.
+008	0.8840150479227304	EsunsistemaUMA.
+009	0.6623663107554117	b.
+010	0.8831204616505167	Es una sistema NUMA. @
+011	0.6423123081525167	C.
+012	0.8518669051783425	Esunsistemadebarrascruzadas
+013	0.6560148398081461	d.
+014	0.8836035921293146	Es unsistema debilmente acoplado.
+015	0.9148889074722926	Larespuesta correcta es: Es un sistema debilmente acoplado.
+016	0.8522263815005621	Pregunta 13
+017	0.8544609679116143	Correcta
+018	0.825757824856302	Sepuntua1,00 sobre1,00
+019	0.8786954407890638	Las arquitecturas SIMD:
+020	0.6525527238845825	a.
+021	0.9321191448431748	Incorporan varias unidades de control.
+022	0.6618266105651855	b.
+023	0.9241601824760437	Se asocian a unidades segmentadas.
+024	0.6506255666414896	C.
+025	0.882943831384182	Se asocian al procesamiento vectorial.
+026	0.6496586799621582	d.
+027	0.9478742755376376	Secuencianvariosflujosdeinstrucciones.
+028	0.9122941301419185	La respuesta correcta es: Se asocian al procesamiento vectorial.
+029	0.9063036739826202	Pregunta 14
+030	0.8545593950483534	Correcta
+031	0.7927112708921018	Sepuntua1,00 sobre1,00
+032	0.9048650223914891	Si una misma instruccion puede aplicarse simultaneamente a varios datos:
+033	0.6639596223831177	a.
+034	0.8691447675228119	Es una arquitectura MIsD.
+035	0.6644961436589559	b.
+036	0.8969771840742656	Es una arquitectura SIMD. O
+037	0.6187084913253784	C.
+038	0.8283091588662221	Es una arquitectura SiSD.
+039	0.6629595756530762	d.
+040	0.9254556321180784	Es una arquitectura MIMD.
+041	0.8604918145665935	La respuesta correcta es:Es una arquitectura SIMD.
+042	0.931153050599954	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4075996&cmid=1517930
+043	0.6731523424386978	5/7
+\n=== PAGE 6 ===
+001	0.9071189852861258	6/12/25,9:48
+002	0.9110478947559992	Cuestionario deAutoevaluacion UD1:Revision del intento IUAX
+003	0.8108931928873062	Pregunta 15
+004	0.8971165689555082	Incorrecta
+005	0.8593734720578561	Se puntua 0.00 sobre 1,00
+006	0.9051322937011719	Enunaredmultietapa:
+007	0.6618298093477885	a.
+008	0.8966447857559704	Hay mas enlaces que enuna reddebarras cruzadas para el mismo
+009	0.9057324177179581	numerodeprocesadoresymodulosdememoria.
+010	0.664561410744985	b.
+011	0.8776488811881454	Cadamodulo dememoria se conectaa un unico conmutador.
+012	0.9542437354723613	Hay mas conmutadores que en una red de barras cruzadas para
+013	0.9080353909068637	el mismo numerodeprocesadores ymodulos dememoria pero
+014	0.8416208454540798	menosenlaces.
+015	0.9229909654925851	d.  Hay mas conmutadores que en una red de barras cruzadas para el
+016	0.8982482681087419	mismo numero de procesadores y modulos de memoria.
+017	0.8955099150754403	Larespuesta correcta es: Cadamodulo de memoria se conecta a un unico
+018	0.8724631071090698	conmutador.
+019	0.7824897939960161	Pregunta 16
+020	0.8396395974689059	Correcta
+021	0.9115256781761463	Se puntua 1,00 sobre 1,00
+022	0.9234759953557229	La incorporaciondehebras resultaventajosaporque:
+023	0.5190491278966268	a.
+024	0.9084236738474473	Loscambiosdecontextoentrehebrassonmasrapidos.
+025	0.9157003405339578	Las hebras se planifican por lotes por parte del sistema operativo.
+026	0.6427680253982544	C.
+027	0.9163964748382568	Laspilascompartenlapiladelproceso.
+028	0.6609249711036682	d.
+029	0.9113114386796951	Lashebrasadministransuspropiosrecursos.
+030	0.9114115930655423	Larespuesta correcta es: Los cambios de contexto entrehebras sonmas
+031	0.7661004794968499	rapidos.
+032	0.8954308678706487	Pregunta 17
+033	0.7882095376650492	Correcta
+034	0.8985857871862558	Se puntua 1,00 sobre 1.00
+035	0.9363356007904303	EnunsistemaMiMDdondetodoslosprocesadorestardanelmismotiempot
+036	0.8855263697795379	en accedera cualquiermodulo dememoria:
+037	0.6642263333002726	a.
+038	0.8447726624352592	Es una sistema NUMA.
+039	0.6647212505340576	b.
+040	0.9098198818308967	Esunsistemadebarrascruzadas
+041	0.6322247187296549	C.
+042	0.8941983734407732	Esunsistemadebilmenteacoplado.
+043	0.6627160310745239	d.
+044	0.8132847888129098	Es un sistema UMA. O
+045	0.9203887806998359	La respuesta correcta es: Es un sistema UMA.
+046	0.931153050599954	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4075996&cmid=1517930
+047	0.628807470202446	6/7
+\n=== PAGE 7 ===
+001	0.9111788731354934	6/12/25,9:48
+002	0.9170121745816593	Cuestionario deAutoevaluacion UD1:Revisiondel intentoIUAX
+003	0.7985721429189047	Pregunta 18
+004	0.8364547491073608	Correcta
+005	0.8711164272748507	Se puntua 1,00 sobre 1.00
+006	0.9367417471081603	En un procesador con soporte para multi-threading:
+007	0.6604497234026591	a.
+008	0.8952190495199628	Existen varias unidades de control.
+009	0.6645276347796122	b.
+010	0.9177876682508559	Existen juegos de registros replicados. O
+011	0.6346253355344137	C.
+012	0.9277209689219793	Puedehaberenejecucionthreadsdedistintosprocesos
+013	0.9307282847516677	simultaneamente.
+014	0.518087645371755	d.
+015	0.8881958820603111	Solo es posible ejecutarinstrucciones de unico thread.
+016	0.9294193025791284	La respuesta correcta es: Existen juegos de registros replicados.
+017	0.8795306583245596	Pregunta 19
+018	0.8374554183748033	Correcta
+019	0.772506665924321	Sepuntua1,00 sobre1.00
+020	0.8989778314867327	El método snoopy-writethrough:
+021	0.6463601390520731	a.
+022	0.9285880677283757	Mantiene la coherencia entre las memorias caches y la memoria
+023	0.8452360846779563	principal.
+024	0.6646499832471212	b.
+025	0.8834033475981818	Nohacefalta sisolohay2procesadores.
+026	0.6442949573198954	C.
+027	0.9212727004831488	Monitorizalasoperacionesdelecturadememoria.
+028	0.664472778638204	d.
+029	0.8921139556914568	No necesite monitorizar el bus.
+030	0.9081570156415304	La respuesta correcta es: Mantiene la coherencia entre las memorias caches
+031	0.9173204426964124	y la memoria principal.
+032	0.8969344198703766	Pregunta 20
+033	0.8997274095361883	Incorrecta
+034	0.8935123957120455	Se puntua 0,00 sobre 1,00
+035	0.9304434422586785	EnunsistemabarrascruzadasconNprocesadoresyNmodulosdememoria:
+036	0.5223738352457682	a.
+037	0.8403751651446024	Hay N * N enlaces. @
+038	0.6566365559895834	b.
+039	0.8920490715814673	Hay N* N conmutadores.
+040	0.6327521006266276	C.
+041	0.8905281309158571	Hay2 elevado a N conmutadores.
+042	0.8898874929657689	Hay 2 elevado a N enlaces.
+043	0.8772743368148803	La respuesta correcta es: Hay N * N conmutadores.
+044	0.931153050599954	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4075996&cmid=1517930
+045	0.72002312541008	7/7

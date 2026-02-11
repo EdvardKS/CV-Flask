@@ -1,0 +1,2829 @@
+[
+  {
+    "u": "Servicios Windows",
+    "q": "1. El servicio que debo desplegar en un Windows Server para poder configurar e instalar un servidor de ficheros es...",
+    "o": [
+      "Ninguna de las respuestas es correcta.",
+      "File and Storage Services.",
+      "Files and network units Services.",
+      "Files and Folders Services."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Seguridad",
+    "q": "2. ¿Qué puerto se emplea para la comunicación y autenticación por SSH?",
+    "o": [
+      "23.",
+      "22.",
+      "33.",
+      "21."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Directorio Activo",
+    "q": "3. El método de control de acceso a red empleado por un servidor de directorio activo es...",
+    "o": [
+      "802.1X.",
+      "Kerberos.",
+      "LDAP.",
+      "Todas las respuestas son correctas."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Virtualización",
+    "q": "4. ¿Qué extensión tiene el fichero que me permite desplegar una máquina preconfigurada en VirtualBox?",
+    "o": [
+      ".ofv.",
+      ".osa.",
+      ".ova.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Seguridad / Firewall",
+    "q": "5. Dada la siguiente regla de Firewall: 192.168.1.100 --- 190.146.2.200 --- FTP --- Deny",
+    "o": [
+      "La ip 190.146.2.200 no podrá acceder a la 192.168.1.100 por el puerto 21.",
+      "La ip 192.168.1.100 no podrá acceder a la 190.146.2.200 por el puerto 21.",
+      "La ip 192.168.1.100 podrá acceder por el puerto 21.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Seguridad",
+    "q": "6. ¿Qué nombre recibe la parte de un exploit donde se define la acción del mismo?",
+    "o": [
+      "Payload.",
+      "Paintball.",
+      "Payball.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Cultura IT",
+    "q": "7. Bill Gates sufrió un pantallazo azul en la presentación de...",
+    "o": [
+      "Windows 3.1.",
+      "Windows 98.",
+      "Ninguna de las respuestas es correcta.",
+      "Windows 95."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Radius / WiFi",
+    "q": "8. ¿Puede un servidor Radius controlar el acceso a la red de un sistema?",
+    "o": [
+      "Si, siempre que sea una red WiFi.",
+      "No, solo gestiona sistemas y clientes.",
+      "Si.",
+      "Todas las respuestas son correctas."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Seguridad / Redes",
+    "q": "9. El anonimato en la DarkNet se pretende conseguir mediante...",
+    "o": [
+      "Una red de servidores Proxy.",
+      "Ninguna de las respuestas es correcta.",
+      "DHCP dinámicos.",
+      "Servidores DNS."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Redes / DNS",
+    "q": "10. Un servidor DNS relaciona...",
+    "o": [
+      "Nombres con direcciones IP.",
+      "Direcciones IP con MAC.",
+      "Direcciones IP con usuarios.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Malware",
+    "q": "11. Un virus con una 'reverse shell' pretende...",
+    "o": [
+      "Una denegación de servicio.",
+      "Ninguna de las respuestas es correcta.",
+      "La obtención de credenciales.",
+      "El control remoto de la máquina."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Seguridad",
+    "q": "12. Un ataque de tipo Phishing consiste en...",
+    "o": [
+      "Una denegación de servicio.",
+      "Ninguna de las respuestas es correcta.",
+      "Clonar una web y enviar un link malicioso.",
+      "Modificación de las solicitudes DNS."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Radius",
+    "q": "13. La contraseña compartida Radius-Cliente se configura en...",
+    "o": [
+      "El servidor LDAP.",
+      "Cliente y servidor LDAP.",
+      "Solo en el cliente.",
+      "Ninguna es correcta (se configura en Cliente RADIUS y Servidor NPS)."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Virtualización",
+    "q": "14. Con 16GB de RAM, ¿Cuántas máquinas virtuales puedo tener configuradas en VirtualBox?",
+    "o": [
+      "1.",
+      "Ninguna de las respuestas es correcta.",
+      "Todas las que necesite (siempre que no se enciendan todas a la vez).",
+      "4."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Web / Seguridad",
+    "q": "15. Un ataque XSS consiste en...",
+    "o": [
+      "Cifrado de ficheros (Ransomware).",
+      "Ninguna de las respuestas es correcta.",
+      "Modificación de formularios.",
+      "Inyección de código malicioso en áreas de texto."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Firewall",
+    "q": "16. Es una técnica para evadir firewalls:",
+    "o": [
+      "Tunneling.",
+      "Ninguna de las respuestas es correcta.",
+      "VPN.",
+      "Ofuscación."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Firewall",
+    "q": "17. Dada la siguiente regla de Firewall: 192.168.1.100 --- 190.146.2.200 --- HTTP --- Deny",
+    "o": [
+      "La ip 192.168.1.100 podrá acceder a la 190.146.2.200 por el puerto 443.",
+      "La ip 190.146.2.200 no podrá acceder a la 192.168.1.100 por el puerto 443.",
+      "La ip 192.168.1.100 no podrá acceder a la 190.146.2.200 por el puerto 443.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Radius",
+    "q": "18. ¿Qué política es la recomendada actualmente en un servidor Radius?",
+    "o": [
+      "Permisiva.",
+      "Todas las respuestas son correctas.",
+      "Restrictiva.",
+      "Cualquiera de las anteriores."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Directorio Activo",
+    "q": "19. A nivel de seguridad un Directorio Activo me permite...",
+    "o": [
+      "Obligar a los usuarios a cumplir una política de contraseñas.",
+      "Asignar direcciones IP controladas.",
+      "Ninguna de las respuestas es correcta.",
+      "Filtrar por direcciones MAC."
+    ],
+    "c": 0
+  },
+  {
+    "u": "WiFi / LDAP",
+    "q": "20. La autenticación WiFi corporativa se realizará mediante...",
+    "o": [
+      "Consulta a una base de datos web.",
+      "Base de datos local.",
+      "Ninguna de las respuestas es correcta.",
+      "Consulta a un servidor LDAP."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Directorio Activo",
+    "q": "21. ¿Puede un usuario pertenecer a varios grupos en AD?",
+    "o": [
+      "Solo si es administrador.",
+      "Ninguna de las respuestas es correcta.",
+      "Sí, cualquier usuario.",
+      "No, solo puede pertenecer a un grupo."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Radius / WiFi",
+    "q": "22. En una red WiFi sin controlador y con Radius, ¿Qué clientes configuro en el servidor Radius?",
+    "o": [
+      "Todos los APs de la red.",
+      "Direcciones IP de los APs y el controlador.",
+      "La dirección de red completa.",
+      "La IP del controlador."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Servidores Web",
+    "q": "23. Si tengo un servidor Apache...",
+    "o": [
+      "Ninguna de las respuestas es correcta.",
+      "Puede estar instalado tanto en Windows como en Linux.",
+      "Es un sistema que solo se puede instalar en Windows.",
+      "Es un sistema que solo se puede instalar en Linux."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Directorio Activo",
+    "q": "24. Para poder asociar un cliente al dominio es necesario...",
+    "o": [
+      "Estar en la misma red física.",
+      "Ninguna de las respuestas es correcta.",
+      "Poder hacerse Ping entre ambos.",
+      "Tener el mismo Sistema Operativo."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Virtualización",
+    "q": "25. La comunicación entre dos máquinas virtuales en el mismo host se realiza...",
+    "o": [
+      "Ninguna de las respuestas es correcta.",
+      "Mediante un Switch virtual.",
+      "Depende de la configuración IP.",
+      "Mediante la tarjeta física."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Radius",
+    "q": "26. ¿Puede un servidor Radius gestionar el acceso a otros servidores?",
+    "o": [
+      "Sí, incluso se puede gestionar el nivel de acceso.",
+      "No, los servidores requieren cuentas locales.",
+      "No, es solo para clientes finales.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Virtualización",
+    "q": "27. ¿Qué modo de red debo emplear para que host y VMs estén en la misma LAN y tengan internet?",
+    "o": [
+      "Solo-Anfitrión.",
+      "Adaptador Puente (Bridge).",
+      "NAT.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Radius",
+    "q": "28. El control de acceso en un servidor Radius Windows se realiza en...",
+    "o": [
+      "Configuración de clientes RADIUS.",
+      "Políticas de solicitud de conexión.",
+      "Políticas de red (Acceso).",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 2
+  },
+  {
+    "u": "DNS / AD",
+    "q": "29. ¿Por qué es necesario un servidor DNS en un Directorio Activo?",
+    "o": [
+      "Para asociar clientes al dominio.",
+      "Por el nombre del dominio.",
+      "Todas las respuestas son correctas.",
+      "Por la dirección IP del servidor."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Seguridad",
+    "q": "30. Un ataque Pharming consiste en...",
+    "o": [
+      "Clonar una web y enviar un link malicioso.",
+      "Modificación en las solicitudes DNS.",
+      "Una denegación de servicio.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Ficheros",
+    "q": "31. ¿Cuál es el puerto predeterminado para SFTP?",
+    "o": [
+      "21.",
+      "Ninguna de las respuestas es correcta.",
+      "22.",
+      "23."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Malware",
+    "q": "32. Un virus de tipo gusano busca...",
+    "o": [
+      "Propagarse a otros sistemas (Ninguna de las respuestas es correcta).",
+      "La obtención de credenciales.",
+      "Una denegación de servicio.",
+      "El control remoto de la máquina."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Almacenamiento",
+    "q": "33. En una virtualización con 2 hosts, ¿Cuántos storages compartidos mínimo necesito?",
+    "o": [
+      "2 en clúster.",
+      "Solo 1.",
+      "Ninguna de las respuestas es correcta.",
+      "2, uno para cada host."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Firewall",
+    "q": "34. ¿Qué política es la recomendada hoy en día en un Firewall?",
+    "o": [
+      "Restrictiva.",
+      "Todas las respuestas son correctas.",
+      "Permisiva.",
+      "Mixta."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Virtualización",
+    "q": "35. ¿Puedo virtualizar máquinas de redes diferentes en un mismo host?",
+    "o": [
+      "Sí, mediante un switch físico.",
+      "Sí, mediante un router físico.",
+      "Ninguna de las respuestas es correcta.",
+      "Sí, mediante un switch virtual."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Virtualización",
+    "q": "36. En un host con 16GB RAM, ¿Cuántas VMs de 4GB puedo tener corriendo a la vez?",
+    "o": [
+      "Todas las que quiera.",
+      "Ninguna de las respuestas es correcta (depende del consumo del SO host).",
+      "4.",
+      "1."
+    ],
+    "c": 1
+  },
+  {
+    "u": "DHCP",
+    "q": "37. Un servidor DHCP...",
+    "o": [
+      "Asigna direcciones IP dinámicamente.",
+      "Traduce nombres de dominio.",
+      "Autentica usuarios en la red.",
+      "Todas las respuestas son correctas."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Radius",
+    "q": "38. En un servidor Radius se pueden crear políticas por...",
+    "o": [
+      "Dirección MAC.",
+      "Todas las respuestas son correctas.",
+      "Usuario.",
+      "Dirección IP."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Radius / WiFi",
+    "q": "39. El método de autenticación WiFi corporativo empleado en Radius es...",
+    "o": [
+      "PEAP.",
+      "EAP.",
+      "Ninguna de las respuestas es correcta.",
+      "PAP."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Radius Linux",
+    "q": "40. Un problema común de Radius en Linux es...",
+    "o": [
+      "Falsos negativos.",
+      "La complejidad de su configuración.",
+      "Ninguna de las respuestas es correcta.",
+      "Falsos positivos."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Firewall",
+    "q": "41. El orden de evaluación de las reglas en un Firewall es...",
+    "o": [
+      "La más permisiva primero.",
+      "Secuencial (de arriba a abajo).",
+      "La menos restrictiva.",
+      "La más restrictiva."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Firewall",
+    "q": "42. Dada la siguiente regla: 192.168.1.100 --- 192.168.1.50 --- 80 --- Allow",
+    "o": [
+      "Ninguna de las respuestas es correcta.",
+      "La ip 50 puede acceder a la 100 por HTTP.",
+      "La ip 100 puede acceder a la 50 por HTTPS.",
+      "La ip 50 puede acceder a la 100 por HTTPS."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Virtualización",
+    "q": "43. La acción de mover una VM de un host a otro mientras está encendida se llama:",
+    "o": [
+      "VMotion.",
+      "BeHappy.",
+      "VMoving.",
+      "VTransfer."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Radius",
+    "q": "44. Un servidor Radius es un sistema de...",
+    "o": [
+      "Control de usuarios.",
+      "Acceso a la red.",
+      "Autenticación de dispositivos.",
+      "Todas las respuestas son correctas."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Virtualización",
+    "q": "45. Ante un error de licencia en Windows Server sobre VirtualBox, debo...",
+    "o": [
+      "Reiniciar.",
+      "Ninguna de las respuestas es correcta.",
+      "Pasar a Modo Desktop.",
+      "Desconectar la ISO del DVD virtual."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Malware",
+    "q": "46. Un virus de tipo troyano busca...",
+    "o": [
+      "Una denegación de servicio.",
+      "La obtención de credenciales.",
+      "Ninguna de las respuestas es correcta.",
+      "El control remoto de la máquina."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Web",
+    "q": "47. ¿Cuál es el puerto para SSL (HTTPS)?",
+    "o": [
+      "Ninguna de las respuestas es correcta.",
+      "80.",
+      "22.",
+      "443."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Directorio Activo",
+    "q": "48. Si no hay conexión al AD, la primera opción para entrar es...",
+    "o": [
+      "Cuenta de Administrador Local.",
+      "Desconectar el cable de red.",
+      "Usar un Modo Live.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 0
+  },
+  {
+    "u": "DHCP",
+    "q": "49. El tiempo de concesión de una dirección IP se denomina:",
+    "o": [
+      "Lease Time.",
+      "Less Time.",
+      "TTL.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Directorio Activo",
+    "q": "50. ¿Se puede crear un grupo con un único usuario en AD?",
+    "o": [
+      "No, mínimo deben ser dos.",
+      "Sí.",
+      "Ninguna de las respuestas es correcta.",
+      "Solo si el administrador está presente."
+    ],
+    "c": 1
+  },
+{
+    "u": "Tema 1",
+    "q": "1. ¿Como se puede denominar un Sistema Operativo que ejecuta dos programas al mismo tiempo?",
+    "o": [
+      "Monotarea",
+      "Ninguna de las anteriores es correcta.",
+      "Multiusuario",
+      "Monousuario"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1",
+    "q": "2. ¿El denominado linea de comandos en un sistema windows es?",
+    "o": [
+      "Una shell.",
+      "Un sistema operativo MSDOS",
+      "Ninguna de las anteriores es correcta.",
+      "Un acceso al kernel"
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 1",
+    "q": "3. Bill Gates sufrió un pantallazo azul en la presentación de...",
+    "o": [
+      "Windows 3.1",
+      "Windows 98",
+      "Ninguna de las anteriores",
+      "Windows 95"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1",
+    "q": "4. El primer intento de Sistema Operativo Multitarea fue en...",
+    "o": [
+      "Windows 95",
+      "Windows 98",
+      "Windows 3.1",
+      "Ninguna de las anteriores es correcta."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1",
+    "q": "5. El sistema Operativo DOS era...",
+    "o": [
+      "Multitarea",
+      "Ninguna de las anteriores es correcta.",
+      "Monousuario",
+      "Multiusuario"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1",
+    "q": "6. La ejecución de tareas consecutivas se denomina....",
+    "o": [
+      "Multitarea",
+      "Monousuario",
+      "Multiusuario",
+      "Ninguna de las anteriores es correcta."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 1",
+    "q": "7. La multitarea comenzó a ser realmente operativo en el Sistema...",
+    "o": [
+      "Ninguna de las anteriores es correcta.",
+      "Windows 95",
+      "Windows 3.1",
+      "Windows 98"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 1",
+    "q": "8. Si un sistema operativo permite la creación de varios usuarios...",
+    "o": [
+      "Ninguna de las anteriores es correcta.",
+      "Puede ser un sistema Monousuario",
+      "Es un Sistema multiusuario",
+      "Denpenderá de la ejecución de las tareas."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1",
+    "q": "9. Un Smartphone es...",
+    "o": [
+      "Ninguna de las anteriores",
+      "Multiusuario",
+      "Multitarea",
+      "Todas las anteriores"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1",
+    "q": "10. Una tablet es...",
+    "o": [
+      "Multiusuario",
+      "Ninguna de las anteriores",
+      "Todas las anteriores",
+      "Multitarea"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 3",
+    "q": "1. ¿Cuántas cuentas de administrador de dominio pueden existir?",
+    "o": [
+      "Tantas como usuarios existan.",
+      "Ninguna de las anteriores es correcta.",
+      "Una",
+      "Tantas como se hayan creado en el momento de instalar el servidor"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3",
+    "q": "2. ¿Puede el organigrama de una empresa afectar a la configuración de un servidor de directorio activo?",
+    "o": [
+      "Si, si afecta al departamento de IT",
+      "NO",
+      "Dependerá del área donde se produzcan los cambios",
+      "SI"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 3",
+    "q": "3. ¿Qué puede ocurrir si el servidor y una máquina tienen la hora del sistema distinta?",
+    "o": [
+      "Ninguna de las anteriores es correcta.",
+      "Nada",
+      "No es posible esa situación si es una máquina Windows.",
+      "El usuario no podrá acceder a la máquina con sus credenciales de dominio"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 3",
+    "q": "4. ¿Qué ventaja nos aporta instalar un servidor de directorio activo?",
+    "o": [
+      "Todas las respuestas anteriores son correctas.",
+      "Controlar el acceso de los usuarios a las máquinas.",
+      "Gestionar los usuarios de una empresa.",
+      "Gestionar las máquinas de una empresa."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 3",
+    "q": "5. A nivel de seguridad un Directorio Activo nos permite...",
+    "o": [
+      "Obligar a los usuarios a cumplir una política de contraseñas.",
+      "Filtrar las direcciones IP por dirección Mac.",
+      "Asignar las direcciones IP de las máquinas de forma controlada.",
+      "Ninguna de las anteriores"
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 3",
+    "q": "6. Cuando se instala un servidor de Directorio Activo, ¿Qué otro servidor debemos configurar?",
+    "o": [
+      "Ninguno",
+      "DHCP",
+      "WEB",
+      "DNS"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 3",
+    "q": "7. En caso de tener el resto de servidores activos en la red, ¿Qué parámetro estamos obligados a configurar cuando instalamos un servidor de directorio activo?",
+    "o": [
+      "La contraseña de administrador",
+      "Todas las anteriores son correctas",
+      "La dirección IP del propio servidor",
+      "La dirección IP del servidor DNS"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3",
+    "q": "8. En relación a los usuarios Un Directorio Activo...",
+    "o": [
+      "Todas las anteriores son correctas.",
+      "Permite controlar el acceso a las unidades de red.",
+      "Permite establecer permisos a un grupo de usuarios.",
+      "Permite establecer permisos a los usuarios."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 3",
+    "q": "9. ¿Puede instalarse un servidor de otro tipo en la misma máquina donde hay instalado un servidor de directorio Activo?",
+    "o": [
+      "Sólo si es una máquina Windows.",
+      "NO",
+      "Sólo si es una máquina Linux.",
+      "SI"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 3",
+    "q": "10. Si un servidor de directorio activo se apaga...¿Podrían entrar los usuarios en sus máquinas?",
+    "o": [
+      "Sí, pero sólo durante un corto periodo de tiempo.",
+      "Si",
+      "Sí, si no ha pasado mucho tiempo desde que se apagó el servidor.",
+      "No"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4",
+    "q": "1. ¿Qué otro tipo de servidor suele instalarse en conjunto con un servidor WEB?",
+    "o": [
+      "Servidor DNS.",
+      "Servidor DHCP.",
+      "Ninguno.",
+      "Servidor de Base de Datos."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 4",
+    "q": "2. ¿Si un servidor web está instalado con IIS...",
+    "o": [
+      "Es un servidor físico.",
+      "Es una máquina virtual.",
+      "Es una máquina Linux",
+      "Es una máquina Windows."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 4",
+    "q": "3. Con respecto a un servidor WEB...",
+    "o": [
+      "HTTP es mas seguro que HTTPS.",
+      "HTTPS es menos seguro que HTTP.",
+      "HTTP es menos seguro que HTTPS.",
+      "HTTP es igual de seguro que HTTPS."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 4",
+    "q": "4. Con respecto al protocolo HTTP...",
+    "o": [
+      "No incluye un certificado SSL.",
+      "Todas las anteriores son correctas.",
+      "El servicio corre en el puerto 80 por defecto.",
+      "No es seguro."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4",
+    "q": "5. Con respecto al protocolo HTTPS...",
+    "o": [
+      "El servicio corre en el puerto 443 por defecto.",
+      "El servicio corre en el puerto 445 por defecto.",
+      "Ninguna de las anteriores.",
+      "El servicio corre en el puerto 80 por defecto."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 4",
+    "q": "6. Lampp es...",
+    "o": [
+      "Todas las anteriores son correctas.",
+      "Una aplicación para la instalación de Bases de Datos.",
+      "Una aplicación para la instalación de un servidor web.",
+      "Una aplicación de FrontEnd."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 4",
+    "q": "7. ¿Puede instalarse un servidor de otro tipo en la misma máquina donde hay instalado un servidor web?",
+    "o": [
+      "Sólo si es una máquina Linux.",
+      "Si.",
+      "NO.",
+      "Sólo si es una máquina Windows."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4",
+    "q": "8. Si queremos configurar un servidor web para ser accesible por HTTPS necesitamos instalar....",
+    "o": [
+      "Todas las anteriores son correctas.",
+      "Un certificado SSL.",
+      "Un servidor web en una máquina Linux",
+      "Instalar un servidor Apache."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4",
+    "q": "9. Si tengo un servidor web sobre Apache...",
+    "o": [
+      "Es una máquina Windows.",
+      "Es una máquina Linux.",
+      "Puede ser una máquina Linux o Windows.",
+      "Ninguna de las anteriores es correcta."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 4",
+    "q": "10. Un ataque de tipo Phishing consiste en....",
+    "o": [
+      "Intentar obtener las credenciales de un usario accediendo a una web.",
+      "Clonar una página web y presentarla como auténtica",
+      "Todas las anteriores son correctas.",
+      "Falsear una web y enviar correos con un link que accede a la web falsa"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 2",
+    "q": "1. ¿Cómo puedo desplegar una máquina virtual de un sistema operativo en VirtualBox?",
+    "o": [
+      "Con un fichero.ovf",
+      "Desde un fichero.iso",
+      "Con un fichero.ova",
+      "Todas las anteriores son correctas"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 2",
+    "q": "2. ¿Cómo se interconectan varias máquinas virtuales entre si dentro del mismo servidor?",
+    "o": [
+      "Dependerá de la configuración de las tarjetas de red de las máquinas",
+      "Se comunican por defecto",
+      "A través de un switch virtual",
+      "Ninguna de las anteriores"
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 2",
+    "q": "3. ¿Puedo virtualizar en un mismo servidor máquinas de redes diferentes?",
+    "o": [
+      "Ninguna de las anteriores es correcta.",
+      "No, todas las máquinas deben estar en la misma red",
+      "Si, pero necesito un router fisico para comunicarlas",
+      "Si, pero necesito un switch fisico"
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 2",
+    "q": "4. ¿Qué configuración debo implementar en una tarjeta de red de una máquina virtual para comunicarlas con la red wifi que tengo configurada en un portátil?",
+    "o": [
+      "NAT",
+      "Todas las anteriores",
+      "Ninguna de las anteriores",
+      "Bridge"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 2",
+    "q": "5. ¿Que extensión o tipo de fichero me permite migrar una máquina virtual a otros entornos?",
+    "o": [
+      ".ova",
+      "Ninguna de las anteriores",
+      ".ovf",
+      ".vmf"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 2",
+    "q": "6. ¿Qué implica hacer un snapshot de una máquina virtual en VirtualBox?",
+    "o": [
+      "Un backup de las caracteristicas hardware de la máquina",
+      "Un backup de las aplicaciones que están corriendo en la máquina",
+      "Una imagen del estado de la máquina en un momento determinado.",
+      "Un backup de la configuración del sistema operativo de la máquina"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 2",
+    "q": "7. ¿Qué se entiende por la migración de una máquina en caliente?",
+    "o": [
+      "Recuperar un backup de una máquina virtual",
+      "Ninguna de las anteriores",
+      "Desplegar un fichero.ova de una máquina virtual",
+      "Mover una máquina de un servidor a otro sin apagar la máquina"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 2",
+    "q": "8. ¿Qué se entiende por Vmotion?",
+    "o": [
+      "La capacidad de crear la misma máquina virtual en el servidor",
+      "Ninguna de las anteriores es correcta.",
+      "Mover la máquina de un entorno a otro",
+      "Mover la máquina virtual de un servidor a otro"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 2",
+    "q": "9. ¿Qué tipo de fichero me permite desplegar una máquina virtual preconfigurada en VirtualBox?",
+    "o": [
+      "Iso",
+      "Ninguna de las anteriores",
+      ".vmf",
+      ".ova"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 2",
+    "q": "10. ¿Se pueden virtualizar equipos hardware de red como switches o routers?",
+    "o": [
+      "No",
+      "Sólo para las máquinas virtuales del servidor",
+      "Sólo para máquinas de un entorno virtual aunque estén en distintos servidores fisicos",
+      "Si"
+    ],
+    "c": 3
+  },
+{
+    "u": "Tema 5",
+    "q": "1. ¿Cómo se debe permitir el acceso de varios usuarios a una unidad de red?",
+    "o": [
+      "Todas las anteriores son correctas",
+      "Creando permisos de usuario en las unidades de red.",
+      "Creando permisos de grupos de usuario y en las unidades de red.",
+      "Creando permisos de usuario en el directorio activo."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 5",
+    "q": "2. ¿Cómo se puede mejorar la tolerancia a fallos de un servidor de ficheros?",
+    "o": [
+      "Con Redundancia de servidores.",
+      "Mediante una configuración en RAID.",
+      "Mediante sistemas de Backup.",
+      "Todas las anteriores son correctas."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 5",
+    "q": "3. ¿Existe relación entre un servidor de ficheros y un servidor de directorio activo?",
+    "o": [
+      "Niguna de las anteriores es correcta.",
+      "No",
+      "Si, para el control de acceso a las unidades de red.",
+      "Si, para el particionamiento de las unidades de red."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 5",
+    "q": "4. ¿Puede el organigrama de una empresa afectar a la configuración de un servidor de Ficheros?",
+    "o": [
+      "NO",
+      "SI",
+      "Dependerá del área donde se produzcan los cambios",
+      "si, si afecta al departamento de IT"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5",
+    "q": "5. ¿Pueden coexistir dos servidores de ficheros sirviendo las mismas unidades de red y sus mismos datos?",
+    "o": [
+      "Si, mediante un sistema de almacenamiento compartido.",
+      "Si, mediante una configuración de Discos en RAID.",
+      "Si siempre y cuando las máquinas virtuales de los servidores estén en el mismo servidor fisico.",
+      "Todas las anteriores son correctas."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 5",
+    "q": "6. ¿Un servidor de ficheros guarda relación con un servidor web?",
+    "o": [
+      "Ninguna de las anteriores es correcta.",
+      "Se puede configurar el servidor de ficheros para acceder via web.",
+      "No, deberían instalarse además en máquinas diferentes.",
+      "No"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5",
+    "q": "7. El puerto por defecto del protocolo FTP es....",
+    "o": [
+      "23.",
+      "21.",
+      "Ninguna de las anteriores",
+      "22."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5",
+    "q": "8. El puerto por defecto del protocolo SCP es...",
+    "o": [
+      "23.",
+      "22.",
+      "25.",
+      "21."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5",
+    "q": "9. Indique cual de los siguientes protocolos es mas seguro",
+    "o": [
+      "SCP.",
+      "FTP.",
+      "Todas las respuestas anteriores son correctas.",
+      "TFTP."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 5",
+    "q": "10. Por norma general, si se instala un servidor de ficheros en una máquina virtual, los discos de almacenamiento estarán...",
+    "o": [
+      "En el mismo servidor fisico donde se aloja la máquina virtual.",
+      "Ninguna de las anteriores es correcta.",
+      "En un sistema de almacenamiento fisico independiente.",
+      "En un servidor fisico."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 6",
+    "q": "1. ¿Cómo se denominan las siglas que debo configurar en un servidor Windows para correr un servicio Radius?",
+    "o": [
+      "NTS",
+      "NFS",
+      "NPS",
+      "Ninguna de las anteriores"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 6",
+    "q": "2. ¿Como se establece la relación de confianza entre un servidor Radius u sus clientes?",
+    "o": [
+      "Todas las respuestas son correctas.",
+      "Mediante una política configurada en el servidor.",
+      "Mediante una contraseña compartida por ambos.",
+      "Mediante las direcciones Ip de ambos."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 6",
+    "q": "3. ¿Puede de alguna manera un servidor Radius controlar el acceso a la red?",
+    "o": [
+      "No, está enfocado a sistemas operativos, clientes y servidores.",
+      "Si.",
+      "Si, sólo si se trata de una red WiFi.",
+      "Todas las anteriores son correctas"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6",
+    "q": "4. ¿Puede gestionar un servidor Radius los usuarios de un Directorio Activo fuera de mi compañia?",
+    "o": [
+      "No, puede gestionar los usuarios de mi Dominio, no los de otros Dominios.",
+      "No, Debe formar parte del mismo dominio que el resto de las máquinas.",
+      "Si.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 6",
+    "q": "5. ¿Puede un servidor Radius gestionar el acceso a otros servidores?",
+    "o": [
+      "Ninguna de las anteriores",
+      "No, se emplea para el control de acceso a clientes, no a servidores.",
+      "No, los servidores requieren cuentas de administración locales.",
+      "Si, incluso el nivel de acceso."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 6",
+    "q": "6. ¿Qué tipo de fichero me permite desplegar una máquina virtual preconfigurada en VirtualBox?",
+    "o": [
+      "Gestionar permisos de acceso a la red",
+      "Gestionar accesos de los usuarios a servicios y aplicaciones",
+      "Gestionar los permisos de usuario en colaboración con el servidor de Directorio Activo",
+      "Todas las respuestas son correctas."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 6",
+    "q": "7. ¿Se puede controlar el accceso a red de un dispositivo con un servidor Radius?",
+    "o": [
+      "Sí, para la dirección IP del cliente.",
+      "Sí, para las credenciales del usuario.",
+      "Todas las anteriores son correctas.",
+      "Si, para la dirección Mac del cliente."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 6",
+    "q": "8. ¿Se puede emplear un servidor Radius para gestionar el acceso de los administradores de los equipos de red?",
+    "o": [
+      "Si",
+      "No, se emplea para servidores pero no para dispositivos de red.",
+      "Ninguna de las respuestas es correcta.",
+      "No, se emplea para servidores y máquinas cliente, pero no dispositivos de red."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 6",
+    "q": "9. ¿Se puede gestionar el acceso de los usuarios a las máquinas cliente y a otros servicios con un mismo servidor Radius?",
+    "o": [
+      "Ninguna de las anteriores es correcta.",
+      "Si, si están en la misma red.",
+      "No, cada servidor radius gestiona un grupo de usuarios diferente.",
+      "No, deberia instalar un servidor radius diferente para cada control de accesos."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 6",
+    "q": "10. ¿Se pueden establecer políticas de restricción para la asignación de direcciones IP a clientes en un servidor Radius?",
+    "o": [
+      "Ninguna de las anteriores",
+      "Sí, si la asignación es dinámica.",
+      "No, el servidor Radius gestiona el control de acceso de usuarios, no de las máquinas.",
+      "No, esto dependerá del servidor de DHCP."
+    ],
+    "c": 1
+  },
+{
+    "u": " Pregunta",
+    "q": "1. ¿Cuál es la principal ventaja de una máquina virtual mencionada en el texto?",
+    "o": [
+      "Permite aumentar la velocidad del procesador físico.",
+      "Se puede transportar en un pendrive y utilizarla en otros ordenadores.",
+      "Elimina la necesidad de tener memoria RAM en el equipo anfitrión.",
+      "Tiene un coste de licencia superior al hardware físico."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "2. ¿Cuál es el número mínimo de discos físicos necesarios para crear un RAID 5?",
+    "o": [
+      "2",
+      "5",
+      "3",
+      "4"
+    ],
+    "c": 2
+  },
+  {
+    "u": " Pregunta",
+    "q": "3. ¿Qué sucede con las cuentas de usuario locales de un equipo cuando este se une a un dominio?",
+    "o": [
+      "Se eliminan automáticamente por seguridad.",
+      "Se fusionan con las del administrador del dominio.",
+      "Siguen existiendo, pero se recomienda usar las del dominio.",
+      "Se bloquean y no se pueden volver a utilizar."
+    ],
+    "c": 2
+  },
+  {
+    "u": " Pregunta",
+    "q": "4. ¿Qué permite decidir una política de red configurada en el servidor RADIUS?",
+    "o": [
+      "La velocidad de conexión de cada usuario.",
+      "Qué software pueden instalar los usuarios.",
+      "El fondo de pantalla de los equipos conectados.",
+      "Qué máquinas y usuarios pueden conectarse y bajo qué condiciones."
+    ],
+    "c": 3
+  },
+  {
+    "u": " Pregunta",
+    "q": "5. ¿Es posible añadir equipos con sistemas operativos distintos a Windows (como Linux) a un dominio de Microsoft?",
+    "o": [
+      "No, solo se permiten equipos Windows.",
+      "Sí, el manual contempla añadir equipos Linux.",
+      "Sí, pero solo si se paga una licencia extra.",
+      "No, el sistema operativo Linux es incompatible con Active Directory."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "6. ¿Qué opción de PHP permite mostrar los errores directamente en la página web que los ha provocado?",
+    "o": [
+      "Show_bugs",
+      "Debug_mode",
+      "Error_reporting",
+      "Display_errors"
+    ],
+    "c": 3
+  },
+  {
+    "u": " Pregunta",
+    "q": "7. ¿Qué significan las siglas AAA en el contexto de seguridad de redes?",
+    "o": [
+      "Autenticación, Autorización y Auditoría (Accounting).",
+      "Administración, Acceso y Auditoría.",
+      "Autenticación, Acceso y Administración.",
+      "Autorización, Administración y Análisis."
+    ],
+    "c": 0
+  },
+  {
+    "u": " Pregunta",
+    "q": "8. ¿Qué sucede si se asigna un disco de 60 Gb a una máquina virtual en VMware (con aprovisionamiento dinámico)?",
+    "o": [
+      "El espacio se va utilizando en el disco real a medida que se necesita.",
+      "Ocupa inmediatamente los 60 Gb en el disco físico.",
+      "La máquina virtual no arrancará si no hay 60 Gb libres exactos.",
+      "El disco se reduce automáticamente a 10 Gb."
+    ],
+    "c": 0
+  },
+  {
+    "u": " Pregunta",
+    "q": "9. ¿Qué acción es necesaria tras modificar un archivo de configuración en Apache para que los cambios surtan efecto?",
+    "o": [
+      "Reiniciar el equipo completo.",
+      "Reiniciar el servicio apache2.",
+      "Borrar la caché del navegador.",
+      "Volver a instalar Apache."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "10. ¿Qué es una máquina virtual según el documento?",
+    "o": [
+      "Un componente físico de hardware.",
+      "Un sistema para navegar por internet de forma anónima.",
+      "Un software que simula el comportamiento de un ordenador físico con gran precisión.",
+      "Un tipo de virus informático controlado."
+    ],
+    "c": 2
+  },
+  {
+    "u": " Pregunta",
+    "q": "11. ¿Por qué es peligroso asignar el permiso de 'Eliminar' a un usuario en la estructura de carpetas?",
+    "o": [
+      "Porque ocupa más espacio en disco.",
+      "Porque el usuario podría borrar la estructura creada por el administrador.",
+      "Porque ralentiza el acceso a la red.",
+      "Porque permite al usuario instalar programas."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "12. ¿Qué es el GRUB en una instalación de Linux?",
+    "o": [
+      "El entorno gráfico de escritorio.",
+      "El editor de texto predeterminado.",
+      "El cargador de arranque del sistema operativo.",
+      "El administrador de paquetes."
+    ],
+    "c": 2
+  },
+  {
+    "u": " Pregunta",
+    "q": "13. ¿Cuál es el uso principal del RAID 0?",
+    "o": [
+      "Proporcionar redundancia completa de datos.",
+      "Realizar copias de seguridad automáticas.",
+      "Obtener un gran rendimiento en operaciones de lectura/escritura.",
+      "Recuperar datos en caso de fallo de un disco."
+    ],
+    "c": 2
+  },
+  {
+    "u": " Pregunta",
+    "q": "14. ¿Cuál de los siguientes niveles de RAID no posee redundancia de datos?",
+    "o": [
+      "RAID 1",
+      "RAID 5",
+      "RAID 10",
+      "RAID 0"
+    ],
+    "c": 3
+  },
+  {
+    "u": " Pregunta",
+    "q": "15. ¿Por qué es recomendable integrar el servidor RADIUS con el Directorio Activo?",
+    "o": [
+      "Para ahorrar espacio en el disco duro del servidor.",
+      "Para autenticar a los usuarios contra la base de datos centralizada de la red.",
+      "Para aumentar la velocidad de la conexión WiFi.",
+      "Para evitar tener que usar contraseñas."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "16. ¿Cuál es el archivo de configuración principal de Apache2 en un sistema Debian?",
+    "o": [
+      "httpd.conf",
+      "apache2.conf",
+      "php.ini",
+      "server.xml"
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "17. ¿Qué recomendación de seguridad se da antes de realizar procesos arriesgados en una MV?",
+    "o": [
+      "Desconectar el cable de red.",
+      "Guardar siempre una copia inalterada de la máquina virtual (snapshot/copia).",
+      "Desinstalar el antivirus temporalmente.",
+      "Aumentar la memoria RAM de la máquina."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "18. ¿En qué puerto escucha Apache2 las peticiones HTTP por defecto?",
+    "o": [
+      "21",
+      "443",
+      "8080",
+      "80"
+    ],
+    "c": 3
+  },
+  {
+    "u": " Pregunta",
+    "q": "19. ¿Qué gran beneficio aporta el Directorio Activo al administrador de sistemas?",
+    "o": [
+      "Centralización de la gestión y Single Sign-On para los usuarios.",
+      "Mayor velocidad de procesamiento gráfico.",
+      "Eliminación de la necesidad de servidores físicos.",
+      "Acceso gratuito a todo el software de Microsoft."
+    ],
+    "c": 0
+  },
+  {
+    "u": " Pregunta",
+    "q": "20. ¿Cuál es el lenguaje estándar utilizado para gestionar bases de datos?",
+    "o": [
+      "HTML",
+      "Java",
+      "SQL",
+      "Python"
+    ],
+    "c": 2
+  },
+  {
+    "u": " Pregunta",
+    "q": "21. ¿Cuál es una diferencia fundamental entre Linux y Windows según el texto?",
+    "o": [
+      "Linux no tiene interfaz gráfica y Windows sí.",
+      "Linux es gratuito y Windows se basa en licencias.",
+      "Windows es más seguro por defecto que Linux.",
+      "Linux no soporta redes y Windows sí."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "22. ¿Qué es una SAN (Storage Area Network)?",
+    "o": [
+      "Una red privada virtual para usuarios remotos.",
+      "Una red entera dedicada en exclusiva al almacenamiento de datos.",
+      "Un protocolo de seguridad para WiFi.",
+      "Un tipo de memoria RAM de alta velocidad."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "23. ¿Qué elemento es imprescindible compartir entre el cliente RADIUS y el servidor RADIUS para que se comuniquen?",
+    "o": [
+      "Una dirección de correo electrónico.",
+      "Una clave secreta compartida (Shared Secret).",
+      "El mismo sistema operativo.",
+      "Un cable cruzado."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "24. ¿Qué comando se utiliza en Debian para instalar el servidor Apache2?",
+    "o": [
+      "yum install httpd",
+      "apt-get install apache2",
+      "dnf install apache",
+      "install-pkg apache2"
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "25. ¿Qué tres acciones realiza un ordenador dentro de un bucle (Ciclo de instrucción)?",
+    "o": [
+      "Encender, Procesar, Apagar.",
+      "Pedir instrucción, interpretarla/ejecutarla y almacenar el resultado.",
+      "Leer datos, Escribir datos, Borrar datos.",
+      "Conectar, Navegar, Desconectar."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "26. ¿Para qué sirve el servicio DHCP en la infraestructura de red de una organización?",
+    "o": [
+      "Para resolver nombres de dominio a IP.",
+      "Para asignar automáticamente configuraciones IP a los clientes.",
+      "Para proteger la red de ataques externos.",
+      "Para gestionar el correo electrónico."
+    ],
+    "c": 1
+  },
+  {
+    "u": " Pregunta",
+    "q": "27. ¿Qué es un \"RADIUS Proxy\"?",
+    "o": [
+      "Un servidor que bloquea el acceso a internet.",
+      "Un cliente que se conecta a la red inalámbrica.",
+      "Un servidor que reenvía peticiones RADIUS a otro servidor para su procesamiento.",
+      "Un software para monitorizar el tráfico de red."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "Según el texto, un 'ordenador desnudo' (sin sistema operativo) solo es capaz de realizar tres acciones en bucle. ¿Cuáles son?",
+    "o": [
+      "Encenderse, comprobar el hardware y apagarse.",
+      "Pedir instrucción, interpretar/ejecutar instrucción y almacenar resultado.",
+      "Gestionar memoria, gestionar servicios y gestionar usuarios.",
+      "Leer disco, escribir en memoria y mostrar por pantalla."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "Sin un programa que le diga qué instrucciones ejecutar, el texto define al ordenador como...",
+    "o": [
+      "Una máquina de escribir glorificada.",
+      "Un conjunto de chatarra electrónica.",
+      "Un pisapapeles grande y caro.",
+      "Una calculadora simple."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "En la estructura de capas del sistema operativo mostrada en el diagrama, ¿qué capa se encuentra directamente sobre el Hardware?",
+    "o": [
+      "Shell",
+      "Servicios",
+      "Kernel",
+      "Programas de usuario"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "La capa de 'Servicios' del sistema operativo tiene como misión...",
+    "o": [
+      "Gestionar directamente los recursos del procesador.",
+      "Ofrecer una capa de abstracción para facilitar la creación de programas.",
+      "Permitir al usuario introducir comandos manuales.",
+      "Interpretar las órdenes del hardware."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "Según la planificación del curso descrita en la unidad, ¿qué concepto clave se introduce en la Unidad 3?",
+    "o": [
+      "La instalación de Linux.",
+      "El servidor Web.",
+      "El Directorio Activo.",
+      "El servidor de ficheros."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "¿Qué unidad del curso se dedica a la instalación y configuración de un servidor Web y base de datos?",
+    "o": [
+      "Unidad 2",
+      "Unidad 3",
+      "Unidad 4",
+      "Unidad 5"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "¿Cómo define el texto a los sistemas operativos 'Monotarea'?",
+    "o": [
+      "Aquellos que solo pueden tener un usuario registrado.",
+      "Aquellos que, una vez iniciado un proceso, no pueden ejecutar otra tarea hasta que la primera termine.",
+      "Aquellos que dividen el tiempo del procesador en segmentos muy pequeños.",
+      "Aquellos que solo funcionan en ordenadores con un solo núcleo."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "Según el texto, la multitarea puede lograrse mediante varios procesadores o...",
+    "o": [
+      "Mediante una planificación de tareas por segmentos de tiempo.",
+      "Mediante el uso de memoria virtual.",
+      "Mediante la conexión a internet.",
+      "Mediante el uso de varios discos duros."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "¿Cuál fue el papel de Windows 3.1 en la evolución de la multitarea según el documento?",
+    "o": [
+      "Fue el primer sistema plenamente multitarea.",
+      "Inició el proceso, pero la multitarea no fue plenamente operativa hasta Windows 95/98.",
+      "Fue un sistema puramente monotarea como MS-DOS.",
+      "Introdujo la multitarea preventiva real."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "En el contexto de esta unidad, ¿qué términos se emplean como sinónimos de 'ordenador'?",
+    "o": [
+      "Equipo, host, máquina o sistema.",
+      "Servidor, cliente, router o switch.",
+      "Terminal, consola, shell o núcleo.",
+      "Hardware, software, firmware o shareware."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "¿Qué porcentaje de presencia de redes locales en empresas menciona la conclusión del texto?",
+    "o": [
+      "El 50%",
+      "El 75%",
+      "El 90%",
+      "El 99%"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "El Kernel o núcleo es el encargado de...",
+    "o": [
+      "Gestionar los mandatos de los usuarios.",
+      "Gestionar los recursos del hardware haciéndolo independiente a las capas superiores.",
+      "Ofrecer una interfaz gráfica bonita.",
+      "Conectar el equipo a Internet."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "¿Por qué un programa escrito para un ordenador 'desnudo' podría no servir para otro?",
+    "o": [
+      "Por la diferencia de voltaje.",
+      "Porque debe estar escrito en lenguaje ensamblador y el juego de instrucciones puede no ser compatible.",
+      "Porque los monitores tienen resoluciones diferentes.",
+      "Porque la memoria RAM tiene velocidades distintas."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "Según la clasificación del texto, MS-DOS es un ejemplo clásico de sistema...",
+    "o": [
+      "Multiusuario y Multitarea.",
+      "Monousuario y Multitarea.",
+      "Monousuario y Monotarea.",
+      "Multiusuario y Monotarea."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "¿Qué se simulará durante todo el curso según la introducción?",
+    "o": [
+      "El desarrollo de un sistema operativo propio.",
+      "La configuración de la red local de una organización partiendo de cero.",
+      "La reparación física de componentes de hardware.",
+      "La programación de aplicaciones web en Java."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "Las funciones de un sistema operativo se agrupan en tres grandes categorías. ¿Cuál de estas NO es una de ellas según el texto?",
+    "o": [
+      "Gestión de los recursos de la memoria.",
+      "Gestión de los servicios solicitados por los programas.",
+      "Gestión de los mandatos de los usuarios.",
+      "Gestión de la temperatura del procesador."
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "¿Qué comando se utiliza como ejemplo en el texto para mostrar el uso de la Shell/Consola?",
+    "o": [
+      "ping",
+      "dir",
+      "ver",
+      "cls"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "¿Por qué se ve mermada la capacidad multiusuario en los ordenadores personales modernos?",
+    "o": [
+      "Porque el procesador no es lo suficientemente potente.",
+      "Porque normalmente solo disponen de un conjunto de teclado, ratón y monitor.",
+      "Porque Windows no permite más de un usuario.",
+      "Porque la memoria RAM es limitada."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "¿Qué siglas se mencionan en relación al fallo de Bill Gates en la presentación de Windows 98?",
+    "o": [
+      "CPU",
+      "RAM",
+      "BSD (Blue Screen of Death)",
+      "OS (Operating System)"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 1 - Teoría",
+    "q": "¿Qué se tratará en la Unidad 2 del curso?",
+    "o": [
+      "Instalación de tres sistemas operativos (dos Microsoft y un Linux).",
+      "Configuración de Directorio Activo.",
+      "Seguridad en redes locales.",
+      "Virtualización de servidores."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué definición de 'virtualización' ofrece el documento?",
+    "o": [
+      "La capacidad de navegar por internet de forma anónima.",
+      "La creación de una versión virtual de un recurso tecnológico, como el hardware.",
+      "La simulación de inteligencia humana mediante software.",
+      "El proceso de aumentar la memoria RAM física mediante software."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué ventaja principal ofrece la virtualización respecto a los costes?",
+    "o": [
+      "Permite descargar hardware gratis de internet.",
+      "Reduce la necesidad de adquirir nuevo hardware físico al aprovechar mejor el existente.",
+      "Hace que la electricidad sea gratuita para la empresa.",
+      "Elimina la necesidad de contratar administradores de sistemas."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "En el contexto de VirtualBox, ¿qué es un archivo VDI?",
+    "o": [
+      "Un archivo de configuración de red.",
+      "El formato de disco duro virtual nativo de VirtualBox.",
+      "Un tipo de virus informático.",
+      "El ejecutable de instalación de Windows."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "Si elegimos un disco duro de 'Tamaño fijo' al crear una máquina virtual...",
+    "o": [
+      "El disco ocupará en el host el espacio total asignado desde el primer momento.",
+      "El disco irá creciendo a medida que guardemos datos.",
+      "La máquina virtual funcionará más lenta que con uno dinámico.",
+      "No podremos instalar Windows en él."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué caracteriza al almacenamiento de disco 'Reservado dinámicamente'?",
+    "o": [
+      "Ocupa todo el espacio en el disco físico inmediatamente.",
+      "Solo utiliza espacio en el disco físico a medida que se llena en la máquina virtual.",
+      "No permite guardar archivos de más de 4 GB.",
+      "Es incompatible con sistemas Linux."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Cuál es la extensión de archivo utilizada por VMware para sus discos virtuales, que también soporta VirtualBox?",
+    "o": [
+      ".VDI",
+      ".VHD",
+      ".VMDK",
+      ".HDD"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Para qué sirven las 'Guest Additions' en VirtualBox?",
+    "o": [
+      "Para descargar juegos gratis.",
+      "Para añadir usuarios invitados al sistema operativo.",
+      "Son controladores que mejoran el rendimiento y la integración (vídeo, ratón, carpetas compartidas).",
+      "Para conectar la máquina a una red Tor."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué modo de red permite que la máquina virtual actúe como un equipo más en la red física, obteniendo su propia IP del router?",
+    "o": [
+      "NAT",
+      "Adaptador Puente (Bridged Adapter)",
+      "Red Interna",
+      "Adaptador Solo-Anfitrión"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué característica tiene el modo de red NAT en VirtualBox por defecto?",
+    "o": [
+      "La máquina virtual no tiene acceso a Internet.",
+      "La máquina virtual navega a través del anfitrión, pero es invisible desde el exterior.",
+      "La máquina virtual recibe una IP pública directamente.",
+      "Permite la comunicación total entre todas las máquinas de la red física."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué es un 'Snapshot' o instantánea?",
+    "o": [
+      "Una foto de la pantalla del monitor.",
+      "Un estado guardado de la máquina virtual al que se puede revertir en caso de error.",
+      "Un virus que captura información.",
+      "El proceso de instalación del sistema operativo."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "Según el documento, ¿qué permite el formato estándar OVF?",
+    "o": [
+      "Importar y exportar máquinas virtuales entre diferentes plataformas de virtualización.",
+      "Formatear discos duros físicos a bajo nivel.",
+      "Cifrar las contraseñas de los usuarios.",
+      "Comprimir archivos de música."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué función cumple el archivo .OVA?",
+    "o": [
+      "Es un archivo de vídeo.",
+      "Es un paquete que contiene los archivos OVF y discos virtuales en un solo fichero.",
+      "Es la licencia de activación de Windows.",
+      "Es un archivo de configuración de Linux."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "Durante la instalación de Linux, ¿qué es la partición 'Swap' o área de intercambio?",
+    "o": [
+      "Donde se instalan los programas.",
+      "Espacio en disco usado como memoria RAM virtual cuando la física se agota.",
+      "La carpeta de documentos del usuario.",
+      "El sector de arranque del disco."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Cuál es el punto de montaje raíz en un sistema Linux?",
+    "o": [
+      "C:\\",
+      "/",
+      "/root",
+      "/home"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué tipo de virtualización realiza VirtualBox?",
+    "o": [
+      "Tipo 1 (Bare-metal)",
+      "Tipo 2 (Hosted / Anfitrión)",
+      "Virtualización de aplicaciones",
+      "Paravirtualización pura"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué recomendación hace VirtualBox respecto a la asignación de memoria RAM (zona verde)?",
+    "o": [
+      "Asignar siempre el 100% de la RAM disponible.",
+      "No sobrepasar la zona verde para no dejar sin recursos al sistema anfitrión.",
+      "Asignar siempre 512 MB independientemente del sistema.",
+      "La RAM no es importante en la virtualización."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Para qué sirve montar una imagen ISO en la unidad de CD/DVD virtual?",
+    "o": [
+      "Para aumentar el espacio en disco.",
+      "Para simular la inserción de un disco de instalación del sistema operativo.",
+      "Para escuchar música mientras se instala.",
+      "Para hacer una copia de seguridad."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "En una instalación de Windows Server, ¿qué implica la opción 'Server Core'?",
+    "o": [
+      "Una instalación completa con entorno gráfico de escritorio.",
+      "Una instalación mínima sin entorno gráfico, administrada por línea de comandos.",
+      "Una versión gratuita para estudiantes.",
+      "Una instalación que solo funciona en procesadores de un núcleo."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué sistema de archivos es el estándar recomendado para particiones de datos en Linux mencionado en la unidad?",
+    "o": [
+      "NTFS",
+      "FAT32",
+      "EXT4",
+      "HFS+"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 2 - Teoría",
+    "q": "¿Qué tecla (Host Key) se utiliza por defecto en VirtualBox para liberar el ratón de la máquina virtual si no están instaladas las Guest Additions?",
+    "o": [
+      "Control Izquierdo",
+      "Control Derecho",
+      "Alt + F4",
+      "Escape"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "Antes de la popularización de los ordenadores personales y las redes locales, ¿cuál era el modelo de trabajo habitual en las grandes organizaciones?",
+    "o": [
+      "Servidores web en la nube.",
+      "Un servidor central mainframe al cual se conectaban terminales tontos.",
+      "Redes P2P (Peer-to-Peer) entre usuarios.",
+      "Ordenadores portátiles independientes."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿Cuál era uno de los principales problemas de trabajar en grupos de trabajo (sin dominio) antes del Directorio Activo?",
+    "o": [
+      "El coste de las licencias de Windows.",
+      "La duplicidad de cuentas de usuario locales y la dificultad de gestionar permisos.",
+      "La incompatibilidad con impresoras.",
+      "La velocidad de la red era muy lenta."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿Qué es el Directorio Activo según la definición del documento?",
+    "o": [
+      "Una implementación de Microsoft de una base de datos distribuida para objetos de red.",
+      "Un sistema de archivos compartido en red.",
+      "Un firewall para proteger la red corporativa.",
+      "Una herramienta para monitorizar el tráfico de internet."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿Qué protocolo utiliza el Directorio Activo para almacenar y consultar su base de datos?",
+    "o": [
+      "HTTP",
+      "FTP",
+      "LDAP (Lightweight Directory Access Protocol)",
+      "SMTP"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿En qué versión de Windows Server apareció el Directorio Activo tal y como se conoce hoy en día?",
+    "o": [
+      "Windows NT 4.0",
+      "Windows Server 2000",
+      "Windows Server 2008",
+      "Windows Server 2012"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "En Windows Server 2012, ¿qué comando clásico para promocionar un controlador de dominio ha quedado degradado?",
+    "o": [
+      "ipconfig",
+      "ping",
+      "netstat",
+      "dcpromo.exe"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿Qué rol es necesario instalar en el servidor para crear un dominio?",
+    "o": [
+      "Servidor DHCP",
+      "Servicios de dominio de Active Directory (AD DS)",
+      "Servidor de aplicaciones",
+      "Servicios de escritorio remoto"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "Tras instalar el rol de Servicios de dominio, ¿cuál es el siguiente paso obligatorio?",
+    "o": [
+      "Reiniciar el servidor y ya funciona.",
+      "Promover el servidor a controlador de dominio.",
+      "Instalar un servidor web.",
+      "Crear los usuarios inmediatamente."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "Al configurar un nuevo dominio desde cero, ¿qué opción de despliegue se debe elegir?",
+    "o": [
+      "Agregar un controlador de dominio a un dominio existente.",
+      "Agregar un nuevo dominio a un bosque existente.",
+      "Agregar un nuevo bosque.",
+      "Ninguna de las anteriores."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "Al instalar el primer controlador de dominio, ¿es normal recibir una advertencia sobre DNS?",
+    "o": [
+      "No, indica un fallo grave en la tarjeta de red.",
+      "Sí, porque todavía no hay ningún servidor DNS configurado para la delegación de zona.",
+      "Sí, pero solo si no tenemos conexión a internet.",
+      "No, el DNS se configura automáticamente sin avisos."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿Qué herramienta administrativa se utiliza para gestionar usuarios y grupos?",
+    "o": [
+      "Administrador de equipos",
+      "Usuarios y equipos de Active Directory",
+      "Directiva de seguridad local",
+      "Visor de eventos"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "Según la política de nombres propuesta en la unidad, ¿cuál sería el nombre de usuario para 'Alumno OpenUAX OpenUAX'?",
+    "o": [
+      "alumno1",
+      "aopenua",
+      "aopeope",
+      "aluope"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿Por qué es importante establecer una buena política de nombres en el dominio?",
+    "o": [
+      "Para ahorrar memoria RAM en el servidor.",
+      "Para identificar rápidamente usuarios, grupos y equipos, y evitar conflictos.",
+      "Porque Windows no permite nombres aleatorios.",
+      "Para mejorar la velocidad de internet."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "Para unir un equipo cliente Windows al dominio, ¿qué credenciales son necesarias?",
+    "o": [
+      "Las de cualquier usuario del dominio.",
+      "Las del usuario local del equipo.",
+      "Las del administrador del dominio.",
+      "No se necesitan credenciales."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "Una vez que un equipo se une al dominio, ¿qué combinación de teclas solicita para iniciar sesión?",
+    "o": [
+      "Ctrl + C",
+      "Alt + F4",
+      "Ctrl + Alt + Supr",
+      "Shift + Enter"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿Qué sucede si un usuario tiene configurada la opción de cambiar contraseña en el primer inicio de sesión?",
+    "o": [
+      "El sistema le impide entrar hasta que el administrador la cambie.",
+      "El sistema le obliga a establecer una nueva contraseña antes de acceder al escritorio.",
+      "Puede entrar y cambiarla más tarde si quiere.",
+      "El usuario se bloquea automáticamente."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "En Linux, ¿cuál es el primer paso recomendado antes de unir el equipo al dominio?",
+    "o": [
+      "Instalar el entorno gráfico.",
+      "Cambiar el nombre de la máquina (hostname) para cumplir la política de nombres.",
+      "Desactivar la tarjeta de red.",
+      "Crear un usuario local llamado 'admin'."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿Qué paquete se instala en Linux para sincronizar la hora con el dominio (algo crítico para AD)?",
+    "o": [
+      "apache2",
+      "ntp",
+      "mysql",
+      "ssh"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿Qué paquete actúa como cliente Linux para conectar con el Directorio Activo?",
+    "o": [
+      "adcli",
+      "openvpn",
+      "samba-server",
+      "bind9"
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 3 - Teoría",
+    "q": "¿Qué protocolo de seguridad y cifrado utiliza Windows para la autenticación y debe instalarse también en Linux (paquete krb5)?",
+    "o": [
+      "PGP",
+      "RSA",
+      "Kerberos",
+      "AES"
+    ],
+    "c": 2
+  },
+{
+    "u": "Tema 4 - Teoría",
+    "q": "Según la introducción, ¿en qué año se creó el concepto de página web?",
+    "o": [
+      "1969",
+      "1980",
+      "1992",
+      "1995"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "La navegación web se basa en una arquitectura distribuida conocida como...",
+    "o": [
+      "Peer-to-Peer (P2P)",
+      "Cliente-Servidor",
+      "Mainframe-Terminal",
+      "Maestro-Esclavo"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Cuál es el protocolo utilizado para la comunicación entre servidores y clientes web?",
+    "o": [
+      "HTML",
+      "HTTP",
+      "FTP",
+      "DNS"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "Las páginas web que pueden interactuar con bases de datos y mostrar contenido variable se conocen como...",
+    "o": [
+      "Páginas estáticas",
+      "Páginas planas",
+      "Páginas dinámicas",
+      "Páginas compiladas"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Qué servidor web es desarrollado por Microsoft e incluido en sus sistemas operativos?",
+    "o": [
+      "Apache",
+      "Cherokee",
+      "Nginx",
+      "IIS (Internet Information Services)"
+    ],
+    "c": 3
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Qué lenguaje soporta IIS de forma nativa sin necesidad de instalar complementos extra?",
+    "o": [
+      "PHP",
+      "ASP",
+      "JSP",
+      "Python"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Cómo se realiza la instalación de IIS en Windows Server 2012?",
+    "o": [
+      "Descargando un ejecutable desde la web de Microsoft.",
+      "A través del comando 'apt-get install iis'.",
+      "Añadiendo el rol de 'Servidor Web (IIS)' desde el Administrador del servidor.",
+      "Viene instalado y activado por defecto en todas las versiones."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Qué característica se debe instalar en IIS para dar soporte a páginas ASP?",
+    "o": [
+      "CGI",
+      ".Net Framework (3.5 o 4.5)",
+      "Módulo PHP",
+      "Servidor FTP"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Cuál es la dirección URL para comprobar localmente que el servidor web funciona?",
+    "o": [
+      "http://www.google.com",
+      "http://localhost/",
+      "http://192.168.1.1",
+      "http://server-status"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "En la configuración de 'Documento predeterminado' de IIS, ¿qué factor determina qué archivo se sirve primero?",
+    "o": [
+      "El tamaño del archivo.",
+      "El orden de prioridad en la lista.",
+      "La fecha de creación.",
+      "El orden alfabético."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Cuál de las siguientes es una característica principal del servidor web Apache?",
+    "o": [
+      "Es un software de pago.",
+      "Solo funciona en Linux.",
+      "Es de código abierto y multiplataforma.",
+      "No soporta SSL."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Qué comando se utiliza en Debian para instalar Apache?",
+    "o": [
+      "install apache",
+      "apt-get install apache2",
+      "yum install httpd",
+      "dpkg -i webserver"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Qué paquete adicional se necesita en Apache (Debian) para procesar páginas PHP?",
+    "o": [
+      "php-common",
+      "libapache2-mod-php5",
+      "apache-php-addon",
+      "mod_perl"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Cuál es el archivo de configuración principal de Apache2 en Debian?",
+    "o": [
+      "httpd.conf",
+      "server.xml",
+      "apache2.conf",
+      "config.ini"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Qué puertos TCP utiliza Apache por defecto para HTTP y HTTPS respectivamente?",
+    "o": [
+      "21 y 22",
+      "80 y 8080",
+      "80 y 443",
+      "25 y 110"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿En qué archivo de configuración de Apache se define el orden de los documentos índice (como index.html)?",
+    "o": [
+      "mime.types",
+      "dir.conf",
+      "ports.conf",
+      "envvars"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Cuál es el directorio por defecto donde se alojan los sitios web en Apache (Debian)?",
+    "o": [
+      "C:\\inetpub\\wwwroot",
+      "/var/www/html",
+      "/home/web",
+      "/usr/share/apache2"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Para qué sirve la directiva 'Display_errors' en el archivo php.ini?",
+    "o": [
+      "Para ocultar siempre los errores.",
+      "Para enviar los errores por correo electrónico al administrador.",
+      "Para mostrar los errores en la página web (útil en desarrollo, peligroso en producción).",
+      "Para guardar los errores en un fichero de log."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Qué es un SGBD (Sistema Gestor de Base de Datos)?",
+    "o": [
+      "Un protocolo de red para transferir archivos.",
+      "Una aplicación que permite crear, modificar y gestionar bases de datos.",
+      "Un lenguaje de programación web.",
+      "Un tipo de servidor de correo."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 4 - Teoría",
+    "q": "¿Qué lenguaje estándar utilizan la mayoría de los SGBD como MySQL o SQL Server?",
+    "o": [
+      "HTML",
+      "Java",
+      "SQL",
+      "C#"
+    ],
+    "c": 2
+  },
+{
+    "u": "Tema 5 - Teoría",
+    "q": "¿Cuál es la misión principal de un servidor de ficheros según el texto?",
+    "o": [
+      "Alojar páginas web corporativas.",
+      "Permitir que los usuarios compartan archivos y carpetas de forma sencilla, como si fueran locales.",
+      "Gestionar el correo electrónico de la empresa.",
+      "Proporcionar acceso a internet a los clientes."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué siglas corresponden a las redes enteras dedicadas en exclusiva al almacenamiento de datos?",
+    "o": [
+      "NAS",
+      "VPN",
+      "SAN (Storage Area Network)",
+      "LAN"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Cuál es el protocolo creado por Microsoft para compartir ficheros en sistemas Windows?",
+    "o": [
+      "FTP",
+      "SMB (Server Message Block)",
+      "HTTP",
+      "NFS"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Cómo se llama la implementación libre del protocolo SMB utilizada en sistemas Linux/Unix?",
+    "o": [
+      "Samba",
+      "Apache",
+      "Bind",
+      "Postfix"
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué nombre intentó dar Microsoft al protocolo SMB en 1998, aunque no prosperó?",
+    "o": [
+      "NTFS",
+      "CIFS (Common Internet File System)",
+      "DFS",
+      "WFS"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué característica define al RAID 0?",
+    "o": [
+      "Ofrece redundancia total de datos.",
+      "Utiliza paridad para recuperar errores.",
+      "No es un sistema RAID propiamente dicho porque no posee redundancia, pero mejora el rendimiento.",
+      "Necesita un mínimo de 3 discos."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué nivel de RAID crea una copia idéntica (espejo) de un disco en otro?",
+    "o": [
+      "RAID 0",
+      "RAID 5",
+      "RAID 1",
+      "RAID 6"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Cuál es el número mínimo de discos físicos necesarios para crear un RAID 5?",
+    "o": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué ventaja ofrece el RAID 6 frente al RAID 5?",
+    "o": [
+      "Es más barato.",
+      "Incluye un segundo bloque de paridad que protege ante el fallo simultáneo de dos discos.",
+      "No requiere paridad.",
+      "Es más rápido en escritura."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué combinación de RAID se menciona como ideal para servidores de base de datos de alto rendimiento?",
+    "o": [
+      "RAID 5+1",
+      "RAID 10 (RAID 1+0)",
+      "RAID 50",
+      "RAID 6"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "Según el texto, ¿qué configuración de discos se recomienda habitualmente en sistemas Windows?",
+    "o": [
+      "RAID 0 para todo.",
+      "RAID 1 para el sistema operativo y RAID 5 para los datos.",
+      "RAID 5 para el sistema operativo y RAID 0 para los datos.",
+      "Un solo disco grande sin RAID."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "Para instalar un servidor de ficheros básico en Windows Server, ¿qué rol previo es necesario instalar?",
+    "o": [
+      "Servidor Web (IIS).",
+      "Ninguno, las funciones básicas están disponibles tras instalar el sistema operativo.",
+      "Servidor de aplicaciones.",
+      "Hyper-V."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué herramienta permite ver los permisos reales que tiene un usuario sobre una carpeta, combinando grupos y permisos directos?",
+    "o": [
+      "Visor de eventos.",
+      "Administrador de tareas.",
+      "Pestaña de 'Acceso efectivo' en opciones avanzadas de seguridad.",
+      "Panel de control."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué permiso se considera 'peligroso' si se otorga a usuarios generales sobre la estructura de carpetas?",
+    "o": [
+      "Lectura.",
+      "Ejecución.",
+      "Eliminar.",
+      "Listar contenido."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué rol se debe agregar al servidor para poder gestionar cuotas y filtrado de archivos?",
+    "o": [
+      "Administrador de recursos del servidor de archivos (FSRM).",
+      "Servidor DNS.",
+      "Servidor DHCP.",
+      "Acceso remoto."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "En el filtrado de archivos, ¿cuál es el primer paso antes de crear una plantilla?",
+    "o": [
+      "Crear un filtro activo.",
+      "Crear un grupo de archivos (File Group) que defina qué extensiones se quieren controlar.",
+      "Reiniciar el servidor.",
+      "Enviar un correo de prueba."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué acción se puede configurar en una plantilla de filtro de archivos cuando se detecta un archivo no permitido?",
+    "o": [
+      "Formatear el disco.",
+      "Enviar un mensaje de correo electrónico de aviso o registrar el evento.",
+      "Apagar el servidor.",
+      "Desinstalar el rol."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "Si un usuario no tiene permisos sobre una carpeta específica y el administrador ha configurado correctamente la visibilidad (enumeración basada en acceso), ¿qué ocurre?",
+    "o": [
+      "El usuario ve la carpeta pero le da error al entrar.",
+      "El usuario ve la carpeta en gris.",
+      "El usuario no visualiza la carpeta.",
+      "El usuario puede entrar pero no ver los archivos."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Por qué el administrador querría usar el filtrado de archivos?",
+    "o": [
+      "Para evitar que los usuarios guarden archivos no deseados (como mp3 o vídeos) que ocupen espacio.",
+      "Para hacer que el servidor vaya más rápido.",
+      "Para impedir que los usuarios borren carpetas.",
+      "Para cifrar los datos."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 5 - Teoría",
+    "q": "¿Qué protege el RAID 1?",
+    "o": [
+      "Fallos lógicos del sistema operativo.",
+      "Corrupción de archivos por virus.",
+      "Fallos físicos en uno de los discos duros.",
+      "Borrado accidental de datos."
+    ],
+    "c": 2
+  },
+{
+    "u": "Tema 6 - Teoría",
+    "q": "¿Cuál es la principal funcionalidad de los servidores Radius mencionada en la introducción?",
+    "o": [
+      "La gestión de correos electrónicos.",
+      "La autenticación y autorización de acceso a redes (como WiFi).",
+      "El almacenamiento masivo de ficheros.",
+      "La virtualización de sistemas operativos."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Qué puerto y protocolo utiliza el servicio Radius por defecto?",
+    "o": [
+      "TCP 80",
+      "UDP 1812",
+      "TCP 21",
+      "UDP 53"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Cómo denomina Microsoft a su implementación de servidor Radius en Windows Server?",
+    "o": [
+      "IIS (Internet Information Services)",
+      "NPS (Network Policy Server)",
+      "AD DS (Active Directory Domain Services)",
+      "WSUS (Windows Server Update Services)"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "Según la tabla de requisitos mínimos del documento, ¿cuánta memoria RAM se indica para la máquina virtual?",
+    "o": [
+      "512 MB",
+      "1 GB",
+      "2 GB",
+      "4 GB"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Qué combinación de teclas se debe usar en una máquina virtual (VMware) para simular 'Ctrl+Alt+Supr' e iniciar sesión?",
+    "o": [
+      "Ctrl + Alt + Supr",
+      "Ctrl + Alt + Esc",
+      "Ctrl + Alt + Insert",
+      "Ctrl + Shift + Enter"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Qué requisitos de complejidad exige Windows Server para la contraseña de administrador?",
+    "o": [
+      "Solo números.",
+      "Al menos 8 caracteres sin más restricciones.",
+      "Mayúsculas, minúsculas, letras y números.",
+      "No tiene requisitos, puede ser '1234'."
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Qué rol de servidor se debe instalar para configurar un servidor Radius en Windows?",
+    "o": [
+      "Servidor web (IIS)",
+      "Servicios de acceso y directivas de redes",
+      "Servicios de impresión y documentos",
+      "Hyper-V"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Qué comando se utiliza para abrir la consola de administración del NPS (Network Policy Server)?",
+    "o": [
+      "radius.exe",
+      "nps.msc",
+      "servermanager.msc",
+      "cmd.exe"
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "Una vez instalada la consola NPS, ¿qué paso es fundamental para integrarlo con el dominio?",
+    "o": [
+      "Reiniciar el router.",
+      "Registrar servidor en Active Directory.",
+      "Desinstalar el antivirus.",
+      "Cambiar la dirección IP."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "En el contexto de Radius, ¿qué es un 'Cliente RADIUS'?",
+    "o": [
+      "El usuario final con su portátil.",
+      "El dispositivo de acceso a la red (como un punto de acceso o servidor VPN) que consulta al servidor Radius.",
+      "Un software que se instala en Windows 10.",
+      "La base de datos de usuarios."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Qué elemento de seguridad es imprescindible configurar entre el Servidor Radius y el Cliente Radius?",
+    "o": [
+      "Un cable cruzado.",
+      "Un secreto compartido (Shared Secret).",
+      "Una dirección MAC idéntica.",
+      "Un nombre de usuario común."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "Según el texto, el 'secreto compartido' configurado en el cliente RADIUS...",
+    "o": [
+      "No distingue entre mayúsculas y minúsculas.",
+      "Distingue entre mayúsculas y minúsculas.",
+      "Debe ser siempre 'admin'.",
+      "Se genera automáticamente y no se puede cambiar."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿En qué pestaña de la configuración de directivas se añaden los 'Grupos de Windows' (Windows Groups) para dar acceso?",
+    "o": [
+      "Overview (Información general)",
+      "Settings (Configuración)",
+      "Conditions (Condiciones)",
+      "Constraints (Restricciones)"
+    ],
+    "c": 2
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Qué se configura en la pestaña 'Constraints' (Restricciones) de una directiva de red?",
+    "o": [
+      "El nombre de la directiva.",
+      "Los métodos de autenticación permitidos (como PEAP o MS-CHAP).",
+      "El color de la ventana.",
+      "La dirección IP del servidor."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "Además de para redes WiFi, ¿para qué otro escenario común ofrece un asistente de configuración el NPS?",
+    "o": [
+      "Para conexiones VPN o de acceso telefónico.",
+      "Para compartir impresoras.",
+      "Para alojar páginas web.",
+      "Para gestionar el correo electrónico."
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Qué ocurre si intentamos apagar o reiniciar Windows Server sin haber iniciado sesión?",
+    "o": [
+      "Se apaga inmediatamente.",
+      "No se puede, es obligatorio iniciar sesión.",
+      "Pide una contraseña de invitado.",
+      "Se reinicia automáticamente."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Qué ventaja aporta la integración del servidor Radius con el Directorio Activo?",
+    "o": [
+      "Aumenta la velocidad de la CPU.",
+      "Centraliza las credenciales de los usuarios y facilita la gestión.",
+      "Elimina la necesidad de tener contraseñas.",
+      "Permite navegar por internet gratis."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "¿Qué tipo de método de autenticación se muestra como ejemplo en la configuración de restricciones (Constraints)?",
+    "o": [
+      "Microsoft: Protected EAP (PEAP)",
+      "Texto plano",
+      "Solo contraseña",
+      "Huella dactilar"
+    ],
+    "c": 0
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "Según las conclusiones, ¿qué aporta un servidor Radius a la seguridad de la red?",
+    "o": [
+      "Antivirus gratuito.",
+      "Una capa adicional de seguridad y control específico de acceso.",
+      "Firewall de hardware.",
+      "Copias de seguridad automáticas."
+    ],
+    "c": 1
+  },
+  {
+    "u": "Tema 6 - Teoría",
+    "q": "Aparte de Windows Server, ¿en qué otro sistema operativo se menciona que pueden instalarse servicios Radius?",
+    "o": [
+      "Android",
+      "Linux",
+      "MS-DOS",
+      "Solo existe en Windows"
+    ],
+    "c": 1
+  }
+]

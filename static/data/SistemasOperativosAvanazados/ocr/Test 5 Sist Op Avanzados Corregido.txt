@@ -1,0 +1,288 @@
+FILE: Test 5 Sist Op Avanzados Corregido.pdf
+\n=== PAGE 1 ===
+001	0.9170292445591518	21/1/26,18:52
+002	0.9240311488770602	CuestionariodeAutoevaluacion UD5:Revisiondel intentoIUAX
+003	0.7538296154567173	Estado
+004	0.8496748371557756	Finalizado
+005	0.8609838962554932	Comenzado
+006	0.8894604512623379	miercoles,21de enero de 2026,18:39
+007	0.817172034220262	Completado
+008	0.8701838612556457	miercoles,21de enero de 2026,18:53
+009	0.8708312975035774	Duracion
+010	0.9086452587084337	14minutos 10 segundos
+011	0.7818604537418911	Puntos
+012	0.8705209294954935	17,00/20.00
+013	0.8338348727959853	Calificacion
+014	0.8001935988664627	8,50 de 10,00 (85%)
+015	0.8523370135914196	Pregunta 1
+016	0.7769093567674811	Incorrecta
+017	0.8561965066653031	Se puntua 0.00 sobre 1,00
+018	0.8865778918067614	Enelserviciodenombrado:
+019	0.6629135211308798	a.
+020	0.8892788306662911	Un dominio se asocia conuna sola ruta
+021	0.6648934880892435	b.
+022	0.9191063523292542	Unservidorseasociaconunsolodominio
+023	0.6561646660168966	C.
+024	0.9076075325993931	Unaruta seasociaconunsolodominio.
+025	0.6540545225143433	d.
+026	0.859723004957904	Un dominio se asocia con varios servidores. ?
+027	0.8759193876475999	La respuesta correcta es: Una ruta se asocia con un solo dominio.
+028	0.8560563596812162	Pregunta 2
+029	0.8762737645043267	Correcta
+030	0.8591449707746506	Se puntua 1,00 sobre 1,00
+031	0.9084334075450897	El valor aleatorio R para la seguridad de los UFID:
+032	0.6625477274258932	a.
+033	0.9318752636512121	Se almacena en el UFID del cliente.
+034	0.6243223349253336	b.
+035	0.8843119011984931	Se vincula a un archivo. O
+036	0.5284344156583151	C.
+037	0.8671327259229578	Se vinculaa undominio.
+038	0.6491041779518127	d.
+039	0.8767713284492493	Se vinculaa un servidor.
+040	0.9263960095339043	Larespuestacorrectaes:Sevinculaaunarchivo.
+041	0.9272130804184155	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4233541&cmid=1517972
+042	0.7477945238351822	1/7
+\n=== PAGE 2 ===
+001	0.9076618807656425	21/1/26,18:52
+002	0.9124403904404557	Cuestionario deAutoevaluacionUD5:Revision delintentoIUAX
+003	0.8487529375336387	Pregunta 3
+004	0.8825163907474942	Correcta
+005	0.8624613479926035	Se puntua 1,00 sobre 1,00
+006	0.8637798488140106	EI UFIDdeunarchivo:
+007	0.6638089617093405	a.
+008	0.910246801647273	Esgestionadoporelserviciode identificacion.
+009	0.6652137637138367	b.
+010	0.9582083982390326	Puedesercompartidoporvariosarchivos.
+011	0.907553537024392	Identificalos atributosdeunarchivo.
+012	0.6566299200057983	d.
+013	0.9220172361187313	Tienetramoscorrespondientesalarutadelarchivo.
+014	0.9098337586720785	La respuesta correcta es: Es gestionado por el servicio de identificacion.
+015	0.8091883225874468	Pregunta 4
+016	0.8751898209253947	Correcta
+017	0.8706226807374221	Se puntua 1,00 sobre 1,00
+018	0.9502263254132765	iCual de las siguientes no es una propiedad de los sistemas de archivos distribuidos?:
+019	0.6630574862162272	a.
+020	0.9216841775923967	Transparencia a la escabilidad.
+021	0.6621392369270325	b.
+022	0.8805143652960311	Transparenciaala APlque indique elcliente.
+023	0.6387811899185181	C.
+024	0.9221819957097371	Transparencia a la movilidad.
+025	0.6590183973312378	d.
+026	0.8824610938628514	Transparencia a la ubicacion.
+027	0.8723494402236409	La respuesta correcta es: Transparenciaa la APl que indique el cliente.
+028	0.8303881152109667	Pregunta 5
+029	0.878491050667233	Correcta
+030	0.8459580288483546	Se puntua 1,00 sobre 1,00
+031	0.9214494016862684	El sistema de nombrado no gestiona aspectos relacionados con:
+032	0.8841823752109821	a. Los tipos de archivos.
+033	0.6171300609906515	b.
+034	0.9061380505561829	Losprivilegiosdeaccesoporpartedelosusuarios.
+035	0.6518761515617371	C.
+036	0.9191295337258724	El numero de usuarios que mantiene abierto el archivo. O
+037	0.8728149615485092	d.Elpropietario del archivo.
+038	0.8959702039942329	La respuesta correcta es: El numero de usuarios que mantiene abierto el archivo.
+039	0.9362466908418215	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4233541&cmid=1517972
+040	0.6434788256883621	2/7
+\n=== PAGE 3 ===
+001	0.9168764352798462	21/1/26,18:52
+002	0.9167035818099976	CuestionariodeAutoevaluacionUD5:Revisiondel intentoUAX
+003	0.8638303713365034	Pregunta 6
+004	0.8822002940707736	Correcta
+005	0.8696543998443164	Se puntua 1,00 sobre 1,00
+006	0.94990957216783	Elservidordearchivosnogestionaaspectosrelacionadoscon:
+007	0.6628090341885885	a.
+008	0.8958109482642143	La ruta de acceso al archivo.
+009	0.9179522740213495	Elultimoaccesoenmodolecturaalarchivo.
+010	0.9189507995332991	Laconsultadelosatributosdelarchivo
+011	0.6431540648142496	d.
+012	0.9283952180828366	Lafechadecreaciondelarchivo
+013	0.8922114372253418	La respuesta correcta es: La ruta de acceso al archivo.
+014	0.8436981060288169	Pregunta 7
+015	0.8755660321977403	Correcta
+016	0.8758055498966804	Se puntua 1,00 sobre 1,00
+017	0.9109110391658285	Enelserviciodenombrado
+018	0.6627538204193115	a.
+019	0.9203855124386874	Un dominio se asocia con varios servidores.
+020	0.6657836238543192	b.
+021	0.9231984615325928	Aundominiolecorrespondenvarios servidores.
+022	0.6490575671195984	C.
+023	0.9384627938270569	Aunarutalecorrespondenvariosdominios.
+024	0.6573915878931681	d.
+025	0.9448149014603008	A un servidor le pueden corresponder varios dominios.
+026	0.7826357727701013	Pregunta 8
+027	0.878446724679735	Correcta
+028	0.873764347571593	Se puntua 1,00 sobre 1,00
+029	0.9145538285374641	Con respectoal diseno de los sistemas de archivos distribuidos:
+030	0.9352920357997601	Espreferiblefavorecernumeroselevadosdeoperacionesdecomparticion.
+031	0.6649811267852783	b.
+032	0.9440345094915021	Espreferiblehomogeneizareltratamientodetodoslosarchivos.
+033	0.6487009127934774	C.
+034	0.9337301926557408	Son preferibles archivos no muy grandes. O
+035	0.6615787148475647	d.
+036	0.9029516407421657	Es preferible integrarlos archivostemporales comoparte delsistema de archivos distribuido.
+037	0.8983682380683387	La respuesta correcta es: Son preferibles archivos no muy grandes.
+038	0.9385767135864649	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4233541&cmid=1517972
+039	0.6231429949402809	3/7
+\n=== PAGE 4 ===
+001	0.9141414420945304	21/1/26,18:52
+002	0.9103404680887858	Cuestionario de Autoevaluacion UD5:Revision del intentoIUAX
+003	0.8912585323507135	Pregunta 9
+004	0.7992019274018027	Incorrecta
+005	0.8604922151565552	Se puntua 0.00 sobre1,00
+006	0.8848383548308392	El valoraleatorioR para la seguridad delos UFiD:
+007	0.6631929675738016	a.
+008	0.8754980397426476	Se envia al clienteparaque calculeel valorC de lapeticion.
+009	0.6532707810401917	b.
+010	0.6441109776496887	C.
+011	0.8861241625414954	Se envia al cliente como parte de su UFID. Q
+012	0.6580134034156799	d.
+013	0.9024087127218855	No se devuelve al clientecomo partede su UFID,
+014	0.8965525992711385	La respuesta correcta es: No se devuelve al cliente como parte de su UFiD,
+015	0.8679544031620026	Pregunta 10
+016	0.8733739720450507	Correcta
+017	0.8541383743286133	Se puntua 1,00 sobre 1,00
+018	0.9513910604619432	iCual de las siguientes no es una propiedad de los sistemas de archivos distribuidos?:
+019	0.6642636259396871	a.
+020	0.9214102635780971	Ofrecenmecanismosparala identificacionunivocadelosarchivos.
+021	0.6659213503201803	b.
+022	0.9282632839112055	Ofrecen sistemas de respaldo y back-up. O
+023	0.6598746577898661	d.
+024	0.9278229022467578	Proporcionan un mecanismo de almacenamiento duradero.
+025	0.936881134004304	La respuesta correcta es: Ofrecen sistemas de respaldo y back-up.
+026	0.8480283965667089	Pregunta 11
+027	0.8840532965130277	Correcta
+028	0.873764347571593	Se puntua 1,00 sobre 1,00
+029	0.8509106428726859	EI UFID de un archivo:
+030	0.6637071569760641	a.
+031	0.9006006306126004	Es unicoenelsistema.
+032	0.6657730142275492	b.
+033	0.8846815761766935	Esgestionadoporel serviciodearchivos.
+034	0.9027525643969692	Solo es conocido en los sistemas clientes.
+035	0.9205379171503915	Solo es conocido en los servidores.
+036	0.8954515719413757	La respuesta correcta es: Es unico en el sistema.
+037	0.9385898113250732	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4233541&cmid=1517972
+038	0.7401957362890244	4/7
+\n=== PAGE 5 ===
+001	0.9141414420945304	21/1/26,18:52
+002	0.9045153016845385	Cuestionario de Autoevaluacion UD5:Revision del intentoIUAX
+003	0.8475613395373026	Pregunta 12
+004	0.8824591437975565	Correcta
+005	0.8272422231160678	Se puntua 1.,00 sobre1,00
+006	0.9239619302749634	Enlanavegacionrecursiva:
+007	0.6626993616422018	a.
+008	0.9233533566997897	Cadaservidorrespondeal cliente
+009	0.5059651335080465	b.
+010	0.9135687855573801	Elcliente consultatodaslasrutasatodoslosservidores.
+011	0.9131305916951253	Soloseenviaunarespuestaalclientedesdelosservidores.
+012	0.6431540648142496	d.
+013	0.9237021864815191	El servidorresuelvesupartede larutae informadelclientedel siguiente servidoraconsultar.
+014	0.9277002640154169	La respuesta correcta es: Solo se envia una respuesta al cliente desde los servidores.
+015	0.8528351783752441	Pregunta 13
+016	0.8751638001865811	Correcta
+017	0.8758055498966804	Se puntua 1,00 sobre 1,00
+018	0.8883628580305312	Con respectoal disenode los sistemas de archivos distribuidos:
+019	0.6622997721036276	a.
+020	0.9450493138956736	Espreferibleintegrarlosarchivostemporalescomopartedelsistemadearchivosdistribuido.
+021	0.665471613407135	b.
+022	0.9168604681125054	Sonpreferibles archivos degran tamano.
+023	0.6543697913487753	C.
+024	0.9339056945683664	Espreferiblehomogeneizareltratamientodetodoslosarchivos.
+025	0.6550960739453634	d.
+026	0.8927838355302811	Pregunta 14
+027	0.8784834742546082	Correcta
+028	0.8726650705704322	Se puntua 1,00 sobre 1,00
+029	0.8857424107648558	El sistema de nombrado gestiona aspectos relacionados con:
+030	0.659844438234965	a.
+031	0.9063994567841291	La ruta de acceso al archivo. O
+032	0.6652543544769287	b.
+033	0.9135279280798776	Laconsultadelosatributosdelarchivo
+034	0.6443190574645996	C.
+035	0.9018896728754043	Elultimoaccesorealizado sobreelarchivo.
+036	0.6542964577674866	d.
+037	0.9094512373208999	Eltamanodelarchivo.
+038	0.8837723167879241	La respuesta correcta es: La ruta de acceso al archivo.
+039	0.9231879306145203	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4233541&cmid=1517972
+040	0.6582292467355728	5/7
+\n=== PAGE 6 ===
+001	0.9168764352798462	21/1/26,18:52
+002	0.9167035818099976	CuestionariodeAutoevaluacionUD5:Revisiondel intentoUAX
+003	0.8251175731420517	Pregunta 15
+004	0.880458931128184	Correcta
+005	0.8700302713192426	Se puntua 1,00 sobre 1,00
+006	0.8653720378875732	Enlanavegacioniterativa:
+007	0.664140502611796	a.
+008	0.9354458951524326	Unservidorresuelvesupartedelarutaylasdeotrosservidores.
+009	0.93963561242535	Elservidorresuelvesupartedelarutae informadelclientedelsiguienteservidoraconsultar.
+010	0.8779032412221877	El cliente consulta todaslas rutas a todos los servidores.
+011	0.6431540648142496	d.
+012	0.9214999605166284	Resueltaunapartedelaruta,elclientepreguntaporel restoaunservidorcualquiera.
+013	0.910356285572052	La respuesta correcta es: El servidor resuelve su parte de la ruta e informa del cliente del siguiente servidor a consultar.
+014	0.8961658378442129	Pregunta 16
+015	0.8742550280359056	Correcta
+016	0.8743575203877229	Se puntua 1,00 sobre 1,00
+017	0.9559970959177557	Elservidordearchivosgestionaaspectosrelacionadoscon:
+018	0.6649240056673685	a.
+019	0.8607573975687441	Los tipos de archivos.
+020	0.6660685737927755	b.
+021	0.9024575794184649	Elpropietario del archivo.
+022	0.9127365587787195	La consulta de los atributos del archivo. O
+023	0.6575883428255717	d.
+024	0.9334525161319309	Losprivilegiosdeaccesoporpartedelosusuarios.
+025	0.9085293435491621	Larespuesta correctaes: La consultade los atributos delarchivo.
+026	0.8913112034400305	Pregunta 17
+027	0.8169697685675188	Incorrecta
+028	0.8534328181010026	Se puntua 0,00 sobre 1,00
+029	0.8597885240679202	El valoraleatorioCparala seguridadde losUFID:
+030	0.6603586276372274	a.
+031	0.9237678896407692	Se envia al cliente por el servidor de archivos.
+032	0.6188626686731974	b.
+033	0.873828295030092	Se envia por el cliente como parte del UFiD del archivo.
+034	0.5084030826886495	C.
+035	0.897974443104532	Se calcula como resultado de la operacion de R y A. @
+036	0.659377654393514	d.
+037	0.8769322291333624	Se almacena enel UFID quemantiene el servidor.
+038	0.8948278351720557	La respuesta correcta es: Se envia por el cliente como parte del UFiD del archivo.
+039	0.9385898113250732	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4233541&cmid=1517972
+040	0.6302112340927124	6/7
+\n=== PAGE 7 ===
+001	0.9141430471624646	21/1/26,18:52
+002	0.8935948610305786	Cuestionario deAutoevaluacion UD5:Revision del intentoIUAX
+003	0.8949053734540939	Pregunta 18
+004	0.8799809945954217	Correcta
+005	0.8659626153799204	Se puntua 1,00 sobre 1,00
+006	0.8999653697013855	Enlanavegacioniterativa:
+007	0.6636602481206259	a.
+008	0.9128304673176185	Elclienteconsultatodaslasrutasatodoslosservidores.
+009	0.6642212867736816	b.
+010	0.9257483984294691	Cadaservidornoconsultaaotrosservidoresporpartesdelarutaquenolecorresponden.
+011	0.919637493789196	Solo se enviaunarespuesta alclientedesdelos servidores.
+012	0.5683912038803101	d.
+013	0.940346294963682	Cadaservidorconsultaaotrosservidoresporpartesdelarutaquenolecorresponden.
+014	0.9104908755701832	La respuesta correcta es: Cada servidor no consulta a otros servidores por partes de la ruta que no le corresponden.
+015	0.8832593907912573	Pregunta 19
+016	0.8739817606078254	Correcta
+017	0.8735021536166852	Se puntua 1,00 sobre 1,00
+018	0.9401049408419379	iCual de las siguientes no es una propiedad de los sistemas de archivos distribuidos?:
+019	0.6609742244084676	a.
+020	0.8985920463289533	Separacion e integracion del contenido de los archivos enel sistema.O
+021	0.665361762046814	b.
+022	0.929927671777791	Transparenciaalareplicacion.
+023	0.6473092238108317	C.
+024	0.9158190469588002	Identificacionunicadearchivos.
+025	0.6430714130401611	d.
+026	0.9399921655654907	Sistemadealmacenamientopermanente.
+027	0.9460187676441238	Larespuestacorrectaes:Separacione integraciondelcontenidodelosarchivosenelsistema.
+028	0.9068625519673029	Pregunta 20
+029	0.878349072403378	Correcta
+030	0.8710907754989771	Se puntua 1,00 sobre 1,00
+031	0.9325936991592934	iCual de las siguientes no es una propiedad de los sistemas de archivos distribuidos?:
+032	0.6579499244689941	a.
+033	0.9147021889686584	Limitacion de la tasa detransferencia de archivos a traves de la red.
+034	0.6651014884312948	b.
+035	0.9229860070504641	Transparenciaalaoperacionconcurrente.
+036	0.8935320723056793	Gestion de la seguridad.
+037	0.6621940533320109	d.
+038	0.9125960015115284	Tolerancia a fallos.
+039	0.9032877013855374	La respuesta correcta es: Limitacion de la tasa de transferencia de archivos a traves de la red.
+040	0.9407008045758957	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4233541&cmid=1517972
+041	0.5625377744436264	717

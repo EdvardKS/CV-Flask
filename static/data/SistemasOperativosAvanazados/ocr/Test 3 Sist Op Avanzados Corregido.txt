@@ -1,0 +1,287 @@
+FILE: Test 3 Sist Op Avanzados Corregido.pdf
+\n=== PAGE 1 ===
+001	0.8750694564410618	11/1/26,19:26
+002	0.9257326632738113	Cuestionario deAutoevaluacion UD3:Revision del intento IUAX
+003	0.7576751964432853	Estado
+004	0.8862517801198092	Finalizado
+005	0.8257116556167603	Comenzado
+006	0.8791768063198436	domingo,11de enero de 2026,19:07
+007	0.8146851116960699	Completado
+008	0.9198522799544864	domingo, 11 de enero de 2026, 19:27
+009	0.8872897757424248	Duracion
+010	0.9125679162415591	20 minutos 2 segundos
+011	0.8481852412223816	Puntos
+012	0.7849883983532587	19,00/20,00
+013	0.898868033519158	Calificacion
+014	0.8367861837148667	9,50 de 10,00 (95%)
+015	0.8968524228442799	Pregunta 1
+016	0.7786215543746948	Correcta
+017	0.8496769414498255	Se puntua 1,00 sobre 1,00
+018	0.9308595330942244	Elusodetecnicasdecifradopretenderesolver:
+019	0.9235835321744283	a. Los problemas derivados de la heterogeneidad en un sistema distribuido.
+020	0.9116660714149475	b. Los problemas derivados de la extensibilidad de un sistema distribuido.
+021	0.9277184875681996	c.Losproblemasderivadosdelaescalabilidaddeunsistemadistribuido.
+022	0.9109523072838783	d. Los problemas derivados de la seguridad en un sistema distribuido. O
+023	0.9090821595602138	La respuesta correcta es: Los problemas derivados de la seguridad en un sistema distribuido.
+024	0.8269182542959849	Pregunta 2
+025	0.871783971786499	Correcta
+026	0.8797394931316376	Se puntua 1,00 sobre 1,00
+027	0.9019818413453023	Los nodosde unsistema distribuidoyde un clusterseparecen en:
+028	0.6636214256286621	a.
+029	0.9243661874049419	Ambostienensupropiosistemaoperativo.
+030	0.6650811433792114	b.
+031	0.9214566163162687	Los primeros tienen su propio sistema operativo y los segundos no.
+032	0.6250498493512472	C.
+033	0.9021339083121995	Losprimeros son sistemas multiprocesadoresylos segundosno.
+034	0.933620782512607	d. Los primeros son sistemas multicomputadores y los segundos no.
+035	0.8906733260225894	La respuesta correcta es: Ambos tienen su propio sistema operativo
+036	0.9413951513094779	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170237&cmid=1517956
+037	0.5704200565814972	1/7
+\n=== PAGE 2 ===
+001	0.8629034246717181	11/1/26,19:26
+002	0.928220159926657	Cuestionario deAutoevaluacion UD3:Revision del intentoIUAX
+003	0.8477093469012867	Pregunta 3
+004	0.8825861281818814	Correcta
+005	0.8619905354884955	Se puntua 1,00 sobre 1,00
+006	0.938920133822673	Elusodeunmiddlewarepretenderesolver:
+007	0.6629579861958822	a.
+008	0.9056620486080647	Losproblemasderivadosde laextensibilidaddeunsistemadistribuido.
+009	0.6530291239420573	b.
+010	0.9286280520378597	Losproblemasderivadosdelaheterogeneidadenunsistemadistribuido.
+011	0.6567771633466085	C.
+012	0.9431756399047206	Los problemas derivados de la escalabilidad de un sistema distribuido.
+013	0.660826563835144	d.
+014	0.9095154027395611	Losproblemas derivados delatransparencia a laubicacionenunsistema distribuido.
+015	0.9298545517483536	La respuesta correcta es: Los problemas derivados de la heterogeneidad en un sistema distribuido.
+016	0.8542114929719404	Pregunta 4
+017	0.8734140992164612	Correcta
+018	0.8662688181950495	Se puntua 1,00 sobre 1,00
+019	0.9371685864012919	iCual de las siguientes afirmaciones sobre los sistemas distribuidos es cierta?:
+020	0.6642371813456217	a.
+021	0.9211029464548285	No pueden utilizarse para aumentarla velocidad de ejecucion de aplicaciones.
+022	0.6653900345166525	b.
+023	0.8986533129656756	Nosonsistemasconcurrentes.
+024	0.652962883313497	C.
+025	0.8960887312889099	Nosonsistemasescalables.
+026	0.6549440026283264	d.
+027	0.9375524244926594	Sonsistemasquefavorecenelaccesoarecursos compartidos.
+028	0.9388952875137329	Larespuestacorrectaes:Sonsistemasquefavorecenelaccesoarecursoscompartidos.
+029	0.8090191808613864	Pregunta 5
+030	0.8769533832867941	Correcta
+031	0.8825197655421037	Se puntua 1,00 sobre 1,00
+032	0.9341187173465513	En un sistema distribuido, heterogeneidad significa:
+033	0.651881476243337	a.
+034	0.9307411859432856	Quetodoslossistemasutilizanlamismaarquitectura.
+035	0.6657631595929464	b.
+036	0.927314927383345	Quetodosloselementosutilizanlosmismosprotocolos.
+037	0.5079436500867208	C.
+038	0.9234257086794427	Quesepuedenanadir nuevos elementos al sistema.
+039	0.6428698301315308	d.
+040	0.9091163512763627	La respuesta correcta es: Que los elementos integrantes del sistema pueden tener diferencias significativas.
+041	0.945131813104336	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170237&cmid=1517956
+042	0.6714117228984833	2/7
+\n=== PAGE 3 ===
+001	0.8549464305241903	11/1/26, 19:26
+002	0.9202898183176594	Cuestionario de Autoevaluacion UD3:Revision del intento I UAX
+003	0.8028054372830824	Pregunta 6
+004	0.874838199880388	Correcta
+005	0.8284788406812228	Se puntua 1.,00 sobre1,00
+006	0.9157755536337694	Siunserviciosesolicitadeformadistintaenlamaquinadonderesideque enresto:
+007	0.6623428662618002	a.
+008	0.889448881149292	Podemos afirmarque el sistema no estransparente a la ubicacion.
+009	0.6438141266504923	b.
+010	0.899890359548422	Podemos afirmar que elsistema no estransparentea laconcurrencia.
+011	0.8766907965764403	Podemos afirmar que el sistema noestransparente a la movilidad.
+012	0.6598145564397176	d.
+013	0.8835762189380054	Podemos afirmarqueel sistemano es transparenteal acceso.O
+014	0.8573013598268683	Pregunta 7
+015	0.8222719960742526	Correcta
+016	0.8569327615774595	Se puntua 1,00 sobre 1,00
+017	0.9168181217044865	Queun servicio se solicite como127.0.0.1/service desde una maquinaycomo198.162.1.32/service desde otraindica
+018	0.6654936671257019	a.
+019	0.9202656080114081	Transparencia acceso pero no a la ubicacion. O
+020	0.656648854414622	b.
+021	0.8872818594076195	Transparenciaala ubicacionpero no ala movilidad.
+022	0.652962883313497	C.
+023	0.929488026514286	Transparenciaalaubicacionperonoalacceso.
+024	0.6604224046071371	d.
+025	0.9131857766045465	Transparencia acceso pero no a la movilidad.
+026	0.8817655714228749	Larespuesta correctaes: Transparenciaaccesoperono ala ubicacion
+027	0.8159143111922524	Pregunta 8
+028	0.8771709005037943	Correcta
+029	0.8506303560733796	Se puntua 1,00 sobre1,00
+030	0.922341501712799	iCual de las siguientes no es una caracteristica de los sistemas distribuidos?:
+031	0.6654123465220133	a.
+032	0.8532382007372581	Son sistemas que se basan en el uso de memoria compartida.
+033	0.6657631595929464	b.
+034	0.6527802348136902	C.
+035	0.8845911894525801	Son sistemasdonde hay replicacion.
+036	0.6564763784408569	d.
+037	0.8930255192698855	Son sistemas tolerantes afallos.
+038	0.9382220078737308	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170237&cmid=1517956
+039	0.5623085498809814	3/7
+\n=== PAGE 4 ===
+001	0.864185128893171	11/1/26,19:26
+002	0.9219603596195098	Cuestionario de Autoevaluacion UD3:Revision del intento I UAX
+003	0.8246068060398102	Pregunta 9
+004	0.8769155740737915	Correcta
+005	0.8475598299503326	Se puntua 1,00 sobre1,00
+006	0.9083112376076835	En un sistema multicomputador MPP:
+007	0.6642526984214783	a.
+008	0.9313457378974328	Cadanodo llevasupropiosistemaoperativo
+009	0.8841311777079547	La memoria es distribuida.
+010	0.5711298982302347	C.
+011	0.891506589949131	Lamemoriaes compartida.
+012	0.6539382934570312	d.
+013	0.9401525029769311	Losprocesadoresnoestaninterconectados.
+014	0.91402538430016	La respuesta correcta es: La memoria es distribuida.
+015	0.8323759883642197	Pregunta 10
+016	0.7765012708577242	Incorrecta
+017	0.8670395750265855	Se puntua 0.00 sobre 1,00
+018	0.9301320494607438	Elusodeprotocolosabiertospretenderesolver:
+019	0.5784870783487955	a.
+020	0.9172576548623257	Losproblemas derivadosde laseguridad enunsistemadistribuido.
+021	0.6659228801727295	b.
+022	0.9239866326789599	Los problemas derivados de la heterogeneidad en un sistema distribuido. @
+023	0.928908150820505	Losproblemasderivadosdelaextensibilidaddeunsistemadistribuido.
+024	0.6551071206728617	d.
+025	0.9090098679905206	Los problemas derivados de la escalabilidad de un sistema distribuido.
+026	0.9157731453168023	La respuesta correcta es: Los problemas derivados de la extensibilidad de un sistema distribuido
+027	0.851985827088356	Pregunta 11
+028	0.8835419548882378	Correcta
+029	0.8540581075044779	Se puntua 1,00 sobre 1,00
+030	0.9345630495274653	Siun ciertoproceso puedeejecutarseenunamaquinaperono enotra:
+031	0.6387248635292053	a.
+032	0.8986859028456641	Podemos afirmar que el sistema no es transparente al acceso.
+033	0.6657631595929464	b.
+034	0.8852366675501284	Podemos afirmar que el sistema no es transparente a la concurrencia.
+035	0.5988673170407613	C.
+036	0.9081574976444244	Podemos afirmarque el sistema noestransparente a laubicacion.
+037	0.6564763784408569	d.
+038	0.8898632723551531	Podemos afirmar que el sistema no es transparente a lamovilidad.
+039	0.9094969254472981	La respuesta correcta es: Podemos afirmar que el sistema no es transparente a la movilidad.
+040	0.9390568733215332	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170237&cmid=1517956
+041	0.7401837408542633	4/7
+\n=== PAGE 5 ===
+001	0.8501592755317688	11/1/26, 19:26
+002	0.9188237317272874	Cuestionario deAutoevaluacion UD3:Revision del intento I UAX
+003	0.7974574888745943	Pregunta 12
+004	0.875302791595459	Correcta
+005	0.8240375392712079	Se puntua 1.,00 sobre1,00
+006	0.9395127471288045	Siunciertoservicionofunciona correctamentecuandolosolicitanvariosprocesos:
+007	0.6622054576873779	a.
+008	0.6441867550214132	b.
+009	0.888922052582105	Podemos afirmarque elsistema no estransparentealaubicacion.
+010	0.9096484845334833	Podemos afirmarque elsistema noestransparentealacceso.
+011	0.6520110964775085	d.
+012	0.9428122967986737	Podemosafirmarqueelsistemanoestransparentealaconcurrencia.
+013	0.860545429316434	Pregunta13
+014	0.8722808162371317	Correcta
+015	0.8472553021632708	Se puntua 1,00 sobre 1,00
+016	0.9133942289785906	iCual de las siguientes es una caracteristica de los sistemas distribuidos?:
+017	0.6626952091852824	a.
+018	0.9329173974692822	Sonsistemasquenotienennecesidadesdesincronizacionycomunicacion.
+019	0.6652544339497884	b.
+020	0.8712123073637486	Sonsistemasintolerantesafallos.
+021	0.6569503545761108	C.
+022	0.9280439681477017	Sonsistemasdondeno hay replicacion.
+023	0.6542572776476542	d.
+024	0.9230420225196414	Son sistemas que no disponen de memoria compartida. O
+025	0.931733407757499	Larespuestacorrectaes:Sonsistemasquenodisponendememoriacompartida
+026	0.8026059021552404	Pregunta 14
+027	0.8776045838991801	Correcta
+028	0.853154354095459	Se puntua 1,00 sobre1,00
+029	0.9293661539430742	iCual de las siguientes es una caracteristica de los sistemas distribuidos?:
+030	0.6521640022595724	a.
+031	0.9057165017494788	Son sistemas donde no hay paralelismo.
+032	0.6650340755780538	b.
+033	0.8995519760178357	Son sistemasconpuntosdefallolocalizados.
+034	0.6562924981117249	C.
+035	0.872846691949027	Son sistemas intolerantes afallos.
+036	0.6564763784408569	d.
+037	0.9244789675790437	Son sistemas sin un reloj global de referencia.
+038	0.8960044462647703	La respuesta correctaes:Son sistemas sin un reloj global de referencia.
+039	0.9445297175492996	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170237&cmid=1517956
+040	0.6608441770076752	5/7
+\n=== PAGE 6 ===
+001	0.8715840776761373	11/1/26, 19:26
+002	0.9051090017441781	Cuestionario de Autoevaluacion UD3:Revision del intento I UAX
+003	0.898483564456304	Pregunta 15
+004	0.8714960482385423	Correcta
+005	0.8423437893390655	Se puntua 1,00 sobre1,00
+006	0.9284211985052448	iCual de las siguientes es una desventaja de los sistemas distribuidos?:
+007	0.6623428662618002	a.
+008	0.8919728738921029	Noexisten elementosquepuedandarlugaracuellosdebotellas.
+009	0.6438141266504923	b.
+010	0.9364188055734377	Elsoftwareadesarrollaresmassencillo.
+011	0.901773007904611	La distribucionno requiere ningun coste.
+012	0.6539382934570312	d.
+013	0.866108870277038	Hay un decremento enla seguridad de la informacion.
+014	0.8948072523642809	La respuesta correcta es: Hay un decremento enla seguridad de la informacion.
+015	0.8996961663166682	Pregunta 16
+016	0.8699725800090365	Correcta
+017	0.8896707021273099	Se puntua 1,00 sobre 1,00
+018	0.8891100994512147	Si en un sistema distribuido ocurre que el incrementodel usuarios degrada notablemente surendimiento:
+019	0.6626952091852824	a.
+020	0.89169732902361	Podemos afirmar que el sistema no es transparente a la concurrencia.
+021	0.6658087571461996	b.
+022	0.9063012758890788	Podemos afirmar que el sistema no es seguro.
+023	0.6453604499499003	C.
+024	0.918966429233551	Podemos afirmar que el sistema no es escalable. O
+025	0.6604224046071371	d.
+026	0.9416227316369816	Podemos afirmar que el sistema no es extensible.
+027	0.764037474989891	Pregunta 17
+028	0.8753418193923103	Correcta
+029	0.8587417912483215	Se puntua 1,00 sobre1,00
+030	0.8837769919512223	Sipara acceder a un determinado servicio es necesario conocer lamaquina donde reside su servidor:
+031	0.911530089551124	Podemos afirmar que el sistema no es transparente a la concurrencia.
+032	0.6657631595929464	b.
+033	0.9253335986564408	Podemos afirmar que el sistema no es transparente a la ubicacion.
+034	0.6456281145413717	C.
+035	0.9025620818138123	Podemos afirmarque elsistema noestransparentealacceso
+036	0.6630755464235941	d.
+037	0.8875040952116251	Podemos afirmar que elsistema no es transparentea la movilidad.
+038	0.9005781580572543	La respuesta correcta es: Podemos afirmar que el sistema no es transparente a la ubicacion.
+039	0.9383777059041537	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170237&cmid=1517956
+040	0.5371141135692596	6/7
+\n=== PAGE 7 ===
+001	0.8725859182221549	11/1/26,19:26
+002	0.9206683733424202	Cuestionario de Autoevaluacion UD3:Revision del intento IUAX
+003	0.8241986036300659	Pregunta 18
+004	0.873380098077986	Correcta
+005	0.8690410852432251	Se puntua 1,00 sobre 1,00
+006	0.9399925477802753	iCual de las siguientes no es una caracteristica de los sistemas distribuidos?:
+007	0.6638536055882772	a.
+008	0.8783734349104074	Lossistemassonescalables.
+009	0.596788763999939	b.
+010	0.9402379465103149	Lossistemastienenaccesoaserviciosdeotrossistemas.
+011	0.9462983137682864	Tienenbuena relacioncoste/rendimiento
+012	0.5921602646509806	d.
+013	0.9300696714719137	Losmecanismos decomunicacion no puedenembeberseenlenguajes deprogramacion.
+014	0.8090602904558182	Pregunta 19
+015	0.8816250960032145	Correcta
+016	0.8701177915701499	Se puntua 1,00 sobre 1,00
+017	0.9606100482099197	Queunservidordecorreoelectronicoreenvieautomaticamentecorreosdevueltos esunejempode:
+018	0.6570461789766947	a.
+019	0.8472489953041077	Transparencia a la movilidad.
+020	0.6656055053075155	b.
+021	0.8940632902085781	Transparenciaala escalabilidad.
+022	0.5066632827123007	C.
+023	0.9103485213385688	Transparenciaalaubicacion.
+024	0.6542572776476542	d.
+025	0.9408622169494629	Transparenciaalosfallos.
+026	0.9003739741941293	Larespuestacorrectaes:Transparenciaa losfallos.
+027	0.8916944017012914	Pregunta 20
+028	0.876260863410102	Correcta
+029	0.8676591297754874	Se puntua 1,00 sobre 1,00
+030	0.9315936032682657	iCual de las siguientes no es una caracteristica de los sistemas distribuidos?:
+031	0.6607489387194315	a.
+032	0.9221294485792821	Son sistemas que integran elementos identicos. O
+033	0.6650340755780538	b.
+034	0.9214107756103788	Sonsistemasconnecesidadesdesincronizacionycomunicacion.
+035	0.8897765101047984	Sonsistemasdonde laocurrenciadefallosno esta localizada.
+036	0.6564763784408569	d.
+037	0.8993503257632256	Son sistemas donde no existe un reloj global de referencia.
+038	0.9247562762809126	La respuesta correcta es: Son sistemas que integran elementos identicos.
+039	0.9415126542250315	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170237&cmid=1517956
+040	0.5849677920341492	7/7
