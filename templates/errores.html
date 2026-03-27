@@ -61,109 +61,123 @@
             </aside>
         </section>
 
-        <section id="session-layout" class="session-layout card shadow-sm border-0 hidden">
-            <div class="session-topbar">
-                <div class="title-stack">
-                    <span class="eyebrow">Partido activo</span>
-                    <h2 class="section-title large" id="player-heading">Jugador</h2>
-                    <p class="panel-text" id="session-subtext">Sesión de scouting lista para capturar errores.</p>
-                </div>
+        <section id="session-layout" class="session-layout hidden">
+            <div class="row g-3 session-grid align-items-start">
+                <div class="col-12 col-lg-9">
+                    <div class="d-flex flex-column gap-3">
+                        {% for block in counter_blocks %}
+                        <article class="counter-section counter-block counter-block--{{ block.id }} card border shadow-sm">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                                    <div>
+                                        <p class="section-kicker mb-1">{{ block.subtitle }}</p>
+                                        <h3 class="section-title mb-0">{{ block.title }}</h3>
+                                    </div>
+                                    <small class="block-hint">Info en <strong>?</strong></small>
+                                </div>
 
-                <div class="topbar-tools">
-                    <div class="meta-grid">
-                        <article class="meta-card card shadow-sm border-0">
-                            <span class="meta-label">ID Partido</span>
-                            <strong id="match-id" class="meta-value">1</strong>
-                        </article>
-                        <article class="meta-card card shadow-sm border-0">
-                            <span class="meta-label">Set actual</span>
-                            <strong id="current-set" class="meta-value">1</strong>
-                        </article>
-                        <article class="meta-card highlight card shadow-sm border-0">
-                            <span class="meta-label">Total ENF set</span>
-                            <strong id="current-total" class="meta-value">0</strong>
-                        </article>
-                    </div>
+                                <div class="row g-3 counter-grid">
+                                    {% for field in block.fields %}
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="{{ field.key }}">
+                                            <div class="card-body p-3 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                                                    <span class="counter-badge">{{ field.short }}</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="{{ error_tooltips[field.key] }}"
+                                                        aria-label="Ver descripción de {{ field.label }}"
+                                                    >?</span>
+                                                </div>
 
-                    <button id="change-player-btn" class="ghost-btn" type="button">Cambiar jugador</button>
-                </div>
-            </div>
+                                                <div class="counter-main text-center mb-3">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-{{ field.key }}" for="">{{ 0 }}</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">{{ field.label }}</h4>
+                                                </div>
 
-            <div class="counter-layout">
-                <div class="counter-column">
-                    {% for block in counter_blocks %}
-                    <article class="counter-block counter-block--{{ block.id }} card shadow-sm border-0">
-                        <div class="block-title-row">
-                            <div>
-                                <p class="section-kicker">{{ block.subtitle }}</p>
-                                <h3 class="section-title">{{ block.title }}</h3>
+                                                <div class="counter-controls d-grid gap-2">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a {{ field.label }}">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a {{ field.label }}">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
                             </div>
-                            <p class="block-hint">Las descripciones se consultan solo desde el icono <strong>?</strong>.</p>
-                        </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </div>
 
-                        <div class="counter-list">
-                            {% for field in block.fields %}
-                            <div class="counter-card card shadow-sm border-0" data-field="{{ field.key }}">
-                                <div class="counter-meta">
-                                    <span class="counter-badge">{{ field.short }}</span>
-                                    <div class="counter-title-line">
-                                        <h4 class="counter-name">{{ field.label }}</h4>
-                                        <span
-                                            class="tooltip-dot"
-                                            tabindex="0"
-                                            data-tooltip="{{ error_tooltips[field.key] }}"
-                                            aria-label="Ver descripción de {{ field.label }}"
-                                        >?</span>
+                <div class="col-12 col-lg-3">
+                    <div class="side-panel d-flex flex-column gap-3">
+                        <article class="summary-sidecard card border shadow-sm">
+                            <div class="card-body p-3 d-flex flex-column gap-3">
+                                <div>
+                                    <p class="section-kicker mb-1">Control de sesión</p>
+                                    <h2 class="control-player-name mb-0" id="player-heading">Jugador</h2>
+                                    <p class="panel-text compact-text mb-0" id="session-subtext">Sesión de scouting lista para capturar errores.</p>
+                                </div>
+
+                                <div class="session-stats d-grid gap-2">
+                                    <article class="session-stat card border shadow-sm">
+                                        <div class="card-body p-3">
+                                            <span class="meta-label">ID partido</span>
+                                            <strong id="match-id" class="meta-value">1</strong>
+                                        </div>
+                                    </article>
+                                    <article class="session-stat card border shadow-sm">
+                                        <div class="card-body p-3">
+                                            <span class="meta-label">Set actual</span>
+                                            <strong id="current-set" class="meta-value">1</strong>
+                                        </div>
+                                    </article>
+                                    <article class="session-stat session-stat-highlight card border shadow-sm">
+                                        <div class="card-body p-3">
+                                            <span class="meta-label">Total errores</span>
+                                            <strong id="current-total" class="meta-value">0</strong>
+                                        </div>
+                                    </article>
+                                </div>
+
+                                <div class="action-bar d-grid gap-2">
+                                    <button id="change-set-btn" class="secondary-btn btn btn-primary w-100" type="button">Cambio de Set</button>
+                                    <button id="finalize-match-btn" class="danger-btn btn btn-warning w-100" type="button">Finalizar Partido</button>
+                                    <button id="change-player-btn" class="ghost-btn btn btn-outline-light w-100" type="button">Cambiar jugador</button>
+                                </div>
+
+                                <div id="session-message" class="status-message mb-0" role="status" aria-live="polite"></div>
+                            </div>
+                        </article>
+
+                        <article class="saved-sets-card card border shadow-sm">
+                            <div class="card-body p-3 d-flex flex-column gap-3">
+                                <div>
+                                    <p class="section-kicker mb-1">Revisión rápida</p>
+                                    <h3 class="section-title mb-0">Sets capturados</h3>
+                                </div>
+
+                                <div class="priority-strip hidden">
+                                    <div class="priority-copy">
+                                        <span class="priority-kicker">Mayor error ahora</span>
+                                        <strong id="priority-label" class="priority-label">Sin datos</strong>
+                                        <p id="priority-value" class="priority-value mb-0">Empieza a contar para detectar qué corregir primero.</p>
+                                    </div>
+                                    <div class="live-chart-wrap">
+                                        <canvas id="live-error-chart"></canvas>
                                     </div>
                                 </div>
 
-                                <div class="counter-controls">
-                                    <button class="count-btn minus" type="button" data-action="decrease" aria-label="Restar uno a {{ field.label }}">-1</button>
-                                    <output class="counter-number" id="value-{{ field.key }}" for="">{{ 0 }}</output>
-                                    <button class="count-btn plus" type="button" data-action="increase" aria-label="Sumar uno a {{ field.label }}">+1</button>
+                                <div id="saved-sets" class="saved-sets-list">
+                                    <div class="saved-set-item">
+                                        <p class="muted-text mb-0">Todavía no hay sets guardados en esta sesión.</p>
+                                    </div>
                                 </div>
                             </div>
-                            {% endfor %}
-                        </div>
-                    </article>
-                    {% endfor %}
-                </div>
-
-                <div class="counter-column side-column">
-                    <article class="summary-sidecard card shadow-sm border-0">
-                        <span class="eyebrow">Controles de sesión</span>
-                        <h3 class="section-title">Gestión del partido</h3>
-                        <p class="panel-text compact-text">
-                            Cambio de Set guarda en memoria. Finalizar Partido persiste en CSV.
-                        </p>
-
-                        <div class="action-bar vertical">
-                            <button id="change-set-btn" class="secondary-btn" type="button">Cambio de Set</button>
-                            <button id="finalize-match-btn" class="danger-btn" type="button">Finalizar Partido</button>
-                        </div>
-
-                        <div id="session-message" class="status-message" role="status" aria-live="polite"></div>
-                    </article>
-
-                    <article class="saved-sets-card card shadow-sm border-0">
-                        <span class="eyebrow">Revisión rápida</span>
-                        <h3 class="section-title">Sets capturados</h3>
-                        <div class="priority-strip">
-                            <div class="priority-copy">
-                                <span class="priority-kicker">Mayor error ahora</span>
-                                <strong id="priority-label" class="priority-label">Sin datos</strong>
-                                <p id="priority-value" class="priority-value">Empieza a contar para detectar qué corregir primero.</p>
-                            </div>
-                            <div class="live-chart-wrap">
-                                <canvas id="live-error-chart"></canvas>
-                            </div>
-                        </div>
-                        <div id="saved-sets" class="saved-sets-list">
-                            <div class="saved-set-item">
-                                <p class="muted-text">Todavía no hay sets guardados en esta sesión.</p>
-                            </div>
-                        </div>
-                    </article>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>

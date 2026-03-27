@@ -1114,3 +1114,308 @@ tbody tr:hover {
         gap: 14px;
     }
 }
+
+body.padel-app.page-errores {
+    background:
+        radial-gradient(circle at top left, rgba(94, 128, 172, 0.16), transparent 26%),
+        linear-gradient(180deg, #17212b 0%, #1d2733 100%);
+}
+
+.page-errores {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.page-errores .page-shell {
+    height: 100vh;
+    padding: 16px;
+}
+
+.page-errores .session-layout {
+    height: calc(100vh - 32px);
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+.page-errores .session-grid {
+    height: 100%;
+}
+
+.page-errores .counter-section,
+.page-errores .summary-sidecard,
+.page-errores .saved-sets-card {
+    background: #202b37;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 10px 24px rgba(5, 10, 17, 0.16) !important;
+    color: #f5f7fb;
+}
+
+.page-errores .counter-section .card-body,
+.page-errores .summary-sidecard .card-body,
+.page-errores .saved-sets-card .card-body {
+    min-height: 0;
+}
+
+.page-errores .counter-section {
+    margin-bottom: 0;
+}
+
+.page-errores .section-kicker {
+    color: rgba(220, 228, 238, 0.72);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.page-errores .section-title,
+.page-errores .control-player-name,
+.page-errores .priority-label,
+.page-errores .saved-set-title {
+    color: #f8fafc;
+}
+
+.page-errores .section-title {
+    font-size: 1.05rem;
+}
+
+.page-errores .control-player-name {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.45rem;
+    line-height: 1.1;
+}
+
+.page-errores .block-hint,
+.page-errores .panel-text,
+.page-errores .muted-text,
+.page-errores .priority-value,
+.page-errores .counter-name {
+    color: rgba(225, 232, 241, 0.76);
+}
+
+.page-errores .block-hint {
+    font-size: 0.74rem;
+}
+
+.page-errores .counter-card,
+.page-errores .session-stat,
+.page-errores .saved-set-item,
+.page-errores .priority-strip {
+    background: #2a3745;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+}
+
+.page-errores .counter-card {
+    border-radius: 8px;
+    min-height: 218px;
+}
+
+.page-errores .counter-card .card-body {
+    min-height: 100%;
+}
+
+.page-errores .counter-badge {
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.09);
+    color: #f8fafc;
+    font-size: 0.72rem;
+}
+
+.page-errores .tooltip-dot {
+    width: 22px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+}
+
+.page-errores .counter-main {
+    flex: 1;
+}
+
+.page-errores .counter-number {
+    color: #ffffff;
+    font-size: 2rem;
+}
+
+.page-errores .counter-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.page-errores .count-btn {
+    min-height: 42px;
+    border-radius: 8px;
+    font-weight: 800;
+}
+
+.page-errores .count-btn.minus {
+    color: #ff8080;
+    border-color: rgba(255, 128, 128, 0.45);
+    background: rgba(220, 53, 69, 0.08);
+}
+
+.page-errores .count-btn.plus {
+    color: #87db9f;
+    border-color: rgba(135, 219, 159, 0.45);
+    background: rgba(25, 135, 84, 0.08);
+}
+
+.page-errores .count-btn.minus:hover,
+.page-errores .count-btn.minus:focus-visible {
+    background: rgba(220, 53, 69, 0.16);
+    color: #ffb0b0;
+}
+
+.page-errores .count-btn.plus:hover,
+.page-errores .count-btn.plus:focus-visible {
+    background: rgba(25, 135, 84, 0.16);
+    color: #b4f0c5;
+}
+
+.page-errores .side-panel {
+    position: sticky;
+    top: 0;
+    max-height: calc(100vh - 32px);
+}
+
+.page-errores .summary-sidecard .card-body,
+.page-errores .saved-sets-card .card-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.page-errores .session-stats {
+    grid-template-columns: 1fr;
+}
+
+.page-errores .session-stat .card-body {
+    padding: 0.9rem 1rem;
+}
+
+.page-errores .session-stat-highlight {
+    background: #324659;
+}
+
+.page-errores .meta-label {
+    color: rgba(225, 232, 241, 0.7);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+}
+
+.page-errores .meta-value {
+    color: #ffffff;
+    font-size: 1.65rem;
+}
+
+.page-errores .secondary-btn,
+.page-errores .danger-btn,
+.page-errores .ghost-btn {
+    min-height: 46px;
+    border-radius: 8px;
+    font-weight: 800;
+    box-shadow: none;
+}
+
+.page-errores .secondary-btn {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #fff;
+}
+
+.page-errores .danger-btn {
+    background: #f59e0b;
+    border-color: #f59e0b;
+    color: #111827;
+}
+
+.page-errores .ghost-btn {
+    color: #eaf0f7;
+    border-color: rgba(255, 255, 255, 0.16);
+    background: transparent;
+}
+
+.page-errores .priority-strip {
+    gap: 0.9rem;
+    border-radius: 8px;
+}
+
+.page-errores .priority-kicker {
+    color: rgba(255, 255, 255, 0.66);
+}
+
+.page-errores .priority-value {
+    margin-bottom: 0;
+}
+
+.page-errores .live-chart-wrap {
+    height: 124px;
+}
+
+.page-errores .saved-sets-card {
+    min-height: 0;
+}
+
+.page-errores .saved-sets-list {
+    min-height: 0;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.page-errores .saved-set-item {
+    border-radius: 8px;
+}
+
+.page-errores .saved-set-total {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f8fafc;
+}
+
+.page-errores .saved-chip {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #edf2f7;
+}
+
+.page-errores .status-message {
+    min-height: 22px;
+}
+
+@media (max-width: 991.98px) {
+    .page-errores {
+        height: auto;
+        overflow: auto;
+    }
+
+    .page-errores .page-shell,
+    .page-errores .session-layout {
+        height: auto;
+    }
+
+    .page-errores .side-panel {
+        position: static;
+        max-height: none;
+    }
+
+    .page-errores .saved-sets-card {
+        max-height: 520px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-errores .page-shell {
+        padding: 12px;
+    }
+
+    .page-errores .counter-card {
+        min-height: 196px;
+    }
+
+    .page-errores .counter-number {
+        font-size: 1.85rem;
+    }
+}
