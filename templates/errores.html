@@ -91,7 +91,7 @@
             <div class="counter-layout">
                 <div class="counter-column">
                     {% for block in counter_blocks %}
-                    <article class="counter-block">
+                    <article class="counter-block counter-block--{{ block.id }}">
                         <div class="block-title-row">
                             <div>
                                 <p class="section-kicker">{{ block.subtitle }}</p>
@@ -133,8 +133,7 @@
                         <span class="eyebrow">Controles de sesión</span>
                         <h3 class="section-title">Gestión del partido</h3>
                         <p class="panel-text compact-text">
-                            <strong>Cambio de Set</strong> guarda el set actual en memoria.
-                            <strong>Finalizar Partido</strong> persiste todos los sets en el CSV del jugador.
+                            Cambio de Set guarda en memoria. Finalizar Partido persiste en CSV.
                         </p>
 
                         <div class="action-bar vertical">
@@ -143,7 +142,6 @@
                         </div>
 
                         <div id="session-message" class="status-message" role="status" aria-live="polite"></div>
-                        <p class="inline-note">El backend recalcula siempre el total del set antes de guardar.</p>
                     </article>
 
                     <article class="saved-sets-card">
