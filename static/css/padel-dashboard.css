@@ -1385,6 +1385,256 @@ body.padel-app.page-errores {
     min-height: 22px;
 }
 
+.page-errores .page-shell {
+    padding: 12px;
+}
+
+.page-errores .session-layout {
+    height: calc(100vh - 24px);
+}
+
+.page-errores .session-grid {
+    height: 100%;
+    --bs-gutter-x: 0.5rem;
+    --bs-gutter-y: 0.5rem;
+}
+
+.page-errores .session-grid > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.page-errores .counter-stack {
+    min-height: 0;
+    height: 100%;
+}
+
+.page-errores .counter-section,
+.page-errores .summary-sidecard,
+.page-errores .saved-sets-card {
+    min-height: 0;
+}
+
+.page-errores .counter-section .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.page-errores .counter-grid {
+    --bs-gutter-x: 0.5rem;
+    --bs-gutter-y: 0.5rem;
+    align-content: start;
+}
+
+.page-errores .counter-section .section-title {
+    font-size: 0.98rem;
+}
+
+.page-errores .section-kicker {
+    font-size: 0.68rem;
+}
+
+.page-errores .block-hint {
+    display: none;
+}
+
+.page-errores .counter-card {
+    min-height: 158px;
+}
+
+.page-errores .counter-badge {
+    min-width: 30px;
+    height: 24px;
+    padding: 0 8px;
+    font-size: 0.66rem;
+}
+
+.page-errores .tooltip-dot {
+    width: 20px;
+    height: 20px;
+    font-size: 0.68rem;
+}
+
+.page-errores .counter-number {
+    font-size: 1.7rem;
+}
+
+.page-errores .counter-name {
+    font-size: 0.8rem;
+    line-height: 1.2;
+}
+
+.page-errores .count-btn {
+    min-height: 34px;
+    padding: 0.32rem 0.5rem;
+    font-size: 0.82rem;
+}
+
+.page-errores .side-panel {
+    height: 100%;
+    max-height: calc(100vh - 24px);
+    min-height: 0;
+}
+
+.page-errores .summary-sidecard {
+    flex: 0 0 auto;
+}
+
+.page-errores .summary-sidecard .card-body {
+    gap: 0.5rem !important;
+}
+
+.page-errores .control-player-name {
+    font-size: 1.2rem;
+}
+
+.page-errores #session-subtext {
+    font-size: 0.74rem;
+    line-height: 1.25;
+    max-height: 2.5em;
+    overflow: hidden;
+}
+
+.page-errores .session-stats {
+    --bs-gutter-x: 0.45rem;
+    --bs-gutter-y: 0.45rem;
+}
+
+.page-errores .session-stat .card-body {
+    padding: 0.55rem 0.6rem !important;
+    gap: 2px;
+}
+
+.page-errores .meta-label {
+    margin-bottom: 2px;
+    font-size: 0.62rem;
+}
+
+.page-errores .meta-value {
+    font-size: 1.18rem;
+    line-height: 1;
+}
+
+.page-errores .action-grid {
+    gap: 0 !important;
+}
+
+.page-errores .action-grid > [class*="col-"] {
+    display: flex;
+}
+
+.page-errores .secondary-btn,
+.page-errores .danger-btn,
+.page-errores .ghost-btn {
+    min-height: 38px;
+    padding: 0.42rem 0.6rem;
+    font-size: 0.83rem;
+}
+
+.page-errores .status-message {
+    min-height: 18px;
+    font-size: 0.76rem;
+    line-height: 1.25;
+}
+
+.page-errores .saved-sets-card {
+    flex: 1 1 auto;
+}
+
+.page-errores .saved-sets-card .card-body {
+    min-height: 0;
+}
+
+.page-errores .priority-strip {
+    padding: 10px;
+    gap: 0.6rem;
+}
+
+.page-errores .priority-label {
+    font-size: 0.94rem;
+}
+
+.page-errores .priority-value {
+    font-size: 0.84rem;
+    line-height: 1.35;
+}
+
+.page-errores .live-chart-wrap {
+    height: 92px;
+}
+
+.page-errores .saved-sets-list {
+    gap: 0.45rem;
+    padding-right: 2px;
+}
+
+.page-errores .saved-set-item {
+    padding: 0.55rem 0.65rem;
+}
+
+.page-errores .saved-set-top {
+    margin-bottom: 0.35rem;
+}
+
+.page-errores .saved-set-title {
+    font-size: 0.82rem;
+}
+
+.page-errores .saved-set-total {
+    padding: 4px 6px;
+    font-size: 0.7rem;
+}
+
+.page-errores .saved-chip {
+    padding: 4px 6px;
+    font-size: 0.68rem;
+}
+
+@media (max-height: 920px) and (min-width: 992px) {
+    .page-errores .page-shell {
+        padding: 10px;
+    }
+
+    .page-errores .session-layout,
+    .page-errores .side-panel {
+        height: calc(100vh - 20px);
+        max-height: calc(100vh - 20px);
+    }
+
+    .page-errores .counter-card {
+        min-height: 144px;
+    }
+
+    .page-errores .counter-number {
+        font-size: 1.52rem;
+    }
+
+    .page-errores .count-btn {
+        min-height: 32px;
+    }
+
+    .page-errores .control-player-name {
+        font-size: 1.08rem;
+    }
+
+    .page-errores .meta-value {
+        font-size: 1.05rem;
+    }
+
+    .page-errores .secondary-btn,
+    .page-errores .danger-btn,
+    .page-errores .ghost-btn {
+        min-height: 34px;
+        font-size: 0.78rem;
+    }
+
+    .page-errores .live-chart-wrap {
+        height: 78px;
+    }
+}
+
 @media (max-width: 991.98px) {
     .page-errores {
         height: auto;
@@ -1399,6 +1649,7 @@ body.padel-app.page-errores {
     .page-errores .side-panel {
         position: static;
         max-height: none;
+        height: auto;
     }
 
     .page-errores .saved-sets-card {
@@ -1412,11 +1663,17 @@ body.padel-app.page-errores {
     }
 
     .page-errores .counter-card {
-        min-height: 196px;
+        min-height: 176px;
     }
 
     .page-errores .counter-number {
-        font-size: 1.85rem;
+        font-size: 1.6rem;
+    }
+
+    .page-errores .secondary-btn,
+    .page-errores .danger-btn,
+    .page-errores .ghost-btn {
+        min-height: 36px;
     }
 }
 

@@ -62,13 +62,13 @@
         </section>
 
         <section id="session-layout" class="session-layout hidden">
-            <div class="row g-3 session-grid align-items-start">
+            <div class="row g-2 session-grid align-items-stretch">
                 <div class="col-12 col-lg-9">
-                    <div class="d-flex flex-column gap-3">
+                    <div class="counter-stack d-flex flex-column gap-2 h-100">
                         {% for block in counter_blocks %}
                         <article class="counter-section counter-block counter-block--{{ block.id }} card border shadow-sm">
-                            <div class="card-body p-3">
-                                <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                            <div class="card-body p-2">
+                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
                                     <div>
                                         <p class="section-kicker mb-1">{{ block.subtitle }}</p>
                                         <h3 class="section-title mb-0">{{ block.title }}</h3>
@@ -76,12 +76,12 @@
                                     <small class="block-hint">Info en <strong>?</strong></small>
                                 </div>
 
-                                <div class="row g-3 counter-grid">
+                                <div class="row g-2 counter-grid">
                                     {% for field in block.fields %}
                                     <div class="col-6 col-md-4 col-lg-3 d-flex">
                                         <div class="counter-card card border shadow-sm h-100 w-100" data-field="{{ field.key }}">
-                                            <div class="card-body p-3 d-flex flex-column justify-content-between h-100">
-                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
                                                     <span class="counter-badge">{{ field.short }}</span>
                                                     <span
                                                         class="tooltip-dot"
@@ -91,12 +91,12 @@
                                                     >?</span>
                                                 </div>
 
-                                                <div class="counter-main text-center mb-3">
+                                                <div class="counter-main text-center mb-2">
                                                     <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-{{ field.key }}" for="">{{ 0 }}</output>
                                                     <h4 class="counter-name small mb-0 mt-2">{{ field.label }}</h4>
                                                 </div>
 
-                                                <div class="counter-controls d-grid gap-2">
+                                                <div class="counter-controls d-grid gap-1">
                                                     <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a {{ field.label }}">-1</button>
                                                     <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a {{ field.label }}">+1</button>
                                                 </div>
@@ -112,40 +112,52 @@
                 </div>
 
                 <div class="col-12 col-lg-3">
-                    <div class="side-panel d-flex flex-column gap-3">
+                    <div class="side-panel d-flex flex-column gap-2 h-100">
                         <article class="summary-sidecard card border shadow-sm">
-                            <div class="card-body p-3 d-flex flex-column gap-3">
+                            <div class="card-body p-2 d-flex flex-column gap-2">
                                 <div>
                                     <p class="section-kicker mb-1">Control de sesión</p>
                                     <h2 class="control-player-name mb-0" id="player-heading">Jugador</h2>
                                     <p class="panel-text compact-text mb-0" id="session-subtext">Sesión de scouting lista para capturar errores.</p>
                                 </div>
 
-                                <div class="session-stats d-grid gap-2">
-                                    <article class="session-stat card border shadow-sm">
-                                        <div class="card-body p-3">
+                                <div class="row g-2 session-stats">
+                                    <div class="col-4">
+                                        <article class="session-stat card border shadow-sm h-100">
+                                            <div class="card-body p-2">
                                             <span class="meta-label">ID partido</span>
                                             <strong id="match-id" class="meta-value">1</strong>
-                                        </div>
-                                    </article>
-                                    <article class="session-stat card border shadow-sm">
-                                        <div class="card-body p-3">
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-4">
+                                        <article class="session-stat card border shadow-sm h-100">
+                                            <div class="card-body p-2">
                                             <span class="meta-label">Set actual</span>
                                             <strong id="current-set" class="meta-value">1</strong>
-                                        </div>
-                                    </article>
-                                    <article class="session-stat session-stat-highlight card border shadow-sm">
-                                        <div class="card-body p-3">
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-4">
+                                        <article class="session-stat session-stat-highlight card border shadow-sm h-100">
+                                            <div class="card-body p-2">
                                             <span class="meta-label">Total errores</span>
                                             <strong id="current-total" class="meta-value">0</strong>
-                                        </div>
-                                    </article>
+                                            </div>
+                                        </article>
+                                    </div>
                                 </div>
 
-                                <div class="action-bar d-grid gap-2">
-                                    <button id="change-set-btn" class="secondary-btn btn btn-primary w-100" type="button">Cambio de Set</button>
-                                    <button id="finalize-match-btn" class="danger-btn btn btn-warning w-100" type="button">Finalizar Partido</button>
-                                    <button id="change-player-btn" class="ghost-btn btn btn-outline-light w-100" type="button">Cambiar jugador</button>
+                                <div class="row g-2 action-bar action-grid">
+                                    <div class="col-6">
+                                        <button id="change-set-btn" class="secondary-btn btn btn-primary w-100" type="button">Cambio de Set</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button id="finalize-match-btn" class="danger-btn btn btn-warning w-100" type="button">Finalizar Partido</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button id="change-player-btn" class="ghost-btn btn btn-outline-light w-100" type="button">Cambiar jugador</button>
+                                    </div>
                                 </div>
 
                                 <div id="session-message" class="status-message mb-0" role="status" aria-live="polite"></div>
@@ -153,7 +165,7 @@
                         </article>
 
                         <article class="saved-sets-card card border shadow-sm">
-                            <div class="card-body p-3 d-flex flex-column gap-3">
+                            <div class="card-body p-2 d-flex flex-column gap-2">
                                 <div>
                                     <p class="section-kicker mb-1">Revisión rápida</p>
                                     <h3 class="section-title mb-0">Sets capturados</h3>
