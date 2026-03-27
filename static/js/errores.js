@@ -16,6 +16,9 @@
     const currentSetElement = document.getElementById('current-set');
     const currentTotalElement = document.getElementById('current-total');
     const savedSetsContainer = document.getElementById('saved-sets');
+    const priorityLabel = document.getElementById('priority-label');
+    const priorityValue = document.getElementById('priority-value');
+    const liveErrorChartCanvas = document.getElementById('live-error-chart');
     const changeSetButton = document.getElementById('change-set-btn');
     const finalizeMatchButton = document.getElementById('finalize-match-btn');
     const startSessionButton = document.getElementById('start-session-btn');
@@ -29,6 +32,7 @@
         counters: createEmptyCounters(),
         setsGuardados: [],
         isBusy: false,
+        liveChart: null,
     };
 
     function createEmptyCounters() {
@@ -83,6 +87,132 @@
         sessionLayout.classList.add('hidden');
     }
 
+    function destroyLiveChart() {
+        if (state.liveChart) {
+            state.liveChart.destroy();
+            state.liveChart = null;
+        }
+    }
+
+    function getSessionAggregateTotals() {
+        const totals = createEmptyCounters();
+
+        state.setsGuardados.forEach((setData) => {
+            errorFields.forEach((field) => {
+                totals[field] += setData[field] || 0;
+            });
+        });
+
+        errorFields.forEach((field) => {
+            totals[field] += state.counters[field] || 0;
+        });
+
+        return totals;
+    }
+
+    function getRankedErrors() {
+        const totals = getSessionAggregateTotals();
+
+        return errorFields
+            .map((field) => ({
+                field,
+                label: errorLabels[field] || field,
+                total: totals[field] || 0,
+            }))
+            .filter((item) => item.total > 0)
+            .sort((left, right) => right.total - left.total || left.label.localeCompare(right.label, 'es'));
+    }
+
+    function renderPriorityChart() {
+        const rankedErrors = getRankedErrors();
+
+        if (!rankedErrors.length) {
+            priorityLabel.textContent = 'Sin datos';
+            priorityValue.textContent = 'Empieza a contar para detectar qué corregir primero.';
+            destroyLiveChart();
+            return;
+        }
+
+        const topError = rankedErrors[0];
+        priorityLabel.textContent = topError.label;
+        priorityValue.textContent = `${topError.total} error(es) acumulados en esta sesión. Es el foco más urgente para corregir ahora.`;
+
+        const chartData = rankedErrors.slice(0, 4).reverse();
+        const labels = chartData.map((item) => item.label);
+        const values = chartData.map((item) => item.total);
+        const colors = chartData.map((item) => (
+            item.field === topError.field ? '#cda45b' : 'rgba(20, 53, 94, 0.35)'
+        ));
+
+        if (state.liveChart) {
+            state.liveChart.data.labels = labels;
+            state.liveChart.data.datasets[0].data = values;
+            state.liveChart.data.datasets[0].backgroundColor = colors;
+            state.liveChart.update();
+            return;
+        }
+
+        state.liveChart = new Chart(liveErrorChartCanvas, {
+            type: 'bar',
+            data: {
+                labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: colors,
+                    borderRadius: 8,
+                    borderSkipped: false,
+                    barThickness: 16,
+                }],
+            },
+            options: {
+                animation: false,
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label(context) {
+                                return `${context.raw} error(es)`;
+                            },
+                        },
+                    },
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0,
+                            color: '#5f6d81',
+                        },
+                        grid: {
+                            color: 'rgba(20, 53, 94, 0.08)',
+                        },
+                        border: {
+                            display: false,
+                        },
+                    },
+                    y: {
+                        ticks: {
+                            color: '#223552',
+                            font: {
+                                size: 11,
+                                weight: '700',
+                            },
+                        },
+                        grid: {
+                            display: false,
+                        },
+                        border: {
+                            display: false,
+                        },
+                    },
+                },
+            },
+        });
+    }
+
     function renderCounters() {
         errorFields.forEach((field) => {
             const output = document.getElementById(`value-${field}`);
@@ -111,7 +241,22 @@
             return;
         }
 
-        state.setsGuardados.forEach((setData) => {
+        const visibleSets = state.setsGuardados.slice(-3);
+        const hiddenCount = state.setsGuardados.length - visibleSets.length;
+
+        if (hiddenCount > 0) {
+            const resume = document.createElement('article');
+            resume.className = 'saved-set-item';
+
+            const copy = document.createElement('p');
+            copy.className = 'muted-text';
+            copy.textContent = `+${hiddenCount} set(s) anteriores ya guardados en esta sesión.`;
+
+            resume.appendChild(copy);
+            savedSetsContainer.appendChild(resume);
+        }
+
+        visibleSets.forEach((setData) => {
             const item = document.createElement('article');
             item.className = 'saved-set-item';
 
@@ -161,11 +306,13 @@
             : 'Sesión de scouting lista para capturar errores.';
         renderCounters();
         renderSavedSets();
+        renderPriorityChart();
     }
 
     function resetCurrentSet() {
         state.counters = createEmptyCounters();
         renderCounters();
+        renderPriorityChart();
     }
 
     function resetWholeSession(nextMatchId) {
@@ -195,6 +342,7 @@
         const nextValue = Math.max(0, (state.counters[field] || 0) + delta);
         state.counters[field] = nextValue;
         renderCounters();
+        renderPriorityChart();
     }
 
     async function postJSON(url, payload) {

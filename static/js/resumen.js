@@ -41,6 +41,16 @@
         },
     };
 
+    const chartPalette = {
+        bars: ['#14355e', '#224a7b', '#2f5f97', '#4178b3', '#cca15a', '#d7b06e', '#e3c38b', '#9e7a36', '#725722', '#493611'],
+        grid: 'rgba(18, 32, 51, 0.08)',
+        ticks: '#516177',
+        text: '#1b2b42',
+        block: ['#14355e', '#cca15a'],
+        line: '#14355e',
+        fill: 'rgba(20, 53, 94, 0.14)',
+    };
+
     function setMessage(message, type) {
         summaryMessage.textContent = message || '';
         summaryMessage.className = 'status-message';
@@ -230,16 +240,7 @@
                     label: 'Errores',
                     data: payload.errores_por_tipo.map((item) => item.total),
                     backgroundColor: [
-                        '#215732',
-                        '#2f7143',
-                        '#3e8b55',
-                        '#59a169',
-                        '#c95d29',
-                        '#d86f39',
-                        '#e6864f',
-                        '#f1a55c',
-                        '#8b3d20',
-                        '#5f2a14',
+                        ...chartPalette.bars,
                     ],
                     borderRadius: 10,
                 }],
@@ -250,7 +251,27 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        ticks: { precision: 0 },
+                        ticks: {
+                            precision: 0,
+                            color: chartPalette.ticks,
+                        },
+                        grid: {
+                            color: chartPalette.grid,
+                        },
+                        border: {
+                            display: false,
+                        },
+                    },
+                    x: {
+                        ticks: {
+                            color: chartPalette.ticks,
+                        },
+                        grid: {
+                            display: false,
+                        },
+                        border: {
+                            display: false,
+                        },
                     },
                 },
                 plugins: {
@@ -265,7 +286,7 @@
                 labels: payload.errores_por_bloque.map((item) => item.bloque),
                 datasets: [{
                     data: payload.errores_por_bloque.map((item) => item.total),
-                    backgroundColor: ['#215732', '#c95d29'],
+                    backgroundColor: chartPalette.block,
                     borderWidth: 0,
                 }],
             },
@@ -275,6 +296,9 @@
                 plugins: {
                     legend: {
                         position: 'bottom',
+                        labels: {
+                            color: chartPalette.text,
+                        },
                     },
                 },
             },
@@ -287,8 +311,8 @@
                 datasets: [{
                     label: 'Total ENF',
                     data: payload.series_por_partido.map((item) => item.total_errores),
-                    borderColor: '#215732',
-                    backgroundColor: 'rgba(33, 87, 50, 0.16)',
+                    borderColor: chartPalette.line,
+                    backgroundColor: chartPalette.fill,
                     fill: true,
                     tension: 0.32,
                 }],
@@ -299,7 +323,34 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        ticks: { precision: 0 },
+                        ticks: {
+                            precision: 0,
+                            color: chartPalette.ticks,
+                        },
+                        grid: {
+                            color: chartPalette.grid,
+                        },
+                        border: {
+                            display: false,
+                        },
+                    },
+                    x: {
+                        ticks: {
+                            color: chartPalette.ticks,
+                        },
+                        grid: {
+                            display: false,
+                        },
+                        border: {
+                            display: false,
+                        },
+                    },
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: chartPalette.text,
+                        },
                     },
                 },
             },
