@@ -50,8 +50,8 @@
     function setBusy(isBusy) {
         state.isBusy = isBusy;
         loadSummaryButton.disabled = isBusy;
-        matchFilter.disabled = isBusy || !matchFilter.options.length;
-        setFilter.disabled = isBusy || !setFilter.options.length;
+        matchFilter.disabled = isBusy || matchFilter.options.length <= 1;
+        setFilter.disabled = isBusy || setFilter.options.length <= 1;
     }
 
     function destroyCharts() {
@@ -340,6 +340,7 @@
                 setFilter.innerHTML = '<option value="all">Todos</option>';
                 matchFilter.disabled = true;
                 setFilter.disabled = true;
+                summaryContext.textContent = 'Sin historial disponible para el jugador indicado.';
                 showEmpty('No existe historial para ese jugador. Registra primero datos en /errores para ver el dashboard.');
                 setMessage(result.data.message || 'No existe historial para ese jugador.', 'error');
                 return;

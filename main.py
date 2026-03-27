@@ -227,7 +227,8 @@ def load_player_rows(file_path):
             for field in ERROR_FIELDS:
                 parsed_row[field] = parse_non_negative_int(row.get(field), field)
 
-            parsed_row['Total_ENF_Set'] = parse_non_negative_int(row.get('Total_ENF_Set'), 'Total_ENF_Set')
+            parse_non_negative_int(row.get('Total_ENF_Set'), 'Total_ENF_Set')
+            parsed_row['Total_ENF_Set'] = calculate_set_total(parsed_row)
             rows.append(parsed_row)
 
     return rows
@@ -565,6 +566,11 @@ def finalizar_errores():
         sets_payload = data.get('sets', [])
 
         _, _, file_path = ensure_player_csv(player_name)
+        expected_match_id = get_next_match_id(file_path)
+        if match_id != expected_match_id:
+            raise ValueError(
+                f'El ID_Partido esperado para este jugador es {expected_match_id}. Reinicia la sesion para continuar.'
+            )
         rows_to_write = validate_sets_payload(match_id, sets_payload)
         append_rows_to_csv(file_path, rows_to_write)
         next_match_id = get_next_match_id(file_path)
