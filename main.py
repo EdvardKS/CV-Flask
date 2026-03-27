@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(BASE_DIR, 'output')
 CV_DATA_PATH = os.path.join(BASE_DIR, 'static', 'data', 'cv_data.json')
 
-CSV_HEADERS = [
+PREVIOUS_CSV_HEADERS = [
     'ID_Partido',
     'Numero_Set',
     'Doble_Falta',
@@ -41,6 +41,27 @@ CSV_HEADERS = [
     'Total_ENF_Set',
 ]
 
+CSV_HEADERS = [
+    'ID_Partido',
+    'Numero_Set',
+    'Doble_Falta',
+    'Resto_Derecha_Fallado',
+    'Resto_Reves_Fallado',
+    'Globo_Malo',
+    'Error_Fondo_Derecha',
+    'Error_Fondo_Reves',
+    'Bajada_Derecha_Error',
+    'Bajada_Reves_Error',
+    'Posicionamiento_Fondo_Error',
+    'Error_Volea_Derecha',
+    'Error_Volea_Reves',
+    'Posicionamiento_Volea_Error',
+    'Tirar_Ficha_Error',
+    'Bandeja_Error',
+    'Smash_Error',
+    'Total_ENF_Set',
+]
+
 ERROR_FIELDS = [
     'Doble_Falta',
     'Resto_Derecha_Fallado',
@@ -48,8 +69,13 @@ ERROR_FIELDS = [
     'Globo_Malo',
     'Error_Fondo_Derecha',
     'Error_Fondo_Reves',
+    'Bajada_Derecha_Error',
+    'Bajada_Reves_Error',
+    'Posicionamiento_Fondo_Error',
     'Error_Volea_Derecha',
     'Error_Volea_Reves',
+    'Posicionamiento_Volea_Error',
+    'Tirar_Ficha_Error',
     'Bandeja_Error',
     'Smash_Error',
 ]
@@ -61,8 +87,13 @@ ERROR_LABELS = {
     'Globo_Malo': 'Globo malo',
     'Error_Fondo_Derecha': 'Fondo derecha',
     'Error_Fondo_Reves': 'Fondo revés',
+    'Bajada_Derecha_Error': 'Bajada derecha',
+    'Bajada_Reves_Error': 'Bajada revés',
+    'Posicionamiento_Fondo_Error': 'Posicionamiento fondo',
     'Error_Volea_Derecha': 'Volea derecha',
     'Error_Volea_Reves': 'Volea revés',
+    'Posicionamiento_Volea_Error': 'Posicionamiento volea',
+    'Tirar_Ficha_Error': 'Tirar ficha',
     'Bandeja_Error': 'Bandeja/Víbora',
     'Smash_Error': 'Remate fallido',
 }
@@ -74,8 +105,13 @@ ERROR_TOOLTIPS = {
     'Globo_Malo': 'Globo que se queda corto o que va directo al cristal de fondo.',
     'Error_Fondo_Derecha': 'Fallo no forzado de derecha desde el fondo, incluida salida de pared, que no supera la red o cede el punto.',
     'Error_Fondo_Reves': 'Fallo no forzado de revés desde el fondo, incluida salida de pared, que no supera la red o cede el punto.',
+    'Bajada_Derecha_Error': 'Error en una bajada de pared o bajada de bola con la derecha que termina en fallo no forzado.',
+    'Bajada_Reves_Error': 'Error en una bajada de pared o bajada de bola con el revés que termina en fallo no forzado.',
+    'Posicionamiento_Fondo_Error': 'Mala colocación en el fondo que provoca distancia incorrecta a la bola, mala lectura o pérdida del punto.',
     'Error_Volea_Derecha': 'Error no forzado de volea de derecha en transición o en zona de definición.',
     'Error_Volea_Reves': 'Error no forzado de volea de revés en transición o en zona de definición.',
+    'Posicionamiento_Volea_Error': 'Mala colocación o ajuste en zona de volea que genera el error no forzado.',
+    'Tirar_Ficha_Error': 'Acción táctica aleatoria o precipitada al tirar ficha que rompe la estructura del punto y acaba en fallo.',
     'Bandeja_Error': 'Error en bandeja o víbora que va a la red o al cristal sin ser una bola comprometida.',
     'Smash_Error': 'Smash que no se trae a campo propio, no sale x4/x3 o acaba en la red o los cristales.',
 }
@@ -88,10 +124,15 @@ BLOCK_FIELDS = {
         'Globo_Malo',
         'Error_Fondo_Derecha',
         'Error_Fondo_Reves',
+        'Bajada_Derecha_Error',
+        'Bajada_Reves_Error',
+        'Posicionamiento_Fondo_Error',
     ],
     'Ataque / Red': [
         'Error_Volea_Derecha',
         'Error_Volea_Reves',
+        'Posicionamiento_Volea_Error',
+        'Tirar_Ficha_Error',
         'Bandeja_Error',
         'Smash_Error',
     ],
@@ -109,6 +150,9 @@ COUNTER_BLOCKS = [
             {'key': 'Globo_Malo', 'short': 'GL', 'label': 'Globo malo'},
             {'key': 'Error_Fondo_Derecha', 'short': 'FD', 'label': 'Fondo derecha'},
             {'key': 'Error_Fondo_Reves', 'short': 'FR', 'label': 'Fondo revés'},
+            {'key': 'Bajada_Derecha_Error', 'short': 'BD', 'label': 'Bajada derecha'},
+            {'key': 'Bajada_Reves_Error', 'short': 'BR', 'label': 'Bajada revés'},
+            {'key': 'Posicionamiento_Fondo_Error', 'short': 'PF', 'label': 'Pos. fondo'},
         ],
     },
     {
@@ -118,6 +162,8 @@ COUNTER_BLOCKS = [
         'fields': [
             {'key': 'Error_Volea_Derecha', 'short': 'VD', 'label': 'Volea derecha'},
             {'key': 'Error_Volea_Reves', 'short': 'VR', 'label': 'Volea revés'},
+            {'key': 'Posicionamiento_Volea_Error', 'short': 'PV', 'label': 'Pos. volea'},
+            {'key': 'Tirar_Ficha_Error', 'short': 'TF', 'label': 'Tirar ficha'},
             {'key': 'Bandeja_Error', 'short': 'BV', 'label': 'Bandeja/Víbora'},
             {'key': 'Smash_Error', 'short': 'SM', 'label': 'Remate fallido'},
         ],
@@ -149,6 +195,18 @@ ERROR_GUIDANCE = {
         'weakness': 'El revés de fondo está dejando errores no forzados que dañan la consistencia del set.',
         'improvement': 'Trabajar control de revés, tiempos de impacto y decisiones más conservadoras desde el fondo.',
     },
+    'Bajada_Derecha_Error': {
+        'weakness': 'La bajada de derecha está apareciendo como un foco claro de error y corta puntos ganables.',
+        'improvement': 'Trabajar lectura de rebote, distancia al impacto y una terminación más simple en la bajada de derecha.',
+    },
+    'Bajada_Reves_Error': {
+        'weakness': 'La bajada de revés está generando fallos no forzados que impiden capitalizar bolas jugables.',
+        'improvement': 'Entrenar la bajada de revés con objetivos amplios, mejor apoyo de pies y control del plano de golpeo.',
+    },
+    'Posicionamiento_Fondo_Error': {
+        'weakness': 'El posicionamiento en fondo está provocando errores por mala distancia y lectura tardía del punto.',
+        'improvement': 'Ajustar recuperaciones al centro, profundidad de base y timing de colocación antes del impacto.',
+    },
     'Error_Volea_Derecha': {
         'weakness': 'La volea de derecha no está consolidando la ventaja ofensiva en la red.',
         'improvement': 'Ajustar pasos previos, distancia al impacto y objetivos más amplios antes de acelerar la volea de derecha.',
@@ -156,6 +214,14 @@ ERROR_GUIDANCE = {
     'Error_Volea_Reves': {
         'weakness': 'La volea de revés está siendo un punto vulnerable en fase de definición o transición.',
         'improvement': 'Reforzar la estabilidad de muñeca y el control direccional en la volea de revés.',
+    },
+    'Posicionamiento_Volea_Error': {
+        'weakness': 'El posicionamiento en volea no está sosteniendo bien la red y desemboca en errores evitables.',
+        'improvement': 'Trabajar distancia a la red, orientación corporal y pasos de ajuste previos al golpe de volea.',
+    },
+    'Tirar_Ficha_Error': {
+        'weakness': 'La toma de decisión al tirar ficha está siendo demasiado aleatoria y regala iniciativa o punto.',
+        'improvement': 'Reducir decisiones de alto riesgo y entrenar patrones tácticos más claros antes de improvisar.',
     },
     'Bandeja_Error': {
         'weakness': 'La bandeja o víbora no está sosteniendo la ventaja de red y devuelve demasiadas opciones al rival.',
@@ -246,10 +312,43 @@ def assert_csv_schema(file_path):
         reader = csv.reader(csv_file)
         header = next(reader, None)
 
+    if header == CSV_HEADERS:
+        return
+
+    if header == PREVIOUS_CSV_HEADERS:
+        migrate_player_csv(file_path)
+        return
+
     if header != CSV_HEADERS:
         raise SchemaMismatchError(
             'El CSV de este jugador usa un esquema antiguo y no es compatible con la versión actual.'
         )
+
+
+def migrate_player_csv(file_path):
+    migrated_rows = []
+
+    with open(file_path, 'r', encoding='utf-8', newline='') as csv_file:
+        reader = csv.DictReader(csv_file)
+        for row in reader:
+            if not row or not any((value or '').strip() for value in row.values()):
+                continue
+
+            migrated_row = {
+                'ID_Partido': parse_positive_int(row.get('ID_Partido'), 'ID_Partido'),
+                'Numero_Set': parse_positive_int(row.get('Numero_Set'), 'Numero_Set'),
+            }
+
+            for field in ERROR_FIELDS:
+                migrated_row[field] = parse_non_negative_int(row.get(field, 0), field)
+
+            migrated_row['Total_ENF_Set'] = calculate_set_total(migrated_row)
+            migrated_rows.append(migrated_row)
+
+    with open(file_path, 'w', encoding='utf-8', newline='') as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=CSV_HEADERS)
+        writer.writeheader()
+        writer.writerows(migrated_rows)
 
 
 def ensure_player_csv(player_name):
