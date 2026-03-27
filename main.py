@@ -3,7 +3,6 @@ import csv
 import json
 import logging
 import os
-import random
 import re
 import smtplib
 import unicodedata
@@ -29,105 +28,151 @@ CV_DATA_PATH = os.path.join(BASE_DIR, 'static', 'data', 'cv_data.json')
 CSV_HEADERS = [
     'ID_Partido',
     'Numero_Set',
-    'Resto_Fallado',
+    'Doble_Falta',
+    'Resto_Derecha_Fallado',
+    'Resto_Reves_Fallado',
     'Globo_Malo',
-    'Error_Fondo',
-    'Volea_Red',
+    'Error_Fondo_Derecha',
+    'Error_Fondo_Reves',
+    'Error_Volea_Derecha',
+    'Error_Volea_Reves',
     'Bandeja_Error',
     'Smash_Error',
-    'Doble_Falta',
     'Total_ENF_Set',
 ]
 
 ERROR_FIELDS = [
-    'Resto_Fallado',
+    'Doble_Falta',
+    'Resto_Derecha_Fallado',
+    'Resto_Reves_Fallado',
     'Globo_Malo',
-    'Error_Fondo',
-    'Volea_Red',
+    'Error_Fondo_Derecha',
+    'Error_Fondo_Reves',
+    'Error_Volea_Derecha',
+    'Error_Volea_Reves',
     'Bandeja_Error',
     'Smash_Error',
-    'Doble_Falta',
 ]
 
 ERROR_LABELS = {
-    'Resto_Fallado': 'Resto fallado',
-    'Globo_Malo': 'Globo malo',
-    'Error_Fondo': 'Error de fondo',
-    'Volea_Red': 'Volea a la red',
-    'Bandeja_Error': 'Bandeja/Vibora',
-    'Smash_Error': 'Remate fallido',
     'Doble_Falta': 'Doble falta',
+    'Resto_Derecha_Fallado': 'Resto derecha',
+    'Resto_Reves_Fallado': 'Resto revés',
+    'Globo_Malo': 'Globo malo',
+    'Error_Fondo_Derecha': 'Fondo derecha',
+    'Error_Fondo_Reves': 'Fondo revés',
+    'Error_Volea_Derecha': 'Volea derecha',
+    'Error_Volea_Reves': 'Volea revés',
+    'Bandeja_Error': 'Bandeja/Víbora',
+    'Smash_Error': 'Remate fallido',
 }
 
 ERROR_TOOLTIPS = {
-    'Doble_Falta': 'Se suma cuando se pierden los dos servicios. Indica falta de concentracion o tecnica de saque.',
-    'Resto_Fallado': 'Error al devolver el saque rival. Es un error grave porque impide iniciar el punto.',
+    'Doble_Falta': 'Se suma cuando se pierden los dos servicios. Indica falta de concentración o técnica de saque.',
+    'Resto_Derecha_Fallado': 'Error al devolver el saque con la derecha. Corta el punto antes de construir el intercambio.',
+    'Resto_Reves_Fallado': 'Error al devolver el saque con el revés. Penaliza el inicio del punto y la lectura del servicio rival.',
     'Globo_Malo': 'Globo que se queda corto o que va directo al cristal de fondo.',
-    'Error_Fondo': 'Fallo en derecha o reves desde el fondo, incluida salida de pared, que muere en la red.',
-    'Volea_Red': 'Error no forzado de volea de derecha o reves en zona de red.',
-    'Bandeja_Error': 'Error en bandeja o vibora que va a la red o al cristal sin ser una bola comprometida.',
+    'Error_Fondo_Derecha': 'Fallo no forzado de derecha desde el fondo, incluida salida de pared, que no supera la red o cede el punto.',
+    'Error_Fondo_Reves': 'Fallo no forzado de revés desde el fondo, incluida salida de pared, que no supera la red o cede el punto.',
+    'Error_Volea_Derecha': 'Error no forzado de volea de derecha en transición o en zona de definición.',
+    'Error_Volea_Reves': 'Error no forzado de volea de revés en transición o en zona de definición.',
+    'Bandeja_Error': 'Error en bandeja o víbora que va a la red o al cristal sin ser una bola comprometida.',
     'Smash_Error': 'Smash que no se trae a campo propio, no sale x4/x3 o acaba en la red o los cristales.',
 }
 
 BLOCK_FIELDS = {
-    'Defensa / Fondo': ['Doble_Falta', 'Resto_Fallado', 'Globo_Malo', 'Error_Fondo'],
-    'Ataque / Red': ['Volea_Red', 'Bandeja_Error', 'Smash_Error'],
+    'Defensa / Fondo': [
+        'Doble_Falta',
+        'Resto_Derecha_Fallado',
+        'Resto_Reves_Fallado',
+        'Globo_Malo',
+        'Error_Fondo_Derecha',
+        'Error_Fondo_Reves',
+    ],
+    'Ataque / Red': [
+        'Error_Volea_Derecha',
+        'Error_Volea_Reves',
+        'Bandeja_Error',
+        'Smash_Error',
+    ],
 }
 
 COUNTER_BLOCKS = [
     {
         'id': 'defensa',
-        'title': 'Inicio y Defensa',
+        'title': 'Inicio y defensa',
         'subtitle': 'Fondo de pista',
         'fields': [
-            {'key': 'Doble_Falta', 'short': 'DF', 'label': 'Doble Falta'},
-            {'key': 'Resto_Fallado', 'short': 'Resto', 'label': 'Resto Fallado'},
-            {'key': 'Globo_Malo', 'short': 'Globo', 'label': 'Globo Malo'},
-            {'key': 'Error_Fondo', 'short': 'Fondo', 'label': 'Error Fondo'},
+            {'key': 'Doble_Falta', 'short': 'DF', 'label': 'Doble falta'},
+            {'key': 'Resto_Derecha_Fallado', 'short': 'RD', 'label': 'Resto derecha'},
+            {'key': 'Resto_Reves_Fallado', 'short': 'RR', 'label': 'Resto revés'},
+            {'key': 'Globo_Malo', 'short': 'GL', 'label': 'Globo malo'},
+            {'key': 'Error_Fondo_Derecha', 'short': 'FD', 'label': 'Fondo derecha'},
+            {'key': 'Error_Fondo_Reves', 'short': 'FR', 'label': 'Fondo revés'},
         ],
     },
     {
         'id': 'ataque',
-        'title': 'Ataque y Transicion',
+        'title': 'Ataque y transición',
         'subtitle': 'Zona de red',
         'fields': [
-            {'key': 'Volea_Red', 'short': 'Volea', 'label': 'Volea Red'},
-            {'key': 'Bandeja_Error', 'short': 'Bandeja', 'label': 'Bandeja/Vibora'},
-            {'key': 'Smash_Error', 'short': 'Smash', 'label': 'Remate Fallido'},
+            {'key': 'Error_Volea_Derecha', 'short': 'VD', 'label': 'Volea derecha'},
+            {'key': 'Error_Volea_Reves', 'short': 'VR', 'label': 'Volea revés'},
+            {'key': 'Bandeja_Error', 'short': 'BV', 'label': 'Bandeja/Víbora'},
+            {'key': 'Smash_Error', 'short': 'SM', 'label': 'Remate fallido'},
         ],
     },
 ]
 
 ERROR_GUIDANCE = {
     'Doble_Falta': {
-        'weakness': 'Hay demasiadas dobles faltas para el volumen analizado. El inicio del punto esta penalizando el rendimiento.',
-        'improvement': 'Reforzar rutina de saque, porcentaje de primer servicio seguro y control emocional en puntos de presion.',
+        'weakness': 'Las dobles faltas están penalizando demasiado el arranque del punto.',
+        'improvement': 'Trabajar una rutina estable de saque y un segundo servicio con más margen y menos tensión.',
     },
-    'Resto_Fallado': {
-        'weakness': 'El resto aparece como un punto debil porque corta demasiados puntos antes de construir el intercambio.',
-        'improvement': 'Trabajar lectura del saque, altura de preparacion y objetivo conservador para asegurar la devolucion.',
+    'Resto_Derecha_Fallado': {
+        'weakness': 'El resto de derecha está fallando más de lo deseable y limita la construcción desde el primer golpe.',
+        'improvement': 'Ajustar la preparación temprana y priorizar un resto profundo y seguro con la derecha.',
+    },
+    'Resto_Reves_Fallado': {
+        'weakness': 'El resto de revés aparece como foco de error y corta demasiados puntos al inicio.',
+        'improvement': 'Entrenar lectura del saque al revés y simplificar objetivos para asegurar la devolución.',
     },
     'Globo_Malo': {
-        'weakness': 'Los globos malos estan cediendo iniciativa al rival y dejando bolas faciles de remate.',
-        'improvement': 'Entrenar profundidad, margen sobre la red y eleccion del globo solo cuando haya tiempo real de preparacion.',
+        'weakness': 'Los globos malos están devolviendo la iniciativa al rival y dejando remates cómodos.',
+        'improvement': 'Subir margen sobre la red y trabajar más profundidad para que el globo vuelva a ser defensivo de verdad.',
     },
-    'Error_Fondo': {
-        'weakness': 'Desde el fondo se estan acumulando errores no forzados que desgastan la fase defensiva.',
-        'improvement': 'Priorizar alturas seguras, direccion cruzada y mejor gestion de tiempos en salidas de pared.',
+    'Error_Fondo_Derecha': {
+        'weakness': 'La derecha desde el fondo está generando una pérdida constante de estabilidad defensiva.',
+        'improvement': 'Priorizar trayectorias más seguras y mejor selección de altura y dirección con la derecha.',
     },
-    'Volea_Red': {
-        'weakness': 'La volea esta siendo inestable en zona de definicion y quita continuidad al ataque.',
-        'improvement': 'Ajustar pasos previos, distancia a la bola y objetivos mas amplios antes de acelerar.',
+    'Error_Fondo_Reves': {
+        'weakness': 'El revés de fondo está dejando errores no forzados que dañan la consistencia del set.',
+        'improvement': 'Trabajar control de revés, tiempos de impacto y decisiones más conservadoras desde el fondo.',
+    },
+    'Error_Volea_Derecha': {
+        'weakness': 'La volea de derecha no está consolidando la ventaja ofensiva en la red.',
+        'improvement': 'Ajustar pasos previos, distancia al impacto y objetivos más amplios antes de acelerar la volea de derecha.',
+    },
+    'Error_Volea_Reves': {
+        'weakness': 'La volea de revés está siendo un punto vulnerable en fase de definición o transición.',
+        'improvement': 'Reforzar la estabilidad de muñeca y el control direccional en la volea de revés.',
     },
     'Bandeja_Error': {
-        'weakness': 'La bandeja o vibora no esta sosteniendo la ventaja ofensiva y regala transiciones al rival.',
-        'improvement': 'Trabajar contacto alto, direccion al medio o reja segura y seleccion de potencia segun balance corporal.',
+        'weakness': 'La bandeja o víbora no está sosteniendo la ventaja de red y devuelve demasiadas opciones al rival.',
+        'improvement': 'Trabajar contacto alto, dirección segura y una elección más fina de potencia en bandeja o víbora.',
     },
     'Smash_Error': {
-        'weakness': 'Los remates fallidos estan desperdiciando oportunidades claras de cierre del punto.',
-        'improvement': 'Mejorar seleccion de remate, lectura del viento/pared y criterio para bajar potencia cuando no haya opcion de definicion.',
+        'weakness': 'Los remates fallidos están desperdiciando oportunidades claras de cierre.',
+        'improvement': 'Mejorar la selección del smash y bajar potencia cuando no haya una opción clara de definición.',
     },
 }
+
+####################################################################################################
+
+
+class SchemaMismatchError(ValueError):
+    pass
+
 
 ####################################################################################################
 
@@ -163,7 +208,7 @@ def normalize_player_name(player_name):
 
     safe_name = sanitize_player_name(visible_name)
     if not safe_name:
-        raise ValueError('El nombre del jugador no es valido para generar el archivo CSV.')
+        raise ValueError('El nombre del jugador no es válido para generar el archivo CSV.')
 
     return visible_name, safe_name
 
@@ -193,6 +238,20 @@ def get_player_csv_path(player_name):
     return filename, os.path.join(OUTPUT_DIR, filename)
 
 
+def assert_csv_schema(file_path):
+    if not os.path.exists(file_path):
+        return
+
+    with open(file_path, 'r', encoding='utf-8', newline='') as csv_file:
+        reader = csv.reader(csv_file)
+        header = next(reader, None)
+
+    if header != CSV_HEADERS:
+        raise SchemaMismatchError(
+            'El CSV de este jugador usa un esquema antiguo y no es compatible con la versión actual.'
+        )
+
+
 def ensure_player_csv(player_name):
     visible_name, safe_name = normalize_player_name(player_name)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -204,6 +263,8 @@ def ensure_player_csv(player_name):
         with open(file_path, 'w', encoding='utf-8', newline='') as csv_file:
             writer = csv.DictWriter(csv_file, fieldnames=CSV_HEADERS)
             writer.writeheader()
+    else:
+        assert_csv_schema(file_path)
 
     return visible_name, filename, file_path
 
@@ -211,6 +272,8 @@ def ensure_player_csv(player_name):
 def load_player_rows(file_path):
     if not os.path.exists(file_path):
         return []
+
+    assert_csv_schema(file_path)
 
     rows = []
     with open(file_path, 'r', encoding='utf-8', newline='') as csv_file:
@@ -339,13 +402,13 @@ def build_insights(totals_by_field, block_totals):
     ]
 
     if not weak_points:
-        block_comment = 'Todavia no hay suficientes datos para detectar un patron de error.'
+        block_comment = 'Todavía no hay suficientes datos para detectar un patrón de error.'
     else:
         weaker_block = max(block_totals, key=block_totals.get)
         if all(total == 0 for total in block_totals.values()):
             block_comment = 'Los filtros activos no contienen errores registrados.'
         else:
-            block_comment = f'El volumen de error se concentra mas en {weaker_block.lower()}.'
+            block_comment = f'El volumen de error se concentra más en {weaker_block.lower()}.'
 
     return {
         'puntos_flojos': weak_points,
@@ -448,9 +511,8 @@ def submit_contact():
                 server.sendmail(SMTP_USERNAME, SMTP_USERNAME, msg.as_string())
             logging.info("Email sent successfully")
             return jsonify({'status': 'success', 'message': 'Your message has been sent successfully'}), 200
-        else:
-            logging.error("SMTP credentials not set")
-            return jsonify({'status': 'error', 'message': 'SMTP credentials not set'}), 500
+        logging.error("SMTP credentials not set")
+        return jsonify({'status': 'error', 'message': 'SMTP credentials not set'}), 500
     except Exception as exc:
         logging.error(f"Error in submit_contact: {str(exc)}")
         return jsonify({'status': 'error', 'message': str(exc)}), 500
@@ -546,11 +608,13 @@ def iniciar_errores():
             'archivo': filename,
             'id_partido': next_match_id,
         })
+    except SchemaMismatchError as exc:
+        return jsonify({'message': str(exc)}), 409
     except ValueError as exc:
         return jsonify({'message': str(exc)}), 400
     except Exception as exc:
-        logging.exception('Error al iniciar la sesion de errores')
-        return jsonify({'message': f'No se pudo iniciar la sesion: {exc}'}), 500
+        logging.exception('Error al iniciar la sesión de errores')
+        return jsonify({'message': f'No se pudo iniciar la sesión: {exc}'}), 500
 
 
 ####################################################################################################
@@ -569,8 +633,9 @@ def finalizar_errores():
         expected_match_id = get_next_match_id(file_path)
         if match_id != expected_match_id:
             raise ValueError(
-                f'El ID_Partido esperado para este jugador es {expected_match_id}. Reinicia la sesion para continuar.'
+                f'El ID_Partido esperado para este jugador es {expected_match_id}. Reinicia la sesión para continuar.'
             )
+
         rows_to_write = validate_sets_payload(match_id, sets_payload)
         append_rows_to_csv(file_path, rows_to_write)
         next_match_id = get_next_match_id(file_path)
@@ -580,6 +645,8 @@ def finalizar_errores():
             'filas_guardadas': len(rows_to_write),
             'siguiente_id_partido': next_match_id,
         })
+    except SchemaMismatchError as exc:
+        return jsonify({'message': str(exc)}), 409
     except ValueError as exc:
         return jsonify({'message': str(exc)}), 400
     except Exception as exc:
@@ -620,6 +687,8 @@ def api_resumen():
             set_filter=set_filter,
         )
         return jsonify(payload)
+    except SchemaMismatchError as exc:
+        return jsonify({'message': str(exc)}), 409
     except ValueError as exc:
         return jsonify({'message': str(exc)}), 400
     except Exception as exc:

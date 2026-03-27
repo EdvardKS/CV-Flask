@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumen de Jugador | Padel Scout</title>
-    <meta name="description" content="Dashboard de scouting de padel con resumen global, filtros por partido y analisis de puntos debiles.">
+    <meta name="description" content="Dashboard de scouting de pádel con resumen global, filtros por partido y análisis de puntos débiles.">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/padel-dashboard.css') }}">
 </head>
-<body class="padel-app">
+<body class="padel-app page-resumen">
     <main class="page-shell">
-        <section class="hero-grid">
+        <section id="summary-intro" class="hero-grid">
             <article class="intro-copy">
                 <span class="eyebrow">Scouting de rendimiento</span>
-                <h1 class="page-title">Dashboard completo de resumen del jugador</h1>
+                <h1 class="page-title">Dashboard completo del jugador</h1>
                 <p class="page-lead">
-                    Carga el historico del jugador para ver el resumen global por defecto y profundizar
-                    con filtros por partido y set, graficas comparativas e insights accionables.
+                    Carga el histórico del jugador para ver el resumen global por defecto y profundizar
+                    con filtros por partido y set, distinguiendo derecha y revés en resto, fondo y volea.
                 </p>
                 <div class="feature-strip">
                     <span class="feature-pill">Resumen global</span>
-                    <span class="feature-pill">Filtros por partido/set</span>
-                    <span class="feature-pill">Areas de mejora</span>
+                    <span class="feature-pill">Full width</span>
+                    <span class="feature-pill">KPIs + gráficas + insights</span>
                 </div>
             </article>
 
@@ -32,8 +32,8 @@
                 <span class="eyebrow">Introducir nombre de jugador</span>
                 <h2 class="panel-title">Abrir resumen de scouting</h2>
                 <p class="panel-text">
-                    Si existe el CSV del jugador, cargaremos un dashboard con KPIs, graficas y una lectura clara
-                    de los errores no forzados mas repetidos.
+                    Si existe el CSV del jugador, esta pantalla desaparecerá y quedará solo el dashboard
+                    con filtros, gráficas y detalle fila a fila.
                 </p>
 
                 <form id="summary-form" class="player-form">
@@ -44,7 +44,7 @@
                             class="text-input"
                             type="text"
                             name="jugador"
-                            placeholder="Ej. Juan Perez"
+                            placeholder="Ej. Juan Pérez"
                             autocomplete="off"
                             required
                         >
@@ -55,40 +55,44 @@
                     </div>
                 </form>
 
-                <p class="helper-text">El resumen se abre por defecto en vista global de todo el historico.</p>
+                <p class="helper-text">La vista por defecto será el resumen global de todo el histórico del jugador.</p>
                 <div id="summary-message" class="status-message" role="status" aria-live="polite"></div>
             </aside>
         </section>
 
         <section id="dashboard-layout" class="dashboard-layout hidden">
             <div class="dashboard-topbar">
-                <div>
+                <div class="title-stack">
                     <span class="eyebrow">Resumen activo</span>
-                    <h2 id="summary-player-heading" class="section-title">Jugador</h2>
+                    <h2 id="summary-player-heading" class="section-title large">Jugador</h2>
                     <p id="summary-context" class="panel-text">Vista global de rendimiento.</p>
                 </div>
 
-                <div class="dashboard-filters">
-                    <label class="filter-label" for="match-filter">
-                        Partido
-                        <select id="match-filter" class="select-input" disabled>
-                            <option value="all">Todos</option>
-                        </select>
-                    </label>
+                <div class="dashboard-actions">
+                    <div class="dashboard-filters">
+                        <label class="filter-label" for="match-filter">
+                            Partido
+                            <select id="match-filter" class="select-input" disabled>
+                                <option value="all">Todos</option>
+                            </select>
+                        </label>
 
-                    <label class="filter-label" for="set-filter">
-                        Set
-                        <select id="set-filter" class="select-input" disabled>
-                            <option value="all">Todos</option>
-                        </select>
-                    </label>
+                        <label class="filter-label" for="set-filter">
+                            Set
+                            <select id="set-filter" class="select-input" disabled>
+                                <option value="all">Todos</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <button id="change-summary-player-btn" class="ghost-btn" type="button">Cambiar jugador</button>
                 </div>
             </div>
 
             <div id="dashboard-empty" class="empty-state hidden">
-                <h3 class="empty-title">Sin datos todavia</h3>
+                <h3 class="empty-title">Sin datos todavía</h3>
                 <p id="dashboard-empty-copy" class="empty-copy">
-                    Introduce un jugador con historico para ver el dashboard o registra primero errores en la ruta /errores.
+                    Introduce un jugador con histórico para ver el dashboard o registra primero errores en la ruta /errores.
                 </p>
             </div>
 
@@ -111,18 +115,18 @@
                         <strong id="kpi-media" class="kpi-value">0</strong>
                     </article>
                     <article class="kpi-card">
-                        <span class="kpi-label">Error mas repetido</span>
+                        <span class="kpi-label">Error más repetido</span>
                         <strong id="kpi-error" class="kpi-value">Sin datos</strong>
                     </article>
                     <article class="kpi-card">
-                        <span class="kpi-label">Bloque mas debil</span>
+                        <span class="kpi-label">Bloque más débil</span>
                         <strong id="kpi-bloque" class="kpi-value">Sin datos</strong>
                     </article>
                 </div>
 
                 <div class="chart-grid">
                     <article class="chart-card">
-                        <h3 class="chart-title">Distribucion por tipo de error</h3>
+                        <h3 class="chart-title">Distribución por tipo de error</h3>
                         <canvas id="error-type-chart"></canvas>
                     </article>
 
@@ -139,12 +143,12 @@
 
                 <div class="insight-grid">
                     <article class="insight-card">
-                        <h3 class="chart-title">Puntos mas flojos</h3>
+                        <h3 class="chart-title">Puntos más flojos</h3>
                         <div id="weak-points-list" class="insight-list"></div>
                     </article>
 
                     <article class="insight-card">
-                        <h3 class="chart-title">Areas de mejora</h3>
+                        <h3 class="chart-title">Áreas de mejora</h3>
                         <div id="improvement-list" class="insight-list"></div>
                         <p id="block-comment" class="inline-note"></p>
                     </article>
@@ -164,13 +168,16 @@
                                 <tr>
                                     <th>ID Partido</th>
                                     <th>Set</th>
-                                    <th>Resto</th>
-                                    <th>Globo</th>
-                                    <th>Fondo</th>
-                                    <th>Volea</th>
-                                    <th>Bandeja</th>
-                                    <th>Smash</th>
                                     <th>Doble Falta</th>
+                                    <th>Resto derecha</th>
+                                    <th>Resto revés</th>
+                                    <th>Globo malo</th>
+                                    <th>Fondo derecha</th>
+                                    <th>Fondo revés</th>
+                                    <th>Volea derecha</th>
+                                    <th>Volea revés</th>
+                                    <th>Bandeja/Víbora</th>
+                                    <th>Remate fallido</th>
                                     <th>Total ENF</th>
                                 </tr>
                             </thead>

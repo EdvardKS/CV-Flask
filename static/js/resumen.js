@@ -1,4 +1,5 @@
 (function () {
+    const summaryIntro = document.getElementById('summary-intro');
     const summaryForm = document.getElementById('summary-form');
     const summaryInput = document.getElementById('summary-jugador-input');
     const summaryMessage = document.getElementById('summary-message');
@@ -11,6 +12,7 @@
     const matchFilter = document.getElementById('match-filter');
     const setFilter = document.getElementById('set-filter');
     const loadSummaryButton = document.getElementById('load-summary-btn');
+    const changeSummaryPlayerButton = document.getElementById('change-summary-player-btn');
     const rowsBody = document.getElementById('summary-rows');
     const weakPointsList = document.getElementById('weak-points-list');
     const improvementList = document.getElementById('improvement-list');
@@ -52,6 +54,7 @@
         loadSummaryButton.disabled = isBusy;
         matchFilter.disabled = isBusy || matchFilter.options.length <= 1;
         setFilter.disabled = isBusy || setFilter.options.length <= 1;
+        changeSummaryPlayerButton.disabled = isBusy;
     }
 
     function destroyCharts() {
@@ -63,6 +66,27 @@
         });
     }
 
+    function showDashboardShell() {
+        summaryIntro.classList.add('hidden');
+        dashboardLayout.classList.remove('hidden');
+    }
+
+    function showIntroView() {
+        summaryIntro.classList.remove('hidden');
+        dashboardLayout.classList.add('hidden');
+        dashboardEmpty.classList.add('hidden');
+        dashboardBody.classList.remove('hidden');
+        summaryForm.reset();
+        setMessage('', '');
+        destroyCharts();
+        matchFilter.innerHTML = '<option value="all">Todos</option>';
+        setFilter.innerHTML = '<option value="all">Todos</option>';
+        matchFilter.disabled = true;
+        setFilter.disabled = true;
+        state.jugador = '';
+        summaryInput.focus();
+    }
+
     function showEmpty(message) {
         dashboardLayout.classList.remove('hidden');
         dashboardEmpty.classList.remove('hidden');
@@ -71,7 +95,7 @@
         destroyCharts();
     }
 
-    function showDashboard() {
+    function showDashboardBody() {
         dashboardLayout.classList.remove('hidden');
         dashboardEmpty.classList.add('hidden');
         dashboardBody.classList.remove('hidden');
@@ -101,15 +125,15 @@
 
     function buildContextText(filters) {
         if (filters.id_partido === 'all' && filters.numero_set === 'all') {
-            return 'Resumen global de todo el historico del jugador.';
+            return 'Resumen global de todo el histórico del jugador.';
         }
         if (filters.id_partido !== 'all' && filters.numero_set === 'all') {
-            return `Analisis del Partido ${filters.id_partido} con todos sus sets.`;
+            return `Análisis del Partido ${filters.id_partido} con todos sus sets.`;
         }
         if (filters.id_partido === 'all' && filters.numero_set !== 'all') {
-            return `Analisis transversal del Set ${filters.numero_set} a traves de todos los partidos.`;
+            return `Análisis transversal del Set ${filters.numero_set} a través de todos los partidos.`;
         }
-        return `Analisis del Partido ${filters.id_partido} · Set ${filters.numero_set}.`;
+        return `Análisis del Partido ${filters.id_partido} · Set ${filters.numero_set}.`;
     }
 
     function renderKPIs(payload) {
@@ -175,13 +199,16 @@
             [
                 row.ID_Partido,
                 row.Numero_Set,
-                row.Resto_Fallado,
+                row.Doble_Falta,
+                row.Resto_Derecha_Fallado,
+                row.Resto_Reves_Fallado,
                 row.Globo_Malo,
-                row.Error_Fondo,
-                row.Volea_Red,
+                row.Error_Fondo_Derecha,
+                row.Error_Fondo_Reves,
+                row.Error_Volea_Derecha,
+                row.Error_Volea_Reves,
                 row.Bandeja_Error,
                 row.Smash_Error,
-                row.Doble_Falta,
                 row.Total_ENF_Set,
             ].forEach((value) => {
                 const td = document.createElement('td');
@@ -202,7 +229,18 @@
                 datasets: [{
                     label: 'Errores',
                     data: payload.errores_por_tipo.map((item) => item.total),
-                    backgroundColor: ['#215732', '#31784a', '#4c9b63', '#c95d29', '#de7a48', '#f1a55c', '#8f3f1d'],
+                    backgroundColor: [
+                        '#215732',
+                        '#2f7143',
+                        '#3e8b55',
+                        '#59a169',
+                        '#c95d29',
+                        '#d86f39',
+                        '#e6864f',
+                        '#f1a55c',
+                        '#8b3d20',
+                        '#5f2a14',
+                    ],
                     borderRadius: 10,
                 }],
             },
@@ -290,7 +328,7 @@
             return;
         }
 
-        showDashboard();
+        showDashboardBody();
         renderKPIs(payload);
         renderCharts(payload);
         renderInsightList(weakPointsList, payload.insights.puntos_flojos, false);
@@ -309,15 +347,19 @@
         const response = await fetch(`/api/resumen?${params.toString()}`);
         const data = await response.json().catch(() => ({}));
 
-        if (response.status === 404) {
-            return { notFound: true, data };
-        }
-
         if (!response.ok) {
-            throw new Error(data.message || 'No se pudo cargar el resumen del jugador.');
+            return {
+                ok: false,
+                status: response.status,
+                data,
+            };
         }
 
-        return { notFound: false, data };
+        return {
+            ok: true,
+            status: response.status,
+            data,
+        };
     }
 
     async function loadSummary(jugador, idPartido, numeroSet) {
@@ -328,28 +370,28 @@
         try {
             setBusy(true);
             state.jugador = jugador;
+            showDashboardShell();
             summaryPlayerHeading.textContent = jugador;
-            summaryContext.textContent = 'Consultando historico del jugador...';
-            dashboardLayout.classList.remove('hidden');
+            summaryContext.textContent = 'Consultando histórico del jugador...';
             setMessage('Cargando resumen del jugador...', '');
 
             const result = await fetchSummary(jugador, idPartido, numeroSet);
 
-            if (result.notFound) {
-                matchFilter.innerHTML = '<option value="all">Todos</option>';
-                setFilter.innerHTML = '<option value="all">Todos</option>';
-                matchFilter.disabled = true;
-                setFilter.disabled = true;
-                summaryContext.textContent = 'Sin historial disponible para el jugador indicado.';
-                showEmpty('No existe historial para ese jugador. Registra primero datos en /errores para ver el dashboard.');
-                setMessage(result.data.message || 'No existe historial para ese jugador.', 'error');
+            if (!result.ok) {
+                const message = result.data.message || 'No se pudo cargar el resumen del jugador.';
+                summaryContext.textContent = message;
+                showEmpty(message);
+                setMessage(message, 'error');
                 return;
             }
 
             renderDashboard(result.data);
             setMessage('Resumen cargado correctamente.', 'success');
         } catch (error) {
-            setMessage(error.message, 'error');
+            const message = error.message || 'No se pudo cargar el resumen del jugador.';
+            summaryContext.textContent = message;
+            showEmpty(message);
+            setMessage(message, 'error');
         } finally {
             setBusy(false);
         }
@@ -380,4 +422,6 @@
         }
         loadSummary(state.jugador, matchFilter.value, setFilter.value);
     });
+
+    changeSummaryPlayerButton.addEventListener('click', showIntroView);
 })();

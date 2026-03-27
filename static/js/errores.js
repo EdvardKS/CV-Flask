@@ -4,6 +4,7 @@
     const errorLabels = config.errorLabels || {};
     const errorFields = counterBlocks.flatMap((block) => block.fields.map((field) => field.key));
 
+    const playerIntro = document.getElementById('player-intro');
     const playerForm = document.getElementById('player-form');
     const playerInput = document.getElementById('jugador-input');
     const playerMessage = document.getElementById('player-message');
@@ -18,6 +19,7 @@
     const changeSetButton = document.getElementById('change-set-btn');
     const finalizeMatchButton = document.getElementById('finalize-match-btn');
     const startSessionButton = document.getElementById('start-session-btn');
+    const changePlayerButton = document.getElementById('change-player-btn');
 
     const state = {
         jugador: '',
@@ -49,6 +51,7 @@
         startSessionButton.disabled = isBusy;
         changeSetButton.disabled = isBusy;
         finalizeMatchButton.disabled = isBusy;
+        changePlayerButton.disabled = isBusy;
     }
 
     function getCurrentTotal() {
@@ -64,6 +67,20 @@
 
     function hasActivity(setPayload) {
         return errorFields.some((field) => (setPayload[field] || 0) > 0);
+    }
+
+    function calculateSetTotal(setData) {
+        return errorFields.reduce((total, field) => total + (setData[field] || 0), 0);
+    }
+
+    function showSessionView() {
+        playerIntro.classList.add('hidden');
+        sessionLayout.classList.remove('hidden');
+    }
+
+    function showIntroView() {
+        playerIntro.classList.remove('hidden');
+        sessionLayout.classList.add('hidden');
     }
 
     function renderCounters() {
@@ -88,7 +105,7 @@
 
             const copy = document.createElement('p');
             copy.className = 'muted-text';
-            copy.textContent = 'Todavia no hay sets guardados en esta sesion.';
+            copy.textContent = 'Todavía no hay sets guardados en esta sesión.';
             emptyCard.appendChild(copy);
             savedSetsContainer.appendChild(emptyCard);
             return;
@@ -141,7 +158,7 @@
         playerHeading.textContent = state.jugador || 'Jugador';
         sessionSubtext.textContent = state.archivo
             ? `Archivo activo: ${state.archivo}. Los sets quedan en memoria hasta finalizar el partido.`
-            : 'Sesion de scouting lista para capturar errores.';
+            : 'Sesión de scouting lista para capturar errores.';
         renderCounters();
         renderSavedSets();
     }
@@ -159,8 +176,19 @@
         renderSession();
     }
 
-    function calculateSetTotal(setData) {
-        return errorFields.reduce((total, field) => total + (setData[field] || 0), 0);
+    function resetToIntro() {
+        state.jugador = '';
+        state.archivo = '';
+        state.idPartido = null;
+        state.setActual = 1;
+        state.counters = createEmptyCounters();
+        state.setsGuardados = [];
+        showIntroView();
+        renderSession();
+        setMessage(playerMessage, '', '');
+        setMessage(sessionMessage, '', '');
+        playerForm.reset();
+        playerInput.focus();
     }
 
     function updateCounter(field, delta) {
@@ -178,7 +206,7 @@
 
         const data = await response.json().catch(() => ({}));
         if (!response.ok) {
-            throw new Error(data.message || 'No se pudo completar la operacion.');
+            throw new Error(data.message || 'No se pudo completar la operación.');
         }
         return data;
     }
@@ -197,17 +225,16 @@
 
         try {
             setBusy(true);
-            setMessage(playerMessage, 'Preparando sesion y comprobando el historico del jugador...', '');
+            setMessage(playerMessage, 'Preparando sesión y comprobando el histórico del jugador...', '');
             const data = await postJSON('/api/errores/iniciar', { jugador });
 
             state.jugador = data.jugador;
             state.archivo = data.archivo;
-            sessionLayout.classList.remove('hidden');
             resetWholeSession(data.id_partido);
+            showSessionView();
 
-            setMessage(playerMessage, `Sesion lista. ID Partido ${data.id_partido}.`, 'success');
-            setMessage(sessionMessage, '', '');
-            sessionLayout.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setMessage(playerMessage, '', '');
+            setMessage(sessionMessage, `Sesión lista. ID Partido ${data.id_partido}.`, 'success');
         } catch (error) {
             setMessage(playerMessage, error.message, 'error');
         } finally {
@@ -302,6 +329,7 @@
 
     changeSetButton.addEventListener('click', handleChangeSet);
     finalizeMatchButton.addEventListener('click', handleFinalizeMatch);
+    changePlayerButton.addEventListener('click', resetToIntro);
 
     renderSession();
 })();
