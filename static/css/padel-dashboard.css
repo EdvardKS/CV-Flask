@@ -1876,6 +1876,72 @@ body.padel-app.page-errores {
     scrollbar-width: thin;
 }
 
+.page-errores .control-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.page-errores .summary-sidecard .card-body {
+    padding: 0.85rem !important;
+    gap: 0.75rem !important;
+}
+
+.page-errores #session-subtext {
+    max-height: none;
+    overflow: visible;
+}
+
+.page-errores .session-stats {
+    --bs-gutter-x: 0.5rem;
+    --bs-gutter-y: 0.5rem;
+}
+
+.page-errores .session-stat {
+    width: 100%;
+}
+
+.page-errores .session-stat .card-body {
+    min-height: 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.page-errores .session-stat-highlight {
+    background: linear-gradient(180deg, rgba(42, 72, 112, 0.94) 0%, rgba(29, 52, 84, 0.98) 100%);
+    border-color: rgba(123, 166, 246, 0.22) !important;
+}
+
+.page-errores .session-stat-highlight .card-body {
+    min-height: 84px;
+}
+
+.page-errores .session-stat-highlight .meta-label {
+    color: rgba(226, 235, 249, 0.78);
+}
+
+.page-errores .session-stat-highlight .meta-value {
+    color: #f5f8ff;
+    font-size: 1.42rem;
+}
+
+.page-errores .action-grid {
+    --bs-gutter-x: 0.5rem;
+    --bs-gutter-y: 0.5rem;
+}
+
+.page-errores .action-grid .btn {
+    min-height: 40px;
+}
+
+.page-errores .summary-sidecard .status-message {
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+}
+
 .page-resumen .dashboard-layout {
     background: linear-gradient(180deg, rgba(8, 21, 40, 0.92) 0%, rgba(5, 15, 30, 0.96) 100%);
 }
@@ -2133,6 +2199,10 @@ body.padel-app.page-errores {
         overflow: visible;
         padding-right: 0;
     }
+
+    .page-errores .summary-sidecard .card-body {
+        padding: 1rem !important;
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -2145,5 +2215,14 @@ body.padel-app.page-errores {
 
     .page-resumen table {
         min-width: 1500px;
+    }
+
+    .page-errores .control-player-name {
+        font-size: 1.08rem;
+    }
+
+    .page-errores .session-stat .card-body,
+    .page-errores .session-stat-highlight .card-body {
+        min-height: 68px;
     }
 }

@@ -50,6 +50,7 @@
     const setFilter = document.getElementById('set-filter');
     const loadSummaryButton = document.getElementById('load-summary-btn');
     const changeSummaryPlayerButton = document.getElementById('change-summary-player-btn');
+    const playerSessionStore = window.padelPlayerSession || null;
 
     const playerScoreValue = document.getElementById('player-score-value');
     const playerScoreLevel = document.getElementById('player-score-level');
@@ -199,6 +200,20 @@
         setFilter.disabled = isBusy || setFilter.options.length <= 1;
     }
 
+    function rememberActivePlayer(playerName) {
+        if (!playerSessionStore || !playerName) {
+            return;
+        }
+        playerSessionStore.touch(playerName);
+    }
+
+    function clearRememberedPlayer() {
+        if (!playerSessionStore) {
+            return;
+        }
+        playerSessionStore.clear();
+    }
+
     function destroyCharts() {
         Object.keys(state.charts).forEach((key) => {
             if (state.charts[key]) {
@@ -214,6 +229,7 @@
     }
 
     function showIntroView() {
+        clearRememberedPlayer();
         summaryIntro.classList.remove('hidden');
         dashboardLayout.classList.add('hidden');
         dashboardEmpty.classList.add('hidden');
@@ -749,6 +765,7 @@
             }
 
             renderDashboard(result.data);
+            rememberActivePlayer(result.data.jugador || jugador);
             setMessage('Resumen cargado correctamente.', 'success');
         } catch (error) {
             const message = error.message || 'No se pudo cargar el resumen del jugador.';
@@ -787,4 +804,12 @@
     });
 
     changeSummaryPlayerButton.addEventListener('click', showIntroView);
+
+    if (playerSessionStore) {
+        const storedPlayer = playerSessionStore.read();
+        if (storedPlayer && storedPlayer.jugador) {
+            summaryInput.value = storedPlayer.jugador;
+            loadSummary(storedPlayer.jugador, 'all', 'all');
+        }
+    }
 })();

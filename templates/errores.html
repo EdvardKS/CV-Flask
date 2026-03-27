@@ -115,14 +115,22 @@
                     <div class="side-panel d-flex flex-column gap-2 h-100">
                         <article class="summary-sidecard card border shadow-sm">
                             <div class="card-body p-2 d-flex flex-column gap-2">
-                                <div>
+                                <div class="control-header">
                                     <p class="section-kicker mb-1">Control de sesión</p>
                                     <h2 class="control-player-name mb-0" id="player-heading">Jugador</h2>
                                     <p class="panel-text compact-text mb-0" id="session-subtext">Sesión de scouting lista para capturar errores.</p>
                                 </div>
 
                                 <div class="row g-2 session-stats">
-                                    <div class="col-4">
+                                    <div class="col-12">
+                                        <article class="session-stat session-stat-highlight card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">Balance actual</span>
+                                            <strong id="current-balance" class="meta-value">0</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-6">
                                         <article class="session-stat card border shadow-sm h-100">
                                             <div class="card-body p-2">
                                             <span class="meta-label">ID partido</span>
@@ -130,7 +138,7 @@
                                             </div>
                                         </article>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-6">
                                         <article class="session-stat card border shadow-sm h-100">
                                             <div class="card-body p-2">
                                             <span class="meta-label">Set actual</span>
@@ -138,7 +146,7 @@
                                             </div>
                                         </article>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-6">
                                         <article class="session-stat card border shadow-sm h-100">
                                             <div class="card-body p-2">
                                             <span class="meta-label">Errores</span>
@@ -154,21 +162,13 @@
                                             </div>
                                         </article>
                                     </div>
-                                    <div class="col-6">
-                                        <article class="session-stat session-stat-highlight card border shadow-sm h-100">
-                                            <div class="card-body p-2">
-                                            <span class="meta-label">Balance</span>
-                                            <strong id="current-balance" class="meta-value">0</strong>
-                                            </div>
-                                        </article>
-                                    </div>
                                 </div>
 
                                 <div class="row g-2 action-bar action-grid">
-                                    <div class="col-6">
+                                    <div class="col-12 col-sm-6 col-lg-12">
                                         <button id="change-set-btn" class="secondary-btn btn btn-primary w-100" type="button">Cambio de Set</button>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-sm-6 col-lg-12">
                                         <button id="finalize-match-btn" class="danger-btn btn btn-warning w-100" type="button">Finalizar Partido</button>
                                     </div>
                                     <div class="col-12">
@@ -221,6 +221,7 @@
             "successFields": success_fields
         } | tojson }};
     </script>
+    <script src="{{ url_for('static', filename='js/player-session.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/errores.js') }}" defer></script>
 </body>
 </html>

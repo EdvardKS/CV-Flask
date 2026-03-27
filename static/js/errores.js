@@ -28,6 +28,7 @@
     const finalizeMatchButton = document.getElementById('finalize-match-btn');
     const startSessionButton = document.getElementById('start-session-btn');
     const changePlayerButton = document.getElementById('change-player-btn');
+    const playerSessionStore = window.padelPlayerSession || null;
     const STORAGE_PREFIX = 'padelScout.activeMatch.v3';
     const STORAGE_TTL_MS = 2 * 60 * 60 * 1000;
 
@@ -65,6 +66,20 @@
         changeSetButton.disabled = isBusy;
         finalizeMatchButton.disabled = isBusy;
         changePlayerButton.disabled = isBusy;
+    }
+
+    function rememberActivePlayer(playerName) {
+        if (!playerSessionStore || !playerName) {
+            return;
+        }
+        playerSessionStore.touch(playerName);
+    }
+
+    function clearRememberedPlayer() {
+        if (!playerSessionStore) {
+            return;
+        }
+        playerSessionStore.clear();
     }
 
     function normalizePlayerStorageKey(playerName) {
@@ -112,7 +127,8 @@
         }
 
         const storageKey = state.storageKey || getStorageKey(state.jugador);
-        const createdAt = options.resetClock || !state.storageCreatedAt ? Date.now() : state.storageCreatedAt;
+        const now = Date.now();
+        const createdAt = options.resetClock || !state.storageCreatedAt ? now : state.storageCreatedAt;
 
         state.storageKey = storageKey;
         state.storageCreatedAt = createdAt;
@@ -126,8 +142,9 @@
             counters: cloneCounters(state.counters),
             setsGuardados: state.setsGuardados.map((setData, index) => cloneSetPayload(setData, index)),
             createdAt,
-            expiresAt: createdAt + STORAGE_TTL_MS,
-            savedAt: Date.now(),
+            lastUsedAt: now,
+            expiresAt: now + STORAGE_TTL_MS,
+            savedAt: now,
         };
 
         try {
@@ -135,6 +152,8 @@
         } catch (error) {
             console.warn('No se pudo persistir la sesión local de scouting.', error);
         }
+
+        rememberActivePlayer(state.jugador);
     }
 
     function removeStoredSession(storageKey) {
@@ -464,6 +483,8 @@
     }
 
     function resetToIntro() {
+        removeStoredSession(state.storageKey);
+        clearRememberedPlayer();
         state.jugador = '';
         state.archivo = '';
         state.idPartido = null;
@@ -512,6 +533,7 @@
         state.counters = createEmptyCounters();
         state.setsGuardados = [];
         renderSession();
+        rememberActivePlayer(state.jugador);
         persistSessionSnapshot({ resetClock: true });
     }
 
@@ -525,32 +547,43 @@
         state.counters = cloneCounters(snapshot.counters);
         state.setsGuardados = snapshot.setsGuardados.map((setData, index) => cloneSetPayload(setData, index));
         renderSession();
+        rememberActivePlayer(state.jugador);
         persistSessionSnapshot();
     }
 
-    async function startSession(event) {
-        event.preventDefault();
+    async function openSessionForPlayer(jugador, options = {}) {
         if (state.isBusy) {
             return;
         }
 
-        const jugador = playerInput.value.trim();
         if (!jugador) {
-            setMessage(playerMessage, 'Introduce un nombre de jugador antes de iniciar.', 'error');
+            if (!options.silent) {
+                setMessage(playerMessage, 'Introduce un nombre de jugador antes de iniciar.', 'error');
+            }
             return;
         }
 
         try {
             setBusy(true);
-            setMessage(playerMessage, 'Preparando sesión y comprobando el histórico del jugador...', '');
+            if (!options.silent) {
+                setMessage(playerMessage, 'Preparando sesión y comprobando el histórico del jugador...', '');
+            }
             const data = await postJSON('/api/errores/iniciar', { jugador });
             const storedSession = readStoredSession(data.jugador);
 
             if (storedSession && storedSession.idPartido === data.id_partido) {
                 applyStoredSession(storedSession, data);
                 showSessionView();
-                setMessage(playerMessage, '', '');
-                setMessage(sessionMessage, `Se ha recuperado el Partido ${storedSession.idPartido} guardado en este navegador.`, 'success');
+                if (!options.silent) {
+                    setMessage(playerMessage, '', '');
+                }
+                setMessage(
+                    sessionMessage,
+                    options.auto
+                        ? `Sesión recuperada automáticamente para ${storedSession.jugador}. Partido ${storedSession.idPartido}.`
+                        : `Se ha recuperado el Partido ${storedSession.idPartido} guardado en este navegador.`,
+                    'success'
+                );
                 return;
             }
 
@@ -561,13 +594,43 @@
             applyFreshSession(data);
             showSessionView();
 
-            setMessage(playerMessage, '', '');
-            setMessage(sessionMessage, `Sesión lista. ID Partido ${data.id_partido}.`, 'success');
+            if (!options.silent) {
+                setMessage(playerMessage, '', '');
+            }
+            setMessage(
+                sessionMessage,
+                options.auto
+                    ? `Sesión abierta automáticamente para ${data.jugador}. ID Partido ${data.id_partido}.`
+                    : `Sesión lista. ID Partido ${data.id_partido}.`,
+                'success'
+            );
         } catch (error) {
+            if (options.auto) {
+                clearRememberedPlayer();
+            }
             setMessage(playerMessage, error.message, 'error');
         } finally {
             setBusy(false);
         }
+    }
+
+    async function startSession(event) {
+        event.preventDefault();
+        await openSessionForPlayer(playerInput.value.trim());
+    }
+
+    function maybeResumeLastPlayer() {
+        if (!playerSessionStore) {
+            return;
+        }
+
+        const storedPlayer = playerSessionStore.read();
+        if (!storedPlayer || !storedPlayer.jugador) {
+            return;
+        }
+
+        playerInput.value = storedPlayer.jugador;
+        openSessionForPlayer(storedPlayer.jugador, { auto: true, silent: true });
     }
 
     function saveCurrentSetInMemory() {
@@ -662,4 +725,5 @@
     changePlayerButton.addEventListener('click', resetToIntro);
 
     renderSession();
+    maybeResumeLastPlayer();
 })();
