@@ -897,7 +897,7 @@ tbody tr:hover {
 .page-errores .priority-value,
 .page-errores .saved-set-total,
 .page-errores .saved-chip {
-    color: var(--muted-on-dark);
+    color: rgba(234, 240, 248, 0.82);
 }
 
 .page-errores .counter-card,
@@ -932,6 +932,14 @@ tbody tr:hover {
 .page-errores .saved-set-total {
     background: rgba(224, 184, 111, 0.14);
     color: #f0c97d;
+}
+
+.page-errores .priority-strip {
+    background: linear-gradient(180deg, rgba(28, 50, 85, 0.96) 0%, rgba(18, 33, 57, 0.98) 100%);
+}
+
+.page-errores .priority-value {
+    color: rgba(240, 245, 252, 0.88);
 }
 
 .page-errores .saved-chip {

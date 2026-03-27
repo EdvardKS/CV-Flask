@@ -316,7 +316,7 @@
         const labels = chartData.map((item) => item.label);
         const values = chartData.map((item) => item.total);
         const colors = chartData.map((item) => (
-            item.field === topError.field ? '#cda45b' : 'rgba(20, 53, 94, 0.35)'
+            item.field === topError.field ? '#d8b36a' : 'rgba(120, 162, 226, 0.55)'
         ));
 
         if (state.liveChart) {
@@ -359,10 +359,10 @@
                         beginAtZero: true,
                         ticks: {
                             precision: 0,
-                            color: '#5f6d81',
+                            color: 'rgba(235, 241, 250, 0.82)',
                         },
                         grid: {
-                            color: 'rgba(20, 53, 94, 0.08)',
+                            color: 'rgba(255, 255, 255, 0.08)',
                         },
                         border: {
                             display: false,
@@ -370,7 +370,7 @@
                     },
                     y: {
                         ticks: {
-                            color: '#223552',
+                            color: 'rgba(244, 247, 252, 0.9)',
                             font: {
                                 size: 11,
                                 weight: '700',
