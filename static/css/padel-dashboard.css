@@ -1853,6 +1853,17 @@ body.padel-app.page-errores {
     padding-right: 3px;
 }
 
+.page-errores,
+.page-errores .session-layout,
+.page-errores .counter-stack,
+.page-errores .counter-card,
+.page-errores .count-btn,
+.page-errores .secondary-btn,
+.page-errores .danger-btn,
+.page-errores .ghost-btn {
+    touch-action: manipulation;
+}
+
 .page-errores .counter-section {
     flex: 0 0 auto;
 }
