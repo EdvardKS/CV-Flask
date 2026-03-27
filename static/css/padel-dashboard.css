@@ -422,6 +422,10 @@ a {
     grid-template-rows: minmax(0, 1fr) minmax(0, 0.9fr);
 }
 
+.page-errores .side-column {
+    grid-template-rows: auto minmax(0, 1fr);
+}
+
 .counter-block,
 .summary-sidecard,
 .saved-sets-card {
