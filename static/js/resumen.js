@@ -17,6 +17,9 @@
     const weakPointsList = document.getElementById('weak-points-list');
     const improvementList = document.getElementById('improvement-list');
     const blockComment = document.getElementById('block-comment');
+    const matchCompareCard = document.getElementById('match-compare-card');
+    const matchChartWrap = document.getElementById('match-chart-wrap');
+    const matchChartEmpty = document.getElementById('match-chart-empty');
 
     const kpiPartidos = document.getElementById('kpi-partidos');
     const kpiSets = document.getElementById('kpi-sets');
@@ -166,34 +169,39 @@
         if (!items.length) {
             const item = document.createElement('div');
             item.className = 'insight-item';
-            item.innerHTML = '<p class="muted-text">No hay suficientes datos para generar recomendaciones.</p>';
+            item.innerHTML = '<p class="muted-text mb-0">No hay suficientes datos para generar recomendaciones.</p>';
             container.appendChild(item);
             return;
         }
 
-        items.forEach((itemData) => {
+        items.forEach((itemData, index) => {
             const item = document.createElement('article');
             item.className = 'insight-item';
+            const detailText = String(itemData.detalle || '');
 
             const top = document.createElement('div');
-            top.className = 'saved-set-top';
+            top.className = 'insight-item-top';
 
             const title = document.createElement('h4');
             title.className = 'insight-title';
             title.textContent = itemData.label;
 
-            top.appendChild(title);
+            const value = document.createElement('span');
+            value.className = 'insight-value';
+            value.textContent = typeof itemData.valor === 'number'
+                ? `${itemData.valor} errores`
+                : isImprovementList
+                    ? `Prioridad ${index + 1}`
+                    : 'Clave';
 
-            if (!isImprovementList && typeof itemData.valor === 'number') {
-                const value = document.createElement('span');
-                value.className = 'insight-value';
-                value.textContent = `${itemData.valor} errores`;
-                top.appendChild(value);
-            }
+            top.appendChild(title);
+            top.appendChild(value);
 
             const copy = document.createElement('p');
             copy.className = 'insight-copy';
-            copy.textContent = itemData.detalle;
+            copy.textContent = detailText.length > 140
+                ? `${detailText.slice(0, 137).trimEnd()}...`
+                : detailText;
 
             item.appendChild(top);
             item.appendChild(copy);
@@ -230,8 +238,6 @@
     }
 
     function renderCharts(payload) {
-        destroyCharts();
-
         state.charts.errorType = new Chart(chartCanvas.errorType, {
             type: 'bar',
             data: {
@@ -304,57 +310,68 @@
             },
         });
 
-        state.charts.match = new Chart(chartCanvas.match, {
-            type: 'line',
-            data: {
-                labels: payload.series_por_partido.map((item) => `Partido ${item.id_partido}`),
-                datasets: [{
-                    label: 'Total ENF',
-                    data: payload.series_por_partido.map((item) => item.total_errores),
-                    borderColor: chartPalette.line,
-                    backgroundColor: chartPalette.fill,
-                    fill: true,
-                    tension: 0.32,
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            precision: 0,
-                            color: chartPalette.ticks,
+        if (payload.series_por_partido.length > 1) {
+            matchCompareCard.classList.remove('is-empty');
+            matchChartWrap.classList.remove('hidden');
+            matchChartEmpty.classList.add('hidden');
+
+            state.charts.match = new Chart(chartCanvas.match, {
+                type: 'line',
+                data: {
+                    labels: payload.series_por_partido.map((item) => `Partido ${item.id_partido}`),
+                    datasets: [{
+                        label: 'Total ENF',
+                        data: payload.series_por_partido.map((item) => item.total_errores),
+                        borderColor: chartPalette.line,
+                        backgroundColor: chartPalette.fill,
+                        fill: true,
+                        tension: 0.32,
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0,
+                                color: chartPalette.ticks,
+                            },
+                            grid: {
+                                color: chartPalette.grid,
+                            },
+                            border: {
+                                display: false,
+                            },
                         },
-                        grid: {
-                            color: chartPalette.grid,
-                        },
-                        border: {
-                            display: false,
+                        x: {
+                            ticks: {
+                                color: chartPalette.ticks,
+                            },
+                            grid: {
+                                display: false,
+                            },
+                            border: {
+                                display: false,
+                            },
                         },
                     },
-                    x: {
-                        ticks: {
-                            color: chartPalette.ticks,
-                        },
-                        grid: {
-                            display: false,
-                        },
-                        border: {
-                            display: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: chartPalette.text,
+                            },
                         },
                     },
                 },
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: chartPalette.text,
-                        },
-                    },
-                },
-            },
-        });
+            });
+            return;
+        }
+
+        matchCompareCard.classList.add('is-empty');
+        matchChartWrap.classList.add('hidden');
+        matchChartEmpty.classList.remove('hidden');
     }
 
     function renderDashboard(payload) {
@@ -380,11 +397,13 @@
         }
 
         showDashboardBody();
+        destroyCharts();
         renderKPIs(payload);
         renderCharts(payload);
         renderInsightList(weakPointsList, payload.insights.puntos_flojos, false);
         renderInsightList(improvementList, payload.insights.areas_mejora, true);
-        blockComment.textContent = payload.insights.comentario_bloque;
+        blockComment.textContent = payload.insights.comentario_bloque || '';
+        blockComment.classList.toggle('hidden', !payload.insights.comentario_bloque);
         renderTable(payload.filas_filtradas);
     }
 

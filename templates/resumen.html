@@ -62,31 +62,39 @@
         </section>
 
         <section id="dashboard-layout" class="dashboard-layout card shadow-sm border-0 hidden">
-            <div class="dashboard-topbar">
-                <div class="title-stack">
-                    <span class="eyebrow">Resumen activo</span>
-                    <h2 id="summary-player-heading" class="section-title large">Jugador</h2>
-                    <p id="summary-context" class="panel-text">Vista global de rendimiento.</p>
+            <div class="row g-3 align-items-end mb-4 summary-header">
+                <div class="col-12 col-lg-6">
+                    <div class="summary-header-copy">
+                        <span class="eyebrow">Resumen activo</span>
+                        <h2 id="summary-player-heading" class="section-title large mt-3 mb-2">Jugador</h2>
+                        <p id="summary-context" class="panel-text mb-0">Vista global de rendimiento.</p>
+                    </div>
                 </div>
 
-                <div class="dashboard-actions">
-                    <div class="dashboard-filters">
-                        <label class="filter-label" for="match-filter">
-                            Partido
-                            <select id="match-filter" class="select-input" disabled>
-                                <option value="all">Todos</option>
-                            </select>
-                        </label>
+                <div class="col-12 col-lg-6">
+                    <div class="row g-3 summary-header-controls">
+                        <div class="col-6 col-md-4">
+                            <label class="filter-label" for="match-filter">
+                                Partido
+                                <select id="match-filter" class="select-input" disabled>
+                                    <option value="all">Todos</option>
+                                </select>
+                            </label>
+                        </div>
 
-                        <label class="filter-label" for="set-filter">
-                            Set
-                            <select id="set-filter" class="select-input" disabled>
-                                <option value="all">Todos</option>
-                            </select>
-                        </label>
+                        <div class="col-6 col-md-4">
+                            <label class="filter-label" for="set-filter">
+                                Set
+                                <select id="set-filter" class="select-input" disabled>
+                                    <option value="all">Todos</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="col-12 col-md-4 d-flex align-items-end">
+                            <button id="change-summary-player-btn" class="ghost-btn w-100" type="button">Cambiar jugador</button>
+                        </div>
                     </div>
-
-                    <button id="change-summary-player-btn" class="ghost-btn" type="button">Cambiar jugador</button>
                 </div>
             </div>
 
@@ -97,74 +105,127 @@
                 </p>
             </div>
 
-            <div id="dashboard-body">
-                <div class="kpi-grid">
-                    <article class="kpi-card card shadow-sm border-0">
-                        <span class="kpi-label">Partidos analizados</span>
-                        <strong id="kpi-partidos" class="kpi-value">0</strong>
-                    </article>
-                    <article class="kpi-card card shadow-sm border-0">
-                        <span class="kpi-label">Sets analizados</span>
-                        <strong id="kpi-sets" class="kpi-value">0</strong>
-                    </article>
-                    <article class="kpi-card card shadow-sm border-0">
-                        <span class="kpi-label">Total ENF</span>
-                        <strong id="kpi-total" class="kpi-value">0</strong>
-                    </article>
-                    <article class="kpi-card card shadow-sm border-0">
-                        <span class="kpi-label">Media por set</span>
-                        <strong id="kpi-media" class="kpi-value">0</strong>
-                    </article>
-                    <article class="kpi-card card shadow-sm border-0">
-                        <span class="kpi-label">Error más repetido</span>
-                        <strong id="kpi-error" class="kpi-value">Sin datos</strong>
-                    </article>
-                    <article class="kpi-card card shadow-sm border-0">
-                        <span class="kpi-label">Bloque más débil</span>
-                        <strong id="kpi-bloque" class="kpi-value">Sin datos</strong>
-                    </article>
+            <div id="dashboard-body" class="d-flex flex-column gap-4">
+                <div class="row g-3 mb-0">
+                    <div class="col-6 col-md-3">
+                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Partidos analizados</span>
+                                <strong id="kpi-partidos" class="kpi-value">0</strong>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Sets analizados</span>
+                                <strong id="kpi-sets" class="kpi-value">0</strong>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Total ENF</span>
+                                <strong id="kpi-total" class="kpi-value">0</strong>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Media por set</span>
+                                <strong id="kpi-media" class="kpi-value">0</strong>
+                            </div>
+                        </article>
+                    </div>
                 </div>
 
-                <div class="chart-grid">
-                    <article class="chart-card card shadow-sm border-0">
-                        <h3 class="chart-title">Distribución por tipo de error</h3>
-                        <canvas id="error-type-chart"></canvas>
-                    </article>
-
-                    <article class="chart-card card shadow-sm border-0">
-                        <h3 class="chart-title">Peso por bloque de juego</h3>
-                        <canvas id="block-chart"></canvas>
-                    </article>
-
-                    <article class="chart-card wide card shadow-sm border-0">
-                        <h3 class="chart-title">Comparativa por partido</h3>
-                        <canvas id="match-chart"></canvas>
-                    </article>
+                <div class="row g-3 mb-0">
+                    <div class="col-6 col-md-6">
+                        <article class="kpi-card kpi-card-secondary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Error más repetido</span>
+                                <strong id="kpi-error" class="kpi-value">Sin datos</strong>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <article class="kpi-card kpi-card-secondary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Bloque más débil</span>
+                                <strong id="kpi-bloque" class="kpi-value">Sin datos</strong>
+                            </div>
+                        </article>
+                    </div>
                 </div>
 
-                <div class="insight-grid">
-                    <article class="insight-card card shadow-sm border-0">
-                        <h3 class="chart-title">Puntos más flojos</h3>
-                        <div id="weak-points-list" class="insight-list"></div>
-                    </article>
+                <div class="row g-3 mb-0">
+                    <div class="col-12 col-lg-7">
+                        <article class="chart-card card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <h3 class="chart-title">Distribución por tipo de error</h3>
+                                <canvas id="error-type-chart"></canvas>
+                            </div>
+                        </article>
+                    </div>
 
-                    <article class="insight-card card shadow-sm border-0">
-                        <h3 class="chart-title">Áreas de mejora</h3>
-                        <div id="improvement-list" class="insight-list"></div>
-                        <p id="block-comment" class="inline-note"></p>
-                    </article>
+                    <div class="col-12 col-lg-5">
+                        <article class="chart-card chart-card-compact card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <h3 class="chart-title">Peso por bloque de juego</h3>
+                                <canvas id="block-chart"></canvas>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-0">
+                    <div class="col-12">
+                        <article id="match-compare-card" class="chart-card card shadow-sm border-0">
+                            <div class="card-body p-3">
+                                <h3 class="chart-title">Comparativa por partido</h3>
+                                <p id="match-chart-empty" class="chart-empty hidden mb-0">No hay suficientes datos para comparar</p>
+                                <div id="match-chart-wrap" class="chart-compare-wrap">
+                                    <canvas id="match-chart"></canvas>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-0">
+                    <div class="col-12 col-lg-6">
+                        <article class="insight-card card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <h3 class="chart-title">Puntos más flojos</h3>
+                                <div id="weak-points-list" class="insight-list"></div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <article class="insight-card card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <h3 class="chart-title">Áreas de mejora</h3>
+                                <div id="improvement-list" class="insight-list"></div>
+                                <p id="block-comment" class="inline-note mb-0 hidden"></p>
+                            </div>
+                        </article>
+                    </div>
                 </div>
 
                 <article class="table-card card shadow-sm border-0">
-                    <div class="saved-set-top">
-                        <div>
-                            <h3 class="table-title">Detalle filtrado por fila</h3>
-                            <p class="table-meta">Cada fila representa un set del jugador bajo el filtro activo.</p>
+                    <div class="card-body p-3">
+                        <div class="saved-set-top">
+                            <div>
+                                <h3 class="table-title">Detalle filtrado por fila</h3>
+                                <p class="table-meta">Cada fila representa un set del jugador bajo el filtro activo.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="table-scroll">
-                        <table>
+                        <div class="table-responsive">
+                            <table>
                             <thead>
                                 <tr>
                                     <th>ID Partido</th>
@@ -183,7 +244,8 @@
                                 </tr>
                             </thead>
                             <tbody id="summary-rows"></tbody>
-                        </table>
+                            </table>
+                        </div>
                     </div>
                 </article>
             </div>
