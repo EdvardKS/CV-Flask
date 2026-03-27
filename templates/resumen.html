@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumen de Jugador | Padel Scout</title>
-    <meta name="description" content="Dashboard de scouting de pádel con resumen global, filtros por partido y análisis de puntos débiles.">
+    <meta name="description" content="Dashboard de scouting de pádel con resumen integral de errores, aciertos, perfil del jugador y puntuación global.">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,12 +20,12 @@
                 <h1 class="page-title">Dashboard completo del jugador</h1>
                 <p class="page-lead">
                     Carga el histórico del jugador para ver el resumen global por defecto y profundizar
-                    con filtros por partido y set, distinguiendo derecha y revés en resto, fondo y volea.
+                    con filtros por partido y set, cruzando errores, aciertos, perfil y puntuación del jugador.
                 </p>
                 <div class="feature-strip">
                     <span class="feature-pill">Resumen global</span>
                     <span class="feature-pill">Full width</span>
-                    <span class="feature-pill">KPIs + gráficas + insights</span>
+                    <span class="feature-pill">KPIs + perfil + insights</span>
                 </div>
             </article>
 
@@ -107,87 +107,165 @@
 
             <div id="dashboard-body" class="d-flex flex-column gap-4">
                 <div class="row g-3 mb-0">
-                    <div class="col-6 col-md-3">
-                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
+                    <div class="col-12 col-xl-4">
+                        <article class="profile-card card shadow-sm border-0 h-100">
                             <div class="card-body p-3">
-                                <span class="kpi-label">Partidos analizados</span>
-                                <strong id="kpi-partidos" class="kpi-value">0</strong>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
-                            <div class="card-body p-3">
-                                <span class="kpi-label">Sets analizados</span>
-                                <strong id="kpi-sets" class="kpi-value">0</strong>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
-                            <div class="card-body p-3">
-                                <span class="kpi-label">Total ENF</span>
-                                <strong id="kpi-total" class="kpi-value">0</strong>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
-                            <div class="card-body p-3">
-                                <span class="kpi-label">Media por set</span>
-                                <strong id="kpi-media" class="kpi-value">0</strong>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+                                <div class="profile-header-line">
+                                    <span class="kpi-label">Perfil global del jugador</span>
+                                    <span id="player-score-level" class="profile-score-level">Sin datos</span>
+                                </div>
 
-                <div class="row g-3 mb-0">
-                    <div class="col-6 col-md-6">
-                        <article class="kpi-card kpi-card-secondary card shadow-sm border-0 h-100">
-                            <div class="card-body p-3">
-                                <span class="kpi-label">Error más repetido</span>
-                                <strong id="kpi-error" class="kpi-value">Sin datos</strong>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-6 col-md-6">
-                        <article class="kpi-card kpi-card-secondary card shadow-sm border-0 h-100">
-                            <div class="card-body p-3">
-                                <span class="kpi-label">Bloque más débil</span>
-                                <strong id="kpi-bloque" class="kpi-value">Sin datos</strong>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+                                <div class="profile-score-line">
+                                    <strong id="player-score-value" class="profile-score-value">0</strong>
+                                    <div class="profile-score-meta">
+                                        <span class="profile-score-caption">Score 0-100</span>
+                                        <span id="player-net-impact" class="profile-impact">Impacto neto 0</span>
+                                    </div>
+                                </div>
 
-                <div class="row g-3 mb-0">
-                    <div class="col-12 col-lg-7">
+                                <h3 id="player-archetype" class="profile-archetype">Sin datos</h3>
+                                <p id="player-profile-description" class="profile-description mb-0">
+                                    El perfil del jugador aparecerá cuando haya suficientes sets analizados.
+                                </p>
+
+                                <div class="row g-2 profile-mini-grid mt-2">
+                                    <div class="col-6">
+                                        <div class="profile-mini-tile">
+                                            <span class="meta-label">Área dominante</span>
+                                            <strong id="player-dominant-area" class="profile-mini-value">Sin datos</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="profile-mini-tile">
+                                            <span class="meta-label">Partidos / Sets</span>
+                                            <strong id="player-volume" class="profile-mini-value">0 / 0</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="profile-mini-tile">
+                                            <span class="meta-label">Acierto top</span>
+                                            <strong id="player-top-success" class="profile-mini-value">Sin datos</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="profile-mini-tile">
+                                            <span class="meta-label">Error crítico</span>
+                                            <strong id="player-top-error" class="profile-mini-value">Sin datos</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-xl-8">
                         <article class="chart-card card shadow-sm border-0 h-100">
                             <div class="card-body p-3">
-                                <h3 class="chart-title">Distribución por tipo de error</h3>
-                                <canvas id="error-type-chart"></canvas>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-12 col-lg-5">
-                        <article class="chart-card chart-card-compact card shadow-sm border-0 h-100">
-                            <div class="card-body p-3">
-                                <h3 class="chart-title">Peso por bloque de juego</h3>
-                                <canvas id="block-chart"></canvas>
+                                <div class="chart-head">
+                                    <div>
+                                        <h3 class="chart-title">Radar de perfil por áreas</h3>
+                                        <p class="chart-subtitle mb-0">Evalúa el balance entre inicio, fondo, red, definición y lectura táctica.</p>
+                                    </div>
+                                </div>
+                                <p id="profile-radar-empty" class="chart-empty hidden mb-0">No hay suficientes datos para trazar el perfil del jugador.</p>
+                                <div id="profile-radar-wrap" class="chart-canvas-wrap">
+                                    <canvas id="profile-radar-chart"></canvas>
+                                </div>
                             </div>
                         </article>
                     </div>
                 </div>
 
                 <div class="row g-3 mb-0">
-                    <div class="col-12">
-                        <article id="match-compare-card" class="chart-card card shadow-sm border-0">
+                    <div class="col-6 col-md-3">
+                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
                             <div class="card-body p-3">
-                                <h3 class="chart-title">Comparativa por partido</h3>
-                                <p id="match-chart-empty" class="chart-empty hidden mb-0">No hay suficientes datos para comparar</p>
-                                <div id="match-chart-wrap" class="chart-compare-wrap">
-                                    <canvas id="match-chart"></canvas>
+                                <span class="kpi-label">Total aciertos</span>
+                                <strong id="kpi-total-successes" class="kpi-value">0</strong>
+                                <small class="kpi-helper">Volumen ofensivo y de construcción útil.</small>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Total errores</span>
+                                <strong id="kpi-total-errors" class="kpi-value">0</strong>
+                                <small class="kpi-helper">Errores no forzados acumulados.</small>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Balance neto</span>
+                                <strong id="kpi-balance" class="kpi-value">0</strong>
+                                <small class="kpi-helper">Aciertos menos errores en el filtro activo.</small>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <article class="kpi-card kpi-card-primary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Score jugador</span>
+                                <strong id="kpi-score" class="kpi-value">0</strong>
+                                <small id="kpi-score-level" class="kpi-helper">Sin datos</small>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-0">
+                    <div class="col-6 col-md-6">
+                        <article class="kpi-card kpi-card-secondary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Media aciertos / set</span>
+                                <strong id="kpi-success-rate" class="kpi-value">0</strong>
+                                <small id="kpi-top-success" class="kpi-helper">Sin datos</small>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <article class="kpi-card kpi-card-secondary card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <span class="kpi-label">Media errores / set</span>
+                                <strong id="kpi-error-rate" class="kpi-value">0</strong>
+                                <small id="kpi-top-error" class="kpi-helper">Sin datos</small>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-0">
+                    <div class="col-12 col-lg-6">
+                        <article class="chart-card card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <div class="chart-head">
+                                    <div>
+                                        <h3 class="chart-title">Distribución de errores</h3>
+                                        <p class="chart-subtitle mb-0">Localiza dónde más se rompe el rendimiento del jugador.</p>
+                                    </div>
+                                </div>
+                                <p id="error-chart-empty" class="chart-empty hidden mb-0">No hay errores registrados en este filtro.</p>
+                                <div id="error-chart-wrap" class="chart-canvas-wrap">
+                                    <canvas id="error-type-chart"></canvas>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <article class="chart-card card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <div class="chart-head">
+                                    <div>
+                                        <h3 class="chart-title">Distribución de aciertos</h3>
+                                        <p class="chart-subtitle mb-0">Muestra qué acciones están generando más valor real.</p>
+                                    </div>
+                                </div>
+                                <p id="success-chart-empty" class="chart-empty hidden mb-0">No hay aciertos registrados en este filtro.</p>
+                                <div id="success-chart-wrap" class="chart-canvas-wrap">
+                                    <canvas id="success-type-chart"></canvas>
                                 </div>
                             </div>
                         </article>
@@ -196,6 +274,51 @@
 
                 <div class="row g-3 mb-0">
                     <div class="col-12 col-lg-6">
+                        <article class="chart-card card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <div class="chart-head">
+                                    <div>
+                                        <h3 class="chart-title">Balance por bloque</h3>
+                                        <p class="chart-subtitle mb-0">Comparativa entre valor generado y errores en fondo y red.</p>
+                                    </div>
+                                </div>
+                                <p id="block-chart-empty" class="chart-empty hidden mb-0">No hay suficientes datos para comparar bloques.</p>
+                                <div id="block-chart-wrap" class="chart-canvas-wrap">
+                                    <canvas id="block-balance-chart"></canvas>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <article id="match-compare-card" class="chart-card card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <div class="chart-head">
+                                    <div>
+                                        <h3 class="chart-title">Comparativa por partido</h3>
+                                        <p class="chart-subtitle mb-0">Balance, aciertos y errores del filtro a nivel de partido.</p>
+                                    </div>
+                                </div>
+                                <p id="match-chart-empty" class="chart-empty hidden mb-0">No hay suficientes datos para comparar</p>
+                                <div id="match-chart-wrap" class="chart-canvas-wrap">
+                                    <canvas id="match-chart"></canvas>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-0">
+                    <div class="col-12 col-lg-4">
+                        <article class="insight-card card shadow-sm border-0 h-100">
+                            <div class="card-body p-3">
+                                <h3 class="chart-title">Puntos fuertes</h3>
+                                <div id="strong-points-list" class="insight-list"></div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-lg-4">
                         <article class="insight-card card shadow-sm border-0 h-100">
                             <div class="card-body p-3">
                                 <h3 class="chart-title">Puntos más flojos</h3>
@@ -204,51 +327,72 @@
                         </article>
                     </div>
 
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-lg-4">
                         <article class="insight-card card shadow-sm border-0 h-100">
                             <div class="card-body p-3">
                                 <h3 class="chart-title">Áreas de mejora</h3>
                                 <div id="improvement-list" class="insight-list"></div>
-                                <p id="block-comment" class="inline-note mb-0 hidden"></p>
                             </div>
                         </article>
                     </div>
                 </div>
 
+                <article class="insight-card card shadow-sm border-0">
+                    <div class="card-body p-3">
+                        <h3 class="chart-title">Conclusión global</h3>
+                        <p id="global-comment" class="inline-note mb-0 hidden"></p>
+                    </div>
+                </article>
+
                 <article class="table-card card shadow-sm border-0">
                     <div class="card-body p-3">
                         <div class="saved-set-top">
                             <div>
-                                <h3 class="table-title">Detalle filtrado por fila</h3>
-                                <p class="table-meta">Cada fila representa un set del jugador bajo el filtro activo.</p>
+                                <h3 class="table-title">Detalle filtrado por set</h3>
+                                <p class="table-meta">Cada fila representa un set del jugador con errores, aciertos y balance del filtro activo.</p>
                             </div>
                         </div>
 
                         <div class="table-responsive">
                             <table>
-                            <thead>
-                                <tr>
-                                    <th>ID Partido</th>
-                                    <th>Set</th>
-                                    <th>Doble Falta</th>
-                                    <th>Resto derecha</th>
-                                    <th>Resto revés</th>
-                                    <th>Globo malo</th>
-                                    <th>Fondo derecha</th>
-                                    <th>Fondo revés</th>
-                                    <th>Bajada derecha</th>
-                                    <th>Bajada revés</th>
-                                    <th>Posicionamiento fondo</th>
-                                    <th>Volea derecha</th>
-                                    <th>Volea revés</th>
-                                    <th>Posicionamiento volea</th>
-                                    <th>Tirar ficha</th>
-                                    <th>Bandeja/Víbora</th>
-                                    <th>Remate fallido</th>
-                                    <th>Total ENF</th>
-                                </tr>
-                            </thead>
-                            <tbody id="summary-rows"></tbody>
+                                <thead>
+                                    <tr>
+                                        <th>ID Partido</th>
+                                        <th>Set</th>
+                                        <th>Doble Falta</th>
+                                        <th>Resto derecha</th>
+                                        <th>Resto revés</th>
+                                        <th>Globo malo</th>
+                                        <th>Fondo derecha</th>
+                                        <th>Fondo revés</th>
+                                        <th>Bajada derecha</th>
+                                        <th>Bajada revés</th>
+                                        <th>Pos. fondo</th>
+                                        <th>Volea derecha</th>
+                                        <th>Volea revés</th>
+                                        <th>Pos. volea</th>
+                                        <th>Tirar ficha</th>
+                                        <th>Bandeja error</th>
+                                        <th>Smash error</th>
+                                        <th>Winner derecha</th>
+                                        <th>Winner revés</th>
+                                        <th>Resto ganador derecha</th>
+                                        <th>Resto ganador revés</th>
+                                        <th>Globo de oro</th>
+                                        <th>Chiquita</th>
+                                        <th>Bajada pared</th>
+                                        <th>Remate finalizador</th>
+                                        <th>Volea derecha ganadora</th>
+                                        <th>Volea revés ganadora</th>
+                                        <th>Bandeja/Víbora definitiva</th>
+                                        <th>Volea bloqueo</th>
+                                        <th>Dormilona</th>
+                                        <th>Total errores</th>
+                                        <th>Total aciertos</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="summary-rows"></tbody>
                             </table>
                         </div>
                     </div>
@@ -260,7 +404,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <script>
         window.resumenConfig = {{ {
-            "errorLabels": error_labels
+            "fieldLabels": error_labels
         } | tojson }};
     </script>
     <script src="{{ url_for('static', filename='js/resumen.js') }}" defer></script>

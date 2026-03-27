@@ -1,8 +1,10 @@
 (function () {
     const config = window.erroresConfig || {};
     const counterBlocks = config.counterBlocks || [];
-    const errorLabels = config.errorLabels || {};
-    const errorFields = counterBlocks.flatMap((block) => block.fields.map((field) => field.key));
+    const fieldLabels = config.errorLabels || {};
+    const errorFields = config.errorFields || [];
+    const successFields = config.successFields || [];
+    const metricFields = counterBlocks.flatMap((block) => block.fields.map((field) => field.key));
 
     const playerIntro = document.getElementById('player-intro');
     const playerForm = document.getElementById('player-form');
@@ -14,7 +16,9 @@
     const sessionSubtext = document.getElementById('session-subtext');
     const matchIdElement = document.getElementById('match-id');
     const currentSetElement = document.getElementById('current-set');
-    const currentTotalElement = document.getElementById('current-total');
+    const currentErrorsElement = document.getElementById('current-errors');
+    const currentSuccessesElement = document.getElementById('current-successes');
+    const currentBalanceElement = document.getElementById('current-balance');
     const savedSetsContainer = document.getElementById('saved-sets');
     const priorityStrip = document.querySelector('.priority-strip');
     const priorityLabel = document.getElementById('priority-label');
@@ -24,7 +28,7 @@
     const finalizeMatchButton = document.getElementById('finalize-match-btn');
     const startSessionButton = document.getElementById('start-session-btn');
     const changePlayerButton = document.getElementById('change-player-btn');
-    const STORAGE_PREFIX = 'padelScout.activeMatch.v1';
+    const STORAGE_PREFIX = 'padelScout.activeMatch.v3';
     const STORAGE_TTL_MS = 2 * 60 * 60 * 1000;
 
     const state = {
@@ -41,7 +45,7 @@
     };
 
     function createEmptyCounters() {
-        return errorFields.reduce((accumulator, field) => {
+        return metricFields.reduce((accumulator, field) => {
             accumulator[field] = 0;
             return accumulator;
         }, {});
@@ -79,22 +83,16 @@
 
     function toPositiveInt(value, fallback) {
         const parsed = Number.parseInt(value, 10);
-        if (Number.isInteger(parsed) && parsed > 0) {
-            return parsed;
-        }
-        return fallback;
+        return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
     }
 
     function normalizeCounterValue(value) {
         const parsed = Number.parseInt(value, 10);
-        if (Number.isInteger(parsed) && parsed > 0) {
-            return parsed;
-        }
-        return 0;
+        return Number.isInteger(parsed) && parsed > 0 ? parsed : 0;
     }
 
     function cloneCounters(source) {
-        return errorFields.reduce((accumulator, field) => {
+        return metricFields.reduce((accumulator, field) => {
             accumulator[field] = normalizeCounterValue(source && source[field]);
             return accumulator;
         }, {});
@@ -102,7 +100,7 @@
 
     function cloneSetPayload(setData, index) {
         const payload = { Numero_Set: index + 1 };
-        errorFields.forEach((field) => {
+        metricFields.forEach((field) => {
             payload[field] = normalizeCounterValue(setData && setData[field]);
         });
         return payload;
@@ -114,15 +112,13 @@
         }
 
         const storageKey = state.storageKey || getStorageKey(state.jugador);
-        const createdAt = options.resetClock || !state.storageCreatedAt
-            ? Date.now()
-            : state.storageCreatedAt;
+        const createdAt = options.resetClock || !state.storageCreatedAt ? Date.now() : state.storageCreatedAt;
 
         state.storageKey = storageKey;
         state.storageCreatedAt = createdAt;
 
         const snapshot = {
-            version: 1,
+            version: 3,
             jugador: state.jugador,
             archivo: state.archivo,
             idPartido: state.idPartido,
@@ -137,7 +133,7 @@
         try {
             localStorage.setItem(storageKey, JSON.stringify(snapshot));
         } catch (error) {
-            console.warn('No se pudo persistir la sesión local de errores.', error);
+            console.warn('No se pudo persistir la sesión local de scouting.', error);
         }
     }
 
@@ -148,7 +144,7 @@
         try {
             localStorage.removeItem(storageKey);
         } catch (error) {
-            console.warn('No se pudo limpiar la sesión local de errores.', error);
+            console.warn('No se pudo limpiar la sesión local de scouting.', error);
         }
     }
 
@@ -159,7 +155,7 @@
         try {
             rawSnapshot = localStorage.getItem(storageKey);
         } catch (error) {
-            console.warn('No se pudo leer la sesión local de errores.', error);
+            console.warn('No se pudo leer la sesión local de scouting.', error);
             return null;
         }
 
@@ -196,59 +192,53 @@
             jugador: String(parsedSnapshot.jugador || playerName || '').trim(),
             archivo: String(parsedSnapshot.archivo || ''),
             idPartido,
-            setActual: Math.max(
-                toPositiveInt(parsedSnapshot.setActual, 1),
-                setsGuardados.length + 1
-            ),
+            setActual: Math.max(toPositiveInt(parsedSnapshot.setActual, 1), setsGuardados.length + 1),
             counters: cloneCounters(parsedSnapshot.counters),
             setsGuardados,
             createdAt: Number(parsedSnapshot.createdAt) > 0 ? Number(parsedSnapshot.createdAt) : Date.now(),
         };
     }
 
-    function applyFreshSession(sessionData) {
-        state.storageKey = getStorageKey(sessionData.jugador);
-        state.storageCreatedAt = Date.now();
-        state.jugador = sessionData.jugador;
-        state.archivo = sessionData.archivo;
-        state.idPartido = sessionData.id_partido;
-        state.setActual = 1;
-        state.counters = createEmptyCounters();
-        state.setsGuardados = [];
-        renderSession();
-        persistSessionSnapshot({ resetClock: true });
+    function formatBalance(value) {
+        if (value > 0) {
+            return `+${value}`;
+        }
+        return String(value);
     }
 
-    function applyStoredSession(snapshot, fallbackSessionData) {
-        state.storageKey = snapshot.storageKey;
-        state.storageCreatedAt = snapshot.createdAt;
-        state.jugador = fallbackSessionData.jugador;
-        state.archivo = fallbackSessionData.archivo;
-        state.idPartido = snapshot.idPartido;
-        state.setActual = snapshot.setActual;
-        state.counters = cloneCounters(snapshot.counters);
-        state.setsGuardados = snapshot.setsGuardados.map((setData, index) => cloneSetPayload(setData, index));
-        renderSession();
-        persistSessionSnapshot();
+    function getCurrentErrorTotal() {
+        return errorFields.reduce((total, field) => total + normalizeCounterValue(state.counters[field]), 0);
     }
 
-    function getCurrentTotal() {
-        return errorFields.reduce((total, field) => total + state.counters[field], 0);
+    function getCurrentSuccessTotal() {
+        return successFields.reduce((total, field) => total + normalizeCounterValue(state.counters[field]), 0);
+    }
+
+    function getCurrentBalance() {
+        return getCurrentSuccessTotal() - getCurrentErrorTotal();
     }
 
     function buildSetPayloadFromCounters(setNumber, counters) {
-        return errorFields.reduce((payload, field) => {
+        return metricFields.reduce((payload, field) => {
             payload[field] = counters[field];
             return payload;
         }, { Numero_Set: setNumber });
     }
 
     function hasActivity(setPayload) {
-        return errorFields.some((field) => (setPayload[field] || 0) > 0);
+        return metricFields.some((field) => (setPayload[field] || 0) > 0);
     }
 
-    function calculateSetTotal(setData) {
-        return errorFields.reduce((total, field) => total + (setData[field] || 0), 0);
+    function calculateErrorTotal(setData) {
+        return errorFields.reduce((total, field) => total + normalizeCounterValue(setData[field]), 0);
+    }
+
+    function calculateSuccessTotal(setData) {
+        return successFields.reduce((total, field) => total + normalizeCounterValue(setData[field]), 0);
+    }
+
+    function calculateBalanceTotal(setData) {
+        return calculateSuccessTotal(setData) - calculateErrorTotal(setData);
     }
 
     function showSessionView() {
@@ -268,16 +258,19 @@
         }
     }
 
-    function getSessionAggregateTotals() {
-        const totals = createEmptyCounters();
+    function getAggregatedTotals(fields) {
+        const totals = fields.reduce((accumulator, field) => {
+            accumulator[field] = 0;
+            return accumulator;
+        }, {});
 
         state.setsGuardados.forEach((setData) => {
-            errorFields.forEach((field) => {
+            fields.forEach((field) => {
                 totals[field] += normalizeCounterValue(setData[field]);
             });
         });
 
-        errorFields.forEach((field) => {
+        fields.forEach((field) => {
             totals[field] += normalizeCounterValue(state.counters[field]);
         });
 
@@ -285,12 +278,11 @@
     }
 
     function getRankedErrors() {
-        const totals = getSessionAggregateTotals();
-
+        const totals = getAggregatedTotals(errorFields);
         return errorFields
             .map((field) => ({
                 field,
-                label: errorLabels[field] || field,
+                label: fieldLabels[field] || field,
                 total: totals[field] || 0,
             }))
             .filter((item) => item.total > 0)
@@ -310,7 +302,7 @@
 
         const topError = rankedErrors[0];
         priorityLabel.textContent = topError.label;
-        priorityValue.textContent = `${topError.total} error(es) acumulados en esta sesión. Es el foco más urgente para corregir ahora.`;
+        priorityValue.textContent = `${topError.total} error(es) acumulados. Es el principal foco de corrección ahora mismo.`;
 
         const chartData = rankedErrors.slice(0, 4).reverse();
         const labels = chartData.map((item) => item.label);
@@ -336,7 +328,7 @@
                     backgroundColor: colors,
                     borderRadius: 8,
                     borderSkipped: false,
-                    barThickness: 16,
+                    barThickness: 14,
                 }],
             },
             options: {
@@ -371,17 +363,10 @@
                     y: {
                         ticks: {
                             color: 'rgba(244, 247, 252, 0.9)',
-                            font: {
-                                size: 11,
-                                weight: '700',
-                            },
+                            font: { size: 11, weight: '700' },
                         },
-                        grid: {
-                            display: false,
-                        },
-                        border: {
-                            display: false,
-                        },
+                        grid: { display: false },
+                        border: { display: false },
                     },
                 },
             },
@@ -389,7 +374,7 @@
     }
 
     function renderCounters() {
-        errorFields.forEach((field) => {
+        metricFields.forEach((field) => {
             const output = document.getElementById(`value-${field}`);
             if (output) {
                 output.textContent = state.counters[field];
@@ -397,7 +382,9 @@
         });
 
         currentSetElement.textContent = state.setActual;
-        currentTotalElement.textContent = getCurrentTotal();
+        currentErrorsElement.textContent = getCurrentErrorTotal();
+        currentSuccessesElement.textContent = getCurrentSuccessTotal();
+        currentBalanceElement.textContent = formatBalance(getCurrentBalance());
         matchIdElement.textContent = state.idPartido || '-';
     }
 
@@ -407,11 +394,7 @@
         if (!state.setsGuardados.length) {
             const emptyCard = document.createElement('div');
             emptyCard.className = 'saved-set-item';
-
-            const copy = document.createElement('p');
-            copy.className = 'muted-text';
-            copy.textContent = 'Todavía no hay sets guardados en esta sesión.';
-            emptyCard.appendChild(copy);
+            emptyCard.innerHTML = '<p class="muted-text mb-0">Todavía no hay sets guardados en esta sesión.</p>';
             savedSetsContainer.appendChild(emptyCard);
             return;
         }
@@ -427,31 +410,24 @@
             title.className = 'saved-set-title';
             title.textContent = `Set ${setData.Numero_Set}`;
 
-            const total = document.createElement('span');
-            total.className = 'saved-set-total';
-            total.textContent = `Total ENF ${calculateSetTotal(setData)}`;
+            const totals = document.createElement('span');
+            totals.className = 'saved-set-total';
+            totals.textContent = `E ${calculateErrorTotal(setData)} · A ${calculateSuccessTotal(setData)} · B ${formatBalance(calculateBalanceTotal(setData))}`;
 
             top.appendChild(title);
-            top.appendChild(total);
+            top.appendChild(totals);
 
             const chips = document.createElement('div');
             chips.className = 'saved-metrics';
 
-            errorFields
-                .filter((field) => setData[field] > 0)
+            metricFields
+                .filter((field) => normalizeCounterValue(setData[field]) > 0)
                 .forEach((field) => {
                     const chip = document.createElement('span');
                     chip.className = 'saved-chip';
-                    chip.textContent = `${errorLabels[field]}: ${setData[field]}`;
+                    chip.textContent = `${fieldLabels[field]}: ${setData[field]}`;
                     chips.appendChild(chip);
                 });
-
-            if (!chips.childNodes.length) {
-                const chip = document.createElement('span');
-                chip.className = 'saved-chip';
-                chip.textContent = 'Sin errores registrados';
-                chips.appendChild(chip);
-            }
 
             item.appendChild(top);
             item.appendChild(chips);
@@ -462,8 +438,8 @@
     function renderSession() {
         playerHeading.textContent = state.jugador || 'Jugador';
         sessionSubtext.textContent = state.archivo
-            ? `Archivo activo: ${state.archivo}. Los sets quedan en memoria hasta finalizar el partido.`
-            : 'Sesión de scouting lista para capturar errores.';
+            ? `Archivo activo: ${state.archivo}. Cada set guarda errores, aciertos y balance del partido.`
+            : 'Sesión de scouting lista para capturar errores y aciertos.';
         renderCounters();
         renderSavedSets();
         renderPriorityChart();
@@ -505,7 +481,7 @@
     }
 
     function updateCounter(field, delta) {
-        const nextValue = Math.max(0, (state.counters[field] || 0) + delta);
+        const nextValue = Math.max(0, normalizeCounterValue(state.counters[field]) + delta);
         state.counters[field] = nextValue;
         renderCounters();
         renderPriorityChart();
@@ -524,6 +500,32 @@
             throw new Error(data.message || 'No se pudo completar la operación.');
         }
         return data;
+    }
+
+    function applyFreshSession(sessionData) {
+        state.storageKey = getStorageKey(sessionData.jugador);
+        state.storageCreatedAt = Date.now();
+        state.jugador = sessionData.jugador;
+        state.archivo = sessionData.archivo;
+        state.idPartido = sessionData.id_partido;
+        state.setActual = 1;
+        state.counters = createEmptyCounters();
+        state.setsGuardados = [];
+        renderSession();
+        persistSessionSnapshot({ resetClock: true });
+    }
+
+    function applyStoredSession(snapshot, fallbackSessionData) {
+        state.storageKey = snapshot.storageKey;
+        state.storageCreatedAt = snapshot.createdAt;
+        state.jugador = fallbackSessionData.jugador;
+        state.archivo = fallbackSessionData.archivo;
+        state.idPartido = snapshot.idPartido;
+        state.setActual = snapshot.setActual;
+        state.counters = cloneCounters(snapshot.counters);
+        state.setsGuardados = snapshot.setsGuardados.map((setData, index) => cloneSetPayload(setData, index));
+        renderSession();
+        persistSessionSnapshot();
     }
 
     async function startSession(event) {
@@ -548,11 +550,7 @@
                 applyStoredSession(storedSession, data);
                 showSessionView();
                 setMessage(playerMessage, '', '');
-                setMessage(
-                    sessionMessage,
-                    `Se ha recuperado el Partido ${storedSession.idPartido} guardado en este navegador.`,
-                    'success'
-                );
+                setMessage(sessionMessage, `Se ha recuperado el Partido ${storedSession.idPartido} guardado en este navegador.`, 'success');
                 return;
             }
 
@@ -594,7 +592,7 @@
 
         const saved = saveCurrentSetInMemory();
         if (!saved) {
-            setMessage(sessionMessage, 'No hay errores en el set actual para guardar.', 'error');
+            setMessage(sessionMessage, 'No hay actividad en el set actual para guardar.', 'error');
             return;
         }
 
@@ -631,7 +629,7 @@
             resetWholeSession(data.siguiente_id_partido, { resetClock: true });
             setMessage(
                 sessionMessage,
-                `Partido guardado con ${data.filas_guardadas} set(s). El siguiente ID disponible es ${data.siguiente_id_partido}.`,
+                `Partido guardado con ${data.filas_guardadas} set(s). Siguiente ID disponible: ${data.siguiente_id_partido}.`,
                 'success'
             );
         } catch (error) {

@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(BASE_DIR, 'output')
 CV_DATA_PATH = os.path.join(BASE_DIR, 'static', 'data', 'cv_data.json')
 
-PREVIOUS_CSV_HEADERS = [
+LEGACY_V1_CSV_HEADERS = [
     'ID_Partido',
     'Numero_Set',
     'Doble_Falta',
@@ -36,6 +36,27 @@ PREVIOUS_CSV_HEADERS = [
     'Error_Fondo_Reves',
     'Error_Volea_Derecha',
     'Error_Volea_Reves',
+    'Bandeja_Error',
+    'Smash_Error',
+    'Total_ENF_Set',
+]
+
+LEGACY_V2_CSV_HEADERS = [
+    'ID_Partido',
+    'Numero_Set',
+    'Doble_Falta',
+    'Resto_Derecha_Fallado',
+    'Resto_Reves_Fallado',
+    'Globo_Malo',
+    'Error_Fondo_Derecha',
+    'Error_Fondo_Reves',
+    'Bajada_Derecha_Error',
+    'Bajada_Reves_Error',
+    'Posicionamiento_Fondo_Error',
+    'Error_Volea_Derecha',
+    'Error_Volea_Reves',
+    'Posicionamiento_Volea_Error',
+    'Tirar_Ficha_Error',
     'Bandeja_Error',
     'Smash_Error',
     'Total_ENF_Set',
@@ -59,7 +80,22 @@ CSV_HEADERS = [
     'Tirar_Ficha_Error',
     'Bandeja_Error',
     'Smash_Error',
+    'Winner_Derecha',
+    'Winner_Reves',
+    'Resto_Ganador_Derecha',
+    'Resto_Ganador_Reves',
+    'Globo_De_Oro',
+    'Chiquita_Ganadora',
+    'Bajada_De_Pared',
+    'Remate_Finalizador',
+    'Volea_Derecha_Ganadora',
+    'Volea_Reves_Ganadora',
+    'Bandeja_Vibora_Definitiva',
+    'Volea_Bloqueo_Contraataque',
+    'Dormilona',
     'Total_ENF_Set',
+    'Total_Aciertos_Set',
+    'Balance_Set',
 ]
 
 ERROR_FIELDS = [
@@ -80,6 +116,22 @@ ERROR_FIELDS = [
     'Smash_Error',
 ]
 
+SUCCESS_FIELDS = [
+    'Winner_Derecha',
+    'Winner_Reves',
+    'Resto_Ganador_Derecha',
+    'Resto_Ganador_Reves',
+    'Globo_De_Oro',
+    'Chiquita_Ganadora',
+    'Bajada_De_Pared',
+    'Remate_Finalizador',
+    'Volea_Derecha_Ganadora',
+    'Volea_Reves_Ganadora',
+    'Bandeja_Vibora_Definitiva',
+    'Volea_Bloqueo_Contraataque',
+    'Dormilona',
+]
+
 ERROR_LABELS = {
     'Doble_Falta': 'Doble falta',
     'Resto_Derecha_Fallado': 'Resto derecha',
@@ -96,6 +148,22 @@ ERROR_LABELS = {
     'Tirar_Ficha_Error': 'Tirar ficha',
     'Bandeja_Error': 'Bandeja/Víbora',
     'Smash_Error': 'Remate fallido',
+}
+
+SUCCESS_LABELS = {
+    'Winner_Derecha': 'Winner derecha',
+    'Winner_Reves': 'Winner revés',
+    'Resto_Ganador_Derecha': 'Resto ganador derecha',
+    'Resto_Ganador_Reves': 'Resto ganador revés',
+    'Globo_De_Oro': 'Globo de oro',
+    'Chiquita_Ganadora': 'Chiquita ganadora',
+    'Bajada_De_Pared': 'Bajada de pared',
+    'Remate_Finalizador': 'Remate finalizador',
+    'Volea_Derecha_Ganadora': 'Volea derecha ganadora',
+    'Volea_Reves_Ganadora': 'Volea revés ganadora',
+    'Bandeja_Vibora_Definitiva': 'Bandeja/Víbora definitiva',
+    'Volea_Bloqueo_Contraataque': 'Volea de bloqueo',
+    'Dormilona': 'Dormilona',
 }
 
 ERROR_TOOLTIPS = {
@@ -116,7 +184,23 @@ ERROR_TOOLTIPS = {
     'Smash_Error': 'Smash que no se trae a campo propio, no sale x4/x3 o acaba en la red o los cristales.',
 }
 
-BLOCK_FIELDS = {
+SUCCESS_TOOLTIPS = {
+    'Winner_Derecha': 'Golpe de fondo potente o angulado con la mano dominante que el rival no puede tocar.',
+    'Winner_Reves': 'Punto directo de revés, plano o cortado, que supera al rival por velocidad o colocación.',
+    'Resto_Ganador_Derecha': 'Devolución de saque con la derecha que termina en punto o deja una bola muerta.',
+    'Resto_Ganador_Reves': 'Resto agresivo de revés que descoloca totalmente a la pareja que saca.',
+    'Globo_De_Oro': 'Globo preciso que sobrepasa a los rivales y bota profundo para tomar la red con ventaja total.',
+    'Chiquita_Ganadora': 'Bola suave a los pies del rival que fuerza el error o habilita el contraataque definitivo.',
+    'Bajada_De_Pared': 'Ataque agresivo tras rebote en pared de fondo que termina en punto directo.',
+    'Remate_Finalizador': 'Remate por arriba que saca la bola de la pista o la trae al campo propio para cerrar.',
+    'Volea_Derecha_Ganadora': 'Volea de derecha firme, profunda o con ángulo que no vuelve.',
+    'Volea_Reves_Ganadora': 'Volea de revés cruzada o al cuerpo que define el punto en la red.',
+    'Bandeja_Vibora_Definitiva': 'Bandeja o víbora ejecutada con agresividad o efecto suficiente para cerrar el punto.',
+    'Volea_Bloqueo_Contraataque': 'Punto ganado al bloquear un golpe fuerte rival y usar su potencia para abrir espacio.',
+    'Dormilona': 'Volea con retroceso y mucho efecto que se queda pegada a la red tras el remate rival.',
+}
+
+ERROR_BLOCK_FIELDS = {
     'Defensa / Fondo': [
         'Doble_Falta',
         'Resto_Derecha_Fallado',
@@ -138,10 +222,30 @@ BLOCK_FIELDS = {
     ],
 }
 
+SUCCESS_BLOCK_FIELDS = {
+    'Defensa / Fondo': [
+        'Winner_Derecha',
+        'Winner_Reves',
+        'Resto_Ganador_Derecha',
+        'Resto_Ganador_Reves',
+        'Globo_De_Oro',
+        'Chiquita_Ganadora',
+        'Bajada_De_Pared',
+    ],
+    'Ataque / Red': [
+        'Remate_Finalizador',
+        'Volea_Derecha_Ganadora',
+        'Volea_Reves_Ganadora',
+        'Bandeja_Vibora_Definitiva',
+        'Volea_Bloqueo_Contraataque',
+        'Dormilona',
+    ],
+}
+
 COUNTER_BLOCKS = [
     {
-        'id': 'defensa',
-        'title': 'Inicio y defensa',
+        'id': 'errores-defensa',
+        'title': 'Errores no forzados',
         'subtitle': 'Fondo de pista',
         'fields': [
             {'key': 'Doble_Falta', 'short': 'DF', 'label': 'Doble falta'},
@@ -156,8 +260,8 @@ COUNTER_BLOCKS = [
         ],
     },
     {
-        'id': 'ataque',
-        'title': 'Ataque y transición',
+        'id': 'errores-ataque',
+        'title': 'Errores no forzados',
         'subtitle': 'Zona de red',
         'fields': [
             {'key': 'Error_Volea_Derecha', 'short': 'VD', 'label': 'Volea derecha'},
@@ -166,6 +270,33 @@ COUNTER_BLOCKS = [
             {'key': 'Tirar_Ficha_Error', 'short': 'TF', 'label': 'Tirar ficha'},
             {'key': 'Bandeja_Error', 'short': 'BV', 'label': 'Bandeja/Víbora'},
             {'key': 'Smash_Error', 'short': 'SM', 'label': 'Remate fallido'},
+        ],
+    },
+    {
+        'id': 'aciertos-defensa',
+        'title': 'Aciertos',
+        'subtitle': 'Fondo de pista',
+        'fields': [
+            {'key': 'Winner_Derecha', 'short': 'WD', 'label': 'Winner derecha'},
+            {'key': 'Winner_Reves', 'short': 'WR', 'label': 'Winner revés'},
+            {'key': 'Resto_Ganador_Derecha', 'short': 'RGD', 'label': 'Resto ganador derecha'},
+            {'key': 'Resto_Ganador_Reves', 'short': 'RGR', 'label': 'Resto ganador revés'},
+            {'key': 'Globo_De_Oro', 'short': 'GO', 'label': 'Globo de oro'},
+            {'key': 'Chiquita_Ganadora', 'short': 'CH', 'label': 'Chiquita ganadora'},
+            {'key': 'Bajada_De_Pared', 'short': 'BP', 'label': 'Bajada de pared'},
+        ],
+    },
+    {
+        'id': 'aciertos-ataque',
+        'title': 'Aciertos',
+        'subtitle': 'Zona de red',
+        'fields': [
+            {'key': 'Remate_Finalizador', 'short': 'RF', 'label': 'Remate finalizador'},
+            {'key': 'Volea_Derecha_Ganadora', 'short': 'VGD', 'label': 'Volea derecha ganadora'},
+            {'key': 'Volea_Reves_Ganadora', 'short': 'VGR', 'label': 'Volea revés ganadora'},
+            {'key': 'Bandeja_Vibora_Definitiva', 'short': 'BVD', 'label': 'Bandeja/Víbora definitiva'},
+            {'key': 'Volea_Bloqueo_Contraataque', 'short': 'VB', 'label': 'Volea de bloqueo'},
+            {'key': 'Dormilona', 'short': 'DR', 'label': 'Dormilona'},
         ],
     },
 ]
@@ -230,6 +361,82 @@ ERROR_GUIDANCE = {
     'Smash_Error': {
         'weakness': 'Los remates fallidos están desperdiciando oportunidades claras de cierre.',
         'improvement': 'Mejorar la selección del smash y bajar potencia cuando no haya una opción clara de definición.',
+    },
+}
+
+SUCCESS_GUIDANCE = {
+    'Winner_Derecha': 'La derecha ganadora está siendo un recurso claro para cerrar puntos desde el fondo.',
+    'Winner_Reves': 'El revés ganador aporta desequilibrio y resolución cuando se acelera con criterio.',
+    'Resto_Ganador_Derecha': 'El resto ganador de derecha está generando ventaja inmediata desde la devolución.',
+    'Resto_Ganador_Reves': 'El resto ganador de revés está castigando muy bien el servicio rival.',
+    'Globo_De_Oro': 'El globo de oro está permitiendo recuperar la red con ventaja táctica total.',
+    'Chiquita_Ganadora': 'La chiquita ganadora está marcando diferencias en gestión de alturas y pies del rival.',
+    'Bajada_De_Pared': 'La bajada de pared está convirtiendo defensa en ataque directo con mucho valor.',
+    'Remate_Finalizador': 'El remate finalizador está cerrando los puntos con autoridad en situaciones altas.',
+    'Volea_Derecha_Ganadora': 'La volea de derecha ganadora está consolidando dominio claro en la red.',
+    'Volea_Reves_Ganadora': 'La volea de revés ganadora está sumando definición y control ofensivo.',
+    'Bandeja_Vibora_Definitiva': 'La bandeja o víbora definitiva está siendo un arma real para romper el punto.',
+    'Volea_Bloqueo_Contraataque': 'La volea de bloqueo está aprovechando bien la potencia rival para contraatacar.',
+    'Dormilona': 'La dormilona está aportando variedad y mucha calidad en la resolución cerca de red.',
+}
+
+FIELD_LABELS = {**ERROR_LABELS, **SUCCESS_LABELS}
+FIELD_TOOLTIPS = {**ERROR_TOOLTIPS, **SUCCESS_TOOLTIPS}
+
+SUCCESS_WEIGHTS = {
+    'Winner_Derecha': 3.0,
+    'Winner_Reves': 3.0,
+    'Resto_Ganador_Derecha': 2.5,
+    'Resto_Ganador_Reves': 2.5,
+    'Globo_De_Oro': 2.0,
+    'Chiquita_Ganadora': 2.0,
+    'Bajada_De_Pared': 2.5,
+    'Remate_Finalizador': 3.0,
+    'Volea_Derecha_Ganadora': 3.0,
+    'Volea_Reves_Ganadora': 3.0,
+    'Bandeja_Vibora_Definitiva': 3.0,
+    'Volea_Bloqueo_Contraataque': 2.5,
+    'Dormilona': 2.5,
+}
+
+ERROR_WEIGHTS = {
+    'Doble_Falta': 2.5,
+    'Resto_Derecha_Fallado': 2.5,
+    'Resto_Reves_Fallado': 2.5,
+    'Globo_Malo': 2.0,
+    'Error_Fondo_Derecha': 2.0,
+    'Error_Fondo_Reves': 2.0,
+    'Bajada_Derecha_Error': 2.0,
+    'Bajada_Reves_Error': 2.0,
+    'Posicionamiento_Fondo_Error': 1.5,
+    'Error_Volea_Derecha': 2.0,
+    'Error_Volea_Reves': 2.0,
+    'Posicionamiento_Volea_Error': 1.5,
+    'Tirar_Ficha_Error': 2.5,
+    'Bandeja_Error': 2.0,
+    'Smash_Error': 2.0,
+}
+
+PROFILE_AREAS = {
+    'Inicio/Resto': {
+        'positive': ['Resto_Ganador_Derecha', 'Resto_Ganador_Reves'],
+        'negative': ['Doble_Falta', 'Resto_Derecha_Fallado', 'Resto_Reves_Fallado'],
+    },
+    'Defensa/Fondo': {
+        'positive': ['Winner_Derecha', 'Winner_Reves', 'Globo_De_Oro', 'Chiquita_Ganadora', 'Bajada_De_Pared'],
+        'negative': ['Globo_Malo', 'Error_Fondo_Derecha', 'Error_Fondo_Reves', 'Bajada_Derecha_Error', 'Bajada_Reves_Error', 'Posicionamiento_Fondo_Error'],
+    },
+    'Transición/Red': {
+        'positive': ['Volea_Derecha_Ganadora', 'Volea_Reves_Ganadora', 'Bandeja_Vibora_Definitiva', 'Volea_Bloqueo_Contraataque', 'Dormilona'],
+        'negative': ['Error_Volea_Derecha', 'Error_Volea_Reves', 'Posicionamiento_Volea_Error', 'Bandeja_Error'],
+    },
+    'Definición': {
+        'positive': ['Winner_Derecha', 'Winner_Reves', 'Remate_Finalizador', 'Volea_Derecha_Ganadora', 'Volea_Reves_Ganadora', 'Bandeja_Vibora_Definitiva'],
+        'negative': ['Smash_Error', 'Bandeja_Error', 'Error_Volea_Derecha', 'Error_Volea_Reves'],
+    },
+    'Táctica/Posicionamiento': {
+        'positive': ['Globo_De_Oro', 'Chiquita_Ganadora', 'Volea_Bloqueo_Contraataque', 'Dormilona'],
+        'negative': ['Posicionamiento_Fondo_Error', 'Posicionamiento_Volea_Error', 'Tirar_Ficha_Error'],
     },
 }
 
@@ -315,14 +522,13 @@ def assert_csv_schema(file_path):
     if header == CSV_HEADERS:
         return
 
-    if header == PREVIOUS_CSV_HEADERS:
+    if header in (LEGACY_V1_CSV_HEADERS, LEGACY_V2_CSV_HEADERS):
         migrate_player_csv(file_path)
         return
 
-    if header != CSV_HEADERS:
-        raise SchemaMismatchError(
-            'El CSV de este jugador usa un esquema antiguo y no es compatible con la versión actual.'
-        )
+    raise SchemaMismatchError(
+        'El CSV de este jugador usa un esquema antiguo y no es compatible con la versión actual.'
+    )
 
 
 def migrate_player_csv(file_path):
@@ -341,8 +547,15 @@ def migrate_player_csv(file_path):
 
             for field in ERROR_FIELDS:
                 migrated_row[field] = parse_non_negative_int(row.get(field, 0), field)
+            for field in SUCCESS_FIELDS:
+                migrated_row[field] = parse_non_negative_int(row.get(field, 0), field)
 
-            migrated_row['Total_ENF_Set'] = calculate_set_total(migrated_row)
+            migrated_row['Total_ENF_Set'] = calculate_error_total(migrated_row)
+            migrated_row['Total_Aciertos_Set'] = calculate_success_total(migrated_row)
+            migrated_row['Balance_Set'] = calculate_balance_total(
+                migrated_row['Total_ENF_Set'],
+                migrated_row['Total_Aciertos_Set'],
+            )
             migrated_rows.append(migrated_row)
 
     with open(file_path, 'w', encoding='utf-8', newline='') as csv_file:
@@ -388,9 +601,16 @@ def load_player_rows(file_path):
 
             for field in ERROR_FIELDS:
                 parsed_row[field] = parse_non_negative_int(row.get(field), field)
+            for field in SUCCESS_FIELDS:
+                parsed_row[field] = parse_non_negative_int(row.get(field, 0), field)
 
             parse_non_negative_int(row.get('Total_ENF_Set'), 'Total_ENF_Set')
-            parsed_row['Total_ENF_Set'] = calculate_set_total(parsed_row)
+            parsed_row['Total_ENF_Set'] = calculate_error_total(parsed_row)
+            parsed_row['Total_Aciertos_Set'] = calculate_success_total(parsed_row)
+            parsed_row['Balance_Set'] = calculate_balance_total(
+                parsed_row['Total_ENF_Set'],
+                parsed_row['Total_Aciertos_Set'],
+            )
             rows.append(parsed_row)
 
     return rows
@@ -403,8 +623,131 @@ def get_next_match_id(file_path):
     return max(row['ID_Partido'] for row in rows) + 1
 
 
-def calculate_set_total(row_data):
+def calculate_error_total(row_data):
     return sum(row_data[field] for field in ERROR_FIELDS)
+
+
+def calculate_success_total(row_data):
+    return sum(row_data[field] for field in SUCCESS_FIELDS)
+
+
+def calculate_balance_total(total_errors, total_successes):
+    return total_successes - total_errors
+
+
+def clamp(value, min_value, max_value):
+    return max(min_value, min(max_value, value))
+
+
+def calculate_score_data(error_totals, success_totals):
+    puntos_acierto = round(sum(success_totals[field] * SUCCESS_WEIGHTS[field] for field in SUCCESS_FIELDS), 2)
+    puntos_error = round(sum(error_totals[field] * ERROR_WEIGHTS[field] for field in ERROR_FIELDS), 2)
+    score = clamp(round(100 * puntos_acierto / max(1, puntos_acierto + puntos_error), 1), 0, 100)
+    impacto_neto = round(puntos_acierto - puntos_error, 2)
+
+    if score >= 80:
+        nivel = 'Alto rendimiento'
+    elif score >= 65:
+        nivel = 'Competitivo'
+    elif score >= 50:
+        nivel = 'Inestable'
+    else:
+        nivel = 'En desarrollo'
+
+    return {
+        'score': score,
+        'puntos_acierto': puntos_acierto,
+        'puntos_error': puntos_error,
+        'impacto_neto': impacto_neto,
+        'nivel': nivel,
+    }
+
+
+def calculate_area_score(positive_fields, negative_fields, success_totals, error_totals):
+    puntos_acierto = round(sum(success_totals[field] * SUCCESS_WEIGHTS[field] for field in positive_fields), 2)
+    puntos_error = round(sum(error_totals[field] * ERROR_WEIGHTS[field] for field in negative_fields), 2)
+    return {
+        'score': clamp(round(100 * puntos_acierto / max(1, puntos_acierto + puntos_error), 1), 0, 100),
+        'aciertos': sum(success_totals[field] for field in positive_fields),
+        'errores': sum(error_totals[field] for field in negative_fields),
+        'impacto': round(puntos_acierto - puntos_error, 2),
+    }
+
+
+def build_player_profile(success_totals, error_totals, score_data):
+    areas = []
+    for area_name, definition in PROFILE_AREAS.items():
+        area_score = calculate_area_score(definition['positive'], definition['negative'], success_totals, error_totals)
+        areas.append({
+            'area': area_name,
+            **area_score,
+        })
+
+    total_activity = sum(success_totals.values()) + sum(error_totals.values())
+    if total_activity == 0:
+        return {
+            'arquetipo': 'Sin datos',
+            'descripcion': 'Todavía no hay suficientes acciones registradas para definir el perfil del jugador.',
+            'area_dominante': 'Sin datos',
+            'areas': areas,
+        }
+
+    archetype_sources = {
+        'Definidor de red': sum(success_totals[field] for field in [
+            'Remate_Finalizador',
+            'Volea_Derecha_Ganadora',
+            'Volea_Reves_Ganadora',
+            'Bandeja_Vibora_Definitiva',
+        ]),
+        'Constructor de fondo': sum(success_totals[field] for field in [
+            'Winner_Derecha',
+            'Winner_Reves',
+            'Globo_De_Oro',
+            'Chiquita_Ganadora',
+            'Bajada_De_Pared',
+        ]),
+        'Restador agresivo': sum(success_totals[field] for field in [
+            'Resto_Ganador_Derecha',
+            'Resto_Ganador_Reves',
+        ]),
+        'Perfil táctico/posicional': sum(success_totals[field] for field in [
+            'Globo_De_Oro',
+            'Chiquita_Ganadora',
+            'Volea_Bloqueo_Contraataque',
+            'Dormilona',
+        ]),
+    }
+
+    dominant_source = max(archetype_sources, key=archetype_sources.get)
+    dominant_source_value = archetype_sources[dominant_source]
+    sorted_sources = sorted(archetype_sources.values(), reverse=True)
+
+    if dominant_source_value == 0:
+        arquetipo = 'Perfil equilibrado'
+    elif len(sorted_sources) > 1 and dominant_source_value - sorted_sources[1] <= 1:
+        arquetipo = 'Perfil equilibrado'
+    else:
+        arquetipo = dominant_source
+
+    area_dominante = max(
+        areas,
+        key=lambda item: (item['score'], item['aciertos'] + item['errores'], item['impacto']),
+    )['area']
+    descriptions = {
+        'Definidor de red': 'Jugador con más valor en la red y capacidad clara para cerrar puntos por arriba o con volea.',
+        'Constructor de fondo': 'Perfil que construye ventaja desde el fondo con variedad, profundidad y cambios de ritmo.',
+        'Restador agresivo': 'Jugador que castiga mucho el saque rival y genera iniciativa desde la devolución.',
+        'Perfil táctico/posicional': 'Destaca en lectura táctica, elección de alturas y gestión de espacios clave del punto.',
+        'Perfil equilibrado': 'Reparte el impacto entre varias fases del juego sin una única especialización dominante.',
+    }
+
+    return {
+        'arquetipo': arquetipo,
+        'descripcion': descriptions[arquetipo],
+        'area_dominante': area_dominante,
+        'areas': areas,
+        'nivel': score_data['nivel'],
+    }
 
 
 def validate_sets_payload(match_id, sets_payload):
@@ -429,8 +772,15 @@ def validate_sets_payload(match_id, sets_payload):
 
         for field in ERROR_FIELDS:
             row_data[field] = parse_non_negative_int(raw_set.get(field, 0), field)
+        for field in SUCCESS_FIELDS:
+            row_data[field] = parse_non_negative_int(raw_set.get(field, 0), field)
 
-        row_data['Total_ENF_Set'] = calculate_set_total(row_data)
+        row_data['Total_ENF_Set'] = calculate_error_total(row_data)
+        row_data['Total_Aciertos_Set'] = calculate_success_total(row_data)
+        row_data['Balance_Set'] = calculate_balance_total(
+            row_data['Total_ENF_Set'],
+            row_data['Total_Aciertos_Set'],
+        )
         rows_to_write.append(row_data)
         expected_set_number += 1
 
@@ -462,87 +812,147 @@ def filter_rows(rows, match_filter, set_filter):
 def build_series_by_match(rows):
     series = {}
     for row in rows:
-        match_entry = series.setdefault(row['ID_Partido'], {'total_errores': 0, 'sets': 0})
+        match_entry = series.setdefault(row['ID_Partido'], {
+            'total_errores': 0,
+            'total_aciertos': 0,
+            'balance_neto': 0,
+            'sets': 0,
+        })
         match_entry['total_errores'] += row['Total_ENF_Set']
+        match_entry['total_aciertos'] += row['Total_Aciertos_Set']
+        match_entry['balance_neto'] += row['Balance_Set']
         match_entry['sets'] += 1
 
-    return [
-        {
+    payload = []
+    for match_id, values in sorted(series.items()):
+        score_data = calculate_score_data(
+            {field: sum(row[field] for row in rows if row['ID_Partido'] == match_id) for field in ERROR_FIELDS},
+            {field: sum(row[field] for row in rows if row['ID_Partido'] == match_id) for field in SUCCESS_FIELDS},
+        )
+        payload.append({
             'id_partido': match_id,
             'total_errores': values['total_errores'],
+            'total_aciertos': values['total_aciertos'],
+            'balance_neto': values['balance_neto'],
             'sets': values['sets'],
-            'media_por_set': round(values['total_errores'] / values['sets'], 2) if values['sets'] else 0,
+            'score': score_data['score'],
+            'media_errores_por_set': round(values['total_errores'] / values['sets'], 2) if values['sets'] else 0,
+            'media_aciertos_por_set': round(values['total_aciertos'] / values['sets'], 2) if values['sets'] else 0,
+        })
+
+    return payload
+
+
+def build_insights(error_totals, success_totals, error_block_totals, success_block_totals, profile, score_data):
+    ranked_errors = [
+        field for field in sorted(ERROR_FIELDS, key=lambda current: error_totals[current], reverse=True)
+        if error_totals[field] > 0
+    ]
+    ranked_successes = [
+        field for field in sorted(SUCCESS_FIELDS, key=lambda current: success_totals[current], reverse=True)
+        if success_totals[field] > 0
+    ]
+
+    puntos_fuertes = [
+        {
+            'label': SUCCESS_LABELS[field],
+            'valor': success_totals[field],
+            'detalle': SUCCESS_GUIDANCE[field],
         }
-        for match_id, values in sorted(series.items())
+        for field in ranked_successes[:3]
     ]
 
-
-def build_insights(totals_by_field, block_totals):
-    ranked_fields = [
-        field for field in sorted(ERROR_FIELDS, key=lambda current: totals_by_field[current], reverse=True)
-        if totals_by_field[field] > 0
-    ]
-
-    weak_points = [
+    puntos_flojos = [
         {
             'label': ERROR_LABELS[field],
-            'valor': totals_by_field[field],
+            'valor': error_totals[field],
             'detalle': ERROR_GUIDANCE[field]['weakness'],
         }
-        for field in ranked_fields[:3]
+        for field in ranked_errors[:3]
     ]
 
-    improvement_areas = [
+    areas_mejora = [
         {
             'label': ERROR_LABELS[field],
+            'valor': error_totals[field],
             'detalle': ERROR_GUIDANCE[field]['improvement'],
         }
-        for field in ranked_fields[:3]
+        for field in ranked_errors[:3]
     ]
 
-    if not weak_points:
-        block_comment = 'Todavía no hay suficientes datos para detectar un patrón de error.'
+    if not ranked_errors and not ranked_successes:
+        comentario_global = 'Todavía no hay suficientes acciones registradas para generar conclusiones del jugador.'
     else:
-        weaker_block = max(block_totals, key=block_totals.get)
-        if all(total == 0 for total in block_totals.values()):
-            block_comment = 'Los filtros activos no contienen errores registrados.'
-        else:
-            block_comment = f'El volumen de error se concentra más en {weaker_block.lower()}.'
+        best_block = (
+            max(success_block_totals, key=success_block_totals.get)
+            if any(success_block_totals.values())
+            else 'sin un bloque de producción ofensiva claro'
+        )
+        risk_block = (
+            max(error_block_totals, key=error_block_totals.get)
+            if any(error_block_totals.values())
+            else 'sin un foco dominante de error'
+        )
+        comentario_global = (
+            f'Perfil {profile["arquetipo"].lower()} con nivel {score_data["nivel"].lower()}. '
+            f'Genera más valor en {best_block.lower()} y el mayor foco de corrección aparece en {risk_block.lower()}.'
+        )
 
     return {
-        'puntos_flojos': weak_points,
-        'areas_mejora': improvement_areas,
-        'comentario_bloque': block_comment,
+        'puntos_fuertes': puntos_fuertes,
+        'puntos_flojos': puntos_flojos,
+        'areas_mejora': areas_mejora,
+        'comentario_global': comentario_global,
     }
 
 
 def build_summary_payload(player_name, all_rows, filtered_rows, available_sets, match_filter, set_filter):
-    totals_by_field = {field: sum(row[field] for row in filtered_rows) for field in ERROR_FIELDS}
-    block_totals = {
-        block_name: sum(totals_by_field[field] for field in fields)
-        for block_name, fields in BLOCK_FIELDS.items()
+    error_totals = {field: sum(row[field] for row in filtered_rows) for field in ERROR_FIELDS}
+    success_totals = {field: sum(row[field] for row in filtered_rows) for field in SUCCESS_FIELDS}
+    error_block_totals = {
+        block_name: sum(error_totals[field] for field in fields)
+        for block_name, fields in ERROR_BLOCK_FIELDS.items()
+    }
+    success_block_totals = {
+        block_name: sum(success_totals[field] for field in fields)
+        for block_name, fields in SUCCESS_BLOCK_FIELDS.items()
+    }
+    balance_block_totals = {
+        block_name: success_block_totals[block_name] - error_block_totals[block_name]
+        for block_name in error_block_totals
     }
 
     total_errors = sum(row['Total_ENF_Set'] for row in filtered_rows)
+    total_successes = sum(row['Total_Aciertos_Set'] for row in filtered_rows)
+    balance_neto = sum(row['Balance_Set'] for row in filtered_rows)
     unique_matches = sorted({row['ID_Partido'] for row in all_rows})
+    score_data = calculate_score_data(error_totals, success_totals)
+    profile = build_player_profile(success_totals, error_totals, score_data)
 
     if filtered_rows and total_errors > 0:
-        top_error_field = max(ERROR_FIELDS, key=lambda field: totals_by_field[field])
+        top_error_field = max(ERROR_FIELDS, key=lambda field: error_totals[field])
         top_error = {
             'clave': top_error_field,
             'label': ERROR_LABELS[top_error_field],
-            'valor': totals_by_field[top_error_field],
+            'valor': error_totals[top_error_field],
         }
-
-        if all(total == 0 for total in block_totals.values()):
-            weakest_block = {'label': 'Sin datos', 'valor': 0}
-        elif len(set(block_totals.values())) == 1:
-            weakest_block = {'label': 'Equilibrado', 'valor': next(iter(block_totals.values()))}
-        else:
-            weakest_label = max(block_totals, key=block_totals.get)
-            weakest_block = {'label': weakest_label, 'valor': block_totals[weakest_label]}
     else:
         top_error = {'clave': None, 'label': 'Sin datos', 'valor': 0}
+
+    if filtered_rows and total_successes > 0:
+        top_success_field = max(SUCCESS_FIELDS, key=lambda field: success_totals[field])
+        top_success = {
+            'clave': top_success_field,
+            'label': SUCCESS_LABELS[top_success_field],
+            'valor': success_totals[top_success_field],
+        }
+    else:
+        top_success = {'clave': None, 'label': 'Sin datos', 'valor': 0}
+
+    if filtered_rows and any(error_block_totals.values()):
+        weakest_label = max(error_block_totals, key=error_block_totals.get)
+        weakest_block = {'label': weakest_label, 'valor': error_block_totals[weakest_label]}
+    else:
         weakest_block = {'label': 'Sin datos', 'valor': 0}
 
     return {
@@ -559,25 +969,52 @@ def build_summary_payload(player_name, all_rows, filtered_rows, available_sets, 
             'partidos_analizados': len({row['ID_Partido'] for row in filtered_rows}),
             'sets_analizados': len(filtered_rows),
             'total_errores_no_forzados': total_errors,
-            'media_por_set': round(total_errors / len(filtered_rows), 2) if filtered_rows else 0,
+            'total_aciertos': total_successes,
+            'balance_neto': balance_neto,
+            'media_errores_por_set': round(total_errors / len(filtered_rows), 2) if filtered_rows else 0,
+            'media_aciertos_por_set': round(total_successes / len(filtered_rows), 2) if filtered_rows else 0,
             'error_mas_repetido': top_error,
+            'acierto_mas_repetido': top_success,
             'bloque_mas_debil': weakest_block,
         },
         'errores_por_tipo': [
             {
                 'clave': field,
                 'label': ERROR_LABELS[field],
-                'total': totals_by_field[field],
+                'total': error_totals[field],
             }
             for field in ERROR_FIELDS
         ],
+        'aciertos_por_tipo': [
+            {
+                'clave': field,
+                'label': SUCCESS_LABELS[field],
+                'total': success_totals[field],
+            }
+            for field in SUCCESS_FIELDS
+        ],
         'errores_por_bloque': [
             {'bloque': block_name, 'total': total}
-            for block_name, total in block_totals.items()
+            for block_name, total in error_block_totals.items()
+        ],
+        'aciertos_por_bloque': [
+            {'bloque': block_name, 'total': total}
+            for block_name, total in success_block_totals.items()
+        ],
+        'balance_por_bloque': [
+            {
+                'bloque': block_name,
+                'errores': error_block_totals[block_name],
+                'aciertos': success_block_totals[block_name],
+                'balance': balance_block_totals[block_name],
+            }
+            for block_name in balance_block_totals
         ],
         'series_por_partido': build_series_by_match(filtered_rows),
         'filas_filtradas': filtered_rows,
-        'insights': build_insights(totals_by_field, block_totals),
+        'score_jugador': score_data,
+        'perfil_jugador': profile,
+        'insights': build_insights(error_totals, success_totals, error_block_totals, success_block_totals, profile, score_data),
     }
 
 
@@ -635,8 +1072,10 @@ def errores():
     return render_template(
         'errores.html',
         counter_blocks=COUNTER_BLOCKS,
-        error_tooltips=ERROR_TOOLTIPS,
-        error_labels=ERROR_LABELS,
+        error_tooltips=FIELD_TOOLTIPS,
+        error_labels=FIELD_LABELS,
+        error_fields=ERROR_FIELDS,
+        success_fields=SUCCESS_FIELDS,
     )
 
 
@@ -648,7 +1087,7 @@ def errores():
 def resumen():
     return render_template(
         'resumen.html',
-        error_labels=ERROR_LABELS,
+        error_labels=FIELD_LABELS,
     )
 
 
