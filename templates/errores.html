@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Errores | Padel Scout</title>
+    <meta name="description" content="Registro de errores no forzados de padel por jugador, partido y set.">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/padel-dashboard.css') }}">
+</head>
+<body class="padel-app">
+    <main class="page-shell">
+        <section class="hero-grid">
+            <article class="intro-copy">
+                <span class="eyebrow">Scouting de rendimiento</span>
+                <h1 class="page-title">Panel de errores no forzados para padel</h1>
+                <p class="page-lead">
+                    Registra cada set con botones grandes de <strong>+1</strong> y <strong>-1</strong>,
+                    manteniendo un historico por jugador para analizar tendencias reales en defensa y ataque.
+                </p>
+                <div class="feature-strip">
+                    <span class="feature-pill">Set a set</span>
+                    <span class="feature-pill">CSV por jugador</span>
+                    <span class="feature-pill">Total ENF automatico</span>
+                </div>
+            </article>
+
+            <aside class="player-panel">
+                <span class="eyebrow">Introducir nombre de jugador</span>
+                <h2 class="panel-title">Abrir sesion de scouting</h2>
+                <p class="panel-text">
+                    El nombre visible se conserva en pantalla y el backend guardara el historico en
+                    <strong>`output/&lt;nombre_saneado&gt;.csv`</strong>.
+                </p>
+
+                <form id="player-form" class="player-form">
+                    <label class="input-label" for="jugador-input">
+                        Nombre del jugador
+                        <input
+                            id="jugador-input"
+                            class="text-input"
+                            type="text"
+                            name="jugador"
+                            placeholder="Ej. Juan Perez"
+                            autocomplete="off"
+                            required
+                        >
+                    </label>
+
+                    <div class="button-row">
+                        <button id="start-session-btn" class="primary-btn" type="submit">Iniciar sesion</button>
+                    </div>
+                </form>
+
+                <p class="helper-text">Se generara el siguiente ID de partido disponible para ese jugador.</p>
+                <div id="player-message" class="status-message" role="status" aria-live="polite"></div>
+            </aside>
+        </section>
+
+        <section id="session-layout" class="session-layout hidden">
+            <div class="session-topbar">
+                <div>
+                    <span class="eyebrow">Partido activo</span>
+                    <h2 class="section-title" id="player-heading">Jugador</h2>
+                    <p class="panel-text" id="session-subtext">Sesión de scouting lista para capturar errores.</p>
+                </div>
+
+                <div class="meta-grid">
+                    <article class="meta-card">
+                        <span class="meta-label">ID Partido</span>
+                        <strong id="match-id" class="meta-value">1</strong>
+                    </article>
+                    <article class="meta-card">
+                        <span class="meta-label">Set actual</span>
+                        <strong id="current-set" class="meta-value">1</strong>
+                    </article>
+                    <article class="meta-card highlight">
+                        <span class="meta-label">Total ENF set</span>
+                        <strong id="current-total" class="meta-value">0</strong>
+                    </article>
+                </div>
+            </div>
+
+            <div class="counter-layout">
+                <div class="counter-column">
+                    {% for block in counter_blocks %}
+                    <article class="counter-block">
+                        <div class="block-title-row">
+                            <div>
+                                <p class="section-kicker">{{ block.subtitle }}</p>
+                                <h3 class="section-title">{{ block.title }}</h3>
+                            </div>
+                            <p class="block-hint">Anota rapido y corrige al instante con el boton de -1.</p>
+                        </div>
+
+                        <div class="counter-list">
+                            {% for field in block.fields %}
+                            <div class="counter-card" data-field="{{ field.key }}">
+                                <div>
+                                    <div class="counter-head">
+                                        <span class="counter-badge">{{ field.short }}</span>
+                                        <h4 class="counter-name">{{ field.label }}</h4>
+                                        <span
+                                            class="tooltip-dot"
+                                            tabindex="0"
+                                            data-tooltip="{{ error_tooltips[field.key] }}"
+                                            aria-label="Ver descripcion de {{ field.label }}"
+                                        >?</span>
+                                    </div>
+                                    <p class="counter-description">{{ error_tooltips[field.key] }}</p>
+                                </div>
+
+                                <div class="counter-controls">
+                                    <button class="count-btn minus" type="button" data-action="decrease" aria-label="Restar uno a {{ field.label }}">-1</button>
+                                    <output class="counter-number" id="value-{{ field.key }}" for="">{{ 0 }}</output>
+                                    <button class="count-btn plus" type="button" data-action="increase" aria-label="Sumar uno a {{ field.label }}">+1</button>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+
+                <div class="counter-column">
+                    <article class="summary-sidecard">
+                        <span class="eyebrow">Controles de sesion</span>
+                        <h3 class="section-title">Gestion del partido</h3>
+                        <p class="panel-text">
+                            Usa <strong>Cambio de Set</strong> para guardar el set actual en memoria y seguir con el siguiente.
+                            Cuando termines, <strong>Finalizar Partido</strong> persiste todos los sets en el CSV del jugador.
+                        </p>
+
+                        <div class="action-bar">
+                            <button id="change-set-btn" class="secondary-btn" type="button">Cambio de Set</button>
+                            <button id="finalize-match-btn" class="danger-btn" type="button">Finalizar Partido</button>
+                        </div>
+
+                        <div id="session-message" class="status-message" role="status" aria-live="polite"></div>
+                        <p class="inline-note">El backend recalcula siempre el Total ENF de cada set antes de guardar.</p>
+                    </article>
+
+                    <article class="saved-sets-card">
+                        <span class="eyebrow">Revision rapida</span>
+                        <h3 class="section-title">Sets capturados</h3>
+                        <div id="saved-sets" class="saved-sets-list">
+                            <div class="saved-set-item">
+                                <p class="muted-text">Todavia no hay sets guardados en esta sesion.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.erroresConfig = {{ {
+            "counterBlocks": counter_blocks,
+            "errorLabels": error_labels,
+            "errorTooltips": error_tooltips
+        } | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/errores.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Jugador | Padel Scout</title>
+    <meta name="description" content="Dashboard de scouting de padel con resumen global, filtros por partido y analisis de puntos debiles.">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/padel-dashboard.css') }}">
+</head>
+<body class="padel-app">
+    <main class="page-shell">
+        <section class="hero-grid">
+            <article class="intro-copy">
+                <span class="eyebrow">Scouting de rendimiento</span>
+                <h1 class="page-title">Dashboard completo de resumen del jugador</h1>
+                <p class="page-lead">
+                    Carga el historico del jugador para ver el resumen global por defecto y profundizar
+                    con filtros por partido y set, graficas comparativas e insights accionables.
+                </p>
+                <div class="feature-strip">
+                    <span class="feature-pill">Resumen global</span>
+                    <span class="feature-pill">Filtros por partido/set</span>
+                    <span class="feature-pill">Areas de mejora</span>
+                </div>
+            </article>
+
+            <aside class="player-panel">
+                <span class="eyebrow">Introducir nombre de jugador</span>
+                <h2 class="panel-title">Abrir resumen de scouting</h2>
+                <p class="panel-text">
+                    Si existe el CSV del jugador, cargaremos un dashboard con KPIs, graficas y una lectura clara
+                    de los errores no forzados mas repetidos.
+                </p>
+
+                <form id="summary-form" class="player-form">
+                    <label class="input-label" for="summary-jugador-input">
+                        Nombre del jugador
+                        <input
+                            id="summary-jugador-input"
+                            class="text-input"
+                            type="text"
+                            name="jugador"
+                            placeholder="Ej. Juan Perez"
+                            autocomplete="off"
+                            required
+                        >
+                    </label>
+
+                    <div class="button-row">
+                        <button id="load-summary-btn" class="primary-btn" type="submit">Cargar resumen</button>
+                    </div>
+                </form>
+
+                <p class="helper-text">El resumen se abre por defecto en vista global de todo el historico.</p>
+                <div id="summary-message" class="status-message" role="status" aria-live="polite"></div>
+            </aside>
+        </section>
+
+        <section id="dashboard-layout" class="dashboard-layout hidden">
+            <div class="dashboard-topbar">
+                <div>
+                    <span class="eyebrow">Resumen activo</span>
+                    <h2 id="summary-player-heading" class="section-title">Jugador</h2>
+                    <p id="summary-context" class="panel-text">Vista global de rendimiento.</p>
+                </div>
+
+                <div class="dashboard-filters">
+                    <label class="filter-label" for="match-filter">
+                        Partido
+                        <select id="match-filter" class="select-input" disabled>
+                            <option value="all">Todos</option>
+                        </select>
+                    </label>
+
+                    <label class="filter-label" for="set-filter">
+                        Set
+                        <select id="set-filter" class="select-input" disabled>
+                            <option value="all">Todos</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <div id="dashboard-empty" class="empty-state hidden">
+                <h3 class="empty-title">Sin datos todavia</h3>
+                <p id="dashboard-empty-copy" class="empty-copy">
+                    Introduce un jugador con historico para ver el dashboard o registra primero errores en la ruta /errores.
+                </p>
+            </div>
+
+            <div id="dashboard-body">
+                <div class="kpi-grid">
+                    <article class="kpi-card">
+                        <span class="kpi-label">Partidos analizados</span>
+                        <strong id="kpi-partidos" class="kpi-value">0</strong>
+                    </article>
+                    <article class="kpi-card">
+                        <span class="kpi-label">Sets analizados</span>
+                        <strong id="kpi-sets" class="kpi-value">0</strong>
+                    </article>
+                    <article class="kpi-card">
+                        <span class="kpi-label">Total ENF</span>
+                        <strong id="kpi-total" class="kpi-value">0</strong>
+                    </article>
+                    <article class="kpi-card">
+                        <span class="kpi-label">Media por set</span>
+                        <strong id="kpi-media" class="kpi-value">0</strong>
+                    </article>
+                    <article class="kpi-card">
+                        <span class="kpi-label">Error mas repetido</span>
+                        <strong id="kpi-error" class="kpi-value">Sin datos</strong>
+                    </article>
+                    <article class="kpi-card">
+                        <span class="kpi-label">Bloque mas debil</span>
+                        <strong id="kpi-bloque" class="kpi-value">Sin datos</strong>
+                    </article>
+                </div>
+
+                <div class="chart-grid">
+                    <article class="chart-card">
+                        <h3 class="chart-title">Distribucion por tipo de error</h3>
+                        <canvas id="error-type-chart"></canvas>
+                    </article>
+
+                    <article class="chart-card">
+                        <h3 class="chart-title">Peso por bloque de juego</h3>
+                        <canvas id="block-chart"></canvas>
+                    </article>
+
+                    <article class="chart-card wide">
+                        <h3 class="chart-title">Comparativa por partido</h3>
+                        <canvas id="match-chart"></canvas>
+                    </article>
+                </div>
+
+                <div class="insight-grid">
+                    <article class="insight-card">
+                        <h3 class="chart-title">Puntos mas flojos</h3>
+                        <div id="weak-points-list" class="insight-list"></div>
+                    </article>
+
+                    <article class="insight-card">
+                        <h3 class="chart-title">Areas de mejora</h3>
+                        <div id="improvement-list" class="insight-list"></div>
+                        <p id="block-comment" class="inline-note"></p>
+                    </article>
+                </div>
+
+                <article class="table-card">
+                    <div class="saved-set-top">
+                        <div>
+                            <h3 class="table-title">Detalle filtrado por fila</h3>
+                            <p class="table-meta">Cada fila representa un set del jugador bajo el filtro activo.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID Partido</th>
+                                    <th>Set</th>
+                                    <th>Resto</th>
+                                    <th>Globo</th>
+                                    <th>Fondo</th>
+                                    <th>Volea</th>
+                                    <th>Bandeja</th>
+                                    <th>Smash</th>
+                                    <th>Doble Falta</th>
+                                    <th>Total ENF</th>
+                                </tr>
+                            </thead>
+                            <tbody id="summary-rows"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script>
+        window.resumenConfig = {{ {
+            "errorLabels": error_labels
+        } | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/resumen.js') }}" defer></script>
+</body>
+</html>
