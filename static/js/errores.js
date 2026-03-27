@@ -16,6 +16,7 @@
     const currentSetElement = document.getElementById('current-set');
     const currentTotalElement = document.getElementById('current-total');
     const savedSetsContainer = document.getElementById('saved-sets');
+    const priorityStrip = document.querySelector('.priority-strip');
     const priorityLabel = document.getElementById('priority-label');
     const priorityValue = document.getElementById('priority-value');
     const liveErrorChartCanvas = document.getElementById('live-error-chart');
@@ -23,6 +24,8 @@
     const finalizeMatchButton = document.getElementById('finalize-match-btn');
     const startSessionButton = document.getElementById('start-session-btn');
     const changePlayerButton = document.getElementById('change-player-btn');
+    const STORAGE_PREFIX = 'padelScout.activeMatch.v1';
+    const STORAGE_TTL_MS = 2 * 60 * 60 * 1000;
 
     const state = {
         jugador: '',
@@ -33,6 +36,8 @@
         setsGuardados: [],
         isBusy: false,
         liveChart: null,
+        storageKey: '',
+        storageCreatedAt: null,
     };
 
     function createEmptyCounters() {
@@ -56,6 +61,175 @@
         changeSetButton.disabled = isBusy;
         finalizeMatchButton.disabled = isBusy;
         changePlayerButton.disabled = isBusy;
+    }
+
+    function normalizePlayerStorageKey(playerName) {
+        return String(playerName || '')
+            .trim()
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '_')
+            .replace(/^_+|_+$/g, '') || 'jugador';
+    }
+
+    function getStorageKey(playerName) {
+        return `${STORAGE_PREFIX}.${normalizePlayerStorageKey(playerName)}`;
+    }
+
+    function toPositiveInt(value, fallback) {
+        const parsed = Number.parseInt(value, 10);
+        if (Number.isInteger(parsed) && parsed > 0) {
+            return parsed;
+        }
+        return fallback;
+    }
+
+    function normalizeCounterValue(value) {
+        const parsed = Number.parseInt(value, 10);
+        if (Number.isInteger(parsed) && parsed > 0) {
+            return parsed;
+        }
+        return 0;
+    }
+
+    function cloneCounters(source) {
+        return errorFields.reduce((accumulator, field) => {
+            accumulator[field] = normalizeCounterValue(source && source[field]);
+            return accumulator;
+        }, {});
+    }
+
+    function cloneSetPayload(setData, index) {
+        const payload = { Numero_Set: index + 1 };
+        errorFields.forEach((field) => {
+            payload[field] = normalizeCounterValue(setData && setData[field]);
+        });
+        return payload;
+    }
+
+    function persistSessionSnapshot(options = {}) {
+        if (!state.jugador || !state.idPartido) {
+            return;
+        }
+
+        const storageKey = state.storageKey || getStorageKey(state.jugador);
+        const createdAt = options.resetClock || !state.storageCreatedAt
+            ? Date.now()
+            : state.storageCreatedAt;
+
+        state.storageKey = storageKey;
+        state.storageCreatedAt = createdAt;
+
+        const snapshot = {
+            version: 1,
+            jugador: state.jugador,
+            archivo: state.archivo,
+            idPartido: state.idPartido,
+            setActual: state.setActual,
+            counters: cloneCounters(state.counters),
+            setsGuardados: state.setsGuardados.map((setData, index) => cloneSetPayload(setData, index)),
+            createdAt,
+            expiresAt: createdAt + STORAGE_TTL_MS,
+            savedAt: Date.now(),
+        };
+
+        try {
+            localStorage.setItem(storageKey, JSON.stringify(snapshot));
+        } catch (error) {
+            console.warn('No se pudo persistir la sesión local de errores.', error);
+        }
+    }
+
+    function removeStoredSession(storageKey) {
+        if (!storageKey) {
+            return;
+        }
+        try {
+            localStorage.removeItem(storageKey);
+        } catch (error) {
+            console.warn('No se pudo limpiar la sesión local de errores.', error);
+        }
+    }
+
+    function readStoredSession(playerName) {
+        const storageKey = getStorageKey(playerName);
+        let rawSnapshot = null;
+
+        try {
+            rawSnapshot = localStorage.getItem(storageKey);
+        } catch (error) {
+            console.warn('No se pudo leer la sesión local de errores.', error);
+            return null;
+        }
+
+        if (!rawSnapshot) {
+            return null;
+        }
+
+        let parsedSnapshot = null;
+        try {
+            parsedSnapshot = JSON.parse(rawSnapshot);
+        } catch (error) {
+            removeStoredSession(storageKey);
+            return null;
+        }
+
+        const expiresAt = Number(parsedSnapshot && parsedSnapshot.expiresAt);
+        if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
+            removeStoredSession(storageKey);
+            return null;
+        }
+
+        const idPartido = toPositiveInt(parsedSnapshot.idPartido, null);
+        if (!idPartido) {
+            removeStoredSession(storageKey);
+            return null;
+        }
+
+        const setsGuardados = Array.isArray(parsedSnapshot.setsGuardados)
+            ? parsedSnapshot.setsGuardados.map((setData, index) => cloneSetPayload(setData, index))
+            : [];
+
+        return {
+            storageKey,
+            jugador: String(parsedSnapshot.jugador || playerName || '').trim(),
+            archivo: String(parsedSnapshot.archivo || ''),
+            idPartido,
+            setActual: Math.max(
+                toPositiveInt(parsedSnapshot.setActual, 1),
+                setsGuardados.length + 1
+            ),
+            counters: cloneCounters(parsedSnapshot.counters),
+            setsGuardados,
+            createdAt: Number(parsedSnapshot.createdAt) > 0 ? Number(parsedSnapshot.createdAt) : Date.now(),
+        };
+    }
+
+    function applyFreshSession(sessionData) {
+        state.storageKey = getStorageKey(sessionData.jugador);
+        state.storageCreatedAt = Date.now();
+        state.jugador = sessionData.jugador;
+        state.archivo = sessionData.archivo;
+        state.idPartido = sessionData.id_partido;
+        state.setActual = 1;
+        state.counters = createEmptyCounters();
+        state.setsGuardados = [];
+        renderSession();
+        persistSessionSnapshot({ resetClock: true });
+    }
+
+    function applyStoredSession(snapshot, fallbackSessionData) {
+        state.storageKey = snapshot.storageKey;
+        state.storageCreatedAt = snapshot.createdAt;
+        state.jugador = fallbackSessionData.jugador;
+        state.archivo = fallbackSessionData.archivo;
+        state.idPartido = snapshot.idPartido;
+        state.setActual = snapshot.setActual;
+        state.counters = cloneCounters(snapshot.counters);
+        state.setsGuardados = snapshot.setsGuardados.map((setData, index) => cloneSetPayload(setData, index));
+        renderSession();
+        persistSessionSnapshot();
     }
 
     function getCurrentTotal() {
@@ -99,12 +273,12 @@
 
         state.setsGuardados.forEach((setData) => {
             errorFields.forEach((field) => {
-                totals[field] += setData[field] || 0;
+                totals[field] += normalizeCounterValue(setData[field]);
             });
         });
 
         errorFields.forEach((field) => {
-            totals[field] += state.counters[field] || 0;
+            totals[field] += normalizeCounterValue(state.counters[field]);
         });
 
         return totals;
@@ -127,11 +301,12 @@
         const rankedErrors = getRankedErrors();
 
         if (!rankedErrors.length) {
-            priorityLabel.textContent = 'Sin datos';
-            priorityValue.textContent = 'Empieza a contar para detectar qué corregir primero.';
+            priorityStrip.classList.add('hidden');
             destroyLiveChart();
             return;
         }
+
+        priorityStrip.classList.remove('hidden');
 
         const topError = rankedErrors[0];
         priorityLabel.textContent = topError.label;
@@ -241,22 +416,7 @@
             return;
         }
 
-        const visibleSets = state.setsGuardados.slice(-3);
-        const hiddenCount = state.setsGuardados.length - visibleSets.length;
-
-        if (hiddenCount > 0) {
-            const resume = document.createElement('article');
-            resume.className = 'saved-set-item';
-
-            const copy = document.createElement('p');
-            copy.className = 'muted-text';
-            copy.textContent = `+${hiddenCount} set(s) anteriores ya guardados en esta sesión.`;
-
-            resume.appendChild(copy);
-            savedSetsContainer.appendChild(resume);
-        }
-
-        visibleSets.forEach((setData) => {
+        state.setsGuardados.forEach((setData) => {
             const item = document.createElement('article');
             item.className = 'saved-set-item';
 
@@ -315,12 +475,16 @@
         renderPriorityChart();
     }
 
-    function resetWholeSession(nextMatchId) {
+    function resetWholeSession(nextMatchId, options = {}) {
         state.idPartido = nextMatchId;
         state.setActual = 1;
         state.setsGuardados = [];
         state.counters = createEmptyCounters();
+        if (options.resetClock) {
+            state.storageCreatedAt = Date.now();
+        }
         renderSession();
+        persistSessionSnapshot({ resetClock: Boolean(options.resetClock) });
     }
 
     function resetToIntro() {
@@ -330,6 +494,8 @@
         state.setActual = 1;
         state.counters = createEmptyCounters();
         state.setsGuardados = [];
+        state.storageKey = '';
+        state.storageCreatedAt = null;
         showIntroView();
         renderSession();
         setMessage(playerMessage, '', '');
@@ -343,6 +509,7 @@
         state.counters[field] = nextValue;
         renderCounters();
         renderPriorityChart();
+        persistSessionSnapshot();
     }
 
     async function postJSON(url, payload) {
@@ -375,10 +542,25 @@
             setBusy(true);
             setMessage(playerMessage, 'Preparando sesión y comprobando el histórico del jugador...', '');
             const data = await postJSON('/api/errores/iniciar', { jugador });
+            const storedSession = readStoredSession(data.jugador);
 
-            state.jugador = data.jugador;
-            state.archivo = data.archivo;
-            resetWholeSession(data.id_partido);
+            if (storedSession && storedSession.idPartido === data.id_partido) {
+                applyStoredSession(storedSession, data);
+                showSessionView();
+                setMessage(playerMessage, '', '');
+                setMessage(
+                    sessionMessage,
+                    `Se ha recuperado el Partido ${storedSession.idPartido} guardado en este navegador.`,
+                    'success'
+                );
+                return;
+            }
+
+            if (storedSession) {
+                removeStoredSession(storedSession.storageKey);
+            }
+
+            applyFreshSession(data);
             showSessionView();
 
             setMessage(playerMessage, '', '');
@@ -400,6 +582,8 @@
         state.setActual += 1;
         resetCurrentSet();
         renderSavedSets();
+        renderPriorityChart();
+        persistSessionSnapshot();
         return true;
     }
 
@@ -444,7 +628,7 @@
                 sets: setsPayload,
             });
 
-            resetWholeSession(data.siguiente_id_partido);
+            resetWholeSession(data.siguiente_id_partido, { resetClock: true });
             setMessage(
                 sessionMessage,
                 `Partido guardado con ${data.filas_guardadas} set(s). El siguiente ID disponible es ${data.siguiente_id_partido}.`,
