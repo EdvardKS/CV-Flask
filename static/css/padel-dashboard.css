@@ -2226,3 +2226,259 @@ body.padel-app.page-errores {
         min-height: 68px;
     }
 }
+
+/* Final responsive shell fixes */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+}
+
+body.padel-app,
+.padel-app main,
+.page-shell,
+.hero-grid,
+.session-layout,
+.dashboard-layout,
+#dashboard-body,
+.page-errores .session-grid,
+.page-errores .counter-stack,
+.page-errores .counter-section,
+.page-errores .counter-grid,
+.page-errores .side-panel,
+.page-errores .summary-sidecard,
+.page-errores .saved-sets-card,
+.page-resumen .summary-header,
+.page-resumen .summary-header-copy,
+.page-resumen .summary-header-controls,
+.page-resumen .chart-card,
+.page-resumen .kpi-card,
+.page-resumen .profile-card,
+.page-resumen .insight-card,
+.page-resumen .table-card,
+.page-resumen .chart-canvas-wrap,
+.page-resumen .table-responsive {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.page-errores .row > *,
+.page-resumen .row > * {
+    min-width: 0;
+}
+
+.page-shell {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+}
+
+.page-errores .page-shell,
+.page-resumen .page-shell {
+    width: 100%;
+    max-width: 100%;
+}
+
+.page-errores .session-layout,
+.page-resumen .dashboard-layout {
+    overflow-x: hidden;
+    overflow-x: clip;
+}
+
+.page-errores .counter-grid,
+.page-resumen .summary-header-controls {
+    --bs-gutter-x: 0.75rem;
+}
+
+.page-errores .counter-grid > [class*="col-"],
+.page-errores .session-grid > [class*="col-"],
+.page-resumen .summary-header-controls > [class*="col-"] {
+    min-width: 0;
+}
+
+.page-errores .counter-card,
+.page-errores .count-btn,
+.page-errores .summary-sidecard .card-body,
+.page-errores .saved-sets-card .card-body {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.page-resumen .dashboard-layout {
+    padding: clamp(14px, 2vw, 20px);
+}
+
+.page-resumen .summary-header-copy,
+.page-resumen .summary-header-controls .filter-label,
+.page-resumen .chart-head,
+.page-resumen .saved-set-top,
+.page-resumen .profile-score-line,
+.page-resumen .profile-mini-grid,
+.page-resumen .profile-mini-tile,
+.page-resumen .chart-head > div {
+    min-width: 0;
+}
+
+.page-resumen .chart-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.page-resumen .chart-help {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+    color: #f5f7fb;
+    flex-shrink: 0;
+}
+
+.page-resumen .chart-card,
+.page-resumen .kpi-card,
+.page-resumen .profile-card,
+.page-resumen .insight-card,
+.page-resumen .table-card {
+    overflow: hidden;
+}
+
+.page-resumen .chart-canvas-wrap {
+    position: relative;
+    min-width: 0;
+    width: 100%;
+}
+
+.page-resumen .summary-mobile-cards {
+    display: grid;
+    gap: 12px;
+}
+
+.page-resumen .summary-mobile-card {
+    display: grid;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.page-resumen .summary-mobile-title {
+    color: var(--text-on-dark);
+    font-size: 1rem;
+}
+
+.page-resumen .summary-mobile-badges,
+.page-resumen .summary-mobile-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.page-resumen .summary-mobile-badge,
+.page-resumen .summary-mobile-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(237, 242, 249, 0.9);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.page-resumen .summary-mobile-chip.is-danger {
+    background: rgba(255, 157, 145, 0.12);
+    border-color: rgba(255, 157, 145, 0.16);
+    color: #ffbeb4;
+}
+
+.page-resumen .summary-mobile-chip.is-success {
+    background: rgba(116, 213, 154, 0.12);
+    border-color: rgba(116, 213, 154, 0.16);
+    color: #9ce1b5;
+}
+
+.page-resumen .summary-mobile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.page-resumen .summary-mobile-stat {
+    display: grid;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-width: 0;
+}
+
+.page-resumen .summary-mobile-stat strong {
+    color: var(--text-on-dark);
+    font-size: 1.05rem;
+}
+
+.page-resumen .summary-mobile-block {
+    display: grid;
+    gap: 8px;
+}
+
+.page-resumen .table-responsive {
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-gutter: stable both-edges;
+}
+
+.page-resumen table {
+    width: max-content;
+    min-width: 1680px;
+}
+
+@media (max-width: 991.98px) {
+    .page-resumen .summary-header-controls {
+        align-items: stretch;
+    }
+
+    .page-resumen .chart-card canvas,
+    .page-resumen .chart-canvas-wrap {
+        min-height: 250px;
+        height: 250px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-shell {
+        padding-left: max(10px, env(safe-area-inset-left));
+        padding-right: max(10px, env(safe-area-inset-right));
+    }
+
+    .page-resumen .dashboard-layout {
+        padding: 14px;
+    }
+
+    .page-resumen .chart-head,
+    .page-resumen .profile-header-line,
+    .page-resumen .profile-score-line,
+    .page-resumen .saved-set-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-resumen .summary-mobile-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .page-resumen .chart-card canvas,
+    .page-resumen .chart-canvas-wrap {
+        min-height: 220px;
+        height: 220px !important;
+    }
+
+    .page-errores .page-shell {
+        padding-left: max(10px, env(safe-area-inset-left));
+        padding-right: max(10px, env(safe-area-inset-right));
+    }
+}
