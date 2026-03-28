@@ -4,7 +4,7 @@ import os
 import re
 import unicodedata
 
-from flask import Blueprint, jsonify, render_template, request
+from flask import Blueprint, jsonify, render_template, request, send_from_directory
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(BASE_DIR, 'output')
@@ -1002,6 +1002,16 @@ def resumen():
     return render_template(
         'resumen.html',
         error_labels=FIELD_LABELS,
+    )
+
+
+@padel_scout_bp.route('/sw.js')
+def service_worker():
+    return send_from_directory(
+        os.path.join(BASE_DIR, 'static', 'pwa'),
+        'sw.js',
+        mimetype='application/javascript',
+        max_age=0,
     )
 
 
