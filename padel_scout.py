@@ -424,6 +424,87 @@ PROFILE_AREAS = {
     },
 }
 
+HAND_BREAKDOWN = {
+    'Derecha': {
+        'positive': ['Winner_Derecha', 'Resto_Ganador_Derecha', 'Volea_Derecha_Ganadora'],
+        'negative': ['Resto_Derecha_Fallado', 'Error_Fondo_Derecha', 'Bajada_Derecha_Error', 'Error_Volea_Derecha'],
+    },
+    'Revés': {
+        'positive': ['Winner_Reves', 'Resto_Ganador_Reves', 'Volea_Reves_Ganadora'],
+        'negative': ['Resto_Reves_Fallado', 'Error_Fondo_Reves', 'Bajada_Reves_Error', 'Error_Volea_Reves'],
+    },
+}
+
+FIELD_PHASE_HINTS = {
+    'Doble_Falta': 'Inicio/Resto',
+    'Resto_Derecha_Fallado': 'Inicio/Resto',
+    'Resto_Reves_Fallado': 'Inicio/Resto',
+    'Globo_Malo': 'Defensa/Fondo',
+    'Error_Fondo_Derecha': 'Defensa/Fondo',
+    'Error_Fondo_Reves': 'Defensa/Fondo',
+    'Bajada_Derecha_Error': 'Defensa/Fondo',
+    'Bajada_Reves_Error': 'Defensa/Fondo',
+    'Posicionamiento_Fondo_Error': 'Táctica/Posicionamiento',
+    'Error_Volea_Derecha': 'Transición/Red',
+    'Error_Volea_Reves': 'Transición/Red',
+    'Posicionamiento_Volea_Error': 'Táctica/Posicionamiento',
+    'Tirar_Ficha_Error': 'Táctica/Posicionamiento',
+    'Bandeja_Error': 'Transición/Red',
+    'Smash_Error': 'Definición',
+    'Winner_Derecha': 'Definición',
+    'Winner_Reves': 'Definición',
+    'Resto_Ganador_Derecha': 'Inicio/Resto',
+    'Resto_Ganador_Reves': 'Inicio/Resto',
+    'Globo_De_Oro': 'Defensa/Fondo',
+    'Chiquita_Ganadora': 'Táctica/Posicionamiento',
+    'Bajada_De_Pared': 'Defensa/Fondo',
+    'Remate_Finalizador': 'Definición',
+    'Volea_Derecha_Ganadora': 'Transición/Red',
+    'Volea_Reves_Ganadora': 'Transición/Red',
+    'Bandeja_Vibora_Definitiva': 'Transición/Red',
+    'Volea_Bloqueo_Contraataque': 'Táctica/Posicionamiento',
+    'Dormilona': 'Táctica/Posicionamiento',
+}
+
+FIELD_HAND_HINTS = {
+    'Resto_Derecha_Fallado': 'Derecha',
+    'Error_Fondo_Derecha': 'Derecha',
+    'Bajada_Derecha_Error': 'Derecha',
+    'Error_Volea_Derecha': 'Derecha',
+    'Winner_Derecha': 'Derecha',
+    'Resto_Ganador_Derecha': 'Derecha',
+    'Volea_Derecha_Ganadora': 'Derecha',
+    'Resto_Reves_Fallado': 'Revés',
+    'Error_Fondo_Reves': 'Revés',
+    'Bajada_Reves_Error': 'Revés',
+    'Error_Volea_Reves': 'Revés',
+    'Winner_Reves': 'Revés',
+    'Resto_Ganador_Reves': 'Revés',
+    'Volea_Reves_Ganadora': 'Revés',
+}
+
+IMPACT_BUCKETS = {
+    'Aciertos de definición': ['Winner_Derecha', 'Winner_Reves', 'Remate_Finalizador', 'Volea_Derecha_Ganadora', 'Volea_Reves_Ganadora', 'Bandeja_Vibora_Definitiva'],
+    'Aciertos de ventaja': ['Resto_Ganador_Derecha', 'Resto_Ganador_Reves', 'Bajada_De_Pared', 'Volea_Bloqueo_Contraataque', 'Dormilona'],
+    'Aciertos de construcción': ['Globo_De_Oro', 'Chiquita_Ganadora'],
+    'Errores alto coste': ['Doble_Falta', 'Resto_Derecha_Fallado', 'Resto_Reves_Fallado', 'Tirar_Ficha_Error'],
+    'Errores técnicos': ['Globo_Malo', 'Error_Fondo_Derecha', 'Error_Fondo_Reves', 'Bajada_Derecha_Error', 'Bajada_Reves_Error', 'Error_Volea_Derecha', 'Error_Volea_Reves', 'Bandeja_Error', 'Smash_Error'],
+    'Errores posicionales': ['Posicionamiento_Fondo_Error', 'Posicionamiento_Volea_Error'],
+}
+
+GRAPH_TOOLTIPS = {
+    'profile-radar': 'Resume el score de cada gran fase del juego. Cuanto más lejos del centro, más consolidada está esa área.',
+    'error-type': 'Ordena los errores no forzados del filtro activo para localizar qué golpe está rompiendo más el rendimiento.',
+    'success-type': 'Mide qué acciones ganadoras están generando más valor real para el jugador.',
+    'phase-compare': 'Compara aciertos, errores y balance por fase de juego para detectar dónde produce y dónde se cae.',
+    'hand-compare': 'Cruza derecha y revés para saber en qué mano el jugador genera más balance positivo o sufre más.',
+    'block-balance': 'Resume la batalla entre fondo y red, comparando volumen de acierto, error y balance neto.',
+    'set-trend': 'Sigue el comportamiento set a set para ver si el jugador mantiene el nivel o se desordena con el paso del partido.',
+    'impact-breakdown': 'Pondera el peso real de los aciertos y errores por familias de impacto, no solo por volumen bruto.',
+    'training-priority': 'Marca qué correcciones darían más retorno inmediato en pista según frecuencia y coste del error.',
+    'match-compare': 'Sirve para comparar partidos completos y ver si el rendimiento es estable o cambia mucho según contexto.',
+}
+
 
 class SchemaMismatchError(ValueError):
     pass
@@ -810,7 +891,189 @@ def build_series_by_match(rows):
     return payload
 
 
-def build_insights(error_totals, success_totals, error_block_totals, success_block_totals, profile, score_data):
+def build_series_by_set(rows):
+    payload = []
+    for order, row in enumerate(sorted(rows, key=lambda current: (current['ID_Partido'], current['Numero_Set'])), start=1):
+        row_error_totals = {field: row[field] for field in ERROR_FIELDS}
+        row_success_totals = {field: row[field] for field in SUCCESS_FIELDS}
+        row_score = calculate_score_data(row_error_totals, row_success_totals)
+        payload.append({
+            'orden': order,
+            'clave': f'P{row["ID_Partido"]}-S{row["Numero_Set"]}',
+            'id_partido': row['ID_Partido'],
+            'numero_set': row['Numero_Set'],
+            'errores': row['Total_ENF_Set'],
+            'aciertos': row['Total_Aciertos_Set'],
+            'balance': row['Balance_Set'],
+            'score': row_score['score'],
+        })
+
+    return payload
+
+
+def build_hand_comparison(error_totals, success_totals):
+    payload = []
+    for hand_name, definition in HAND_BREAKDOWN.items():
+        total_errors = sum(error_totals[field] for field in definition['negative'])
+        total_successes = sum(success_totals[field] for field in definition['positive'])
+        payload.append({
+            'mano': hand_name,
+            'errores': total_errors,
+            'aciertos': total_successes,
+            'balance': total_successes - total_errors,
+        })
+
+    return payload
+
+
+def build_phase_comparison(error_totals, success_totals):
+    payload = []
+    for phase_name, definition in PROFILE_AREAS.items():
+        area_data = calculate_area_score(definition['positive'], definition['negative'], success_totals, error_totals)
+        payload.append({
+            'fase': phase_name,
+            'aciertos': area_data['aciertos'],
+            'errores': area_data['errores'],
+            'balance': area_data['aciertos'] - area_data['errores'],
+            'impacto': area_data['impacto'],
+            'score': area_data['score'],
+        })
+
+    return payload
+
+
+def build_impact_breakdown(error_totals, success_totals):
+    weighted_points = {
+        'Aciertos de definición': round(sum(success_totals[field] * SUCCESS_WEIGHTS[field] for field in IMPACT_BUCKETS['Aciertos de definición']), 2),
+        'Aciertos de ventaja': round(sum(success_totals[field] * SUCCESS_WEIGHTS[field] for field in IMPACT_BUCKETS['Aciertos de ventaja']), 2),
+        'Aciertos de construcción': round(sum(success_totals[field] * SUCCESS_WEIGHTS[field] for field in IMPACT_BUCKETS['Aciertos de construcción']), 2),
+        'Errores alto coste': round(sum(error_totals[field] * ERROR_WEIGHTS[field] for field in IMPACT_BUCKETS['Errores alto coste']), 2),
+        'Errores técnicos': round(sum(error_totals[field] * ERROR_WEIGHTS[field] for field in IMPACT_BUCKETS['Errores técnicos']), 2),
+        'Errores posicionales': round(sum(error_totals[field] * ERROR_WEIGHTS[field] for field in IMPACT_BUCKETS['Errores posicionales']), 2),
+    }
+
+    return [
+        {
+            'categoria': category,
+            'puntos': points,
+            'tipo': 'acierto' if category.startswith('Aciertos') else 'error',
+        }
+        for category, points in weighted_points.items()
+    ]
+
+
+def build_advanced_metrics(filtered_rows, error_totals, success_totals, score_data):
+    total_errors = sum(row['Total_ENF_Set'] for row in filtered_rows)
+    total_successes = sum(row['Total_Aciertos_Set'] for row in filtered_rows)
+    hand_comparison = build_hand_comparison(error_totals, success_totals)
+    phase_comparison = build_phase_comparison(error_totals, success_totals)
+    impact_breakdown = build_impact_breakdown(error_totals, success_totals)
+
+    ratio = round(total_successes / total_errors, 2) if total_errors else round(float(total_successes), 2)
+    balances = [row['Balance_Set'] for row in filtered_rows]
+    mean_balance = round(sum(balances) / len(balances), 2) if balances else 0
+    if len(balances) > 1:
+        average_deviation = sum(abs(value - mean_balance) for value in balances) / len(balances)
+        estabilidad = clamp(round(100 - average_deviation * 8, 1), 0, 100)
+    elif balances:
+        estabilidad = 100.0
+    else:
+        estabilidad = 0.0
+
+    if estabilidad >= 80:
+        estabilidad_label = 'Muy estable'
+    elif estabilidad >= 65:
+        estabilidad_label = 'Bastante estable'
+    elif estabilidad >= 45:
+        estabilidad_label = 'Irregular'
+    else:
+        estabilidad_label = 'Muy variable'
+
+    error_points_total = max(score_data['puntos_error'], 1)
+    success_points_total = max(score_data['puntos_acierto'], 1)
+    phase_best = max(phase_comparison, key=lambda item: (item['balance'], item['score']), default=None)
+    phase_weak = min(phase_comparison, key=lambda item: (item['score'], item['balance']), default=None)
+    hand_map = {item['mano']: item for item in hand_comparison}
+
+    return {
+        'eficiencia_global': score_data['score'],
+        'ratio_aciertos_error': ratio,
+        'balance_derecha': hand_map.get('Derecha', {}).get('balance', 0),
+        'balance_reves': hand_map.get('Revés', {}).get('balance', 0),
+        'estabilidad_score': estabilidad,
+        'estabilidad_label': estabilidad_label,
+        'media_balance_por_set': mean_balance,
+        'fase_mas_productiva': phase_best,
+        'fase_mas_fragil': phase_weak,
+        'peso_errores_alto_coste': round(100 * next(item['puntos'] for item in impact_breakdown if item['categoria'] == 'Errores alto coste') / error_points_total, 1),
+        'peso_errores_tecnicos': round(100 * next(item['puntos'] for item in impact_breakdown if item['categoria'] == 'Errores técnicos') / error_points_total, 1),
+        'peso_errores_posicionales': round(100 * next(item['puntos'] for item in impact_breakdown if item['categoria'] == 'Errores posicionales') / error_points_total, 1),
+        'peso_aciertos_definicion': round(100 * next(item['puntos'] for item in impact_breakdown if item['categoria'] == 'Aciertos de definición') / success_points_total, 1),
+        'peso_aciertos_ventaja': round(100 * next(item['puntos'] for item in impact_breakdown if item['categoria'] == 'Aciertos de ventaja') / success_points_total, 1),
+        'peso_aciertos_construccion': round(100 * next(item['puntos'] for item in impact_breakdown if item['categoria'] == 'Aciertos de construcción') / success_points_total, 1),
+        'impacto_desglosado': impact_breakdown,
+    }
+
+
+def build_training_priorities(error_totals):
+    ranked_errors = [
+        field for field in sorted(
+            ERROR_FIELDS,
+            key=lambda current: (error_totals[current] * ERROR_WEIGHTS[current], error_totals[current]),
+            reverse=True,
+        )
+        if error_totals[field] > 0
+    ]
+
+    priorities = []
+    for field in ranked_errors[:3]:
+        priorities.append({
+            'titulo': ERROR_LABELS[field],
+            'valor': error_totals[field],
+            'impacto': round(error_totals[field] * ERROR_WEIGHTS[field], 1),
+            'fase': FIELD_PHASE_HINTS.get(field, 'Sin definir'),
+            'mano': FIELD_HAND_HINTS.get(field, 'Neutral'),
+            'detalle': ERROR_GUIDANCE[field]['improvement'],
+        })
+
+    return priorities
+
+
+def build_tactical_recommendation(profile, phase_comparison, hand_comparison, priorities):
+    if not phase_comparison:
+        return 'Todavía no hay suficientes sets para emitir una recomendación táctica consistente.'
+
+    strongest_phase = max(phase_comparison, key=lambda item: (item['balance'], item['score']))
+    weakest_phase = min(phase_comparison, key=lambda item: (item['score'], item['balance']))
+    strongest_hand = max(hand_comparison, key=lambda item: item['balance'], default={'mano': 'Sin datos'})
+
+    recommendation = (
+        f'El patrón más rentable del jugador está en {strongest_phase["fase"].lower()}. '
+        f'Conviene construir el punto para llevarlo ahí y proteger especialmente {weakest_phase["fase"].lower()}.'
+    )
+
+    if priorities:
+        recommendation += (
+            f' La corrección inmediata debe centrarse en {priorities[0]["titulo"].lower()}'
+            f' para limpiar la pérdida de valor más costosa.'
+        )
+
+    if strongest_hand.get('balance', 0) > 0:
+        recommendation += f' La mano que más balance genera ahora mismo es {strongest_hand["mano"].lower()}.'
+
+    return recommendation
+
+
+def build_insights(
+    error_totals,
+    success_totals,
+    error_block_totals,
+    success_block_totals,
+    profile,
+    score_data,
+    advanced_metrics,
+    priorities,
+):
     ranked_errors = [
         field for field in sorted(ERROR_FIELDS, key=lambda current: error_totals[current], reverse=True)
         if error_totals[field] > 0
@@ -865,11 +1128,63 @@ def build_insights(error_totals, success_totals, error_block_totals, success_blo
             f'Genera más valor en {best_block.lower()} y el mayor foco de corrección aparece en {risk_block.lower()}.'
         )
 
+    fortalezas_consolidadas = [
+        {
+            'label': item['label'],
+            'valor': item['valor'],
+            'detalle': f'{item["detalle"]} Se está convirtiendo en un rasgo consolidado del jugador.',
+        }
+        for item in puntos_fuertes
+    ]
+
+    vulnerabilidades_especificas = [
+        {
+            'label': item['label'],
+            'valor': item['valor'],
+            'detalle': f'{item["detalle"]} Impacta sobre todo en {FIELD_PHASE_HINTS.get(next((field for field, label in ERROR_LABELS.items() if label == item["label"]), ""), "fase no definida").lower()}.',
+        }
+        for item in puntos_flojos
+    ]
+
+    coaching_notes = []
+    tactical_recommendation = build_tactical_recommendation(
+        profile,
+        advanced_metrics['comparativa_fases'],
+        advanced_metrics['comparativa_manos'],
+        priorities,
+    )
+    coaching_notes.append({
+        'label': 'Recomendación táctica',
+        'valor': score_data['nivel'],
+        'detalle': tactical_recommendation,
+    })
+    coaching_notes.append({
+        'label': 'Lectura de estabilidad',
+        'valor': advanced_metrics['metricas_avanzadas']['estabilidad_label'],
+        'detalle': (
+            f'Consistencia estimada {advanced_metrics["metricas_avanzadas"]["estabilidad_score"]}/100 '
+            f'con una media de balance por set de {advanced_metrics["metricas_avanzadas"]["media_balance_por_set"]}.'
+        ),
+    })
+
     return {
         'puntos_fuertes': puntos_fuertes,
         'puntos_flojos': puntos_flojos,
         'areas_mejora': areas_mejora,
         'comentario_global': comentario_global,
+        'fortalezas_consolidadas': fortalezas_consolidadas,
+        'vulnerabilidades_especificas': vulnerabilidades_especificas,
+        'prioridades_entrenamiento': [
+            {
+                'label': item['titulo'],
+                'valor': item['impacto'],
+                'detalle': f'{item["detalle"]} Fase: {item["fase"]}. Mano: {item["mano"]}.',
+            }
+            for item in priorities
+        ],
+        'recomendacion_tactica': tactical_recommendation,
+        'comentario_estabilidad': coaching_notes[1]['detalle'],
+        'coaching_notes': coaching_notes,
     }
 
 
@@ -895,6 +1210,11 @@ def build_summary_payload(player_name, all_rows, filtered_rows, available_sets, 
     unique_matches = sorted({row['ID_Partido'] for row in all_rows})
     score_data = calculate_score_data(error_totals, success_totals)
     profile = build_player_profile(success_totals, error_totals, score_data)
+    hand_comparison = build_hand_comparison(error_totals, success_totals)
+    phase_comparison = build_phase_comparison(error_totals, success_totals)
+    advanced_metrics = build_advanced_metrics(filtered_rows, error_totals, success_totals, score_data)
+    series_by_set = build_series_by_set(filtered_rows)
+    priorities = build_training_priorities(error_totals)
 
     if filtered_rows and total_errors > 0:
         top_error_field = max(ERROR_FIELDS, key=lambda field: error_totals[field])
@@ -978,10 +1298,31 @@ def build_summary_payload(player_name, all_rows, filtered_rows, available_sets, 
             for block_name in balance_block_totals
         ],
         'series_por_partido': build_series_by_match(filtered_rows),
+        'series_por_set': series_by_set,
         'filas_filtradas': filtered_rows,
         'score_jugador': score_data,
         'perfil_jugador': profile,
-        'insights': build_insights(error_totals, success_totals, error_block_totals, success_block_totals, profile, score_data),
+        'comparativa_manos': hand_comparison,
+        'comparativa_fases': phase_comparison,
+        'metricas_avanzadas': {
+            **advanced_metrics,
+        },
+        'prioridades_entrenamiento': priorities,
+        'tooltips_graficas': GRAPH_TOOLTIPS,
+        'insights': build_insights(
+            error_totals,
+            success_totals,
+            error_block_totals,
+            success_block_totals,
+            profile,
+            score_data,
+            {
+                'comparativa_manos': hand_comparison,
+                'comparativa_fases': phase_comparison,
+                'metricas_avanzadas': advanced_metrics,
+            },
+            priorities,
+        ),
     }
 
 

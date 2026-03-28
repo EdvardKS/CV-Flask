@@ -50,6 +50,7 @@
     const setFilter = document.getElementById('set-filter');
     const loadSummaryButton = document.getElementById('load-summary-btn');
     const changeSummaryPlayerButton = document.getElementById('change-summary-player-btn');
+    const summaryMobileCards = document.getElementById('summary-mobile-cards');
     const playerSessionStore = window.padelPlayerSession || null;
 
     const playerScoreValue = document.getElementById('player-score-value');
@@ -71,10 +72,18 @@
     const kpiErrorRate = document.getElementById('kpi-error-rate');
     const kpiTopSuccess = document.getElementById('kpi-top-success');
     const kpiTopError = document.getElementById('kpi-top-error');
+    const kpiEfficiency = document.getElementById('kpi-efficiency');
+    const kpiRatio = document.getElementById('kpi-ratio');
+    const kpiRightBalance = document.getElementById('kpi-right-balance');
+    const kpiLeftBalance = document.getElementById('kpi-left-balance');
+    const kpiStability = document.getElementById('kpi-stability');
+    const kpiStabilityLabel = document.getElementById('kpi-stability-label');
+    const kpiHighCost = document.getElementById('kpi-high-cost');
 
     const strongPointsList = document.getElementById('strong-points-list');
     const weakPointsList = document.getElementById('weak-points-list');
     const improvementList = document.getElementById('improvement-list');
+    const coachingList = document.getElementById('coaching-list');
     const globalComment = document.getElementById('global-comment');
     const rowsBody = document.getElementById('summary-rows');
 
@@ -94,10 +103,35 @@
             wrap: document.getElementById('success-chart-wrap'),
             empty: document.getElementById('success-chart-empty'),
         },
+        phaseCompare: {
+            canvas: document.getElementById('phase-balance-chart'),
+            wrap: document.getElementById('phase-chart-wrap'),
+            empty: document.getElementById('phase-chart-empty'),
+        },
+        handCompare: {
+            canvas: document.getElementById('hand-compare-chart'),
+            wrap: document.getElementById('hand-chart-wrap'),
+            empty: document.getElementById('hand-chart-empty'),
+        },
+        setTrend: {
+            canvas: document.getElementById('set-trend-chart'),
+            wrap: document.getElementById('set-trend-wrap'),
+            empty: document.getElementById('set-trend-empty'),
+        },
+        impactBreakdown: {
+            canvas: document.getElementById('impact-breakdown-chart'),
+            wrap: document.getElementById('impact-chart-wrap'),
+            empty: document.getElementById('impact-chart-empty'),
+        },
         blockBalance: {
             canvas: document.getElementById('block-balance-chart'),
             wrap: document.getElementById('block-chart-wrap'),
             empty: document.getElementById('block-chart-empty'),
+        },
+        trainingPriority: {
+            canvas: document.getElementById('training-priority-chart'),
+            wrap: document.getElementById('priority-chart-wrap'),
+            empty: document.getElementById('priority-chart-empty'),
         },
         matchCompare: {
             canvas: document.getElementById('match-chart'),
@@ -109,13 +143,7 @@
     const state = {
         jugador: '',
         isBusy: false,
-        charts: {
-            profileRadar: null,
-            errorType: null,
-            successType: null,
-            blockBalance: null,
-            matchCompare: null,
-        },
+        charts: Object.keys(chartRefs).reduce((accumulator, key) => ({ ...accumulator, [key]: null }), {}),
     };
 
     const chartPalette = {
@@ -123,12 +151,14 @@
         muted: 'rgba(231, 236, 244, 0.78)',
         grid: 'rgba(255, 255, 255, 0.08)',
         gold: '#d8b36a',
-        goldSoft: 'rgba(216, 179, 106, 0.3)',
+        goldSoft: 'rgba(216, 179, 106, 0.28)',
         blue: '#7ba6f6',
-        blueSoft: 'rgba(123, 166, 246, 0.24)',
+        blueSoft: 'rgba(123, 166, 246, 0.28)',
+        teal: '#74d59a',
+        tealSoft: 'rgba(116, 213, 154, 0.28)',
+        danger: '#ff9d91',
+        dangerSoft: 'rgba(255, 157, 145, 0.3)',
         slate: '#c8d3e5',
-        danger: '#ff8f8f',
-        success: '#74d59a',
         errorBars: [
             '#ff9a76',
             '#ffb088',
@@ -163,6 +193,10 @@
         ],
     };
 
+    function labelForField(field) {
+        return fieldLabels[field] || field.replaceAll('_', ' ');
+    }
+
     function formatNumber(value, digits = 1) {
         return new Intl.NumberFormat('es-ES', {
             minimumFractionDigits: Number.isInteger(value) ? 0 : Math.min(1, digits),
@@ -182,6 +216,11 @@
             return `+${formatNumber(numeric, 1)}`;
         }
         return formatNumber(numeric, 1);
+    }
+
+    function formatRatio(value) {
+        const numeric = Number(value) || 0;
+        return `${formatNumber(numeric, 2)}x`;
     }
 
     function setMessage(message, type) {
@@ -296,6 +335,9 @@
     }
 
     function toggleChartState(chartRef, hasData, emptyMessage) {
+        if (!chartRef) {
+            return;
+        }
         chartRef.wrap.classList.toggle('hidden', !hasData);
         chartRef.empty.classList.toggle('hidden', hasData);
         if (!hasData && emptyMessage) {
@@ -307,6 +349,10 @@
         return {
             responsive: true,
             maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
             plugins: {
                 legend: {
                     labels: {
@@ -351,6 +397,17 @@
         };
     }
 
+    function applyChartTooltips(payload) {
+        const tooltips = payload.tooltips_graficas || {};
+        document.querySelectorAll('[data-tooltip-key]').forEach((button) => {
+            const key = button.getAttribute('data-tooltip-key');
+            const tooltip = tooltips[key] || 'Sin explicación disponible para este gráfico.';
+            button.dataset.tooltip = tooltip;
+            button.setAttribute('aria-label', tooltip);
+            button.title = tooltip;
+        });
+    }
+
     function renderProfile(payload) {
         const { perfil_jugador: profile, score_jugador: scoreData, kpis } = payload;
         const topSuccess = kpis.acierto_mas_repetido;
@@ -368,7 +425,7 @@
     }
 
     function renderKPIs(payload) {
-        const { kpis, score_jugador: scoreData } = payload;
+        const { kpis, score_jugador: scoreData, metricas_avanzadas: advanced } = payload;
 
         kpiTotalSuccesses.textContent = formatInteger(kpis.total_aciertos);
         kpiTotalErrors.textContent = formatInteger(kpis.total_errores_no_forzados);
@@ -383,6 +440,14 @@
         kpiTopError.textContent = kpis.error_mas_repetido.valor
             ? `Error crítico: ${kpis.error_mas_repetido.label} · ${kpis.error_mas_repetido.valor}`
             : 'Error crítico: sin datos';
+
+        kpiEfficiency.textContent = `${formatNumber(advanced.eficiencia_global, 1)}%`;
+        kpiRatio.textContent = formatRatio(advanced.ratio_aciertos_error);
+        kpiRightBalance.textContent = formatBalance(advanced.balance_derecha);
+        kpiLeftBalance.textContent = formatBalance(advanced.balance_reves);
+        kpiStability.textContent = `${formatNumber(advanced.estabilidad_score, 1)}%`;
+        kpiStabilityLabel.textContent = advanced.estabilidad_label || 'Sin datos';
+        kpiHighCost.textContent = `${formatNumber(advanced.peso_errores_alto_coste, 1)}%`;
     }
 
     function renderInsightList(container, items, emptyMessage) {
@@ -405,13 +470,14 @@
 
             const title = document.createElement('h4');
             title.className = 'insight-title';
-            title.textContent = itemData.label || 'Sin etiqueta';
+            title.textContent = itemData.label || itemData.titulo || 'Sin etiqueta';
 
             const badge = document.createElement('span');
             badge.className = 'insight-value';
-            badge.textContent = typeof itemData.valor === 'number'
-                ? `${itemData.valor}`
-                : 'Clave';
+            const badgeValue = itemData.valor ?? itemData.impacto ?? '';
+            badge.textContent = typeof badgeValue === 'number'
+                ? (Number.isInteger(badgeValue) ? `${badgeValue}` : formatNumber(badgeValue, 1))
+                : (badgeValue || 'Info');
 
             const copy = document.createElement('p');
             copy.className = 'insight-copy';
@@ -422,6 +488,84 @@
             item.appendChild(top);
             item.appendChild(copy);
             container.appendChild(item);
+        });
+    }
+
+    function getTopRowFields(row, columns, limit) {
+        return columns
+            .map((field) => ({ field, value: Number(row[field]) || 0 }))
+            .filter((item) => item.value > 0)
+            .sort((left, right) => right.value - left.value)
+            .slice(0, limit)
+            .map((item) => ({
+                label: labelForField(item.field),
+                value: item.value,
+            }));
+    }
+
+    function renderMobileCards(rows) {
+        summaryMobileCards.innerHTML = '';
+
+        if (!rows.length) {
+            const emptyCard = document.createElement('article');
+            emptyCard.className = 'summary-mobile-card';
+            emptyCard.innerHTML = '<p class="muted-text mb-0">No hay sets para este filtro.</p>';
+            summaryMobileCards.appendChild(emptyCard);
+            return;
+        }
+
+        rows.forEach((row) => {
+            const topErrors = getTopRowFields(row, ERROR_COLUMNS, 3);
+            const topSuccesses = getTopRowFields(row, SUCCESS_COLUMNS, 3);
+
+            const card = document.createElement('article');
+            card.className = 'summary-mobile-card';
+
+            const metaBadges = [
+                `<span class="summary-mobile-badge">Partido ${row.ID_Partido}</span>`,
+                `<span class="summary-mobile-badge">Set ${row.Numero_Set}</span>`,
+                `<span class="summary-mobile-badge">Balance ${formatBalance(row.Balance_Set)}</span>`,
+            ].join('');
+
+            const errorChips = topErrors.length
+                ? topErrors.map((item) => `<span class="summary-mobile-chip is-danger">${item.label} · ${item.value}</span>`).join('')
+                : '<span class="summary-mobile-chip">Sin errores</span>';
+            const successChips = topSuccesses.length
+                ? topSuccesses.map((item) => `<span class="summary-mobile-chip is-success">${item.label} · ${item.value}</span>`).join('')
+                : '<span class="summary-mobile-chip">Sin aciertos</span>';
+
+            card.innerHTML = `
+                <div class="summary-mobile-top">
+                    <div>
+                        <h4 class="summary-mobile-title mb-1">Set ${row.Numero_Set}</h4>
+                        <div class="summary-mobile-badges">${metaBadges}</div>
+                    </div>
+                </div>
+                <div class="summary-mobile-stats">
+                    <div class="summary-mobile-stat">
+                        <span class="meta-label">Errores</span>
+                        <strong>${formatInteger(row.Total_ENF_Set)}</strong>
+                    </div>
+                    <div class="summary-mobile-stat">
+                        <span class="meta-label">Aciertos</span>
+                        <strong>${formatInteger(row.Total_Aciertos_Set)}</strong>
+                    </div>
+                    <div class="summary-mobile-stat">
+                        <span class="meta-label">Balance</span>
+                        <strong>${formatBalance(row.Balance_Set)}</strong>
+                    </div>
+                </div>
+                <div class="summary-mobile-block">
+                    <span class="kpi-label">Errores dominantes</span>
+                    <div class="summary-mobile-chips">${errorChips}</div>
+                </div>
+                <div class="summary-mobile-block">
+                    <span class="kpi-label">Aciertos dominantes</span>
+                    <div class="summary-mobile-chips">${successChips}</div>
+                </div>
+            `;
+
+            summaryMobileCards.appendChild(card);
         });
     }
 
@@ -493,12 +637,8 @@
                 },
                 scales: {
                     r: {
-                        angleLines: {
-                            color: chartPalette.grid,
-                        },
-                        grid: {
-                            color: chartPalette.grid,
-                        },
+                        angleLines: { color: chartPalette.grid },
+                        grid: { color: chartPalette.grid },
                         pointLabels: {
                             color: chartPalette.text,
                             font: { size: 12, weight: '700' },
@@ -564,52 +704,214 @@
         });
     }
 
-    function renderBlockBalanceChart(payload) {
-        const chartRef = chartRefs.blockBalance;
-        const items = payload.balance_por_bloque || [];
-        const hasData = items.some((item) => item.errores > 0 || item.aciertos > 0);
+    function renderGroupedBalanceChart(chartKey, items, labelKey, emptyMessage) {
+        const chartRef = chartRefs[chartKey];
+        const hasData = items.some((item) => Number(item.errores) > 0 || Number(item.aciertos) > 0 || Number(item.balance) !== 0);
 
-        if (state.charts.blockBalance) {
-            state.charts.blockBalance.destroy();
-            state.charts.blockBalance = null;
+        if (state.charts[chartKey]) {
+            state.charts[chartKey].destroy();
+            state.charts[chartKey] = null;
         }
 
-        toggleChartState(chartRef, hasData, 'No hay suficientes datos para comparar bloques.');
+        toggleChartState(chartRef, hasData, emptyMessage);
         if (!hasData) {
             return;
         }
 
         const baseOptions = createBaseChartOptions();
-        state.charts.blockBalance = new Chart(chartRef.canvas, {
+        state.charts[chartKey] = new Chart(chartRef.canvas, {
             type: 'bar',
             data: {
-                labels: items.map((item) => item.bloque),
+                labels: items.map((item) => item[labelKey]),
                 datasets: [
                     {
                         label: 'Aciertos',
                         data: items.map((item) => item.aciertos),
-                        backgroundColor: 'rgba(116, 213, 154, 0.72)',
+                        backgroundColor: chartPalette.tealSoft,
+                        borderColor: chartPalette.teal,
+                        borderWidth: 1,
                         borderRadius: 10,
                         borderSkipped: false,
                     },
                     {
                         label: 'Errores',
                         data: items.map((item) => item.errores),
-                        backgroundColor: 'rgba(255, 143, 143, 0.72)',
+                        backgroundColor: chartPalette.dangerSoft,
+                        borderColor: chartPalette.danger,
+                        borderWidth: 1,
                         borderRadius: 10,
                         borderSkipped: false,
                     },
                     {
                         label: 'Balance',
                         data: items.map((item) => item.balance),
-                        backgroundColor: 'rgba(216, 179, 106, 0.72)',
+                        backgroundColor: chartPalette.goldSoft,
+                        borderColor: chartPalette.gold,
+                        borderWidth: 1,
                         borderRadius: 10,
                         borderSkipped: false,
                     },
                 ],
             },
+            options: baseOptions,
+        });
+    }
+
+    function renderSetTrendChart(payload) {
+        const chartRef = chartRefs.setTrend;
+        const items = payload.series_por_set || [];
+        const hasData = items.length > 0;
+
+        if (state.charts.setTrend) {
+            state.charts.setTrend.destroy();
+            state.charts.setTrend = null;
+        }
+
+        toggleChartState(chartRef, hasData, 'No hay suficientes sets para trazar la serie temporal.');
+        if (!hasData) {
+            return;
+        }
+
+        const baseOptions = createBaseChartOptions();
+        state.charts.setTrend = new Chart(chartRef.canvas, {
+            data: {
+                labels: items.map((item) => item.clave),
+                datasets: [
+                    {
+                        type: 'bar',
+                        label: 'Aciertos',
+                        data: items.map((item) => item.aciertos),
+                        backgroundColor: chartPalette.tealSoft,
+                        borderColor: chartPalette.teal,
+                        borderWidth: 1,
+                        borderRadius: 10,
+                        borderSkipped: false,
+                    },
+                    {
+                        type: 'bar',
+                        label: 'Errores',
+                        data: items.map((item) => item.errores),
+                        backgroundColor: chartPalette.dangerSoft,
+                        borderColor: chartPalette.danger,
+                        borderWidth: 1,
+                        borderRadius: 10,
+                        borderSkipped: false,
+                    },
+                    {
+                        type: 'line',
+                        label: 'Balance',
+                        data: items.map((item) => item.balance),
+                        borderColor: chartPalette.gold,
+                        backgroundColor: chartPalette.goldSoft,
+                        tension: 0.28,
+                        pointRadius: 3,
+                        pointHoverRadius: 4,
+                        yAxisID: 'y',
+                    },
+                ],
+            },
+            options: baseOptions,
+        });
+    }
+
+    function renderImpactBreakdownChart(payload) {
+        const chartRef = chartRefs.impactBreakdown;
+        const items = (payload.metricas_avanzadas && payload.metricas_avanzadas.impacto_desglosado) || [];
+        const hasData = items.some((item) => Number(item.puntos) > 0);
+
+        if (state.charts.impactBreakdown) {
+            state.charts.impactBreakdown.destroy();
+            state.charts.impactBreakdown = null;
+        }
+
+        toggleChartState(chartRef, hasData, 'No hay suficiente impacto acumulado para este gráfico.');
+        if (!hasData) {
+            return;
+        }
+
+        const baseOptions = createBaseChartOptions();
+        state.charts.impactBreakdown = new Chart(chartRef.canvas, {
+            type: 'bar',
+            data: {
+                labels: items.map((item) => item.categoria),
+                datasets: [{
+                    label: 'Puntos ponderados',
+                    data: items.map((item) => item.puntos),
+                    backgroundColor: items.map((item) => (
+                        item.tipo === 'acierto' ? chartPalette.goldSoft : chartPalette.dangerSoft
+                    )),
+                    borderColor: items.map((item) => (
+                        item.tipo === 'acierto' ? chartPalette.gold : chartPalette.danger
+                    )),
+                    borderWidth: 1,
+                    borderRadius: 10,
+                    borderSkipped: false,
+                }],
+            },
             options: {
                 ...baseOptions,
+                indexAxis: 'y',
+                plugins: {
+                    ...baseOptions.plugins,
+                    legend: { display: false },
+                },
+                scales: {
+                    y: {
+                        ticks: { color: chartPalette.muted },
+                        grid: { display: false },
+                        border: { display: false },
+                    },
+                    x: baseOptions.scales.y,
+                },
+            },
+        });
+    }
+
+    function renderTrainingPriorityChart(payload) {
+        const chartRef = chartRefs.trainingPriority;
+        const items = payload.prioridades_entrenamiento || [];
+        const hasData = items.length > 0;
+
+        if (state.charts.trainingPriority) {
+            state.charts.trainingPriority.destroy();
+            state.charts.trainingPriority = null;
+        }
+
+        toggleChartState(chartRef, hasData, 'No hay errores suficientes para fijar prioridades de entrenamiento.');
+        if (!hasData) {
+            return;
+        }
+
+        const baseOptions = createBaseChartOptions();
+        state.charts.trainingPriority = new Chart(chartRef.canvas, {
+            type: 'bar',
+            data: {
+                labels: items.map((item) => item.titulo),
+                datasets: [{
+                    label: 'Impacto correctivo',
+                    data: items.map((item) => item.impacto),
+                    backgroundColor: ['rgba(255, 157, 145, 0.36)', 'rgba(216, 179, 106, 0.36)', 'rgba(123, 166, 246, 0.36)'],
+                    borderColor: [chartPalette.danger, chartPalette.gold, chartPalette.blue],
+                    borderWidth: 1,
+                    borderRadius: 10,
+                    borderSkipped: false,
+                }],
+            },
+            options: {
+                ...baseOptions,
+                indexAxis: 'y',
+                plugins: {
+                    ...baseOptions.plugins,
+                    legend: { display: false },
+                },
+                scales: {
+                    y: {
+                        ticks: { color: chartPalette.muted },
+                        grid: { display: false },
+                        border: { display: false },
+                    },
+                    x: baseOptions.scales.y,
+                },
             },
         });
     }
@@ -638,7 +940,9 @@
                         type: 'bar',
                         label: 'Aciertos',
                         data: series.map((item) => item.total_aciertos),
-                        backgroundColor: 'rgba(116, 213, 154, 0.68)',
+                        backgroundColor: chartPalette.tealSoft,
+                        borderColor: chartPalette.teal,
+                        borderWidth: 1,
                         borderRadius: 10,
                         borderSkipped: false,
                     },
@@ -646,7 +950,9 @@
                         type: 'bar',
                         label: 'Errores',
                         data: series.map((item) => item.total_errores),
-                        backgroundColor: 'rgba(255, 143, 143, 0.68)',
+                        backgroundColor: chartPalette.dangerSoft,
+                        borderColor: chartPalette.danger,
+                        borderWidth: 1,
                         borderRadius: 10,
                         borderSkipped: false,
                     },
@@ -656,16 +962,13 @@
                         data: series.map((item) => item.balance_neto),
                         borderColor: chartPalette.gold,
                         backgroundColor: chartPalette.goldSoft,
-                        fill: false,
                         tension: 0.28,
                         pointRadius: 3,
                         pointHoverRadius: 4,
                     },
                 ],
             },
-            options: {
-                ...baseOptions,
-            },
+            options: baseOptions,
         });
     }
 
@@ -685,7 +988,27 @@
             chartPalette.successBars,
             'No hay aciertos registrados en este filtro.'
         );
-        renderBlockBalanceChart(payload);
+        renderGroupedBalanceChart(
+            'phaseCompare',
+            payload.comparativa_fases || [],
+            'fase',
+            'No hay suficientes datos por fase en este filtro.'
+        );
+        renderGroupedBalanceChart(
+            'handCompare',
+            payload.comparativa_manos || [],
+            'mano',
+            'No hay suficientes datos para comparar manos.'
+        );
+        renderSetTrendChart(payload);
+        renderImpactBreakdownChart(payload);
+        renderGroupedBalanceChart(
+            'blockBalance',
+            payload.balance_por_bloque || [],
+            'bloque',
+            'No hay suficientes datos para comparar bloques.'
+        );
+        renderTrainingPriorityChart(payload);
         renderMatchChart(payload);
     }
 
@@ -713,15 +1036,34 @@
 
         showDashboardBody();
         destroyCharts();
+        applyChartTooltips(payload);
         renderProfile(payload);
         renderKPIs(payload);
         renderCharts(payload);
-        renderInsightList(strongPointsList, payload.insights.puntos_fuertes, 'Todavía no hay suficientes acciones ganadoras para identificar fortalezas.');
-        renderInsightList(weakPointsList, payload.insights.puntos_flojos, 'No hay errores registrados en este filtro.');
-        renderInsightList(improvementList, payload.insights.areas_mejora, 'Todavía no hay suficientes datos para definir mejoras prioritarias.');
+        renderInsightList(
+            strongPointsList,
+            payload.insights.fortalezas_consolidadas || payload.insights.puntos_fuertes,
+            'Todavía no hay suficientes acciones ganadoras para identificar fortalezas.'
+        );
+        renderInsightList(
+            weakPointsList,
+            payload.insights.vulnerabilidades_especificas || payload.insights.puntos_flojos,
+            'No hay errores registrados en este filtro.'
+        );
+        renderInsightList(
+            improvementList,
+            payload.insights.prioridades_entrenamiento || payload.insights.areas_mejora,
+            'Todavía no hay suficientes datos para definir mejoras prioritarias.'
+        );
+        renderInsightList(
+            coachingList,
+            payload.insights.coaching_notes || [],
+            'Todavía no hay suficiente histórico para una lectura táctica estable.'
+        );
         globalComment.textContent = payload.insights.comentario_global || '';
         globalComment.classList.toggle('hidden', !payload.insights.comentario_global);
         renderTable(payload.filas_filtradas);
+        renderMobileCards(payload.filas_filtradas);
     }
 
     async function fetchSummary(jugador, idPartido, numeroSet) {
