@@ -2334,12 +2334,15 @@ body.padel-app,
     flex-shrink: 0;
 }
 
-.page-resumen .chart-card,
 .page-resumen .kpi-card,
 .page-resumen .profile-card,
 .page-resumen .insight-card,
 .page-resumen .table-card {
     overflow: hidden;
+}
+
+.page-resumen .chart-card {
+    overflow: visible;
 }
 
 .page-resumen .chart-canvas-wrap {
