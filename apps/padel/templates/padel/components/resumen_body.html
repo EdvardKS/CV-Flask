@@ -1,10 +1,16 @@
 {% page_hero 'projects-title' 'Resumen agregado por jugador.' %}
-<form id="resumen-form" class="flex gap-2 max-w-md">
-    <input type="text" id="jugador" placeholder="Nombre del jugador">
-    <button>Cargar</button>
-</form>
-<pre id="resumen-output"
-     class="mt-4 text-[11px] bg-black text-neon-green p-3 overflow-auto max-h-[50vh] border border-black"></pre>
+<div class="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-4">
+    <div class="bg-white border border-surface-border rounded-2xl p-5 shadow-card">
+        <form id="resumen-form" class="flex flex-col gap-2">
+            <label for="jugador" class="text-xs uppercase tracking-[0.18em] text-ink-muted">Player</label>
+            <input type="text" id="jugador" placeholder="Nombre del jugador">
+            <button class="btn btn-primary" type="submit">Cargar</button>
+        </form>
+    </div>
+    <div class="bg-black text-neon-green border border-black rounded-2xl p-4 shadow-card">
+        <pre id="resumen-output" class="text-[11px] overflow-auto max-h-[50vh] whitespace-pre-wrap"></pre>
+    </div>
+</div>
 <script>
   document.getElementById('resumen-form').addEventListener('submit', async (e) => {
     e.preventDefault();

@@ -6,6 +6,8 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 
+from apps.cv.services import build_cv_context
+
 from .forms import ContactForm
 from .services import send_contact_email
 
@@ -13,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def contact_page(request):
-    return render(request, 'contact/page.html')
+    return render(request, 'contact/page.html', build_cv_context())
 
 
 @csrf_exempt

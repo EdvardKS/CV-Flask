@@ -5,12 +5,13 @@ const DRAG_BREAKPOINT = 768;
 export function enableDrag(windowEl) {
     const handle = windowEl.querySelector('[data-drag-handle]');
     if (!handle) return;
+    const id = windowEl.dataset.windowId;
     let startX = 0, startY = 0, baseX = 0, baseY = 0, dragging = false;
 
     handle.addEventListener('pointerdown', e => {
+        if (e.button !== 0) return;
         if (window.innerWidth < DRAG_BREAKPOINT) return;
         if (e.target.closest('[data-win-action]')) return;
-        const id = windowEl.dataset.windowId;
         focus(id);
         const m = /translate\((-?\d+\.?\d*)px,\s*(-?\d+\.?\d*)px\)/.exec(windowEl.style.transform || '');
         baseX = m ? parseFloat(m[1]) : 0;
@@ -34,6 +35,16 @@ export function enableDrag(windowEl) {
     };
     handle.addEventListener('pointerup', stop);
     handle.addEventListener('pointercancel', stop);
+
+    const closeOnMiddle = e => {
+        if (e.button !== 1) return;
+        if (e.target.closest('[data-win-action]')) return;
+        e.preventDefault();
+        wm.close(id);
+    };
+
+    handle.addEventListener('auxclick', closeOnMiddle);
+    handle.addEventListener('mousedown', closeOnMiddle);
 }
 
 function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }

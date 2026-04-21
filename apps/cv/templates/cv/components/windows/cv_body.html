@@ -1,31 +1,74 @@
 {% include 'cv/components/hero.html' %}
 
-<section class="py-5">
+<section class="py-4">
     {% section_header 'summary-title' %}
-    <p id="summary-content" class="text-black max-w-3xl"></p>
+    <div class="space-y-4">
+        <p class="text-black max-w-3xl text-[13px] leading-relaxed">
+            {{ cv_summary }}
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div class="bg-white border border-surface-border rounded-2xl p-4 shadow-card">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-ink-muted">Current role</p>
+                <p class="mt-1 text-sm font-semibold text-ink">{{ cv_current_position }}</p>
+                <p class="text-xs text-ink-muted">{{ cv_current_company }}</p>
+            </div>
+            <div class="bg-white border border-surface-border rounded-2xl p-4 shadow-card">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-ink-muted">Focus</p>
+                <p class="mt-1 text-sm font-semibold text-ink">AI, data and MLOps</p>
+                <p class="text-xs text-ink-muted">{{ cv_ai_company }}</p>
+            </div>
+            <div class="bg-white border border-surface-border rounded-2xl p-4 shadow-card">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-ink-muted">Experience</p>
+                <p class="mt-1 text-sm font-semibold text-ink">{{ cv_experience_count }} roles</p>
+                <p class="text-xs text-ink-muted">{{ cv_current_location }}</p>
+            </div>
+            <div class="bg-white border border-surface-border rounded-2xl p-4 shadow-card">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-ink-muted">Education</p>
+                <p class="mt-1 text-sm font-semibold text-ink">{{ cv_education_count }} programs</p>
+                <p class="text-xs text-ink-muted">{{ cv_skill_count }} skills listed</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section class="py-5">
-    {% section_header 'experience-title' %}
-    {% grid 'experience-list' %}
-</section>
-
-<section class="py-5">
-    {% section_header 'education-title' %}
-    {% grid 'education-list' %}
-</section>
-
-<section class="py-5">
+<section class="py-4">
     {% section_header 'skills-title' %}
-    <div id="skills-list" class="flex flex-wrap gap-2"></div>
+    <div class="flex flex-wrap gap-2">
+        {% for skill in cv_skills_items|slice:":14" %}
+            <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 rounded-full
+                         bg-surface-soft border border-surface-border text-ink">
+                {{ skill }}
+            </span>
+        {% endfor %}
+    </div>
 </section>
 
-<section class="py-5">
+<section class="py-4">
     {% section_header 'projects-title' %}
-    {% grid 'projects-list' %}
-</section>
-
-<section class="py-5">
-    {% section_header 'contact-title' %}
-    {% include 'contact/components/form.html' %}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {% for project in cv_project_entries|slice:":3" %}
+        <article class="bg-white border border-surface-border rounded-2xl p-5 shadow-card">
+            <div class="flex items-start gap-3 mb-2">
+                <div class="w-11 h-11 rounded-xl bg-accent-soft text-accent-strong border border-surface-border flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-cube"></i>
+                </div>
+                <div class="min-w-0">
+                    <h3 class="text-base font-semibold text-ink leading-tight">{{ project.name }}</h3>
+                    {% if project.url %}
+                        <p class="text-xs text-ink-muted mt-0.5">
+                            <a class="hover:text-accent-strong break-all" href="{{ project.url }}">{{ project.url }}</a>
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+            <p class="text-sm text-ink-soft mt-2">{{ project.description.en }}</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+                {% for tag in project.tags %}
+                    <span class="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-soft text-accent-strong tracking-wide">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </article>
+        {% endfor %}
+    </div>
 </section>

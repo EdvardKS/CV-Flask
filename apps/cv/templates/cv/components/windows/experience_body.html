@@ -1,2 +1,19 @@
 {% page_hero 'experience-title' 'Double-click any role for details.' %}
-{% grid 'experience-list' %}
+<div id="experience-list" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    {% for entry in cv_experience_entries %}
+    <article class="group bg-white border border-surface-border rounded-2xl p-5 shadow-card hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
+        <div class="flex items-start gap-3 mb-2">
+            <img class="w-11 h-11 rounded-xl object-contain p-1 bg-surface-soft border border-surface-border flex-shrink-0"
+                 src="/static/data/{{ entry.img_name }}"
+                 alt="{{ entry.company }}"
+                 onerror="this.src='/static/data/default.png'">
+            <div class="min-w-0">
+                <h3 class="text-base font-semibold text-ink leading-tight">{{ entry.position.en }}</h3>
+                <p class="text-xs text-ink-muted mt-0.5">{{ entry.company }} · {{ entry.period }}</p>
+            </div>
+        </div>
+        <p class="text-xs text-ink-muted">{{ entry.location.en }}</p>
+        <p class="text-sm text-ink-soft mt-2">{{ entry.responsibilities.en }}</p>
+    </article>
+    {% endfor %}
+</div>

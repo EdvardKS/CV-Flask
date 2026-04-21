@@ -1,1 +1,11 @@
-{% include 'core/components/desktop/terminal_skills.html' %}
+{% include 'core/components/desktop/terminal_skills.html' with skills_items=cv_skills_items %}
+
+<div class="mt-4 flex flex-wrap gap-2">
+    {% for skill in cv_skills_items %}
+        <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 rounded-full
+                     bg-surface-soft border border-surface-border text-ink
+                     hover:border-accent hover:text-accent-strong transition cursor-default">
+            {{ skill }}
+        </span>
+    {% endfor %}
+</div>
