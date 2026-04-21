@@ -2,7 +2,6 @@
 {% block title %}Contact — Edvard K.{% endblock %}
 {% block window %}
 {% window_open 'contact' 'Send a message' 'mail' 'open' %}
-    {% page_hero 'contact-title' 'Drop a message — I read everything.' %}
-    {% include 'contact/components/form.html' %}
+    {% include 'contact/components/window_body.html' %}
 {% window_close %}
 {% endblock %}

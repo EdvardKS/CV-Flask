@@ -1,9 +1,10 @@
 """Production settings."""
 import os
 from .base import *  # noqa: F401,F403
+from .base import _csv_env
 
 DEBUG = False
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS = _csv_env('ALLOWED_HOSTS', [])
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.getenv('SMTP_SERVER')

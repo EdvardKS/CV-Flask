@@ -5,6 +5,7 @@ from .views import api, pages
 app_name = 'padel'
 
 urlpatterns = [
+    path('', pages.index, name='index'),
     path('errores/', pages.errores_page, name='errores'),
     path('resumen/', pages.resumen_page, name='resumen'),
     path('api/errores/iniciar/', api.iniciar, name='api_iniciar'),

@@ -7,9 +7,17 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 load_dotenv(BASE_DIR / '.env')
 
+
+def _csv_env(name, default=None):
+    raw = os.getenv(name)
+    if raw is None:
+        return default if default is not None else []
+    return [item.strip() for item in raw.split(',') if item.strip()]
+
+
 SECRET_KEY = os.getenv('SECRET_KEY', 'change-me-in-prod')
 DEBUG = False
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = _csv_env('ALLOWED_HOSTS', ['*'])
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
@@ -31,6 +39,13 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'config.urls'
 WSGI_APPLICATION = 'config.wsgi.application'
 ASGI_APPLICATION = 'config.asgi.application'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.getenv('SQLITE_DB_PATH', BASE_DIR / 'db.sqlite3'),
+    }
+}
 
 TEMPLATES = [{
     'BACKEND': 'django.template.backends.django.DjangoTemplates',

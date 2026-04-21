@@ -2,7 +2,6 @@
 {% block title %}About me — Edvard K.{% endblock %}
 {% block window %}
 {% window_open 'summary' 'About me' 'user' 'open' %}
-    {% page_hero 'summary-title' %}
-    <p id="summary-content" class="text-black max-w-3xl text-[13px] leading-relaxed"></p>
+    {% include 'cv/components/windows/summary_body.html' %}
 {% window_close %}
 {% endblock %}

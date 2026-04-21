@@ -1,0 +1,31 @@
+{% include 'cv/components/hero.html' %}
+
+<section class="py-5">
+    {% section_header 'summary-title' %}
+    <p id="summary-content" class="text-black max-w-3xl"></p>
+</section>
+
+<section class="py-5">
+    {% section_header 'experience-title' %}
+    {% grid 'experience-list' %}
+</section>
+
+<section class="py-5">
+    {% section_header 'education-title' %}
+    {% grid 'education-list' %}
+</section>
+
+<section class="py-5">
+    {% section_header 'skills-title' %}
+    <div id="skills-list" class="flex flex-wrap gap-2"></div>
+</section>
+
+<section class="py-5">
+    {% section_header 'projects-title' %}
+    {% grid 'projects-list' %}
+</section>
+
+<section class="py-5">
+    {% section_header 'contact-title' %}
+    {% include 'contact/components/form.html' %}
+</section>

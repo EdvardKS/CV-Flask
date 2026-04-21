@@ -1,31 +1,33 @@
-FROM python:3.11-slim
+ARG BASE_IMAGE=iaconedu-db:latest
+FROM ${BASE_IMAGE}
 
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_NO_CACHE_DIR=1 \
     DJANGO_SETTINGS_MODULE=config.settings.prod \
-    PIP_NO_CACHE_DIR=1
+    PORT=8000 \
+    VIRTUAL_ENV=/opt/venv \
+    PATH=/opt/venv/bin:$PATH
 
 WORKDIR /app
 
-# OS deps
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        build-essential curl \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache python3 py3-pip ca-certificates \
+    && python3 -m venv /opt/venv \
+    && adduser -D -g "" appuser
 
-# Python deps (cached layer)
-COPY req.txt .
-RUN pip install -r req.txt
+COPY req.txt /app/req.txt
+RUN pip install --upgrade pip \
+    && pip install -r /app/req.txt
 
-# App code
-COPY . .
+COPY . /app
 
-# Fail fast if core files didn't copy (useful debug signal)
-RUN test -f manage.py || (echo "ERROR: manage.py missing in build context" && ls -la && exit 1)
+RUN mkdir -p /app/staticfiles /app/output /app/data \
+    && python manage.py collectstatic --noinput \
+    && chown -R appuser:appuser /app
 
-# Prep runtime dirs
-RUN mkdir -p /app/staticfiles /app/output
+USER appuser
 
 EXPOSE 8000
 
-# collectstatic at runtime so the build never fails on missing env vars
-CMD ["sh", "-c", "python manage.py collectstatic --noinput && exec gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 3 --access-logfile - --error-logfile -"]
+CMD ["sh", "-c", "python manage.py migrate --noinput && exec gunicorn config.wsgi:application --bind 0.0.0.0:${PORT} --workers ${GUNICORN_WORKERS:-3} --timeout ${GUNICORN_TIMEOUT:-60} --access-logfile - --error-logfile -"]

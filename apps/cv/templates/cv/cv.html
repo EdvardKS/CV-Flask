@@ -6,36 +6,34 @@
 
 {% block window %}
 {% window_open 'cv' 'My CV — Edvard K.' 'cv' 'open' %}
-    {% include 'cv/components/hero.html' %}
+    {% include 'cv/components/windows/cv_body.html' %}
+{% window_close %}
 
-    <section class="py-5">
-        {% section_header 'summary-title' %}
-        <p id="summary-content" class="text-black max-w-3xl"></p>
-    </section>
+{% window_open 'summary' 'About me' 'user' 'closed' %}
+    {% include 'cv/components/windows/summary_body.html' %}
+{% window_close %}
 
-    <section class="py-5">
-        {% section_header 'experience-title' %}
-        {% grid 'experience-list' %}
-    </section>
+{% window_open 'experience' 'Work Experience' 'briefcase' 'closed' %}
+    {% include 'cv/components/windows/experience_body.html' %}
+{% window_close %}
 
-    <section class="py-5">
-        {% section_header 'education-title' %}
-        {% grid 'education-list' %}
-    </section>
+{% window_open 'education' 'Education' 'book' 'closed' %}
+    {% include 'cv/components/windows/education_body.html' %}
+{% window_close %}
 
-    <section class="py-5">
-        {% section_header 'skills-title' %}
-        <div id="skills-list" class="flex flex-wrap gap-2"></div>
-    </section>
+{% window_open 'skills' 'Skills — cmd.exe' 'terminal' 'closed' %}
+    {% include 'cv/components/windows/skills_body.html' %}
+{% window_close %}
 
-    <section class="py-5">
-        {% section_header 'projects-title' %}
-        {% grid 'projects-list' %}
-    </section>
+{% window_open 'projects' 'Projects' 'folder' 'closed' %}
+    {% include 'projects/components/window_body.html' %}
+{% window_close %}
 
-    <section class="py-5">
-        {% section_header 'contact-title' %}
-        {% include 'contact/components/form.html' %}
-    </section>
+{% window_open 'contact' 'Send a message' 'mail' 'closed' %}
+    {% include 'contact/components/window_body.html' %}
+{% window_close %}
+
+{% window_open 'padel' 'Padel Scout — Captura' 'trophy' 'closed' %}
+    {% include 'padel/components/window_body.html' %}
 {% window_close %}
 {% endblock %}

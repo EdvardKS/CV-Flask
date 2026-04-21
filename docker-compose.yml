@@ -1,52 +1,26 @@
 services:
-  flask:
+  web:
     build:
       context: .
       dockerfile: Dockerfile
-    image: edvardks-web:latest
+      args:
+        BASE_IMAGE: iaconedu-db:latest
+    image: edvardks-portfolio:prod
     container_name: flask
-    env_file: .env
+    restart: unless-stopped
+    env_file:
+      - .env
     environment:
       DJANGO_SETTINGS_MODULE: config.settings.prod
-      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-edvardks.com,www.edvardks.com}
-      SECRET_KEY: ${SECRET_KEY}
-      SMTP_SERVER: ${SMTP_SERVER}
-      SMTP_PORT: ${SMTP_PORT:-587}
-      MAIL_USERNAME: ${MAIL_USERNAME}
-      MAIL_PASSWORD: ${MAIL_PASSWORD}
-    command:
-      - sh
-      - -c
-      - |
-        python manage.py collectstatic --noinput && \
-        exec gunicorn config.wsgi:application \
-          --bind 0.0.0.0:5000 --workers 3 \
-          --access-logfile - --error-logfile -
-    expose:
-      - "5000"
+      ALLOWED_HOSTS: localhost,127.0.0.1,flask
+      SQLITE_DB_PATH: /app/data/db.sqlite3
+      PORT: 8000
+      GUNICORN_WORKERS: 3
+      GUNICORN_TIMEOUT: 60
+    ports:
+      - "5000:8000"
     volumes:
-      - ./output:/app/output
-      - staticfiles:/app/staticfiles
-    restart: unless-stopped
-    networks:
-      default:
-        aliases:
-          - flask
-      webproxy:
-        aliases:
-          - flask
-    healthcheck:
-      test: ["CMD", "curl", "-fsS", "http://localhost:5000/robots.txt"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 30s
+      - app_data:/app/data
 
 volumes:
-  staticfiles:
-
-networks:
-  default:
-    name: edvardks_net
-  webproxy:
-    external: true
+  app_data:

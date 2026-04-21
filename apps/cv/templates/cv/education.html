@@ -2,7 +2,6 @@
 {% block title %}Education — Edvard K.{% endblock %}
 {% block window %}
 {% window_open 'education' 'Education' 'book' 'open' %}
-    {% page_hero 'education-title' %}
-    {% grid 'education-list' %}
+    {% include 'cv/components/windows/education_body.html' %}
 {% window_close %}
 {% endblock %}

@@ -1,10 +1,10 @@
-<section class="xp-window window"
+<section class="xp-window window absolute top-0 left-0 m-0 shadow-[0_8px_28px_rgba(0,0,0,0.35)]"
          data-window-id="{{ win_id }}"
          data-initial="{{ initial }}"
          data-window-title="{{ title }}"
          data-window-icon="{{ icon }}"
          role="dialog" aria-labelledby="wintitle-{{ win_id }}"
-         style="width: min(860px, calc(100vw - 32px));">
+         style="width: min(860px, calc(100vw - 32px));{% if initial != 'open' %}display:none;{% endif %}">
     <div class="title-bar" data-drag-handle>
         <div class="title-bar-text flex items-center gap-2" id="wintitle-{{ win_id }}">
             {% win_icon icon 14 %}
