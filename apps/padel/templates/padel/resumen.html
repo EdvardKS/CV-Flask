@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block title %}Padel Scout — Resumen{% endblock %}
+{% block window %}
+{% window_open 'padel' 'Padel Scout — Resumen' 'trophy' 'open' %}
+    {% page_hero 'projects-title' 'Resumen agregado por jugador.' %}
+    <form id="resumen-form" class="flex gap-2 max-w-md">
+        <input type="text" id="jugador" placeholder="Nombre del jugador">
+        <button>Cargar</button>
+    </form>
+    <pre id="resumen-output"
+         class="mt-4 text-[11px] bg-black text-neon-green p-3 overflow-auto max-h-[50vh] border border-black"></pre>
+    <script>
+      document.getElementById('resumen-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const j = encodeURIComponent(document.getElementById('jugador').value);
+        const r = await fetch(`/padel/api/resumen/?jugador=${j}`);
+        document.getElementById('resumen-output').textContent = JSON.stringify(await r.json(), null, 2);
+      });
+    </script>
+{% window_close %}
+{% endblock %}

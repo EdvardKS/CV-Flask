@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador SSOO Avanzados</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+        :root {
+            --bg: #eef2f7;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --danger: #ef4444;
+            --shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
+        }
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            font-family: 'Space Grotesk', 'Segoe UI', Tahoma, sans-serif;
+            background: radial-gradient(1200px 600px at 90% -10%, #dbeafe 0%, transparent 60%),
+                        radial-gradient(900px 500px at -10% 10%, #d1fae5 0%, transparent 55%),
+                        var(--bg);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            min-height: 100vh;
+            overflow: hidden;
+            font-size: clamp(14px, 1.7vmin, 16px);
+        }
+        #quiz-container {
+            background: var(--card);
+            padding: clamp(16px, 2.4vmin, 32px);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 900px;
+            max-height: calc(100vh - 40px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid #e7eef7;
+            padding-bottom: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .stats > div:not(.quiz-actions) {
+            color: var(--muted);
+        }
+        .quiz-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .action-btn {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            background: #fff;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+        .action-btn:hover {
+            box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08);
+            border-color: #94a3b8;
+            transform: translateY(-1px);
+        }
+        .action-btn.danger {
+            color: var(--danger);
+            border-color: #fecaca;
+            background: #fff5f5;
+        }
+        .question-box {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            border: 1px solid var(--border);
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 14px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            align-items: start;
+        }
+        .question-text {
+            line-height: 1.4;
+            white-space: pre-wrap;
+            font-size: clamp(1rem, 2.2vmin, 1.15rem);
+            font-weight: 600;
+        }
+        .google-ask {
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            text-decoration: none;
+            box-shadow: 0 8px 18px rgba(37, 99, 235, 0.15);
+        }
+        .google-ask:hover {
+            transform: translateY(-2px);
+        }
+        #options-container {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            overflow: hidden;
+        }
+        .option {
+            display: block;
+            width: 100%;
+            padding: 12px 14px;
+            margin: 0;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            cursor: pointer;
+            text-align: left;
+            background: #fff;
+            font-size: 0.95rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+        .option:hover {
+            border-color: #93c5fd;
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+            transform: translateY(-1px);
+        }
+        .correct {
+            background: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #166534;
+            font-weight: 600;
+        }
+        .wrong {
+            background: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #7f1d1d;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+        }
+        .nav-btn {
+            padding: 12px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            flex: 1 1 0;
+        }
+        .nav-btn:hover {
+            background: var(--primary-dark);
+        }
+        .nav-btn:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+        }
+        #prev-btn {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+        #prev-btn:hover {
+            background: #cbd5e1;
+        }
+        #setup {
+            text-align: center;
+            padding: 24px;
+        }
+        #setup h2 {
+            margin: 0 0 10px;
+            font-size: clamp(1.2rem, 3vmin, 1.6rem);
+        }
+        #setup p {
+            margin: 0 0 14px;
+            color: var(--muted);
+        }
+        .setup-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .setup-btn {
+            padding: 12px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .setup-btn:hover {
+            background: var(--primary-dark);
+        }
+        .setup-btn:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+        }
+        @media (max-width: 700px) {
+            #options-container {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            .quiz-actions {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="quiz-container">
+    <div id="setup">
+        <h2>Preparador de examen SSOO Avanzados</h2>
+        <p id="dataset-info">Cargando banco de preguntas...</p>
+        <div class="setup-actions">
+            <button id="start-btn" class="setup-btn" disabled>Generar test de 50 preguntas</button>
+        </div>
+    </div>
+
+    <div id="quiz-game" style="display:none;">
+        <div class="stats">
+            <span>Pregunta: <span id="q-idx">0</span> / <span id="q-total">0</span></span>
+            <div>
+                <span style="color:#38a169">Aciertos: <span id="hits">0</span></span> |
+                <span style="color:#e53e3e">Fallos: <span id="miss">0</span></span>
+            </div>
+            <div class="quiz-actions">
+                <button id="exit-btn" class="action-btn">Salir</button>
+                <button id="restart-btn" class="action-btn danger">Recomenzar</button>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div id="question-text" class="question-text"></div>
+            <a id="ia-btn" href="#" target="_blank" class="google-ask" title="Buscar explicacion">AI</a>
+        </div>
+
+        <div id="options-container"></div>
+        <div class="nav-buttons">
+            <button id="prev-btn" class="nav-btn" onclick="prevQuestion()">Anterior</button>
+            <button id="next-btn" class="nav-btn" onclick="nextQuestion()">Siguiente</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const DATASET_PATH = '/static/data/JSON/preguntas_ssoo_avanzados.json';
+    const TEST_SIZE = 50;
+    const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+    let sourceQuestions = [];
+    let session = null;
+    let isStarting = false;
+
+    function mulberry32(seed) {
+        let t = seed >>> 0;
+        return function() {
+            t += 0x6D2B79F5;
+            let r = Math.imul(t ^ (t >>> 15), 1 | t);
+            r ^= r + Math.imul(r ^ (r >>> 7), 61 | r);
+            return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+        };
+    }
+
+    function shuffle(array, rng) {
+        const arr = array.slice();
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(rng() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    async function loadDataset() {
+        if (sourceQuestions.length > 0) {
+            return sourceQuestions;
+        }
+
+        const response = await fetch(DATASET_PATH, { cache: 'no-cache' });
+        if (!response.ok) {
+            throw new Error('No se pudo cargar el dataset.');
+        }
+
+        const raw = await response.json();
+        if (!Array.isArray(raw)) {
+            throw new Error('Formato de dataset invalido.');
+        }
+
+        sourceQuestions = raw.filter((q) => (
+            q &&
+            typeof q.q === 'string' &&
+            Array.isArray(q.options) &&
+            q.options.length === 4 &&
+            Number.isInteger(q.correctIndex) &&
+            q.correctIndex >= 0 &&
+            q.correctIndex < q.options.length
+        ));
+
+        if (sourceQuestions.length < TEST_SIZE) {
+            throw new Error('No hay suficientes preguntas para generar el test.');
+        }
+
+        document.getElementById('dataset-info').textContent = `Banco cargado: ${sourceQuestions.length} preguntas.`;
+        document.getElementById('start-btn').disabled = false;
+        return sourceQuestions;
+    }
+
+    function buildSession() {
+        const seed = Date.now();
+        const rng = mulberry32(seed);
+        const allIndexes = shuffle([...Array(sourceQuestions.length).keys()], rng);
+        const sampledIndexes = allIndexes.slice(0, TEST_SIZE);
+
+        const selected = sampledIndexes.map((baseIndex) => {
+            const optionOrder = shuffle([...Array(sourceQuestions[baseIndex].options.length).keys()], rng);
+            return { baseIndex, optionOrder };
+        });
+
+        session = {
+            seed,
+            selected,
+            answers: {},
+            currentIdx: 0,
+            hits: 0,
+            misses: 0,
+            completed: false
+        };
+    }
+
+    function getQuestionByIndex(displayIndex) {
+        const picked = session.selected[displayIndex];
+        const base = sourceQuestions[picked.baseIndex];
+        const options = picked.optionOrder.map((optionIdx) => base.options[optionIdx]);
+        const correctIndex = picked.optionOrder.indexOf(base.correctIndex);
+        const selectedIndex = session.answers[displayIndex];
+        return { q: base.q, options, correctIndex, selectedIndex };
+    }
+
+    function isCorrectIndex(selectedIndex, correctIndex) {
+        return selectedIndex === correctIndex;
+    }
+
+    function updateStats() {
+        document.getElementById('hits').innerText = session ? session.hits : 0;
+        document.getElementById('miss').innerText = session ? session.misses : 0;
+    }
+
+    function renderQuestion(qData) {
+        document.getElementById('question-text').textContent = qData.q;
+    }
+
+    function renderOptions(qData) {
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+
+        qData.options.forEach((optText, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'option';
+            const label = letters[i] || `${i + 1}`;
+            btn.innerText = `${label}. ${optText}`;
+            btn.onclick = () => selectAnswer(i);
+
+            if (qData.selectedIndex !== undefined) {
+                if (isCorrectIndex(i, qData.correctIndex)) {
+                    btn.classList.add('correct');
+                }
+                if (i === qData.selectedIndex && !isCorrectIndex(i, qData.correctIndex)) {
+                    btn.classList.add('wrong');
+                }
+            }
+
+            container.appendChild(btn);
+        });
+    }
+
+    function updateNavButtons() {
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        prevBtn.disabled = session.currentIdx === 0;
+        nextBtn.textContent = session.currentIdx === session.selected.length - 1 ? 'Finalizar' : 'Siguiente';
+    }
+
+    function showQuestion() {
+        if (!session) return;
+        const qData = getQuestionByIndex(session.currentIdx);
+        document.getElementById('q-idx').innerText = session.currentIdx + 1;
+        document.getElementById('q-total').innerText = session.selected.length;
+        renderQuestion(qData);
+
+        const query = `explica la siguiente pregunta de sistemas operativos avanzados: "${qData.q}"`;
+        document.getElementById('ia-btn').href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+
+        renderOptions(qData);
+        updateNavButtons();
+        updateStats();
+    }
+
+    function selectAnswer(selectedIndex) {
+        if (!session) return;
+        const questionIdx = session.currentIdx;
+        const qData = getQuestionByIndex(questionIdx);
+        const prev = session.answers[questionIdx];
+
+        if (prev !== undefined) {
+            if (isCorrectIndex(prev, qData.correctIndex)) {
+                session.hits--;
+            } else {
+                session.misses--;
+            }
+        }
+
+        session.answers[questionIdx] = selectedIndex;
+        if (isCorrectIndex(selectedIndex, qData.correctIndex)) {
+            session.hits++;
+        } else {
+            session.misses++;
+        }
+
+        showQuestion();
+    }
+
+    function startQuiz() {
+        document.getElementById('setup').style.display = 'none';
+        document.getElementById('quiz-game').style.display = 'block';
+        showQuestion();
+    }
+
+    async function startNewAttempt() {
+        if (isStarting) return;
+        isStarting = true;
+        try {
+            await loadDataset();
+            buildSession();
+            startQuiz();
+        } catch (err) {
+            document.getElementById('dataset-info').textContent = 'No se pudo cargar las preguntas. Intentalo de nuevo.';
+        } finally {
+            isStarting = false;
+        }
+    }
+
+    function nextQuestion() {
+        if (!session) return;
+        if (session.currentIdx < session.selected.length - 1) {
+            session.currentIdx++;
+            showQuestion();
+            return;
+        }
+        if (!session.completed) {
+            session.completed = true;
+            alert(`Test finalizado.\nAciertos: ${session.hits}\nFallos: ${session.misses}`);
+        }
+    }
+
+    function prevQuestion() {
+        if (!session) return;
+        if (session.currentIdx > 0) {
+            session.currentIdx--;
+            showQuestion();
+        }
+    }
+
+    function exitQuiz() {
+        session = null;
+        document.getElementById('quiz-game').style.display = 'none';
+        document.getElementById('setup').style.display = 'block';
+    }
+
+    function restartQuiz() {
+        if (!sourceQuestions.length) return;
+        buildSession();
+        startQuiz();
+    }
+
+    document.getElementById('start-btn').addEventListener('click', startNewAttempt);
+    document.getElementById('exit-btn').addEventListener('click', exitQuiz);
+    document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+
+    startNewAttempt();
+</script>
+</body>
+</html>

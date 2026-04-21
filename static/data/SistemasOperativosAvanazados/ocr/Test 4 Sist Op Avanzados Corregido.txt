@@ -1,0 +1,289 @@
+FILE: Test 4 Sist Op Avanzados Corregido.pdf
+\n=== PAGE 1 ===
+001	0.8650722929409572	11/1/26,19:46
+002	0.9297668854395549	Cuestionario deAutoevaluacion UD4:Revision del intento IUAX
+003	0.7576751964432853	Estado
+004	0.8440356417135759	Finalizado
+005	0.8584990739822388	Comenzado
+006	0.8842540852951281	domingo,11de enero de 2026,19:29
+007	0.8045927123589949	Completado
+008	0.9209889951679442	domingo, 11 de enero de 2026, 19:47
+009	0.8743492894702487	Duracion
+010	0.874081577943719	17 minutos 14 segundos
+011	0.8476181200572422	Puntos
+012	0.8537171483039856	18,00/20,00
+013	0.8486346785838788	Calificacion
+014	0.8510260298848152	9,00 de 10.00 (90%)
+015	0.8198443922129545	Pregunta 1
+016	0.8822303811709086	Correcta
+017	0.852395719060531	Se puntua 1,00 sobre 1,00
+018	0.9061675323889806	Podemos afirmar que .NET:
+019	0.6646406650543213	a.
+020	0.8903565040001502	Esunmecanismodecomunicaciondebajonivel basadoenPoo.
+021	0.6649484038352966	b.
+022	0.8845129065653857	Es un mecanismo de comunicacion de alto nivel que utiliza sockets.
+023	0.6589992245038351	C.
+024	0.8967805573197661	Esunmecanismode comunicaciondebajonivelqueno utiliza sockets
+025	0.6503098607063293	d.
+026	0.8758842178753444	Es un mecanismo de comunicacion de alto nivel que no utiliza sockets.
+027	0.9220737584175602	La respuesta correcta es: Es un mecanismo de comunicacion de alto nivel que utiliza sockets.
+028	0.8497338024052706	Pregunta 2
+029	0.8478965957959493	Correcta
+030	0.8820851215949426	Se puntua 1,00 sobre 1,00
+031	0.9143945245907225	Sepuedeafirmarquelossockets:
+032	0.6648328304290771	a.
+033	0.8889267761656579	Son mecanismos de comunicacion a nivel de red.
+034	0.6267985701560974	b.
+035	0.9017771894281561	Son mecanismos de comunicacion a nivel de transporte.
+036	0.9036114604576774	Son mecanismos de comunicacion de alto nivel.
+037	0.6493872801462809	d.
+038	0.9183218237012625	Nopuedenutilizarseparautilizarprocesosubicadosenlamismamaquina.
+039	0.9308531165122986	La respuesta correcta es: Son mecanismos de comunicacion a nivel de transporte.
+040	0.9339592708991125	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170339&cmid=1517960
+041	0.7478100806474686	1/7
+\n=== PAGE 2 ===
+001	0.8535278013774327	11/1/26,19:46
+002	0.9264033164008189	Cuestionario deAutoevaluacion UD4:Revision del intentoIUAX
+003	0.8901481926441193	Pregunta3
+004	0.7746465139918857	Correcta
+005	0.8686905331336535	Se puntua 1,00 sobre 1,00
+006	0.921370847357644	Losstreamsockets:
+007	0.662632962067922	a.
+008	0.9167590889524906	Proporcionan unmecanismo orientado a conexion.
+009	0.6572261850039164	b.
+010	0.9315688002343271	No garantizan el orden de entrega de los mensajes.
+011	0.6080853144327799	C.
+012	0.8780636115277067	Permiten una implementacion del protocolo UDP.
+013	0.6580210129419962	d.
+014	0.9424661667574019	Intercalan separacion entre los mensajes.
+015	0.8974630486320805	La respuesta correcta es: Proporcionan un mecanismo orientado a conexion.
+016	0.8137159997766669	Pregunta 4
+017	0.8740789824061923	Correcta
+018	0.8709666981146886	Se puntua 1,00 sobre 1,00
+019	0.866003692150116	PodemosafirmarqueRPC:
+020	0.644018312295278	a.
+021	0.9168844374559694	Esunmecanismodecomunicaciondealtonivelquenoutilizasockets.
+022	0.656648854414622	b.
+023	0.9227903616778991	Es un mecanismo de comunicacion de alto nivel que utiliza sockets.
+024	0.5979485710461935	C.
+025	0.8944764316082001	Esunmecanismodecomunicaciondebajonivel.
+026	0.65007084608078	d.
+027	0.9082838797569275	EsunmecanismodecomunicaciondealtonivelbasadoenPoo
+028	0.908037678304925	Larespuesta correctaes:Esunmecanismo decomunicaciondealtonivel queutiliza sockets.
+029	0.8559988032687794	Pregunta 5
+030	0.8076546571471475	Incorrecta
+031	0.8450562012195587	Se puntua 0.00 sobre1,00
+032	0.903945709599389	Siun mecanismo de comunicacion es asincrono:
+033	0.9134578025618265	a.La primitiva send siempre es bloqueante.
+034	0.6647565762201945	b.
+035	0.9190767181330713	La primitiva send puede ser bloqueante o no bloqueante. @
+036	0.501301646232605	C.
+037	0.8812361207119254	La primitiva receive siempre esbloqueante.
+038	0.8940880396403372	d.  La primitiva receive puede ser bloqueante o no bloqueante.
+039	0.9369211580655347	Larespuestacorrectaes:Laprimitivareceivepuedeserbloqueanteonobloqueante.
+040	0.9344503245292566	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170339&cmid=1517960
+041	0.6455003172159195	2/7
+\n=== PAGE 3 ===
+001	0.8535278013774327	11/1/26,19:46
+002	0.9181566130919535	Cuestionario de Autoevaluacion UD4:Revision del intento IUAX
+003	0.8543618592348966	Pregunta 6
+004	0.8826027578777738	Correcta
+005	0.8686905331336535	Se puntua 1,00 sobre 1,00
+006	0.6623428662618002	a.
+007	0.9356467227141062	Nosepuendenutilizarprimitivasbloqueantes.
+008	0.6530291239420573	b.
+009	0.9169936361836224	Su procesamiento se realiza de forma mas rapida que si la longitud es variable. O
+010	0.6422934730847677	C.
+011	0.8753676740896135	Suprocesamientoserealizadeformamenosagil.
+012	0.6551921963691711	d.
+013	0.921488531664306	Nunca sedesperdiciacapacidaddelmensajeenlosenvios.
+014	0.8402994762767445	Pregunta 7
+015	0.886817581123776	Correcta
+016	0.8594832626672891	Se puntua 1,00 sobre 1,00
+017	0.8838552579735265	La funcion bind se utiliza para:
+018	0.9204504787921906	O a.Asignarunpuertoaunaestructurain_addr.
+019	0.9115243914226691	b. Asignar un puerto a una estructura sockaddr.
+020	0.9012230304735047	O c. Asignar una direccion IP a una estructura in_addr.
+021	0.8802983968546896	d. Asignar una estructura sockaddr como direccion de un socket. O
+022	0.9290726571932606	La respuesta correcta es: Asignar una estructura sockaddr como direccion de un socket.
+023	0.8224997574632819	Pregunta 8
+024	0.8769533832867941	Correcta
+025	0.8544655323028565	Se puntua 1,00 sobre1,00
+026	0.8268849497491663	PodemosafirmarqueRMl:
+027	0.6595952908198038	a.
+028	0.8686164151067319	Es un mecanismo de comunicacionde alto nivel que no utiliza sockets.
+029	0.6650340755780538	b.
+030	0.8756422671404752	Es un mecanismo de comunicacionde alto nivel queutiliza sockets.
+031	0.6461324691772461	C.
+032	0.8678664952071745	Es unmecanismo de comunicacionde bajonivel que no utiliza sockets.
+033	0.6564763784408569	d.
+034	0.8953932672739029	Esunmecanismode comunicaciondebajonivelqueutilizasockets.
+035	0.9096971510545068	La respuesta correcta es: Es unmecanismo de comunicacion de alto nivel que utiliza sockets.
+036	0.9322956938009995	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170339&cmid=1517960
+037	0.7483353167772293	3/7
+\n=== PAGE 4 ===
+001	0.8489950682435717	11/1/26,19:46
+002	0.9307699557078086	Cuestionario deAutoevaluacion UD4:Revision del intentoIUAX
+003	0.8214375078678131	Pregunta 9
+004	0.8825431333647834	Correcta
+005	0.8461753225326538	Se puntua 1,00 sobre1,00
+006	0.954535954631865	Sienunmecanismodecomunicacionlosmensajestienenlongitudvariable:
+007	0.663163979848226	a.
+008	0.665809174378713	b.
+009	0.9314853636657491	Su numero de campos es fijo pero la longitud de estos puede variar.
+010	0.6183587511380514	C.
+011	0.9038837601741155	Sunumerodecampos es variableperola longituddeestos es fija.
+012	0.6415923436482748	d.
+013	0.9130322905473931	Elaprovechamientodela redes mas eficiente.
+014	0.9224064562418689	La respuesta correcta es: El aprovechamiento de la red es mas eficiente.
+015	0.8023072893802936	Pregunta 10
+016	0.8547754618856642	Correcta
+017	0.8640072512626648	Se puntua 1,00 sobre1,00
+018	0.883517955478869	La funcion accept:
+019	0.6642394860585531	a.
+020	0.9058632336664891	Hace que se cree un nuevo socket para el cliente y cierra el actual.
+021	0.6196139653523763	b.
+022	0.9340966499015076	Hace que se cree un nuevo socket para el cliente y mantiene el actual. O
+023	0.5889027913411459	C.
+024	0.9012249431439808	Proporciona al cliente un nuevo socket de comunicacion.
+025	0.6579005916913351	d.
+026	0.9199363898556188	Solo se ejecuta en protocolos orientados a conexion.
+027	0.9279752625632531	La respuesta correcta es: Hace que se cree un nuevo socket para el cliente y mantiene el actual.
+028	0.8773730993270874	Pregunta 11
+029	0.8730513122346666	Correcta
+030	0.8602989912033081	Se puntua 1,00 sobre1,00
+031	0.9321716211058877	Los datagram sockets:
+032	0.6593653758366903	a.
+033	0.9292181356008663	Permitenuna implementaciondelprotocoloTCP.
+034	0.665716270605723	b.
+035	0.9162941155108538	Intercalan separacion entre los mensajes. O
+036	0.5574533541997274	C.
+037	0.9198778697422573	Garantizanelordendeentregade losmensajes.
+038	0.6598597566286722	d.
+039	0.9087343701096469	Proporcionanunmecanismoorientadoaconexion.
+040	0.9156462734236437	La respuesta correcta es: Intercalan separacion entre los mensajes.
+041	0.9351577781713926	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170339&cmid=1517960
+042	0.7462218105792999	4/7
+\n=== PAGE 5 ===
+001	0.8327912517956325	11/1/26,19:46
+002	0.9262343820978384	Cuestionario de Autoevaluacion UD4:Revision del intento IUAX
+003	0.8911405305067698	Pregunta 12
+004	0.8825450539588928	Correcta
+005	0.8399799990653992	Se puntua 1,00 sobre1,00
+006	0.9180510064651226	Sepuedeafirmarquelossockets:
+007	0.6598214308420817	a.
+008	0.9595329317935678	Sonmecanismosdecomunicacionaniveldeenlace.
+009	0.6513505379358927	b.
+010	0.951579076051712	Sonmecanismosdecomunicaciondebajonivel.
+011	0.9313011282476885	SecorrespondencondireccionesIPmasunidentificadordeproceso
+012	0.6471702059110006	d.
+013	0.9370791348544034	Solopermitencomunicarprocesosubicadosenlamismamaquina.
+014	0.8893233088346628	La respuestacorrectaes:Sonmecanismos de comunicaciondebajonivel.
+015	0.8977379550536474	Pregunta 13
+016	0.8547471695476108	Correcta
+017	0.8465057061268733	Se puntua 1,00 sobre 1,00
+018	0.893171605310942	Lafuncion connect:
+019	0.6650640169779459	a.
+020	0.91686718352139	Se ejecuta en protocolos orientados y no orientados a conexion.
+021	0.6658831834793091	b.
+022	0.9213167744023459	Puede asignar automaticamente una direccion de transporte al proceo.
+023	0.5889027913411459	C.
+024	0.9323724578408634	Proporcionaalclienteunnuevo socketde comunicacion.
+025	0.6635411580403646	d.
+026	0.9512696039676666	Devuelve el socket proporcionado por el servidor.
+027	0.8042955795923868	Pregunta 14
+028	0.8701351284980774	Correcta
+029	0.8554881978034973	Se puntua 1,00 sobre1,00
+030	0.9201275916660533	Los raw sockets:
+031	0.6651473244031271	a.
+032	0.8846926202236767	Permiten una manipulacion directa de las propiedades del protocolo IP.
+033	0.6654667854309082	b.
+034	0.8659342676401138	Permiten una manipulacion directa de las propiedades del protocolo TcP.
+035	0.5875935554504395	C.
+036	0.8861954630310855	Permiten una manipulaciondirecta delaspropiedadesdelprotocolo ACK.
+037	0.6503891746203104	d.
+038	0.9222337156534195	Permiten una manipulacion directa de las propiedades del protocolo UDP.
+039	0.9187555798550242	La respuesta correcta es: Permiten una manipulacion directa de las propiedades del protocolo IP.
+040	0.9316415794384785	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170339&cmid=1517960
+041	0.6561597138643265	5/7
+\n=== PAGE 6 ===
+001	0.8535278013774327	11/1/26,19:46
+002	0.919849649552376	Cuestionario de Autoevaluacion UD4:Revision del intento I UAX
+003	0.8698333776914157	Pregunta 15
+004	0.8806621233622233	Correcta
+005	0.8690410852432251	Se puntua 1,00 sobre 1,00
+006	0.9317811602040341	La funcion accept:
+007	0.6626089612642924	a.
+008	0.9070271950657085	Crea unsocketpara intercambiar informacion conel cliente.O
+009	0.6162591973940531	b.
+010	0.910185857461049	Esunafuncionnobloqueante.
+011	0.9089888416084588	Crea unsocketquees compartidoportodos losclientes.
+012	0.6415923436482748	d.
+013	0.9422976306227387	Devuelveelsocketporelqueservidorescuchapeticionesdeconexion.
+014	0.9281719569550004	La respuesta correcta es: Crea un socket para intercambiar informacion con el cliente
+015	0.8569903920094172	Pregunta 16
+016	0.8744109272956848	Correcta
+017	0.8695063820252051	Se puntua 1,00 sobre 1,00
+018	0.9294134726126989	PodemosafirmarqueCORBA:
+019	0.6568528016408285	a.
+020	0.9311909315486749	Esunmecanismodecomunicacionquenoutilizasockets.
+021	0.6652544339497884	b.
+022	0.94290691614151	Es un mecanismo de comunicacion de alto nivel. O
+023	0.8791397185552687	Esunmecanismode comunicacionde bajonivel.
+024	0.6489399274190267	d.
+025	0.9345357542607322	Es un mecanismo de comunicacion integrado en el sistema operativo.
+026	0.8743297474251853	La respuesta correcta es: Es unmecanismo de comunicacion de alto nivel.
+027	0.8595828826610858	Pregunta 17
+028	0.8776223725742764	Correcta
+029	0.864532145170065	Se puntua 1,00 sobre 1,00
+030	0.8918878153750771	El segundo parametro delisten indica:
+031	0.9170014193015439	b. El numero maximo de conexiones que, una vez aceptadas, podran quedar a la espera de recibir un nuevo socket
+032	0.8398282011349996	con el cliente
+033	0.6035114725430807	C.
+034	0.9302353122655083	Elnumeromaximodeconexionesquepuedeaceptarunsocket.
+035	0.6468179027239481	d.
+036	0.9188335829383725	El numero maximo de conexiones que podran quedar encoladas a la espera de ser aceptadas. O
+037	0.9135293218127468	La respuesta correcta es: Elnumero maximo de conexiones que podran quedar encoladas a la espera de ser aceptadas.
+038	0.9386412791716747	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170339&cmid=1517960
+039	0.6283730119466782	6/7
+\n=== PAGE 7 ===
+001	0.9160552223523458	11/1/26, 19:46
+002	0.9239940018423142	Cuestionario de Autoevaluacion UD4:Revision del intento I UAX
+003	0.8612690915664037	Pregunta 18
+004	0.87481822570165	Correcta
+005	0.8432504558563232	Se puntua 1,00 sobre1,00
+006	0.6598214308420817	a.
+007	0.887859458103776	Su numero decampos es variablepero la longitud de estos es fija
+008	0.6513505379358927	b.
+009	0.9211692435126151	Las primitivas ahorran tiempo al poder omitir algunos campos.
+010	0.6048868695894877	C.
+011	0.9059307605533277	Sunumerodecampos es fijo perolalongituddeestospuedevariar.
+012	0.6577485601107279	d.
+013	0.9370109372668796	Las primitivas ahorran tiempo al no tener que determinar la estructura de los mensajes. O
+014	0.9189038519796572	La respuesta correcta es: Las primitivas ahorran tiempo al no tener que determinar la estructura de los mensajes.
+015	0.9017499337593714	Pregunta 19
+016	0.8320114678806729	Correcta
+017	0.8650312685966491	Se puntua 1,00 sobre1,00
+018	0.9303298539585537	Siseutilizacomunicaciondirectaentreprocesos:
+019	0.5455698768297831	a.
+020	0.9454221887247903	Sepuederecibirunmensajedeunbuzonperonoenviarloaestetipodeestructuras.
+021	0.6659228801727295	b.
+022	0.9272496248445203	Laprimitiva sendsiempreserabloqueanteperoreceivepuedenoserlo.
+023	0.6394229531288147	C.
+024	0.6551071206728617	d.
+025	0.923112316057086	Las primitivas send y receive siempre especificaran procesos. O
+026	0.9018732160329819	Pregunta 20
+027	0.8673538619821722	Incorrecta
+028	0.8376876402359742	Se puntua 0.00 sobre 1,00
+029	0.9211384999124628	La funcion accept:
+030	0.6647493243217468	a.
+031	0.8973174552465307	Devuelve el socketque utilizo el clienteparahacerconnect.
+032	0.6657631595929464	b.
+033	0.9141529735290643	Devuelveel socketcreadopara intercambiar informacionconelcliente.
+034	0.6527802348136902	C.
+035	0.9583926464690536	Devuelveelsocketporelqueservidorescuchapeticionesdeconexion.
+036	0.6504273017247518	d.
+037	0.9060037657618523	Devuelve un socket para escritura y otro para lectura.
+038	0.9137860254074136	La respuesta correcta es:Devuelve el socket creadopara intercambiar informacion con el cliente.
+039	0.9316723232085888	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170339&cmid=1517960
+040	0.5668505281209946	717

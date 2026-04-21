@@ -1,0 +1,47 @@
+#background-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#background-elements::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(1, 54, 111, 0.1);
+  filter: blur(15px);
+  z-index: 1;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.2s ease-out;
+  background: rgba(255, 255, 255, 0.5); /* Color de fondo similar al Neomorfismo */
+  box-shadow: 
+    inset 8px 8px 16px rgba(0, 0, 0, 0.2), /* Sombra oscura interna */
+    inset -8px -8px 16px rgba(255, 255, 255, 0.5); /* Sombra clara interna */
+}
+
+.circle-small {
+  width: 52px;
+  height: 52px;
+}
+
+.circle-medium {
+  width: 97px;
+  height: 97px;
+}
+
+.circle-large {
+  width: 113px;
+  height: 113px;
+}

@@ -1,0 +1,275 @@
+FILE: Test 2 Sist Op Avanzados Corregido.pdf
+\n=== PAGE 1 ===
+001	0.8653679021767208	11/1/26,19:05
+002	0.9329111347595851	Cuestionario deAutoevaluacion UD2:Revision del intento IUAX
+003	0.8389680215290615	Estado
+004	0.8454394340515137	Finalizado
+005	0.858548903465271	Comenzado
+006	0.8889400022370475	domingo, 11 de enero de 2026.18:44
+007	0.8080177144570784	Completado
+008	0.9450682865248786	domingo, 11 de enero de 2026, 19:06
+009	0.8752138084835477	Duracion
+010	0.9043819109598795	22minutos 4 segundos
+011	0.8467264175415039	Puntos
+012	0.8291593740383784	15,00/20,00
+013	0.8500961294540992	Calificacion
+014	0.8463678807020187	7,50 de 10,00 (75%)
+015	0.8538697145201943	Pregunta 1
+016	0.7758152749803331	Correcta
+017	0.8774277544938601	Se puntua 1,00 sobre 1,00
+018	0.9256277454865945	La complejidad enun arbol red-black:
+019	0.6518882711728414	a.
+020	0.8041308745741844	Es O(n)
+021	0.6425560116767883	b.
+022	0.7953629270195961	Es O(1)
+023	0.6492830316225687	C.
+024	0.819232356089812	Es O(nlog(n)
+025	0.6522140105565389	d.
+026	0.8241001046620883	Es O(log(n)
+027	0.9052901362117968	La respuesta correcta es: Es O(log(n)
+028	0.8423846418207342	Pregunta 2
+029	0.846827228864034	Correcta
+030	0.8757988386429273	Se puntua 1,00 sobre 1,00
+031	0.8872920419718768	Siel20%de unaaplicacionessecuencial:
+032	0.6635889013608297	a.
+033	0.8843451552093029	Su ganancia de velocidad es 20.
+034	0.8971956396102905	O b.  Su ganancia de velocidad como maximo es 80.
+035	0.9036957280976432	O c. Su ganancia de velocidad como maximo es 20.
+036	0.9119887703231403	d. Su ganancia de velocidad como maximo es 1/(20/100).
+037	0.91926203477077	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170115&cmid=1517944
+038	0.7423477172851562	1/7
+\n=== PAGE 2 ===
+001	0.9051483869552612	11/1/26,19:05
+002	0.9317910475977536	Cuestionario deAutoevaluacion UD2:Revisiondel intentoIUAX
+003	0.8491052768447183	Pregunta 3
+004	0.8711249563429091	Correcta
+005	0.8686905331336535	Se puntua 1,00 sobre 1,00
+006	0.8663596773147583	En un planificador O(n):
+007	0.6598214308420817	a.
+008	0.9118067724630237	El tiempo invertido en elegir un proceso es proporcional a n. O
+009	0.6653185685475668	b.
+010	0.8848917950283397	El tiempo invertido enelegirun proceso deentre n es n.
+011	0.6471662918726603	d.
+012	0.905183888714889	La complejidad es constante.
+013	0.9078324362635612	La respuesta correcta es: El tiempo invertido en elegir un proceso es proporcional a n.
+014	0.8915208252993497	Pregunta 4
+015	0.8832945889896817	Correcta
+016	0.8709666981146886	Se puntua 1,00 sobre 1,00
+017	0.8503550365567207	De acuerdo con la leyde Amdahl:
+018	0.6280650893847147	a.
+019	0.8994346292813619	La ganancia de velocidad de ejecucionde las aplicaciones no esta limitada.
+020	0.6650113264719645	b.
+021	0.9341764305767261	La ganancia de velocidad es constante y solo depende de las partes no secuenciales del codigo.
+022	0.6554372509320577	C.
+023	0.9235730855553238	La ganancia de velocidad es proporcional al numero de procesadores introducidos.
+024	0.6560407082239786	d.
+025	0.8856209943006779	La ganancia de velocidad no tiene un crecimiento lineal.
+026	0.9224107437823192	La respuesta correcta es: La ganancia de velocidad no tiene un crecimiento lineal.
+027	0.805863851850683	Pregunta 5
+028	0.8769533832867941	Correcta
+029	0.8485290362284734	Se puntua 1,00 sobre 1,00
+030	0.902484989684561	Enun planificadorO(n):
+031	0.5507240295410156	b.
+032	0.6392032106717428	C.
+033	0.6541185180346171	d.
+034	0.924736624763858	El tiempo invertido en elegir un proceso crece linealmente. O
+035	0.9109257501225139	La respuesta correcta es: El tiempo invertido en elegir un proceso crece linealmente.
+036	0.9254094171218383	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170115&cmid=1517944
+037	0.7434529364109039	2/7
+\n=== PAGE 3 ===
+001	0.8860479950904846	11/1/26, 19:05
+002	0.9409804993442127	CuestionariodeAutoevaluacionUD2:Revisiondel intentoIUAX
+003	0.8019238168543036	Pregunta 6
+004	0.8733599053488837	Correcta
+005	0.8225432668740933	Se puntua 1.,00 sobre1,00
+006	0.9126294602950414	Siel20%deunaaplicacionessecuencial:
+007	0.559824546178182	a.
+008	0.9213326370174234	Su ganancia de velocidad como maximo es 80.
+009	0.6655733386675516	b.
+010	0.8900196449831128	Su ganancia de velocidad es 20.
+011	0.5920746723810831	C.
+012	0.9348534576746882	Su ganancia de velocidad como maximo es 1/0,2).
+013	0.894193241830732	O d. Su ganancia de velocidad como maximo es 1/(1 - 20/100).
+014	0.930039732842832	La respuesta correcta es: Su ganancia de velocidad como maximo es 1/0,2).
+015	0.8926804607564752	Pregunta 7
+016	0.872636874516805	Correcta
+017	0.8882059363218454	Se puntua 1,00 sobre 1,00
+018	0.9327199873716935	Alahoradisenarcodigoparacomputacion paralela:
+019	0.6627006729443868	a.
+020	0.8967461035801814	Noesadecuadoutilizarmemoriacompartida.
+021	0.8856523397721743	Noafectan las dependencias entredatos
+022	0.5889027913411459	C.
+023	0.9223919797253299	Es importante tener cuenta las necesidades de comunicacion/sincronizacion. O
+024	0.6604224046071371	d.
+025	0.882522240281105	No es adecuado utilizar hebras.
+026	0.9139528232812881	La respuesta correcta es: Es importante tener cuenta las necesidades de comunicacion/sincronizacion
+027	0.7980197939005765	Pregunta 8
+028	0.876260863410102	Correcta
+029	0.8552243292331696	Se puntua 1,00 sobre1,00
+030	0.9403690267831851	Siel75%deunaaplicacionesparalelizable:
+031	0.8822973438284614	O a. Su ganancia de velocidad minima es 20.
+032	0.8933951660644176	O b. Su ganancia de velocidad minima es 4.
+033	0.9178651036360325	Su ganancia de velocidad maxima es 20.
+034	0.8737573637518772	d.  Su ganancia de velocidad maxima es 4.
+035	0.9174921661615372	La respuestacorrectaes:Sugananciadevelocidadmaximaes 4.
+036	0.9300392293013059	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170115&cmid=1517944
+037	0.5605633854866028	3/7
+\n=== PAGE 4 ===
+001	0.8917635338647025	11/1/26,19:05
+002	0.9315052186620647	Cuestionario deAutoevaluacion UD2:Revisiondel intentoIUAX
+003	0.8147527792237022	Pregunta 9
+004	0.8378326296806335	Correcta
+005	0.8319808726127331	Se puntua 1,00 sobre 1,00
+006	0.9068775054286508	Lainstruccion find-first-bit-set:
+007	0.5074342091878256	a.
+008	0.9286048197746277	Tiene complejidad O(1).
+009	0.6585516134897867	b.
+010	0.8874404455224673	Tiene complejidad O(n).
+011	0.6556232968966166	C.
+012	0.9117655438535354	Utiliza 2 bytes.
+013	0.6519848306973776	d.
+014	0.8677888232118943	Utiliza 4 bytes.
+015	0.9251602846384048	La respuesta correcta es: Tiene complejidad o(1),
+016	0.841366911927859	Pregunta 10
+017	0.8022242838686163	Incorrecta
+018	0.8808507919311523	Se puntua 0.00 sobre 1,00
+019	0.9177053059850421	La instruccion find-first-bit-set:
+020	0.6612067023913065	a.
+021	0.849833071231842	Utiliza 160 bits.
+022	0.6621002554893494	b.
+023	0.8617735018855647	Utiliza 32 bits. @
+024	0.6534245014190674	C.
+025	0.8750731313929838	Utiliza 20 bits.
+026	0.6377925475438436	d.
+027	0.885971304248361	Utiliza 40 bits.
+028	0.9142151427896399	Larespuestacorrectaes:Utiliza160bits.
+029	0.9139054069916407	Pregunta 11
+030	0.8748409880532159	Correcta
+031	0.8647143221818484	Se puntua 1,00 sobre 1,00
+032	0.9270265181859334	Cambiarunprocesodeprocesador:
+033	0.6652013659477234	a.
+034	0.9182908473343685	Aceleralaejecuciondelproceso
+035	0.6655552983283997	b.
+036	0.9111076678548541	Reduceelconsumodememoriadelproceso
+037	0.8893385168085707	No tiene asociada ninguna carga computacional.
+038	0.5436171293258667	d.
+039	0.9364562431971232	Invalida el contenido de la memoria cache. O
+040	0.8845852786216183	La respuesta correcta es: Invalida el contenido de la memoria cache.
+041	0.91926203477077	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170115&cmid=1517944
+042	0.7371344715356827	4/7
+\n=== PAGE 5 ===
+001	0.8641780813535055	11/1/26, 19:05
+002	0.9326173786459298	Cuestionario deAutoevaluacion UD2:Revisiondel intentoIUAX
+003	0.8303765604893366	Pregunta 12
+004	0.8638602711937644	Incorrecta
+005	0.8649454808235169	Se puntua 0.00 sobre1,00
+006	0.8946841322645849	Enlas colasparaprocesosdeusuariodel arrayactive:
+007	0.6623073617617289	a.
+008	0.9206465059205106	Laprioridad de losprocesosesestatica.
+009	0.6655733386675516	b.
+010	0.9367140978574753	No puedo haber procesos con prioridad menor de 100.
+011	0.6155058741569519	C.
+012	0.9234061593359167	Se pueden reencolar procesos tras acabar su quantum. @
+013	0.9330368008878496	Laprioridaddelosprocesosvade-20a19.
+014	0.895017127195994	La respuesta correcta es: No puedo haber procesos con prioridad menor de 1o0.
+015	0.8553393185138702	Pregunta 13
+016	0.8813749154408773	Correcta
+017	0.8709357277705119	Se puntua 1,00 sobre 1,00
+018	0.88814099247639	En un planificador O(1) :
+019	0.662484367688497	a.
+020	0.9308371974871709	El tiempo invertido en elegir un proceso crece exponencialmente.
+021	0.6658831834793091	b.
+022	0.9297404597545492	Eltiempo invertidoenelegirunprocesocrecelogaritmicamente.
+023	0.9240990440050761	El tiempo invertido en elegir un proceso crece linealmente.
+024	0.5271000862121582	d.
+025	0.920118790969514	El tiempo invertido en elegir un proceso es constante. O
+026	0.8878312812575812	La respuesta correcta es: Eltiempo invertido en elegir un proceso es constante
+027	0.8805719663699468	Pregunta 14
+028	0.810085041956468	Incorrecta
+029	0.8408640393844018	Se puntua 0.00 sobre 1,00
+030	0.8993709768567767	En las colas RT del array expired:
+031	0.6627474029858907	a.
+032	0.8908209453767805	Se introducenlos procesos RTplanificados con niceness menorque-20.
+033	0.6657631595929464	b.
+034	0.900592463357108	Nunca habra procesos introducidos.
+035	0.6564763784408569	d.
+036	0.9289506478556271	Se introducen los procesos RT planificados con Round-Robin cuando agotan su quantum. @
+037	0.8765223602453868	La respuesta correcta es:Nunca habra procesos introducidos.
+038	0.9255211551984152	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170115&cmid=1517944
+039	0.650824248790741	5/7
+\n=== PAGE 6 ===
+001	0.8947562774022421	11/1/26, 19:05
+002	0.9298618304527412	Cuestionario deAutoevaluacion UD2:Revision del intentoIUAX
+003	0.8971325357755026	Pregunta 15
+004	0.8615475363201566	Correcta
+005	0.8586530249852401	Se puntua 1,00 sobre 1,00
+006	0.9090345467839922	La instruccion find-first-bit-set:
+007	0.6636826395988464	a.
+008	0.9480743340470574	Determinaelprocesomasprioritariodelsistema.
+009	0.6530291239420573	b.
+010	0.9460291475057602	Determinalacolanovaciademayorprioridad.
+011	0.9247288172659667	Determina la cola no vacia de menor prioridad
+012	0.6416102250417074	d.
+013	0.8905789933421395	Determina la cola vacia de mayor prioridad.
+014	0.8993307037712777	La respuesta correcta es: Determina la cola no vacia de mayor prioridad.
+015	0.9007222006718317	Pregunta 16
+016	0.7834547866474498	Incorrecta
+017	0.8415330453560903	Se puntua 0.00 sobre 1,00
+018	0.926480444578024	El concepto de fair clock que introducen los planificadores CFS:
+019	0.6626981099446615	a.
+020	0.6621930400530497	b.
+021	0.5889027913411459	C.
+022	0.9236154116012834	La tarea en ejecucion solo puede ejecutar el mismo tiempo que lleva esperando el resto.
+023	0.6620437105496725	d.
+024	0.9389269928137461	Representa un contador del tiempo de espera para cada una de las tareas. @
+025	0.9053206692139307	Pregunta 17
+026	0.7908259955319491	Incorrecta
+027	0.878630287372149	Se puntua 0.00 sobre 1,00
+028	0.928821975844247	La instruccion find-first-bit-set:
+029	0.6646360357602438	a.
+030	0.8764906619724474	Utiliza 160 bytes.
+031	0.6625621318817139	b.
+032	0.8713960707187652	Utiliza 32 bytes. @
+033	0.640840748945872	C.
+034	0.8938604659504361	Utiliza 20 bytes.
+035	0.9266473154226939	Utiliza 40 bytes.
+036	0.8712589876218275	La respuesta correcta es: Utiliza 20 bytes.
+037	0.9342442040260022	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170115&cmid=1517944
+038	0.7464790046215057	6/7
+\n=== PAGE 7 ===
+001	0.8874777317047119	11/1/26, 19:05
+002	0.9213836904494993	Cuestionario de Autoevaluacion UD2:Revision del intento I UAX
+003	0.806548165778319	Pregunta 18
+004	0.87960903512107	Correcta
+005	0.8262466341257095	Se puntua 1.,00 sobre1,00
+006	0.9142674166295264	Siel25%deunaaplicacionessecuencial:
+007	0.6635293364524841	a.
+008	0.910941518843174	Su ganancia de velocidad maxima es 4. O
+009	0.6608050266901652	b.
+010	0.9015531448217539	Su ganancia de velocidad minima es 20.
+011	0.5432197650273641	C.
+012	0.8185756535906541	Su ganancia de velocidad minima es 4.
+013	0.9188524728471582	O d. Su ganancia de velocidad maxima es 20.
+014	0.911250077188015	La respuesta correcta es: Su ganancia de velocidad maxima es 4.
+015	0.7756022786100706	Pregunta 19
+016	0.8823143508699205	Correcta
+017	0.8475003597828058	Se puntua 1,00 sobre 1,00
+018	0.8886841557644032	DeacuerdoconlaleydeAmdahl:
+019	0.8964433286449697	O a.Laganancia de velocidad esta afectadaporlas necesidadesde sincronizacion entre losmodulos de una
+020	0.9130943119525909	aplicacion.
+021	0.9225964560395196	d. La ganancia de velocidad esta afectada por el sistema operativo que se utilice.
+022	0.9027929548864011	modulos de una aplicacion.
+023	0.8391427795092264	Pregunta 20
+024	0.871561156378852	Correcta
+025	0.8201269668837389	Se puntua1.00 sobre1,00
+026	0.865131083763007	Enlas colas RT del array active:
+027	0.6645231048266093	a.
+028	0.9414193308912218	Seintroducenlosprocesosdeusuarioscuandosunicenessesmenorque-20.
+029	0.6652625203132629	b.
+030	0.9426945233717561	Se introducen solo los procesos RTplanificados con Round-Robin.
+031	0.9078665816783905	Se introducensololosprocesosRTplanificadosconFIFO
+032	0.5336357951164246	d.
+033	0.9002098454670473	La prioridad de los procesos es estatica. O
+034	0.9083466569290441	La respuesta correcta es: La prioridad de los procesos es estatica.
+035	0.9278959410312848	https://campus.uax.es/moodle/mod/quiz/review.php?attempt=4170115&cmid=1517944
+036	0.5905815064907074	7/7

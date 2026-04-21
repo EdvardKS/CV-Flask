@@ -1,0 +1,7 @@
+{% extends 'core/base.html' %}
+{% block title %}Skills — cmd.exe{% endblock %}
+{% block window %}
+{% window_open 'skills' 'Skills — cmd.exe' 'terminal' 'open' %}
+    {% include 'core/components/desktop/terminal_skills.html' %}
+{% window_close %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{# CMD-style skills window body. Hidden <ul data-skills> feeds the typewriter + crawlers. #}
+<div class="xp-terminal bg-black text-neon-green font-mono text-[12px] p-3 rounded-sm
+            border border-black shadow-[inset_1px_1px_0_#333] min-h-[320px]">
+    <div class="flex items-center justify-between border-b border-neon-green/40 pb-1 mb-2">
+        <span class="text-neon-cyan">C:\Users\Edvard\skills&gt;</span>
+        <span class="text-[10px] text-neon-green/60">cmd.exe — SkillStack v4.7</span>
+    </div>
+    <pre id="skills-term-out" class="whitespace-pre-wrap leading-snug"
+         aria-label="Skills terminal output"></pre>
+    <div class="mt-2 flex items-center">
+        <span class="text-neon-cyan">C:\&gt;</span>
+        <span id="skills-term-cursor" class="ml-1 w-2 h-4 bg-neon-green animate-pulse"></span>
+    </div>
+</div>
+
+<ul data-skills hidden>
+    {# Server-rendered fallback for SEO. JS reads this to drive the typewriter. #}
+    <li>python</li><li>sql</li><li>docker</li><li>git</li>
+    <li>machine-learning</li><li>deep-learning</li><li>data-analysis</li>
+    <li>cloud</li><li>javascript</li><li>php</li>
+</ul>

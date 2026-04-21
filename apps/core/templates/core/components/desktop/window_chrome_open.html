@@ -1,0 +1,19 @@
+<section class="xp-window window"
+         data-window-id="{{ win_id }}"
+         data-initial="{{ initial }}"
+         data-window-title="{{ title }}"
+         data-window-icon="{{ icon }}"
+         role="dialog" aria-labelledby="wintitle-{{ win_id }}"
+         style="width: min(860px, calc(100vw - 32px));">
+    <div class="title-bar" data-drag-handle>
+        <div class="title-bar-text flex items-center gap-2" id="wintitle-{{ win_id }}">
+            {% win_icon icon 14 %}
+            <span>{{ title }}</span>
+        </div>
+        <div class="title-bar-controls">
+            <button aria-label="Minimize" data-win-action="minimize"></button>
+            <button aria-label="Maximize" data-win-action="maximize"></button>
+            <button aria-label="Close" data-win-action="close"></button>
+        </div>
+    </div>
+    <div class="window-body xp-window-body" role="document">

@@ -1,0 +1,63 @@
+/* carga.css */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #375177, #1F2937, #111827, #18243f);
+    background-size: 600% 600%;
+    color: #EAEAEA;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: waveAnimation 15s ease infinite;
+}
+
+#loading-screen.active {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#loading-screen.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.5s, opacity 0.5s ease;
+}
+
+@keyframes waveAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  white-space: pre;
+  font-size: 50px;
+  line-height: 1.2em;
+  height:1.2em;
+  overflow: hidden;
+}
+.loader:before {
+  content:"Loading...\AՆoading...\AՆեading...\AՆերding...\AՆերբing...\AՆերբեng...\AՆերբեռg...\AՆերբեռն...\AՆերբեռնո..\AՆերբեռնու.\AՆերբեռնում";
+  white-space: pre;
+  display: inline-block;
+  animation: l39 1s infinite steps(11) alternate;
+}
+
+@keyframes l39 {
+  100%{transform: translateY(-100%)}
+}

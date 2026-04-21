@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Edvard Khachatryan Sahakyan{% endblock %}</title>
+
+    {% if indexable %}
+        <meta name="description" content="{% block description %}CV of Edvard Khachatryan Sahakyan — Data Scientist and AI Engineer. Experience, education, skills and contact.{% endblock %}">
+        <meta name="robots" content="index,follow">
+        <meta name="google-site-verification" content="kFbj5Q2wIECy_Zt63Z9WnHIOi-DbfezJ82_epIMjVeM" />
+    {% else %}
+        <meta name="robots" content="noindex,nofollow">
+    {% endif %}
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="canonical" href="{{ request.url_root }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modern.css') }}">
+    {% block head_extra %}{% endblock %}
+
+    {% if indexable %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSYLFBPRHG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KSYLFBPRHG');
+    </script>
+    {% endif %}
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='data/1713730445414.jpeg') }}" alt="">
+                <span id="brand-name">Edvard K.</span>
+            </a>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-links" id="nav-links">
+                <a class="nav-link {% if page == 'cv' %}active{% endif %}" href="{{ url_for('index') }}" data-translate="nav-home">Home</a>
+                <a class="nav-link {% if page == 'summary' %}active{% endif %}" href="{{ url_for('summary') }}" data-translate="nav-summary">Summary</a>
+                <a class="nav-link {% if page == 'experience' %}active{% endif %}" href="{{ url_for('experience') }}" data-translate="nav-experience">Experience</a>
+                <a class="nav-link {% if page == 'education' %}active{% endif %}" href="{{ url_for('education') }}" data-translate="nav-education">Education</a>
+                <a class="nav-link {% if page == 'skills' %}active{% endif %}" href="{{ url_for('skills') }}" data-translate="nav-skills">Skills</a>
+                <a class="nav-link {% if page == 'projects' %}active{% endif %}" href="{{ url_for('projects') }}" data-translate="nav-projects">Projects</a>
+                <a class="nav-link {% if page == 'contact' %}active{% endif %}" href="{{ url_for('contact') }}" data-translate="nav-contact">Contact</a>
+
+                <div class="nav-actions">
+                    <a class="icon-link" href="https://www.linkedin.com/in/edvardks/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a class="icon-link" href="https://github.com/edvardks/" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <select id="language-selector" class="lang-select" aria-label="Language">
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="hy">HY</option>
+                    </select>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container-x">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container-x footer-inner">
+            <span>&copy; <span id="footer-year"></span> Edvard Khachatryan Sahakyan</span>
+            <div class="footer-links">
+                <a href="mailto:info@edvardks.com">info@edvardks.com</a>
+                <a href="{{ url_for('contact') }}" data-translate="nav-contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="{{ url_for('static', filename='js/cv.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

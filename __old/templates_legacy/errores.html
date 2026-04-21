@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Panel de Scouting | Padel Scout</title>
+    <meta name="description" content="Registro de errores no forzados y aciertos de pádel por jugador, partido y set.">
+    <meta name="theme-color" content="#081a32">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Scout Errores">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='pwa/manifest-errores.webmanifest') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='pwa/icons/apple-touch-icon.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/padel-dashboard.css') }}">
+</head>
+<body class="padel-app page-errores">
+    <main class="page-shell container-fluid">
+        <section id="player-intro" class="hero-grid">
+            <article class="intro-copy card shadow-sm border-0">
+                <span class="eyebrow">Scouting de rendimiento</span>
+                <h1 class="page-title">Panel de scouting para pádel</h1>
+                <p class="page-lead">
+                    Captura cada set con botones grandes de <strong>+1</strong> y <strong>-1</strong>,
+                    diferenciando errores y aciertos en resto, fondo, red y definición para un análisis más fino.
+                </p>
+                <div class="feature-strip">
+                    <span class="feature-pill">100vh en desktop</span>
+                    <span class="feature-pill">CSV por jugador</span>
+                    <span class="feature-pill">Errores + aciertos</span>
+                </div>
+            </article>
+
+            <aside class="player-panel card shadow-sm border-0">
+                <span class="eyebrow">Introducir nombre de jugador</span>
+                <h2 class="panel-title">Abrir sesión de scouting</h2>
+                <p class="panel-text">
+                    Introduce el jugador para abrir su histórico en <strong>`output/&lt;nombre_saneado&gt;.csv`</strong>
+                    y cargar el siguiente partido disponible.
+                </p>
+
+                <form id="player-form" class="player-form">
+                    <label class="input-label" for="jugador-input">
+                        Nombre del jugador
+                        <input
+                            id="jugador-input"
+                            class="text-input"
+                            type="text"
+                            name="jugador"
+                            placeholder="Ej. Juan Pérez"
+                            autocomplete="off"
+                            required
+                        >
+                    </label>
+
+                    <div class="button-row">
+                        <button id="start-session-btn" class="primary-btn" type="submit">Iniciar sesión</button>
+                    </div>
+                </form>
+
+                <p class="helper-text">Una vez se valide el nombre, desaparecerá esta pantalla y quedará solo la vista operativa.</p>
+                <div id="player-message" class="status-message" role="status" aria-live="polite"></div>
+            </aside>
+        </section>
+
+        <section id="session-layout" class="session-layout hidden">
+            <div class="row g-2 session-grid align-items-stretch">
+                <div class="col-12 col-lg-9">
+                    <div class="counter-stack d-flex flex-column gap-2 h-100">
+                        {% for block in counter_blocks %}
+                        <article class="counter-section counter-block counter-block--{{ block.id }} card border shadow-sm">
+                            <div class="card-body p-2">
+                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                    <div>
+                                        <p class="section-kicker mb-1">{{ block.subtitle }}</p>
+                                        <h3 class="section-title mb-0">{{ block.title }}</h3>
+                                    </div>
+                                    <small class="block-hint">Info en <strong>?</strong></small>
+                                </div>
+
+                                <div class="row g-2 counter-grid">
+                                    {% for field in block.fields %}
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="{{ field.key }}">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">{{ field.short }}</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="{{ error_tooltips[field.key] }}"
+                                                        aria-label="Ver descripción de {{ field.label }}"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-{{ field.key }}" for="">{{ 0 }}</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">{{ field.label }}</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a {{ field.label }}">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a {{ field.label }}">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-3">
+                    <div class="side-panel d-flex flex-column gap-2 h-100">
+                        <article class="summary-sidecard card border shadow-sm">
+                            <div class="card-body p-2 d-flex flex-column gap-2">
+                                <div class="control-header">
+                                    <p class="section-kicker mb-1">Control de sesión</p>
+                                    <h2 class="control-player-name mb-0" id="player-heading">Jugador</h2>
+                                    <p class="panel-text compact-text mb-0" id="session-subtext">Sesión de scouting lista para capturar errores.</p>
+                                </div>
+
+                                <div class="row g-2 session-stats">
+                                    <div class="col-12">
+                                        <article class="session-stat session-stat-highlight card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">Balance actual</span>
+                                            <strong id="current-balance" class="meta-value">0</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-6">
+                                        <article class="session-stat card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">ID partido</span>
+                                            <strong id="match-id" class="meta-value">1</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-6">
+                                        <article class="session-stat card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">Set actual</span>
+                                            <strong id="current-set" class="meta-value">1</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-6">
+                                        <article class="session-stat card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">Errores</span>
+                                            <strong id="current-errors" class="meta-value">0</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-6">
+                                        <article class="session-stat card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">Aciertos</span>
+                                            <strong id="current-successes" class="meta-value">0</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+
+                                <div class="row g-2 action-bar action-grid">
+                                    <div class="col-12 col-sm-6 col-lg-12">
+                                        <button id="change-set-btn" class="secondary-btn btn btn-primary w-100" type="button">Cambio de Set</button>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-lg-12">
+                                        <button id="finalize-match-btn" class="danger-btn btn btn-warning w-100" type="button">Finalizar Partido</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button id="change-player-btn" class="ghost-btn btn btn-outline-light w-100" type="button">Cambiar jugador</button>
+                                    </div>
+                                </div>
+
+                                <div id="session-message" class="status-message mb-0" role="status" aria-live="polite"></div>
+                            </div>
+                        </article>
+
+                        <article class="saved-sets-card card border shadow-sm">
+                            <div class="card-body p-2 d-flex flex-column gap-2">
+                                <div>
+                                    <p class="section-kicker mb-1">Revisión rápida</p>
+                                    <h3 class="section-title mb-0">Sets capturados</h3>
+                                </div>
+
+                                <div class="priority-strip hidden">
+                                    <div class="priority-copy">
+                                        <span class="priority-kicker">Mayor error a corregir</span>
+                                        <strong id="priority-label" class="priority-label">Sin datos</strong>
+                                        <p id="priority-value" class="priority-value mb-0">Empieza a contar para detectar qué corregir primero.</p>
+                                    </div>
+                                    <div class="live-chart-wrap">
+                                        <canvas id="live-error-chart"></canvas>
+                                    </div>
+                                </div>
+
+                                <div id="saved-sets" class="saved-sets-list">
+                                    <div class="saved-set-item">
+                                        <p class="muted-text mb-0">Todavía no hay sets guardados en esta sesión.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script>
+        window.erroresConfig = {{ {
+            "counterBlocks": counter_blocks,
+            "errorLabels": error_labels,
+            "errorTooltips": error_tooltips,
+            "errorFields": error_fields,
+            "successFields": success_fields
+        } | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='pwa/register-sw.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/player-session.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/errores.js') }}" defer></script>
+</body>
+</html>

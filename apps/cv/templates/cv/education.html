@@ -1,0 +1,8 @@
+{% extends 'core/base.html' %}
+{% block title %}Education — Edvard K.{% endblock %}
+{% block window %}
+{% window_open 'education' 'Education' 'book' 'open' %}
+    {% page_hero 'education-title' %}
+    {% grid 'education-list' %}
+{% window_close %}
+{% endblock %}

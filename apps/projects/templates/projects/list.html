@@ -1,0 +1,8 @@
+{% extends 'core/base.html' %}
+{% block title %}Projects — Edvard K.{% endblock %}
+{% block window %}
+{% window_open 'projects' 'Projects' 'folder' 'open' %}
+    {% page_hero 'projects-title' 'Selected projects with description and tech stack.' %}
+    {% grid 'projects-list' %}
+{% window_close %}
+{% endblock %}

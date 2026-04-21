@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Examen - Ayuda con Google IA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        :root {
+            --bg: #eef2f7;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
+        }
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            font-family: 'Space Grotesk', 'Segoe UI', Tahoma, sans-serif;
+            background: radial-gradient(1200px 600px at 90% -10%, #dbeafe 0%, transparent 60%),
+                        radial-gradient(900px 500px at -10% 10%, #d1fae5 0%, transparent 55%),
+                        var(--bg);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            min-height: 100vh;
+            overflow: hidden;
+            font-size: clamp(14px, 1.7vmin, 16px);
+        }
+        #quiz-container {
+            background: var(--card);
+            padding: clamp(16px, 2.4vmin, 32px);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 880px;
+            height: auto;
+            max-height: calc(100vh - 40px);
+            animation: floatIn 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        @keyframes floatIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: clamp(8px, 1.6vmin, 12px);
+            font-weight: 600;
+            margin-bottom: clamp(8px, 1.8vmin, 18px);
+            font-size: clamp(0.95rem, 2vmin, 1.05rem);
+            border-bottom: 1px solid #e7eef7;
+            padding-bottom: clamp(8px, 1.6vmin, 14px);
+        }
+        .stats > span { font-weight: 700; }
+        .stats > div:not(.quiz-actions) {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            color: var(--muted);
+        }
+        .quiz-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 0;
+            grid-column: 2;
+            grid-row: 1 / span 2;
+        }
+        .action-btn {
+            padding: clamp(6px, 1.4vmin, 10px) clamp(10px, 2vmin, 14px);
+            border: 1px solid #cbd5e1;
+            background: #fff;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: clamp(0.82rem, 1.5vmin, 0.9rem);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+        .action-btn:hover { box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08); border-color: #94a3b8; transform: translateY(-1px); }
+        .action-btn.danger { color: var(--danger); border-color: #fecaca; background: #fff5f5; }
+        .action-btn.danger:hover { border-color: #fca5a5; }
+
+        .question-box {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+            border: 1px solid var(--border);
+            padding: clamp(14px, 2.2vmin, 22px);
+            border-radius: 16px;
+            margin-bottom: clamp(8px, 1.8vmin, 18px);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: clamp(8px, 1.6vmin, 12px);
+            align-items: start;
+        }
+        .question-text {
+            line-height: 1.4;
+            white-space: pre-wrap;
+            font-size: clamp(1rem, 2.2vmin, 1.15rem);
+            font-weight: 600;
+        }
+        .code-block {
+            margin-top: clamp(8px, 1.4vmin, 12px);
+            background: #0b1220;
+            color: #e2e8f0;
+            padding: clamp(10px, 1.6vmin, 14px);
+            border-radius: 10px;
+            font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, 'Courier New', monospace;
+            font-size: clamp(0.78rem, 1.5vmin, 0.93rem);
+            white-space: pre;
+            overflow-x: auto;
+            max-height: clamp(120px, 22vh, 220px);
+            overflow-y: auto;
+        }
+        .google-ask {
+            position: relative;
+            top: auto;
+            right: auto;
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            box-shadow: 0 8px 18px rgba(37, 99, 235, 0.15);
+        }
+        .google-ask:hover { transform: translateY(-2px); }
+        .question-box > div:last-child { grid-column: 1 / -1; }
+
+        .option {
+            display: block;
+            width: 100%;
+            padding: clamp(8px, 1.6vmin, 14px) clamp(10px, 1.8vmin, 16px);
+            margin: 0;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            cursor: pointer;
+            text-align: left;
+            background: #fff;
+            font-size: clamp(0.88rem, 1.7vmin, 1rem);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+        .option:hover { border-color: #93c5fd; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08); transform: translateY(-1px); }
+        .option:active { transform: translateY(0); }
+        .correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534; font-weight: 600; }
+        .wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #7f1d1d; }
+
+        .ai-hint-btn { margin-top: 12px; padding: 10px 18px; background: var(--primary); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; }
+        .ai-hint-btn:hover { background: var(--primary-dark); }
+        .ai-hint-box { margin-top: 10px; background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 12px; color: #1f2937; font-size: 0.95rem; display: none; }
+        .ai-hint-box.loading { display: block; color: var(--muted); font-style: italic; }
+        .ai-hint-box.visible { display: block; }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: clamp(8px, 1.6vmin, 12px);
+            margin-top: clamp(8px, 1.8vmin, 16px);
+        }
+        .nav-btn { padding: clamp(10px, 1.8vmin, 12px) clamp(16px, 2.4vmin, 24px); background: var(--primary); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+        .nav-btn { flex: 1 1 0; min-width: 0; }
+        .nav-btn:hover { background: var(--primary-dark); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18); transform: translateY(-1px); }
+        .nav-btn:disabled { background: #cbd5e1; cursor: not-allowed; box-shadow: none; }
+        #prev-btn { background: #e2e8f0; color: #0f172a; }
+        #prev-btn:hover { background: #cbd5e1; box-shadow: none; }
+
+        .setup-actions { display: flex; justify-content: center; gap: clamp(8px, 1.6vmin, 12px); flex-wrap: wrap; margin-top: clamp(12px, 2vmin, 20px); }
+        .setup-btn { padding: clamp(10px, 1.8vmin, 12px) clamp(16px, 2.4vmin, 24px); background: var(--primary); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+        .setup-btn:hover { background: var(--primary-dark); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18); transform: translateY(-1px); }
+        .setup-btn:disabled { background: #a0aec0; cursor: not-allowed; box-shadow: none; }
+
+        #quiz-game {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #options-container {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(8px, 1.6vmin, 12px);
+            overflow: hidden;
+        }
+
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: clamp(8px, 1.6vmin, 12px);
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toggle input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
+        #setup {
+            text-align: center;
+            padding: clamp(16px, 4vmin, 40px) !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #setup h2 {
+            margin: 0 0 clamp(6px, 1.2vmin, 12px);
+            font-size: clamp(1.2rem, 3vmin, 1.6rem);
+        }
+
+        #setup p {
+            margin: 0 0 clamp(10px, 2vmin, 16px);
+            color: var(--muted);
+        }
+
+        @media (max-width: 900px) {
+            body { padding: 14px; }
+            #quiz-container { padding: 22px; }
+            .stats { grid-template-columns: 1fr; }
+            .quiz-actions { grid-column: 1; grid-row: auto; justify-content: flex-start; flex-wrap: wrap; }
+            .question-box { padding: 18px; }
+            .question-text { font-size: 1.05rem; }
+            .google-ask { width: 40px; height: 40px; font-size: 20px; }
+            .option { padding: 12px; font-size: 0.98rem; }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            #quiz-container { padding: 16px; border-radius: 16px; }
+            .stats { font-size: 1rem; gap: 8px; }
+            .stats > div:not(.quiz-actions) { gap: 8px; }
+            .quiz-actions { width: 100%; }
+            .action-btn { flex: 1; text-align: center; }
+            .question-box { grid-template-columns: 1fr; }
+            .google-ask { width: 40px; height: 40px; justify-self: start; }
+            .option { padding: 12px; font-size: 0.95rem; }
+            .nav-buttons { gap: 10px; }
+            .setup-actions { flex-direction: column; }
+            .setup-btn { width: 100%; }
+            .ai-hint-btn { width: 100%; }
+            #options-container { grid-template-columns: 1fr; }
+        }
+
+        @media (max-height: 760px) {
+            #quiz-container { max-height: calc(100vh - 20px); }
+            .stats { margin-bottom: 8px; padding-bottom: 8px; }
+            .question-box { margin-bottom: 8px; }
+            .nav-buttons { margin-top: 8px; }
+        }
+
+        @media (max-height: 680px) {
+            #quiz-container { padding: 12px; }
+            .question-text { font-size: clamp(0.95rem, 2vmin, 1.05rem); }
+            .code-block { max-height: clamp(100px, 20vh, 180px); }
+            .option { font-size: clamp(0.82rem, 1.6vmin, 0.95rem); }
+            #options-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-height: 620px) {
+            #quiz-container { padding: 10px; }
+            .stats { font-size: clamp(0.86rem, 1.6vmin, 0.98rem); }
+            .question-text { font-size: clamp(0.9rem, 1.8vmin, 1rem); }
+            .option { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="quiz-container">
+    <div id="setup" style="text-align:center; padding: 40px;">
+        <h2>📚 Preparador de Examen Dinámico</h2>
+        <p>Selecciona el bloque de preguntas para comenzar.</p>
+        <div class="setup-actions">
+            <button id="load-ec" class="setup-btn">Cargar Estructura de computadores</button>
+            <button id="load-so" class="setup-btn">Cargar Sistemas Operativos</button>
+            <button id="load-en" class="setup-btn">Cargar Ingles</button>
+        </div>
+    </div>
+
+    <div id="quiz-game" style="display:none;">
+        <div class="stats">
+            <span>Pregunta: <span id="q-idx">0</span> / <span id="q-total">0</span></span>
+            <div>
+                <span style="color:#38a169">Aciertos: <span id="hits">0</span></span> | 
+                <span style="color:#e53e3e">Fallos: <span id="miss">0</span></span>
+            </div>
+
+        <div class="quiz-actions">
+            <button id="exit-btn" class="action-btn">Salir</button>
+            <button id="restart-btn" class="action-btn danger">Recomenzar</button>
+        </div>
+
+        </div>
+
+        <div id="filters" class="filter-bar" style="display:none;">
+            <label class="toggle">
+                <input type="checkbox" id="toggle-vocab">
+                <span>Ocultar preguntas de vocabulario</span>
+            </label>
+        </div>
+
+        <div class="question-box">
+            <div id="question-text" class="question-text"></div>
+            <a id="ia-btn" href="#" target="_blank" class="google-ask" title="Explicación con Google IA">🤖</a>
+            <div> 
+                <div id="hint-box" class="ai-hint-box"></div>
+            </div>
+        </div>
+
+        <div id="options-container"></div>
+        <div class="nav-buttons">
+            <button id="prev-btn" class="nav-btn" onclick="prevQuestion()">Anterior</button>
+            <button id="next-btn" class="nav-btn" onclick="nextQuestion()">Siguiente</button>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    const DATASET_PATHS = {
+        ec: '/static/data/JSON/preguntas_estructura.json',
+        so: '/static/data/JSON/preguntas_sistemas_operativos.json',
+        en: '/static/data/JSON/preguntas_infles.json'
+    };
+
+    const DATASETS = { ec: null, so: null, en: null };
+    const STORAGE_HIDE_VOCAB = 'ecso-hide-vocab';
+    let hideVocabulary = localStorage.getItem(STORAGE_HIDE_VOCAB) === '1';
+
+    function isVocabularyQuestion(item) {
+        if (item && typeof item.isVocab === 'boolean') {
+            return item.isVocab;
+        }
+        const text = (item?.q || '').toLowerCase();
+        if (text.match(/translation|como se dice|c\u00f3mo se dice|how do you say|meaning of|traducci|phrasal verb|in english/)) {
+            return true;
+        }
+        const opts = item?.options || [];
+        const spanishish = opts.filter(opt => /[\u00e1\u00e9\u00ed\u00f3\u00fa\u00f1\u00bf\u00a1]/i.test(opt) || /\b(el|la|los|las|un|una|unos|unas)\b/i.test(opt)).length;
+        return spanishish >= 2;
+    }
+
+    function getFilteredDataset(id) {
+        const base = DATASETS[id] || [];
+        if (id !== 'en' || !hideVocabulary) {
+            return base;
+        }
+        return base.filter((q) => !isVocabularyQuestion(q));
+    }
+
+    async function loadDataset(id) {
+        if (Array.isArray(DATASETS[id]) && DATASETS[id].length > 0) {
+            return DATASETS[id];
+        }
+        const path = DATASET_PATHS[id];
+        if (!path) {
+            throw new Error('Dataset no encontrado.');
+        }
+        const response = await fetch(path, { cache: 'no-cache' });
+        if (!response.ok) {
+            throw new Error('No se pudo cargar el dataset.');
+        }
+        const data = await response.json();
+        if (!Array.isArray(data)) {
+            throw new Error('Formato de dataset invalido.');
+        }
+        DATASETS[id] = data;
+        return data;
+    }
+
+
+
+    
+
+    const letrasOpciones = ['a', 'b', 'c', 'd'];
+    const GEMINI_API_KEY = 'AIzaSyCjegaPzmgrXLm1ttMvrmHetqwA2uhZfKY';
+    const GEMINI_MODEL = 'gemini-1.5-flash';
+    const STORAGE_KEY_PREFIX = 'ecso-quiz-state-v2:';
+    const STORAGE_HISTORY_PREFIX = 'ecso-quiz-history-v1:';
+    const STORAGE_LAST_KEY = 'ecso-quiz-last-dataset-v2';
+    let session = null;
+    let questions = [];
+
+    function getStorageKey(id) {
+        return `${STORAGE_KEY_PREFIX}${id}`;
+    }
+
+    function getHistoryKey(id) {
+        return `${STORAGE_HISTORY_PREFIX}${id}`;
+    }
+
+    function mulberry32(seed) {
+        let t = seed >>> 0;
+        return function() {
+            t += 0x6D2B79F5;
+            let r = Math.imul(t ^ (t >>> 15), 1 | t);
+            r ^= r + Math.imul(r ^ (r >>> 7), 61 | r);
+            return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+        };
+    }
+
+    function shuffle(array, rng) {
+        const arr = array.slice();
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(rng() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function buildSession(datasetId) {
+        const seed = Date.now();
+        const rng = mulberry32(seed);
+        const base = getFilteredDataset(datasetId);
+        const order = shuffle([...Array(base.length).keys()], rng);
+        const optionOrder = base.map((item) => shuffle([...Array(item.options.length).keys()], rng));
+        session = {
+            dataset: datasetId,
+            seed,
+            order,
+            optionOrder,
+            answers: {},
+            currentIdx: 0,
+            hits: 0,
+            misses: 0,
+            completed: false
+        };
+        saveState();
+    }
+
+    function loadSession(datasetId) {
+        try {
+            const raw = localStorage.getItem(getStorageKey(datasetId));
+            if (!raw) return null;
+            const parsed = JSON.parse(raw);
+            if (!parsed || parsed.dataset !== datasetId) return null;
+            if (!Array.isArray(parsed.order) || !Array.isArray(parsed.optionOrder)) return null;
+
+            const base = getFilteredDataset(datasetId);
+            if (parsed.order.length !== base.length) return null;
+            if (parsed.optionOrder.length !== base.length) return null;
+            const orderOk = parsed.optionOrder.every((ord, i) => Array.isArray(ord) && ord.length === base[i].options.length);
+            if (!orderOk) return null;
+
+            return parsed;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function saveState() {
+        if (!session) return;
+        localStorage.setItem(getStorageKey(session.dataset), JSON.stringify(session));
+        localStorage.setItem(STORAGE_LAST_KEY, session.dataset);
+    }
+
+    function updateStats() {
+        document.getElementById('hits').innerText = session ? session.hits : 0;
+        document.getElementById('miss').innerText = session ? session.misses : 0;
+    }
+
+    function getQuestionByIndex(displayIndex) {
+        const baseIndex = session.order[displayIndex];
+        const base = questions[baseIndex];
+        const order = session.optionOrder[baseIndex];
+        const options = order.map((i) => base.options[i]);
+        const baseCorrect = base.correctIndex;
+        const correctIndex = Array.isArray(baseCorrect)
+            ? baseCorrect.map((i) => order.indexOf(i)).filter((i) => i >= 0)
+            : order.indexOf(baseCorrect);
+        const selectedIndex = session.answers[baseIndex];
+        return { baseIndex, q: base.q, code: base.code, options, correctIndex, selectedIndex };
+    }
+
+    function isCorrectIndex(selectedIndex, correctIndex) {
+        if (Array.isArray(correctIndex)) {
+            return correctIndex.includes(selectedIndex);
+        }
+        return selectedIndex === correctIndex;
+    }
+
+    function escapeHtml(text) {
+        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+        return String(text).replace(/[&<>"']/g, (m) => map[m]);
+    }
+
+    function renderQuestion(qData) {
+        const questionEl = document.getElementById('question-text');
+        if (qData.code) {
+            const safeQ = escapeHtml(qData.q);
+            const safeCode = escapeHtml(qData.code);
+            questionEl.innerHTML = `${safeQ}<pre class="code-block">${safeCode}</pre>`;
+            return;
+        }
+        questionEl.textContent = qData.q;
+    }
+
+    function renderOptions(qData) {
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+        qData.options.forEach((optText, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'option';
+            btn.innerText = `${letrasOpciones[i]}. ${optText}`;
+            btn.onclick = () => selectAnswer(i);
+
+            if (qData.selectedIndex !== undefined) {
+                if (isCorrectIndex(i, qData.correctIndex)) {
+                    btn.classList.add('correct');
+                }
+                if (i === qData.selectedIndex && !isCorrectIndex(i, qData.correctIndex)) {
+                    btn.classList.add('wrong');
+                }
+            }
+
+            container.appendChild(btn);
+        });
+    }
+
+    function updateNavButtons() {
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        prevBtn.disabled = session.currentIdx === 0;
+        if (session.currentIdx === session.order.length - 1) {
+            nextBtn.textContent = 'Finalizar';
+        } else {
+            nextBtn.textContent = 'Siguiente';
+        }
+    }
+
+    function showQuestion() {
+        if (!session) return;
+        const qData = getQuestionByIndex(session.currentIdx);
+        document.getElementById('q-idx').innerText = session.currentIdx + 1;
+        document.getElementById('q-total').innerText = session.order.length;
+        renderQuestion(qData);
+        resetHint();
+
+        const topics = {
+            ec: 'estructura de computadores',
+            so: 'sistemas operativos',
+            en: 'ingles'
+        };
+        const topic = topics[session.dataset] || 'estructura de computadores';
+        const query = `quiero que expliques a un estudiante de ${topic} el siguiente concepto: "${qData.q}"`;
+        document.getElementById('ia-btn').href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+
+        renderOptions(qData);
+        updateNavButtons();
+        updateStats();
+    }
+
+    function selectAnswer(selectedIndex) {
+        const qData = getQuestionByIndex(session.currentIdx);
+        const baseIndex = qData.baseIndex;
+        const prev = session.answers[baseIndex];
+        if (prev !== undefined) {
+            if (isCorrectIndex(prev, qData.correctIndex)) {
+                session.hits--;
+            } else {
+                session.misses--;
+            }
+        }
+        session.answers[baseIndex] = selectedIndex;
+        if (isCorrectIndex(selectedIndex, qData.correctIndex)) {
+            session.hits++;
+        } else {
+            session.misses++;
+        }
+        saveState();
+        showQuestion();
+    }
+
+    function startQuiz() {
+        document.getElementById('setup').style.display = 'none';
+        document.getElementById('quiz-game').style.display = 'block';
+        showQuestion();
+    }
+
+    async function startFromSelection(id) {
+        try {
+            await loadDataset(id);
+            updateFilterVisibility(id);
+            const saved = loadSession(id);
+            if (saved) {
+                session = saved;
+            } else {
+                buildSession(id);
+            }
+            questions = getFilteredDataset(id);
+            startQuiz();
+        } catch (err) {
+            alert('No se pudo cargar las preguntas. Intentalo de nuevo.');
+        }
+    }
+
+    function recordHistory() {
+        if (!session) return;
+        const key = getHistoryKey(session.dataset);
+        const raw = localStorage.getItem(key);
+        const history = raw ? JSON.parse(raw) : [];
+        history.push({
+            date: new Date().toISOString(),
+            hits: session.hits,
+            misses: session.misses,
+            total: session.order.length
+        });
+        localStorage.setItem(key, JSON.stringify(history));
+    }
+
+    function nextQuestion() {
+        if (!session) return;
+        if (session.currentIdx < session.order.length - 1) {
+            session.currentIdx++;
+            saveState();
+            showQuestion();
+            return;
+        }
+        if (!session.completed) {
+            session.completed = true;
+            saveState();
+            recordHistory();
+            alert(`¡Test finalizado!
+Aciertos: ${session.hits}
+Fallos: ${session.misses}`);
+        }
+    }
+
+    function prevQuestion() {
+        if (!session) return;
+        if (session.currentIdx > 0) {
+            session.currentIdx--;
+            saveState();
+            showQuestion();
+        }
+    }
+
+    function exitQuiz() {
+        saveState();
+        document.getElementById('quiz-game').style.display = 'none';
+        document.getElementById('setup').style.display = 'block';
+    }
+
+    function restartQuiz() {
+        if (!session) return;
+        recordHistory();
+        const datasetId = session.dataset;
+        buildSession(datasetId);
+        questions = getFilteredDataset(datasetId);
+        startQuiz();
+    }
+
+    function updateFilterVisibility(datasetId) {
+        const filterBar = document.getElementById('filters');
+        if (!filterBar) return;
+        if (datasetId === 'en') {
+            filterBar.style.display = 'flex';
+            const toggle = document.getElementById('toggle-vocab');
+            if (toggle) {
+                toggle.checked = hideVocabulary;
+            }
+        } else {
+            filterBar.style.display = 'none';
+        }
+    }
+
+    async function handleVocabToggle(event) {
+        hideVocabulary = event.target.checked;
+        localStorage.setItem(STORAGE_HIDE_VOCAB, hideVocabulary ? '1' : '0');
+        if (session && session.dataset === 'en') {
+            try {
+                await loadDataset('en');
+            } catch (e) {
+                alert('No se pudo recargar el dataset de inglés.');
+                return;
+            }
+            localStorage.removeItem(getStorageKey('en'));
+            buildSession('en');
+            questions = getFilteredDataset('en');
+            startQuiz();
+        }
+    }
+
+    function resetHint() {
+        const hintBox = document.getElementById('hint-box');
+        hintBox.classList.remove('visible', 'loading');
+        hintBox.textContent = '';
+    }
+
+    async function requestHint() {
+        if (!session) return;
+        const hintBox = document.getElementById('hint-box');
+        hintBox.classList.remove('visible');
+        hintBox.classList.add('loading');
+        hintBox.textContent = 'Generando pista...';
+
+        const qData = getQuestionByIndex(session.currentIdx);
+        const promptLines = [
+            'Eres un tutor. Da una pista breve (2-4 frases) basada en teoría.',
+            'No digas la respuesta ni la letra correcta.',
+            'Pregunta y opciones:',
+            `Pregunta: ${qData.q}`,
+            `Opciones: ${qData.options.map((opt, i) => `${letrasOpciones[i]}. ${opt}`).join(' | ')}`
+        ];
+        if (qData.code) {
+            promptLines.splice(4, 0, `Código:\n${qData.code}`);
+        }
+
+        const payload = {
+            contents: [{
+                role: 'user',
+                parts: [{
+                    text: promptLines.join('\n')
+                }]
+            }]
+        };
+
+        try {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!response.ok) {
+                throw new Error('No se pudo obtener la pista.');
+            }
+            const data = await response.json();
+            const text = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+            hintBox.classList.remove('loading');
+            hintBox.classList.add('visible');
+            hintBox.textContent = text || 'No se pudo generar una pista.';
+        } catch (err) {
+            hintBox.classList.remove('loading');
+            hintBox.classList.add('visible');
+            hintBox.textContent = 'No se pudo generar una pista. Inténtalo de nuevo.';
+        }
+    }
+
+    document.getElementById('load-ec').addEventListener('click', () => startFromSelection('ec'));
+    document.getElementById('load-so').addEventListener('click', () => startFromSelection('so'));
+    document.getElementById('load-en').addEventListener('click', () => startFromSelection('en'));
+    document.getElementById('exit-btn').addEventListener('click', exitQuiz);
+    document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+    const hintBtn = document.getElementById('hint-btn');
+    if (hintBtn) {
+        hintBtn.addEventListener('click', requestHint);
+    }
+    const vocabToggle = document.getElementById('toggle-vocab');
+    if (vocabToggle) {
+        vocabToggle.checked = hideVocabulary;
+        vocabToggle.addEventListener('change', handleVocabToggle);
+    }
+
+    async function resumeLastSession() {
+        const storedLast = localStorage.getItem(STORAGE_LAST_KEY);
+        if (!storedLast) return;
+        try {
+            await loadDataset(storedLast);
+        } catch (err) {
+            return;
+        }
+        if (Array.isArray(DATASETS[storedLast]) && DATASETS[storedLast].length > 0) {
+            updateFilterVisibility(storedLast);
+            const storedSession = loadSession(storedLast);
+            if (storedSession) {
+                session = storedSession;
+                questions = getFilteredDataset(storedLast);
+                startQuiz();
+            }
+        }
+    }
+
+    resumeLastSession();
+
+    window.addEventListener('beforeunload', saveState);
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<div id="start-menu" hidden
+     class="win98 absolute bottom-[36px] left-1 w-[260px] z-[45]
+            bg-white shadow-[2px_2px_10px_rgba(0,0,0,0.4)] rounded-t-md overflow-hidden">
+    <header class="px-3 py-2 text-white font-bold italic
+                   bg-gradient-to-r from-[#1941a5] via-[#245edb] to-[#3c82e0]
+                   flex items-center gap-2">
+        <span class="inline-block w-8 h-8 rounded-full bg-white/20 grid place-items-center">🧠</span>
+        <span class="text-shadow-xp">Edvard K.</span>
+    </header>
+    <nav class="p-1 bg-white">
+        {% for w in windows %}
+        <a href="{{ w.path }}"
+           data-start-link data-window="{{ w.id }}" data-url="{{ w.path }}" data-title="{{ w.title }}" data-icon="{{ w.icon }}"
+           class="flex items-center gap-3 px-2 py-1.5 text-black no-underline text-[12px]
+                  hover:bg-xp-highlight hover:text-white">
+            <span class="w-6 h-6 grid place-items-center">{% win_icon w.icon 20 %}</span>
+            <span>{{ w.title }}</span>
+        </a>
+        {% endfor %}
+    </nav>
+    <footer class="flex items-stretch bg-[#245edb] text-white">
+        <button type="button" id="shutdown-btn"
+                class="flex-1 flex items-center gap-2 px-3 py-2 hover:bg-[#3c82e0] text-left">
+            <span class="w-5 h-5 rounded-full bg-red-500 grid place-items-center text-[10px]">⏻</span>
+            <span class="text-[12px] font-bold">Shut Down…</span>
+        </button>
+    </footer>
+</div>

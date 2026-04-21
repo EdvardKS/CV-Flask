@@ -1,0 +1,28 @@
+<footer id="xp-taskbar"
+        class="win98 absolute inset-x-0 bottom-0 h-[36px] flex items-stretch gap-1 px-1 py-1
+               bg-gradient-to-b from-[#245edb] to-[#1941a5] text-white z-[40]
+               shadow-[inset_0_1px_0_rgba(255,255,255,0.4),inset_0_-1px_0_rgba(0,0,0,0.3)]"
+        role="toolbar" aria-label="Taskbar">
+    <button id="start-button" type="button"
+            class="xp-start flex items-center gap-1.5 pl-2 pr-3 rounded-[6px] font-bold italic text-white
+                   bg-gradient-to-b from-[#3cbc3c] via-[#239823] to-[#1a7a1a]
+                   shadow-[inset_0_1px_0_#a6ff9a,inset_0_-1px_0_#0b4a0b]
+                   hover:brightness-110 active:brightness-95">
+        <span class="inline-block w-4 h-4 bg-white rounded-full grid place-items-center text-[10px] text-[#1941a5]">⊞</span>
+        <span class="text-shadow-xp">start</span>
+    </button>
+
+    <div id="taskbar-tray"
+         class="flex-1 flex items-center gap-1 overflow-x-auto ml-1"
+         data-taskbar></div>
+
+    <div class="flex items-center gap-2 px-3 bg-[#0c59c6]/70
+                shadow-[inset_1px_1px_0_rgba(0,0,0,0.35),inset_-1px_-1px_0_rgba(255,255,255,0.2)]">
+        <select id="language-selector" aria-label="Language"
+                class="text-[10px] bg-white text-black border border-black px-1 py-0.5">
+            <option value="en">EN</option><option value="es">ES</option><option value="hy">HY</option>
+        </select>
+        <span id="neural-led" class="w-2 h-2 rounded-full bg-neon-green shadow-[0_0_8px_#34d399]"></span>
+        <span id="xp-clock" class="text-[11px] tabular-nums">--:--</span>
+    </div>
+</footer>

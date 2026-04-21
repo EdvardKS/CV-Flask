@@ -1,0 +1,18 @@
+/.env
+/.replit
+/.pythonlibs
+/.upm
+/.local
+/.cache
+/.ccls-cache
+replit.nix
+
+/.login (copy).html
+/.main (copy).py
+
+
+.yml
+/nginx/*
+.toml
+
+tmp_*

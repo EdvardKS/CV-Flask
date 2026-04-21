@@ -1,0 +1,19 @@
+<div id="xp-ticker"
+     class="absolute inset-x-0 bottom-[36px] h-[22px] z-[35]
+            bg-black text-neon-green font-mono text-[11px] overflow-hidden
+            border-y border-neon-green/40 shadow-[0_0_12px_rgba(52,211,153,0.35)]"
+     aria-hidden="true">
+    <div id="xp-ticker-track"
+         class="whitespace-nowrap py-1 px-3 flex items-center gap-6 animate-[ticker_40s_linear_infinite]">
+        <span data-metric="tokens" class="tabular-nums">tokens/s <b class="text-neon-cyan">1240</b></span>
+        <span data-metric="throughput" class="tabular-nums">throughput <b class="text-neon-cyan">312 MB/s</b></span>
+        <span data-metric="accuracy" class="tabular-nums">accuracy <b class="text-neon-cyan">94.2%</b></span>
+        <span data-metric="gpu" class="tabular-nums">GPU <b class="text-neon-cyan">78°C</b></span>
+        <span data-metric="latency" class="tabular-nums">p99 <b class="text-neon-cyan">42ms</b></span>
+        <span data-metric="loss" class="tabular-nums">loss <b class="text-neon-pink">0.0831</b></span>
+        <span data-metric="qps" class="tabular-nums">QPS <b class="text-neon-cyan">4.2k</b></span>
+        <span>● AI/BigData telemetry stream · <b class="text-neon-pink">LIVE</b></span>
+    </div>
+</div>
+<style>@keyframes ticker{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+.text-shadow-xp{text-shadow:1px 1px 0 rgba(0,0,0,0.6)}</style>

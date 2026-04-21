@@ -1,0 +1,8 @@
+{% extends 'core/base.html' %}
+{% block title %}Work Experience — Edvard K.{% endblock %}
+{% block window %}
+{% window_open 'experience' 'Work Experience' 'briefcase' 'open' %}
+    {% page_hero 'experience-title' 'Double-click any role for details.' %}
+    {% grid 'experience-list' %}
+{% window_close %}
+{% endblock %}
