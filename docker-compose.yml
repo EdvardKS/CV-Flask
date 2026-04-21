@@ -1,10 +1,10 @@
 services:
-  web:
+  flask:
     build:
       context: .
       dockerfile: Dockerfile
     image: edvardks-web:latest
-    container_name: edvardks-web
+    container_name: flask
     env_file: .env
     environment:
       DJANGO_SETTINGS_MODULE: config.settings.prod
@@ -14,18 +14,39 @@ services:
       SMTP_PORT: ${SMTP_PORT:-587}
       MAIL_USERNAME: ${MAIL_USERNAME}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
-    ports:
-      - "1997:8000"
+    command:
+      - sh
+      - -c
+      - |
+        python manage.py collectstatic --noinput && \
+        exec gunicorn config.wsgi:application \
+          --bind 0.0.0.0:5000 --workers 3 \
+          --access-logfile - --error-logfile -
+    expose:
+      - "5000"
     volumes:
       - ./output:/app/output
       - staticfiles:/app/staticfiles
     restart: unless-stopped
+    networks:
+      default:
+        aliases:
+          - flask
+      webproxy:
+        aliases:
+          - flask
     healthcheck:
-      test: ["CMD", "curl", "-fsS", "http://localhost:8000/robots.txt"]
+      test: ["CMD", "curl", "-fsS", "http://localhost:5000/robots.txt"]
       interval: 30s
       timeout: 5s
       retries: 3
-      start_period: 20s
+      start_period: 30s
 
 volumes:
   staticfiles:
+
+networks:
+  default:
+    name: edvardks_net
+  webproxy:
+    external: true
