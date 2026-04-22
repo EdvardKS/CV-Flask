@@ -27,6 +27,10 @@ __pycache__
 /__old
 /output
 
+# Runtime caches
+/public/news-cache
+/public/padel-data
+
 # Legacy
 /.replit
 /.pythonlibs
