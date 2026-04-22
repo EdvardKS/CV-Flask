@@ -6,6 +6,12 @@ const config: NextConfig = {
   poweredByHeader: false,
   experimental: {
     optimizePackageImports: ['framer-motion', 'zustand']
+  },
+  async rewrites() {
+    return [
+      { source: '/padel-legacy/errores', destination: '/padel-legacy/errores.html' },
+      { source: '/padel-legacy/resumen', destination: '/padel-legacy/resumen.html' }
+    ]
   }
 }
 
