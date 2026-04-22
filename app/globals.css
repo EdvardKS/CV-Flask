@@ -332,11 +332,12 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: none !important;
   border-radius: 6px;
-  color: #f4f6fb;
+  color: #f4f6fb !important;
   font-size: 12px;
+  font-family: inherit !important;
   cursor: pointer;
   overflow: hidden;
   white-space: nowrap;
@@ -344,6 +345,10 @@ html, body {
   flex-shrink: 1;
   transition: background 0.14s ease;
   position: relative;
+  box-shadow: none !important;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
 }
 .xp-taskbar-item:hover { background: rgba(255, 255, 255, 0.14); }
 .xp-taskbar-item.active { background: rgba(255, 255, 255, 0.18); }
@@ -386,6 +391,14 @@ html, body {
   height: 34px;
   color: #f4f6fb;
 }
+/* Override 98.css default beveled button look inside the tray */
+.xp-tray button,
+.xp-tray-popover button {
+  box-shadow: none !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  font-family: inherit !important;
+}
 .xp-tray-chevron,
 .xp-tray-icon {
   width: 30px;
@@ -399,7 +412,10 @@ html, body {
   align-items: center;
   justify-content: center;
   padding: 0;
+  margin: 0;
   outline: none;
+  appearance: none;
+  -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
   transition: background 0.12s ease;
 }
@@ -407,6 +423,10 @@ html, body {
 .xp-tray-icon:hover { background: rgba(255,255,255,0.12); }
 .xp-tray-chevron:active,
 .xp-tray-icon:active { background: rgba(255,255,255,0.2); }
+.xp-tray-chevron:focus,
+.xp-tray-icon:focus { outline: none; }
+.xp-tray-chevron:focus-visible,
+.xp-tray-icon:focus-visible { outline: 2px solid rgba(125, 211, 252, 0.7); outline-offset: -2px; }
 .xp-tray-icon.is-accent { color: #22d3ee; }
 .xp-tray-icon.is-accent:hover { background: rgba(34, 211, 238, 0.16); }
 /* Windows 11-style floating popover above the chevron */
@@ -458,20 +478,24 @@ html, body {
 .xp-tray-lang { font-size: 13px; }
 
 .xp-tray-clock {
-  background: transparent;
-  border: none;
-  color: inherit;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: inherit !important;
   cursor: pointer;
   padding: 3px 8px;
-  border-radius: 6px;
+  border-radius: 4px;
   margin-left: 2px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 0;
   line-height: 1.1;
-  font-family: inherit;
+  font-family: inherit !important;
   min-width: 74px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
 }
 .xp-tray-clock:hover { background: rgba(255,255,255,0.12); }
 .xp-tray-time {
