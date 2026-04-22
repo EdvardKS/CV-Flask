@@ -325,23 +325,37 @@ html, body {
   overflow-y: hidden;
 }
 .xp-taskbar-item {
-  height: 28px;
-  min-width: 150px;
-  max-width: 200px;
-  padding: 0 10px;
+  height: 32px;
+  min-width: 170px;
+  max-width: 220px;
+  padding: 0 12px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: linear-gradient(180deg, #5aa0ee, #1941a5);
-  border: 1px solid #1941a5;
-  border-radius: 3px;
-  color: #fff;
-  font-size: 11px;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 6px;
+  color: #f4f6fb;
+  font-size: 12px;
   cursor: pointer;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   flex-shrink: 1;
+  transition: background 0.14s ease;
+  position: relative;
+}
+.xp-taskbar-item:hover { background: rgba(255, 255, 255, 0.14); }
+.xp-taskbar-item.active { background: rgba(255, 255, 255, 0.18); }
+.xp-taskbar-item.active::after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background: #7dd3fc;
 }
 @media (max-width: 768px) {
   .xp-taskbar-item { min-width: 36px; max-width: 36px; padding: 0; justify-content: center; }
@@ -350,10 +364,6 @@ html, body {
 @media (max-width: 520px) {
   .xp-start-button { padding: 0 12px 0 8px; }
   .xp-start-button > span:last-child { display: none; }
-}
-.xp-taskbar-item.active {
-  background: linear-gradient(180deg, #1941a5, #3c82e0);
-  box-shadow: inset 0 0 4px rgba(0,0,0,0.4);
 }
 .xp-taskbar-tray {
   display: inline-flex;
@@ -400,18 +410,51 @@ html, body {
 .xp-tray-icon.is-accent:hover {
   background: rgba(34, 211, 238, 0.22);
 }
-.xp-tray-hidden {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  padding: 0 3px;
-  margin-right: 2px;
-  border-right: 1px solid rgba(255,255,255,0.12);
-  animation: xp-tray-pop 0.18s ease-out;
+/* Windows 11-style floating popover above the chevron */
+.xp-tray-popover {
+  position: fixed;
+  bottom: 48px;
+  right: 140px;
+  display: grid;
+  grid-template-columns: repeat(5, 32px);
+  gap: 6px;
+  padding: 10px 12px;
+  background: rgba(24, 30, 44, 0.86);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 100002;
+  animation: xp-tray-pop 0.18s cubic-bezier(0.2, 0, 0, 1);
+}
+.xp-tray-popover::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 18px;
+  width: 12px; height: 12px;
+  background: inherit;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transform: rotate(45deg);
+  backdrop-filter: inherit;
+  -webkit-backdrop-filter: inherit;
+}
+.xp-tray-popover .xp-tray-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
 }
 @keyframes xp-tray-pop {
-  from { opacity: 0; transform: translateY(2px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(8px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (max-width: 520px) {
+  .xp-tray-popover { right: 80px; grid-template-columns: repeat(4, 32px); }
+}
+@media (max-width: 380px) {
+  .xp-tray-popover { right: 8px; grid-template-columns: repeat(4, 30px); gap: 5px; padding: 8px; }
 }
 .xp-tray-lang { font-size: 13px; }
 

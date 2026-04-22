@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { useWM } from './store'
 import { iconGlyph } from './Window'
@@ -86,9 +86,25 @@ function SystemTray({ now }: { now: Date | null }) {
       }).format(now)
     : '--/--/----'
 
+  const chevronRef = useRef<HTMLButtonElement | null>(null)
+  const popoverRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (!trayExpanded) return
+    const onDown = (e: MouseEvent) => {
+      const t = e.target as Node
+      if (popoverRef.current?.contains(t)) return
+      if (chevronRef.current?.contains(t)) return
+      toggleTray()
+    }
+    document.addEventListener('mousedown', onDown)
+    return () => document.removeEventListener('mousedown', onDown)
+  }, [trayExpanded, toggleTray])
+
   return (
     <div className="xp-tray">
       <button
+        ref={chevronRef}
         className="xp-tray-chevron"
         onClick={toggleTray}
         aria-label={trayExpanded ? 'Ocultar iconos' : 'Mostrar iconos ocultos'}
@@ -100,7 +116,7 @@ function SystemTray({ now }: { now: Date | null }) {
       </button>
 
       {trayExpanded && (
-        <div className="xp-tray-hidden">
+        <div ref={popoverRef} className="xp-tray-hidden xp-tray-popover" role="dialog" aria-label="Iconos ocultos">
           <LocaleFlag />
           <TrayIcon title="Docker">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden fill="#2496ed"><path d="M22 9.5l-1.4-.3c-.5-2.3-3.2-3.2-3.3-3.3l-.4-.2-.3.4a4 4 0 00-.5 3c-.5.4-1.4.5-1.9.5H2.4c-.2 0-.4.2-.4.4 0 1.4 0 5.8 4 8a9 9 0 007.8 4c5.9 0 9.9-3.4 11.5-9.1.5 0 1.7-.5 2.4-2v-.1l-.3-.3H22zM4 9h2v2H4V9zm3 0h2v2H7V9zm3 0h2v2h-2V9zm3 0h2v2h-2V9zM7 6h2v2H7V6zm3 0h2v2h-2V6zm3 0h2v2h-2V6zm0-3h2v2h-2V3z"/></svg>
