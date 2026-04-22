@@ -102,11 +102,52 @@ function SystemTray({ now }: { now: Date | null }) {
       {trayExpanded && (
         <div className="xp-tray-hidden">
           <LocaleFlag />
-          <TrayIcon title="Docker" onClick={() => {}}>
+          <TrayIcon title="Docker">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden fill="#2496ed"><path d="M22 9.5l-1.4-.3c-.5-2.3-3.2-3.2-3.3-3.3l-.4-.2-.3.4a4 4 0 00-.5 3c-.5.4-1.4.5-1.9.5H2.4c-.2 0-.4.2-.4.4 0 1.4 0 5.8 4 8a9 9 0 007.8 4c5.9 0 9.9-3.4 11.5-9.1.5 0 1.7-.5 2.4-2v-.1l-.3-.3H22zM4 9h2v2H4V9zm3 0h2v2H7V9zm3 0h2v2h-2V9zm3 0h2v2h-2V9zM7 6h2v2H7V6zm3 0h2v2h-2V6zm3 0h2v2h-2V6zm0-3h2v2h-2V3z"/></svg>
           </TrayIcon>
-          <TrayIcon title="Update Center">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+          <TrayIcon title="Windows Update">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+              <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+            </svg>
+          </TrayIcon>
+          <TrayIcon title="Bluetooth">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <polygon points="6 18 18 6 11 6 11 18 6 14 18 14"/>
+            </svg>
+          </TrayIcon>
+          <TrayIcon title="Batería — 87%">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <rect x="1" y="7" width="18" height="10" rx="2"/>
+              <line x1="23" y1="11" x2="23" y2="13"/>
+              <rect x="3" y="9" width="13" height="6" fill="#22c55e" stroke="none"/>
+            </svg>
+          </TrayIcon>
+          <TrayIcon title="Micrófono">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+              <path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+          </TrayIcon>
+          <TrayIcon title="OneDrive">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M17.58 11a5 5 0 00-10-.58A4 4 0 005 18h12a3.5 3.5 0 00.58-7z"/>
+            </svg>
+          </TrayIcon>
+          <TrayIcon title="Ubicación">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </TrayIcon>
+          <TrayIcon title="Antivirus">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </TrayIcon>
+          <TrayIcon title="Power">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M18.36 6.64a9 9 0 11-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/>
+            </svg>
           </TrayIcon>
         </div>
       )}
@@ -118,13 +159,13 @@ function SystemTray({ now }: { now: Date | null }) {
         </svg>
       </TrayIcon>
 
-      <TrayIcon title="Wi-Fi">
+      <TrayIcon title="Wi-Fi" hideBelow={640}>
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
           <path d="M5 12.55a11 11 0 0114 0"/><path d="M1.42 9a16 16 0 0121.16 0"/>
           <path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>
         </svg>
       </TrayIcon>
-      <TrayIcon title="Volumen">
+      <TrayIcon title="Volumen" hideBelow={540}>
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
           <path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/>
@@ -145,15 +186,18 @@ function SystemTray({ now }: { now: Date | null }) {
   )
 }
 
-function TrayIcon({ title, onClick, accent, children }: {
+function TrayIcon({ title, onClick, accent, hideBelow, children }: {
   title: string
   onClick?: () => void
   accent?: boolean
+  /** Hide this icon when viewport width < hideBelow (px). */
+  hideBelow?: number
   children: React.ReactNode
 }) {
+  const hiddenClass = hideBelow ? `xp-tray-hide-below-${hideBelow}` : ''
   return (
     <button
-      className={clsx('xp-tray-icon', accent && 'is-accent')}
+      className={clsx('xp-tray-icon', accent && 'is-accent', hiddenClass)}
       onClick={onClick}
       title={title}
       aria-label={title}

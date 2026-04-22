@@ -87,21 +87,27 @@ export const useWM = create<Store>()(
         const id = `${manifest.id}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
         const zIndex = state.zTop + 1
         const vp = viewport()
-        const width = Math.min(manifest.defaultSize.width, vp.w - 32)
-        const height = Math.min(manifest.defaultSize.height, vp.h - 32)
+        const minW = manifest.minSize?.width ?? 320
+        const minH = manifest.minSize?.height ?? 240
+        // Responsive default: if the viewport is too narrow for a comfortable
+        // default size, open the window maximized (phone/tablet portrait).
+        const preferMaximized = vp.w < 820 || vp.h < 520
+        const width = Math.max(minW, Math.min(manifest.defaultSize.width, vp.w - 24))
+        const height = Math.max(minH, Math.min(manifest.defaultSize.height, vp.h - 24))
         const newWindow: WindowState = {
           id,
           appId: manifest.id,
           title: manifest.title,
           icon: manifest.icon,
-          x: pos.x,
-          y: pos.y,
-          width,
-          height,
+          x: preferMaximized ? 0 : pos.x,
+          y: preferMaximized ? 0 : pos.y,
+          width: preferMaximized ? vp.w : width,
+          height: preferMaximized ? vp.h : height,
           zIndex,
           minimized: false,
-          maximized: false,
+          maximized: preferMaximized,
           snapped: null,
+          prevBounds: preferMaximized ? { x: pos.x, y: pos.y, width, height } : undefined,
           params
         }
         set({

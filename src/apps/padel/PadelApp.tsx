@@ -6,7 +6,7 @@ export function PadelApp() {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 620, margin: '0 auto', padding: '8px 4px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 620, margin: '0 auto', padding: '8px 4px', width: '100%' }}>
       <header style={{ textAlign: 'center' }}>
         <h2 style={{ margin: 0, fontSize: 22, color: '#0a246a' }}>🏆 Padel Scout</h2>
         <p style={{ margin: '4px 0 0', color: '#555', fontSize: 13 }}>
@@ -14,7 +14,7 @@ export function PadelApp() {
         </p>
       </header>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
         <ChoiceCard
           icon="🎾"
           title="Recopilación de puntos"
