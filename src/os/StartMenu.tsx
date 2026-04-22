@@ -38,7 +38,11 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
               <div
                 key={app.id}
                 className="xp-start-menu-item"
-                onClick={() => { openApp(app); onClose() }}
+                onClick={() => {
+                  if (app.externalUrl) window.open(app.externalUrl, '_blank', 'noopener,noreferrer')
+                  else openApp(app)
+                  onClose()
+                }}
               >
                 <span className="icon" aria-hidden>{iconGlyph(app.icon)}</span>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>

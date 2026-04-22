@@ -37,5 +37,6 @@ export type AppManifest = {
   singleton?: boolean
   deepLink?: string
   description?: string
+  externalUrl?: string    // If set, double-click opens this URL in a new tab (no window).
   Component: ComponentType<{ params?: WindowState['params'] }>
 }

@@ -6,6 +6,8 @@ import contactManifest from './contact/manifest'
 import quizManifest from './quiz/manifest'
 import padelManifest from './padel/manifest'
 import aboutManifest from './about/manifest'
+import linkedinManifest from './linkedin/manifest'
+import githubManifest from './github/manifest'
 
 export const APPS: AppManifest[] = [
   cvManifest,
@@ -13,6 +15,8 @@ export const APPS: AppManifest[] = [
   quizManifest,
   padelManifest,
   contactManifest,
+  linkedinManifest,
+  githubManifest,
   aboutManifest
 ]
 

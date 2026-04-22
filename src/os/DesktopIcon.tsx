@@ -12,7 +12,13 @@ export function DesktopIcon({ manifest, selected, onSelect }: {
 }) {
   const openApp = useWM(s => s.openApp)
 
-  const open = () => openApp(manifest)
+  const open = () => {
+    if (manifest.externalUrl) {
+      window.open(manifest.externalUrl, '_blank', 'noopener,noreferrer')
+      return
+    }
+    openApp(manifest)
+  }
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
