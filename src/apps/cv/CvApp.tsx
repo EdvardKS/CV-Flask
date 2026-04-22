@@ -5,9 +5,8 @@ import { loadCVData, pickLocalized, type CVData } from '@lib/cv-data'
 import { useLocale, useT } from '@lib/i18n/config'
 import { Timeline, type TimelineNode } from './Timeline'
 import { SkillsChart } from './SkillsChart'
+import { ProjectsGrid } from '@apps/projects/ProjectsGrid'
 import type { Locale } from '@os/types'
-import { useWM } from '@os/store'
-import { APPS_BY_ID } from '@apps/_registry'
 
 type Tab = 'summary' | 'experience' | 'education' | 'skills' | 'projects'
 
@@ -162,116 +161,6 @@ function SkillsTab({ data, locale }: { data: CVData; locale: Locale }) {
   )
 }
 
-/**
- * Map project.url values from cv_data.json to a local app id
- * (optionally with deep-link params) so clicks open an OS window rather
- * than reloading the page. Anything unknown falls back to external nav.
- */
-function resolveInternal(url: string | undefined | null): { appId: string; params?: Record<string, string> } | null {
-  if (!url || !url.startsWith('/')) return null
-  const clean = url.split('?')[0].replace(/\/$/, '') || '/'
-  if (clean === '/' || clean === '/cv') return { appId: 'cv' }
-  if (clean === '/padel' || clean === '/padel/errores' || clean === '/padel/resumen') return { appId: 'padel' }
-  if (clean === '/projects') return { appId: 'projects' }
-  if (clean === '/contact') return { appId: 'contact' }
-  if (clean === '/quiz') return { appId: 'quiz' }
-  if (clean === '/ECSO' || clean === '/ecso') return { appId: 'quiz', params: { subject: 'estructura' } }
-  if (clean.startsWith('/quiz/')) return { appId: 'quiz', params: { subject: clean.slice('/quiz/'.length) } }
-  return null
-}
-
-const PROJECT_GITHUB: Record<string, string> = {
-  'Padel Scout': 'https://github.com/EdvardKS/CV-Flask',
-  'Personal CV Site': 'https://github.com/EdvardKS/CV-Flask',
-  'ECSO / Sistemas Operativos': 'https://github.com/EdvardKS/CV-Flask'
-}
-
-function ProjectsTab({ data, locale }: { data: CVData; locale: Locale }) {
-  const openApp = useWM(s => s.openApp)
-
-  const openProject = (url: string | undefined) => {
-    const internal = resolveInternal(url)
-    if (internal) {
-      const manifest = APPS_BY_ID[internal.appId]
-      if (manifest) { openApp(manifest, internal.params); return }
-    }
-    if (url) window.open(url, '_blank', 'noopener,noreferrer')
-  }
-
-  return (
-    <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 10 }}>
-      {data.translations.projects.entries.map((p, i) => {
-        const name = pickLocalized(p.name, locale)
-        const tags = Array.isArray(p.tags) ? p.tags : (pickLocalized(p.tags, locale) ?? '').split(',').map(s => s.trim())
-        const internal = resolveInternal(p.url)
-        const githubUrl = PROJECT_GITHUB[name] ?? (typeof p.url === 'string' && /github\.com/.test(p.url) ? p.url : null)
-
-        return (
-          <li key={i} style={{ border: '1px solid #d0d7de', padding: 12, background: '#fff', borderRadius: 6 }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-              <strong style={{ color: '#0969da', fontSize: 14, flex: 1 }}>
-                <button
-                  onClick={() => openProject(p.url)}
-                  style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', font: 'inherit', cursor: 'pointer', textAlign: 'left' }}
-                >
-                  {name}
-                </button>
-              </strong>
-            </div>
-            <p style={{ margin: '6px 0' }}>{pickLocalized(p.description, locale)}</p>
-            <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', marginBottom: 10 }}>
-              {tags.filter(Boolean).map((t, j) => (
-                <span key={j} className="gh-tl-badge-item">{t}</span>
-              ))}
-            </div>
-            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-              {internal && (
-                <button onClick={() => openProject(p.url)} style={primaryBtn}>
-                  🪟 Abrir ventana
-                </button>
-              )}
-              {githubUrl && (
-                <a href={githubUrl} target="_blank" rel="noopener noreferrer" style={secondaryBtn}>
-                  <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden><path d="M10 1a9 9 0 00-2.85 17.54c.45.08.62-.19.62-.43v-1.7c-2.51.54-3.04-1.2-3.04-1.2-.41-1.04-1-1.32-1-1.32-.82-.56.06-.55.06-.55.9.06 1.38.93 1.38.93.8 1.37 2.11.97 2.63.74.08-.59.31-.98.57-1.2-1.99-.23-4.08-.99-4.08-4.41 0-.97.34-1.77.9-2.39-.09-.23-.39-1.14.09-2.37 0 0 .74-.24 2.42.91a8.42 8.42 0 014.4 0c1.68-1.15 2.42-.91 2.42-.91.48 1.23.18 2.14.09 2.37.56.62.9 1.42.9 2.39 0 3.43-2.09 4.18-4.08 4.4.32.28.6.82.6 1.66v2.46c0 .24.17.52.63.43A9 9 0 0010 1z"/></svg>
-                  &nbsp;GitHub
-                </a>
-              )}
-              {!internal && !githubUrl && p.url && (
-                <a href={p.url} target="_blank" rel="noopener noreferrer" style={secondaryBtn}>
-                  Visitar ↗
-                </a>
-              )}
-            </div>
-          </li>
-        )
-      })}
-    </ul>
-  )
-}
-
-const primaryBtn: React.CSSProperties = {
-  padding: '6px 12px',
-  background: '#1f883d',
-  color: '#fff',
-  border: '1px solid rgba(27,31,36,0.15)',
-  borderRadius: 6,
-  cursor: 'pointer',
-  fontSize: 12,
-  fontWeight: 600,
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: 4
-}
-const secondaryBtn: React.CSSProperties = {
-  padding: '6px 12px',
-  background: '#f6f8fa',
-  color: '#24292f',
-  border: '1px solid #d0d7de',
-  borderRadius: 6,
-  textDecoration: 'none',
-  fontSize: 12,
-  fontWeight: 600,
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: 0
+function ProjectsTab(_: { data: CVData; locale: Locale }) {
+  return <ProjectsGrid />
 }

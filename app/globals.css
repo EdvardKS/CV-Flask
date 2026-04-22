@@ -932,6 +932,147 @@ html, body {
 .gh-tl-body ul { margin: 4px 0 0 18px; padding: 0; }
 
 /* ============================================================
+   Projects grid (shared by CvApp tab and Projects window)
+   ============================================================ */
+.gh-projects-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+.gh-project-card {
+  background: #fff;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.gh-project-card:hover {
+  box-shadow: 0 8px 24px rgba(9, 105, 218, 0.12);
+  transform: translateY(-2px);
+  border-color: #0969da;
+}
+.gh-project-head {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.gh-project-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ddf4ff, #b3e0ff);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex: 0 0 36px;
+  border: 1px solid #b3e0ff;
+}
+.gh-project-title-wrap { flex: 1; min-width: 0; }
+.gh-project-title {
+  font-size: 14px;
+  color: #0969da;
+  line-height: 1.25;
+  word-break: break-word;
+}
+.gh-project-title-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.gh-project-title-btn:hover { text-decoration: underline; }
+.gh-project-meta {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+.gh-project-pill {
+  font-size: 10px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.gh-project-pill.is-public {
+  background: #eaeef2;
+  color: #57606a;
+  border-color: #d0d7de;
+}
+.gh-project-pill.is-private {
+  background: #fff8c5;
+  color: #9a6700;
+  border-color: #eac54f;
+}
+.gh-project-pill.is-live {
+  background: rgba(46,160,67,0.12);
+  color: #1a7f37;
+  border-color: rgba(46,160,67,0.4);
+}
+.gh-project-desc {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #1f2328;
+  flex: 1;
+}
+.gh-project-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.gh-project-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.gh-project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-family: inherit;
+}
+.gh-project-btn.primary {
+  background: #1f883d;
+  color: #fff;
+  border-color: rgba(27,31,36,0.15);
+}
+.gh-project-btn.primary:hover { background: #1a7f37; }
+.gh-project-btn.secondary {
+  background: #f6f8fa;
+  color: #57606a;
+  border-color: #d0d7de;
+  cursor: not-allowed;
+}
+.gh-project-btn.ghost {
+  background: transparent;
+  color: #57606a;
+  border-color: #d0d7de;
+  padding: 6px 8px;
+}
+.gh-project-btn.ghost:hover { background: #f6f8fa; color: #24292f; }
+
+/* ============================================================
    Skills chart (radar + category cards)
    ============================================================ */
 .skills-wrap {

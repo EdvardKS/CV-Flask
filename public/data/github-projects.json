@@ -1,0 +1,87 @@
+[
+  {
+    "id": "ragasus",
+    "name": "ragasus",
+    "icon": "🍣",
+    "url": "https://github.com/EdvardKS/ragasus",
+    "private": true,
+    "description": "Monorepo fullstack para BI conversacional: SQL Server read-only + Ollama local en LAN + RAG con PostgreSQL + pgvector. Backend NestJS modular y frontend Next.js App Router.",
+    "tags": ["NestJS", "Next.js", "Ollama", "pgvector", "RAG", "BI"]
+  },
+  {
+    "id": "chickenmanagement",
+    "name": "ChickenManagement",
+    "icon": "🐔",
+    "url": "https://github.com/EdvardKS/ChickenManagement",
+    "private": true,
+    "description": "App fullstack de gestión (Next.js + Express + Radix UI) con Dockerfile y docker-compose. Cliente y servidor en el mismo monorepo con tipos compartidos.",
+    "tags": ["Next.js", "Express", "TypeScript", "Docker", "Radix UI"]
+  },
+  {
+    "id": "cv-flask",
+    "name": "CV-Flask",
+    "icon": "🖥️",
+    "url": "https://github.com/EdvardKS/CV-Flask",
+    "internal": "/",
+    "description": "Este mismo sitio: portfolio interactivo estilo Windows 11 con window manager, AI chat (Ollama), notificaciones en vivo, padel scout y quizzes. Next.js 15 + TypeScript.",
+    "tags": ["Next.js", "TypeScript", "Ollama", "Docker", "React", "Zustand"]
+  },
+  {
+    "id": "teriyaki",
+    "name": "teriyaki-v1.7",
+    "icon": "🍥",
+    "url": "https://github.com/EdvardKS/teriyaki-v1.7",
+    "description": "Microservicio RAG privado en su versión 1.7 con soporte para Qdrant y modelos Open Source locales. Stack cerrado, pensado para empresas con datos sensibles.",
+    "tags": ["RAG", "Qdrant", "LLM", "Jupyter", "Privacy"]
+  },
+  {
+    "id": "agentic-pdf-pipeline",
+    "name": "agentic-pdf-pipeline",
+    "icon": "📑",
+    "url": "https://github.com/EdvardKS/agentic-pdf-pipeline",
+    "description": "Pipeline agentic para ingesta de PDFs: orquestación con LangGraph y agentes especializados (CrewAI) para clasificar, extraer y validar datos estructurados.",
+    "tags": ["LangGraph", "CrewAI", "Agentic AI", "Python", "RAG"]
+  },
+  {
+    "id": "formularioweb",
+    "name": "FormularioWebConValidacion",
+    "icon": "📝",
+    "url": "https://github.com/EdvardKS/FormularioWebConValidacion",
+    "private": true,
+    "description": "Formulario web con validación en cliente y servidor — patrones reutilizables de UX de entrada de datos y reglas de negocio.",
+    "tags": ["Web", "Validation", "UX", "Forms"]
+  },
+  {
+    "id": "kuberagent",
+    "name": "kuberagent",
+    "icon": "⎈",
+    "url": "https://github.com/EdvardKS/kuberagent",
+    "description": "Agente de IA orientado a Kubernetes: interacción conversacional con clusters K8s para diagnóstico, observability y operaciones.",
+    "tags": ["Kubernetes", "Agentic AI", "Python", "DevOps"]
+  },
+  {
+    "id": "basketball-tournaments",
+    "name": "basketballtournaments",
+    "icon": "🏀",
+    "url": "https://github.com/EdvardKS/basketballtournaments",
+    "private": true,
+    "description": "Gestor de torneos de baloncesto: calendarios, fases eliminatorias, clasificaciones y estadísticas.",
+    "tags": ["Fullstack", "Sports", "Tournaments"]
+  },
+  {
+    "id": "lavbotdocker",
+    "name": "LavBotDocker",
+    "icon": "🧺",
+    "url": "https://github.com/EdvardKS/LavBotDocker",
+    "description": "Stack RAG containerizado modular: pipeline de ingest section-aware (PDF → chunks token-safe → embeddings deduplicados) indexando en Qdrant con metadata rica, capa FastAPI y Dockerfiles swap-able CPU/GPU.",
+    "tags": ["RAG", "Qdrant", "FastAPI", "Docker", "Python", "LLM"]
+  },
+  {
+    "id": "miyo",
+    "name": "miyo",
+    "icon": "📸",
+    "url": "https://github.com/EdvardKS/miyo",
+    "description": "Red social para compartir eventos: los invitados suben sus fotos y se guardan todas en el álbum común del evento.",
+    "tags": ["JavaScript", "Social", "Events", "Photos"]
+  }
+]
