@@ -1,33 +1,26 @@
-ARG BASE_IMAGE=iaconedu-db:latest
-FROM ${BASE_IMAGE}
-
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    PIP_NO_CACHE_DIR=1 \
-    DJANGO_SETTINGS_MODULE=config.settings.prod \
-    PORT=8000 \
-    VIRTUAL_ENV=/opt/venv \
-    PATH=/opt/venv/bin:$PATH
-
+# syntax=docker/dockerfile:1.6
+FROM node:20-alpine AS deps
 WORKDIR /app
+RUN corepack enable
+COPY package.json pnpm-lock.yaml* ./
+RUN pnpm install --frozen-lockfile || pnpm install
 
-RUN apk add --no-cache python3 py3-pip ca-certificates \
-    && python3 -m venv /opt/venv \
-    && adduser -D -g "" appuser
+FROM node:20-alpine AS builder
+WORKDIR /app
+RUN corepack enable
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN pnpm build
 
-COPY req.txt /app/req.txt
-RUN pip install --upgrade pip \
-    && pip install -r /app/req.txt
-
-COPY . /app
-
-RUN mkdir -p /app/staticfiles /app/output /app/data \
-    && python manage.py collectstatic --noinput \
-    && chown -R appuser:appuser /app
-
-USER appuser
-
-EXPOSE 8000
-
-CMD ["sh", "-c", "python manage.py migrate --noinput && exec gunicorn config.wsgi:application --bind 0.0.0.0:${PORT} --workers ${GUNICORN_WORKERS:-3} --timeout ${GUNICORN_TIMEOUT:-60} --access-logfile - --error-logfile -"]
+FROM node:20-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+USER nextjs
+EXPOSE 3000
+ENV PORT=3000 HOSTNAME=0.0.0.0
+CMD ["node", "server.js"]

@@ -1,40 +1,21 @@
-# VCS
+node_modules
+.next
 .git
 .gitignore
 .gitattributes
-
-# Python
-__pycache__
-*.pyc
-*.pyo
-*.pyd
-.venv
-venv
-
-# Django
-*.sqlite3
-staticfiles/
-/output/*
-
-# Env (loaded via env_file in compose, not baked into image)
 .env
 .env.local
 .env.*.local
-
-# Legacy / dev junk
+Dockerfile
+docker-compose.yml
 __old
-.replit
-.pythonlibs
-.upm
-.cache
-.ccls-cache
-replit.nix
-
-# Editor / OS
+__old_django
+__pycache__
+output
+coverage
+*.log
+*.md
 .vscode
 .idea
 .DS_Store
 Thumbs.db
-
-# Build / docs
-*.md

@@ -1,26 +1,17 @@
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        BASE_IMAGE: iaconedu-db:latest
+    build: .
     image: edvardks-portfolio:prod
-    container_name: flask
+    container_name: edvardks-portfolio
     restart: unless-stopped
+    ports:
+      - "5000:3000"
+    environment:
+      NODE_ENV: production
     env_file:
       - .env
-    environment:
-      DJANGO_SETTINGS_MODULE: config.settings.prod
-      ALLOWED_HOSTS: localhost,127.0.0.1,flask
-      SQLITE_DB_PATH: /app/data/db.sqlite3
-      PORT: 8000
-      GUNICORN_WORKERS: 3
-      GUNICORN_TIMEOUT: 60
-    ports:
-      - "5000:8000"
     volumes:
-      - app_data:/app/data
+      - padel_data:/app/public/padel-data
 
 volumes:
-  app_data:
+  padel_data:

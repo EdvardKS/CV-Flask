@@ -1,4 +1,33 @@
-/.env
+# Next.js
+/node_modules
+/.next
+/out
+/build
+/dist
+/coverage
+
+# Env
+.env
+.env.local
+.env*.local
+
+# Editor
+.DS_Store
+*.log
+.vscode/*
+!.vscode/extensions.json
+
+# Python leftovers
+__pycache__
+.pytest_cache
+*.pyc
+
+# Local archives (kept on disk, not in VCS)
+/__old_django
+/__old
+/output
+
+# Legacy
 /.replit
 /.pythonlibs
 /.upm
@@ -6,13 +35,4 @@
 /.cache
 /.ccls-cache
 replit.nix
-
-/.login (copy).html
-/.main (copy).py
-
-
-.yml
-/nginx/*
-.toml
-
 tmp_*
