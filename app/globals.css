@@ -388,28 +388,27 @@ html, body {
 }
 .xp-tray-chevron,
 .xp-tray-icon {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border: none;
   background: transparent;
   color: inherit;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
   transition: background 0.12s ease;
 }
 .xp-tray-chevron:hover,
-.xp-tray-icon:hover { background: rgba(255,255,255,0.15); }
-.xp-tray-icon.is-accent {
-  color: #22d3ee;
-  background: rgba(34, 211, 238, 0.12);
-}
-.xp-tray-icon.is-accent:hover {
-  background: rgba(34, 211, 238, 0.22);
-}
+.xp-tray-icon:hover { background: rgba(255,255,255,0.12); }
+.xp-tray-chevron:active,
+.xp-tray-icon:active { background: rgba(255,255,255,0.2); }
+.xp-tray-icon.is-accent { color: #22d3ee; }
+.xp-tray-icon.is-accent:hover { background: rgba(34, 211, 238, 0.16); }
 /* Windows 11-style floating popover above the chevron */
 .xp-tray-popover {
   position: fixed;
@@ -444,7 +443,7 @@ html, body {
 .xp-tray-popover .xp-tray-icon {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 @keyframes xp-tray-pop {
   from { opacity: 0; transform: translateY(8px) scale(0.94); }
@@ -500,7 +499,7 @@ html, body {
   .xp-tray-clock { min-width: auto; padding: 3px 4px; }
   .xp-tray-time { font-size: 11px; }
   .xp-tray-date { font-size: 10px; }
-  .xp-tray-icon, .xp-tray-chevron { width: 24px; height: 24px; border-radius: 5px; }
+  .xp-tray-icon, .xp-tray-chevron { width: 26px; height: 26px; border-radius: 3px; }
 }
 @media (max-width: 380px) {
   .xp-tray-date { display: none; }
