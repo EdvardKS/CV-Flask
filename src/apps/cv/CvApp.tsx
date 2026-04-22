@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { loadCVData, pickLocalized, type CVData } from '@lib/cv-data'
 import { useLocale, useT } from '@lib/i18n/config'
 import { Timeline, type TimelineNode } from './Timeline'
+import { SkillsChart } from './SkillsChart'
 import type { Locale } from '@os/types'
 import { useWM } from '@os/store'
 import { APPS_BY_ID } from '@apps/_registry'
@@ -139,34 +140,24 @@ function EducationTab({ data, locale }: { data: CVData; locale: Locale }) {
 }
 
 function SkillsTab({ data, locale }: { data: CVData; locale: Locale }) {
-  // skills.list is { en | es | hy : "comma-separated string" }
   const raw = pickLocalized(data.translations.skills.list as unknown as Record<string, string>, locale)
-  const items = raw
-    ? raw.split(/[,•;|]/).map(s => s.trim()).filter(Boolean)
-    : []
-  if (items.length === 0) return <p style={{ color: '#888' }}>Sin habilidades registradas.</p>
+  const extra = raw ? raw.split(/[,•;|]/).map(s => s.trim()).filter(Boolean) : []
+
   return (
-    <div>
-      <p style={{ margin: '0 0 10px', color: '#444' }}>
-        {items.length} habilidades.
-      </p>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-        {items.map((s, i) => (
-          <span
-            key={i}
-            style={{
-              fontSize: 12,
-              background: 'linear-gradient(180deg, #0a246a, #1941a5)',
-              color: '#fff',
-              padding: '4px 10px',
-              borderRadius: 999,
-              boxShadow: '0 1px 2px rgba(0,0,0,0.15)'
-            }}
-          >
-            {s}
-          </span>
-        ))}
-      </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <SkillsChart />
+      {extra.length > 0 && (
+        <details style={{ background: '#fff', border: '1px solid #d0d7de', borderRadius: 8, padding: '8px 12px' }}>
+          <summary style={{ cursor: 'pointer', fontWeight: 600, color: '#0f172a' }}>
+            Stack completo declarado en CV ({extra.length})
+          </summary>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 8 }}>
+            {extra.map((s, i) => (
+              <span key={i} className="gh-tl-badge-item">{s}</span>
+            ))}
+          </div>
+        </details>
+      )}
     </div>
   )
 }
