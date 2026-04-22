@@ -60,14 +60,17 @@ export function NewsAside() {
   return (
     <aside className={clsx('news-aside', collapsed && 'is-collapsed')}>
       <header className="news-head">
-        <span className="news-title">📰 Noticias</span>
+        <div className="news-title-block">
+          <span className="news-title">Notificaciones</span>
+          {!collapsed && <span className="news-subtitle">{formatDateHeader()}</span>}
+        </div>
         <button
           className="news-collapse-btn"
           onClick={toggle}
-          aria-label={collapsed ? 'Expandir noticias' : 'Colapsar noticias'}
-          title={collapsed ? 'Expandir' : 'Colapsar'}
+          aria-label={collapsed ? 'Expandir panel' : 'Cerrar panel'}
+          title={collapsed ? 'Expandir' : 'Cerrar'}
         >
-          {collapsed ? '›' : '‹'}
+          {collapsed ? '‹' : '›'}
         </button>
       </header>
 
@@ -138,6 +141,14 @@ export function NewsAside() {
       )}
     </aside>
   )
+}
+
+function formatDateHeader(): string {
+  try {
+    return new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })
+      .format(new Date())
+      .replace(/^\w/, c => c.toUpperCase())
+  } catch { return new Date().toLocaleDateString() }
 }
 
 function relative(iso: string): string {

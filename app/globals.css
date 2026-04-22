@@ -361,16 +361,13 @@ html, body {
 /* Desktop icons */
 .xp-icon-grid {
   position: absolute;
-  top: 80px;
-  left: 308px;
+  top: 16px;
+  left: 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
   width: 92px;
   z-index: 10;
-}
-@media (max-width: 900px) {
-  .xp-icon-grid { left: 16px; top: 16px; }
 }
 .xp-icon {
   display: flex;
@@ -480,64 +477,76 @@ html, body {
    ============================================================ */
 .news-aside {
   position: absolute;
-  left: 12px;
+  right: 12px;
   top: 80px;
   bottom: 200px;
-  width: 280px;
+  width: 320px;
   z-index: 6;
-  background: rgba(10, 20, 48, 0.65);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(34, 211, 238, 0.35);
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  color: #e0f2fe;
+  background: rgba(18, 24, 38, 0.72);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0,0,0,0.25);
+  color: #e7ecf3;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: width 0.25s ease;
+  transition: width 0.25s cubic-bezier(0.2, 0, 0, 1), transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+  transform: translateX(0);
+  animation: news-slide-in 0.35s cubic-bezier(0.2, 0, 0, 1);
+}
+@keyframes news-slide-in {
+  from { transform: translateX(120%); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
 }
 .news-aside.is-collapsed {
-  width: 36px;
-  background: rgba(10, 20, 48, 0.55);
+  width: 44px;
+  background: rgba(18, 24, 38, 0.6);
 }
 .news-aside.is-collapsed .news-title { display: none; }
 .news-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  background: linear-gradient(90deg, rgba(34,211,238,0.15), rgba(168,85,247,0.15));
-}
-.news-title { font-weight: 600; font-size: 13px; letter-spacing: 0.03em; }
-.news-collapse-btn {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #e0f2fe;
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 1;
 }
-.news-collapse-btn:hover { background: rgba(255,255,255,0.08); }
+.news-title-block { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.news-title { font-weight: 600; font-size: 14px; letter-spacing: 0.01em; color: #f4f6fb; }
+.news-subtitle { font-size: 11px; color: #9aa3b2; letter-spacing: 0.01em; }
+.news-collapse-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #e7ecf3;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.news-collapse-btn:hover { background: rgba(255,255,255,0.12); }
 
 .news-profile {
   display: flex;
-  gap: 8px;
-  padding: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  background: rgba(10,102,194,0.12);
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
 }
 .news-profile img {
-  width: 38px; height: 38px;
+  width: 40px; height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(34,211,238,0.5);
+  border: 2px solid rgba(255,255,255,0.1);
   background: #0b1530;
-  flex: 0 0 38px;
+  flex: 0 0 40px;
 }
 .news-profile div { display: flex; flex-direction: column; min-width: 0; gap: 2px; }
 .news-profile strong { font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -586,13 +595,20 @@ html, body {
 
 .news-item {
   display: flex;
-  gap: 8px;
-  padding: 6px 4px;
-  border-radius: 4px;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
   position: relative;
+  margin: 3px 4px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
 }
-.news-item + .news-item { border-top: 1px solid rgba(255,255,255,0.06); }
-.news-item:hover { background: rgba(255,255,255,0.04); }
+.news-item:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.1);
+  transform: translateX(-2px);
+}
 .news-dot {
   flex: 0 0 20px;
   width: 20px; height: 20px;
