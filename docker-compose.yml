@@ -12,6 +12,8 @@ services:
       - .env
     volumes:
       - padel_data:/app/public/padel-data
+      - news_cache:/app/public/news-cache
 
 volumes:
   padel_data:
+  news_cache:
