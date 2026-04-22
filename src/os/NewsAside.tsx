@@ -13,6 +13,7 @@ type NewsItem = {
   at: string
   repo?: string
   avatar?: string
+  tags?: string[]
 }
 type Feed = {
   updatedAt: string
@@ -132,6 +133,13 @@ export function NewsAside() {
                 >
                   <strong>{it.title}</strong>
                   {it.detail && <span className="news-detail">{it.detail}</span>}
+                  {it.tags && it.tags.length > 0 && (
+                    <span className="news-tags">
+                      {it.tags.slice(0, 4).map(t => (
+                        <span key={t} className="news-tag">#{t}</span>
+                      ))}
+                    </span>
+                  )}
                   <span className="news-when">{relative(it.at)}</span>
                 </a>
               </li>

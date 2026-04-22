@@ -56,13 +56,14 @@ function rawGet(url: string, headers: Record<string, string> = {}, maxRedirects 
 export type NewsItem = {
   id: string
   source: 'github' | 'linkedin'
-  kind: string            // 'PushEvent', 'CreateEvent', 'profile', …
+  kind: string            // 'PushEvent', 'CreateEvent', 'profile', 'post', 'certification', 'recommendation'
   title: string
   detail?: string
   url?: string
   at: string              // ISO timestamp
   repo?: string
   avatar?: string
+  tags?: string[]
 }
 
 export type NewsFeed = {
@@ -240,12 +241,42 @@ async function fetchLinkedInProfile(): Promise<{ items: NewsItem[]; profile?: Ne
   }
 }
 
+async function loadCuratedLinkedIn(): Promise<NewsItem[]> {
+  try {
+    const file = path.join(process.cwd(), 'public', 'data', 'linkedin-posts.json')
+    const raw = await fs.readFile(file, 'utf8')
+    const parsed = JSON.parse(raw) as Array<{
+      id: string; at: string; title: string; detail?: string; url?: string; tags?: string[]; kind?: string
+    }>
+    return parsed.map(p => ({
+      id: p.id,
+      source: 'linkedin' as const,
+      kind: p.kind ?? 'post',
+      title: p.title,
+      detail: p.detail,
+      url: p.url ?? LINKEDIN_URL,
+      at: p.at,
+      tags: p.tags
+    }))
+  } catch (e) {
+    console.warn('[news] curated linkedin posts missing:', e)
+    return []
+  }
+}
+
 export async function buildFeed(): Promise<NewsFeed> {
   const errors: string[] = []
-  const [gh, li] = await Promise.all([fetchGitHubEvents(), fetchLinkedInProfile()])
+  const [gh, li, curated] = await Promise.all([
+    fetchGitHubEvents(),
+    fetchLinkedInProfile(),
+    loadCuratedLinkedIn()
+  ])
   if (gh.error) errors.push(`github: ${gh.error}`)
   if (li.error) errors.push(`linkedin: ${li.error}`)
-  const items = [...li.items, ...gh.items].sort((a, b) => b.at.localeCompare(a.at))
+  // LinkedIn blocks anonymous scraping of activity/posts; merge the curated
+  // list (maintained manually from the user's actual LinkedIn feed) with any
+  // profile snippet that might have come through OG meta.
+  const items = [...li.items, ...curated, ...gh.items].sort((a, b) => b.at.localeCompare(a.at))
   return {
     updatedAt: new Date().toISOString(),
     ok: items.length > 0,

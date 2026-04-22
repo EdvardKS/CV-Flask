@@ -1,0 +1,58 @@
+[
+  {
+    "id": "li-post-rag-langgraph",
+    "at": "2026-03-22T12:00:00Z",
+    "title": "Pipeline RAG para indexar PDFs con OCR automático usando LangGraph",
+    "detail": "RAG local para documentos PDF orquestado con LangGraph: dedupe sha256, OCR vision fallback, ingestion manifiestos, chat conversacional sobre los docs.",
+    "tags": ["AI", "RAG", "LLM", "Ollama", "LangGraph", "MLOps", "Privacy"]
+  },
+  {
+    "id": "li-post-fabric-cuadernos",
+    "at": "2026-02-22T09:00:00Z",
+    "title": "Badge: Explorar datos sobre la ciencia de datos con cuadernos en Microsoft Fabric",
+    "detail": "Continuando el itinerario de Microsoft Learn sobre ciencia de datos en Fabric.",
+    "tags": ["Microsoft Fabric", "Data Science"]
+  },
+  {
+    "id": "li-post-fabric-intro",
+    "at": "2026-02-21T09:00:00Z",
+    "title": "Badge: Introducción a la ciencia de datos en Microsoft Fabric",
+    "detail": "@MicrosoftLearn — fundamentos de ciencia de datos en el stack Fabric.",
+    "tags": ["Microsoft Fabric", "Data Science"]
+  },
+  {
+    "id": "li-post-coconut-teriyaki",
+    "at": "2025-09-22T12:00:00Z",
+    "title": "Teriyaki v1.7 + Coconut v1.0 — RAG privado con Qdrant",
+    "detail": "Microservicio RAG propio, ahora con Qdrant y primer servicio corriendo sobre modelo Open Source. Objetivo: stack 100% offline para empresas sensibles a privacidad.",
+    "tags": ["AI", "RAG", "Qdrant", "OpenSource", "LLM", "Privacy", "DataSecurity"]
+  },
+  {
+    "id": "li-post-rag-chatbot",
+    "at": "2025-07-22T12:00:00Z",
+    "title": "Chatbot RAG sobre datos de empresa — OpenAI + LangChain + Docker",
+    "detail": "Implementación de chatbot basado en RAG para Navegatel: LangChain + OpenAI, Docker para duplicar bots por cliente, acceso restringido por IP:puerto. Posibilidad de clúster con Qdrant.",
+    "tags": ["AI", "RAG", "LangChain", "OpenAI", "Chatbots", "Docker"]
+  },
+  {
+    "id": "li-reco-sergio",
+    "at": "2024-06-18T12:00:00Z",
+    "title": "Recomendación recibida de Sergio Aparicio (profesor IES Abastos)",
+    "detail": "Testigo de su notable desempeño en IA y Big Data durante el curso 23/24 en IES Abastos. Destaca curiosidad, creatividad y proyecto de IA de predicción financiera en Forex.",
+    "tags": ["Recomendación", "IA", "Big Data"]
+  },
+  {
+    "id": "li-cert-vibecoding",
+    "at": "2026-03-01T00:00:00Z",
+    "title": "Certificación: Vibe Coding L2 Silver (Lovable)",
+    "detail": "Nivel L2 Silver en Vibe Coding con la plataforma Lovable.",
+    "tags": ["Certificación", "Vibe Coding"]
+  },
+  {
+    "id": "li-cert-udacity-nanodegree",
+    "at": "2024-08-01T00:00:00Z",
+    "title": "Udacity Nanodegree: AI Programming with Python",
+    "detail": "NLP y visualización de datos. Credential ID abae816e-2dce-11ef-ab44-a3d071e8ff9a.",
+    "tags": ["Certificación", "Udacity", "Python", "AI", "NLP"]
+  }
+]

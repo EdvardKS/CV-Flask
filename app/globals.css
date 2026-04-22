@@ -652,6 +652,20 @@ html, body {
   color: #64748b;
   margin-top: 2px;
 }
+.news-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 3px;
+}
+.news-tag {
+  font-size: 9px;
+  color: #7dd3fc;
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  padding: 1px 6px;
+  border-radius: 999px;
+}
 .news-empty {
   padding: 14px;
   text-align: center;
