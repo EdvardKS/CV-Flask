@@ -1,5 +1,40 @@
 [
   {
+    "id": "li-post-k8s-openshift",
+    "at": "2026-04-05T12:00:00Z",
+    "title": "Enterprise AI Deployment con Kubernetes, OpenShift y DockerCompose para LLMs a escala",
+    "detail": "Arquitecturas de despliegue AI para producción: K8s + OpenShift para orquestación, DockerCompose para desarrollo, GenAI + RAG + MLOps extremo a extremo.",
+    "tags": ["Kubernetes", "OpenShift", "DockerCompose", "GenAI", "RAG", "MLOps", "AgenticAI"]
+  },
+  {
+    "id": "li-post-etl-kafka-elk",
+    "at": "2026-01-18T12:00:00Z",
+    "title": "Automatización de ETL con Kafka, Logstash, Elasticsearch y Kibana",
+    "detail": "Pipeline ETL completo con Apache Kafka + ZooKeeper, enriquecido con Logstash y visualizado en Kibana sobre cluster Elasticsearch (ELK stack).",
+    "tags": ["Kafka", "Elasticsearch", "Logstash", "Kibana", "ELK", "ETL"]
+  },
+  {
+    "id": "li-post-llmops-comet",
+    "at": "2025-11-20T12:00:00Z",
+    "title": "LLMOps: Build a Real World App — LLM (llama3) con estadísticas en Comet",
+    "detail": "App real end-to-end con llama3 monitorizada en Comet para observability de prompts, tokens, latencia y coste.",
+    "tags": ["LLMOps", "LLM", "llama3", "Comet", "AI", "Observability"]
+  },
+  {
+    "id": "li-post-deepracer",
+    "at": "2025-03-15T12:00:00Z",
+    "title": "AWS DeepRacer Spain Tech Alliance Winter Race",
+    "detail": "Reinforcement Learning aplicado en la competición AWS DeepRacer: diseño de reward function, hiperparámetros y análisis de trayectorias.",
+    "tags": ["AWS", "DeepRacer", "ReinforcementLearning", "MachineLearning", "AI"]
+  },
+  {
+    "id": "li-post-agentic-ai",
+    "at": "2026-04-01T12:00:00Z",
+    "title": "Agentic AI Systems — principales aptitudes",
+    "detail": "Design and deployment of end-to-end AI architectures: NLP systems, RAG pipelines, agentic AI models, LLMOps workflows en AWS / Azure.",
+    "tags": ["AgenticAI", "LLMOps", "NLP", "RAG", "AWS", "Azure"]
+  },
+  {
     "id": "li-post-rag-langgraph",
     "at": "2026-03-22T12:00:00Z",
     "title": "Pipeline RAG para indexar PDFs con OCR automático usando LangGraph",

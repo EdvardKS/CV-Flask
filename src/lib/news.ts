@@ -276,7 +276,12 @@ export async function buildFeed(): Promise<NewsFeed> {
   // LinkedIn blocks anonymous scraping of activity/posts; merge the curated
   // list (maintained manually from the user's actual LinkedIn feed) with any
   // profile snippet that might have come through OG meta.
-  const items = [...li.items, ...curated, ...gh.items].sort((a, b) => b.at.localeCompare(a.at))
+  // Ordering: LinkedIn first (hand-picked highlights, higher editorial
+  // value), then GitHub events underneath. Within each group sorted by
+  // recency.
+  const linkedin = [...li.items, ...curated].sort((a, b) => b.at.localeCompare(a.at))
+  const github = gh.items.sort((a, b) => b.at.localeCompare(a.at))
+  const items = [...linkedin, ...github]
   return {
     updatedAt: new Date().toISOString(),
     ok: items.length > 0,
