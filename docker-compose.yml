@@ -20,7 +20,8 @@ services:
 volumes:
   padel_data:
   news_cache:
-  ollama_net:
-    external: true
+networks:
   reverse_proxy:
+    external: true
+  ollama_net:
     external: true
