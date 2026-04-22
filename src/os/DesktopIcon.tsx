@@ -1,6 +1,5 @@
 'use client'
 
-import { useRef, useState } from 'react'
 import clsx from 'clsx'
 import { useWM } from './store'
 import { iconGlyph } from './Window'
@@ -12,41 +11,31 @@ export function DesktopIcon({ manifest, selected, onSelect }: {
   onSelect: () => void
 }) {
   const openApp = useWM(s => s.openApp)
-  const lastClick = useRef(0)
 
-  const onClick = (e: React.MouseEvent) => {
-    onSelect()
-    const now = Date.now()
-    if (now - lastClick.current < 350) {
-      openApp(manifest)
-      lastClick.current = 0
-    } else {
-      lastClick.current = now
-    }
-  }
-
-  const onDoubleClick = () => {
-    openApp(manifest)
-  }
+  const open = () => openApp(manifest)
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
-      openApp(manifest)
+      open()
     }
   }
 
   return (
-    <button
-      type="button"
+    <div
+      role="button"
+      tabIndex={0}
       className={clsx('xp-icon', selected && 'selected')}
-      onClick={onClick}
-      onDoubleClick={onDoubleClick}
+      onClick={onSelect}
+      onDoubleClick={open}
       onKeyDown={onKeyDown}
       aria-label={`Abrir ${manifest.title}`}
     >
-      <span className="xp-icon-image" aria-hidden>{iconGlyph(manifest.icon)}</span>
-      <span>{manifest.title}</span>
-    </button>
+      <span className="xp-icon-image" aria-hidden>
+        {iconGlyph(manifest.icon)}
+        <span className="xp-icon-shortcut" aria-hidden>↪</span>
+      </span>
+      <span className="xp-icon-label">{manifest.title}</span>
+    </div>
   )
 }

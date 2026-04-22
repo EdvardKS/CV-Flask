@@ -203,6 +203,7 @@ export const useWM = create<Store>()(
     {
       name: 'os:windows:v1',
       storage: createJSONStorage(() => (typeof window !== 'undefined' ? localStorage : undefined as unknown as Storage)),
+      skipHydration: true,
       partialize: (s) => ({
         windows: s.windows.map(w => ({ ...w, minimized: false })),
         zTop: s.zTop,

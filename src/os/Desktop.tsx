@@ -6,6 +6,8 @@ import { DesktopIcon } from './DesktopIcon'
 import { Window } from './Window'
 import { Taskbar } from './Taskbar'
 import { StartMenu } from './StartMenu'
+import { AiWallpaper } from './AiWallpaper'
+import { PhotoCarousel } from './PhotoCarousel'
 import { useWM } from './store'
 
 export function Desktop() {
@@ -14,7 +16,10 @@ export function Desktop() {
   const [mounted, setMounted] = useState(false)
   const windows = useWM(s => s.windows)
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    useWM.persist.rehydrate()
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const onClickAway = (e: MouseEvent) => {
@@ -37,7 +42,13 @@ export function Desktop() {
 
   return (
     <div className="xp-desktop">
+      <AiWallpaper />
       <div className="xp-desktop-area">
+        <header className="xp-desktop-header">
+          <h1 className="xp-desktop-title">EdvardKS PC</h1>
+          <span className="xp-desktop-subtitle">AI · Engineering · Portfolio</span>
+        </header>
+
         <ul className="xp-icon-grid" role="list">
           {sorted.map(app => (
             <li key={app.id}>
@@ -51,6 +62,8 @@ export function Desktop() {
         </ul>
 
         {mounted && windows.map(w => <Window key={w.id} win={w} />)}
+
+        <PhotoCarousel />
       </div>
 
       {startOpen && <StartMenu onClose={() => setStartOpen(false)} />}
