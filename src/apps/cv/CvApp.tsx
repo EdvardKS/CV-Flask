@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react'
 import { loadCVData, pickLocalized, type CVData } from '@lib/cv-data'
 import { useLocale, useT } from '@lib/i18n/config'
+import { Timeline, type TimelineNode } from './Timeline'
+import type { Locale } from '@os/types'
 
 type Tab = 'summary' | 'experience' | 'education' | 'skills' | 'projects'
 
@@ -58,98 +60,132 @@ export function CvApp() {
       </nav>
 
       <section style={{ fontSize: 13, lineHeight: 1.6 }}>
-        {tab === 'summary' && <SummaryTab data={data} />}
-        {tab === 'experience' && <ExperienceTab data={data} />}
-        {tab === 'education' && <EducationTab data={data} />}
-        {tab === 'skills' && <SkillsTab data={data} />}
-        {tab === 'projects' && <ProjectsTab data={data} />}
+        {tab === 'summary' && <SummaryTab data={data} locale={locale} />}
+        {tab === 'experience' && <ExperienceTab data={data} locale={locale} />}
+        {tab === 'education' && <EducationTab data={data} locale={locale} />}
+        {tab === 'skills' && <SkillsTab data={data} locale={locale} />}
+        {tab === 'projects' && <ProjectsTab data={data} locale={locale} />}
       </section>
     </div>
   )
 }
 
-function SummaryTab({ data }: { data: CVData }) {
-  const locale = useLocale(s => s.locale)
+function SummaryTab({ data, locale }: { data: CVData; locale: Locale }) {
   return <p>{pickLocalized(data.translations.summary, locale)}</p>
 }
 
-function ExperienceTab({ data }: { data: CVData }) {
-  const locale = useLocale(s => s.locale)
-  return (
-    <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
-      {data.translations.workExperience.entries.map((e, i) => {
-        const resp = Array.isArray(e.responsibilities)
-          ? e.responsibilities
-          : (e.responsibilities as Record<string, string[]>)[locale]
-            ?? (e.responsibilities as Record<string, string[]>).es
-            ?? []
-        return (
-          <li key={i} style={{ border: '1px solid #d8d4c0', padding: 10, background: '#fdfcf4', borderRadius: 4 }}>
-            <strong>{pickLocalized(e.position, locale)}</strong>
-            <div style={{ color: '#555', fontSize: 12 }}>
-              {typeof e.company === 'string' ? e.company : pickLocalized(e.company, locale)} · {e.period}
-            </div>
-            <ul style={{ margin: '6px 0 0 18px' }}>
-              {resp.map((r, j) => <li key={j}>{r}</li>)}
-            </ul>
-          </li>
-        )
-      })}
-    </ul>
-  )
+function ExperienceTab({ data, locale }: { data: CVData; locale: Locale }) {
+  const nodes: TimelineNode[] = data.translations.workExperience.entries.map((e, i) => {
+    const company = typeof e.company === 'string' ? e.company : pickLocalized(e.company, locale)
+    const position = pickLocalized(e.position, locale)
+    const location = typeof e.location === 'string' ? e.location : pickLocalized(e.location, locale)
+    const resp = typeof e.responsibilities === 'string'
+      ? e.responsibilities
+      : pickLocalized(e.responsibilities as unknown as Record<string, string>, locale)
+    return {
+      key: `exp-${i}`,
+      period: e.period ?? '',
+      title: position,
+      subtitle: <strong>{company}</strong>,
+      location,
+      avatar: e.img_name ? { src: `/assets/companies/${e.img_name}`, alt: company } : undefined,
+      body: resp ? <p>{resp}</p> : undefined
+    }
+  })
+  return <Timeline nodes={nodes} locale={locale} />
 }
 
-function EducationTab({ data }: { data: CVData }) {
-  const locale = useLocale(s => s.locale)
-  return (
-    <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-      {data.translations.education.entries.map((e, i) => (
-        <li key={i} style={{ borderLeft: '3px solid #0a246a', paddingLeft: 12 }}>
-          <strong>{pickLocalized(e.degree, locale)}</strong>
-          <div style={{ fontSize: 12, color: '#555' }}>{e.institution} · {e.period}</div>
-          <div style={{ fontSize: 11, color: '#777' }}>{typeof e.location === 'string' ? e.location : pickLocalized(e.location, locale)}</div>
-        </li>
-      ))}
-    </ul>
-  )
+function EducationTab({ data, locale }: { data: CVData; locale: Locale }) {
+  const nodes: TimelineNode[] = data.translations.education.entries.map((e, i) => {
+    const location = typeof e.location === 'string' ? e.location : pickLocalized(e.location as Record<string, string>, locale)
+    const degree = pickLocalized(e.degree, locale)
+    const certSrc = e.certificate_image ? `/assets/certificates/${e.certificate_image}` : null
+    // Fallback: try /assets/companies/ for certain institution logos (UAX, IES)
+    const certFallback = e.certificate_image ? `/assets/companies/${e.certificate_image}` : null
+    const pdfLink = e.certificate_pdf_link
+    const isUrl = typeof pdfLink === 'string' && /^https?:/i.test(pdfLink)
+    return {
+      key: `edu-${i}`,
+      period: e.period ?? '',
+      title: degree,
+      subtitle: <strong>{e.institution}</strong>,
+      location,
+      avatar: certSrc ? { src: certSrc, alt: e.institution } : undefined,
+      href: isUrl ? pdfLink : undefined,
+      body: certSrc ? (
+        <div>
+          <img
+            src={certSrc}
+            alt={`Certificado — ${e.institution}`}
+            onError={(ev) => {
+              if (certFallback && (ev.target as HTMLImageElement).src.indexOf(certFallback) < 0) {
+                (ev.target as HTMLImageElement).src = certFallback
+              }
+            }}
+            style={{ maxWidth: '100%', maxHeight: 360, border: '1px solid #d0d7de', borderRadius: 6, display: 'block' }}
+            loading="lazy"
+          />
+          {isUrl && (
+            <p style={{ marginTop: 8 }}>
+              <a href={pdfLink} target="_blank" rel="noreferrer">Ver credencial ↗</a>
+            </p>
+          )}
+        </div>
+      ) : undefined
+    }
+  })
+  return <Timeline nodes={nodes} locale={locale} />
 }
 
-function SkillsTab({ data }: { data: CVData }) {
-  const list = data.translations.skills.list
+function SkillsTab({ data, locale }: { data: CVData; locale: Locale }) {
+  // skills.list is { en | es | hy : "comma-separated string" }
+  const raw = pickLocalized(data.translations.skills.list as unknown as Record<string, string>, locale)
+  const items = raw
+    ? raw.split(/[,•;|]/).map(s => s.trim()).filter(Boolean)
+    : []
+  if (items.length === 0) return <p style={{ color: '#888' }}>Sin habilidades registradas.</p>
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
-      {Object.entries(list).map(([category, items]) => {
-        const arr = Array.isArray(items) ? items : Object.values(items)[0] ?? []
-        return (
-          <div key={category} style={{ border: '1px solid #d8d4c0', background: '#fdfcf4', padding: 10, borderRadius: 4 }}>
-            <strong style={{ display: 'block', marginBottom: 6 }}>{category}</strong>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-              {(arr as string[]).map((s, i) => (
-                <span key={i} style={{ fontSize: 11, background: '#0a246a', color: '#fff', padding: '2px 6px', borderRadius: 3 }}>{s}</span>
-              ))}
-            </div>
-          </div>
-        )
-      })}
+    <div>
+      <p style={{ margin: '0 0 10px', color: '#444' }}>
+        {items.length} habilidades.
+      </p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+        {items.map((s, i) => (
+          <span
+            key={i}
+            style={{
+              fontSize: 12,
+              background: 'linear-gradient(180deg, #0a246a, #1941a5)',
+              color: '#fff',
+              padding: '4px 10px',
+              borderRadius: 999,
+              boxShadow: '0 1px 2px rgba(0,0,0,0.15)'
+            }}
+          >
+            {s}
+          </span>
+        ))}
+      </div>
     </div>
   )
 }
 
-function ProjectsTab({ data }: { data: CVData }) {
-  const locale = useLocale(s => s.locale)
+function ProjectsTab({ data, locale }: { data: CVData; locale: Locale }) {
   return (
     <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 10 }}>
       {data.translations.projects.entries.map((p, i) => {
         const tags = Array.isArray(p.tags) ? p.tags : (pickLocalized(p.tags, locale) ?? '').split(',').map(s => s.trim())
+        const isExternal = typeof p.url === 'string' && /^https?:/i.test(p.url)
+        const linkProps = isExternal ? { target: '_blank', rel: 'noreferrer' } : {}
         return (
-          <li key={i} style={{ border: '1px solid #d8d4c0', padding: 12, background: '#fdfcf4', borderRadius: 4 }}>
-            <strong>
-              {p.url ? <a href={p.url} target="_blank" rel="noreferrer">{pickLocalized(p.name, locale)}</a> : pickLocalized(p.name, locale)}
+          <li key={i} style={{ border: '1px solid #d0d7de', padding: 12, background: '#fff', borderRadius: 6 }}>
+            <strong style={{ color: '#0969da', fontSize: 14 }}>
+              {p.url ? <a href={p.url} style={{ color: 'inherit' }} {...linkProps}>{pickLocalized(p.name, locale)}</a> : pickLocalized(p.name, locale)}
             </strong>
             <p style={{ margin: '6px 0' }}>{pickLocalized(p.description, locale)}</p>
             <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
               {tags.filter(Boolean).map((t, j) => (
-                <span key={j} style={{ fontSize: 10, background: '#ece9d8', padding: '2px 6px', borderRadius: 3 }}>{t}</span>
+                <span key={j} className="gh-tl-badge-item">{t}</span>
               ))}
             </div>
           </li>
