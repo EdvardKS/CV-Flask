@@ -8,9 +8,11 @@ import padelManifest from './padel/manifest'
 import aboutManifest from './about/manifest'
 import linkedinManifest from './linkedin/manifest'
 import githubManifest from './github/manifest'
+import aiManifest from './ai/manifest'
 
 export const APPS: AppManifest[] = [
   cvManifest,
+  aiManifest,
   projectsManifest,
   quizManifest,
   padelManifest,

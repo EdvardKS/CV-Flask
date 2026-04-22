@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import clsx from 'clsx'
+import { useUI } from './uiStore'
 
 type NewsItem = {
   id: string
@@ -23,19 +24,11 @@ type Feed = {
   profile?: { name?: string; headline?: string; photo?: string; url: string }
 }
 
-const COLLAPSED_KEY = 'os:news:collapsed:v1'
-
 export function NewsAside() {
   const [feed, setFeed] = useState<Feed | null>(null)
   const [loading, setLoading] = useState(false)
-  const [collapsed, setCollapsed] = useState<boolean>(false)
-
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(COLLAPSED_KEY)
-      if (raw === '1') setCollapsed(true)
-    } catch {}
-  }, [])
+  const open = useUI(s => s.notificationsOpen)
+  const setOpen = useUI(s => s.setNotifications)
 
   const load = useCallback(async (force = false) => {
     setLoading(true)
@@ -50,32 +43,26 @@ export function NewsAside() {
 
   useEffect(() => { load(false) }, [load])
 
-  const toggle = () => {
-    setCollapsed(prev => {
-      const next = !prev
-      try { localStorage.setItem(COLLAPSED_KEY, next ? '1' : '0') } catch {}
-      return next
-    })
-  }
+  if (!open) return null
 
   return (
-    <aside className={clsx('news-aside', collapsed && 'is-collapsed')}>
+    <aside className={clsx('news-aside')}>
       <header className="news-head">
         <div className="news-title-block">
           <span className="news-title">Notificaciones</span>
-          {!collapsed && <span className="news-subtitle">{formatDateHeader()}</span>}
+          <span className="news-subtitle">{formatDateHeader()}</span>
         </div>
         <button
           className="news-collapse-btn"
-          onClick={toggle}
-          aria-label={collapsed ? 'Expandir panel' : 'Cerrar panel'}
-          title={collapsed ? 'Expandir' : 'Cerrar'}
+          onClick={() => setOpen(false)}
+          aria-label="Cerrar panel"
+          title="Cerrar"
         >
-          {collapsed ? '‹' : '›'}
+          ×
         </button>
       </header>
 
-      {!collapsed && (
+      {open && (
         <>
           {feed?.profile?.photo && (
             <div className="news-profile">

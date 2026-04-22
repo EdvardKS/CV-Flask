@@ -85,12 +85,29 @@ export function Window({ win }: { win: WindowState }) {
 function iconGlyph(name: string): React.ReactNode {
   if (name === 'linkedin') return <LinkedInGlyph />
   if (name === 'github') return <GitHubGlyph />
+  if (name === 'ai') return <AiGlyph />
   const map: Record<string, string> = {
     cv: '📄', folder: '📁', terminal: '🖥️', briefcase: '💼', book: '📚',
     user: '👤', mail: '✉️', trophy: '🏆', quiz: '❓', app: '🪟',
     info: 'ℹ️', code: '💻'
   }
   return map[name] ?? '🪟'
+}
+
+function AiGlyph() {
+  return (
+    <svg viewBox="0 0 34 34" width="1em" height="1em" aria-hidden focusable="false" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <defs>
+        <linearGradient id="ai-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#22d3ee" />
+          <stop offset="60%" stopColor="#818cf8" />
+          <stop offset="100%" stopColor="#a855f7" />
+        </linearGradient>
+      </defs>
+      <rect width="34" height="34" rx="7" fill="url(#ai-grad)" />
+      <path fill="#fff" d="M17 7.5l1.8 4.7L23.5 14l-4.7 1.3L17 20l-1.8-4.7L10.5 14l4.7-1.8L17 7.5zm7 13l.9 2.2L27 23.5l-2.1.7L24 26.5l-.9-2.3L21 23.5l2.1-.7.9-2.3z"/>
+    </svg>
+  )
 }
 
 function LinkedInGlyph() {
