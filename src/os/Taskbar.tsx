@@ -117,7 +117,6 @@ function SystemTray({ now }: { now: Date | null }) {
 
       {trayExpanded && (
         <div ref={popoverRef} className="xp-tray-hidden xp-tray-popover" role="dialog" aria-label="Iconos ocultos">
-          <LocaleFlag />
           <TrayIcon title="Docker">
             <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden fill="#2496ed"><path d="M22 9.5l-1.4-.3c-.5-2.3-3.2-3.2-3.3-3.3l-.4-.2-.3.4a4 4 0 00-.5 3c-.5.4-1.4.5-1.9.5H2.4c-.2 0-.4.2-.4.4 0 1.4 0 5.8 4 8a9 9 0 007.8 4c5.9 0 9.9-3.4 11.5-9.1.5 0 1.7-.5 2.4-2v-.1l-.3-.3H22zM4 9h2v2H4V9zm3 0h2v2H7V9zm3 0h2v2h-2V9zm3 0h2v2h-2V9zM7 6h2v2H7V6zm3 0h2v2h-2V6zm3 0h2v2h-2V6zm0-3h2v2h-2V3z"/></svg>
           </TrayIcon>
@@ -168,25 +167,21 @@ function SystemTray({ now }: { now: Date | null }) {
         </div>
       )}
 
-      <TrayIcon title="Chat IA" onClick={openAI} accent>
+      <LocaleFlag />
+
+      <button
+        className="xp-tray-icon is-accent xp-tray-ai"
+        onClick={openAI}
+        title="Chat IA sobre Edvard"
+        aria-label="Abrir Chat IA"
+      >
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/>
           <path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14z"/>
         </svg>
-      </TrayIcon>
+        <span className="xp-tray-ai-label">AI</span>
+      </button>
 
-      <TrayIcon title="Wi-Fi" hideBelow={640}>
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
-          <path d="M5 12.55a11 11 0 0114 0"/><path d="M1.42 9a16 16 0 0121.16 0"/>
-          <path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>
-        </svg>
-      </TrayIcon>
-      <TrayIcon title="Volumen" hideBelow={540}>
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-          <path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/>
-        </svg>
-      </TrayIcon>
       <TrayIcon title="Notificaciones" onClick={toggleNotifications}>
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>

@@ -429,6 +429,20 @@ html, body {
 .xp-tray-icon:focus-visible { outline: 2px solid rgba(125, 211, 252, 0.7); outline-offset: -2px; }
 .xp-tray-icon.is-accent { color: #22d3ee; }
 .xp-tray-icon.is-accent:hover { background: rgba(34, 211, 238, 0.16); }
+
+/* AI pill (sparkle + "AI" text) */
+.xp-tray-ai {
+  width: auto !important;
+  padding: 0 10px 0 8px;
+  gap: 4px;
+}
+.xp-tray-ai-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #22d3ee;
+  text-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+}
 /* Windows 11-style floating popover above the chevron */
 .xp-tray-popover {
   position: fixed;
