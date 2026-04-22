@@ -12,7 +12,7 @@ export type TimelineNode = {
   location?: ReactNode
   body?: ReactNode
   badge?: ReactNode            // small badge (tags, tech stack)
-  avatar?: { src: string; alt: string }   // company/institution logo
+  avatar?: { src: string; alt: string; fallbackSrc?: string }
   color?: string               // node dot color (defaults per-year hash)
   tag?: string                 // "main", "feat", "current"…
   href?: string                // external link for the title
@@ -45,20 +45,32 @@ function TimelineRow({ node, locale }: { node: TimelineNode; locale: Locale }) {
   return (
     <li className={`gh-tl-row${open ? ' is-open' : ''}${parsed.current ? ' is-current' : ''}`}>
       <div className="gh-tl-rail" aria-hidden>
-        <span className="gh-tl-dot" style={{ background: dot }} />
+        {node.avatar ? (
+          <img
+            src={node.avatar.src}
+            alt={node.avatar.alt}
+            className="gh-tl-avatar-dot"
+            loading="lazy"
+            onError={(e) => {
+              const el = e.target as HTMLImageElement
+              if (node.avatar?.fallbackSrc && !el.src.endsWith(node.avatar.fallbackSrc)) {
+                el.src = node.avatar.fallbackSrc
+              } else {
+                el.style.display = 'none'
+                const dot = el.nextElementSibling as HTMLElement | null
+                if (dot) dot.style.display = 'block'
+              }
+            }}
+          />
+        ) : null}
+        <span
+          className="gh-tl-dot"
+          style={{ background: dot, display: node.avatar ? 'none' : 'block' }}
+        />
       </div>
 
       <article className="gh-tl-card">
         <header className="gh-tl-head">
-          {node.avatar && (
-            <img
-              src={node.avatar.src}
-              alt={node.avatar.alt}
-              className="gh-tl-avatar"
-              loading="lazy"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-            />
-          )}
           <div className="gh-tl-meta">
             <div className="gh-tl-title">
               {node.href

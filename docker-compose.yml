@@ -2,7 +2,7 @@ services:
   web:
     build: .
     image: edvardks-portfolio:prod
-    container_name: edvardks-portfolio
+    container_name: flask
     restart: unless-stopped
     ports:
       - "5000:3000"

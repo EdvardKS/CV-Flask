@@ -5,6 +5,8 @@ import { loadCVData, pickLocalized, type CVData } from '@lib/cv-data'
 import { useLocale, useT } from '@lib/i18n/config'
 import { Timeline, type TimelineNode } from './Timeline'
 import type { Locale } from '@os/types'
+import { useWM } from '@os/store'
+import { APPS_BY_ID } from '@apps/_registry'
 
 type Tab = 'summary' | 'experience' | 'education' | 'skills' | 'projects'
 
@@ -99,9 +101,8 @@ function EducationTab({ data, locale }: { data: CVData; locale: Locale }) {
   const nodes: TimelineNode[] = data.translations.education.entries.map((e, i) => {
     const location = typeof e.location === 'string' ? e.location : pickLocalized(e.location as Record<string, string>, locale)
     const degree = pickLocalized(e.degree, locale)
-    const certSrc = e.certificate_image ? `/assets/certificates/${e.certificate_image}` : null
-    // Fallback: try /assets/companies/ for certain institution logos (UAX, IES)
-    const certFallback = e.certificate_image ? `/assets/companies/${e.certificate_image}` : null
+    const certSrc = e.certificate_image ? `/assets/certificates/${e.certificate_image}` : undefined
+    const certFallback = e.certificate_image ? `/assets/companies/${e.certificate_image}` : undefined
     const pdfLink = e.certificate_pdf_link
     const isUrl = typeof pdfLink === 'string' && /^https?:/i.test(pdfLink)
     return {
@@ -110,7 +111,7 @@ function EducationTab({ data, locale }: { data: CVData; locale: Locale }) {
       title: degree,
       subtitle: <strong>{e.institution}</strong>,
       location,
-      avatar: certSrc ? { src: certSrc, alt: e.institution } : undefined,
+      avatar: certSrc ? { src: certSrc, alt: e.institution, fallbackSrc: certFallback } : undefined,
       href: isUrl ? pdfLink : undefined,
       body: certSrc ? (
         <div>
@@ -118,9 +119,9 @@ function EducationTab({ data, locale }: { data: CVData; locale: Locale }) {
             src={certSrc}
             alt={`Certificado — ${e.institution}`}
             onError={(ev) => {
-              if (certFallback && (ev.target as HTMLImageElement).src.indexOf(certFallback) < 0) {
-                (ev.target as HTMLImageElement).src = certFallback
-              }
+              const el = ev.target as HTMLImageElement
+              if (certFallback && el.src.indexOf(certFallback) < 0) el.src = certFallback
+              else el.style.display = 'none'
             }}
             style={{ maxWidth: '100%', maxHeight: 360, border: '1px solid #d0d7de', borderRadius: 6, display: 'block' }}
             loading="lazy"

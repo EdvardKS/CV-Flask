@@ -691,24 +691,24 @@ html, body {
 }
 .gh-tl-row + .gh-tl-row { margin-top: 10px; }
 .gh-tl-rail {
-  width: 22px;
-  flex: 0 0 22px;
+  width: 44px;
+  flex: 0 0 44px;
   position: relative;
 }
 .gh-tl-rail::before {
   content: '';
   position: absolute;
-  left: 10px;
+  left: 21px;
   top: 0;
-  bottom: -12px;
+  bottom: -14px;
   width: 2px;
   background: #d0d7de;
 }
 .gh-tl-row:last-child .gh-tl-rail::before { bottom: 50%; }
 .gh-tl-dot {
   position: absolute;
-  top: 14px;
-  left: 3px;
+  top: 10px;
+  left: 14px;
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -716,13 +716,27 @@ html, body {
   box-shadow: 0 0 0 1px #d0d7de, 0 1px 2px rgba(0,0,0,0.12);
   z-index: 1;
 }
-.gh-tl-row.is-current .gh-tl-dot {
-  box-shadow: 0 0 0 1px #2ea043, 0 0 0 4px rgba(46,160,67,0.22);
+.gh-tl-avatar-dot {
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #d0d7de, 0 2px 4px rgba(0,0,0,0.15);
+  z-index: 1;
+}
+.gh-tl-row.is-current .gh-tl-dot,
+.gh-tl-row.is-current .gh-tl-avatar-dot {
+  box-shadow: 0 0 0 2px #2ea043, 0 0 0 5px rgba(46,160,67,0.22);
   animation: gh-pulse 2.4s ease-in-out infinite;
 }
 @keyframes gh-pulse {
-  0%, 100% { box-shadow: 0 0 0 1px #2ea043, 0 0 0 4px rgba(46,160,67,0.22); }
-  50%      { box-shadow: 0 0 0 1px #2ea043, 0 0 0 7px rgba(46,160,67,0.08); }
+  0%, 100% { box-shadow: 0 0 0 2px #2ea043, 0 0 0 5px rgba(46,160,67,0.22); }
+  50%      { box-shadow: 0 0 0 2px #2ea043, 0 0 0 8px rgba(46,160,67,0.08); }
 }
 
 .gh-tl-card {
@@ -740,14 +754,7 @@ html, body {
   gap: 10px;
 }
 .gh-tl-avatar {
-  width: 36px;
-  height: 36px;
-  flex: 0 0 36px;
-  border-radius: 50%;
-  border: 1px solid #d0d7de;
-  background: #fff;
-  object-fit: cover;
-  margin-top: 2px;
+  display: none;   /* avatar now renders in rail; keep class for compatibility */
 }
 .gh-tl-meta {
   flex: 1;
