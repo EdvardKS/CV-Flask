@@ -27,13 +27,14 @@ describe('quiz repo + seed', () => {
     expect(subjects[0]).toMatchObject({ id: 'test-asg', name: 'Test Asg', questionCount: 3 })
     const qs = listQuestions('test-asg')
     expect(qs).toHaveLength(3)
-    expect(qs[0]).toMatchObject({ q: '2+2?', correctIndex: 1 })
+    expect(qs[0]).toMatchObject({ kind: 'choice', q: '2+2?' })
+    if (qs[0].kind === 'choice') expect(qs[0].correctIndex).toBe(1)
     expect(qs[1].category).toBe('cat')
-    expect(qs[2].correctIndex).toEqual([1, 2])
+    if (qs[2].kind === 'choice') expect(qs[2].correctIndex).toEqual([1, 2])
     expect(isCorrect(qs[2], 1)).toBe(true)
     expect(isCorrect(qs[2], 2)).toBe(true)
     expect(isCorrect(qs[2], 0)).toBe(false)
-    expect(primaryCorrect(qs[2])).toBe(1)
+    expect(primaryCorrect(qs[2])).toBe('y')
   })
 
   it('is idempotent on repeat seed (no re-ingest if mtime unchanged)', async () => {

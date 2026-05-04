@@ -2942,5 +2942,777 @@
     ],
     "correctIndex": 1,
     "isVocab": false
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "Form a word from \"visible\" to complete: \"NFT owners enjoy public ___ of their purchases.\"",
+    "accept": "visibility"
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "Form a word from \"aware\" to complete: \"Public ___ of NFT scams is growing.\"",
+    "accept": "awareness"
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "context": "Non-Fungible Tokens (NFTs) have emerged as unique digital assets that represent ownership of items like art, music, and videos. They are non-fungible, meaning they cannot be exchanged on a one-to-one basis like cryptocurrencies. Each NFT is authenticated using blockchain technology, making it tamper-proof and verifiable. These assets are traded on platforms like OpenSea and Rarible, allowing artists to reach audiences directly without intermediaries. While NFTs promise financial opportunities, they also raise concerns regarding energy consumption and market volatility.",
+    "q": "What environmental concern is associated with NFTs?",
+    "options": [
+      "They require a lot of energy due to blockchain mining",
+      "They use paper packaging",
+      "They cannot be recycled",
+      "They emit radioactivity"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "context": "Non-Fungible Tokens (NFTs) have emerged as unique digital assets that represent ownership of items like art, music, and videos. They are non-fungible, meaning they cannot be exchanged on a one-to-one basis like cryptocurrencies. Each NFT is authenticated using blockchain technology, making it tamper-proof and verifiable. These assets are traded on platforms like OpenSea and Rarible, allowing artists to reach audiences directly without intermediaries. While NFTs promise financial opportunities, they also raise concerns regarding energy consumption and market volatility.",
+    "q": "How do NFTs contribute to the democratization of art?",
+    "options": [
+      "They offer artists a fairer share of profits by eliminating intermediaries",
+      "They offer physical gallery access",
+      "They reduce the value of digital art",
+      "They ensure all artists go viral"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "He said: \"I bought this NFT yesterday.\" → He said he ___ the NFT the day before.",
+    "accept": "had bought"
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "context": "Non-Fungible Tokens (NFTs) have emerged as unique digital assets that represent ownership of items like art, music, and videos. They are non-fungible, meaning they cannot be exchanged on a one-to-one basis like cryptocurrencies. Each NFT is authenticated using blockchain technology, making it tamper-proof and verifiable. These assets are traded on platforms like OpenSea and Rarible, allowing artists to reach audiences directly without intermediaries. While NFTs promise financial opportunities, they also raise concerns regarding energy consumption and market volatility.",
+    "q": "How is the originality of an NFT guaranteed?",
+    "options": [
+      "Through blockchain technology",
+      "With digital watermarks",
+      "Via copyright claims",
+      "By using QR codes"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "They didn't sell the NFT until 2021. → It was not ___ they sold the NFT.",
+    "accept": [
+      "until 2021 that",
+      "until 2021"
+    ]
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "context": "Non-Fungible Tokens (NFTs) have emerged as unique digital assets that represent ownership of items like art, music, and videos. They are non-fungible, meaning they cannot be exchanged on a one-to-one basis like cryptocurrencies. Each NFT is authenticated using blockchain technology, making it tamper-proof and verifiable. These assets are traded on platforms like OpenSea and Rarible, allowing artists to reach audiences directly without intermediaries. While NFTs promise financial opportunities, they also raise concerns regarding energy consumption and market volatility.",
+    "q": "According to the reading, what sets NFTs apart from cryptocurrencies like Bitcoin?",
+    "options": [
+      "They are one-of-a-kind or part of a very limited series",
+      "They are faster to trade than cryptocurrencies",
+      "They are issued by banks",
+      "They have no use outside gaming platforms"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "OpenSea is the biggest NFT platform. No other platform is as big. → OpenSea is ___ NFT platform.",
+    "accept": "the biggest"
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "Form a word from \"INCREASE\" to complete: \"There has been a(n) ___ demand for NFTs.\"",
+    "accept": [
+      "increased",
+      "increasing"
+    ]
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "Form a word from \"ready\" to complete: \"Blockchain is now ___ for widespread use.\"",
+    "accept": "ready"
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "Form a word from \"EFFECT\" to complete: \"NFTs are not as ___ as physical art for investment.\"",
+    "accept": "effective"
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "context": "Non-Fungible Tokens (NFTs) have emerged as unique digital assets that represent ownership of items like art, music, and videos. They are non-fungible, meaning they cannot be exchanged on a one-to-one basis like cryptocurrencies. Each NFT is authenticated using blockchain technology, making it tamper-proof and verifiable. These assets are traded on platforms like OpenSea and Rarible, allowing artists to reach audiences directly without intermediaries. While NFTs promise financial opportunities, they also raise concerns regarding energy consumption and market volatility.",
+    "q": "What is one advantage of NFT platforms like OpenSea and Rarible?",
+    "options": [
+      "They allow creators to sell directly without intermediaries",
+      "They offer free internet access",
+      "They only host physical art",
+      "They pay royalties to governments"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "They started buying NFTs two years ago. → They ___ NFTs for two years.",
+    "accept": "have been buying"
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "It's possible that she is an NFT investor. → She ___ be an NFT investor.",
+    "accept": [
+      "might",
+      "may",
+      "could"
+    ]
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "What type of morpheme is \"dis-\" in \"disagree\"?",
+    "options": [
+      "Free",
+      "Inflectional",
+      "Bound",
+      "Root"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "What type of morpheme is \"un-\" in \"unhappy\"?",
+    "options": [
+      "Bound",
+      "Free",
+      "Inflectional",
+      "Root"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "Which of the following is a free morpheme?",
+    "options": [
+      "-s",
+      "play",
+      "-ed",
+      "re-"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "Which of the following is a bound morpheme?",
+    "options": [
+      "-ness",
+      "run",
+      "house",
+      "cat"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "What is the free morpheme in the word \"unbelievable\"?",
+    "options": [
+      "believ-",
+      "un-",
+      "believe",
+      "-able"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "Which of the following contains both a free and a bound morpheme?",
+    "options": [
+      "Dogs",
+      "Tree",
+      "Book",
+      "Car"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "In the word \"dogs,\" what type of morpheme is \"-s\"?",
+    "options": [
+      "Free",
+      "Bound",
+      "Root",
+      "Derivational"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "In the word \"running,\" what type of morpheme is \"run\"?",
+    "options": [
+      "Suffix",
+      "Free",
+      "Bound",
+      "Inflectional"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "What is the bound morpheme in the word \"teacher\"?",
+    "options": [
+      "tea",
+      "teach",
+      "each",
+      "-er"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-6",
+    "q": "Which of the following words contains only free morphemes?",
+    "options": [
+      "Quickly",
+      "Playground",
+      "Unhappy",
+      "Cats"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "How _______ milk is in the fridge?",
+    "options": [
+      "any",
+      "some",
+      "many",
+      "much"
+    ],
+    "correctIndex": [
+      0,
+      3
+    ]
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "Which sentence is correct?",
+    "options": [
+      "She has many friends.",
+      "She has a lot friends.",
+      "She has much friend.",
+      "She has much friends."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "Which sentence is correct?",
+    "options": [
+      "I have a apples.",
+      "I have a apple.",
+      "I have an apples.",
+      "I have an apple."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "He doesn't have _______ money.",
+    "options": [
+      "a",
+      "many",
+      "some",
+      "any"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "There aren't _______ cookies left.",
+    "options": [
+      "much",
+      "any",
+      "manie",
+      "some"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "Do you have _______ questions?",
+    "options": [
+      "much",
+      "any",
+      "a",
+      "a lot"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "Which sentence is correct?",
+    "options": [
+      "I bought a breads.",
+      "I bought many bread.",
+      "I bought a bread.",
+      "I bought some bread."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "I don't have _______ time to finish this.",
+    "options": [
+      "some",
+      "many",
+      "a lot",
+      "any"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "Which sentence is correct?",
+    "options": [
+      "There is many apples in the basket.",
+      "There is a lot of apples in the basket.",
+      "There are much apples in the basket.",
+      "There are many apples in the basket."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "Which sentence is correct?",
+    "options": [
+      "I need a information.",
+      "I need some information.",
+      "I need many information.",
+      "I need an information."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "What does the speaker say about the role of the tech industry?",
+    "options": [
+      "It is limited to smartphones and social media.",
+      "It has expanded into nearly every part of society.",
+      "It mainly focuses on gaming and entertainment.",
+      "It is slowing down due to regulations."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "What does the speaker mean by \"trickle-down techonomics\"?",
+    "options": [
+      "Tech products will eventually benefit everyone, regardless of design.",
+      "Technology made for the rich stays within wealthy communities.",
+      "All tech companies prioritize poor communities.",
+      "Tech innovations never reach low-income areas."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "What key question does the speaker ask about new technologies?",
+    "options": [
+      "Who benefits from it, and who is excluded?",
+      "How fast can we market this product?",
+      "Is the innovation patent protected?",
+      "Will it be available in Europe first?"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "What does the speaker encourage listeners to do while hearing the rest of the talk?",
+    "options": [
+      "Focus on examples and their relation to inequality.",
+      "Take notes on startup names and prices.",
+      "Count how many industries are mentioned.",
+      "Compare tech usage in different continents."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "Which of the following is an uncountable noun?",
+    "options": [
+      "Water",
+      "Chairs",
+      "Apples",
+      "Books"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "Which of the following contains a mistake?",
+    "options": [
+      "I have a lot of informations to share.",
+      "He gave me some useful advice.",
+      "We need a few chairs for the event.",
+      "She drank a little water."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "Which sentence uses the correct quantifier?",
+    "options": [
+      "We have a lot of data to analyze.",
+      "There isn't many traffic today.",
+      "She has much friends at school.",
+      "He didn't bring many water."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "q": "Choose the correct sentence:",
+    "options": [
+      "I don't have any money with me.",
+      "We haven't got some batteries.",
+      "Is there some information available?",
+      "Can I have any help with this?"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "context": "Hey Alex,\n\nI've been thinking about how much technology has changed our lives, and not always for the better. You know, it's so weird that we can connect with friends halfway across the world, but at the same time, we're dealing with all these insane humanitarian problems. It's like, while technology could be used to solve so many issues, it often just ends up being a tool for government surveillance instead.\n\nRemember when we were kids, and the internet was this magical place where you could find anything? Now, it feels like it's being monitored by oppressive regimes that control what their citizens can see and do. It's mad, right? I was reading about how some people use a proxy agent just to access basic information. It blows my mind that something we take for granted is such a struggle for others.\n\nI've also been thinking—what if all this technological advancement is leading us towards an existential crisis? I mean, it seems we're more disconnected from each other now, despite being so 'connected'. It's like we're all living in this digital bubble. And what about those huge cloud-based library systems? They store everything we do online, and who knows who has access to it? It's both fascinating and terrifying at the same time.\n\nIt gets me down sometimes, all this talk about data privacy and hacking. I just wish we could go back to the days when technology was just fun and exciting without all these heavy implications.\n\nBut enough of my rambling! How are things on your end? Let me know if you're ever free for a catch-up.\n\nCheers,\nYour Friend",
+    "q": "According to the reading, how does the author feel about technology being used for surveillance?",
+    "options": [
+      "It's useful and necessary.",
+      "It's concerning and disheartening.",
+      "It's a normal part of modern life.",
+      "It helps people stay connected."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "context": "Hey Alex,\n\nI've been thinking about how much technology has changed our lives, and not always for the better. The internet used to feel like a magical place, but now it feels monitored, like a tool for government surveillance instead of free exploration. People in some countries even use a proxy agent just to access basic information.\n\nIt gets me down sometimes — data privacy, hacking, and the feeling that we're living in a digital bubble despite being so 'connected'. I just wish we could go back to when technology was just fun and exciting.",
+    "q": "What change does the author describe in their perception of the internet?",
+    "options": [
+      "It has turned into a monitored and restricted space.",
+      "It has become more creative and open.",
+      "It is no longer useful for research.",
+      "It now supports traditional values more clearly."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "context": "Hey Alex,\n\nI've been thinking about how much technology has changed our lives, and not always for the better. The internet used to feel like a magical place, but now it feels monitored, like a tool for government surveillance instead of free exploration. People in some countries even use a proxy agent just to access basic information.\n\nIt gets me down sometimes — data privacy, hacking, and the feeling that we're living in a digital bubble despite being so 'connected'. I just wish we could go back to when technology was just fun and exciting.",
+    "q": "According to the author, how is technology often used in modern society?",
+    "options": [
+      "To monitor and control people.",
+      "As a way to entertain children.",
+      "To improve rural infrastructure.",
+      "To eliminate all communication barriers."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-5",
+    "context": "Hey Alex,\n\nI've been thinking about how much technology has changed our lives, and not always for the better. The internet used to feel like a magical place, but now it feels monitored. It gets me down sometimes — data privacy, hacking, and the feeling that we're living in a digital bubble despite being so 'connected'. I just wish we could go back to when technology was just fun and exciting.",
+    "q": "How does the author feel about recent technological developments?",
+    "options": [
+      "Frustrated and nostalgic.",
+      "Inspired and optimistic.",
+      "Indifferent and passive.",
+      "Curious but unemotional."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Form the comparative of: Happy → ___",
+    "accept": "happier"
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Form the comparative of: Fast → ___",
+    "accept": "faster"
+  },
+  {
+    "kind": "fill",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Form the comparative of: Big → ___",
+    "accept": "bigger"
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Which of the following is an example of a superlative adjective?",
+    "options": [
+      "The fastest",
+      "The most fast",
+      "the most fastest",
+      "fastest"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Which sentence correctly uses a comparative adjective?",
+    "options": [
+      "This phone is cheaper than that one.",
+      "This phone is the cheaper.",
+      "This phone is cheap than that one.",
+      "This phone is most cheap."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Superlative adjectives are used to compare two things.",
+    "options": [
+      "Verdadero",
+      "Falso"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "The word 'quickly' is an adverb.",
+    "options": [
+      "Verdadero",
+      "Falso"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Which sentence uses the correct superlative adjective?",
+    "options": [
+      "This is the most exciting trip I've ever taken.",
+      "This book is the more interesting of all.",
+      "He is the most fastest runner on the team.",
+      "She is the more creative artist in the gallery."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Which of these sentences uses the correct form of an adverb?",
+    "options": [
+      "He plays the guitar most skillfullyer.",
+      "She dances more gracefully than anyone else.",
+      "He runs more fast than his friend.",
+      "She sings more good than him."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Identify the correct use of a superlative adverb:",
+    "options": [
+      "She runs the faster than all her teammates.",
+      "She dances the most beautifully of all her friends.",
+      "He studies the more diligently than anyone else.",
+      "He speaks the most fluent in his class."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Which sentence uses the correct comparative form?",
+    "options": [
+      "She is the most smartest in the class.",
+      "This book is more interesting than that one.",
+      "He is more fast than his brother.",
+      "She is more happier than him."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Choose the correct superlative form:",
+    "options": [
+      "He is the faster runner in the team.",
+      "This puzzle is the more difficult than the others.",
+      "This is the most exciting movie I have ever seen.",
+      "She is the beautifulest girl in the room."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "What is the correct comparative adverb?",
+    "options": [
+      "She drives more carefully than him.",
+      "His work is harder than his colleague's.",
+      "She writes more neat than anyone else.",
+      "He sings louder than her."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Which sentence correctly uses a superlative adjective?",
+    "options": [
+      "She writes the neatest than anyone else.",
+      "He speaks the more fluently of all the students.",
+      "She dances the most graceful in the group.",
+      "He runs the fastest of all the competitors."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Choose the correct comparative form:",
+    "options": [
+      "She is more beautiful than her sister.",
+      "This test is more easy than the last one.",
+      "This is the most funnier game.",
+      "He is the more dedicated worker."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Which sentence uses the correct superlative form of an adjective?",
+    "options": [
+      "This is the best restaurant in town.",
+      "She is the more prettier than her sister.",
+      "He is the more intelligent student in the class.",
+      "She is the most kindest person I know."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "tema-4",
+    "q": "Choose the sentence with the correct comparative adjective:",
+    "options": [
+      "The weather is most bad today.",
+      "This is the deliciousest cake I have ever tasted.",
+      "He is the more talented artist here.",
+      "She is smarter than her brother."
+    ],
+    "correctIndex": 3
   }
 ]

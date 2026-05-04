@@ -2,7 +2,7 @@
 import { describe, expect, it } from 'vitest'
 import { isCorrect, type Question } from '@lib/quiz/types'
 
-const q: Question = { q: '?', options: ['A', 'B', 'C'], correctIndex: [0, 2] }
+const q: Question = { kind: 'choice', q: '?', options: ['A', 'B', 'C'], correctIndex: [0, 2] }
 
 function stateFor(question: Question, optionIndex: number, chosen?: number) {
   if (chosen === undefined) return 'idle'
@@ -20,7 +20,7 @@ describe('answer option state machine', () => {
   })
   it('marks chosen as correct when picked is in correct set (multi)', () => {
     expect(stateFor(q, 0, 0)).toBe('correct')
-    expect(stateFor(q, 2, 0)).toBe('idle') // already shown via "correct"
+    expect(stateFor(q, 2, 0)).toBe('idle')
   })
   it('marks wrong + reveals all correct alternatives', () => {
     expect(stateFor(q, 1, 1)).toBe('wrong')

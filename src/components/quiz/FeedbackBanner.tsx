@@ -17,7 +17,7 @@ export function FeedbackBanner({ question, ok }: { question: Question; ok: boole
       <span className="flex-1">
         <strong className="font-semibold">{ok ? '¡Correcto!' : 'Respuesta incorrecta.'}</strong>{' '}
         {!ok && (
-          <>La respuesta correcta es <strong>{question.options[primaryCorrect(question)]}</strong>.</>
+          <>La respuesta correcta es <strong>{primaryCorrect(question)}</strong>.</>
         )}
       </span>
     </div>

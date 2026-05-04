@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
-import { isCorrect, primaryCorrect, type Question } from '@lib/quiz/types'
+import { isCorrect, primaryCorrect, type Answer, type Question } from '@lib/quiz/types'
 import { StatTile } from './StatTile'
 import { summarize } from './summary'
 import type { SessionState } from './useQuizSession'
@@ -52,15 +52,16 @@ export function ResultsScreen({ session, accent, onRetry, onPickAnother }: Props
   )
 }
 
-function ReviewRow({ q, chosen, index }: { q: Question; chosen?: number; index: number }) {
+function ReviewRow({ q, chosen, index }: { q: Question; chosen?: Answer; index: number }) {
   const ok = chosen !== undefined && isCorrect(q, chosen)
   const tone = ok ? 'border-emerald-200 bg-emerald-50/60' : chosen === undefined ? 'border-slate-200 bg-slate-50' : 'border-rose-200 bg-rose-50/60'
+  const yourAnswer = q.kind === 'fill' ? (chosen as string | undefined) : (typeof chosen === 'number' ? q.options[chosen] : undefined)
   return (
     <li className={`rounded-xl border p-3 text-sm ${tone}`}>
       <div className="text-xs text-slate-500">{index + 1}. {ok ? '✅ Acierto' : chosen === undefined ? '⏭️ Sin responder' : '❌ Fallo'}</div>
       <div className="mt-1 font-semibold text-slate-900">{q.q}</div>
-      <div className="mt-1 text-slate-700"><span className="text-slate-500">Correcta:</span> {q.options[primaryCorrect(q)]}</div>
-      {chosen !== undefined && !ok && <div className="text-rose-700"><span className="text-slate-500">Tu respuesta:</span> {q.options[chosen]}</div>}
+      <div className="mt-1 text-slate-700"><span className="text-slate-500">Correcta:</span> {primaryCorrect(q)}</div>
+      {chosen !== undefined && !ok && <div className="text-rose-700"><span className="text-slate-500">Tu respuesta:</span> {yourAnswer}</div>}
     </li>
   )
 }

@@ -28,7 +28,14 @@ export function QuizSession({ subject, questions }: { subject: SubjectWithCount;
   }
 
   if (!session) {
-    return <StartScreen subject={subject} hasResume={false} onStart={(limit) => start({ limit })} onResume={() => { /* no-op */ }} />
+    return (
+      <StartScreen
+        subject={subject}
+        hasResume={false}
+        onStart={(limit, cuatrimestre) => start({ limit, cuatrimestre })}
+        onResume={() => { /* no-op */ }}
+      />
+    )
   }
 
   if (session.finishedAt) {

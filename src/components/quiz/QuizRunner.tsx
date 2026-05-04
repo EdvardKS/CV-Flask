@@ -1,5 +1,6 @@
 'use client'
 
+import type { Answer } from '@lib/quiz/types'
 import { QuestionCard } from './QuestionCard'
 import { QuizProgressBar } from './QuizProgressBar'
 import type { SessionState } from './useQuizSession'
@@ -7,7 +8,7 @@ import type { SessionState } from './useQuizSession'
 type Props = {
   session: SessionState
   accent: string
-  onAnswer: (i: number) => void
+  onAnswer: (value: Answer) => void
   onGoto: (i: number) => void
   onFinish: () => void
 }

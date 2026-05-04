@@ -5,7 +5,8 @@ import { buildAiSearchUrl } from './aiSearchUrl'
 
 export function AiHelpButton({ question, accent }: { question: Question; accent: string }) {
   const onClick = () => {
-    const url = buildAiSearchUrl(question.q, question.options)
+    const opts = question.kind === 'choice' ? question.options : undefined
+    const url = buildAiSearchUrl(question.q, opts)
     window.open(url, '_blank', 'noopener,noreferrer')
   }
   return (
