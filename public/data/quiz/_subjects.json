@@ -33,5 +33,12 @@
     "description": "GTEC — 4º curso 2º cuatri. Innovación, transferencia, vigilancia e inteligencia competitiva.",
     "icon": "📈",
     "color": "#0d9488"
+  },
+  {
+    "id": "sistemas-digitales",
+    "name": "Sistemas Digitales",
+    "description": "SDIG — 1º curso 2º cuatri. Álgebra de Boole, compuertas, complemento a 2, sumadores.",
+    "icon": "🔢",
+    "color": "#ea580c"
   }
 ]
