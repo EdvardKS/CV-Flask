@@ -2,7 +2,7 @@ import { ensureQuizSeeded } from '@lib/quiz/boot'
 import { listSubjects } from '@lib/quiz/repo'
 import { QuizPageShell } from '@components/quiz/QuizPageShell'
 import { QuizHeader } from '@components/quiz/QuizHeader'
-import { SubjectGrid } from '@components/quiz/SubjectGrid'
+import { SubjectFilters } from '@components/quiz/SubjectFilters'
 
 export const dynamic = 'force-dynamic'
 
@@ -20,7 +20,7 @@ export default async function QuizHomePage() {
         title="Tests"
         subtitle="Selecciona una asignatura. Tu progreso se guarda automáticamente."
       />
-      <SubjectGrid subjects={subjects} />
+      <SubjectFilters subjects={subjects} />
     </QuizPageShell>
   )
 }

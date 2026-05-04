@@ -15,6 +15,13 @@ function migrateQuestionsTable(db: Database.Database) {
   if (!has('context'))      db.exec("ALTER TABLE quiz_questions ADD COLUMN context TEXT")
 }
 
+function migrateSubjectsTable(db: Database.Database) {
+  const cols = db.prepare("PRAGMA table_info(quiz_subjects)").all() as { name: string }[]
+  if (!cols.some(c => c.name === 'curso')) {
+    db.exec("ALTER TABLE quiz_subjects ADD COLUMN curso INTEGER")
+  }
+}
+
 export function getQuizDb(): Database.Database {
   if (_db) return _db
   mkdirSync(quizDbDir(), { recursive: true })
@@ -23,6 +30,7 @@ export function getQuizDb(): Database.Database {
   db.pragma('foreign_keys = ON')
   db.exec(QUIZ_DDL)
   migrateQuestionsTable(db)
+  migrateSubjectsTable(db)
   _db = db
   return db
 }

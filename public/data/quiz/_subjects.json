@@ -1,44 +1,50 @@
 [
   {
+    "id": "sistemas-digitales",
+    "name": "Sistemas Digitales",
+    "description": "SDIG — 1º curso 2º cuatri. Álgebra de Boole, compuertas, complemento a 2, sumadores.",
+    "icon": "🔢",
+    "color": "#ea580c",
+    "curso": 1
+  },
+  {
     "id": "estructura",
     "name": "Estructura de Computadores",
-    "description": "ECSO — arquitectura, MIPS, memoria, periféricos.",
+    "description": "ECSO — 2º curso 1º cuatri. Arquitectura, MIPS, memoria, periféricos.",
     "icon": "🧮",
-    "color": "#3a6ea5"
+    "color": "#3a6ea5",
+    "curso": 2
   },
   {
     "id": "sistemas-operativos",
     "name": "Administración de SSOO",
-    "description": "Gestión de procesos, memoria, planificación, E/S.",
+    "description": "ASSO — 2º curso 1º cuatri. Gestión de procesos, memoria, planificación, E/S.",
     "icon": "⚙️",
-    "color": "#2e7d32"
-  },
-  {
-    "id": "ssoo-avanzados",
-    "name": "SSOO Avanzados",
-    "description": "Hyper-threading, MIMD, hebras, sincronización.",
-    "icon": "🧠",
-    "color": "#6a1b9a"
+    "color": "#2e7d32",
+    "curso": 2
   },
   {
     "id": "ingles",
     "name": "Inglés B2",
     "description": "Gramática, condicionales, vocabulario, phrasal verbs.",
     "icon": "🇬🇧",
-    "color": "#c62828"
+    "color": "#c62828",
+    "curso": 2
+  },
+  {
+    "id": "ssoo-avanzados",
+    "name": "SSOO Avanzados",
+    "description": "SOAV — 3º curso 1º cuatri. Hyper-threading, MIMD, hebras, sincronización.",
+    "icon": "🧠",
+    "color": "#6a1b9a",
+    "curso": 3
   },
   {
     "id": "gestion-tecnologia",
     "name": "Gestión de la Tecnología",
     "description": "GTEC — 4º curso 2º cuatri. Innovación, transferencia, vigilancia e inteligencia competitiva.",
     "icon": "📈",
-    "color": "#0d9488"
-  },
-  {
-    "id": "sistemas-digitales",
-    "name": "Sistemas Digitales",
-    "description": "SDIG — 1º curso 2º cuatri. Álgebra de Boole, compuertas, complemento a 2, sumadores.",
-    "icon": "🔢",
-    "color": "#ea580c"
+    "color": "#0d9488",
+    "curso": 4
   }
 ]

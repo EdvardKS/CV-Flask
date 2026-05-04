@@ -6,7 +6,8 @@ export const subjectMetaSchema = z.object({
   description: z.string().default(''),
   icon: z.string().default('📝'),
   color: z.string().default('#3a6ea5'),
-  position: z.number().int().optional()
+  position: z.number().int().optional(),
+  curso: z.number().int().min(1).max(6).optional()
 })
 export type SubjectMeta = z.infer<typeof subjectMetaSchema>
 

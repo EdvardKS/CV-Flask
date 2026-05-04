@@ -2,22 +2,23 @@ import 'server-only'
 import { getQuizDb } from './db'
 import type { Question, SubjectMeta, SubjectWithCount } from './types'
 
-type SubjectRow = SubjectMeta & { question_count: number; cuatrimestres_csv: string | null }
+type SubjectRow = SubjectMeta & { question_count: number; cuatrimestres_csv: string | null; curso: number | null }
 
 export function listSubjects(): SubjectWithCount[] {
   const db = getQuizDb()
   const rows = db.prepare(`
-    SELECT s.id, s.name, s.description, s.icon, s.color, s.position,
+    SELECT s.id, s.name, s.description, s.icon, s.color, s.position, s.curso,
            (SELECT COUNT(*) FROM quiz_questions q WHERE q.subject_id=s.id) AS question_count,
            (SELECT GROUP_CONCAT(DISTINCT IFNULL(cuatrimestre, 1))
               FROM quiz_questions q WHERE q.subject_id=s.id) AS cuatrimestres_csv
     FROM quiz_subjects s
-    ORDER BY s.position ASC, s.name ASC
+    ORDER BY s.curso ASC, s.position ASC, s.name ASC
   `).all() as SubjectRow[]
   return rows.map(r => ({
     id: r.id, name: r.name, description: r.description ?? '',
     icon: r.icon ?? '📝', color: r.color ?? '#3a6ea5',
     position: r.position ?? 0,
+    curso: r.curso ?? undefined,
     questionCount: r.question_count,
     cuatrimestres: parseCuatris(r.cuatrimestres_csv)
   }))

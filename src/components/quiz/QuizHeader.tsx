@@ -18,20 +18,12 @@ export function QuizHeader({ title = 'Tests', subtitle, back, accent }: Props) {
           <span aria-hidden>←</span> {back.label}
         </Link>
       )}
-      <div className="flex items-end justify-between gap-3">
-        <h1
-          className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
-          style={accent ? { color: accent } : undefined}
-        >
-          {title}
-        </h1>
-        <Link
-          href="/"
-          className="text-[11px] uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700"
-        >
-          ← EdvardKS PC
-        </Link>
-      </div>
+      <h1
+        className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
+        style={accent ? { color: accent } : undefined}
+      >
+        {title}
+      </h1>
       {subtitle && <p className="text-sm text-slate-500">{subtitle}</p>}
     </header>
   )
