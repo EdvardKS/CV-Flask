@@ -50,16 +50,28 @@ async function ingestSubject(db: Database.Database, m: SubjectMeta) {
   tx()
 }
 
-export async function seedQuizDb(): Promise<{ subjects: number; ingested: string[] }> {
+export async function seedQuizDb(): Promise<{ subjects: number; ingested: string[]; errors: { id: string; message: string }[] }> {
   const db = getQuizDb()
-  const metas = await readSubjectMetas()
-  const ingested: string[] = []
-  for (const m of metas) {
-    upsertSubject(db, m)
-    const before = (db.prepare('SELECT file_mtime FROM quiz_seed_state WHERE subject_id=?').get(m.id) as { file_mtime: number } | undefined)?.file_mtime ?? 0
-    await ingestSubject(db, m)
-    const after = (db.prepare('SELECT file_mtime FROM quiz_seed_state WHERE subject_id=?').get(m.id) as { file_mtime: number } | undefined)?.file_mtime ?? 0
-    if (after !== before) ingested.push(m.id)
+  let metas: SubjectMeta[]
+  try {
+    metas = await readSubjectMetas()
+  } catch (e) {
+    console.error('[quiz seed] _subjects.json invalid:', e)
+    return { subjects: 0, ingested: [], errors: [{ id: '_subjects.json', message: (e as Error).message }] }
   }
-  return { subjects: metas.length, ingested }
+  const ingested: string[] = []
+  const errors: { id: string; message: string }[] = []
+  for (const m of metas) {
+    try {
+      upsertSubject(db, m)
+      const before = (db.prepare('SELECT file_mtime FROM quiz_seed_state WHERE subject_id=?').get(m.id) as { file_mtime: number } | undefined)?.file_mtime ?? 0
+      await ingestSubject(db, m)
+      const after = (db.prepare('SELECT file_mtime FROM quiz_seed_state WHERE subject_id=?').get(m.id) as { file_mtime: number } | undefined)?.file_mtime ?? 0
+      if (after !== before) ingested.push(m.id)
+    } catch (e) {
+      console.error(`[quiz seed] subject "${m.id}" failed:`, e)
+      errors.push({ id: m.id, message: (e as Error).message })
+    }
+  }
+  return { subjects: metas.length, ingested, errors }
 }
