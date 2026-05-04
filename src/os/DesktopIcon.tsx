@@ -1,6 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
+import { useRouter } from 'next/navigation'
 import { useWM } from './store'
 import { iconGlyph } from './Window'
 import type { AppManifest } from './types'
@@ -11,10 +12,15 @@ export function DesktopIcon({ manifest, selected, onSelect }: {
   onSelect: () => void
 }) {
   const openApp = useWM(s => s.openApp)
+  const router = useRouter()
 
   const open = () => {
     if (manifest.externalUrl) {
       window.open(manifest.externalUrl, '_blank', 'noopener,noreferrer')
+      return
+    }
+    if (manifest.standaloneRoute) {
+      router.push(manifest.standaloneRoute)
       return
     }
     openApp(manifest)

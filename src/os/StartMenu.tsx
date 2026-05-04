@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { APPS } from '@apps/_registry'
 import { useWM } from './store'
 import { iconGlyph } from './Window'
@@ -14,6 +15,7 @@ const GROUP_LABELS: Record<AppCategory, string> = {
 
 export function StartMenu({ onClose }: { onClose: () => void }) {
   const openApp = useWM(s => s.openApp)
+  const router = useRouter()
   const closeAll = () => {
     const s = useWM.getState()
     s.windows.forEach(w => s.close(w.id))
@@ -40,6 +42,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
                 className="xp-start-menu-item"
                 onClick={() => {
                   if (app.externalUrl) window.open(app.externalUrl, '_blank', 'noopener,noreferrer')
+                  else if (app.standaloneRoute) router.push(app.standaloneRoute)
                   else openApp(app)
                   onClose()
                 }}
