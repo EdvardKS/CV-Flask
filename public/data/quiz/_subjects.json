@@ -26,5 +26,12 @@
     "description": "Gramática, condicionales, vocabulario, phrasal verbs.",
     "icon": "🇬🇧",
     "color": "#c62828"
+  },
+  {
+    "id": "gestion-tecnologia",
+    "name": "Gestión de la Tecnología",
+    "description": "GTEC — 4º curso 2º cuatri. Innovación, transferencia, vigilancia e inteligencia competitiva.",
+    "icon": "📈",
+    "color": "#0d9488"
   }
 ]

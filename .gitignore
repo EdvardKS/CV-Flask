@@ -5,7 +5,7 @@
 /build
 /dist
 /coverage
-
+/temp
 # Env
 .env
 .env.local
