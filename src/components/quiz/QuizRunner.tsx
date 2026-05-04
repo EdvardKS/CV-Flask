@@ -7,13 +7,12 @@ import type { SessionState } from './useQuizSession'
 type Props = {
   session: SessionState
   accent: string
-  subjectName: string
   onAnswer: (i: number) => void
   onGoto: (i: number) => void
   onFinish: () => void
 }
 
-export function QuizRunner({ session, accent, subjectName, onAnswer, onGoto, onFinish }: Props) {
+export function QuizRunner({ session, accent, onAnswer, onGoto, onFinish }: Props) {
   const total = session.questions.length
   const idx = session.currentIndex
   const q = session.questions[idx]
@@ -33,7 +32,6 @@ export function QuizRunner({ session, accent, subjectName, onAnswer, onGoto, onF
         chosen={chosen}
         accent={accent}
         onPick={onAnswer}
-        subjectName={subjectName}
       />
 
       <nav

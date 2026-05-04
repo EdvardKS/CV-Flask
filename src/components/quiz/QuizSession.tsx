@@ -46,7 +46,6 @@ export function QuizSession({ subject, questions }: { subject: SubjectWithCount;
     <QuizRunner
       session={session}
       accent={subject.color}
-      subjectName={subject.name}
       onAnswer={answer}
       onGoto={goto}
       onFinish={finish}

@@ -10,7 +10,6 @@ type Props = {
   chosen?: number
   accent: string
   onPick: (index: number) => void
-  subjectName: string
 }
 
 function stateFor(question: Question, optionIndex: number, chosen?: number): OptionState {
@@ -21,7 +20,7 @@ function stateFor(question: Question, optionIndex: number, chosen?: number): Opt
   return 'idle'
 }
 
-export function QuestionCard({ question, chosen, accent, onPick, subjectName }: Props) {
+export function QuestionCard({ question, chosen, accent, onPick }: Props) {
   const answered = chosen !== undefined
   const ok = answered && isCorrect(question, chosen)
 
@@ -29,7 +28,7 @@ export function QuestionCard({ question, chosen, accent, onPick, subjectName }: 
     <article className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
       <div className="flex items-start gap-3">
         <h2 className="flex-1 text-lg font-semibold leading-snug text-slate-900 sm:text-xl">{question.q}</h2>
-        <AiHelpButton question={question} chosen={chosen} subjectName={subjectName} accent={accent} />
+        <AiHelpButton question={question} accent={accent} />
       </div>
       {question.code && (
         <pre className="mt-3 overflow-x-auto rounded-xl bg-slate-900 p-3 font-mono text-[12px] leading-relaxed text-slate-100">

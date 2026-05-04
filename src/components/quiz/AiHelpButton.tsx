@@ -1,50 +1,24 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import type { Question } from '@lib/quiz/types'
-import { AiExplainPanel } from './AiExplainPanel'
-import { useAiExplain } from './useAiExplain'
+import { buildAiSearchUrl } from './aiSearchUrl'
 
-type Props = {
-  question: Question
-  chosen?: number
-  subjectName: string
-  accent: string
-}
-
-export function AiHelpButton({ question, chosen, subjectName, accent }: Props) {
-  const [open, setOpen] = useState(false)
-  const { text, status, ask, stop, reset } = useAiExplain(subjectName)
-
-  useEffect(() => { reset(); setOpen(false) }, [question, reset])
-
+export function AiHelpButton({ question, accent }: { question: Question; accent: string }) {
   const onClick = () => {
-    setOpen(true)
-    if (status !== 'streaming') ask(question, chosen)
+    const url = buildAiSearchUrl(question.q, question.options)
+    window.open(url, '_blank', 'noopener,noreferrer')
   }
-
   return (
-    <>
-      <button
-        type="button"
-        onClick={onClick}
-        aria-label="Pedir ayuda a la IA"
-        title="Ayuda con esta pregunta"
-        className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:border-slate-300 hover:text-slate-900 active:scale-95"
-        style={{ color: accent }}
-      >
-        <RobotIcon />
-      </button>
-      {open && (
-        <AiExplainPanel
-          text={text}
-          status={status}
-          accent={accent}
-          onClose={() => { stop(); setOpen(false) }}
-          onRetry={() => ask(question, chosen)}
-        />
-      )}
-    </>
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label="Abrir búsqueda con IA en una pestaña nueva"
+      title="Abrir búsqueda con IA en una pestaña nueva"
+      className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:border-slate-300 hover:shadow active:scale-95"
+      style={{ color: accent }}
+    >
+      <RobotIcon />
+    </button>
   )
 }
 
