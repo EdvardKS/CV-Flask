@@ -4,6 +4,7 @@ const config: NextConfig = {
   output: 'standalone',
   reactStrictMode: true,
   poweredByHeader: false,
+  serverExternalPackages: ['better-sqlite3'],
   experimental: {
     optimizePackageImports: ['framer-motion', 'zustand']
   },

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "estructura",
+    "name": "Estructura de Computadores",
+    "description": "ECSO — arquitectura, MIPS, memoria, periféricos.",
+    "icon": "🧮",
+    "color": "#3a6ea5"
+  },
+  {
+    "id": "sistemas-operativos",
+    "name": "Administración de SSOO",
+    "description": "Gestión de procesos, memoria, planificación, E/S.",
+    "icon": "⚙️",
+    "color": "#2e7d32"
+  },
+  {
+    "id": "ssoo-avanzados",
+    "name": "SSOO Avanzados",
+    "description": "Hyper-threading, MIMD, hebras, sincronización.",
+    "icon": "🧠",
+    "color": "#6a1b9a"
+  },
+  {
+    "id": "ingles",
+    "name": "Inglés B2",
+    "description": "Gramática, condicionales, vocabulario, phrasal verbs.",
+    "icon": "🇬🇧",
+    "color": "#c62828"
+  }
+]

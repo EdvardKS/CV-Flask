@@ -8,11 +8,13 @@ services:
       - "5000:3000"
     environment:
       NODE_ENV: production
+      QUIZ_DB_PATH: /app/data/quiz/quiz.db
     env_file:
       - .env
     volumes:
       - padel_data:/app/public/padel-data
       - news_cache:/app/public/news-cache
+      - quiz_data:/app/data/quiz
     networks:
       - reverse_proxy
       - ollama_net
@@ -20,6 +22,7 @@ services:
 volumes:
   padel_data:
   news_cache:
+  quiz_data:
 networks:
   reverse_proxy:
     external: true

@@ -2,6 +2,7 @@
 FROM node:20-alpine AS deps
 WORKDIR /app
 RUN corepack enable
+RUN apk add --no-cache python3 make g++
 COPY package.json pnpm-lock.yaml* package-lock.json* ./
 RUN npm ci --no-audit --no-fund || npm install --no-audit --no-fund
 
@@ -28,13 +29,15 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # FIX permisos
-RUN mkdir -p /app/public/padel-data /app/public/news-cache && \
-    chown -R nextjs:nodejs /app/public/padel-data /app/public/news-cache /app/legacy-src && \
-    chmod -R 775 /app/public/news-cache
+RUN mkdir -p /app/public/padel-data /app/public/news-cache /app/data/quiz && \
+    chown -R nextjs:nodejs /app/public/padel-data /app/public/news-cache /app/legacy-src /app/data && \
+    chmod -R 775 /app/public/news-cache /app/data
 
 USER nextjs
 
 ENV PADEL_DATA_DIR=/app/public/padel-data
+ENV QUIZ_DB_PATH=/app/data/quiz/quiz.db
+ENV QUIZ_SEED_DIR=/app/public/data/quiz
 
 EXPOSE 3000
 ENV PORT=3000 HOSTNAME=0.0.0.0
