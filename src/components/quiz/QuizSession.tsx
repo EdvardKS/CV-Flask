@@ -24,7 +24,7 @@ export function QuizSession({ subject, questions }: { subject: SubjectWithCount;
   }, [session, subject])
 
   if (!hydrated) {
-    return <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6 text-sm text-slate-400">Cargando…</div>
+    return <div className="rounded-3xl border border-slate-200 bg-white p-6 text-sm text-slate-500 shadow-sm">Cargando…</div>
   }
 
   if (!session) {
@@ -46,6 +46,7 @@ export function QuizSession({ subject, questions }: { subject: SubjectWithCount;
     <QuizRunner
       session={session}
       accent={subject.color}
+      subjectName={subject.name}
       onAnswer={answer}
       onGoto={goto}
       onFinish={finish}

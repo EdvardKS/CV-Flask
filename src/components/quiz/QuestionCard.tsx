@@ -1,19 +1,38 @@
-import type { Question } from '@lib/quiz/types'
-import { AnswerOption } from './AnswerOption'
+'use client'
+
+import { isCorrect, type Question } from '@lib/quiz/types'
+import { AnswerOption, type OptionState } from './AnswerOption'
+import { FeedbackBanner } from './FeedbackBanner'
+import { AiHelpButton } from './AiHelpButton'
 
 type Props = {
   question: Question
   chosen?: number
   accent: string
   onPick: (index: number) => void
+  subjectName: string
 }
 
-export function QuestionCard({ question, chosen, accent, onPick }: Props) {
+function stateFor(question: Question, optionIndex: number, chosen?: number): OptionState {
+  if (chosen === undefined) return 'idle'
+  const userOk = isCorrect(question, chosen)
+  if (optionIndex === chosen) return userOk ? 'correct' : 'wrong'
+  if (!userOk && isCorrect(question, optionIndex)) return 'reveal'
+  return 'idle'
+}
+
+export function QuestionCard({ question, chosen, accent, onPick, subjectName }: Props) {
+  const answered = chosen !== undefined
+  const ok = answered && isCorrect(question, chosen)
+
   return (
-    <article className="rounded-3xl border border-slate-800 bg-slate-900/60 p-4 backdrop-blur sm:p-6">
-      <h2 className="text-lg font-semibold leading-snug text-slate-50 sm:text-xl">{question.q}</h2>
+    <article className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+      <div className="flex items-start gap-3">
+        <h2 className="flex-1 text-lg font-semibold leading-snug text-slate-900 sm:text-xl">{question.q}</h2>
+        <AiHelpButton question={question} chosen={chosen} subjectName={subjectName} accent={accent} />
+      </div>
       {question.code && (
-        <pre className="mt-3 overflow-x-auto rounded-xl bg-slate-950/80 p-3 font-mono text-[12px] leading-relaxed text-slate-200 ring-1 ring-slate-800">
+        <pre className="mt-3 overflow-x-auto rounded-xl bg-slate-900 p-3 font-mono text-[12px] leading-relaxed text-slate-100">
 {question.code}
         </pre>
       )}
@@ -23,13 +42,15 @@ export function QuestionCard({ question, chosen, accent, onPick }: Props) {
             <AnswerOption
               index={i}
               text={opt}
-              state={chosen === i ? 'chosen' : 'idle'}
+              state={stateFor(question, i, chosen)}
               onPick={onPick}
+              disabled={answered}
               accent={accent}
             />
           </li>
         ))}
       </ul>
+      {answered && <FeedbackBanner question={question} ok={ok} />}
     </article>
   )
 }
