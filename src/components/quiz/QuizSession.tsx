@@ -31,6 +31,7 @@ export function QuizSession({ subject, questions }: { subject: SubjectWithCount;
     return (
       <StartScreen
         subject={subject}
+        questions={questions}
         hasResume={false}
         onStart={(limit, cuatrimestre) => start({ limit, cuatrimestre })}
         onResume={() => { /* no-op */ }}
