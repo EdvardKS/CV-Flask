@@ -3,7 +3,10 @@ import { z } from 'zod'
 export const questionSchema = z.object({
   q: z.string(),
   options: z.array(z.string()).min(2).max(8),
-  correctIndex: z.number().int().min(0),
+  correctIndex: z.union([
+    z.number().int().min(0),
+    z.array(z.number().int().min(0)).min(1)
+  ]),
   code: z.string().optional(),
   isVocab: z.boolean().optional(),
   category: z.string().optional()
@@ -11,6 +14,15 @@ export const questionSchema = z.object({
 
 export const questionsSchema = z.array(questionSchema)
 export type Question = z.infer<typeof questionSchema>
+
+export function isCorrect(q: Pick<Question, 'correctIndex'>, picked: number): boolean {
+  const c = q.correctIndex
+  return Array.isArray(c) ? c.includes(picked) : c === picked
+}
+
+export function primaryCorrect(q: Pick<Question, 'correctIndex'>): number {
+  return Array.isArray(q.correctIndex) ? q.correctIndex[0] : q.correctIndex
+}
 
 export function mulberry32(seed: number) {
   return function() {

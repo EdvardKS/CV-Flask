@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
   position      INTEGER NOT NULL,
   q             TEXT NOT NULL,
   options_json  TEXT NOT NULL,
-  correct_index INTEGER NOT NULL,
+  correct_json  TEXT NOT NULL,
   code          TEXT,
   is_vocab      INTEGER DEFAULT 0,
   category      TEXT

@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 import clsx from 'clsx'
 import { useQuizSession } from './hooks/useQuizSession'
+import { isCorrect, primaryCorrect } from './schema'
 import type { QuizSubject } from './subjects'
 
 export function QuizRunner({ subject, onBack }: { subject: QuizSubject; onBack: () => void }) {
@@ -118,7 +119,7 @@ function Results({ subject, session, onRetry, onBack }: {
     session.questions.forEach((q, i) => {
       const a = session.answers[i]
       if (a === undefined) unanswered++
-      else if (a === q.correctIndex) correct++
+      else if (isCorrect(q, a)) correct++
       else incorrect++
     })
     return { correct, incorrect, unanswered }
@@ -143,7 +144,8 @@ function Results({ subject, session, onRetry, onBack }: {
         <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 10, marginTop: 10 }}>
           {session.questions.map((q, i) => {
             const chosen = session.answers[i]
-            const ok = chosen === q.correctIndex
+            const ok = chosen !== undefined && isCorrect(q, chosen)
+            const wrong = chosen !== undefined && !ok
             return (
               <li key={i} style={{
                 borderLeft: `4px solid ${ok ? '#2e7d32' : chosen === undefined ? '#777' : '#c62828'}`,
@@ -155,9 +157,9 @@ function Results({ subject, session, onRetry, onBack }: {
                 </div>
                 <div style={{ fontWeight: 'bold' }}>{q.q}</div>
                 <div style={{ fontSize: 12, marginTop: 4 }}>
-                  <strong>Correcta:</strong> {q.options[q.correctIndex]}
-                  {chosen !== undefined && chosen !== q.correctIndex && (
-                    <><br /><strong>Tu respuesta:</strong> {q.options[chosen]}</>
+                  <strong>Correcta:</strong> {q.options[primaryCorrect(q)]}
+                  {wrong && (
+                    <><br /><strong>Tu respuesta:</strong> {q.options[chosen!]}</>
                   )}
                 </div>
               </li>

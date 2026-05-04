@@ -25,18 +25,18 @@ export function getSubject(id: string): SubjectWithCount | null {
 }
 
 type QuestionRow = {
-  q: string; options_json: string; correct_index: number;
+  q: string; options_json: string; correct_json: string;
   code: string | null; is_vocab: number; category: string | null
 }
 
 export function listQuestions(subjectId: string): Question[] {
   const db = getQuizDb()
-  const rows = db.prepare(`SELECT q, options_json, correct_index, code, is_vocab, category
+  const rows = db.prepare(`SELECT q, options_json, correct_json, code, is_vocab, category
     FROM quiz_questions WHERE subject_id=? ORDER BY position ASC`).all(subjectId) as QuestionRow[]
   return rows.map(r => ({
     q: r.q,
     options: JSON.parse(r.options_json) as string[],
-    correctIndex: r.correct_index,
+    correctIndex: JSON.parse(r.correct_json),
     code: r.code ?? undefined,
     isVocab: !!r.is_vocab,
     category: r.category ?? undefined

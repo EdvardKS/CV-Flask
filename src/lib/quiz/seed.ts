@@ -38,9 +38,9 @@ async function ingestSubject(db: Database.Database, m: SubjectMeta) {
   const tx = db.transaction(() => {
     db.prepare('DELETE FROM quiz_questions WHERE subject_id=?').run(m.id)
     const ins = db.prepare(`INSERT INTO quiz_questions
-      (subject_id,position,q,options_json,correct_index,code,is_vocab,category)
+      (subject_id,position,q,options_json,correct_json,code,is_vocab,category)
       VALUES(?,?,?,?,?,?,?,?)`)
-    questions.forEach((q, i) => ins.run(m.id, i, q.q, JSON.stringify(q.options), q.correctIndex, q.code ?? null, q.isVocab ? 1 : 0, q.category ?? null))
+    questions.forEach((q, i) => ins.run(m.id, i, q.q, JSON.stringify(q.options), JSON.stringify(q.correctIndex), q.code ?? null, q.isVocab ? 1 : 0, q.category ?? null))
     db.prepare(`INSERT INTO quiz_seed_state(subject_id,file_mtime,seeded_at,question_count)
                 VALUES(?,?,?,?)
                 ON CONFLICT(subject_id) DO UPDATE SET file_mtime=excluded.file_mtime,

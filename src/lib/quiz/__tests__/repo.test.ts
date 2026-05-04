@@ -9,7 +9,8 @@ const SUBJECTS = [{
 }]
 const QUESTIONS = [
   { q: '2+2?', options: ['3', '4'], correctIndex: 1 },
-  { q: 'foo?', options: ['a', 'b', 'c'], correctIndex: 2, category: 'cat' }
+  { q: 'foo?', options: ['a', 'b', 'c'], correctIndex: 2, category: 'cat' },
+  { q: 'multi?', options: ['x', 'y', 'z'], correctIndex: [1, 2] }
 ]
 
 describe('quiz repo + seed', () => {
@@ -30,18 +31,24 @@ describe('quiz repo + seed', () => {
     rmSync(tmp, { recursive: true, force: true })
   })
 
-  it('seeds subjects + questions and lists them', async () => {
+  it('seeds subjects + questions and lists them (incl. multi-correct)', async () => {
     const { seedQuizDb } = await import('../seed')
     const { listSubjects, listQuestions } = await import('../repo')
+    const { isCorrect, primaryCorrect } = await import('../types')
     const r = await seedQuizDb()
     expect(r.subjects).toBe(1)
     expect(r.ingested).toContain('test-asg')
     const subjects = listSubjects()
-    expect(subjects[0]).toMatchObject({ id: 'test-asg', name: 'Test Asg', questionCount: 2 })
+    expect(subjects[0]).toMatchObject({ id: 'test-asg', name: 'Test Asg', questionCount: 3 })
     const qs = listQuestions('test-asg')
-    expect(qs).toHaveLength(2)
+    expect(qs).toHaveLength(3)
     expect(qs[0]).toMatchObject({ q: '2+2?', correctIndex: 1 })
     expect(qs[1].category).toBe('cat')
+    expect(qs[2].correctIndex).toEqual([1, 2])
+    expect(isCorrect(qs[2], 1)).toBe(true)
+    expect(isCorrect(qs[2], 2)).toBe(true)
+    expect(isCorrect(qs[2], 0)).toBe(false)
+    expect(primaryCorrect(qs[2])).toBe(1)
   })
 
   it('is idempotent on repeat seed (no re-ingest if mtime unchanged)', async () => {
