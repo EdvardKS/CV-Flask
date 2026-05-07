@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "generate:redes": "python scripts/generate_redes_data.py",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"

@@ -26,7 +26,12 @@ const baseFields = {
   code: z.string().optional(),
   category: z.string().optional(),
   cuatrimestre: z.number().int().min(1).max(2).optional(),
-  isVocab: z.boolean().optional()
+  isVocab: z.boolean().optional(),
+  sourceFile: z.string().min(1).optional(),
+  sourceType: z.string().min(1).optional(),
+  sourcePage: z.number().int().min(1).optional(),
+  sourceSlide: z.number().int().min(1).optional(),
+  evidence: z.string().min(1).optional()
 }
 
 export const choiceQuestionSchema = z.object({
@@ -54,6 +59,15 @@ export type FillQuestion = z.infer<typeof fillQuestionSchema>
 export type Question = ChoiceQuestion | FillQuestion
 export type Answer = number | string
 
+export const temarioSupportMaterialSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  sourceFile: z.string().min(1),
+  sourceType: z.string().min(1),
+  questionCount: z.number().int().min(0).default(0)
+})
+export type TemarioSupportMaterial = z.infer<typeof temarioSupportMaterialSchema>
+
 export type SubjectWithCount = SubjectMeta & {
   questionCount: number
   cuatrimestres: number[]
@@ -64,6 +78,7 @@ export const temarioQuizSchema = z.object({
   topic: z.number().int().min(1),
   title: z.string().min(1),
   sourceFile: z.string().min(1),
+  sourceType: z.string().min(1).optional(),
   questionCount: z.number().int().min(0),
   questions: questionsSchema
 })
@@ -73,6 +88,7 @@ export const temarioTopicSchema = z.object({
   id: z.string().min(1),
   topic: z.number().int().min(1),
   title: z.string().min(1),
+  supportMaterials: z.array(temarioSupportMaterialSchema).optional().default([]),
   quizzes: z.array(temarioQuizSchema)
 })
 export type TemarioTopic = z.infer<typeof temarioTopicSchema>

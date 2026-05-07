@@ -8,8 +8,8 @@ describe('redes manifests', () => {
     const summary = getRedesModeSummary()
     expect(summary).toEqual({
       autoevaluacionCount: 0,
-      temarioQuizCount: 4,
-      temarioQuestionCount: 120,
+      temarioQuizCount: 13,
+      temarioQuestionCount: 167,
       conceptTopicCount: 6
     })
 
@@ -20,7 +20,18 @@ describe('redes manifests', () => {
     expect(quiz?.questions[0]).toMatchObject({
       kind: 'choice',
       cuatrimestre: 2,
-      category: 'tema-2'
+      category: 'tema-2',
+      sourceFile: 'Tema 2.1.-Examen Test.pdf',
+      sourceType: 'pdf-cuestionario'
+    })
+
+    const generatedQuiz = getRedesQuizById('tema-5-repaso-del-temario')
+    expect(generatedQuiz).toBeTruthy()
+    expect(generatedQuiz?.questionCount).toBe(5)
+    expect(generatedQuiz?.questions[0]).toMatchObject({
+      category: 'tema-5',
+      sourceType: 'pptx-convertido',
+      sourceFile: 'IPv6-El-Futuro-de-Internet.pptx'
     })
 
     const deck = getRedesConceptTopic('tema-5')

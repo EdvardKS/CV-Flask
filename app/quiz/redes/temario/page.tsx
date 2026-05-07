@@ -36,11 +36,28 @@ export default async function RedesTemarioPage() {
                     ? `${topic.quizzes.length} cuestionarios cargados`
                     : 'Todavía no hay cuestionarios de temario para este tema.'}
                 </p>
+                {topic.supportMaterials.length > 0 ? (
+                  <p className="mt-1 text-xs text-slate-400">
+                    Material de apoyo: {topic.supportMaterials.length} fuentes teóricas y de clase.
+                  </p>
+                ) : null}
               </div>
               <span className="rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700">
                 {topic.quizzes.reduce((sum, quiz) => sum + quiz.questionCount, 0)} preguntas
               </span>
             </div>
+            {topic.supportMaterials.length > 0 ? (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {topic.supportMaterials.map(material => (
+                  <span
+                    key={material.id}
+                    className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600"
+                  >
+                    {material.title}
+                  </span>
+                ))}
+              </div>
+            ) : null}
             {topic.quizzes.length > 0 ? (
               <div className="mt-4 grid gap-3">
                 {topic.quizzes.map(quiz => (
@@ -52,7 +69,10 @@ export default async function RedesTemarioPage() {
                     <div className="flex items-center justify-between gap-4">
                       <div>
                         <h3 className="font-semibold text-slate-900">{quiz.title}</h3>
-                        <p className="text-sm text-slate-500">{quiz.sourceFile}</p>
+                        <p className="text-sm text-slate-500">
+                          {quiz.sourceFile}
+                          {quiz.sourceType ? ` · ${quiz.sourceType}` : ''}
+                        </p>
                       </div>
                       <span className="text-sm font-medium" style={{ color: subject.color }}>
                         {quiz.questionCount} preguntas →
