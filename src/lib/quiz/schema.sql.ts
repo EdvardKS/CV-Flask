@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS quiz_subjects (
   color       TEXT,
   position    INTEGER DEFAULT 0,
   curso       INTEGER,
+  entry_mode  TEXT NOT NULL DEFAULT 'standard',
   updated_at  INTEGER NOT NULL
 );
 

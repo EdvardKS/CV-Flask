@@ -7,19 +7,19 @@ import { quizDbDir, quizDbPath } from './paths'
 let _db: Database.Database | null = null
 
 function migrateQuestionsTable(db: Database.Database) {
-  const cols = db.prepare("PRAGMA table_info(quiz_questions)").all() as { name: string }[]
-  const has = (n: string) => cols.some(c => c.name === n)
-  if (!has('kind'))         db.exec("ALTER TABLE quiz_questions ADD COLUMN kind TEXT NOT NULL DEFAULT 'choice'")
-  if (!has('accept_json'))  db.exec("ALTER TABLE quiz_questions ADD COLUMN accept_json TEXT")
-  if (!has('cuatrimestre')) db.exec("ALTER TABLE quiz_questions ADD COLUMN cuatrimestre INTEGER")
-  if (!has('context'))      db.exec("ALTER TABLE quiz_questions ADD COLUMN context TEXT")
+  const cols = db.prepare('PRAGMA table_info(quiz_questions)').all() as { name: string }[]
+  const has = (name: string) => cols.some(col => col.name === name)
+  if (!has('kind')) db.exec("ALTER TABLE quiz_questions ADD COLUMN kind TEXT NOT NULL DEFAULT 'choice'")
+  if (!has('accept_json')) db.exec('ALTER TABLE quiz_questions ADD COLUMN accept_json TEXT')
+  if (!has('cuatrimestre')) db.exec('ALTER TABLE quiz_questions ADD COLUMN cuatrimestre INTEGER')
+  if (!has('context')) db.exec('ALTER TABLE quiz_questions ADD COLUMN context TEXT')
 }
 
 function migrateSubjectsTable(db: Database.Database) {
-  const cols = db.prepare("PRAGMA table_info(quiz_subjects)").all() as { name: string }[]
-  if (!cols.some(c => c.name === 'curso')) {
-    db.exec("ALTER TABLE quiz_subjects ADD COLUMN curso INTEGER")
-  }
+  const cols = db.prepare('PRAGMA table_info(quiz_subjects)').all() as { name: string }[]
+  const has = (name: string) => cols.some(col => col.name === name)
+  if (!has('curso')) db.exec('ALTER TABLE quiz_subjects ADD COLUMN curso INTEGER')
+  if (!has('entry_mode')) db.exec("ALTER TABLE quiz_subjects ADD COLUMN entry_mode TEXT NOT NULL DEFAULT 'standard'")
 }
 
 export function getQuizDb(): Database.Database {
@@ -36,5 +36,8 @@ export function getQuizDb(): Database.Database {
 }
 
 export function closeQuizDb(): void {
-  if (_db) { _db.close(); _db = null }
+  if (_db) {
+    _db.close()
+    _db = null
+  }
 }

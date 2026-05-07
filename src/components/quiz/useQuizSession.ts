@@ -15,28 +15,43 @@ export type SessionState = {
   cuatrimestre?: number | 'all'
 }
 
-const VERSION = 3
+const VERSION = 4
 const key = (id: string) => `quiz:v${VERSION}:${id}`
 
-function load(id: string): SessionState | null {
+function load(storageId: string): SessionState | null {
   if (typeof localStorage === 'undefined') return null
-  try { const raw = localStorage.getItem(key(id)); return raw ? JSON.parse(raw) as SessionState : null }
-  catch { return null }
+  try {
+    const raw = localStorage.getItem(key(storageId))
+    return raw ? JSON.parse(raw) as SessionState : null
+  } catch {
+    return null
+  }
 }
-function save(s: SessionState) { try { localStorage.setItem(key(s.subjectId), JSON.stringify(s)) } catch {} }
-function clear(id: string) { try { localStorage.removeItem(key(id)) } catch {} }
+
+function save(storageId: string, state: SessionState) {
+  try {
+    localStorage.setItem(key(storageId), JSON.stringify(state))
+  } catch {}
+}
+
+function clear(storageId: string) {
+  try {
+    localStorage.removeItem(key(storageId))
+  } catch {}
+}
 
 export type StartOpts = { limit?: number; cuatrimestre?: number | 'all' }
 
-export function useQuizSession(subjectId: string, source: Question[]) {
+export function useQuizSession(subjectId: string, source: Question[], sessionKey = subjectId) {
   const [session, setSession] = useState<SessionState | null>(null)
   const [hydrated, setHydrated] = useState(false)
 
   useEffect(() => {
-    const existing = load(subjectId)
+    const existing = load(sessionKey)
     if (existing && existing.questions.length > 0 && !existing.finishedAt) setSession(existing)
+    else setSession(null)
     setHydrated(true)
-  }, [subjectId])
+  }, [sessionKey])
 
   const start = useCallback((opts: StartOpts = {}) => {
     const seed = (Date.now() & 0xffffffff) >>> 0
@@ -46,21 +61,41 @@ export function useQuizSession(subjectId: string, source: Question[]) {
     let qs = shuffled(filtered, seed)
     if (opts.limit && opts.limit < qs.length) qs = qs.slice(0, opts.limit)
     const next: SessionState = {
-      subjectId, seed, questions: qs, answers: {}, currentIndex: 0,
-      startedAt: Date.now(), finishedAt: null,
+      subjectId,
+      seed,
+      questions: qs,
+      answers: {},
+      currentIndex: 0,
+      startedAt: Date.now(),
+      finishedAt: null,
       cuatrimestre: opts.cuatrimestre
     }
-    setSession(next); save(next)
-  }, [subjectId, source])
+    setSession(next)
+    save(sessionKey, next)
+  }, [sessionKey, source, subjectId])
 
   const update = useCallback((fn: (prev: SessionState) => SessionState) => {
-    setSession(prev => { if (!prev) return prev; const n = fn(prev); save(n); return n })
-  }, [])
+    setSession(prev => {
+      if (!prev) return prev
+      const next = fn(prev)
+      save(sessionKey, next)
+      return next
+    })
+  }, [sessionKey])
 
-  const answer = useCallback((value: Answer) => update(p => ({ ...p, answers: { ...p.answers, [p.currentIndex]: value } })), [update])
-  const goto = useCallback((idx: number) => update(p => ({ ...p, currentIndex: Math.max(0, Math.min(p.questions.length - 1, idx)) })), [update])
-  const finish = useCallback(() => update(p => ({ ...p, finishedAt: Date.now() })), [update])
-  const reset = useCallback(() => { clear(subjectId); setSession(null) }, [subjectId])
+  const answer = useCallback(
+    (value: Answer) => update(prev => ({ ...prev, answers: { ...prev.answers, [prev.currentIndex]: value } })),
+    [update]
+  )
+  const goto = useCallback(
+    (idx: number) => update(prev => ({ ...prev, currentIndex: Math.max(0, Math.min(prev.questions.length - 1, idx)) })),
+    [update]
+  )
+  const finish = useCallback(() => update(prev => ({ ...prev, finishedAt: Date.now() })), [update])
+  const reset = useCallback(() => {
+    clear(sessionKey)
+    setSession(null)
+  }, [sessionKey])
 
   return { session, hydrated, start, answer, goto, finish, reset }
 }

@@ -10,8 +10,14 @@ import { ResultsScreen } from './ResultsScreen'
 import { getOrCreateClientId } from './clientId'
 import { postQuizResult } from './postResult'
 
-export function QuizSession({ subject, questions }: { subject: SubjectWithCount; questions: Question[] }) {
-  const { session, hydrated, start, answer, goto, finish, reset } = useQuizSession(subject.id, questions)
+type Props = {
+  subject: SubjectWithCount
+  questions: Question[]
+  sessionKey?: string
+}
+
+export function QuizSession({ subject, questions, sessionKey }: Props) {
+  const { session, hydrated, start, answer, goto, finish, reset } = useQuizSession(subject.id, questions, sessionKey)
   const router = useRouter()
   const reportedRef = useRef(false)
 
@@ -24,7 +30,7 @@ export function QuizSession({ subject, questions }: { subject: SubjectWithCount;
   }, [session, subject])
 
   if (!hydrated) {
-    return <div className="rounded-3xl border border-slate-200 bg-white p-6 text-sm text-slate-500 shadow-sm">Cargando…</div>
+    return <div className="rounded-3xl border border-slate-200 bg-white p-6 text-sm text-slate-500 shadow-sm">Cargando...</div>
   }
 
   if (!session) {
@@ -34,7 +40,7 @@ export function QuizSession({ subject, questions }: { subject: SubjectWithCount;
         questions={questions}
         hasResume={false}
         onStart={(limit, cuatrimestre) => start({ limit, cuatrimestre })}
-        onResume={() => { /* no-op */ }}
+        onResume={() => {}}
       />
     )
   }

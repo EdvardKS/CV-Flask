@@ -7,7 +7,8 @@ export const subjectMetaSchema = z.object({
   icon: z.string().default('📝'),
   color: z.string().default('#3a6ea5'),
   position: z.number().int().optional(),
-  curso: z.number().int().min(1).max(6).optional()
+  curso: z.number().int().min(1).max(6).optional(),
+  entryMode: z.enum(['standard', 'hub']).optional().default('standard')
 })
 export type SubjectMeta = z.infer<typeof subjectMetaSchema>
 
@@ -43,7 +44,7 @@ export const fillQuestionSchema = z.object({
 })
 
 export const questionsSchema = z.array(z.preprocess(
-  (raw) => (raw && typeof raw === 'object' && !('kind' in (raw as object)))
+  raw => (raw && typeof raw === 'object' && !('kind' in (raw as object)))
     ? { ...(raw as object), kind: 'choice' } : raw,
   z.discriminatedUnion('kind', [choiceQuestionSchema, fillQuestionSchema])
 ))
@@ -56,6 +57,73 @@ export type Answer = number | string
 export type SubjectWithCount = SubjectMeta & {
   questionCount: number
   cuatrimestres: number[]
+}
+
+export const temarioQuizSchema = z.object({
+  id: z.string().min(1),
+  topic: z.number().int().min(1),
+  title: z.string().min(1),
+  sourceFile: z.string().min(1),
+  questionCount: z.number().int().min(0),
+  questions: questionsSchema
+})
+export type TemarioQuiz = z.infer<typeof temarioQuizSchema>
+
+export const temarioTopicSchema = z.object({
+  id: z.string().min(1),
+  topic: z.number().int().min(1),
+  title: z.string().min(1),
+  quizzes: z.array(temarioQuizSchema)
+})
+export type TemarioTopic = z.infer<typeof temarioTopicSchema>
+
+export const redesTemarioManifestSchema = z.object({
+  subjectId: z.literal('redes'),
+  topics: z.array(temarioTopicSchema)
+})
+export type RedesTemarioManifest = z.infer<typeof redesTemarioManifestSchema>
+
+export const slideConceptHighlightSchema = z.object({
+  x: z.number().min(0).max(100),
+  y: z.number().min(0).max(100),
+  w: z.number().min(0).max(100),
+  h: z.number().min(0).max(100),
+  label: z.string().min(1)
+})
+export type SlideConceptHighlight = z.infer<typeof slideConceptHighlightSchema>
+
+export const slideConceptEntrySchema = z.object({
+  id: z.string().min(1),
+  page: z.number().int().min(1),
+  title: z.string().min(1),
+  highlights: z.array(slideConceptHighlightSchema).min(1),
+  explanation: z.string().min(1),
+  examRelevance: z.string().min(1),
+  searchText: z.string().min(1)
+})
+export type SlideConceptEntry = z.infer<typeof slideConceptEntrySchema>
+
+export const slideConceptDeckSchema = z.object({
+  id: z.string().min(1),
+  topic: z.number().int().min(1),
+  title: z.string().min(1),
+  pdfUrl: z.string().min(1),
+  pageCount: z.number().int().min(1),
+  slides: z.array(slideConceptEntrySchema).min(1)
+})
+export type SlideConceptDeck = z.infer<typeof slideConceptDeckSchema>
+
+export const redesConceptManifestSchema = z.object({
+  subjectId: z.literal('redes'),
+  topics: z.array(slideConceptDeckSchema)
+})
+export type RedesConceptManifest = z.infer<typeof redesConceptManifestSchema>
+
+export type SubjectModeSummary = {
+  autoevaluacionCount: number
+  temarioQuizCount: number
+  temarioQuestionCount: number
+  conceptTopicCount: number
 }
 
 export function normalizeFill(s: string): string {

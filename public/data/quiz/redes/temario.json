@@ -1,0 +1,1639 @@
+{
+  "subjectId": "redes",
+  "topics": [
+    {
+      "id": "tema-1",
+      "topic": 1,
+      "title": "Tema 1",
+      "quizzes": [
+        {
+          "id": "examen-tipo-test-tema-1-2",
+          "topic": 1,
+          "title": "Tema 1.2 ? Dispositivos de interconexi?n",
+          "sourceFile": "Examen Tipo Test_tema 1.2.pdf",
+          "questionCount": 30,
+          "questions": [
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la función principal de los dispositivos de interconexión en una red?",
+              "options": [
+                "Almacenar datos de los usuarios",
+                "Permitir la comunicación entre diferentes dispositivos y redes",
+                "Ejecutar aplicaciones en los servidores",
+                "Gestionar el sistema operativo de los equipos"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿En qué capa del modelo OSI trabajan los repetidores?",
+              "options": [
+                "Capa de enlace de datos",
+                "Capa de red",
+                "Capa física",
+                "Capa de aplicación"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué característica distingue principalmente a un hub frente a un switch?",
+              "options": [
+                "El hub filtra tráfico por direcciones MAC",
+                "El hub envía los datos a todos los puertos",
+                "El hub utiliza direcciones IP",
+                "El hub trabaja en la capa de red"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es una desventaja importante de los hubs?",
+              "options": [
+                "No permiten conectar dispositivos",
+                "Generan colisiones frecuentes en la red",
+                "Son demasiado complejos de configurar",
+                "Solo funcionan con redes inalámbricas"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué función realiza un repetidor en una red?",
+              "options": [
+                "Almacenar paquetes",
+                "Amplificar la señal para extender la distancia de transmisión",
+                "Asignar direcciones IP",
+                "Cifrar el tráfico de red Tema 1.2.-Examen Tipo Test Dispositivos de Interconexión de Redes"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tipo de dirección utiliza un switch para reenviar paquetes dentro de una red local?",
+              "options": [
+                "Dirección IP",
+                "Dirección MAC",
+                "Dirección DNS",
+                "Dirección URL"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es una característica de los switches modernos frente a los hubs?",
+              "options": [
+                "Todos los dispositivos comparten el mismo ancho de banda",
+                "Cada puerto puede tener su propio ancho de banda",
+                "Funcionan únicamente en redes inalámbricas",
+                "No permiten segmentar redes"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la principal función de un puente o bridge?",
+              "options": [
+                "Conectar redes inalámbricas",
+                "Filtrar tráfico basándose en direcciones MAC",
+                "Asignar direcciones IP automáticamente",
+                "Gestionar servidores de red"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál de los siguientes dispositivos opera en la capa de red del modelo OSI?",
+              "options": [
+                "Hub",
+                "Switch",
+                "Router",
+                "Repetidor"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué dispositivo permite la comunicación entre diferentes redes?",
+              "options": [
+                "Switch",
+                "Hub",
+                "Router",
+                "Bridge"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué información utiliza un router para tomar decisiones de enrutamiento?",
+              "options": [
+                "Direcciones MAC",
+                "Direcciones IP",
+                "Direcciones físicas de hardware",
+                "Direcciones DNS"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué elemento contiene las rutas que utiliza un router para enviar paquetes?",
+              "options": [
+                "Tabla ARP",
+                "Tabla de enrutamiento",
+                "Tabla NAT",
+                "Tabla de VLAN"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué protocolo de enrutamiento utiliza el número de saltos como métrica?",
+              "options": [
+                "OSPF",
+                "BGP",
+                "RIP",
+                "MPLS"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál de los siguientes protocolos es utilizado para el enrutamiento entre sistemas autónomos en Internet?",
+              "options": [
+                "RIP",
+                "OSPF",
+                "BGP",
+                "ICMP"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué característica distingue a OSPF frente a RIP?",
+              "options": [
+                "Utiliza direcciones MAC",
+                "Utiliza información del estado de los enlaces",
+                "Solo funciona en redes pequeñas",
+                "Utiliza únicamente rutas estáticas"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la función principal de un firewall?",
+              "options": [
+                "Conectar redes inalámbricas",
+                "Controlar el tráfico que entra y sale de la red",
+                "Gestionar el almacenamiento de datos",
+                "Asignar direcciones IP"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología permite establecer conexiones seguras a través de Internet?",
+              "options": [
+                "VPN",
+                "FTP",
+                "HTTP",
+                "DNS"
+              ],
+              "correctIndex": 0,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la función de un IDS?",
+              "options": [
+                "Bloquear automáticamente ataques",
+                "Detectar actividades sospechosas en la red",
+                "Encriptar el tráfico",
+                "Configurar direcciones IP"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué diferencia principal existe entre IDS e IPS?",
+              "options": [
+                "IPS solo detecta ataques",
+                "IDS bloquea automáticamente ataques",
+                "IPS puede detectar y bloquear ataques",
+                "IDS funciona únicamente en redes inalámbricas"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué significa QoS en redes?",
+              "options": [
+                "Quality of Software",
+                "Quality of Security",
+                "Quality of Service",
+                "Quantity of Service"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es el objetivo de QoS?",
+              "options": [
+                "Reducir la velocidad de la red",
+                "Priorizar determinados tipos de tráfico",
+                "Eliminar dispositivos de la red",
+                "Configurar direcciones MAC"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué permite una VLAN en una red?",
+              "options": [
+                "Crear redes físicas separadas",
+                "Crear redes lógicas dentro de la misma red física",
+                "Aumentar la velocidad de Internet",
+                "Convertir redes cableadas en inalámbricas"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es uno de los beneficios de utilizar VLANs?",
+              "options": [
+                "Eliminar routers",
+                "Reducir el tráfico de difusión",
+                "Aumentar el consumo de red",
+                "Sustituir switches"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué dispositivo proporciona conectividad inalámbrica a una red?",
+              "options": [
+                "Router",
+                "Hub",
+                "Punto de acceso",
+                "Bridge"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué estándar pertenece a las redes WiFi?",
+              "options": [
+                "IEEE 802.3",
+                "IEEE 802.11",
+                "IEEE 802.1Q",
+                "IEEE 802.15"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es el protocolo de seguridad inalámbrica más avanzado actualmente?",
+              "options": [
+                "WEP",
+                "WPA",
+                "WPA2",
+                "WPA3"
+              ],
+              "correctIndex": 3,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la principal ventaja de IPv6 frente a IPv4?",
+              "options": [
+                "Menor consumo energético",
+                "Mayor espacio de direcciones",
+                "Mayor velocidad de Internet",
+                "Menor latencia de red"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué técnica permite usar IPv4 e IPv6 simultáneamente?",
+              "options": [
+                "NAT",
+                "VLAN",
+                "Dual Stack",
+                "DNS"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué significa SDN en redes?",
+              "options": [
+                "Secure Digital Network",
+                "Software Defined Networking",
+                "System Data Network",
+                "Server Data Node"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología emergente se está utilizando para optimizar el rendimiento de las redes?",
+              "options": [
+                "Blockchain",
+                "Inteligencia Artificial",
+                "Realidad Virtual",
+                "Computación Cuántica"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            }
+          ]
+        },
+        {
+          "id": "tema-1-3-examen-tipo-test",
+          "topic": 1,
+          "title": "Tema 1.3 ? Pasarelas, QoS y configuraci?n",
+          "sourceFile": "Tema 1.3.-Examen tipo test.pdf",
+          "questionCount": 30,
+          "questions": [
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la función principal de una pasarela (gateway) en una red?",
+              "options": [
+                "Conectar dispositivos dentro de la misma red",
+                "Traducir protocolos entre redes diferentes",
+                "Almacenar datos de red",
+                "Aumentar la velocidad de transmisión"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿En qué capas del modelo OSI pueden operar las pasarelas?",
+              "options": [
+                "Solo en la capa física",
+                "Solo en la capa de red",
+                "En múltiples capas del modelo OSI",
+                "Solo en la capa de transporte"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología permite que varios dispositivos de una red privada utilicen una sola IP pública?",
+              "options": [
+                "DNS",
+                "DHCP",
+                "NAT",
+                "ARP"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué significa QoS en redes?",
+              "options": [
+                "Quantity of Service",
+                "Quality of Security",
+                "Quality of Service",
+                "Query of System"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué parámetro de QoS mide el tiempo que tarda un paquete en llegar al destino?",
+              "options": [
+                "Jitter",
+                "Latencia",
+                "Throughput",
+                "Segmentación"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué parámetro de red representa la variación en el tiempo de llegada de los paquetes?",
+              "options": [
+                "Latencia",
+                "Jitter",
+                "Ancho de banda",
+                "Routing"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué mide el ancho de banda en una red?",
+              "options": [
+                "El número de dispositivos conectados",
+                "La velocidad de procesamiento del router",
+                "La cantidad de datos transmitidos por unidad de tiempo",
+                "La distancia entre nodos"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál de las siguientes aplicaciones requiere baja latencia?",
+              "options": [
+                "Descarga de archivos",
+                "Videoconferencia",
+                "Correo electrónico",
+                "Copia de seguridad"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué protocolo se utiliza para asignar automáticamente direcciones IP?",
+              "options": [
+                "DHCP",
+                "DNS",
+                "TCP",
+                "FTP"
+              ],
+              "correctIndex": 0,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la función de la puerta de enlace en una red?",
+              "options": [
+                "Almacenar información de red",
+                "Conectar la red local con otras redes",
+                "Controlar el tráfico interno",
+                "Asignar direcciones IP"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué función tiene el DNS?",
+              "options": [
+                "Convertir direcciones IP en protocolos",
+                "Convertir nombres de dominio en direcciones IP",
+                "Controlar el tráfico de red",
+                "Asignar puertos"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es el comando utilizado para comprobar la conectividad entre dos dispositivos?",
+              "options": [
+                "ipconfig",
+                "ping",
+                "netstat",
+                "route"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué comando permite visualizar la configuración IP de un dispositivo en Windows?",
+              "options": [
+                "tracert",
+                "ipconfig",
+                "ping",
+                "nslookup"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué comando permite identificar la ruta que siguen los paquetes en la red?",
+              "options": [
+                "ping",
+                "tracert",
+                "ipconfig",
+                "arp"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tipo de dirección IP se asigna manualmente a un dispositivo?",
+              "options": [
+                "IP dinámica",
+                "IP privada",
+                "IP pública",
+                "IP estática"
+              ],
+              "correctIndex": 3,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es el tamaño de una dirección IPv4?",
+              "options": [
+                "16 bits",
+                "32 bits",
+                "64 bits",
+                "128 bits"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es el tamaño de una dirección IPv6?",
+              "options": [
+                "32 bits",
+                "64 bits",
+                "128 bits",
+                "256 bits"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál de los siguientes protocolos es orientado a conexión?",
+              "options": [
+                "UDP",
+                "TCP",
+                "IP",
+                "ICMP"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál de los siguientes protocolos es sin conexión?",
+              "options": [
+                "TCP",
+                "UDP",
+                "FTP",
+                "HTTP"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué protocolo de enrutamiento se utiliza principalmente en Internet entre sistemas autónomos?",
+              "options": [
+                "RIP",
+                "OSPF",
+                "BGP",
+                "ARP"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué protocolo de enrutamiento utiliza el algoritmo de vector de distancia?",
+              "options": [
+                "BGP",
+                "OSPF",
+                "RIP",
+                "MPLS"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué protocolo de enrutamiento utiliza el algoritmo de estado de enlace?",
+              "options": [
+                "OSPF",
+                "RIP",
+                "BGP",
+                "ARP"
+              ],
+              "correctIndex": 0,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué es una subred?",
+              "options": [
+                "Una red virtual sin direcciones IP",
+                "Una división lógica de una red más grande",
+                "Un protocolo de comunicación",
+                "Un servidor de red"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué función cumple la máscara de subred?",
+              "options": [
+                "Cifrar paquetes",
+                "Determinar la parte de red y host de una IP",
+                "Aumentar la velocidad de red",
+                "Convertir direcciones IP"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología permite crear redes virtuales dentro de una red física?",
+              "options": [
+                "VPN",
+                "VLAN",
+                "DHCP",
+                "NAT"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la función principal de un firewall?",
+              "options": [
+                "Aumentar el ancho de banda",
+                "Traducir direcciones IP",
+                "Filtrar el tráfico de red",
+                "Asignar direcciones IP"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué sistema detecta actividades sospechosas dentro de una red?",
+              "options": [
+                "IDS",
+                "DHCP",
+                "DNS",
+                "FTP"
+              ],
+              "correctIndex": 0,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología permite establecer conexiones seguras a través de Internet?",
+              "options": [
+                "VLAN",
+                "VPN",
+                "DHCP",
+                "NAT"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología permite distribuir el tráfico entre varios servidores?",
+              "options": [
+                "NAT",
+                "Balanceo de carga",
+                "DHCP",
+                "ARP"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología permite controlar la red mediante software separando el plano de control del plano de datos?",
+              "options": [
+                "NFV",
+                "SDN",
+                "MPLS",
+                "VLAN"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tema-2",
+      "topic": 2,
+      "title": "Tema 2",
+      "quizzes": [
+        {
+          "id": "tema-2-1-examen-test",
+          "topic": 2,
+          "title": "Tema 2.1 ? Redes LAN",
+          "sourceFile": "Tema 2.1.-Examen Test.pdf",
+          "questionCount": 30,
+          "questions": [
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la principal característica de una red LAN?",
+              "options": [
+                "Cobertura global",
+                "Alta latencia",
+                "Área geográfica limitada",
+                "Uso exclusivo de satélite"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué elemento permite segmentar una red en múltiples redes lógicas?",
+              "options": [
+                "Router",
+                "Switch",
+                "VLAN",
+                "Firewall"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué topología es la más utilizada actualmente en redes LAN?",
+              "options": [
+                "Bus",
+                "Anillo",
+                "Estrella",
+                "Malla completa"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué dispositivo opera principalmente en capa 2 del modelo OSI?",
+              "options": [
+                "Router",
+                "Switch",
+                "Firewall",
+                "Servidor"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué ventaja principal tienen las redes cableadas?",
+              "options": [
+                "Mayor movilidad",
+                "Mayor latencia",
+                "Mayor estabilidad",
+                "Menor seguridad"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué protocolo se utilizaba en Ethernet tradicional para gestionar colisiones?",
+              "options": [
+                "CSMA/CA",
+                "Token Passing",
+                "CSMA/CD",
+                "ALOHA"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología es típica de redes PAN?",
+              "options": [
+                "Ethernet",
+                "MPLS",
+                "Bluetooth",
+                "BGP"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué red tiene un alcance de ciudad?",
+              "options": [
+                "LAN",
+                "WAN",
+                "PAN",
+                "MAN"
+              ],
+              "correctIndex": 3,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué significa QoS?",
+              "options": [
+                "Quality of Service",
+                "Quantity of Signals",
+                "Query of Systems",
+                "Queue of Services"
+              ],
+              "correctIndex": 0,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué problema resuelve el protocolo CSMA/CA?",
+              "options": [
+                "Detectar colisiones",
+                "Evitar colisiones",
+                "Aumentar velocidad",
+                "Reducir latencia"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es una característica de WiFi frente a Ethernet?",
+              "options": [
+                "Menor latencia",
+                "Mayor estabilidad",
+                "Mayor movilidad",
+                "Mayor seguridad"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología permite alimentar dispositivos a través del cable de red?",
+              "options": [
+                "VLAN",
+                "PoE",
+                "NAT",
+                "DNS"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tipo de red conecta dispositivos personales cercanos?",
+              "options": [
+                "WAN",
+                "LAN",
+                "MAN",
+                "PAN"
+              ],
+              "correctIndex": 3,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué estándar define WiFi?",
+              "options": [
+                "IEEE 802.3",
+                "IEEE 802.11",
+                "IEEE 802.1Q",
+                "IEEE 802.15"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué ocurre en una colisión de red?",
+              "options": [
+                "Se mejora el rendimiento",
+                "Se pierden datos",
+                "Se aumenta el ancho de banda",
+                "Se mejora la seguridad"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología permite redes en malla en IoT?",
+              "options": [
+                "Ethernet",
+                "Zigbee",
+                "MPLS",
+                "FTP"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué capa del modelo OSI trabaja con direcciones MAC?",
+              "options": [
+                "Capa 1",
+                "Capa 2",
+                "Capa 3",
+                "Capa 4"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué es una VLAN?",
+              "options": [
+                "Una red física",
+                "Una red lógica",
+                "Un protocolo",
+                "Un dispositivo"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tipo de red es Internet?",
+              "options": [
+                "LAN",
+                "PAN",
+                "WAN",
+                "MAN"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué dispositivo conecta diferentes redes?",
+              "options": [
+                "Switch",
+                "Router",
+                "Hub",
+                "Access Point"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué problema presenta WiFi respecto a Ethernet?",
+              "options": [
+                "Mayor velocidad",
+                "Interferencias",
+                "Mejor seguridad",
+                "Menor coste"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué modelo de seguridad moderno se utiliza en redes?",
+              "options": [
+                "Perimetral clásico",
+                "Zero Trust",
+                "Firewall básico",
+                "NAT"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué arquitectura divide la red en acceso, distribución y núcleo?",
+              "options": [
+                "Modelo plano",
+                "Modelo jerárquico",
+                "Modelo mesh",
+                "Modelo cloud"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué protocolo permite reservar el medio en WiFi?",
+              "options": [
+                "ARP",
+                "DNS",
+                "RTS/CTS",
+                "DHCP"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología mejora WiFi en entornos con muchos dispositivos?",
+              "options": [
+                "FTP",
+                "OFDMA",
+                "HTTP",
+                "SMTP"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué significa SDN?",
+              "options": [
+                "Software Defined Network",
+                "System Data Network",
+                "Secure Data Node",
+                "Signal Data Network"
+              ],
+              "correctIndex": 0,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tipo de topología ofrece mayor redundancia?",
+              "options": [
+                "Bus",
+                "Estrella",
+                "Malla",
+                "Anillo"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué protocolo es determinístico?",
+              "options": [
+                "CSMA/CD",
+                "ALOHA",
+                "Token Ring",
+                "CSMA/CA"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué red tiene menor latencia normalmente?",
+              "options": [
+                "WAN",
+                "MAN",
+                "LAN",
+                "Internet"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología sustituye a los hubs para mejorar rendimiento?",
+              "options": [
+                "Routers",
+                "Switches",
+                "Firewalls",
+                "Access Points"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            }
+          ]
+        },
+        {
+          "id": "tema-2-2-examen-tipo-test",
+          "topic": 2,
+          "title": "Tema 2.2 ? Ethernet, WiFi y backbone",
+          "sourceFile": "Tema 2.2.-Examen tipo test.pdf",
+          "questionCount": 30,
+          "questions": [
+            {
+              "kind": "choice",
+              "q": "¿Qué estándar define Ethernet?",
+              "options": [
+                "IEEE 802.11",
+                "IEEE 802.3",
+                "IEEE 802.1",
+                "IEEE 802.15"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué velocidad ofrece 100BASE-TX?",
+              "options": [
+                "10 Mbps",
+                "100 Mbps",
+                "1 Gbps",
+                "10 Gbps"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué técnica utiliza Ethernet para evitar colisiones en redes antiguas?",
+              "options": [
+                "OFDMA",
+                "CSMA/CD",
+                "MIMO",
+                "VLAN"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué significa \"full-duplex\"?",
+              "options": [
+                "Transmisión solo en una dirección",
+                "Transmisión simultánea en ambas direcciones",
+                "Uso de dos cables",
+                "Comunicación inalámbrica"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la velocidad típica de Gigabit Ethernet?",
+              "options": [
+                "100 Mbps",
+                "1 Gbps",
+                "10 Gbps",
+                "400 Gbps"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tipo de cable se usa en 10BASE-T?",
+              "options": [
+                "Fibra óptica",
+                "Cable coaxial",
+                "Par trenzado",
+                "Cable HDMI"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es la distancia máxima típica en Ethernet sobre cobre?",
+              "options": [
+                "10 m",
+                "50 m",
+                "100 m",
+                "500 m"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología permite velocidades de 400 Gbps?",
+              "options": [
+                "Fast Ethernet",
+                "Gigabit Ethernet",
+                "400GbE",
+                "WiFi 6"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué banda utiliza Bluetooth?",
+              "options": [
+                "5 GHz",
+                "2.4 GHz",
+                "6 GHz",
+                "900 MHz"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Cuál es el alcance típico de Bluetooth Clase 2?",
+              "options": [
+                "1 m",
+                "10 m",
+                "100 m",
+                "1 km"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué arquitectura utiliza Bluetooth?",
+              "options": [
+                "Cliente-servidor",
+                "Maestro-esclavo",
+                "Peer-to-peer",
+                "Cloud"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué significa BLE?",
+              "options": [
+                "Bluetooth Low Energy",
+                "Basic Link Ethernet",
+                "Binary Link Exchange",
+                "Broadband Low Ethernet"
+              ],
+              "correctIndex": 0,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué estándar corresponde a WiFi?",
+              "options": [
+                "IEEE 802.3",
+                "IEEE 802.11",
+                "IEEE 802.15",
+                "IEEE 802.16"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué banda tiene mayor alcance pero más interferencias?",
+              "options": [
+                "6 GHz",
+                "5 GHz",
+                "2.4 GHz",
+                "60 GHz"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología introduce MIMO?",
+              "options": [
+                "802.11b",
+                "802.11n",
+                "802.11a",
+                "802.11g"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué mejora introduce WiFi 6?",
+              "options": [
+                "Menor seguridad",
+                "Mayor latencia",
+                "Mejor eficiencia en entornos densos",
+                "Menor velocidad"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué técnica usa WiFi 6 para múltiples usuarios?",
+              "options": [
+                "CSMA/CD",
+                "OFDMA",
+                "VLAN",
+                "NAT"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué es una red backbone?",
+              "options": [
+                "Red doméstica",
+                "Red inalámbrica",
+                "Infraestructura principal de red",
+                "Red Bluetooth"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué topología tiene un único punto central?",
+              "options": [
+                "Bus",
+                "Anillo",
+                "Estrella",
+                "Malla"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué problema tiene la topología bus?",
+              "options": [
+                "Alto coste",
+                "Baja velocidad",
+                "Punto único de fallo",
+                "Alta latencia"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué capa conecta directamente a los usuarios?",
+              "options": [
+                "Core",
+                "Distribución",
+                "Acceso",
+                "Backbone"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología permite múltiples señales en una fibra?",
+              "options": [
+                "VLAN",
+                "DWDM",
+                "NAT",
+                "DHCP"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué significa QoS?",
+              "options": [
+                "Quality of Service",
+                "Quantity of Signal",
+                "Quick Output System",
+                "Queue of Servers"
+              ],
+              "correctIndex": 0,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué permite una VLAN?",
+              "options": [
+                "Aumentar velocidad",
+                "Dividir la red lógicamente",
+                "Conectar redes físicas",
+                "Reducir latencia"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué problema ocurre si no hay segmentación?",
+              "options": [
+                "Mayor seguridad",
+                "Menor coste",
+                "Tráfico innecesario",
+                "Mayor velocidad"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué es latencia?",
+              "options": [
+                "Cantidad de datos",
+                "Tiempo de respuesta",
+                "Tipo de cable",
+                "Frecuencia"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué herramienta se usa para monitorizar redes?",
+              "options": [
+                "HTML",
+                "SNMP",
+                "CSS",
+                "SQL"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología reduce consumo en WiFi 6?",
+              "options": [
+                "MIMO",
+                "TWT",
+                "VLAN",
+                "NAT"
+              ],
+              "correctIndex": 1,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué es un cuello de botella?",
+              "options": [
+                "Alta velocidad",
+                "Fallo de hardware",
+                "Limitación de capacidad",
+                "Red redundante"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            },
+            {
+              "kind": "choice",
+              "q": "¿Qué tecnología es mejor para IoT de bajo consumo?",
+              "options": [
+                "Ethernet",
+                "WiFi",
+                "Bluetooth BLE",
+                "Fibra óptica"
+              ],
+              "correctIndex": 2,
+              "cuatrimestre": 2,
+              "category": "tema-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tema-3",
+      "topic": 3,
+      "title": "Tema 3",
+      "quizzes": []
+    },
+    {
+      "id": "tema-4",
+      "topic": 4,
+      "title": "Tema 4",
+      "quizzes": []
+    },
+    {
+      "id": "tema-5",
+      "topic": 5,
+      "title": "Tema 5",
+      "quizzes": []
+    },
+    {
+      "id": "tema-6",
+      "topic": 6,
+      "title": "Tema 6",
+      "quizzes": []
+    }
+  ]
+}
