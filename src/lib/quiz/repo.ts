@@ -1,45 +1,15 @@
 import 'server-only'
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 import { getQuizDb } from './db'
-import type { Question, SubjectMeta, SubjectWithCount } from './types'
+import { quizSeedDir } from './paths'
+import { questionsSchema, subjectMetaSchema, type Question, type SubjectMeta, type SubjectWithCount } from './types'
 
 type SubjectRow = SubjectMeta & {
   question_count: number
   cuatrimestres_csv: string | null
   curso: number | null
   entry_mode: 'standard' | 'hub' | null
-}
-
-export function listSubjects(): SubjectWithCount[] {
-  const db = getQuizDb()
-  const rows = db.prepare(`
-    SELECT s.id, s.name, s.description, s.icon, s.color, s.position, s.curso, s.entry_mode,
-           (SELECT COUNT(*) FROM quiz_questions q WHERE q.subject_id=s.id) AS question_count,
-           (SELECT GROUP_CONCAT(DISTINCT IFNULL(cuatrimestre, 1))
-              FROM quiz_questions q WHERE q.subject_id=s.id) AS cuatrimestres_csv
-    FROM quiz_subjects s
-    ORDER BY s.curso ASC, s.position ASC, s.name ASC
-  `).all() as SubjectRow[]
-  return rows.map(r => ({
-    id: r.id,
-    name: r.name,
-    description: r.description ?? '',
-    icon: r.icon ?? '📝',
-    color: r.color ?? '#3a6ea5',
-    position: r.position ?? 0,
-    curso: r.curso ?? undefined,
-    entryMode: r.entry_mode ?? 'standard',
-    questionCount: r.question_count,
-    cuatrimestres: parseCuatris(r.cuatrimestres_csv)
-  }))
-}
-
-function parseCuatris(csv: string | null): number[] {
-  if (!csv) return []
-  return Array.from(new Set(csv.split(',').map(s => Number(s.trim())).filter(n => Number.isFinite(n)))).sort()
-}
-
-export function getSubject(id: string): SubjectWithCount | null {
-  return listSubjects().find(s => s.id === id) ?? null
 }
 
 type QuestionRow = {
@@ -55,23 +25,100 @@ type QuestionRow = {
   category: string | null
 }
 
-function rowToQuestion(r: QuestionRow): Question {
-  const base = {
-    q: r.q,
-    cuatrimestre: r.cuatrimestre ?? undefined,
-    context: r.context ?? undefined,
-    code: r.code ?? undefined,
-    isVocab: !!r.is_vocab,
-    category: r.category ?? undefined
+function readSubjectMetasFromSeed(): SubjectMeta[] {
+  try {
+    const file = path.join(quizSeedDir(), '_subjects.json')
+    const raw = JSON.parse(readFileSync(file, 'utf8'))
+    if (!Array.isArray(raw)) return []
+    return raw.map((subject, index) => subjectMetaSchema.parse({
+      ...(subject as SubjectMeta),
+      position: (subject as SubjectMeta).position ?? index
+    }))
+  } catch {
+    return []
   }
-  if (r.kind === 'fill') {
-    return { ...base, kind: 'fill', accept: JSON.parse(r.accept_json ?? '""') }
+}
+
+function readQuestionsFromSeed(subjectId: string): Question[] {
+  try {
+    const file = path.join(quizSeedDir(), `${subjectId}.json`)
+    const raw = JSON.parse(readFileSync(file, 'utf8'))
+    return questionsSchema.parse(raw)
+  } catch {
+    return []
+  }
+}
+
+function parseCuatris(csv: string | null): number[] {
+  if (!csv) return []
+  return Array.from(new Set(csv.split(',').map(s => Number(s.trim())).filter(n => Number.isFinite(n)))).sort()
+}
+
+function inferCuatris(questions: Question[]): number[] {
+  return Array.from(new Set(questions.map(q => q.cuatrimestre ?? 1))).sort((a, b) => a - b)
+}
+
+export function listSubjects(): SubjectWithCount[] {
+  const db = getQuizDb()
+  const rows = db.prepare(`
+    SELECT s.id, s.name, s.description, s.icon, s.color, s.position, s.curso, s.entry_mode,
+           (SELECT COUNT(*) FROM quiz_questions q WHERE q.subject_id=s.id) AS question_count,
+           (SELECT GROUP_CONCAT(DISTINCT IFNULL(cuatrimestre, 1))
+              FROM quiz_questions q WHERE q.subject_id=s.id) AS cuatrimestres_csv
+    FROM quiz_subjects s
+    ORDER BY s.curso ASC, s.position ASC, s.name ASC
+  `).all() as SubjectRow[]
+
+  if (rows.length === 0) {
+    return readSubjectMetasFromSeed().map(subject => {
+      const questions = readQuestionsFromSeed(subject.id)
+      return {
+        ...subject,
+        entryMode: subject.entryMode ?? 'standard',
+        questionCount: questions.length,
+        cuatrimestres: inferCuatris(questions)
+      }
+    })
+  }
+
+  return rows.map(row => {
+    const fallbackQuestions = row.question_count === 0 ? readQuestionsFromSeed(row.id) : null
+    return {
+      id: row.id,
+      name: row.name,
+      description: row.description ?? '',
+      icon: row.icon ?? 'ðŸ“',
+      color: row.color ?? '#3a6ea5',
+      position: row.position ?? 0,
+      curso: row.curso ?? undefined,
+      entryMode: row.entry_mode ?? 'standard',
+      questionCount: row.question_count || fallbackQuestions?.length || 0,
+      cuatrimestres: row.cuatrimestres_csv ? parseCuatris(row.cuatrimestres_csv) : inferCuatris(fallbackQuestions ?? [])
+    }
+  })
+}
+
+export function getSubject(id: string): SubjectWithCount | null {
+  return listSubjects().find(subject => subject.id === id) ?? null
+}
+
+function rowToQuestion(row: QuestionRow): Question {
+  const base = {
+    q: row.q,
+    cuatrimestre: row.cuatrimestre ?? undefined,
+    context: row.context ?? undefined,
+    code: row.code ?? undefined,
+    isVocab: !!row.is_vocab,
+    category: row.category ?? undefined
+  }
+  if (row.kind === 'fill') {
+    return { ...base, kind: 'fill', accept: JSON.parse(row.accept_json ?? '""') }
   }
   return {
     ...base,
     kind: 'choice',
-    options: JSON.parse(r.options_json) as string[],
-    correctIndex: JSON.parse(r.correct_json)
+    options: JSON.parse(row.options_json) as string[],
+    correctIndex: JSON.parse(row.correct_json)
   }
 }
 
@@ -80,6 +127,7 @@ export function listQuestions(subjectId: string): Question[] {
   const rows = db.prepare(`SELECT q, kind, options_json, correct_json, accept_json,
       cuatrimestre, context, code, is_vocab, category
     FROM quiz_questions WHERE subject_id=? ORDER BY position ASC`).all(subjectId) as QuestionRow[]
+  if (rows.length === 0) return readQuestionsFromSeed(subjectId)
   return rows.map(rowToQuestion)
 }
 
