@@ -25,6 +25,7 @@ const baseFields = {
   context: z.string().optional(),
   code: z.string().optional(),
   category: z.string().optional(),
+  group: z.string().optional(),
   cuatrimestre: z.number().int().min(1).max(2).optional(),
   isVocab: z.boolean().optional(),
   sourceFile: z.string().min(1).optional(),

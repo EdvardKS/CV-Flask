@@ -25,6 +25,13 @@ type QuestionRow = {
   category: string | null
 }
 
+type LegacyExamQuestion = {
+  id: number
+  pregunta: string
+  respuestas: Array<{ letra: string; texto: string }>
+  correcta: string
+}
+
 function readSubjectMetasFromSeed(): SubjectMeta[] {
   try {
     const file = path.join(quizSeedDir(), '_subjects.json')
@@ -44,6 +51,26 @@ function readQuestionsFromSeed(subjectId: string): Question[] {
     const file = path.join(quizSeedDir(), `${subjectId}.json`)
     const raw = JSON.parse(readFileSync(file, 'utf8'))
     return questionsSchema.parse(raw)
+  } catch {
+    return []
+  }
+}
+
+function readEnglishLatestTest(): Question[] {
+  try {
+    const file = path.join(process.cwd(), 'temp', 'english', 'testexam.json')
+    const raw = JSON.parse(readFileSync(file, 'utf8')) as LegacyExamQuestion[]
+    return raw.map(item => {
+      const options = item.respuestas.map(answer => answer.texto)
+      const correctIndex = item.respuestas.findIndex(answer => answer.letra.toLowerCase() === item.correcta.toLowerCase())
+      return {
+        kind: 'choice' as const,
+        q: item.pregunta,
+        options,
+        correctIndex: correctIndex >= 0 ? correctIndex : 0,
+        group: 'latest-test'
+      }
+    })
   } catch {
     return []
   }
@@ -127,8 +154,9 @@ export function listQuestions(subjectId: string): Question[] {
   const rows = db.prepare(`SELECT q, kind, options_json, correct_json, accept_json,
       cuatrimestre, context, code, is_vocab, category
     FROM quiz_questions WHERE subject_id=? ORDER BY position ASC`).all(subjectId) as QuestionRow[]
-  if (rows.length === 0) return readQuestionsFromSeed(subjectId)
-  return rows.map(rowToQuestion)
+  const baseQuestions = rows.length === 0 ? readQuestionsFromSeed(subjectId) : rows.map(rowToQuestion)
+  if (subjectId !== 'ingles') return baseQuestions
+  return [...baseQuestions, ...readEnglishLatestTest()]
 }
 
 export type SaveResultInput = {
