@@ -58,7 +58,7 @@ function readQuestionsFromSeed(subjectId: string): Question[] {
 
 function readEnglishLatestTest(): Question[] {
   try {
-    const file = path.join(process.cwd(), 'temp', 'english', 'testexam.json')
+    const file = path.join(quizSeedDir(), 'english-latest-test.json')
     const raw = JSON.parse(readFileSync(file, 'utf8')) as LegacyExamQuestion[]
     return raw.map(item => {
       const options = item.respuestas.map(answer => answer.texto)
