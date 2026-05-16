@@ -550,9 +550,14 @@ html, body {
   left: 16px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
   gap: 14px;
-  width: 92px;
+  max-height: calc(100vh - 80px);
   z-index: 10;
+}
+.xp-icon-grid > li {
+  width: 92px;
 }
 .xp-icon {
   display: flex;
