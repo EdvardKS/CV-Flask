@@ -23,6 +23,7 @@ type QuestionRow = {
   code: string | null
   is_vocab: number
   category: string | null
+  evidence: string | null
 }
 
 type LegacyExamQuestion = {
@@ -136,7 +137,8 @@ function rowToQuestion(row: QuestionRow): Question {
     context: row.context ?? undefined,
     code: row.code ?? undefined,
     isVocab: !!row.is_vocab,
-    category: row.category ?? undefined
+    category: row.category ?? undefined,
+    evidence: row.evidence ?? undefined
   }
   if (row.kind === 'fill') {
     return { ...base, kind: 'fill', accept: JSON.parse(row.accept_json ?? '""') }
@@ -152,7 +154,7 @@ function rowToQuestion(row: QuestionRow): Question {
 export function listQuestions(subjectId: string): Question[] {
   const db = getQuizDb()
   const rows = db.prepare(`SELECT q, kind, options_json, correct_json, accept_json,
-      cuatrimestre, context, code, is_vocab, category
+      cuatrimestre, context, code, is_vocab, category, evidence
     FROM quiz_questions WHERE subject_id=? ORDER BY position ASC`).all(subjectId) as QuestionRow[]
   const baseQuestions = rows.length === 0 ? readQuestionsFromSeed(subjectId) : rows.map(rowToQuestion)
   if (subjectId !== 'ingles') return baseQuestions

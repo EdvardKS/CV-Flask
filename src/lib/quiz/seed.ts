@@ -45,8 +45,8 @@ function upsertSubject(db: Database.Database, m: SubjectMeta) {
 function insertQuestion(db: Database.Database, subjectId: string, q: Question, pos: number) {
   const isChoice = q.kind === 'choice'
   db.prepare(`INSERT INTO quiz_questions
-    (subject_id,position,q,kind,options_json,correct_json,accept_json,cuatrimestre,context,code,is_vocab,category)
-    VALUES(?,?,?,?,?,?,?,?,?,?,?,?)`).run(
+    (subject_id,position,q,kind,options_json,correct_json,accept_json,cuatrimestre,context,code,is_vocab,category,evidence)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(
       subjectId, pos, q.q, q.kind,
       isChoice ? JSON.stringify(q.options) : '[]',
       isChoice ? JSON.stringify(q.correctIndex) : 'null',
@@ -55,7 +55,8 @@ function insertQuestion(db: Database.Database, subjectId: string, q: Question, p
       q.context ?? null,
       q.code ?? null,
       q.isVocab ? 1 : 0,
-      q.category ?? null
+      q.category ?? null,
+      q.evidence ?? null
     )
 }
 

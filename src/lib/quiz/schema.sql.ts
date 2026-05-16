@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
   context       TEXT,
   code          TEXT,
   is_vocab      INTEGER DEFAULT 0,
-  category      TEXT
+  category      TEXT,
+  evidence      TEXT
 );
 
 CREATE TABLE IF NOT EXISTS quiz_results (

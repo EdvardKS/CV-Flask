@@ -32,6 +32,14 @@
     "curso": 2
   },
   {
+    "id": "estadistica",
+    "name": "Estadística",
+    "description": "EST - 2º curso 2º cuatri. Contrastes de hipótesis, errores tipo I y II, potencia, nivel de significación.",
+    "icon": "📊",
+    "color": "#d97706",
+    "curso": 2
+  },
+  {
     "id": "redes",
     "name": "Redes",
     "description": "RED - 2º curso 2º cuatri. LAN, VLAN, encaminamiento, IPv6 y seguridad en comunicaciones.",

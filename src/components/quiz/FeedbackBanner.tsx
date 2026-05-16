@@ -19,6 +19,11 @@ export function FeedbackBanner({ question, ok }: { question: Question; ok: boole
         {!ok && (
           <>La respuesta correcta es <strong>{primaryCorrect(question)}</strong>.</>
         )}
+        {question.evidence && (
+          <span className="mt-2 block text-[13px] leading-relaxed opacity-90">
+            <strong className="font-semibold">¿Por qué?</strong> {question.evidence}
+          </span>
+        )}
       </span>
     </div>
   )

@@ -1,0 +1,262 @@
+[
+  {
+    "cuatrimestre": 2,
+    "category": "Contraste de hipótesis",
+    "q": "La región de aceptación es:",
+    "options": [
+      "La zona del espacio muestral tal que si la muestra pertenece a ella la hipótesis nula se acepta.",
+      "La zona del espacio muestral tal que si la muestra pertenece a ella la hipótesis alternativa se acepta.",
+      "La zona del espacio muestral tal que si la muestra pertenece a ella la hipótesis nula se rechaza.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "evidence": "La región de aceptación se define como la zona del espacio muestral donde, si la muestra pertenece a ella, se acepta la hipótesis nula H₀. Es el complementario de la región crítica."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Contraste de hipótesis",
+    "q": "La hipótesis nula:",
+    "options": [
+      "Siempre será una hipótesis simple.",
+      "Ninguna respuesta es correcta.",
+      "Es la que a priori parece más probable.",
+      "Siempre será una hipótesis compuesta."
+    ],
+    "correctIndex": 1,
+    "evidence": "H₀ puede ser simple o compuesta dependiendo del contraste. No siempre es la más probable a priori, sino la que se asume cierta hasta que los datos demuestren lo contrario. Ninguna de las otras opciones es universalmente verdadera."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Contraste de hipótesis",
+    "q": "Una población sigue una distribución Normal con desviación típica igual a 20. Se desea contrastar la hipótesis nula de que la esperanza poblacional sea igual a 6 frente a la hipótesis alternativa de que sea mayor que 6. Para ello se toma una muestra de tamaño 100 y se obtiene una media de 10. Con un nivel de significación del 10%:",
+    "options": [
+      "Se acepta la hipótesis nula.",
+      "Se rechaza la hipótesis nula.",
+      "Con estos datos no se puede realizar el contraste de hipótesis.",
+      "Se rechaza la hipótesis alternativa."
+    ],
+    "correctIndex": 1,
+    "evidence": "Se calcula el estadístico Z = (10 - 6) / (20 / √100) = 4 / 2 = 2. Para un contraste unilateral derecho con α = 10%, el valor crítico es z₀.₁₀ = 1,28. Como Z = 2 > 1,28, cae en la región crítica y se rechaza H₀."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Contraste de hipótesis",
+    "q": "La región crítica es:",
+    "options": [
+      "La zona del espacio muestral tal que si la muestra pertenece a ella la hipótesis nula se rechaza.",
+      "La zona del espacio muestral tal que si la muestra pertenece a ella la hipótesis nula se acepta.",
+      "La zona del espacio muestral tal que si la muestra pertenece a ella la hipótesis alternativa se rechaza.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "evidence": "La región crítica (o de rechazo) es la zona del espacio muestral tal que, si la muestra pertenece a ella, se rechaza la hipótesis nula H₀. Es el complementario de la región de aceptación."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Estadístico de contraste",
+    "q": "Para realizar un contraste de igualdad de esperanzas de una población, se utiliza como estadístico de contraste:",
+    "options": [
+      "Ninguna respuesta es correcta.",
+      "La diferencia de esperanzas poblacionales y la diferencia de medias muestrales.",
+      "La diferencia de medias muestrales.",
+      "La diferencia de esperanzas poblacionales."
+    ],
+    "correctIndex": 2,
+    "evidence": "Para contrastar la igualdad de esperanzas entre dos poblaciones, el estadístico de contraste se basa en la diferencia de medias muestrales, ya que las esperanzas poblacionales son parámetros desconocidos y no se pueden observar directamente."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Estadístico de contraste",
+    "q": "Para realizar un contraste sobre la esperanza de una población, se utiliza como estadístico de contraste:",
+    "options": [
+      "Ninguna respuesta es correcta.",
+      "La esperanza poblacional y la media muestral.",
+      "La esperanza poblacional.",
+      "La media muestral."
+    ],
+    "correctIndex": 3,
+    "evidence": "El estadístico de contraste para la esperanza de una población es la media muestral x̄, ya que es el estimador de la esperanza poblacional μ. La esperanza poblacional es el parámetro desconocido, no el estadístico."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Región crítica y de aceptación",
+    "q": "Se va a realizar un contraste sobre la esperanza de una población. Se establece que si la media muestral es menor que 14 se aceptará la hipótesis nula.",
+    "options": [
+      "La región crítica es media muestral mayor o igual que 14.",
+      "Ninguna respuesta es correcta.",
+      "La región crítica es media muestral menor que 14.",
+      "Con esta información no podemos saber cuál es la región crítica."
+    ],
+    "correctIndex": 0,
+    "evidence": "Si la condición de aceptación de H₀ es x̄ < 14, entonces la región de aceptación es {x̄ < 14}. Por tanto, la región crítica (complementaria) es {x̄ ≥ 14}."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Errores y potencia",
+    "q": "Si la probabilidad de cometer el error tipo II es de 0,1, la potencia del contraste será:",
+    "options": [
+      "0,9.",
+      "Ninguna respuesta es correcta.",
+      "0,1.",
+      "Con esta información no es posible determinar la potencia del contraste."
+    ],
+    "correctIndex": 0,
+    "evidence": "La potencia del contraste se define como 1 − P(Error tipo II) = 1 − β. Si β = 0,1, entonces la potencia = 1 − 0,1 = 0,9."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Formulación de hipótesis",
+    "q": "Se va a contrastar la hipótesis nula de que la esperanza de una población sea igual a 6 frente a la hipótesis alternativa de que sea mayor que 6. El contraste se ha formulado así porque:",
+    "options": [
+      "Se sabe que no es posible que la esperanza de la población sea mayor que 6.",
+      "Se sabe que no es posible que la esperanza de la población sea menor que 6.",
+      "Se sabe que la esperanza poblacional es igual a 6.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 1,
+    "evidence": "Si la hipótesis alternativa es H₁: μ > 6 (y no μ ≠ 6), es porque se descarta a priori que μ pueda ser menor que 6. Por eso el contraste es unilateral derecho."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Errores y potencia",
+    "q": "El nivel de significación es:",
+    "options": [
+      "Ninguna respuesta es correcta.",
+      "La probabilidad de rechazar la hipótesis nula siendo falsa.",
+      "La probabilidad de rechazar la hipótesis nula siendo cierta.",
+      "La probabilidad de aceptar la hipótesis nula siendo falsa."
+    ],
+    "correctIndex": 2,
+    "evidence": "El nivel de significación α es la probabilidad de cometer el Error tipo I, es decir, P(rechazar H₀ | H₀ es cierta). Representa el riesgo máximo que asumimos de rechazar H₀ cuando en realidad es verdadera."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Región crítica y de aceptación",
+    "q": "Se va a realizar un contraste sobre la esperanza de una población. Se establece que si la media muestral es menor o igual que 20 se rechazará la hipótesis nula.",
+    "options": [
+      "Con esta información no podemos saber cuál es la región crítica y cuál es la región de aceptación.",
+      "La región de aceptación es media muestral mayor que 20.",
+      "Ninguna respuesta es correcta.",
+      "La región crítica es media muestral mayor que 20."
+    ],
+    "correctIndex": 1,
+    "evidence": "Si se rechaza H₀ cuando x̄ ≤ 20, entonces la región crítica es {x̄ ≤ 20} y su complementaria, la región de aceptación, es {x̄ > 20}."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Errores y potencia",
+    "q": "La probabilidad de cometer el error tipo II es:",
+    "options": [
+      "La probabilidad de aceptar la hipótesis nula siendo falsa.",
+      "La probabilidad de rechazar la hipótesis nula siendo cierta.",
+      "La probabilidad de rechazar la hipótesis nula siendo falsa.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "evidence": "El Error tipo II (β) ocurre cuando no se rechaza (se acepta) H₀ siendo esta falsa. P(Error tipo II) = P(aceptar H₀ | H₀ es falsa) = β."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Errores y potencia",
+    "q": "El error tipo II consiste en:",
+    "options": [
+      "Ninguna respuesta es correcta.",
+      "Aceptar la hipótesis nula siendo falsa.",
+      "Rechazar la hipótesis nula siendo falsa.",
+      "Rechazar la hipótesis nula siendo cierta."
+    ],
+    "correctIndex": 1,
+    "evidence": "El Error tipo II (también llamado error β) consiste en no rechazar (aceptar) H₀ cuando en realidad H₀ es falsa. Es decir, no detectar un efecto que sí existe."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Errores y potencia",
+    "q": "Si la potencia del contraste es 0,95, la probabilidad de cometer el error tipo II es:",
+    "options": [
+      "Ninguna respuesta es correcta.",
+      "0,025.",
+      "Con esta información no es posible determinar la probabilidad de cometer el error tipo II.",
+      "0,05."
+    ],
+    "correctIndex": 3,
+    "evidence": "La relación entre potencia y error tipo II es: Potencia = 1 − β. Por tanto β = 1 − 0,95 = 0,05."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Formulación de hipótesis",
+    "q": "Se va a contrastar la hipótesis nula de que la esperanza de una población sea igual a 10 frente a la hipótesis alternativa de que sea menor que 10. El contraste se ha formulado así porque:",
+    "options": [
+      "Ninguna respuesta es correcta.",
+      "Se sabe que no es posible que la esperanza de la población sea mayor que 10.",
+      "Se sabe que no es posible que la esperanza de la población sea menor que 10.",
+      "Se sabe que la esperanza poblacional es igual a 10."
+    ],
+    "correctIndex": 1,
+    "evidence": "Si la hipótesis alternativa es H₁: μ < 10 (y no μ ≠ 10), es porque se descarta a priori que μ pueda ser mayor que 10. Por eso el contraste es unilateral izquierdo."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Formulación de hipótesis",
+    "q": "Se va a contrastar la hipótesis nula de que la esperanza de una población sea igual a 20 frente a la hipótesis alternativa de que sea distinta de 20. El contraste se ha formulado así porque:",
+    "options": [
+      "Se sabe que la esperanza poblacional puede tomar cualquier valor.",
+      "Se sabe que no es posible que la esperanza de la población sea mayor que 20.",
+      "Ninguna respuesta es correcta.",
+      "Se sabe que no es posible que la esperanza de la población sea menor que 20."
+    ],
+    "correctIndex": 0,
+    "evidence": "Al formular H₁: μ ≠ 20, se usa un contraste bilateral porque no se descarta ninguna dirección: μ puede tomar cualquier valor diferente de 20, tanto mayor como menor."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Hipótesis simples y compuestas",
+    "q": "Se va a contrastar la hipótesis nula de que la esperanza de una población sea igual a 12 frente a la hipótesis alternativa de que sea igual a 15.",
+    "options": [
+      "Ninguna respuesta es correcta.",
+      "La hipótesis nula es compuesta y la alternativa simple.",
+      "Las dos hipótesis son simples.",
+      "La hipótesis nula es simple y la alternativa compuesta."
+    ],
+    "correctIndex": 2,
+    "evidence": "Una hipótesis es simple cuando especifica un único valor concreto del parámetro. H₀: μ = 12 es simple y H₁: μ = 15 también es simple, ya que ambas fijan un valor exacto."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Errores y potencia",
+    "q": "El error tipo I consiste en:",
+    "options": [
+      "Rechazar la hipótesis nula siendo cierta.",
+      "Aceptar la hipótesis nula siendo falsa.",
+      "Rechazar la hipótesis nula siendo falsa.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "evidence": "El Error tipo I (también llamado error α) consiste en rechazar H₀ cuando en realidad H₀ es cierta. Su probabilidad es el nivel de significación α."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Errores y potencia",
+    "q": "La potencia del contraste es:",
+    "options": [
+      "La probabilidad de rechazar la hipótesis nula siendo cierta.",
+      "Ninguna respuesta es correcta.",
+      "La probabilidad de rechazar la hipótesis nula siendo falsa.",
+      "La probabilidad de aceptar la hipótesis nula siendo falsa."
+    ],
+    "correctIndex": 2,
+    "evidence": "La potencia del contraste es la probabilidad de rechazar H₀ cuando efectivamente H₀ es falsa: Potencia = 1 − β = P(rechazar H₀ | H₀ es falsa). Mide la capacidad del contraste para detectar un efecto real."
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "Hipótesis simples y compuestas",
+    "q": "Se va a contrastar la hipótesis nula de que la esperanza de una población sea igual a 20 frente a la hipótesis alternativa de que sea mayor que 20.",
+    "options": [
+      "La hipótesis nula es simple y la alternativa compuesta.",
+      "Las dos hipótesis son simples.",
+      "Ninguna respuesta es correcta.",
+      "La hipótesis nula es compuesta y la alternativa simple."
+    ],
+    "correctIndex": 0,
+    "evidence": "H₀: μ = 20 es simple porque fija un único valor exacto. H₁: μ > 20 es compuesta porque engloba un rango infinito de valores posibles para μ."
+  }
+]

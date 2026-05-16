@@ -13,6 +13,7 @@ function migrateQuestionsTable(db: Database.Database) {
   if (!has('accept_json')) db.exec('ALTER TABLE quiz_questions ADD COLUMN accept_json TEXT')
   if (!has('cuatrimestre')) db.exec('ALTER TABLE quiz_questions ADD COLUMN cuatrimestre INTEGER')
   if (!has('context')) db.exec('ALTER TABLE quiz_questions ADD COLUMN context TEXT')
+  if (!has('evidence')) db.exec('ALTER TABLE quiz_questions ADD COLUMN evidence TEXT')
 }
 
 function migrateSubjectsTable(db: Database.Database) {
