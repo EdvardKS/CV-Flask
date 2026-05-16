@@ -14,10 +14,11 @@ type Props = {
   subject: SubjectWithCount
   questions: Question[]
   sessionKey?: string
+  preserveOrder?: boolean
 }
 
-export function QuizSession({ subject, questions, sessionKey }: Props) {
-  const { session, hydrated, start, answer, goto, finish, reset } = useQuizSession(subject.id, questions, sessionKey)
+export function QuizSession({ subject, questions, sessionKey, preserveOrder }: Props) {
+  const { session, hydrated, start, answer, goto, finish, reset } = useQuizSession(subject.id, questions, sessionKey, preserveOrder)
   const router = useRouter()
   const reportedRef = useRef(false)
 

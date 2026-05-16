@@ -42,7 +42,7 @@ function clear(storageId: string) {
 
 export type StartOpts = { limit?: number; cuatrimestre?: number | 'all' | 'latest' }
 
-export function useQuizSession(subjectId: string, source: Question[], sessionKey = subjectId) {
+export function useQuizSession(subjectId: string, source: Question[], sessionKey = subjectId, preserveOrder = false) {
   const [session, setSession] = useState<SessionState | null>(null)
   const [hydrated, setHydrated] = useState(false)
 
@@ -60,7 +60,7 @@ export function useQuizSession(subjectId: string, source: Question[], sessionKey
       : !opts.cuatrimestre || opts.cuatrimestre === 'all'
         ? source.filter(q => q.group !== 'latest-test')
         : source.filter(q => q.group !== 'latest-test' && (q.cuatrimestre ?? 1) === opts.cuatrimestre)
-    let qs = shuffled(filtered, seed)
+    let qs = preserveOrder ? [...filtered] : shuffled(filtered, seed)
     if (opts.limit && opts.limit < qs.length) qs = qs.slice(0, opts.limit)
     const next: SessionState = {
       subjectId,
@@ -74,7 +74,7 @@ export function useQuizSession(subjectId: string, source: Question[], sessionKey
     }
     setSession(next)
     save(sessionKey, next)
-  }, [sessionKey, source, subjectId])
+  }, [sessionKey, source, subjectId, preserveOrder])
 
   const update = useCallback((fn: (prev: SessionState) => SessionState) => {
     setSession(prev => {
