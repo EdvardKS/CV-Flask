@@ -44,14 +44,19 @@ export function DesktopIcon({ manifest, selected, onSelect }: {
       onClick={onSelect}
       onDoubleClick={open}
       onKeyDown={onKeyDown}
-      aria-label={`Abrir ${manifest.title}`}
-      title={description ? `${manifest.title} — ${description}` : manifest.title}
+      aria-label={description ? `${manifest.title}. ${description}` : manifest.title}
     >
       <span className="xp-icon-image" aria-hidden>
         {iconGlyph(manifest.icon)}
         <span className="xp-icon-shortcut" aria-hidden>↪</span>
       </span>
       <span className="xp-icon-label">{manifest.title}</span>
+      {description && (
+        <span className="xp-icon-tooltip" role="tooltip">
+          <strong>{manifest.title}</strong>
+          <span>{description}</span>
+        </span>
+      )}
     </div>
   )
 }
