@@ -42,6 +42,7 @@ export function DesktopIcon({ manifest, selected, onSelect }: {
       onDoubleClick={open}
       onKeyDown={onKeyDown}
       aria-label={`Abrir ${manifest.title}`}
+      title={manifest.description ? `${manifest.title} — ${manifest.description}` : manifest.title}
     >
       <span className="xp-icon-image" aria-hidden>
         {iconGlyph(manifest.icon)}

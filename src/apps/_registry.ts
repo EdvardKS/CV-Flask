@@ -9,6 +9,7 @@ import aboutManifest from './about/manifest'
 import linkedinManifest from './linkedin/manifest'
 import githubManifest from './github/manifest'
 import aiManifest from './ai/manifest'
+import iaeksManifest from './iaeks/manifest'
 
 export const APPS: AppManifest[] = [
   cvManifest,
@@ -17,6 +18,7 @@ export const APPS: AppManifest[] = [
   quizManifest,
   padelManifest,
   contactManifest,
+  iaeksManifest,
   linkedinManifest,
   githubManifest,
   aboutManifest
