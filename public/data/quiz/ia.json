@@ -1,5 +1,6 @@
 [
   {
+    "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
     "q": "¿Qué es un perceptrón?",
     "options": [
@@ -11,6 +12,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
     "q": "¿Qué técnica se basa en optimización inspirada en la evolución biológica?",
     "options": [
@@ -22,6 +24,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
     "q": "¿Cuál es una ventaja clave de las redes neuronales profundas?",
     "options": [
@@ -33,6 +36,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
     "q": "¿Qué se busca al usar algoritmos genéticos?",
     "options": [
@@ -44,6 +48,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
     "q": "¿Qué enfoque de la IA intenta emular la estructura del cerebro humano?",
     "options": [
@@ -55,6 +60,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
     "q": "¿Qué tipo de algoritmo de aprendizaje se basa en recompensas y castigos?",
     "options": [
@@ -66,6 +72,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
     "q": "¿Qué es una red neuronal artificial?",
     "options": [
@@ -77,6 +84,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
     "q": "¿Qué técnica de IA utiliza redes neuronales con múltiples capas?",
     "options": [
@@ -88,6 +96,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
     "q": "¿Cuál es la diferencia entre aprendizaje supervisado y no supervisado?",
     "options": [
@@ -99,6 +108,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
     "q": "¿Qué rama de la IA se centra en la capacidad de las máquinas para aprender de los datos?",
     "options": [
@@ -111,6 +121,7 @@
   },
 
   {
+    "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
     "q": "¿Qué tipo de algoritmo se usa comúnmente para la detección de fraudes?",
     "options": [
@@ -122,6 +133,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
     "q": "¿Qué problema resuelve el algoritmo de regresión lineal?",
     "options": [
@@ -133,6 +145,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
     "q": "¿Qué hace una función de activación en una red neuronal?",
     "options": [
@@ -144,6 +157,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
     "q": "¿Cuál de los siguientes es un algoritmo de Machine Learning supervisado?",
     "options": [
@@ -155,6 +169,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
     "q": "¿Qué técnica de Machine Learning se usa comúnmente para agrupar datos sin etiquetas?",
     "options": [
@@ -166,6 +181,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
     "q": "¿Cuál es la principal diferencia entre Machine Learning supervisado y no supervisado?",
     "options": [
@@ -177,6 +193,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
     "q": "¿Cuál de los siguientes es un ejemplo de aplicación del aprendizaje por refuerzo?",
     "options": [
@@ -188,6 +205,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
     "q": "¿Qué es el Machine Learning?",
     "options": [
@@ -199,6 +217,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
     "q": "¿Cuál es el principal beneficio del uso de redes neuronales profundas en IA?",
     "options": [
@@ -210,6 +229,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
     "q": "¿Qué función tiene una red neuronal en el contexto de Machine Learning?",
     "options": [
@@ -222,6 +242,7 @@
   },
 
   {
+    "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
     "q": "¿Cuál de los siguientes es un tipo de red neuronal utilizada en Deep Learning?",
     "options": [
@@ -233,6 +254,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
     "q": "¿Qué tipo de red neuronal se usa comúnmente para procesamiento de lenguaje natural?",
     "options": [
@@ -244,6 +266,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
     "q": "¿Qué ventaja tienen las redes neuronales recurrentes (RNN) sobre las redes neuronales tradicionales?",
     "options": [
@@ -255,6 +278,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
     "q": "¿Qué función cumple una capa de pooling en una red neuronal convolucional?",
     "options": [
@@ -266,6 +290,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
     "q": "¿Cuál es una limitación importante del Deep Learning?",
     "options": [
@@ -277,6 +302,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
     "q": "¿Cuál es la diferencia clave entre Machine Learning y Deep Learning?",
     "options": [
@@ -288,6 +314,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
     "q": "¿Qué aplicación es comúnmente asociada con redes neuronales convolucionales (CNN)?",
     "options": [
@@ -299,6 +326,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
     "q": "¿Qué estructura utilizan las redes neuronales profundas para el procesamiento de datos?",
     "options": [
@@ -310,6 +338,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
     "q": "¿Qué es el Deep Learning?",
     "options": [
@@ -321,6 +350,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
     "q": "¿Qué problema resuelve la técnica de backpropagation en redes neuronales?",
     "options": [
@@ -333,6 +363,7 @@
   },
 
   {
+    "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
     "q": "¿Cuál de las siguientes técnicas se usa para el análisis de sentimientos en PLN?",
     "options": [
@@ -344,6 +375,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
     "q": "¿Cuál de los siguientes es un ejemplo de aplicación del PLN?",
     "options": [
@@ -355,6 +387,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
     "q": "¿Qué modelo se usa en PLN para traducir texto entre idiomas?",
     "options": [
@@ -366,6 +399,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
     "q": "¿Qué es el Procesamiento del Lenguaje Natural (PLN)?",
     "options": [
@@ -377,6 +411,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
     "q": "¿Qué tarea en PLN se encarga de identificar los nombres de personas, lugares y organizaciones en un texto?",
     "options": [
@@ -388,6 +423,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
     "q": "¿Qué es la tokenización en PLN?",
     "options": [
@@ -399,6 +435,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
     "q": "¿Qué ventaja tienen los modelos de transformers sobre los modelos tradicionales en PLN?",
     "options": [
@@ -410,6 +447,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
     "q": "¿Qué es una palabra clave en PLN?",
     "options": [
@@ -421,6 +459,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
     "q": "¿Qué modelo se usa comúnmente en PLN para generar texto?",
     "options": [
@@ -432,6 +471,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
     "q": "¿Qué es el stemming en PLN?",
     "options": [
@@ -444,6 +484,7 @@
   },
 
   {
+    "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
     "q": "¿Cuál es la función de una capa de pooling en una CNN?",
     "options": [
@@ -455,6 +496,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
     "q": "¿Qué modelo se usa comúnmente en Visión por Computadora para analizar imágenes?",
     "options": [
@@ -466,6 +508,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
     "q": "¿Cuál de las siguientes aplicaciones pertenece a la Visión por Computadora?",
     "options": [
@@ -477,6 +520,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
     "q": "¿Qué técnica permite generar imágenes realistas a partir de una red neuronal?",
     "options": [
@@ -488,6 +532,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
     "q": "¿Qué hace una capa de convolución en una CNN?",
     "options": [
@@ -499,6 +544,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
     "q": "¿Qué técnica de Visión por Computadora se usa para etiquetar píxeles en una imagen?",
     "options": [
@@ -510,6 +556,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
     "q": "¿Qué tipo de modelo se usa en la Visión por Computadora para rastrear el movimiento de un objeto en un video?",
     "options": [
@@ -521,6 +568,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
     "q": "¿Qué es el \"overfitting\" en modelos de Visión por Computadora?",
     "options": [
@@ -532,6 +580,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
     "q": "¿Qué tarea en Visión por Computadora permite detectar objetos dentro de una imagen?",
     "options": [
@@ -543,6 +592,7 @@
     "correctIndex": 1
   },
   {
+    "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
     "q": "¿Qué es la Visión por Computadora?",
     "options": [
@@ -555,6 +605,7 @@
   },
 
   {
+    "cuatrimestre": 2,
     "category": "UD6 - Robótica",
     "q": "¿Cuál de los siguientes es un ejemplo de aplicación de la Robótica?",
     "options": [
@@ -566,6 +617,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD6 - Robótica",
     "q": "¿Qué tipo de aprendizaje se usa en Robótica para mejorar el desempeño de un robot?",
     "options": [
@@ -577,6 +629,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD6 - Robótica",
     "q": "¿Qué es la Robótica en el contexto de la Inteligencia Artificial?",
     "options": [
@@ -588,6 +641,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD6 - Robótica",
     "q": "¿Qué es un robot colaborativo (cobot)?",
     "options": [
@@ -599,6 +653,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD6 - Robótica",
     "q": "¿Cuál es un reto clave en el desarrollo de la Robótica?",
     "options": [
@@ -610,6 +665,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD6 - Robótica",
     "q": "¿Qué componente es fundamental en la Robótica para la toma de decisiones autónoma?",
     "options": [
@@ -621,6 +677,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD6 - Robótica",
     "q": "¿Qué tipo de redes neuronales se utilizan en la visión artificial aplicada a la Robótica?",
     "options": [
@@ -632,6 +689,7 @@
     "correctIndex": 3
   },
   {
+    "cuatrimestre": 2,
     "category": "UD6 - Robótica",
     "q": "¿Cuál es el objetivo principal de la Cinemática en Robótica?",
     "options": [
@@ -643,6 +701,7 @@
     "correctIndex": 2
   },
   {
+    "cuatrimestre": 2,
     "category": "UD6 - Robótica",
     "q": "¿Qué tipo de sensores utilizan los robots para interactuar con su entorno?",
     "options": [
@@ -654,6 +713,7 @@
     "correctIndex": 0
   },
   {
+    "cuatrimestre": 2,
     "category": "UD6 - Robótica",
     "q": "¿Qué es un actuador en Robótica?",
     "options": [
