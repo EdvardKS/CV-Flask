@@ -49,6 +49,14 @@
     "curso": 3
   },
   {
+    "id": "ia",
+    "name": "Inteligencia Artificial",
+    "description": "IA - 3º curso 2º cuatri. Fundamentos, Machine Learning, Deep Learning, PLN, Visión por Computadora y Robótica.",
+    "icon": "🤖",
+    "color": "#7c3aed",
+    "curso": 3
+  },
+  {
     "id": "gestion-tecnologia",
     "name": "Gestión de la Tecnología",
     "description": "GTEC - 4º curso 2º cuatri. Innovación, transferencia, vigilancia e inteligencia competitiva.",
