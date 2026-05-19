@@ -13,6 +13,7 @@ export type SessionState = {
   startedAt: number
   finishedAt: number | null
   cuatrimestre?: number | 'all'
+  category?: string | 'all'
 }
 
 const VERSION = 3
@@ -26,7 +27,7 @@ function load(id: string): SessionState | null {
 function save(s: SessionState) { try { localStorage.setItem(key(s.subjectId), JSON.stringify(s)) } catch {} }
 function clear(id: string) { try { localStorage.removeItem(key(id)) } catch {} }
 
-export type StartOpts = { limit?: number; cuatrimestre?: number | 'all' }
+export type StartOpts = { limit?: number; cuatrimestre?: number | 'all'; category?: string | 'all' }
 
 export function useQuizSession(subjectId: string, source: Question[]) {
   const [session, setSession] = useState<SessionState | null>(null)
@@ -40,15 +41,20 @@ export function useQuizSession(subjectId: string, source: Question[]) {
 
   const start = useCallback((opts: StartOpts = {}) => {
     const seed = (Date.now() & 0xffffffff) >>> 0
-    const filtered = !opts.cuatrimestre || opts.cuatrimestre === 'all'
-      ? source
-      : source.filter(q => (q.cuatrimestre ?? 1) === opts.cuatrimestre)
+    let filtered = source
+    if (opts.cuatrimestre && opts.cuatrimestre !== 'all') {
+      filtered = filtered.filter(q => (q.cuatrimestre ?? 1) === opts.cuatrimestre)
+    }
+    if (opts.category && opts.category !== 'all') {
+      filtered = filtered.filter(q => q.category === opts.category)
+    }
     let qs = shuffled(filtered, seed)
     if (opts.limit && opts.limit < qs.length) qs = qs.slice(0, opts.limit)
     const next: SessionState = {
       subjectId, seed, questions: qs, answers: {}, currentIndex: 0,
       startedAt: Date.now(), finishedAt: null,
-      cuatrimestre: opts.cuatrimestre
+      cuatrimestre: opts.cuatrimestre,
+      category: opts.category
     }
     setSession(next); save(next)
   }, [subjectId, source])

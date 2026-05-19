@@ -33,7 +33,7 @@ export function QuizSession({ subject, questions }: { subject: SubjectWithCount;
         subject={subject}
         questions={questions}
         hasResume={false}
-        onStart={(limit, cuatrimestre) => start({ limit, cuatrimestre })}
+        onStart={(limit, cuatrimestre, category) => start({ limit, cuatrimestre, category })}
         onResume={() => { /* no-op */ }}
       />
     )
