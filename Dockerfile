@@ -3,8 +3,8 @@ FROM node:20-alpine AS deps
 WORKDIR /app
 RUN corepack enable
 RUN apk add --no-cache python3 make g++
-COPY package.json pnpm-lock.yaml* package-lock.json* ./
-RUN npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
 FROM node:20-alpine AS builder
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN apk add --no-cache python3 py3-pip && pip3 install --break-system-packages -
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN cd legacy-src && python3 render_templates.py
-RUN npm run build
+RUN corepack enable && pnpm build
 
 FROM node:20-alpine AS runner
 WORKDIR /app
