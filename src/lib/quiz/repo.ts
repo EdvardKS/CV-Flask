@@ -1,27 +1,80 @@
 import 'server-only'
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 import { getQuizDb } from './db'
-import type { Question, SubjectMeta, SubjectWithCount } from './types'
+import { quizSeedDir } from './paths'
+import { questionsSchema, subjectMetaSchema, type Question, type SubjectMeta, type SubjectWithCount } from './types'
 
-type SubjectRow = SubjectMeta & { question_count: number; cuatrimestres_csv: string | null; curso: number | null }
+type SubjectRow = SubjectMeta & {
+  question_count: number
+  cuatrimestres_csv: string | null
+  curso: number | null
+  entry_mode: 'standard' | 'hub' | null
+}
 
-export function listSubjects(): SubjectWithCount[] {
-  const db = getQuizDb()
-  const rows = db.prepare(`
-    SELECT s.id, s.name, s.description, s.icon, s.color, s.position, s.curso,
-           (SELECT COUNT(*) FROM quiz_questions q WHERE q.subject_id=s.id) AS question_count,
-           (SELECT GROUP_CONCAT(DISTINCT IFNULL(cuatrimestre, 1))
-              FROM quiz_questions q WHERE q.subject_id=s.id) AS cuatrimestres_csv
-    FROM quiz_subjects s
-    ORDER BY s.curso ASC, s.position ASC, s.name ASC
-  `).all() as SubjectRow[]
-  return rows.map(r => ({
-    id: r.id, name: r.name, description: r.description ?? '',
-    icon: r.icon ?? '📝', color: r.color ?? '#3a6ea5',
-    position: r.position ?? 0,
-    curso: r.curso ?? undefined,
-    questionCount: r.question_count,
-    cuatrimestres: parseCuatris(r.cuatrimestres_csv)
-  }))
+type QuestionRow = {
+  q: string
+  kind: string
+  options_json: string
+  correct_json: string
+  accept_json: string | null
+  cuatrimestre: number | null
+  context: string | null
+  code: string | null
+  is_vocab: number
+  category: string | null
+  evidence: string | null
+}
+
+type LegacyExamQuestion = {
+  id: number
+  pregunta: string
+  respuestas: Array<{ letra: string; texto: string }>
+  correcta: string
+}
+
+function readSubjectMetasFromSeed(): SubjectMeta[] {
+  try {
+    const file = path.join(quizSeedDir(), '_subjects.json')
+    const raw = JSON.parse(readFileSync(file, 'utf8'))
+    if (!Array.isArray(raw)) return []
+    return raw.map((subject, index) => subjectMetaSchema.parse({
+      ...(subject as SubjectMeta),
+      position: (subject as SubjectMeta).position ?? index
+    }))
+  } catch {
+    return []
+  }
+}
+
+function readQuestionsFromSeed(subjectId: string): Question[] {
+  try {
+    const file = path.join(quizSeedDir(), `${subjectId}.json`)
+    const raw = JSON.parse(readFileSync(file, 'utf8'))
+    return questionsSchema.parse(raw)
+  } catch {
+    return []
+  }
+}
+
+function readEnglishLatestTest(): Question[] {
+  try {
+    const file = path.join(quizSeedDir(), 'english-latest-test.json')
+    const raw = JSON.parse(readFileSync(file, 'utf8')) as LegacyExamQuestion[]
+    return raw.map(item => {
+      const options = item.respuestas.map(answer => answer.texto)
+      const correctIndex = item.respuestas.findIndex(answer => answer.letra.toLowerCase() === item.correcta.toLowerCase())
+      return {
+        kind: 'choice' as const,
+        q: item.pregunta,
+        options,
+        correctIndex: correctIndex >= 0 ? correctIndex : 0,
+        group: 'latest-test'
+      }
+    })
+  } catch {
+    return []
+  }
 }
 
 function parseCuatris(csv: string | null): number[] {
@@ -29,48 +82,93 @@ function parseCuatris(csv: string | null): number[] {
   return Array.from(new Set(csv.split(',').map(s => Number(s.trim())).filter(n => Number.isFinite(n)))).sort()
 }
 
-export function getSubject(id: string): SubjectWithCount | null {
-  return listSubjects().find(s => s.id === id) ?? null
+function inferCuatris(questions: Question[]): number[] {
+  return Array.from(new Set(questions.map(q => q.cuatrimestre ?? 1))).sort((a, b) => a - b)
 }
 
-type QuestionRow = {
-  q: string; kind: string;
-  options_json: string; correct_json: string; accept_json: string | null
-  cuatrimestre: number | null; context: string | null
-  code: string | null; is_vocab: number; category: string | null
-}
+export function listSubjects(): SubjectWithCount[] {
+  const db = getQuizDb()
+  const rows = db.prepare(`
+    SELECT s.id, s.name, s.description, s.icon, s.color, s.position, s.curso, s.entry_mode,
+           (SELECT COUNT(*) FROM quiz_questions q WHERE q.subject_id=s.id) AS question_count,
+           (SELECT GROUP_CONCAT(DISTINCT IFNULL(cuatrimestre, 1))
+              FROM quiz_questions q WHERE q.subject_id=s.id) AS cuatrimestres_csv
+    FROM quiz_subjects s
+    ORDER BY s.curso ASC, s.position ASC, s.name ASC
+  `).all() as SubjectRow[]
 
-function rowToQuestion(r: QuestionRow): Question {
-  const base = {
-    q: r.q,
-    cuatrimestre: r.cuatrimestre ?? undefined,
-    context: r.context ?? undefined,
-    code: r.code ?? undefined,
-    isVocab: !!r.is_vocab,
-    category: r.category ?? undefined
+  if (rows.length === 0) {
+    return readSubjectMetasFromSeed().map(subject => {
+      const questions = readQuestionsFromSeed(subject.id)
+      return {
+        ...subject,
+        entryMode: subject.entryMode ?? 'standard',
+        questionCount: questions.length,
+        cuatrimestres: inferCuatris(questions)
+      }
+    })
   }
-  if (r.kind === 'fill') {
-    return { ...base, kind: 'fill', accept: JSON.parse(r.accept_json ?? '""') }
+
+  return rows.map(row => {
+    const fallbackQuestions = row.question_count === 0 ? readQuestionsFromSeed(row.id) : null
+    return {
+      id: row.id,
+      name: row.name,
+      description: row.description ?? '',
+      icon: row.icon ?? 'ðŸ“',
+      color: row.color ?? '#3a6ea5',
+      position: row.position ?? 0,
+      curso: row.curso ?? undefined,
+      entryMode: row.entry_mode ?? 'standard',
+      questionCount: row.question_count || fallbackQuestions?.length || 0,
+      cuatrimestres: row.cuatrimestres_csv ? parseCuatris(row.cuatrimestres_csv) : inferCuatris(fallbackQuestions ?? [])
+    }
+  })
+}
+
+export function getSubject(id: string): SubjectWithCount | null {
+  return listSubjects().find(subject => subject.id === id) ?? null
+}
+
+function rowToQuestion(row: QuestionRow): Question {
+  const base = {
+    q: row.q,
+    cuatrimestre: row.cuatrimestre ?? undefined,
+    context: row.context ?? undefined,
+    code: row.code ?? undefined,
+    isVocab: !!row.is_vocab,
+    category: row.category ?? undefined,
+    evidence: row.evidence ?? undefined
+  }
+  if (row.kind === 'fill') {
+    return { ...base, kind: 'fill', accept: JSON.parse(row.accept_json ?? '""') }
   }
   return {
     ...base,
     kind: 'choice',
-    options: JSON.parse(r.options_json) as string[],
-    correctIndex: JSON.parse(r.correct_json)
+    options: JSON.parse(row.options_json) as string[],
+    correctIndex: JSON.parse(row.correct_json)
   }
 }
 
 export function listQuestions(subjectId: string): Question[] {
   const db = getQuizDb()
   const rows = db.prepare(`SELECT q, kind, options_json, correct_json, accept_json,
-      cuatrimestre, context, code, is_vocab, category
+      cuatrimestre, context, code, is_vocab, category, evidence
     FROM quiz_questions WHERE subject_id=? ORDER BY position ASC`).all(subjectId) as QuestionRow[]
-  return rows.map(rowToQuestion)
+  const baseQuestions = rows.length === 0 ? readQuestionsFromSeed(subjectId) : rows.map(rowToQuestion)
+  if (subjectId !== 'ingles') return baseQuestions
+  return [...baseQuestions, ...readEnglishLatestTest()]
 }
 
 export type SaveResultInput = {
-  subjectId: string; clientId: string; correct: number
-  incorrect: number; unanswered: number; total: number; durationSeconds: number
+  subjectId: string
+  clientId: string
+  correct: number
+  incorrect: number
+  unanswered: number
+  total: number
+  durationSeconds: number
 }
 
 export function saveResult(input: SaveResultInput): number {
@@ -79,8 +177,17 @@ export function saveResult(input: SaveResultInput): number {
   const r = db.prepare(`INSERT INTO quiz_results
     (subject_id,client_id,score_pct,correct,incorrect,unanswered,total,duration_seconds,finished_at)
     VALUES(?,?,?,?,?,?,?,?,?)`)
-    .run(input.subjectId, input.clientId, pct, input.correct, input.incorrect,
-         input.unanswered, input.total, input.durationSeconds, Date.now())
+    .run(
+      input.subjectId,
+      input.clientId,
+      pct,
+      input.correct,
+      input.incorrect,
+      input.unanswered,
+      input.total,
+      input.durationSeconds,
+      Date.now()
+    )
   return Number(r.lastInsertRowid)
 }
 
@@ -90,7 +197,11 @@ export function recentResults(clientId: string, limit = 10) {
     duration_seconds AS durationSeconds, finished_at AS finishedAt
     FROM quiz_results WHERE client_id=? ORDER BY finished_at DESC LIMIT ?`)
     .all(clientId, limit) as Array<{
-      subjectId: string; scorePct: number; correct: number; total: number
-      durationSeconds: number; finishedAt: number
+      subjectId: string
+      scorePct: number
+      correct: number
+      total: number
+      durationSeconds: number
+      finishedAt: number
     }>
 }

@@ -2,37 +2,51 @@ import 'server-only'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import type Database from 'better-sqlite3'
-import { quizSeedDir } from './paths'
 import { getQuizDb } from './db'
+import { quizSeedDir } from './paths'
 import { questionsSchema, subjectMetaSchema, type Question, type SubjectMeta } from './types'
 
 async function readSubjectMetas(): Promise<SubjectMeta[]> {
   const file = path.join(quizSeedDir(), '_subjects.json')
   const raw = await fs.readFile(file, 'utf8')
   const arr = JSON.parse(raw)
-  return arr.map((m: unknown, i: number) => ({ ...subjectMetaSchema.parse(m), position: (m as SubjectMeta).position ?? i }))
+  return arr.map((m: unknown, i: number) => ({
+    ...subjectMetaSchema.parse(m),
+    position: (m as SubjectMeta).position ?? i
+  }))
 }
 
 async function fileMtime(p: string): Promise<number> {
-  try { return Math.floor((await fs.stat(p)).mtimeMs) } catch { return 0 }
+  try {
+    return Math.floor((await fs.stat(p)).mtimeMs)
+  } catch {
+    return 0
+  }
 }
 
 function upsertSubject(db: Database.Database, m: SubjectMeta) {
-  db.prepare(`INSERT INTO quiz_subjects(id,name,description,icon,color,position,curso,updated_at)
-              VALUES(@id,@name,@description,@icon,@color,@position,@curso,@updated_at)
+  db.prepare(`INSERT INTO quiz_subjects(id,name,description,icon,color,position,curso,entry_mode,updated_at)
+              VALUES(@id,@name,@description,@icon,@color,@position,@curso,@entry_mode,@updated_at)
               ON CONFLICT(id) DO UPDATE SET
                 name=excluded.name, description=excluded.description,
                 icon=excluded.icon, color=excluded.color,
                 position=excluded.position, curso=excluded.curso,
+                entry_mode=excluded.entry_mode,
                 updated_at=excluded.updated_at`)
-    .run({ ...m, position: m.position ?? 0, curso: m.curso ?? null, updated_at: Date.now() })
+    .run({
+      ...m,
+      position: m.position ?? 0,
+      curso: m.curso ?? null,
+      entry_mode: m.entryMode ?? 'standard',
+      updated_at: Date.now()
+    })
 }
 
 function insertQuestion(db: Database.Database, subjectId: string, q: Question, pos: number) {
   const isChoice = q.kind === 'choice'
   db.prepare(`INSERT INTO quiz_questions
-    (subject_id,position,q,kind,options_json,correct_json,accept_json,cuatrimestre,context,code,is_vocab,category)
-    VALUES(?,?,?,?,?,?,?,?,?,?,?,?)`).run(
+    (subject_id,position,q,kind,options_json,correct_json,accept_json,cuatrimestre,context,code,is_vocab,category,evidence)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(
       subjectId, pos, q.q, q.kind,
       isChoice ? JSON.stringify(q.options) : '[]',
       isChoice ? JSON.stringify(q.correctIndex) : 'null',
@@ -41,7 +55,8 @@ function insertQuestion(db: Database.Database, subjectId: string, q: Question, p
       q.context ?? null,
       q.code ?? null,
       q.isVocab ? 1 : 0,
-      q.category ?? null
+      q.category ?? null,
+      q.evidence ?? null
     )
 }
 
@@ -68,11 +83,13 @@ async function ingestSubject(db: Database.Database, m: SubjectMeta) {
 export async function seedQuizDb(): Promise<{ subjects: number; ingested: string[]; errors: { id: string; message: string }[] }> {
   const db = getQuizDb()
   let metas: SubjectMeta[]
-  try { metas = await readSubjectMetas() }
-  catch (e) {
+  try {
+    metas = await readSubjectMetas()
+  } catch (e) {
     console.error('[quiz seed] _subjects.json invalid:', e)
     return { subjects: 0, ingested: [], errors: [{ id: '_subjects.json', message: (e as Error).message }] }
   }
+
   const ingested: string[] = []
   const errors: { id: string; message: string }[] = []
   for (const m of metas) {

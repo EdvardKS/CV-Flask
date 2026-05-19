@@ -1,0 +1,851 @@
+{
+  "subjectId": "redes",
+  "topics": [
+    {
+      "id": "tema-1",
+      "topic": 1,
+      "title": "Tema 1 · Introducción y dispositivos de interconexión",
+      "pdfUrl": "/data/quiz/redes/assets/tema-1-contenido.pdf",
+      "pageCount": 33,
+      "slides": [
+        {
+          "id": "tema-1-page-5",
+          "page": 5,
+          "title": "Concepto y arquitectura de red",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Concepto y arquitectura de red"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Esta página fija la base del curso: qué es una red y cómo se separan arquitectura física y lógica.",
+          "examRelevance": "Es muy preguntable porque ordena todo el vocabulario posterior: topología, capas, protocolos y dispositivos.",
+          "searchText": "Redes Concepto y arquitectura de red tema 1"
+        },
+        {
+          "id": "tema-1-page-6",
+          "page": 6,
+          "title": "Arquitectura física y lógica",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Arquitectura física y lógica"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Resume cómo se organiza una red real y cómo se abstrae en capas y funciones.",
+          "examRelevance": "Suele entrar para distinguir componentes físicos frente a servicios o protocolos.",
+          "searchText": "Redes Arquitectura física y lógica tema 1"
+        },
+        {
+          "id": "tema-1-page-11",
+          "page": 11,
+          "title": "Servicios orientados y no orientados a conexión",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Servicios orientados y no orientados a conexión"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Aqué se entiende qué ofrece una capa y cómo cambia el comportamiento extremo a extremo.",
+          "examRelevance": "Da pie a preguntas conceptuales sobre fiabilidad, conexión previa y tipos de servicio.",
+          "searchText": "Redes Servicios orientados y no orientados a conexión tema 1"
+        },
+        {
+          "id": "tema-1-page-20",
+          "page": 20,
+          "title": "Repetidores y hubs",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Repetidores y hubs"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Marca los límites de los dispositivos de nivel 1 y por qué no interpretan el contenido del tráfico.",
+          "examRelevance": "En examen se usa mucho para diferenciar capa física, colisiones y difusión.",
+          "searchText": "Redes Repetidores y hubs tema 1"
+        },
+        {
+          "id": "tema-1-page-22",
+          "page": 22,
+          "title": "Puentes y switches",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Puentes y switches"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Explica el salto a capa 2 y el uso de direcciones MAC para filtrar tráfico.",
+          "examRelevance": "Es núcleo para comparar hub, bridge, switch y segmentación lógica.",
+          "searchText": "Redes Puentes y switches tema 1"
+        },
+        {
+          "id": "tema-1-page-27",
+          "page": 27,
+          "title": "Proceso de enrutamiento",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Proceso de enrutamiento"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Muestra cómo se decide el envío entre redes distintas y qué papel juega el datagrama IP.",
+          "examRelevance": "Es muy examinable porque conecta router, puerta de enlace y decisión por red destino.",
+          "searchText": "Redes Proceso de enrutamiento tema 1"
+        }
+      ]
+    },
+    {
+      "id": "tema-2",
+      "topic": 2,
+      "title": "Tema 2 · LAN, backbone, VPN y VLAN",
+      "pdfUrl": "/data/quiz/redes/assets/tema-2-contenido.pdf",
+      "pageCount": 35,
+      "slides": [
+        {
+          "id": "tema-2-page-7",
+          "page": 7,
+          "title": "Importancia de las LAN",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Importancia de las LAN"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Sitúa por qué la LAN es la infraestructura base sobre la que se apoyan oficinas, campus e industria.",
+          "examRelevance": "Suele aparecer para distinguir alcances, usos y diferencias con MAN o WAN.",
+          "searchText": "Redes Importancia de las LAN tema 2"
+        },
+        {
+          "id": "tema-2-page-15",
+          "page": 15,
+          "title": "CSMA/CD",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "CSMA/CD"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Es la mecánica clásica de acceso al medio en Ethernet compartida y la clave de las colisiones.",
+          "examRelevance": "Sale en test para comparar detección frente a evitación de colisiones.",
+          "searchText": "Redes CSMA/CD tema 2"
+        },
+        {
+          "id": "tema-2-page-18",
+          "page": 18,
+          "title": "Bluetooth y WiFi",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Bluetooth y WiFi"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Introduce las dos tecnologías inalámbricas más comunes y sus casos de uso.",
+          "examRelevance": "Da preguntas comparativas sobre alcance, consumo, movilidad y estándar.",
+          "searchText": "Redes Bluetooth y WiFi tema 2"
+        },
+        {
+          "id": "tema-2-page-22",
+          "page": 22,
+          "title": "Backbone",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Backbone"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Define la red troncal como columna vertebral que une segmentos y concentra tráfico.",
+          "examRelevance": "Es importante porque separa acceso, distribución y núcleo en diseños reales.",
+          "searchText": "Redes Backbone tema 2"
+        },
+        {
+          "id": "tema-2-page-26",
+          "page": 26,
+          "title": "VPN",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "VPN"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Resume cómo se protege tráfico sobre Internet con túneles y cifrado.",
+          "examRelevance": "Entra mucho por su relación con confidencialidad, acceso remoto y seguridad.",
+          "searchText": "Redes VPN tema 2"
+        },
+        {
+          "id": "tema-2-page-30",
+          "page": 30,
+          "title": "VLAN y segmentación lógica",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "VLAN y segmentación lógica"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Explica por qué una VLAN separa dominios lógicos sin mover físicamente los equipos.",
+          "examRelevance": "Es una de las ideas más preguntables del tema por flexibilidad, difusión y diseño de red.",
+          "searchText": "Redes VLAN y segmentación lógica tema 2"
+        }
+      ]
+    },
+    {
+      "id": "tema-3",
+      "topic": 3,
+      "title": "Tema 3 · Cableado estructurado",
+      "pdfUrl": "/data/quiz/redes/assets/tema-3-contenido.pdf",
+      "pageCount": 35,
+      "slides": [
+        {
+          "id": "tema-3-page-7",
+          "page": 7,
+          "title": "Necesidad del cableado estructurado",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Necesidad del cableado estructurado"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Presenta el cableado como base física estable y planificada de la red.",
+          "examRelevance": "Es importante porque justifica por qué no basta con ?tirar cables? sin diseño.",
+          "searchText": "Redes Necesidad del cableado estructurado tema 3"
+        },
+        {
+          "id": "tema-3-page-12",
+          "page": 12,
+          "title": "Impacto de las normativas",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Impacto de las normativas"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Une calidad, interoperabilidad y mantenimiento con el seguimiento de estándares.",
+          "examRelevance": "Se pregunta para distinguir normativa, organismo y beneficio operativo.",
+          "searchText": "Redes Impacto de las normativas tema 3"
+        },
+        {
+          "id": "tema-3-page-17",
+          "page": 17,
+          "title": "ANSI/TIA/EIA-568",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "ANSI/TIA/EIA-568"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Es la referencia central del tema y organiza la instalación física correctamente.",
+          "examRelevance": "Muy preguntable por nombre del estándar y por qué garantiza compatibilidad.",
+          "searchText": "Redes ANSI/TIA/EIA-568 tema 3"
+        },
+        {
+          "id": "tema-3-page-24",
+          "page": 24,
+          "title": "Categorías de cable",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Categorías de cable"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Condensa categorías, frecuencias y aplicaciones, que suelen caer en memoria aplicada.",
+          "examRelevance": "Es típico en examen preguntar qué categoría soporta cierto rendimiento o escenario.",
+          "searchText": "Redes Categorías de cable tema 3"
+        },
+        {
+          "id": "tema-3-page-30",
+          "page": 30,
+          "title": "Medios de transmisión",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Medios de transmisión"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Conecta propiedades físicas del medio con alcance, interferencias y tipo de señal.",
+          "examRelevance": "Sirve para justificar elecciones técnicas y comparar cobre, radio o fibra.",
+          "searchText": "Redes Medios de transmisión tema 3"
+        }
+      ]
+    },
+    {
+      "id": "tema-4",
+      "topic": 4,
+      "title": "Tema 4 · Encaminamiento dinámico",
+      "pdfUrl": "/data/quiz/redes/assets/tema-4-contenido.pdf",
+      "pageCount": 30,
+      "slides": [
+        {
+          "id": "tema-4-page-7",
+          "page": 7,
+          "title": "Encaminamiento dinámico",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Encaminamiento dinámico"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Introduce por qué las rutas deben adaptarse automáticamente a cambios de topología.",
+          "examRelevance": "Es la puerta de entrada para comparar encaminamiento estático y dinámico.",
+          "searchText": "Redes Encaminamiento dinámico tema 4"
+        },
+        {
+          "id": "tema-4-page-8",
+          "page": 8,
+          "title": "Sistema Autónomo",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Sistema Autónomo"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Define la unidad lógica sobre la que se construyen las decisiones de encaminamiento a escala Internet.",
+          "examRelevance": "Suele preguntarse para diferenciar AS, IGP y protocolos entre dominios.",
+          "searchText": "Redes Sistema Autónomo tema 4"
+        },
+        {
+          "id": "tema-4-page-12",
+          "page": 12,
+          "title": "Tablas de encaminamiento",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Tablas de encaminamiento"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Aterriza qué guarda un router y qué información usa para reenviar.",
+          "examRelevance": "Es básico para entender métrica, siguiente salto y convergencia.",
+          "searchText": "Redes Tablas de encaminamiento tema 4"
+        },
+        {
+          "id": "tema-4-page-17",
+          "page": 17,
+          "title": "Vector distancia y sus problemas",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Vector distancia y sus problemas"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Resume limitaciones y mecanismos correctores como el retorno envenenado.",
+          "examRelevance": "Muy preguntable porque explica por qué algunos protocolos escalan peor.",
+          "searchText": "Redes Vector distancia y sus problemas tema 4"
+        },
+        {
+          "id": "tema-4-page-23",
+          "page": 23,
+          "title": "Vector camino",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Vector camino"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Introduce el enfoque de Internet a gran escala y su papel en BGP.",
+          "examRelevance": "Es clave para separar vector distancia, estado de enlace y políticas entre AS.",
+          "searchText": "Redes Vector camino tema 4"
+        }
+      ]
+    },
+    {
+      "id": "tema-5",
+      "topic": 5,
+      "title": "Tema 5 · IPv6",
+      "pdfUrl": "/data/quiz/redes/assets/tema-5-contenido.pdf",
+      "pageCount": 33,
+      "slides": [
+        {
+          "id": "tema-5-page-6",
+          "page": 6,
+          "title": "Necesidad de IPv6",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Necesidad de IPv6"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Explica el agotamiento de IPv4 y por qué las soluciones temporales no bastan.",
+          "examRelevance": "Es un clásico de examen porque justifica toda la transición tecnológica.",
+          "searchText": "Redes Necesidad de IPv6 tema 5"
+        },
+        {
+          "id": "tema-5-page-10",
+          "page": 10,
+          "title": "Estructura de la cabecera IPv6",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Estructura de la cabecera IPv6"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Resume los campos esenciales y qué cambia frente a IPv4.",
+          "examRelevance": "Suele entrar para comparar tamaño, simplificación y tratamiento del tráfico.",
+          "searchText": "Redes Estructura de la cabecera IPv6 tema 5"
+        },
+        {
+          "id": "tema-5-page-14",
+          "page": 14,
+          "title": "Cabeceras y clase de servicio",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Cabeceras y clase de servicio"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Relaciona extensiones, QoS y tratamiento de paquetes en la red.",
+          "examRelevance": "Es muy ?til para preguntas sobre opciones de salto, DiffServ y priorización.",
+          "searchText": "Redes Cabeceras y clase de servicio tema 5"
+        },
+        {
+          "id": "tema-5-page-21",
+          "page": 21,
+          "title": "Direcciones IPv6",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Direcciones IPv6"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Fija longitud, notación y formas de abreviación del direccionamiento.",
+          "examRelevance": "Se estudia porque muchas preguntas miden si dominas representación y tipos de dirección.",
+          "searchText": "Redes Direcciones IPv6 tema 5"
+        },
+        {
+          "id": "tema-5-page-25",
+          "page": 25,
+          "title": "Anycast y transición",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Anycast y transición"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Señala uno de los conceptos diferenciales de IPv6 y cómo convivir? con IPv4.",
+          "examRelevance": "Entra por novedad conceptual y por estrategias de transición como dual stack.",
+          "searchText": "Redes Anycast y transición tema 5"
+        }
+      ]
+    },
+    {
+      "id": "tema-6",
+      "topic": 6,
+      "title": "Tema 6 · Seguridad en las comunicaciones",
+      "pdfUrl": "/data/quiz/redes/assets/tema-6-contenido.pdf",
+      "pageCount": 41,
+      "slides": [
+        {
+          "id": "tema-6-page-6",
+          "page": 6,
+          "title": "Ciberespacio",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Ciberespacio"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Sitúa el entorno de amenazas y actores sobre el que se construye el resto del tema.",
+          "examRelevance": "Es relevante porque da el marco para entender por qué existen controles y servicios de seguridad.",
+          "searchText": "Redes Ciberespacio tema 6"
+        },
+        {
+          "id": "tema-6-page-12",
+          "page": 12,
+          "title": "Ciberseguridad en España",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Ciberseguridad en España"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Resume organismos y estructura institucional de respuesta y defensa.",
+          "examRelevance": "Puede caer como pregunta de contexto y clasificación de funciones.",
+          "searchText": "Redes Ciberseguridad en España tema 6"
+        },
+        {
+          "id": "tema-6-page-14",
+          "page": 14,
+          "title": "Seguridad en los equipos",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Seguridad en los equipos"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Conecta hardware, software y datos con una visión integral de protección.",
+          "examRelevance": "Es base para preguntas sobre qué se protege y con qué mecanismos.",
+          "searchText": "Redes Seguridad en los equipos tema 6"
+        },
+        {
+          "id": "tema-6-page-19",
+          "page": 19,
+          "title": "Amenazas de red",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Amenazas de red"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Recoge amenazas concretas como ingeniería social y exposición de credenciales.",
+          "examRelevance": "Es muy examinable porque traduce teoría a riesgos prácticos reconocibles.",
+          "searchText": "Redes Amenazas de red tema 6"
+        },
+        {
+          "id": "tema-6-page-24",
+          "page": 24,
+          "title": "Servicios de seguridad",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Servicios de seguridad"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Define confidencialidad, autenticación y control de acceso desde una norma clásica.",
+          "examRelevance": "Es materia nuclear y suele aparecer casi literal en tipo test.",
+          "searchText": "Redes Servicios de seguridad tema 6"
+        },
+        {
+          "id": "tema-6-page-31",
+          "page": 31,
+          "title": "Cifrado asimétrico",
+          "highlights": [
+            {
+              "x": 8,
+              "y": 12,
+              "w": 84,
+              "h": 10,
+              "label": "Cifrado asimétrico"
+            },
+            {
+              "x": 8,
+              "y": 28,
+              "w": 84,
+              "h": 34,
+              "label": "Bloque principal del concepto"
+            }
+          ],
+          "explanation": "Aterriza identidad, distribución de claves y uso real del cifrado en comunicaciones.",
+          "examRelevance": "Es importante porque diferencia claramente cifrado simétrico, asimétrico y firma digital.",
+          "searchText": "Redes Cifrado asimétrico tema 6"
+        }
+      ]
+    }
+  ]
+}

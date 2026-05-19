@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "generate:redes": "python scripts/generate_redes_data.py",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -23,6 +24,7 @@
     "next": "^15.1.4",
     "next-intl": "^3.25.1",
     "nodemailer": "^6.9.16",
+    "pdfjs-dist": "^4.10.38",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.53.2",

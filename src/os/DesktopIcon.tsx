@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { useWM } from './store'
 import { iconGlyph } from './Window'
+import { APP_DESCRIPTIONS, useLocale } from '@lib/i18n/config'
 import type { AppManifest } from './types'
 
 export function DesktopIcon({ manifest, selected, onSelect }: {
@@ -13,6 +14,8 @@ export function DesktopIcon({ manifest, selected, onSelect }: {
 }) {
   const openApp = useWM(s => s.openApp)
   const router = useRouter()
+  const locale = useLocale(s => s.locale)
+  const description = APP_DESCRIPTIONS[locale]?.[manifest.id] ?? manifest.description
 
   const open = () => {
     if (manifest.externalUrl) {
@@ -41,13 +44,19 @@ export function DesktopIcon({ manifest, selected, onSelect }: {
       onClick={onSelect}
       onDoubleClick={open}
       onKeyDown={onKeyDown}
-      aria-label={`Abrir ${manifest.title}`}
+      aria-label={description ? `${manifest.title}. ${description}` : manifest.title}
     >
       <span className="xp-icon-image" aria-hidden>
         {iconGlyph(manifest.icon)}
         <span className="xp-icon-shortcut" aria-hidden>↪</span>
       </span>
       <span className="xp-icon-label">{manifest.title}</span>
+      {description && (
+        <span className="xp-icon-tooltip" role="tooltip">
+          <strong>{manifest.title}</strong>
+          <span>{description}</span>
+        </span>
+      )}
     </div>
   )
 }

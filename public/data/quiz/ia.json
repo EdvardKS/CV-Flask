@@ -1,0 +1,727 @@
+[
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué es un perceptrón?",
+    "options": [
+      "Un modelo de datos estadístico.",
+      "Un sistema de gestión de bases de datos.",
+      "Un algoritmo de clasificación supervisada.",
+      "Una unidad básica en redes neuronales."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué técnica se basa en optimización inspirada en la evolución biológica?",
+    "options": [
+      "Aprendizaje por refuerzo.",
+      "Aprendizaje supervisado.",
+      "Redes neuronales profundas.",
+      "Algoritmos genéticos."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Cuál es una ventaja clave de las redes neuronales profundas?",
+    "options": [
+      "Capacidad para identificar patrones complejos en datos.",
+      "Simplificación de la interfaz de usuario.",
+      "Optimización de hardware.",
+      "Reducción del tamaño de los datos."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué se busca al usar algoritmos genéticos?",
+    "options": [
+      "Clasificar imágenes automáticamente.",
+      "Diseñar hardware especializado.",
+      "Analizar datos lingüísticos.",
+      "Optimizar soluciones en problemas complejos."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué enfoque de la IA intenta emular la estructura del cerebro humano?",
+    "options": [
+      "Big Data.",
+      "Algoritmos genéticos.",
+      "Redes neuronales.",
+      "Aprendizaje supervisado."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué tipo de algoritmo de aprendizaje se basa en recompensas y castigos?",
+    "options": [
+      "Algoritmos genéticos.",
+      "Aprendizaje por refuerzo.",
+      "Aprendizaje no supervisado.",
+      "Aprendizaje supervisado."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué es una red neuronal artificial?",
+    "options": [
+      "Un tipo de hardware especializado.",
+      "Un método para optimizar procesos de negocio.",
+      "Un modelo inspirado en el cerebro humano para resolver problemas complejos.",
+      "Un sistema para gestionar bases de datos."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué técnica de IA utiliza redes neuronales con múltiples capas?",
+    "options": [
+      "Robótica.",
+      "Machine Learning básico.",
+      "Big Data.",
+      "Deep Learning."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Cuál es la diferencia entre aprendizaje supervisado y no supervisado?",
+    "options": [
+      "El supervisado se basa en reglas, el no supervisado no las usa.",
+      "El no supervisado es más rápido que el supervisado.",
+      "El supervisado utiliza datos etiquetados, el no supervisado no.",
+      "No hay diferencia significativa."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué rama de la IA se centra en la capacidad de las máquinas para aprender de los datos?",
+    "options": [
+      "Sistemas expertos.",
+      "Machine Learning.",
+      "Procesamiento del Lenguaje Natural.",
+      "Robótica."
+    ],
+    "correctIndex": 1
+  },
+
+  {
+    "cuatrimestre": 2,
+    "category": "UD2 - Machine Learning",
+    "q": "¿Qué tipo de algoritmo se usa comúnmente para la detección de fraudes?",
+    "options": [
+      "Algoritmos de clasificación supervisada.",
+      "Algoritmos de compresión de datos.",
+      "Algoritmos genéticos.",
+      "Algoritmos de ordenación."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD2 - Machine Learning",
+    "q": "¿Qué problema resuelve el algoritmo de regresión lineal?",
+    "options": [
+      "Agrupamiento de datos sin etiquetas.",
+      "Predicción de valores numéricos.",
+      "Traducción automática de texto.",
+      "Clasificación de imágenes."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD2 - Machine Learning",
+    "q": "¿Qué hace una función de activación en una red neuronal?",
+    "options": [
+      "Optimiza la memoria de la red neuronal.",
+      "Reduce el tamaño de los modelos de Machine Learning.",
+      "Mejora la velocidad de procesamiento de datos.",
+      "Determina si una neurona debe activarse o no."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD2 - Machine Learning",
+    "q": "¿Cuál de los siguientes es un algoritmo de Machine Learning supervisado?",
+    "options": [
+      "Árboles de decisión.",
+      "K-Means.",
+      "Algoritmos genéticos.",
+      "Redes neuronales convolucionales."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD2 - Machine Learning",
+    "q": "¿Qué técnica de Machine Learning se usa comúnmente para agrupar datos sin etiquetas?",
+    "options": [
+      "Regresión logística.",
+      "Árboles de decisión.",
+      "Aprendizaje por refuerzo.",
+      "K-Means."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD2 - Machine Learning",
+    "q": "¿Cuál es la principal diferencia entre Machine Learning supervisado y no supervisado?",
+    "options": [
+      "El aprendizaje supervisado solo se usa en procesamiento de lenguaje natural.",
+      "El supervisado usa menos datos que el no supervisado.",
+      "El no supervisado siempre tiene mejor rendimiento.",
+      "El supervisado usa datos etiquetados, el no supervisado no."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD2 - Machine Learning",
+    "q": "¿Cuál de los siguientes es un ejemplo de aplicación del aprendizaje por refuerzo?",
+    "options": [
+      "Agrupación de clientes en segmentos de mercado.",
+      "Entrenamiento de un agente para jugar al ajedrez.",
+      "Clasificación de correos electrónicos como spam o no spam.",
+      "Predicción del precio de una acción en bolsa."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD2 - Machine Learning",
+    "q": "¿Qué es el Machine Learning?",
+    "options": [
+      "Un tipo de hardware para procesamiento de datos.",
+      "Un enfoque de IA basado en el aprendizaje a partir de datos.",
+      "Un método para almacenar información de manera segura.",
+      "Un lenguaje de programación específico para IA."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD2 - Machine Learning",
+    "q": "¿Cuál es el principal beneficio del uso de redes neuronales profundas en IA?",
+    "options": [
+      "Procesamiento más rápido de datos en tiempo real.",
+      "Menor consumo de energía en sistemas embebidos.",
+      "Capacidad para detectar patrones complejos en grandes volúmenes de datos.",
+      "Reducción del uso de modelos estadísticos."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD2 - Machine Learning",
+    "q": "¿Qué función tiene una red neuronal en el contexto de Machine Learning?",
+    "options": [
+      "Ordenar información en bases de datos relacionales.",
+      "Simular el comportamiento del cerebro humano en la toma de decisiones.",
+      "Reducir el tamaño de los modelos de aprendizaje automático.",
+      "Almacenar grandes volúmenes de datos."
+    ],
+    "correctIndex": 1
+  },
+
+  {
+    "cuatrimestre": 2,
+    "category": "UD3 - Deep Learning",
+    "q": "¿Cuál de los siguientes es un tipo de red neuronal utilizada en Deep Learning?",
+    "options": [
+      "K-Means.",
+      "Análisis de componentes principales.",
+      "Redes neuronales convolucionales (CNN).",
+      "Algoritmos genéticos."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD3 - Deep Learning",
+    "q": "¿Qué tipo de red neuronal se usa comúnmente para procesamiento de lenguaje natural?",
+    "options": [
+      "Redes neuronales recurrentes (RNN).",
+      "Algoritmos de clustering.",
+      "Redes convolucionales (CNN).",
+      "Regresión logística."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD3 - Deep Learning",
+    "q": "¿Qué ventaja tienen las redes neuronales recurrentes (RNN) sobre las redes neuronales tradicionales?",
+    "options": [
+      "No requieren entrenamiento con datos previos.",
+      "Son capaces de procesar datos secuenciales y mantener memoria a corto plazo.",
+      "Reducen el consumo de memoria en un modelo de IA.",
+      "Funcionan exclusivamente con datos numéricos."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD3 - Deep Learning",
+    "q": "¿Qué función cumple una capa de pooling en una red neuronal convolucional?",
+    "options": [
+      "Reduce la dimensionalidad de los datos para mejorar la eficiencia del modelo.",
+      "Genera etiquetas automáticas para los datos.",
+      "Convierte datos numéricos en datos categóricos.",
+      "Aumenta la cantidad de neuronas en la red."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD3 - Deep Learning",
+    "q": "¿Cuál es una limitación importante del Deep Learning?",
+    "options": [
+      "No es aplicable en tareas de visión artificial.",
+      "Requiere grandes volúmenes de datos y potencia computacional para entrenar modelos eficaces.",
+      "No se puede utilizar en aplicaciones en tiempo real.",
+      "No puede aprender de datos sin etiquetar."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD3 - Deep Learning",
+    "q": "¿Cuál es la diferencia clave entre Machine Learning y Deep Learning?",
+    "options": [
+      "Deep Learning utiliza redes neuronales con múltiples capas para procesar datos.",
+      "Machine Learning siempre es más preciso que Deep Learning.",
+      "Machine Learning se basa únicamente en reglas explícitas programadas por humanos.",
+      "Deep Learning no requiere grandes volúmenes de datos."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD3 - Deep Learning",
+    "q": "¿Qué aplicación es comúnmente asociada con redes neuronales convolucionales (CNN)?",
+    "options": [
+      "Optimización de redes de comunicación.",
+      "Análisis de datos estructurados.",
+      "Compresión de archivos.",
+      "Reconocimiento de imágenes."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD3 - Deep Learning",
+    "q": "¿Qué estructura utilizan las redes neuronales profundas para el procesamiento de datos?",
+    "options": [
+      "Bases de datos relacionales.",
+      "Sistemas de almacenamiento distribuido.",
+      "Algoritmos genéticos.",
+      "Capas de neuronas interconectadas."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD3 - Deep Learning",
+    "q": "¿Qué es el Deep Learning?",
+    "options": [
+      "Un lenguaje de programación específico para IA.",
+      "Un tipo de hardware para procesamiento de datos.",
+      "Un conjunto de técnicas de IA basadas en redes neuronales profundas.",
+      "Un método para almacenar información de manera segura."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD3 - Deep Learning",
+    "q": "¿Qué problema resuelve la técnica de backpropagation en redes neuronales?",
+    "options": [
+      "Ajusta los pesos de las conexiones neuronales para minimizar el error del modelo.",
+      "Aumenta la velocidad de procesamiento de los datos.",
+      "Reduce la necesidad de grandes volúmenes de datos de entrenamiento.",
+      "Evita que las redes neuronales se vuelvan obsoletas."
+    ],
+    "correctIndex": 0
+  },
+
+  {
+    "cuatrimestre": 2,
+    "category": "UD4 - Procesamiento del Lenguaje Natural",
+    "q": "¿Cuál de las siguientes técnicas se usa para el análisis de sentimientos en PLN?",
+    "options": [
+      "Regresión logística para datos numéricos.",
+      "Clasificación supervisada de texto.",
+      "Redes neuronales convolucionales (CNN).",
+      "Algoritmos de clustering."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD4 - Procesamiento del Lenguaje Natural",
+    "q": "¿Cuál de los siguientes es un ejemplo de aplicación del PLN?",
+    "options": [
+      "Diseño de circuitos electrónicos.",
+      "Creación de bases de datos relacionales.",
+      "Reconocimiento de voz y asistentes virtuales como Siri o Alexa.",
+      "Compresión de archivos de imagen."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD4 - Procesamiento del Lenguaje Natural",
+    "q": "¿Qué modelo se usa en PLN para traducir texto entre idiomas?",
+    "options": [
+      "Redes neuronales de atención (Transformers).",
+      "Algoritmos de regresión lineal.",
+      "Algoritmos genéticos.",
+      "Redes convolucionales (CNN)."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD4 - Procesamiento del Lenguaje Natural",
+    "q": "¿Qué es el Procesamiento del Lenguaje Natural (PLN)?",
+    "options": [
+      "Un lenguaje de programación específico para el análisis de texto.",
+      "Un método para almacenar grandes volúmenes de datos de texto.",
+      "Un campo de la inteligencia artificial que permite a las máquinas entender y generar lenguaje humano.",
+      "Un algoritmo para ordenar palabras en bases de datos."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD4 - Procesamiento del Lenguaje Natural",
+    "q": "¿Qué tarea en PLN se encarga de identificar los nombres de personas, lugares y organizaciones en un texto?",
+    "options": [
+      "Stemming.",
+      "Tokenización.",
+      "Generación de texto automático.",
+      "Reconocimiento de entidades nombradas (NER)."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD4 - Procesamiento del Lenguaje Natural",
+    "q": "¿Qué es la tokenización en PLN?",
+    "options": [
+      "El proceso de dividir un texto en unidades más pequeñas como palabras o frases.",
+      "Un método de encriptación para proteger datos de texto.",
+      "Una técnica para comprimir archivos de texto.",
+      "Un proceso para convertir imágenes en texto."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD4 - Procesamiento del Lenguaje Natural",
+    "q": "¿Qué ventaja tienen los modelos de transformers sobre los modelos tradicionales en PLN?",
+    "options": [
+      "No requieren ajustes en los hiperparámetros.",
+      "Capturan el contexto completo de una palabra en una oración.",
+      "Solo funcionan con datos numéricos.",
+      "Utilizan menos datos para entrenarse."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD4 - Procesamiento del Lenguaje Natural",
+    "q": "¿Qué es una palabra clave en PLN?",
+    "options": [
+      "Un tipo de dato en bases de datos.",
+      "Un término relevante dentro de un documento que ayuda a identificar su contenido.",
+      "Un sinónimo de un término en otro idioma.",
+      "Una palabra que aparece en todos los textos."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD4 - Procesamiento del Lenguaje Natural",
+    "q": "¿Qué modelo se usa comúnmente en PLN para generar texto?",
+    "options": [
+      "Análisis de componentes principales.",
+      "Algoritmos de clustering.",
+      "Modelos basados en transformers como GPT.",
+      "Algoritmos de ordenación de listas."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD4 - Procesamiento del Lenguaje Natural",
+    "q": "¿Qué es el stemming en PLN?",
+    "options": [
+      "Convertir texto en lenguaje de programación.",
+      "Identificar el idioma de un texto.",
+      "Extraer información de imágenes.",
+      "Reducir las palabras a su raíz o forma base."
+    ],
+    "correctIndex": 3
+  },
+
+  {
+    "cuatrimestre": 2,
+    "category": "UD5 - Visión por Computadora",
+    "q": "¿Cuál es la función de una capa de pooling en una CNN?",
+    "options": [
+      "Mejorar el contraste de la imagen.",
+      "Reducir la dimensionalidad de las imágenes para mejorar la eficiencia del modelo.",
+      "Convertir imágenes en vectores de texto.",
+      "Aumentar la resolución de una imagen."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD5 - Visión por Computadora",
+    "q": "¿Qué modelo se usa comúnmente en Visión por Computadora para analizar imágenes?",
+    "options": [
+      "Algoritmos de ordenación.",
+      "Algoritmos genéticos.",
+      "Redes neuronales convolucionales (CNN).",
+      "Regresión logística."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD5 - Visión por Computadora",
+    "q": "¿Cuál de las siguientes aplicaciones pertenece a la Visión por Computadora?",
+    "options": [
+      "Traducción automática de texto.",
+      "Creación de modelos de lenguaje.",
+      "Reconocimiento facial en dispositivos móviles.",
+      "Análisis de sentimientos en redes sociales."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD5 - Visión por Computadora",
+    "q": "¿Qué técnica permite generar imágenes realistas a partir de una red neuronal?",
+    "options": [
+      "Modelos de lenguaje.",
+      "Regresión logística.",
+      "Redes Generativas Antagónicas (GANs).",
+      "Algoritmos de clasificación."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD5 - Visión por Computadora",
+    "q": "¿Qué hace una capa de convolución en una CNN?",
+    "options": [
+      "Extrae características relevantes de una imagen a través de filtros.",
+      "Genera etiquetas automáticas para imágenes.",
+      "Reduce la resolución de una imagen.",
+      "Convierte imágenes en texto."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD5 - Visión por Computadora",
+    "q": "¿Qué técnica de Visión por Computadora se usa para etiquetar píxeles en una imagen?",
+    "options": [
+      "Tokenización.",
+      "Algoritmos de clustering.",
+      "Segmentación semántica.",
+      "Clasificación de texto."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD5 - Visión por Computadora",
+    "q": "¿Qué tipo de modelo se usa en la Visión por Computadora para rastrear el movimiento de un objeto en un video?",
+    "options": [
+      "Algoritmos de seguimiento de objetos.",
+      "Análisis de sentimientos.",
+      "Modelos de regresión lineal.",
+      "Tokenización de texto."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD5 - Visión por Computadora",
+    "q": "¿Qué es el \"overfitting\" en modelos de Visión por Computadora?",
+    "options": [
+      "Un método para mejorar la resolución de imágenes.",
+      "Un proceso de eliminación de ruido en imágenes digitales.",
+      "Un modelo que no aprende lo suficiente a partir de los datos de entrenamiento.",
+      "Cuando un modelo se ajusta demasiado a los datos de entrenamiento y no generaliza bien."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD5 - Visión por Computadora",
+    "q": "¿Qué tarea en Visión por Computadora permite detectar objetos dentro de una imagen?",
+    "options": [
+      "Análisis de componentes principales.",
+      "Detección de objetos.",
+      "Reconocimiento de entidades nombradas (NER).",
+      "Tokenización."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD5 - Visión por Computadora",
+    "q": "¿Qué es la Visión por Computadora?",
+    "options": [
+      "Un algoritmo de compresión de imágenes.",
+      "Un método para almacenar videos en bases de datos.",
+      "Un sistema para mejorar la calidad de imágenes digitales.",
+      "Un campo de la inteligencia artificial que permite a las máquinas interpretar imágenes y videos."
+    ],
+    "correctIndex": 3
+  },
+
+  {
+    "cuatrimestre": 2,
+    "category": "UD6 - Robótica",
+    "q": "¿Cuál de los siguientes es un ejemplo de aplicación de la Robótica?",
+    "options": [
+      "Algoritmos de análisis de texto.",
+      "Procesamiento del lenguaje natural.",
+      "Robots industriales en fábricas de automóviles.",
+      "Modelos de predicción financiera."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD6 - Robótica",
+    "q": "¿Qué tipo de aprendizaje se usa en Robótica para mejorar el desempeño de un robot?",
+    "options": [
+      "Aprendizaje por refuerzo.",
+      "Clasificación supervisada.",
+      "Algoritmos de ordenación.",
+      "Análisis de regresión."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD6 - Robótica",
+    "q": "¿Qué es la Robótica en el contexto de la Inteligencia Artificial?",
+    "options": [
+      "Un tipo de hardware especializado para almacenar datos.",
+      "Un método para mejorar la velocidad de procesamiento de datos.",
+      "Un campo de la IA que permite a las máquinas realizar tareas físicas de manera autónoma.",
+      "Un lenguaje de programación para la automatización de tareas."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD6 - Robótica",
+    "q": "¿Qué es un robot colaborativo (cobot)?",
+    "options": [
+      "Un tipo de hardware de alto rendimiento.",
+      "Un robot que opera únicamente en entornos submarinos.",
+      "Un robot diseñado para trabajar en conjunto con humanos de forma segura.",
+      "Un robot utilizado exclusivamente en la industria automotriz."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD6 - Robótica",
+    "q": "¿Cuál es un reto clave en el desarrollo de la Robótica?",
+    "options": [
+      "Reducir el uso de algoritmos de IA.",
+      "Eliminar la necesidad de hardware especializado.",
+      "Limitar el uso de sensores en los robots.",
+      "Mejorar la capacidad de interacción con entornos dinámicos y no estructurados."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD6 - Robótica",
+    "q": "¿Qué componente es fundamental en la Robótica para la toma de decisiones autónoma?",
+    "options": [
+      "Hardware especializado en almacenamiento.",
+      "Modelos de regresión lineal.",
+      "Inteligencia Artificial y Algoritmos de Control.",
+      "Sensores de movimiento."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD6 - Robótica",
+    "q": "¿Qué tipo de redes neuronales se utilizan en la visión artificial aplicada a la Robótica?",
+    "options": [
+      "Regresión lineal.",
+      "Redes bayesianas.",
+      "Algoritmos genéticos.",
+      "Redes neuronales convolucionales (CNN)."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD6 - Robótica",
+    "q": "¿Cuál es el objetivo principal de la Cinemática en Robótica?",
+    "options": [
+      "Reducir la carga computacional en modelos de aprendizaje profundo.",
+      "Mejorar la eficiencia de los algoritmos de clasificación.",
+      "Estudiar el movimiento de los robots sin considerar las fuerzas que actúan sobre ellos.",
+      "Analizar redes neuronales convolucionales."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD6 - Robótica",
+    "q": "¿Qué tipo de sensores utilizan los robots para interactuar con su entorno?",
+    "options": [
+      "Sensores de proximidad, cámaras, acelerómetros, y giroscopios.",
+      "Análisis de sentimientos en redes sociales.",
+      "Algoritmos de regresión logística.",
+      "Compiladores de lenguaje de programación."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD6 - Robótica",
+    "q": "¿Qué es un actuador en Robótica?",
+    "options": [
+      "Un método de aprendizaje supervisado.",
+      "Un algoritmo de control de bases de datos.",
+      "Un componente que permite el movimiento de un robot.",
+      "Un sensor de temperatura."
+    ],
+    "correctIndex": 2
+  }
+]

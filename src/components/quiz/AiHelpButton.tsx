@@ -1,12 +1,23 @@
 'use client'
 
-import type { Question } from '@lib/quiz/types'
+import type { ChoiceQuestion, Question } from '@lib/quiz/types'
 import { buildAiSearchUrl } from './aiSearchUrl'
 
-export function AiHelpButton({ question, accent }: { question: Question; accent: string }) {
+type Props = {
+  question?: Question
+  query?: string
+  accent: string
+}
+
+export function AiHelpButton(props: Props) {
   const onClick = () => {
-    const opts = question.kind === 'choice' ? question.options : undefined
-    const url = buildAiSearchUrl(question.q, opts)
+    if (props.question) {
+      const opts = props.question.kind === 'choice' ? (props.question as ChoiceQuestion).options : undefined
+      const url = buildAiSearchUrl(props.question.q, opts)
+      window.open(url, '_blank', 'noopener,noreferrer')
+      return
+    }
+    const url = buildAiSearchUrl(props.query ?? '')
     window.open(url, '_blank', 'noopener,noreferrer')
   }
   return (
@@ -16,7 +27,7 @@ export function AiHelpButton({ question, accent }: { question: Question; accent:
       aria-label="Abrir búsqueda con IA en una pestaña nueva"
       title="Abrir búsqueda con IA en una pestaña nueva"
       className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:border-slate-300 hover:shadow active:scale-95"
-      style={{ color: accent }}
+      style={{ color: props.accent }}
     >
       <RobotIcon />
     </button>
