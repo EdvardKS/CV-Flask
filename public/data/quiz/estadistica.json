@@ -258,5 +258,455 @@
     ],
     "correctIndex": 0,
     "evidence": "H₀: μ = 20 es simple porque fija un único valor exacto. H₁: μ > 20 es compuesta porque engloba un rango infinito de valores posibles para μ."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD1 · Estadística descriptiva",
+    "q": "La frecuencia relativa acumulada de un valor es:",
+    "options": [
+      "El porcentaje de datos menores o iguales que el valor considerado.",
+      "El número de veces que el valor se repite.",
+      "El cociente entre el número de veces que el valor se repite y el número total de datos.",
+      "El número de datos menores o iguales que el valor considerado."
+    ],
+    "correctIndex": 0,
+    "hint": "Relativa = proporción/porcentaje. Acumulada = \"≤ valor\".",
+    "explanationCorrect": "Frecuencia relativa acumulada = porcentaje (o proporción) de datos ≤ al valor considerado.",
+    "explanationWrong": "Incorrecto. Es el porcentaje/proporción de datos ≤ al valor. La absoluta acumulada sería el número, la relativa simple sería el cociente ni/N."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD1 · Estadística descriptiva",
+    "q": "La frecuencia relativa de un valor es:",
+    "options": [
+      "El número de datos menores o iguales que el valor considerado.",
+      "El número de veces que el valor se repite.",
+      "El cociente entre el número de veces que el valor se repite y el número total de datos.",
+      "El porcentaje de datos menores o iguales que el valor considerado."
+    ],
+    "correctIndex": 2,
+    "hint": "fr = ni / N.",
+    "explanationCorrect": "Frecuencia relativa = cociente entre la absoluta del valor y el total de datos (ni/N).",
+    "explanationWrong": "Incorrecto. fr = ni/N. La absoluta es solo ni; las acumuladas implican \"≤\"."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD1 · Estadística descriptiva",
+    "q": "La marca de clase de un intervalo es:",
+    "options": [
+      "El punto medio del intervalo.",
+      "El límite inferior del intervalo.",
+      "La diferencia entre el límite superior y el límite inferior del intervalo.",
+      "El límite superior del intervalo."
+    ],
+    "correctIndex": 0,
+    "hint": "(Li + Ls) / 2.",
+    "explanationCorrect": "Marca de clase = punto medio del intervalo = (Li+Ls)/2. Representa al intervalo en los cálculos.",
+    "explanationWrong": "Incorrecto. Es el punto medio (Li+Ls)/2. La diferencia Ls-Li es la amplitud."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD1 · Estadística descriptiva",
+    "q": "La frecuencia absoluta de un valor es:",
+    "options": [
+      "El número total de datos menores o iguales que el valor considerado.",
+      "El cociente entre el número de veces que el valor se repite y el número total de datos.",
+      "El número de veces que el valor se repite.",
+      "El porcentaje de datos menores o iguales que el valor considerado."
+    ],
+    "correctIndex": 2,
+    "hint": "Cuenta directa (ni).",
+    "explanationCorrect": "Frecuencia absoluta ni = número de veces que aparece el valor.",
+    "explanationWrong": "Incorrecto. Es el conteo (ni). El cociente ni/N es la relativa; \"menores o iguales\" es acumulada."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD1 · Estadística descriptiva",
+    "q": "La moda es:",
+    "options": [
+      "La frecuencia absoluta del valor que más se repite.",
+      "El valor que deja a su derecha y a su izquierda el mismo número de observaciones, supuesto que los datos están ordenados de menor a mayor.",
+      "Ninguna respuesta es correcta.",
+      "El valor que más se repite."
+    ],
+    "correctIndex": 3,
+    "hint": "Mo = el más frecuente.",
+    "explanationCorrect": "Moda = el valor (no la frecuencia) que más se repite. Puede haber varias modas.",
+    "explanationWrong": "Incorrecto. La moda es el VALOR más repetido, no su frecuencia. El que parte a la mitad es la mediana."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD1 · Estadística descriptiva",
+    "q": "La frecuencia absoluta acumulada de un valor es:",
+    "options": [
+      "El número de datos menores o iguales que el valor considerado.",
+      "El número de veces que el valor se repite.",
+      "El porcentaje de datos menores o iguales que el valor considerado.",
+      "El cociente entre el número de veces que el valor se repite y el número total de datos."
+    ],
+    "correctIndex": 0,
+    "hint": "Suma de ni hasta ese valor.",
+    "explanationCorrect": "Ni = nº de datos ≤ al valor. Es la suma de las absolutas hasta ahí.",
+    "explanationWrong": "Incorrecto. Es el conteo acumulado (≤). El porcentaje sería la relativa acumulada."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD1 · Estadística descriptiva",
+    "q": "La mediana es:",
+    "options": [
+      "Ninguna respuesta es correcta.",
+      "El valor que deja a su derecha y a su izquierda el mismo número de observaciones, supuesto que los datos están ordenados de mayor a menor.",
+      "El valor que más se repite.",
+      "El valor que deja a su derecha y a su izquierda el mismo número de observaciones, supuesto que los datos están ordenados de menor a mayor."
+    ],
+    "correctIndex": 3,
+    "hint": "Posición central con datos ordenados ascendentemente.",
+    "explanationCorrect": "Mediana = valor central con datos ordenados de MENOR a mayor. Deja igual nº de observaciones a cada lado.",
+    "explanationWrong": "Incorrecto. Datos ordenados de menor a mayor (no al revés). El más repetido es la moda."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD1 · Estadística descriptiva",
+    "q": "La varianza...:",
+    "options": [
+      "Tomará valores negativos sólo si la variable estadística toma valores negativos.",
+      "Puede ser positiva o nula.",
+      "Puede ser positiva, negativa o nula.",
+      "Nunca puede ser nula."
+    ],
+    "correctIndex": 1,
+    "hint": "Es media de cuadrados.",
+    "explanationCorrect": "s² ≥ 0 siempre (media de desviaciones al cuadrado). Es 0 si todos los datos son iguales.",
+    "explanationWrong": "Incorrecto. Nunca es negativa (suma de cuadrados). Es 0 cuando no hay dispersión."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD1 · Estadística descriptiva",
+    "q": "Si la desviación típica es igual a 9:",
+    "options": [
+      "La varianza es igual a 3.",
+      "Ninguna respuesta es correcta.",
+      "No es posible calcular la varianza.",
+      "La varianza es igual a 81."
+    ],
+    "correctIndex": 3,
+    "hint": "σ = √(varianza). 9² = ?",
+    "explanationCorrect": "σ = √(varianza) → varianza = σ² = 9² = 81.",
+    "explanationWrong": "Incorrecto. Varianza = σ² = 81. La raíz daría 3 pero la relación es al cuadrado."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD1 · Estadística descriptiva",
+    "q": "Si la media de una variable es igual a 2 y la desviación típica es igual a 4, el coeficiente de variación de Pearson es:",
+    "options": [
+      "4.",
+      "0,5.",
+      "Ninguna respuesta es correcta.",
+      "2."
+    ],
+    "correctIndex": 3,
+    "hint": "CV = σ / |media|.",
+    "explanationCorrect": "CV de Pearson = σ/|x̄| = 4/2 = 2.",
+    "explanationWrong": "Incorrecto. CV = σ/media = 4/2 = 2. 0,5 sería media/σ."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "La esperanza y la varianza de una variable aleatoria discreta se calculan a partir de:",
+    "options": [
+      "La distribución de probabilidad.",
+      "La función de distribución.",
+      "La función de distribución y la distribución de probabilidad.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "hint": "E[X] = Σ x·P(X=x). Necesitas P puntual.",
+    "explanationCorrect": "En VA discreta E[X] y Var[X] se calculan con la distribución de probabilidad (función de masa P(X=x)).",
+    "explanationWrong": "Incorrecto. Solo con la distribución de probabilidad. La función de distribución da acumulada, no entra directamente en las sumas."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "La distribución de probabilidad o función de masa de una variable discreta nos proporciona:",
+    "options": [
+      "La probabilidad puntual.",
+      "La probabilidad acumulada.",
+      "La probabilidad puntual y la probabilidad acumulada.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "hint": "Masa = P(X=x).",
+    "explanationCorrect": "Función de masa = probabilidad PUNTUAL P(X=x). La acumulada la da F(x).",
+    "explanationWrong": "Incorrecto. Solo la puntual. La acumulada P(X≤x) viene de la función de distribución F."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "Las probabilidades asociadas a cada valor de una variable aleatoria discreta:",
+    "options": [
+      "Pueden tomar cualquier valor.",
+      "Tomarán valores negativos si la variable aleatoria puede tomar valores negativos.",
+      "Están entre 0 y 1.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 2,
+    "hint": "Axioma de probabilidad.",
+    "explanationCorrect": "0 ≤ P(X=xi) ≤ 1 siempre, sea cual sea el signo de X. Y Σ pi = 1.",
+    "explanationWrong": "Incorrecto. Una probabilidad SIEMPRE está en [0,1], independientemente del signo de los valores de X."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "La función de distribución de una variable aleatoria continua particularizada en un punto nos indica:",
+    "options": [
+      "La probabilidad puntual.",
+      "La probabilidad acumulada.",
+      "La probabilidad puntual y la probabilidad acumulada.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 1,
+    "hint": "F(x) = P(X≤x).",
+    "explanationCorrect": "F(x) en VA continua = P(X≤x) = probabilidad acumulada.",
+    "explanationWrong": "Incorrecto. F(x) = P(X≤x). En continua la puntual P(X=x) vale 0; no la da F."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "La esperanza y la varianza de una variable aleatoria continua se calculan a partir de:",
+    "options": [
+      "La función de densidad.",
+      "La función de distribución.",
+      "La función de distribución y la función de densidad.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "hint": "E[X] = ∫ x·f(x) dx.",
+    "explanationCorrect": "En VA continua E[X] y Var[X] se calculan con la función de densidad f(x) (integrando).",
+    "explanationWrong": "Incorrecto. Solo con la densidad f(x). F(x) acumulada no entra directamente en la integral de E[X]."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "Se lanza un dado una vez y se considera la variable aleatoria \"Puntuación obtenida\". La variable es:",
+    "options": [
+      "Discreta.",
+      "Continua.",
+      "Con esta información no es posible determinar si la variable es discreta o continua.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "hint": "Valores {1,2,3,4,5,6}: aislados.",
+    "explanationCorrect": "Toma valores aislados {1..6}: VA discreta.",
+    "explanationWrong": "Incorrecto. Discreta: el dado da valores aislados, no un continuo."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "La diferencia entre la varianza y la desviación típica de una variable aleatoria es:",
+    "options": [
+      "La varianza es una medida de dispersión y la desviación típica no.",
+      "La desviación típica es una medida de dispersión y la varianza no.",
+      "La varianza está expresada en las unidades al cuadrado y la desviación típica en las mismas unidades que la variable.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 2,
+    "hint": "σ = √Var. Unidades.",
+    "explanationCorrect": "Var[X] está en unidades², σ = √Var[X] en las mismas unidades que X. Ambas miden dispersión.",
+    "explanationWrong": "Incorrecto. Ambas son medidas de dispersión; la diferencia está en las unidades (Var en cuadrado, σ misma unidad)."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "La función de distribución de una variable aleatoria discreta particularizada en un punto nos indica:",
+    "options": [
+      "La probabilidad puntual.",
+      "La probabilidad acumulada.",
+      "La probabilidad puntual y la probabilidad acumulada.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 1,
+    "hint": "F(x) = P(X≤x) siempre.",
+    "explanationCorrect": "F(x) = P(X≤x): acumulada, también en VA discreta.",
+    "explanationWrong": "Incorrecto. F(x) acumulada. La puntual la da la función de masa P(X=x)."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "Una caja contiene 10 piezas fabricadas de forma independiente, con probabilidad de defecto 0,2. La variable \"número de piezas defectuosas en una caja\" sigue una distribución:",
+    "options": [
+      "Binomial.",
+      "Poisson.",
+      "Normal.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "hint": "n fijo, p fijo, ensayos independientes.",
+    "explanationCorrect": "n=10 ensayos independientes con p=0,2 fija → Binomial B(10; 0,2).",
+    "explanationWrong": "Incorrecto. Binomial: n fijo + p fija + independencia. Poisson sería para nº de sucesos en intervalo con λ."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "Para calcular probabilidades en variable aleatoria discreta, podemos utilizar:",
+    "options": [
+      "Únicamente la distribución de probabilidad.",
+      "Únicamente la función de distribución.",
+      "La función de distribución y la distribución de probabilidad.",
+      "Ninguna de las respuestas es correcta."
+    ],
+    "correctIndex": 2,
+    "hint": "Puntuales con masa, acumuladas con F.",
+    "explanationCorrect": "En VA discreta sirven ambas: la función de masa para puntuales y la de distribución para acumuladas.",
+    "explanationWrong": "Incorrecto. Ambas son válidas según lo que quieras calcular (puntual o acumulada)."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "El área debajo de la función de densidad es igual a:",
+    "options": [
+      "1.",
+      "0.",
+      "Puede tomar cualquier valor.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "hint": "∫ f(x) dx en todo R.",
+    "explanationCorrect": "∫_{-∞}^{∞} f(x) dx = 1 (axioma de probabilidad total).",
+    "explanationWrong": "Incorrecto. Siempre 1: representa probabilidad total."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "La suma de todas las probabilidades puntuales asociadas a los valores que puede tomar una variable aleatoria discreta:",
+    "options": [
+      "Es igual a 0.",
+      "Es igual a 1.",
+      "Puede tomar cualquier valor.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 1,
+    "hint": "Σ pi = 1.",
+    "explanationCorrect": "Σ P(X=xi) = 1 sobre todos los valores posibles.",
+    "explanationWrong": "Incorrecto. Suma = 1 (probabilidad total)."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "La varianza de una variable aleatoria:",
+    "options": [
+      "Mide la dispersión, es decir, la proximidad o alejamiento de los valores de la variable con respecto a la esperanza.",
+      "Puede tomar valores negativos.",
+      "Está expresada en las mismas unidades que la variable.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "hint": "Var[X] = E[(X-μ)²].",
+    "explanationCorrect": "Var[X] mide dispersión respecto a la media μ = E[X]. Es E[(X-μ)²].",
+    "explanationWrong": "Incorrecto. Mide dispersión respecto a μ. Nunca es negativa y está en unidades al cuadrado."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "Una variable aleatoria continua es aquella que:",
+    "options": [
+      "Toma valores aislados.",
+      "Puede tomar cualquier valor en un intervalo.",
+      "Siempre toma el mismo valor.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 1,
+    "hint": "Continuo = intervalo real.",
+    "explanationCorrect": "VA continua toma valores en un intervalo (no enumerables).",
+    "explanationWrong": "Incorrecto. Aislados → discreta. Continua = cualquier valor en un intervalo."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "¿Cuál es la probabilidad de que una distribución N(20,8) tome un valor mayor a 26?",
+    "options": [
+      "0,2266",
+      "0,7734",
+      "0,242",
+      "Ninguna respuesta es correcta"
+    ],
+    "correctIndex": 0,
+    "hint": "Tipifica: z=(26-20)/8=0,75. P(Z>0,75).",
+    "explanationCorrect": "z=(26-20)/8=0,75. P(Z>0,75)=1-Φ(0,75)=1-0,7734=0,2266.",
+    "explanationWrong": "Incorrecto. P(X>26)=P(Z>0,75)=0,2266. 0,7734 sería P(X≤26)."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "Una variable aleatoria discreta es aquella que:",
+    "options": [
+      "Toma valores aislados.",
+      "Puede tomar cualquier valor en un intervalo.",
+      "Siempre toma el mismo valor.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "hint": "Discreta = puntos separados.",
+    "explanationCorrect": "VA discreta toma valores aislados (numerables).",
+    "explanationWrong": "Incorrecto. Aislados (discreta). Intervalo entero = continua."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "Si se quiere calcular la probabilidad de que una variable aleatoria continua tome valores en un cierto intervalo con la función de densidad, hay que:",
+    "options": [
+      "Calcular la integral definida de la función de densidad en dicho intervalo.",
+      "Calcular la diferencia entre el valor de la función de densidad en el límite superior del intervalo y el valor de la función en el límite inferior del intervalo.",
+      "No es posible calcular la probabilidad con la función de densidad.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "hint": "P(a≤X≤b) = ∫_a^b f(x) dx.",
+    "explanationCorrect": "P(a≤X≤b) = ∫_a^b f(x) dx (integral definida de la densidad).",
+    "explanationWrong": "Incorrecto. Es integral definida ∫_a^b f. Restar valores de f en los extremos sería con F, no con f."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "Para calcular probabilidades en variable aleatoria continua, podemos utilizar:",
+    "options": [
+      "Únicamente la función de densidad.",
+      "Únicamente la función de distribución.",
+      "La función de densidad y la función de distribución.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 2,
+    "hint": "f integrando o F restando.",
+    "explanationCorrect": "En VA continua sirve la densidad (integrando) o la distribución F(b)-F(a).",
+    "explanationWrong": "Incorrecto. Ambas valen según el método (integral con f o diferencia con F)."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "Si una variable aleatoria es continua, la probabilidad puntual:",
+    "options": [
+      "Es igual a 0.",
+      "Es igual a 1.",
+      "Está entre 0 y 1.",
+      "Ninguna respuesta es correcta."
+    ],
+    "correctIndex": 0,
+    "hint": "∫_a^a f = 0.",
+    "explanationCorrect": "En VA continua P(X=a)=0: la integral de f sobre un punto es 0.",
+    "explanationWrong": "Incorrecto. En continua P(X=a)=0 siempre; las probabilidades se asignan a intervalos."
+  },
+  {
+    "cuatrimestre": 1,
+    "category": "UD3 · Variables aleatorias",
+    "q": "La función de densidad de la distribución normal:",
+    "options": [
+      "Recibe el nombre de Campana de Gauss y el área debajo de la función es igual a 1.",
+      "No recibe ningún nombre específico y el área debajo de la función es igual a 0,5.",
+      "Recibe el nombre de Campana de Gauss y el área debajo de la función es igual a 0,5.",
+      "Ninguna respuesta es correcta"
+    ],
+    "correctIndex": 0,
+    "hint": "Gauss, área total = 1.",
+    "explanationCorrect": "Densidad normal = Campana de Gauss. Su área total bajo la curva es 1 (probabilidad total).",
+    "explanationWrong": "Incorrecto. Campana de Gauss y área total = 1. El 0,5 sería medio reparto por simetría."
   }
 ]
