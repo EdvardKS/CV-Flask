@@ -32,7 +32,10 @@ const baseFields = {
   sourceType: z.string().min(1).optional(),
   sourcePage: z.number().int().min(1).optional(),
   sourceSlide: z.number().int().min(1).optional(),
-  evidence: z.string().min(1).optional()
+  evidence: z.string().min(1).optional(),
+  hint: z.string().min(1).optional(),
+  explanationCorrect: z.string().min(1).optional(),
+  explanationWrong: z.string().min(1).optional()
 }
 
 export const choiceQuestionSchema = z.object({
@@ -135,6 +138,21 @@ export const redesConceptManifestSchema = z.object({
   topics: z.array(slideConceptDeckSchema)
 })
 export type RedesConceptManifest = z.infer<typeof redesConceptManifestSchema>
+
+export const redesAutoevalTopicSchema = z.object({
+  id: z.string().min(1),
+  topic: z.number().int().min(1),
+  title: z.string().min(1),
+  questionCount: z.number().int().min(0)
+})
+export type RedesAutoevalTopic = z.infer<typeof redesAutoevalTopicSchema>
+
+export const redesAutoevalManifestSchema = z.object({
+  subjectId: z.literal('redes'),
+  topics: z.array(redesAutoevalTopicSchema),
+  questions: questionsSchema
+})
+export type RedesAutoevalManifest = z.infer<typeof redesAutoevalManifestSchema>
 
 export type SubjectModeSummary = {
   autoevaluacionCount: number

@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import { ensureQuizSeeded } from '@lib/quiz/boot'
 import { getSubject } from '@lib/quiz/repo'
-import { getRedesTemarioManifest } from '@lib/quiz/redes'
+import { getRedesTemarioManifest, getRedesTemarioQuestionsByTopics } from '@lib/quiz/redes'
 import { QuizHeader } from '@components/quiz/QuizHeader'
 import { QuizPageShell } from '@components/quiz/QuizPageShell'
+import { QuizSession } from '@components/quiz/QuizSession'
 
 export const dynamic = 'force-dynamic'
 
@@ -11,11 +12,46 @@ export const metadata = {
   title: 'Redes · Cuestionarios de temario'
 }
 
-export default async function RedesTemarioPage() {
+function parseTemas(raw: string | string[] | undefined): string[] {
+  if (!raw) return []
+  const value = Array.isArray(raw) ? raw.join(',') : raw
+  return value.split(',').map(s => s.trim()).filter(Boolean)
+}
+
+export default async function RedesTemarioPage({
+  searchParams
+}: {
+  searchParams: Promise<{ temas?: string | string[] }>
+}) {
   await ensureQuizSeeded()
   const subject = getSubject('redes')
   if (!subject) throw new Error('Subject "redes" was not seeded correctly')
   const manifest = getRedesTemarioManifest()
+
+  const { temas } = await searchParams
+  const selected = parseTemas(temas)
+  const validIds = new Set(manifest.topics.map(t => t.id))
+  const filtered = selected.filter(id => validIds.has(id))
+
+  if (filtered.length > 0) {
+    const questions = getRedesTemarioQuestionsByTopics(filtered)
+    const selectedTitles = manifest.topics
+      .filter(t => filtered.includes(t.id))
+      .map(t => t.title)
+      .join(' · ')
+    const sessionKey = `redes-temario-mix:${filtered.slice().sort().join('+')}`
+    return (
+      <QuizPageShell>
+        <QuizHeader
+          title="Cuestionarios de temario · mezcla"
+          subtitle={`${questions.length} preguntas · ${selectedTitles}`}
+          back={{ href: '/quiz/redes', label: 'Volver a Redes' }}
+          accent={subject.color}
+        />
+        <QuizSession subject={subject} questions={questions} sessionKey={sessionKey} />
+      </QuizPageShell>
+    )
+  }
 
   return (
     <QuizPageShell>

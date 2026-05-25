@@ -1,6 +1,7 @@
 import { primaryCorrect, type Question } from '@lib/quiz/types'
 
 export function FeedbackBanner({ question, ok }: { question: Question; ok: boolean }) {
+  const tailored = ok ? question.explanationCorrect : question.explanationWrong
   return (
     <div
       role="status"
@@ -18,6 +19,11 @@ export function FeedbackBanner({ question, ok }: { question: Question; ok: boole
         <strong className="font-semibold">{ok ? '¡Correcto!' : 'Respuesta incorrecta.'}</strong>{' '}
         {!ok && (
           <>La respuesta correcta es <strong>{primaryCorrect(question)}</strong>.</>
+        )}
+        {tailored && (
+          <span className="mt-2 block text-[13px] leading-relaxed opacity-90">
+            <strong className="font-semibold">Explicación:</strong> {tailored}
+          </span>
         )}
         {question.evidence && (
           <span className="mt-2 block text-[13px] leading-relaxed opacity-90">
