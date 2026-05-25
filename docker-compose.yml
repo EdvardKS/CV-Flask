@@ -4,8 +4,6 @@ services:
     image: edvardks-portfolio:prod
     container_name: flask
     restart: unless-stopped
-    ports:
-      - "5000:3000"
     environment:
       NODE_ENV: production
       QUIZ_DB_PATH: /app/data/quiz/quiz.db
