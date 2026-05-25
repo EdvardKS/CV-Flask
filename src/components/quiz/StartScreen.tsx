@@ -1,11 +1,10 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { Question, SubjectWithCount } from '@lib/quiz/types'
+import { CategoryMultiCheck, type MultiCheckItem } from './CategoryMultiCheck'
 
-const PRESETS = [10, 20, 50] as const
 type CuatrimestrePick = number | 'all' | 'latest'
-type CategoryPick = string | 'all'
 
 const CUATRI_LABEL: Record<number | 'all', string> = {
   1: '1er cuatri',
@@ -14,7 +13,7 @@ const CUATRI_LABEL: Record<number | 'all', string> = {
 }
 
 function categoryLabel(cat: string): string {
-  const m = /^unidad-(\d+)$/i.exec(cat) ?? /^tema-(\d+)$/i.exec(cat) ?? /^t(\d+)$/i.exec(cat)
+  const m = /^unidad-(\d+)$/i.exec(cat) ?? /^tema-(\d+)$/i.exec(cat) ?? /^t(\d+)$/i.exec(cat) ?? /^ud(\d+)$/i.exec(cat)
   if (m) return `Tema ${m[1]}`
   return cat.charAt(0).toUpperCase() + cat.slice(1)
 }
@@ -23,17 +22,30 @@ type Props = {
   subject: SubjectWithCount
   questions: Question[]
   hasResume: boolean
-  onStart: (limit?: number, cuatrimestre?: CuatrimestrePick, category?: CategoryPick) => void
+  onStart: (limit?: number, cuatrimestre?: CuatrimestrePick, categories?: string[]) => void
   onResume: () => void
 }
 
+function readStored(key: string): string[] {
+  if (typeof window === 'undefined') return []
+  try {
+    const raw = window.localStorage.getItem(key)
+    if (!raw) return []
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed.filter(x => typeof x === 'string') : []
+  } catch {
+    return []
+  }
+}
+
 export function StartScreen({ subject, questions, onStart, hasResume, onResume }: Props) {
+  const storageKey = `quiz-topics:${subject.id}`
   const cuatris = subject.cuatrimestres ?? []
   const showCuatri = cuatris.length > 1
   const hasLatestTest = subject.id === 'ingles' && questions.some(question => question.group === 'latest-test')
   const [cuatri, setCuatri] = useState<CuatrimestrePick>('all')
-  const [category, setCategory] = useState<CategoryPick>('all')
-  const [limit, setLimit] = useState<number | 'all'>(subject.questionCount <= 20 ? 'all' : 20)
+  const [selected, setSelected] = useState<Set<string>>(new Set())
+  const [hydrated, setHydrated] = useState(false)
 
   const cuatriFiltered = useMemo(() => {
     if (cuatri === 'latest') return questions.filter(q => q.group === 'latest-test')
@@ -42,19 +54,46 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
     return regular.filter(q => (q.cuatrimestre ?? 1) === cuatri)
   }, [questions, cuatri])
 
-  const categories = useMemo(() => {
-    const set = new Set<string>()
-    for (const q of cuatriFiltered) if (q.category) set.add(q.category)
-    return Array.from(set).sort()
+  const items: MultiCheckItem[] = useMemo(() => {
+    const counts = new Map<string, number>()
+    for (const q of cuatriFiltered) {
+      if (!q.category) continue
+      counts.set(q.category, (counts.get(q.category) ?? 0) + 1)
+    }
+    return Array.from(counts.entries())
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([id, count]) => ({ id, title: categoryLabel(id), count }))
   }, [cuatriFiltered])
 
-  const showCategory = categories.length > 1
-  const effectiveCategory: CategoryPick = showCategory && categories.includes(category as string) ? category : 'all'
+  useEffect(() => {
+    const stored = readStored(storageKey)
+    if (stored.length > 0) {
+      const valid = stored.filter(id => items.some(i => i.id === id))
+      setSelected(new Set(valid))
+    }
+    setHydrated(true)
+  }, [storageKey, items])
 
-  const filteredCount = useMemo(() => {
-    if (effectiveCategory === 'all') return cuatriFiltered.length
-    return cuatriFiltered.filter(q => q.category === effectiveCategory).length
-  }, [cuatriFiltered, effectiveCategory])
+  useEffect(() => {
+    if (!hydrated) return
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify([...selected]))
+    } catch {}
+  }, [selected, storageKey, hydrated])
+
+  const hasCategories = items.length > 0
+  const effectiveCount = useMemo(() => {
+    if (!hasCategories) return cuatriFiltered.length
+    if (selected.size === 0) return 0
+    return cuatriFiltered.filter(q => q.category && selected.has(q.category)).length
+  }, [cuatriFiltered, hasCategories, selected])
+
+  function handleStart() {
+    const cats = hasCategories && selected.size > 0 ? [...selected] : undefined
+    onStart(undefined, cuatri, cats)
+  }
+
+  const canStart = hasCategories ? selected.size > 0 : cuatriFiltered.length > 0
 
   return (
     <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
@@ -82,42 +121,25 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
         </div>
       )}
 
-      {showCategory && (
+      {hasCategories && (
         <div className="mt-5">
-          <p className="mb-2 text-sm font-medium text-slate-700">¿Qué tema?</p>
-          <div className="flex flex-wrap gap-2">
-            {categories.map(c => (
-              <button key={c} type="button" onClick={() => setCategory(c)}
-                className={pillClass(effectiveCategory === c)}>{categoryLabel(c)}</button>
-            ))}
-            <button type="button" onClick={() => setCategory('all')}
-              className={pillClass(effectiveCategory === 'all')}>Mezclados</button>
-          </div>
+          <CategoryMultiCheck items={items} value={selected} onChange={setSelected} countLabel="preguntas" />
         </div>
       )}
 
-      <div className="mt-5">
-        <p className="mb-2 text-sm font-medium text-slate-700">¿Cuántas preguntas?</p>
-        <div className="flex flex-wrap gap-2">
-          {PRESETS.filter(p => p < filteredCount).map(p => (
-            <button key={p} type="button" onClick={() => setLimit(p)} className={pillClass(limit === p)}>
-              {p}
-            </button>
-          ))}
-          <button type="button" onClick={() => setLimit('all')} className={pillClass(limit === 'all')}>
-            Todas ({filteredCount})
-          </button>
-        </div>
-      </div>
+      {!hasCategories && (
+        <p className="mt-4 text-sm text-slate-500">{cuatriFiltered.length} preguntas listas para empezar.</p>
+      )}
 
       <div className="mt-6 flex flex-col gap-2 sm:flex-row">
         <button
           type="button"
-          disabled={filteredCount === 0}
-          onClick={() => onStart(limit === 'all' ? undefined : limit, cuatri, effectiveCategory)}
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-sky-500 via-indigo-500 to-violet-500 px-5 py-3 text-base font-bold text-white shadow-lg shadow-indigo-500/30 transition hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
+          disabled={!canStart}
+          onClick={handleStart}
+          className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3 text-base font-bold text-white shadow-lg transition hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
+          style={{ backgroundColor: subject.color }}
         >
-          Empezar test <span aria-hidden>▶</span>
+          Empezar test ({effectiveCount}) <span aria-hidden>▶</span>
         </button>
         {hasResume && (
           <button

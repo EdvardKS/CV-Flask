@@ -41,7 +41,12 @@ function clear(storageId: string) {
   } catch {}
 }
 
-export type StartOpts = { limit?: number; cuatrimestre?: number | 'all' | 'latest'; category?: string | 'all' }
+export type StartOpts = {
+  limit?: number
+  cuatrimestre?: number | 'all' | 'latest'
+  category?: string | 'all'
+  categories?: string[]
+}
 
 export function useQuizSession(subjectId: string, source: Question[], sessionKey = subjectId, preserveOrder = false) {
   const [session, setSession] = useState<SessionState | null>(null)
@@ -65,7 +70,10 @@ export function useQuizSession(subjectId: string, source: Question[], sessionKey
         filtered = filtered.filter(q => (q.cuatrimestre ?? 1) === opts.cuatrimestre)
       }
     }
-    if (opts.category && opts.category !== 'all') {
+    if (opts.categories && opts.categories.length > 0) {
+      const set = new Set(opts.categories)
+      filtered = filtered.filter(q => q.category && set.has(q.category))
+    } else if (opts.category && opts.category !== 'all') {
       filtered = filtered.filter(q => q.category === opts.category)
     }
     let qs = preserveOrder ? [...filtered] : shuffled(filtered, seed)

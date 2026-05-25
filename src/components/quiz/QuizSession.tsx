@@ -40,7 +40,7 @@ export function QuizSession({ subject, questions, sessionKey, preserveOrder }: P
         subject={subject}
         questions={questions}
         hasResume={false}
-        onStart={(limit, cuatrimestre, category) => start({ limit, cuatrimestre, category })}
+        onStart={(limit, cuatrimestre, categories) => start({ limit, cuatrimestre, categories })}
         onResume={() => { /* no-op */ }}
       />
     )
