@@ -1,0 +1,64 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    image: viewer-backend:latest
+    container_name: viewer_backend
+    restart: always
+    user: "0:0"
+    mem_limit: 512m
+    mem_reservation: 128m
+    pids_limit: 256
+    stop_grace_period: 10s
+    env_file: [.env]
+    environment:
+      PORT: 4500
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/www/.nginx:/host/nginx:rw
+      - /etc/letsencrypt:/host/letsencrypt:ro
+      - /var/backups:/host/backups:ro
+      - /var/spool/cron/crontabs:/host/crontabs:rw
+      - /proc:/host/proc:ro
+      - /var/www:/host/www
+      - /home/ubuntu/.ssh:/seed-ssh:ro
+      - ./data:/app/data
+    networks: [viewer_net]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:4500/api/health || exit 1"]
+      interval: 15s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  frontend:
+    build:
+      context: ./frontend
+    image: viewer-frontend:latest
+    container_name: viewer_frontend
+    restart: always
+    mem_limit: 384m
+    mem_reservation: 96m
+    pids_limit: 128
+    stop_grace_period: 10s
+    environment:
+      BACKEND_URL: http://viewer_backend:4500
+      NODE_ENV: production
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - viewer_net
+      - reverse_proxy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:4321/ || exit 1"]
+      interval: 15s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+
+networks:
+  viewer_net:
+    driver: bridge
+  reverse_proxy:
+    external: true

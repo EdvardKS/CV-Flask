@@ -46,7 +46,8 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
   const [cuatri, setCuatri] = useState<CuatrimestrePick>('all')
   const [selected, setSelected] = useState<Set<string>>(new Set())
   const [hydrated, setHydrated] = useState(false)
-  const [limitInput, setLimitInput] = useState<string>('')
+  const [limitChoice, setLimitChoice] = useState<number | 'all'>('all')
+  const isMixto = subject.id === 'ingles' && cuatri === 'all'
 
   const cuatriFiltered = useMemo(() => {
     if (cuatri === 'latest') return questions.filter(q => q.group === 'latest-test')
@@ -85,17 +86,21 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
     } catch {}
   }, [selected, storageKey, hydrated])
 
-  const hasCategories = items.length > 0
+  const hasCategories = items.length > 0 && !isMixto
   const effectiveCount = useMemo(() => {
+    if (isMixto) return cuatriFiltered.length
     if (!hasCategories) return cuatriFiltered.length
     if (selected.size === 0) return 0
     return cuatriFiltered.filter(q => q.category && selected.has(q.category)).length
-  }, [cuatriFiltered, hasCategories, selected])
+  }, [cuatriFiltered, hasCategories, isMixto, selected])
+
+  const PRESETS = [30, 60, 100] as const
+  const availablePresets = PRESETS.filter(n => n < effectiveCount)
+  const resolvedLimit = limitChoice === 'all' ? effectiveCount : Math.min(limitChoice, effectiveCount)
 
   function handleStart() {
     const cats = hasCategories && selected.size > 0 ? [...selected] : undefined
-    const parsed = parseInt(limitInput, 10)
-    const limit = Number.isFinite(parsed) && parsed > 0 ? Math.min(parsed, effectiveCount) : undefined
+    const limit = limitChoice === 'all' ? undefined : Math.min(limitChoice, effectiveCount)
     onStart(limit, cuatri, cats)
   }
 
@@ -138,18 +143,17 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
       )}
 
       <div className="mt-5">
-        <label htmlFor="quiz-limit" className="mb-2 block text-sm font-medium text-slate-700">¿Cuántas preguntas? <span className="text-slate-400">(vacío = todas, máx {effectiveCount})</span></label>
-        <input
-          id="quiz-limit"
-          type="number"
-          min={1}
-          max={effectiveCount || undefined}
-          inputMode="numeric"
-          placeholder={String(effectiveCount)}
-          value={limitInput}
-          onChange={e => setLimitInput(e.target.value.replace(/[^\d]/g, ''))}
-          className="w-32 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
-        />
+        <p className="mb-2 text-sm font-medium text-slate-700">¿Cuántas preguntas? <span className="text-slate-400">(máx {effectiveCount})</span></p>
+        <div className="flex flex-wrap gap-2">
+          {availablePresets.map(n => (
+            <button key={n} type="button" onClick={() => setLimitChoice(n)} className={pillClass(limitChoice === n)}>
+              {n}
+            </button>
+          ))}
+          <button type="button" onClick={() => setLimitChoice('all')} className={pillClass(limitChoice === 'all')}>
+            Todas ({effectiveCount})
+          </button>
+        </div>
       </div>
 
       <div className="mt-6 flex flex-col gap-2 sm:flex-row">
@@ -160,7 +164,7 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
           className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3 text-base font-bold text-white shadow-lg transition hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
           style={{ backgroundColor: subject.color }}
         >
-          Empezar test ({(() => { const p = parseInt(limitInput, 10); return Number.isFinite(p) && p > 0 ? Math.min(p, effectiveCount) : effectiveCount })()}) <span aria-hidden>▶</span>
+          Empezar test ({resolvedLimit}) <span aria-hidden>▶</span>
         </button>
         {hasResume && (
           <button
