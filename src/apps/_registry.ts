@@ -10,6 +10,7 @@ import linkedinManifest from './linkedin/manifest'
 import githubManifest from './github/manifest'
 import aiManifest from './ai/manifest'
 import iaeksManifest from './iaeks/manifest'
+import f5Manifest from './f5/manifest'
 
 export const APPS: AppManifest[] = [
   cvManifest,
@@ -21,7 +22,8 @@ export const APPS: AppManifest[] = [
   iaeksManifest,
   linkedinManifest,
   githubManifest,
-  aboutManifest
+  aboutManifest,
+  f5Manifest
 ]
 
 export const APPS_BY_ID: Record<string, AppManifest> = Object.fromEntries(

@@ -90,7 +90,7 @@ function iconGlyph(name: string): React.ReactNode {
   const map: Record<string, string> = {
     cv: '📄', folder: '📁', terminal: '🖥️', briefcase: '💼', book: '📚',
     user: '👤', mail: '✉️', trophy: '🏆', quiz: '❓', app: '🪟',
-    info: 'ℹ️', code: '💻'
+    info: 'ℹ️', code: '💻', refresh: '🔄'
   }
   return map[name] ?? '🪟'
 }

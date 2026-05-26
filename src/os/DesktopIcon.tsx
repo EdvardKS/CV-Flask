@@ -18,6 +18,10 @@ export function DesktopIcon({ manifest, selected, onSelect }: {
   const description = APP_DESCRIPTIONS[locale]?.[manifest.id] ?? manifest.description
 
   const open = () => {
+    if (manifest.customAction === 'reload') {
+      window.location.reload()
+      return
+    }
     if (manifest.externalUrl) {
       window.open(manifest.externalUrl, '_blank', 'noopener,noreferrer')
       return

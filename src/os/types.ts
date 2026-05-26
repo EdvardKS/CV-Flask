@@ -39,5 +39,6 @@ export type AppManifest = {
   description?: string
   externalUrl?: string       // If set, double-click opens this URL in a new tab (no window).
   standaloneRoute?: string   // If set, double-click navigates to this in-app route instead of opening a window.
+  customAction?: 'reload'    // If set, double-click triggers a custom desktop action (skips window/route/external).
   Component: ComponentType<{ params?: WindowState['params'] }>
 }
