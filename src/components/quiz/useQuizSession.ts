@@ -64,11 +64,13 @@ export function useQuizSession(subjectId: string, source: Question[], sessionKey
     let filtered: Question[]
     if (opts.cuatrimestre === 'latest') {
       filtered = source.filter(q => q.group === 'latest-test')
+    } else if (opts.cuatrimestre === 'all') {
+      // Mixto: incluye TODAS (regular cuatris + latest-test) para mezcla completa
+      filtered = [...source]
+    } else if (typeof opts.cuatrimestre === 'number') {
+      filtered = source.filter(q => q.group !== 'latest-test' && (q.cuatrimestre ?? 1) === opts.cuatrimestre)
     } else {
       filtered = source.filter(q => q.group !== 'latest-test')
-      if (opts.cuatrimestre && opts.cuatrimestre !== 'all') {
-        filtered = filtered.filter(q => (q.cuatrimestre ?? 1) === opts.cuatrimestre)
-      }
     }
     if (opts.categories && opts.categories.length > 0) {
       const set = new Set(opts.categories)

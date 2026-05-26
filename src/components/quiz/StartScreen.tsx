@@ -46,13 +46,17 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
   const [cuatri, setCuatri] = useState<CuatrimestrePick>('all')
   const [selected, setSelected] = useState<Set<string>>(new Set())
   const [hydrated, setHydrated] = useState(false)
+  const [limitInput, setLimitInput] = useState<string>('')
 
   const cuatriFiltered = useMemo(() => {
     if (cuatri === 'latest') return questions.filter(q => q.group === 'latest-test')
+    if (cuatri === 'all') {
+      // Mixto (Ingles) incluye latest-test. Otros subjects no tienen latest-test, asi que es no-op.
+      return subject.id === 'ingles' ? questions : questions.filter(q => q.group !== 'latest-test')
+    }
     const regular = questions.filter(q => q.group !== 'latest-test')
-    if (cuatri === 'all') return regular
     return regular.filter(q => (q.cuatrimestre ?? 1) === cuatri)
-  }, [questions, cuatri])
+  }, [questions, cuatri, subject.id])
 
   const items: MultiCheckItem[] = useMemo(() => {
     const counts = new Map<string, number>()
@@ -90,7 +94,9 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
 
   function handleStart() {
     const cats = hasCategories && selected.size > 0 ? [...selected] : undefined
-    onStart(undefined, cuatri, cats)
+    const parsed = parseInt(limitInput, 10)
+    const limit = Number.isFinite(parsed) && parsed > 0 ? Math.min(parsed, effectiveCount) : undefined
+    onStart(limit, cuatri, cats)
   }
 
   const canStart = hasCategories ? selected.size > 0 : cuatriFiltered.length > 0
@@ -131,6 +137,21 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
         <p className="mt-4 text-sm text-slate-500">{cuatriFiltered.length} preguntas listas para empezar.</p>
       )}
 
+      <div className="mt-5">
+        <label htmlFor="quiz-limit" className="mb-2 block text-sm font-medium text-slate-700">¿Cuántas preguntas? <span className="text-slate-400">(vacío = todas, máx {effectiveCount})</span></label>
+        <input
+          id="quiz-limit"
+          type="number"
+          min={1}
+          max={effectiveCount || undefined}
+          inputMode="numeric"
+          placeholder={String(effectiveCount)}
+          value={limitInput}
+          onChange={e => setLimitInput(e.target.value.replace(/[^\d]/g, ''))}
+          className="w-32 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+        />
+      </div>
+
       <div className="mt-6 flex flex-col gap-2 sm:flex-row">
         <button
           type="button"
@@ -139,7 +160,7 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
           className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3 text-base font-bold text-white shadow-lg transition hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
           style={{ backgroundColor: subject.color }}
         >
-          Empezar test ({effectiveCount}) <span aria-hidden>▶</span>
+          Empezar test ({(() => { const p = parseInt(limitInput, 10); return Number.isFinite(p) && p > 0 ? Math.min(p, effectiveCount) : effectiveCount })()}) <span aria-hidden>▶</span>
         </button>
         {hasResume && (
           <button
