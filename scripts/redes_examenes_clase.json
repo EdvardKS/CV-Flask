@@ -1,0 +1,3260 @@
+{
+  "tema-1": [
+    {
+      "number": 1,
+      "q": "¿Cuál es el objetivo principal de una red de computadoras?",
+      "options": [
+        "Aumentar la potencia de los dispositivos",
+        "Compartir información y recursos entre dispositivos",
+        "Ejecutar aplicaciones más rápido",
+        "Reducir el consumo energético"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 2,
+      "q": "¿Cuál de los siguientes NO es un componente básico de una red?",
+      "options": [
+        "Nodos",
+        "Medios de transmisión",
+        "Protocolos",
+        "Sistemas operativos"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 3,
+      "q": "¿Qué dispositivo se considera un nodo dentro de una red?",
+      "options": [
+        "Solo servidores",
+        "Solo ordenadores personales",
+        "Cualquier dispositivo conectado a la red",
+        "Únicamente routers"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 4,
+      "q": "¿Qué función cumplen los protocolos de red?",
+      "options": [
+        "Aumentar la velocidad del hardware",
+        "Establecer reglas de comunicación entre dispositivos",
+        "Proteger físicamente los cables",
+        "Reducir el tráfico de red"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 5,
+      "q": "¿Qué tipo de red se utiliza habitualmente dentro de una empresa u oficina?",
+      "options": [
+        "WAN",
+        "MAN",
+        "LAN",
+        "PAN"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 6,
+      "q": "¿Cuál es una ventaja clave de las redes en la transformación digital?",
+      "options": [
+        "Eliminan la necesidad de servidores",
+        "Permiten servicios en la nube y trabajo remoto",
+        "Reducen la complejidad informática",
+        "Sustituyen a Internet"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 7,
+      "q": "¿Qué modelo se utiliza principalmente como referencia teórica?",
+      "options": [
+        "TCP/IP",
+        "OSI",
+        "Ethernet",
+        "Wi-Fi"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 8,
+      "q": "¿Cuántas capas tiene el modelo OSI?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 9,
+      "q": "¿Qué modelo es el utilizado realmente en Internet?",
+      "options": [
+        "OSI",
+        "TCP/IP",
+        "IEEE 802",
+        "VLAN"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 10,
+      "q": "¿Qué elemento pertenece a la arquitectura física de una red?",
+      "options": [
+        "Direcciones IP",
+        "VLANs",
+        "Cables y switches",
+        "Protocolos de enrutamiento"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 11,
+      "q": "¿Qué define la arquitectura lógica de una red?",
+      "options": [
+        "El tipo de cableado",
+        "La organización del tráfico y direccionamiento",
+        "La marca de los dispositivos",
+        "El voltaje eléctrico"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 12,
+      "q": "¿Qué identifica de forma única a un dispositivo a nivel de enlace?",
+      "options": [
+        "Dirección IP",
+        "Puerto TCP",
+        "Dirección MAC",
+        "DNS"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 13,
+      "q": "¿Qué longitud tiene una dirección IPv4?",
+      "options": [
+        "16 bits",
+        "32 bits",
+        "64 bits",
+        "128 bits"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 14,
+      "q": "¿Qué ventaja principal ofrece IPv6 frente a IPv4?",
+      "options": [
+        "Mayor velocidad",
+        "Menor latencia",
+        "Más espacio de direcciones",
+        "Mayor compatibilidad"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 15,
+      "q": "¿Qué capa del modelo OSI se encarga de la transmisión física de bits?",
+      "options": [
+        "Red",
+        "Enlace de datos",
+        "Física",
+        "Transporte"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 16,
+      "q": "¿Qué medio de transmisión ofrece mayor velocidad y menor interferencia?",
+      "options": [
+        "Par trenzado",
+        "Coaxial",
+        "Wi-Fi",
+        "Fibra óptica"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 17,
+      "q": "¿En qué capa aparece la dirección MAC?",
+      "options": [
+        "Física",
+        "Enlace de datos",
+        "Red",
+        "Transporte"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 18,
+      "q": "¿Cuál es la función principal de la capa de red?",
+      "options": [
+        "Controlar errores",
+        "Establecer sesiones",
+        "Direccionar y enrutar paquetes",
+        "Cifrar datos"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 19,
+      "q": "¿Qué dispositivo trabaja principalmente en la capa de red?",
+      "options": [
+        "Switch",
+        "Hub",
+        "Router",
+        "Punto de acceso"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 20,
+      "q": "¿Qué protocolo garantiza entrega fiable y ordenada?",
+      "options": [
+        "UDP",
+        "IP",
+        "TCP",
+        "ICMP"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 21,
+      "q": "¿Qué característica define a UDP?",
+      "options": [
+        "Orientado a conexión",
+        "Retransmisión de paquetes",
+        "Mayor fiabilidad",
+        "Mayor velocidad sin garantías"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 22,
+      "q": "¿En qué tipo de aplicaciones se suele usar UDP?",
+      "options": [
+        "Descargas de archivos",
+        "Transacciones bancarias",
+        "Streaming y videollamadas",
+        "Correo electrónico"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 23,
+      "q": "¿Qué protocolo se encarga de traducir nombres de dominio a direcciones IP?",
+      "options": [
+        "HTTP",
+        "FTP",
+        "DNS",
+        "SMTP"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 24,
+      "q": "¿Qué capa es la más cercana al usuario?",
+      "options": [
+        "Transporte",
+        "Red",
+        "Aplicación",
+        "Enlace"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 25,
+      "q": "¿Qué describe una topología de red?",
+      "options": [
+        "El sistema operativo utilizado",
+        "La forma de interconectar los dispositivos",
+        "El tipo de protocolo",
+        "El direccionamiento IP"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 26,
+      "q": "¿Qué topología utiliza un nodo central?",
+      "options": [
+        "Bus",
+        "Anillo",
+        "Estrella",
+        "Malla"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 27,
+      "q": "¿Cuál es el principal inconveniente de la topología en bus?",
+      "options": [
+        "Coste elevado",
+        "Dependencia de un nodo central",
+        "Fallo del cable afecta a toda la red",
+        "Dificultad de instalación"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 28,
+      "q": "¿Qué topología se usa habitualmente en redes LAN modernas?",
+      "options": [
+        "Bus",
+        "Anillo",
+        "Estrella",
+        "Lineal"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 29,
+      "q": "¿Qué es una red híbrida?",
+      "options": [
+        "Una red inalámbrica",
+        "Una red con protocolos mixtos",
+        "Una combinación de varias topologías",
+        "Una red sin cableado"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 30,
+      "q": "¿Qué factor NO influye en la elección de una topología?",
+      "options": [
+        "Tamaño de la red",
+        "Presupuesto",
+        "Nivel de seguridad",
+        "Marca del navegador web"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.1.1.pdf",
+      "ud": "Ud.1.1"
+    },
+    {
+      "number": 1,
+      "q": "¿Cuál es la función principal de los dispositivos de interconexión en una red?",
+      "options": [
+        "Almacenar datos de los usuarios",
+        "Permitir la comunicación entre diferentes dispositivos y redes",
+        "Ejecutar aplicaciones en los servidores",
+        "Gestionar el sistema operativo de los equipos"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 2,
+      "q": "¿En qué capa del modelo OSI trabajan los repetidores?",
+      "options": [
+        "Capa de enlace de datos",
+        "Capa de red",
+        "Capa física",
+        "Capa de aplicación"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 3,
+      "q": "¿Qué característica distingue principalmente a un hub frente a un switch?",
+      "options": [
+        "El hub filtra tráfico por direcciones MAC",
+        "El hub envía los datos a todos los puertos",
+        "El hub utiliza direcciones IP",
+        "El hub trabaja en la capa de red"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 4,
+      "q": "¿Cuál es una desventaja importante de los hubs?",
+      "options": [
+        "No permiten conectar dispositivos",
+        "Generan colisiones frecuentes en la red",
+        "Son demasiado complejos de configurar",
+        "Solo funcionan con redes inalámbricas"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 5,
+      "q": "¿Qué función realiza un repetidor en una red?",
+      "options": [
+        "Almacenar paquetes",
+        "Amplificar la señal para extender la distancia de transmisión",
+        "Asignar direcciones IP",
+        "Cifrar el tráfico de red"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 6,
+      "q": "¿Qué tipo de dirección utiliza un switch para reenviar paquetes dentro de una red local?",
+      "options": [
+        "Dirección IP",
+        "Dirección MAC",
+        "Dirección DNS",
+        "Dirección URL"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 7,
+      "q": "¿Cuál es una característica de los switches modernos frente a los hubs?",
+      "options": [
+        "Todos los dispositivos comparten el mismo ancho de banda",
+        "Cada puerto puede tener su propio ancho de banda",
+        "Funcionan únicamente en redes inalámbricas",
+        "No permiten segmentar redes"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 8,
+      "q": "¿Cuál es la principal función de un puente o bridge?",
+      "options": [
+        "Conectar redes inalámbricas",
+        "Filtrar tráfico basándose en direcciones MAC",
+        "Asignar direcciones IP automáticamente",
+        "Gestionar servidores de red"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 9,
+      "q": "¿Cuál de los siguientes dispositivos opera en la capa de red del modelo OSI?",
+      "options": [
+        "Hub",
+        "Switch",
+        "Router",
+        "Repetidor"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 10,
+      "q": "¿Qué dispositivo permite la comunicación entre diferentes redes?",
+      "options": [
+        "Switch",
+        "Hub",
+        "Router",
+        "Bridge"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 11,
+      "q": "¿Qué información utiliza un router para tomar decisiones de enrutamiento?",
+      "options": [
+        "Direcciones MAC",
+        "Direcciones IP",
+        "Direcciones físicas de hardware",
+        "Direcciones DNS"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 12,
+      "q": "¿Qué elemento contiene las rutas que utiliza un router para enviar paquetes?",
+      "options": [
+        "Tabla ARP",
+        "Tabla de enrutamiento",
+        "Tabla NAT",
+        "Tabla de VLAN"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 13,
+      "q": "¿Qué protocolo de enrutamiento utiliza el número de saltos como métrica?",
+      "options": [
+        "OSPF",
+        "BGP",
+        "RIP",
+        "MPLS"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 14,
+      "q": "¿Cuál de los siguientes protocolos es utilizado para el enrutamiento entre sistemas autónomos en Internet?",
+      "options": [
+        "RIP",
+        "OSPF",
+        "BGP",
+        "ICMP"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 15,
+      "q": "¿Qué característica distingue a OSPF frente a RIP?",
+      "options": [
+        "Utiliza direcciones MAC",
+        "Utiliza información del estado de los enlaces",
+        "Solo funciona en redes pequeñas",
+        "Utiliza únicamente rutas estáticas"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 16,
+      "q": "¿Cuál es la función principal de un firewall?",
+      "options": [
+        "Conectar redes inalámbricas",
+        "Controlar el tráfico que entra y sale de la red",
+        "Gestionar el almacenamiento de datos",
+        "Asignar direcciones IP"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 17,
+      "q": "¿Qué tecnología permite establecer conexiones seguras a través de Internet?",
+      "options": [
+        "VPN",
+        "FTP",
+        "HTTP",
+        "DNS"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 18,
+      "q": "¿Cuál es la función de un IDS?",
+      "options": [
+        "Bloquear automáticamente ataques",
+        "Detectar actividades sospechosas en la red",
+        "Encriptar el tráfico",
+        "Configurar direcciones IP"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 19,
+      "q": "¿Qué diferencia principal existe entre IDS e IPS?",
+      "options": [
+        "IPS solo detecta ataques",
+        "IDS bloquea automáticamente ataques",
+        "IPS puede detectar y bloquear ataques",
+        "IDS funciona únicamente en redes inalámbricas"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 20,
+      "q": "¿Qué significa QoS en redes?",
+      "options": [
+        "Quality of Software",
+        "Quality of Security",
+        "Quality of Service",
+        "Quantity of Service"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 21,
+      "q": "¿Cuál es el objetivo de QoS?",
+      "options": [
+        "Reducir la velocidad de la red",
+        "Priorizar determinados tipos de tráfico",
+        "Eliminar dispositivos de la red",
+        "Configurar direcciones MAC"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 22,
+      "q": "¿Qué permite una VLAN en una red?",
+      "options": [
+        "Crear redes físicas separadas",
+        "Crear redes lógicas dentro de la misma red física",
+        "Aumentar la velocidad de Internet",
+        "Convertir redes cableadas en inalámbricas"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 23,
+      "q": "¿Cuál es uno de los beneficios de utilizar VLANs?",
+      "options": [
+        "Eliminar routers",
+        "Reducir el tráfico de difusión",
+        "Aumentar el consumo de red",
+        "Sustituir switches"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 24,
+      "q": "¿Qué dispositivo proporciona conectividad inalámbrica a una red?",
+      "options": [
+        "Router",
+        "Hub",
+        "Punto de acceso",
+        "Bridge"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 25,
+      "q": "¿Qué estándar pertenece a las redes WiFi?",
+      "options": [
+        "IEEE 802.3",
+        "IEEE 802.11",
+        "IEEE 802.1Q",
+        "IEEE 802.15"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 26,
+      "q": "¿Cuál es el protocolo de seguridad inalámbrica más avanzado actualmente?",
+      "options": [
+        "WEP",
+        "WPA",
+        "WPA2",
+        "WPA3"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 27,
+      "q": "¿Cuál es la principal ventaja de IPv6 frente a IPv4?",
+      "options": [
+        "Menor consumo energético",
+        "Mayor espacio de direcciones",
+        "Mayor velocidad de Internet",
+        "Menor latencia de red"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 28,
+      "q": "¿Qué técnica permite usar IPv4 e IPv6 simultáneamente?",
+      "options": [
+        "NAT",
+        "VLAN",
+        "Dual Stack",
+        "DNS"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 29,
+      "q": "¿Qué significa SDN en redes?",
+      "options": [
+        "Secure Digital Network",
+        "Software Defined Networking",
+        "System Data Network",
+        "Server Data Node"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    },
+    {
+      "number": 30,
+      "q": "¿Qué tecnología emergente se está utilizando para optimizar el rendimiento de las redes?",
+      "options": [
+        "Blockchain",
+        "Inteligencia Artificial",
+        "Realidad Virtual",
+        "Computación Cuántica"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.1.2.pdf",
+      "ud": "Ud.1.2"
+    }
+  ],
+  "tema-2": [
+    {
+      "number": 1,
+      "q": "¿Cuál es la principal característica de una red LAN?",
+      "options": [
+        "Cobertura global",
+        "Alta latencia",
+        "Área geográfica limitada",
+        "Uso exclusivo de satélite"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 2,
+      "q": "¿Qué elemento permite segmentar una red en múltiples redes lógicas?",
+      "options": [
+        "Router",
+        "Switch",
+        "VLAN",
+        "Firewall"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 3,
+      "q": "¿Qué topología es la más utilizada actualmente en redes LAN?",
+      "options": [
+        "Bus",
+        "Anillo",
+        "Estrella",
+        "Malla completa"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 4,
+      "q": "¿Qué dispositivo opera principalmente en capa 2 del modelo OSI?",
+      "options": [
+        "Router",
+        "Switch",
+        "Firewall",
+        "Servidor"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 5,
+      "q": "¿Qué ventaja principal tienen las redes cableadas?",
+      "options": [
+        "Mayor movilidad",
+        "Mayor latencia",
+        "Mayor estabilidad",
+        "Menor seguridad"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 6,
+      "q": "¿Qué protocolo se utilizaba en Ethernet tradicional para gestionar colisiones?",
+      "options": [
+        "CSMA/CA",
+        "Token Passing",
+        "CSMA/CD",
+        "ALOHA"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 7,
+      "q": "¿Qué tecnología es típica de redes PAN?",
+      "options": [
+        "Ethernet",
+        "MPLS",
+        "Bluetooth",
+        "BGP"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 8,
+      "q": "¿Qué red tiene un alcance de ciudad?",
+      "options": [
+        "LAN",
+        "WAN",
+        "PAN",
+        "MAN"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 9,
+      "q": "¿Qué significa QoS?",
+      "options": [
+        "Quality of Service",
+        "Quantity of Signals",
+        "Query of Systems",
+        "Queue of Services"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 10,
+      "q": "¿Qué problema resuelve el protocolo CSMA/CA?",
+      "options": [
+        "Detectar colisiones",
+        "Evitar colisiones",
+        "Aumentar velocidad",
+        "Reducir latencia"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 11,
+      "q": "¿Cuál es una característica de WiFi frente a Ethernet?",
+      "options": [
+        "Menor latencia",
+        "Mayor estabilidad",
+        "Mayor movilidad",
+        "Mayor seguridad"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 12,
+      "q": "¿Qué tecnología permite alimentar dispositivos a través del cable de red?",
+      "options": [
+        "VLAN",
+        "PoE",
+        "NAT",
+        "DNS"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 13,
+      "q": "¿Qué tipo de red conecta dispositivos personales cercanos?",
+      "options": [
+        "WAN",
+        "LAN",
+        "MAN",
+        "PAN"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 14,
+      "q": "¿Qué estándar define WiFi?",
+      "options": [
+        "IEEE 802.3",
+        "IEEE 802.11",
+        "IEEE 802.1Q",
+        "IEEE 802.15"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 15,
+      "q": "¿Qué ocurre en una colisión de red?",
+      "options": [
+        "Se mejora el rendimiento",
+        "Se pierden datos",
+        "Se aumenta el ancho de banda",
+        "Se mejora la seguridad"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 16,
+      "q": "¿Qué tecnología permite redes en malla en IoT?",
+      "options": [
+        "Ethernet",
+        "Zigbee",
+        "MPLS",
+        "FTP"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 17,
+      "q": "¿Qué capa del modelo OSI trabaja con direcciones MAC?",
+      "options": [
+        "Capa 1",
+        "Capa 2",
+        "Capa 3",
+        "Capa 4"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 18,
+      "q": "¿Qué es una VLAN?",
+      "options": [
+        "Una red física",
+        "Una red lógica",
+        "Un protocolo",
+        "Un dispositivo"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 19,
+      "q": "¿Qué tipo de red es Internet?",
+      "options": [
+        "LAN",
+        "PAN",
+        "WAN",
+        "MAN"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 20,
+      "q": "¿Qué dispositivo conecta diferentes redes?",
+      "options": [
+        "Switch",
+        "Router",
+        "Hub",
+        "Access Point"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 21,
+      "q": "¿Qué problema presenta WiFi respecto a Ethernet?",
+      "options": [
+        "Mayor velocidad",
+        "Interferencias",
+        "Mejor seguridad",
+        "Menor coste"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 22,
+      "q": "¿Qué modelo de seguridad moderno se utiliza en redes?",
+      "options": [
+        "Perimetral clásico",
+        "Zero Trust",
+        "Firewall básico",
+        "NAT"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 23,
+      "q": "¿Qué arquitectura divide la red en acceso, distribución y núcleo?",
+      "options": [
+        "Modelo plano",
+        "Modelo jerárquico",
+        "Modelo mesh",
+        "Modelo cloud"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 24,
+      "q": "¿Qué protocolo permite reservar el medio en WiFi?",
+      "options": [
+        "ARP",
+        "DNS",
+        "RTS/CTS",
+        "DHCP"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 25,
+      "q": "¿Qué tecnología mejora WiFi en entornos con muchos dispositivos?",
+      "options": [
+        "FTP",
+        "OFDMA",
+        "HTTP",
+        "SMTP"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 26,
+      "q": "¿Qué significa SDN?",
+      "options": [
+        "Software Defined Network",
+        "System Data Network",
+        "Secure Data Node",
+        "Signal Data Network"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 27,
+      "q": "¿Qué tipo de topología ofrece mayor redundancia?",
+      "options": [
+        "Bus",
+        "Estrella",
+        "Malla",
+        "Anillo"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 28,
+      "q": "¿Qué protocolo es determinístico?",
+      "options": [
+        "CSMA/CD",
+        "ALOHA",
+        "Token Ring",
+        "CSMA/CA"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 29,
+      "q": "¿Qué red tiene menor latencia normalmente?",
+      "options": [
+        "WAN",
+        "MAN",
+        "LAN",
+        "Internet"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 30,
+      "q": "¿Qué tecnología sustituye a los hubs para mejorar rendimiento?",
+      "options": [
+        "Routers",
+        "Switches",
+        "Firewalls",
+        "Access Points"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.1.pdf",
+      "ud": "Ud.2.1"
+    },
+    {
+      "number": 1,
+      "q": "¿Qué estándar define Ethernet?",
+      "options": [
+        "IEEE 802.11",
+        "IEEE 802.3",
+        "IEEE 802.1",
+        "IEEE 802.15"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 2,
+      "q": "¿Qué velocidad ofrece 100BASE-TX?",
+      "options": [
+        "10 Mbps",
+        "100 Mbps",
+        "1 Gbps",
+        "10 Gbps"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 3,
+      "q": "¿Qué técnica utiliza Ethernet para evitar colisiones en redes antiguas?",
+      "options": [
+        "OFDMA",
+        "CSMA/CD",
+        "MIMO",
+        "VLAN"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 4,
+      "q": "¿Qué significa “full-duplex”?",
+      "options": [
+        "Transmisión solo en una dirección",
+        "Transmisión simultánea en ambas direcciones",
+        "Uso de dos cables",
+        "Comunicación inalámbrica"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 5,
+      "q": "¿Cuál es la velocidad típica de Gigabit Ethernet?",
+      "options": [
+        "100 Mbps",
+        "1 Gbps",
+        "10 Gbps",
+        "400 Gbps"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 6,
+      "q": "¿Qué tipo de cable se usa en 10BASE-T?",
+      "options": [
+        "Fibra óptica",
+        "Cable coaxial",
+        "Par trenzado",
+        "Cable HDMI"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 7,
+      "q": "¿Cuál es la distancia máxima típica en Ethernet sobre cobre?",
+      "options": [
+        "10 m",
+        "50 m",
+        "100 m",
+        "500 m"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 8,
+      "q": "¿Qué tecnología permite velocidades de 400 Gbps?",
+      "options": [
+        "Fast Ethernet",
+        "Gigabit Ethernet",
+        "400GbE",
+        "WiFi 6"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 9,
+      "q": "¿Qué banda utiliza Bluetooth?",
+      "options": [
+        "5 GHz",
+        "2.4 GHz",
+        "6 GHz",
+        "900 MHz"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 10,
+      "q": "¿Cuál es el alcance típico de Bluetooth Clase 2?",
+      "options": [
+        "1 m",
+        "10 m",
+        "100 m",
+        "1 km"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 11,
+      "q": "¿Qué arquitectura utiliza Bluetooth?",
+      "options": [
+        "Cliente-servidor",
+        "Maestro-esclavo",
+        "Peer-to-peer",
+        "Cloud"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 12,
+      "q": "¿Qué significa BLE?",
+      "options": [
+        "Bluetooth Low Energy",
+        "Basic Link Ethernet",
+        "Binary Link Exchange",
+        "Broadband Low Ethernet"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 13,
+      "q": "¿Qué estándar corresponde a WiFi?",
+      "options": [
+        "IEEE 802.3",
+        "IEEE 802.11",
+        "IEEE 802.15",
+        "IEEE 802.16"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 14,
+      "q": "¿Qué banda tiene mayor alcance pero más interferencias?",
+      "options": [
+        "6 GHz",
+        "5 GHz",
+        "2.4 GHz",
+        "60 GHz"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 15,
+      "q": "¿Qué tecnología introduce MIMO?",
+      "options": [
+        "802.11b",
+        "802.11n",
+        "802.11a",
+        "802.11g"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 16,
+      "q": "¿Qué mejora introduce WiFi 6?",
+      "options": [
+        "Menor seguridad",
+        "Mayor latencia",
+        "Mejor eficiencia en entornos densos",
+        "Menor velocidad"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 17,
+      "q": "¿Qué técnica usa WiFi 6 para múltiples usuarios?",
+      "options": [
+        "CSMA/CD",
+        "OFDMA",
+        "VLAN",
+        "NAT"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 18,
+      "q": "¿Qué es una red backbone?",
+      "options": [
+        "Red doméstica",
+        "Red inalámbrica",
+        "Infraestructura principal de red",
+        "Red Bluetooth"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 19,
+      "q": "¿Qué topología tiene un único punto central?",
+      "options": [
+        "Bus",
+        "Anillo",
+        "Estrella",
+        "Malla"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 20,
+      "q": "¿Qué problema tiene la topología bus?",
+      "options": [
+        "Alto coste",
+        "Baja velocidad",
+        "Punto único de fallo",
+        "Alta latencia"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 21,
+      "q": "¿Qué capa conecta directamente a los usuarios?",
+      "options": [
+        "Core",
+        "Distribución",
+        "Acceso",
+        "Backbone"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 22,
+      "q": "¿Qué tecnología permite múltiples señales en una fibra?",
+      "options": [
+        "VLAN",
+        "DWDM",
+        "NAT",
+        "DHCP"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 23,
+      "q": "¿Qué significa QoS?",
+      "options": [
+        "Quality of Service",
+        "Quantity of Signal",
+        "Quick Output System",
+        "Queue of Servers"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 24,
+      "q": "¿Qué permite una VLAN?",
+      "options": [
+        "Aumentar velocidad",
+        "Dividir la red lógicamente",
+        "Conectar redes físicas",
+        "Reducir latencia"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 25,
+      "q": "¿Qué problema ocurre si no hay segmentación?",
+      "options": [
+        "Mayor seguridad",
+        "Menor coste",
+        "Tráfico innecesario",
+        "Mayor velocidad"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 26,
+      "q": "¿Qué es latencia?",
+      "options": [
+        "Cantidad de datos",
+        "Tiempo de respuesta",
+        "Tipo de cable",
+        "Frecuencia"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 27,
+      "q": "¿Qué herramienta se usa para monitorizar redes?",
+      "options": [
+        "HTML",
+        "SNMP",
+        "CSS",
+        "SQL"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 28,
+      "q": "¿Qué tecnología reduce consumo en WiFi 6?",
+      "options": [
+        "MIMO",
+        "TWT",
+        "VLAN",
+        "NAT"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 29,
+      "q": "¿Qué es un cuello de botella?",
+      "options": [
+        "Alta velocidad",
+        "Fallo de hardware",
+        "Limitación de capacidad",
+        "Red redundante"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 30,
+      "q": "¿Qué tecnología es mejor para IoT de bajo consumo?",
+      "options": [
+        "Ethernet",
+        "WiFi",
+        "Bluetooth BLE",
+        "Fibra óptica"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.2.pdf",
+      "ud": "Ud.2.2"
+    },
+    {
+      "number": 1,
+      "q": "¿Qué es una red backbone?",
+      "options": [
+        "Una red local de usuarios",
+        "Una red inalámbrica",
+        "Una red troncal de alta velocidad",
+        "Una red doméstica"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 2,
+      "q": "¿Qué medio se utiliza principalmente en redes backbone?",
+      "options": [
+        "Par trenzado",
+        "Coaxial",
+        "Fibra óptica",
+        "Bluetooth"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 3,
+      "q": "¿Cuál es una característica clave del backbone?",
+      "options": [
+        "Baja capacidad",
+        "Alta latencia",
+        "Alta velocidad",
+        "Baja seguridad"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 4,
+      "q": "¿Qué protocolo se utiliza en redes backbone para enrutamiento?",
+      "options": [
+        "HTTP",
+        "FTP",
+        "OSPF",
+        "SMTP"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 5,
+      "q": "¿Qué problema introduce la distancia en redes?",
+      "options": [
+        "Mayor seguridad",
+        "Mayor latencia",
+        "Mayor ancho de banda",
+        "Menor coste"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 6,
+      "q": "¿Cuál es la principal desventaja de los enlaces dedicados?",
+      "options": [
+        "Baja velocidad",
+        "Alto coste",
+        "Baja seguridad",
+        "Baja disponibilidad"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 7,
+      "q": "¿Qué tecnología permite multiplexar señales en fibra?",
+      "options": [
+        "VLAN",
+        "MPLS",
+        "DWDM",
+        "NAT"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 8,
+      "q": "¿Qué significa VPN?",
+      "options": [
+        "Virtual Public Network",
+        "Very Private Network",
+        "Virtual Private Network",
+        "Variable Private Network"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 9,
+      "q": "¿Qué hace una VPN?",
+      "options": [
+        "Reduce velocidad",
+        "Cifra y encapsula datos",
+        "Elimina paquetes",
+        "Aumenta latencia"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 10,
+      "q": "¿Qué protocolo VPN opera en capa de red?",
+      "options": [
+        "SSL",
+        "HTTP",
+        "IPsec",
+        "FTP"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 11,
+      "q": "¿Qué protocolo VPN es más moderno?",
+      "options": [
+        "PPTP",
+        "L2TP",
+        "WireGuard",
+        "SMTP"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 12,
+      "q": "¿Qué tipo de VPN conecta redes completas?",
+      "options": [
+        "Acceso remoto",
+        "Sitio a sitio",
+        "SSL",
+        "Móvil"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 13,
+      "q": "¿Qué tipo de VPN permite acceso individual?",
+      "options": [
+        "Sitio a sitio",
+        "Backbone",
+        "Acceso remoto",
+        "MPLS"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 14,
+      "q": "¿Qué es el túnel VPN?",
+      "options": [
+        "Un cable físico",
+        "Un canal cifrado lógico",
+        "Un router",
+        "Un switch"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 15,
+      "q": "¿Qué significa MFA?",
+      "options": [
+        "Multiple File Access",
+        "Multi Factor Authentication",
+        "Main Frame Access",
+        "Manual Firewall Access"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 16,
+      "q": "¿Cuál es un beneficio de las VPN?",
+      "options": [
+        "Mayor coste",
+        "Menor seguridad",
+        "Flexibilidad",
+        "Menor escalabilidad"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 17,
+      "q": "¿Qué es una VLAN?",
+      "options": [
+        "Red física",
+        "Red virtual lógica",
+        "Router",
+        "Firewall"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 18,
+      "q": "¿Qué problema soluciona una VLAN?",
+      "options": [
+        "Latencia",
+        "Segmentación de red",
+        "Cableado",
+        "Energía"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 19,
+      "q": "¿Qué reduce una VLAN?",
+      "options": [
+        "Broadcast",
+        "Latencia",
+        "Seguridad",
+        "Hardware"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 20,
+      "q": "¿Cuál es el método más común de VLAN?",
+      "options": [
+        "Por IP",
+        "Por MAC",
+        "Por puerto",
+        "Por DNS"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 21,
+      "q": "¿Qué ventaja tiene VLAN por MAC?",
+      "options": [
+        "Menor coste",
+        "Movilidad",
+        "Mayor velocidad",
+        "Menor seguridad"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 22,
+      "q": "¿Qué tipo de switch se necesita para VLAN por IP?",
+      "options": [
+        "L1",
+        "L2",
+        "L3",
+        "Hub"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 23,
+      "q": "¿Qué es un enlace troncal?",
+      "options": [
+        "Conecta usuarios",
+        "Conecta routers",
+        "Transporta múltiples VLANs",
+        "Reduce tráfico"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 24,
+      "q": "¿Qué estándar se usa en VLAN tagging?",
+      "options": [
+        "802.11",
+        "802.3",
+        "802.1Q",
+        "802.15"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 25,
+      "q": "¿Qué tamaño tiene la etiqueta 802.1Q?",
+      "options": [
+        "2 bytes",
+        "4 bytes",
+        "8 bytes",
+        "16 bytes"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 26,
+      "q": "¿Qué es la VLAN nativa?",
+      "options": [
+        "VLAN sin tráfico",
+        "VLAN sin etiquetar",
+        "VLAN de backup",
+        "VLAN externa"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 27,
+      "q": "¿Qué riesgo tiene la VLAN nativa?",
+      "options": [
+        "Latencia",
+        "VLAN hopping",
+        "Pérdida de datos",
+        "Redundancia"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 28,
+      "q": "¿Qué permite el inter-VLAN routing?",
+      "options": [
+        "Aislar redes",
+        "Conectar VLANs",
+        "Reducir tráfico",
+        "Crear VLAN"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 29,
+      "q": "¿Qué dispositivo permite routing entre VLANs?",
+      "options": [
+        "Hub",
+        "Switch L3",
+        "Repetidor",
+        "Patch panel"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    },
+    {
+      "number": 30,
+      "q": "¿Qué modelo propone “no confiar nunca”?",
+      "options": [
+        "OSI",
+        "TCP/IP",
+        "Zero Trust",
+        "VLAN"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.2.3.pdf",
+      "ud": "Ud.2.3"
+    }
+  ],
+  "tema-3": [
+    {
+      "number": 1,
+      "q": "¿Qué es el cableado estructurado?",
+      "options": [
+        "Un sistema de cableado provisional para redes pequeñas",
+        "Un sistema de cableado diseñado de manera ordenada y estandarizada para transportar señales de voz, datos y otros sistemas de comunicación",
+        "Un sistema exclusivo para telefonía analógica",
+        "Un conjunto de cables sin necesidad de normas técnicas"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 2,
+      "q": "¿Cuál de las siguientes es una característica del cableado estructurado?",
+      "options": [
+        "Dependencia de un solo fabricante",
+        "Infraestructura única y arquitectura abierta",
+        "Uso exclusivo de fibra óptica",
+        "Aplicación limitada a redes domésticas"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 3,
+      "q": "¿Qué porcentaje aproximado de la inversión en infraestructura de red representa el cableado estructurado?",
+      "options": [
+        "2% a 5%",
+        "5% a 10%",
+        "15% a 20%",
+        "30% a 40%"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 4,
+      "q": "Antes de la estandarización, una de las principales consecuencias era:",
+      "options": [
+        "Mayor compatibilidad entre fabricantes",
+        "Reducción de costes de mantenimiento",
+        "Incompatibilidad entre sistemas propietarios",
+        "Menor necesidad de documentación"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 5,
+      "q": "¿En qué periodo aparecieron los primeros intentos de estandarización del cableado?",
+      "options": [
+        "1970-1980",
+        "1985-1990",
+        "1995-2000",
+        "2005-2010"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 6,
+      "q": "¿Qué estándar estableció en 1991 las bases del cableado estructurado?",
+      "options": [
+        "IEEE 802.11",
+        "ISO 9001",
+        "ANSI/TIA/EIA-568",
+        "TIA-607"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 7,
+      "q": "¿Cuál de las siguientes NO es una motivación para implantar cableado estructurado?",
+      "options": [
+        "Adaptabilidad",
+        "Escalabilidad",
+        "Fiabilidad",
+        "Dependencia del proveedor"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 8,
+      "q": "En una oficina con instalación antigua, uno de los problemas operativos más frecuentes es:",
+      "options": [
+        "Menor consumo energético",
+        "Caídas frecuentes y latencia alta",
+        "Certificación automática del sistema",
+        "Mayor interoperabilidad garantizada"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 9,
+      "q": "¿Qué organismo desarrolla los estándares para Ethernet?",
+      "options": [
+        "ANSI",
+        "IEEE",
+        "IEC",
+        "EIA"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 10,
+      "q": "¿Qué organización es responsable de las normas más utilizadas en cableado estructurado, como la serie ANSI/TIA-568?",
+      "options": [
+        "TIA",
+        "IEEE",
+        "OMS",
+        "ITU exclusivamente"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 11,
+      "q": "La norma ANSI/TIA/EIA-569 se centra principalmente en:",
+      "options": [
+        "La velocidad de Ethernet",
+        "La puesta a tierra",
+        "Las canalizaciones y espacios",
+        "El direccionamiento IP"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 12,
+      "q": "¿Cuál de los siguientes es un subsistema definido en TIA-568?",
+      "options": [
+        "Centro de monitorización satelital",
+        "Cableado horizontal",
+        "Servidor DNS",
+        "Router troncal del operador"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 13,
+      "q": "¿Qué subsistema interconecta salas de telecomunicaciones y equipos?",
+      "options": [
+        "Área de trabajo",
+        "Instalación de entrada",
+        "Cableado vertical o backbone",
+        "Cableado perimetral doméstico"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 14,
+      "q": "Según TIA-607, ¿qué elemento forma parte del sistema de puesta a tierra de telecomunicaciones?",
+      "options": [
+        "TMGB",
+        "CPU",
+        "VLAN",
+        "UPS lógica"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 15,
+      "q": "¿Qué norma está orientada a la infraestructura de centros de datos?",
+      "options": [
+        "TIA-570",
+        "TIA-942",
+        "TIA-606",
+        "EN 54"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 16,
+      "q": "¿Qué versión del estándar incorporó soporte para Cat 5e y Cat 6?",
+      "options": [
+        "TIA-568-A",
+        "TIA-568-B",
+        "TIA-568-C",
+        "TIA-568-D"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 17,
+      "q": "¿Qué beneficio aporta la documentación estandarizada?",
+      "options": [
+        "Aumenta la diafonía",
+        "Dificulta el mantenimiento",
+        "Facilita la administración y el mantenimiento",
+        "Elimina la necesidad de pruebas"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 18,
+      "q": "Un sistema de cableado estructurado bien diseñado e instalado suele tener una vida útil de:",
+      "options": [
+        "1 a 3 años",
+        "3 a 5 años",
+        "8 a 10 años",
+        "15 a 20 años"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 19,
+      "q": "¿Qué técnica ayuda a mitigar las interferencias electromagnéticas?",
+      "options": [
+        "Mezclar cables eléctricos y de datos",
+        "Eliminar la puesta a tierra",
+        "Separación adecuada de cables de datos y eléctricos",
+        "Superar los radios de curvatura"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 20,
+      "q": "¿Cuál es una de las ventajas más significativas del cableado estructurado?",
+      "options": [
+        "Hace imposible la escalabilidad",
+        "Facilita modificaciones, adiciones y cambios",
+        "Obliga a sustituir toda la red en cada cambio",
+        "Reduce la necesidad de planificación inicial a cero"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 21,
+      "q": "El backbone moderno utiliza preferentemente:",
+      "options": [
+        "Coaxial grueso",
+        "Par trenzado categoría 3",
+        "Fibra óptica",
+        "Cable telefónico plano"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 22,
+      "q": "Según TIA-568, la topología del cableado horizontal debe ser:",
+      "options": [
+        "En bus",
+        "En anillo",
+        "En estrella",
+        "Mallada completa"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 23,
+      "q": "¿Cuál es la distancia máxima del cableado horizontal permanente según TIA-568?",
+      "options": [
+        "30 metros",
+        "60 metros",
+        "90 metros",
+        "150 metros"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 24,
+      "q": "¿Qué categoría soporta 10 Gbps hasta 100 metros y es muy adecuada para PoE de alta potencia?",
+      "options": [
+        "Cat 5e",
+        "Cat 6",
+        "Cat 6A",
+        "Cat 3"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 25,
+      "q": "¿Qué tipo de fibra suele emplearse para largas distancias y mayores prestaciones?",
+      "options": [
+        "Fibra multimodo",
+        "Fibra monomodo",
+        "Coaxial óptico",
+        "Par trenzado blindado"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 26,
+      "q": "En el área de trabajo, TIA-568 especifica como mínimo:",
+      "options": [
+        "Una toma por edificio",
+        "Dos tomas por área de trabajo",
+        "Una sola toma por planta",
+        "Cuatro racks por usuario"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 27,
+      "q": "¿Qué prueba detecta errores como cables cruzados, invertidos o en cortocircuito?",
+      "options": [
+        "Prueba de continuidad",
+        "Prueba de latencia IP",
+        "Prueba de routing dinámico",
+        "Prueba de compresión de datos"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 28,
+      "q": "¿Cuál de los siguientes es un parámetro de rendimiento en cobre?",
+      "options": [
+        "NEXT",
+        "DHCP",
+        "NAT",
+        "ARP"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 29,
+      "q": "La norma TIA-606 está relacionada con:",
+      "options": [
+        "La administración e identificación de la infraestructura",
+        "La climatización del CPD",
+        "Los protocolos de enrutamiento",
+        "La compresión de tráfico de voz"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 30,
+      "q": "¿Qué se recomienda para resolver problemas en cableado estructurado?",
+      "options": [
+        "Sustituir todos los cables sin analizar",
+        "Ignorar la documentación existente",
+        "Aplicar un diagnóstico sistemático y documentar la solución",
+        "Empezar siempre por cambiar el switch principal"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.1.pdf",
+      "ud": "Ud.3.1"
+    },
+    {
+      "number": 1,
+      "q": "¿Qué elemento del cableado estructurado corresponde al espacio donde se ubican los equipos del usuario final?",
+      "options": [
+        "Sala de equipos",
+        "Área de trabajo",
+        "Acometida de entrada",
+        "Cableado vertical"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 2,
+      "q": "¿Qué elementos forman parte del área de trabajo?",
+      "options": [
+        "Servidores, firewalls y routers centrales",
+        "Rosetas de conexión, latiguillos y adaptadores",
+        "Conductos de entrada y arquetas",
+        "SAIs, PDUs y sistemas de climatización"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 3,
+      "q": "¿Cuál es la longitud máxima recomendada para los latiguillos del área de trabajo?",
+      "options": [
+        "2 metros",
+        "5 metros",
+        "10 metros",
+        "90 metros"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 4,
+      "q": "¿Qué especificaciones deben seguir las rosetas de conexión?",
+      "options": [
+        "OM3 u OM4",
+        "T568A o T568B",
+        "OS1 u OS2",
+        "IEEE 802.3bt"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 5,
+      "q": "¿Cuántas tomas por puesto de trabajo se recomiendan como mínimo?",
+      "options": [
+        "1 toma",
+        "2 tomas",
+        "4 tomas",
+        "6 tomas"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 6,
+      "q": "¿Qué porcentaje adicional de puntos se recomienda contemplar para futuras ampliaciones en el área de trabajo?",
+      "options": [
+        "10%",
+        "20%",
+        "35%",
+        "50%"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 7,
+      "q": "¿Cuál es la función principal del cableado horizontal?",
+      "options": [
+        "Conectar edificios separados por largas distancias",
+        "Conectar el área de trabajo con la sala de telecomunicaciones",
+        "Interconectar operadores externos con la red interna",
+        "Centralizar servidores y sistemas de almacenamiento"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 8,
+      "q": "¿Cuál es la longitud máxima del cableado horizontal permanente?",
+      "options": [
+        "50 metros",
+        "70 metros",
+        "90 metros",
+        "120 metros"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 9,
+      "q": "¿Qué se entiende por “canal de 100 metros”?",
+      "options": [
+        "100 metros de fibra óptica entre edificios",
+        "90 metros de cable permanente más 10 metros de latiguillos",
+        "100 metros de cable eléctrico paralelo",
+        "100 metros exclusivamente de cable backbone"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 10,
+      "q": "¿Qué categoría se considera mínimo recomendable para nuevas instalaciones de cableado horizontal?",
+      "options": [
+        "Categoría 5",
+        "Categoría 5e",
+        "Categoría 6A",
+        "Categoría 3"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 11,
+      "q": "¿Qué velocidad soporta Categoría 6A hasta 100 metros?",
+      "options": [
+        "100 Mbps",
+        "1 Gbps",
+        "10GBASE-T",
+        "40 Gbps siempre hasta 100 metros"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 12,
+      "q": "¿Qué topología debe seguir el cableado horizontal?",
+      "options": [
+        "Bus",
+        "Anillo",
+        "Estrella",
+        "Malla completa"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 13,
+      "q": "¿Qué tipo de cable es más económico y fácil de instalar en entornos estándar?",
+      "options": [
+        "UTP",
+        "S/FTP",
+        "Fibra monomodo",
+        "Fibra multimodo"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 14,
+      "q": "¿Qué tipo de cable ofrece la máxima protección frente a interferencias externas e internas?",
+      "options": [
+        "UTP",
+        "F/UTP",
+        "S/FTP",
+        "Cable coaxial"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 15,
+      "q": "¿Dónde se concentran elementos como patch panels, switches y routers de distribución?",
+      "options": [
+        "Área de trabajo",
+        "Sala de telecomunicaciones",
+        "Punto de usuario",
+        "Roseta de conexión"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 16,
+      "q": "¿Cuál es una dimensión mínima recomendada para una sala de telecomunicaciones en plantas de hasta 1000 m²?",
+      "options": [
+        "1x1 metros",
+        "2x2 metros",
+        "3x3 metros",
+        "5x5 metros"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 17,
+      "q": "¿Qué temperatura se recomienda para la sala de telecomunicaciones?",
+      "options": [
+        "5-10°C",
+        "10-15°C",
+        "18-24°C",
+        "30-40°C"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 18,
+      "q": "¿Qué elemento proporciona alimentación de respaldo ante cortes eléctricos?",
+      "options": [
+        "Patch panel",
+        "SAI",
+        "Roseta",
+        "Latiguillo"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 19,
+      "q": "¿Qué caracteriza a la sala de equipos frente a la sala de telecomunicaciones?",
+      "options": [
+        "Tiene menos requisitos técnicos",
+        "Solo contiene rosetas de conexión",
+        "Centraliza sistemas críticos de toda la organización",
+        "Se limita únicamente al cableado horizontal"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 20,
+      "q": "¿Qué autonomía mínima se menciona para grupo electrógeno en instalaciones críticas?",
+      "options": [
+        "12 horas",
+        "24 horas",
+        "48 horas",
+        "72 horas"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 21,
+      "q": "¿Qué es la acometida de entrada?",
+      "options": [
+        "El lugar donde se conecta el usuario final",
+        "El punto donde confluyen redes de proveedores externos con la red interna",
+        "El cable que conecta el ordenador con la roseta",
+        "El armario donde se guardan los latiguillos"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 22,
+      "q": "¿Qué función cumple el punto de demarcación?",
+      "options": [
+        "Separa voz y datos",
+        "Delimita la frontera entre red interna y externa",
+        "Ordena los latiguillos del rack",
+        "Mide la pérdida de inserción"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 23,
+      "q": "¿Qué medio es actualmente predominante para el backbone?",
+      "options": [
+        "Cable coaxial",
+        "Fibra óptica",
+        "UTP categoría 3",
+        "Cable telefónico convencional"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 24,
+      "q": "¿Por qué se prefiere la fibra óptica en el backbone?",
+      "options": [
+        "Porque es más fácil de terminar que el cobre",
+        "Por su ancho de banda, distancia y resistencia a interferencias",
+        "Porque no necesita transceptores",
+        "Porque solo permite velocidades bajas"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 25,
+      "q": "¿Qué tipo de fibra tiene un núcleo aproximado de 9 μm?",
+      "options": [
+        "Fibra multimodo",
+        "Fibra monomodo",
+        "UTP",
+        "F/UTP"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 26,
+      "q": "¿Qué tipo de fibra es preferida para campus medianos y edificios corporativos por su relación coste-rendimiento?",
+      "options": [
+        "Fibra multimodo OM3/OM4",
+        "Fibra monomodo OS2 exclusivamente",
+        "Cable coaxial",
+        "Cable telefónico"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 27,
+      "q": "¿Qué anchura estándar tienen los racks de telecomunicaciones?",
+      "options": [
+        "10 pulgadas",
+        "15 pulgadas",
+        "19 pulgadas",
+        "24 pulgadas"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 28,
+      "q": "¿Cuánto mide una unidad de rack, denominada 1U?",
+      "options": [
+        "22,25 mm",
+        "44,45 mm",
+        "60 mm",
+        "100 mm"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 29,
+      "q": "¿Cuál es la función principal de un patch panel?",
+      "options": [
+        "Alimentar eléctricamente los switches",
+        "Terminar cables permanentes y permitir conexiones flexibles mediante latiguillos",
+        "Refrigerar los servidores",
+        "Convertir señales ópticas en eléctricas"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    },
+    {
+      "number": 30,
+      "q": "¿Qué sistema permite detectar cambios, desconexiones no autorizadas y parámetros ambientales en infraestructuras inteligentes?",
+      "options": [
+        "Cableado coaxial tradicional",
+        "Sistemas de infraestructura inteligente con sensores",
+        "Bridas de plástico convencionales",
+        "Rosetas sin etiquetado"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.3.2.pdf",
+      "ud": "Ud.3.2"
+    }
+  ],
+  "tema-4": [
+    {
+      "number": 1,
+      "q": "¿Qué es el encaminamiento dinámico?",
+      "options": [
+        "La configuración manual de rutas por parte del administrador.",
+        "El proceso mediante el cual los routers intercambian información sobre la topología de red de forma automática.",
+        "El proceso de cifrado de paquetes entre routers.",
+        "La asignación manual de direcciones IP en una red."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 2,
+      "q": "¿Qué permite el encaminamiento dinámico ante cambios en la red?",
+      "options": [
+        "Mantener siempre la misma ruta aunque falle un enlace.",
+        "Adaptarse a cambios sin intervención del administrador.",
+        "Eliminar todos los routers intermedios.",
+        "Sustituir los protocolos de transporte."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 3,
+      "q": "¿Cuál de las siguientes es una característica clave del encaminamiento dinámico?",
+      "options": [
+        "Actualización automática de tablas de rutas.",
+        "Configuración fija e invariable.",
+        "Ausencia de consumo de CPU.",
+        "Uso exclusivo en redes domésticas."
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 4,
+      "q": "¿Qué tipo de encaminamiento requiere intervención humana ante cada fallo o modificación?",
+      "options": [
+        "Encaminamiento dinámico.",
+        "Encaminamiento adaptativo.",
+        "Encaminamiento estático.",
+        "Encaminamiento jerárquico."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 5,
+      "q": "¿Qué tipo de encaminamiento es esencial para redes medianas y grandes?",
+      "options": [
+        "Encaminamiento estático.",
+        "Encaminamiento dinámico.",
+        "Encaminamiento manual.",
+        "Encaminamiento local exclusivamente."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 6,
+      "q": "¿Qué desventaja presenta el encaminamiento dinámico frente al estático?",
+      "options": [
+        "No permite tolerancia a fallos.",
+        "No puede recalcular rutas.",
+        "Implica mayor consumo de CPU y memoria.",
+        "Solo funciona con redes pequeñas."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 7,
+      "q": "¿Qué beneficio del encaminamiento dinámico reduce la carga administrativa?",
+      "options": [
+        "Eficiencia operativa.",
+        "Coste administrativo.",
+        "Número de saltos.",
+        "Latencia fija."
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 8,
+      "q": "¿Qué beneficio permite redirigir el tráfico automáticamente cuando ocurren fallos?",
+      "options": [
+        "Fragmentación.",
+        "Tolerancia a fallos.",
+        "Direccionamiento físico.",
+        "Traducción de puertos."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 9,
+      "q": "¿Qué beneficio facilita el crecimiento de la red sin reconfiguraciones manuales extensas?",
+      "options": [
+        "Escalabilidad.",
+        "Encapsulación.",
+        "Broadcast.",
+        "Encriptación."
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 10,
+      "q": "¿Qué beneficio distribuye el tráfico entre múltiples enlaces disponibles?",
+      "options": [
+        "Equilibrio de carga.",
+        "Control de errores.",
+        "Traducción NAT.",
+        "Segmentación física."
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 11,
+      "q": "¿Cuál es una métrica utilizada para seleccionar rutas?",
+      "options": [
+        "Color del cable.",
+        "Número de saltos.",
+        "Nombre del administrador.",
+        "Tamaño del router."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 12,
+      "q": "¿Qué métrica utiliza RIP como principal criterio?",
+      "options": [
+        "Ancho de banda.",
+        "Retardo.",
+        "Número de saltos.",
+        "Coste económico."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 13,
+      "q": "¿Cuál es el máximo número de saltos permitido por RIP?",
+      "options": [
+        "5.",
+        "10.",
+        "15.",
+        "32."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 14,
+      "q": "¿Qué protocolo utiliza el ancho de banda como base de su métrica de coste?",
+      "options": [
+        "RIP.",
+        "OSPF.",
+        "FTP.",
+        "HTTP."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 15,
+      "q": "¿Qué es un sistema autónomo?",
+      "options": [
+        "Un router sin conexión a Internet.",
+        "Un conjunto de redes IP bajo el control de una organización con política de encaminamiento unificada.",
+        "Una red doméstica sin servidor DNS.",
+        "Un protocolo de transporte entre aplicaciones."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 16,
+      "q": "¿Cuál es el propósito de los sistemas autónomos?",
+      "options": [
+        "Eliminar la necesidad de routers.",
+        "Dividir Internet en dominios administrativos manejables.",
+        "Sustituir las direcciones IP por direcciones MAC.",
+        "Evitar el uso de protocolos de encaminamiento."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 17,
+      "q": "¿Cómo se identifica cada sistema autónomo?",
+      "options": [
+        "Mediante un número ASN.",
+        "Mediante una dirección MAC.",
+        "Mediante un puerto UDP.",
+        "Mediante una clave WPA."
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 18,
+      "q": "¿Cuántos bits tienen actualmente los ASN?",
+      "options": [
+        "8 bits.",
+        "16 bits.",
+        "24 bits.",
+        "32 bits."
+      ],
+      "correctIndex": 3,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 19,
+      "q": "¿Qué tipo de AS está conectado a un único proveedor y no transporta tráfico de tránsito?",
+      "options": [
+        "AS Stub.",
+        "AS Multiconectado.",
+        "AS de Tránsito.",
+        "AS Backbone."
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 20,
+      "q": "¿Qué tipo de AS está conectado a múltiples proveedores para redundancia?",
+      "options": [
+        "AS Stub.",
+        "AS Multiconectado.",
+        "AS Local.",
+        "AS de acceso único."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 21,
+      "q": "¿Qué tipo de AS permite el tráfico entre diferentes sistemas autónomos?",
+      "options": [
+        "AS Stub.",
+        "AS doméstico.",
+        "AS de Tránsito.",
+        "AS aislado."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 22,
+      "q": "¿Qué relación entre AS consiste en intercambio mutuo de tráfico sin coste?",
+      "options": [
+        "Proveedor-cliente.",
+        "Peer-to-peer.",
+        "Cliente-servidor.",
+        "Maestro-esclavo."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 23,
+      "q": "¿Qué relación implica que un AS paga a otro por servicios de tránsito completo hacia Internet?",
+      "options": [
+        "Peer-to-peer.",
+        "Sibling-to-sibling.",
+        "Proveedor-cliente.",
+        "Multicast."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 24,
+      "q": "¿Qué son los puntos de intercambio IXP?",
+      "options": [
+        "Protocolos de cifrado de rutas.",
+        "Infraestructuras físicas donde múltiples AS se interconectan directamente.",
+        "Direcciones privadas para redes locales.",
+        "Servidores DNS raíz."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 25,
+      "q": "¿Cuál de los siguientes es un ejemplo de IXP en España?",
+      "options": [
+        "LINX.",
+        "DE-CIX.",
+        "ESPANIX.",
+        "AMS-IX."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 26,
+      "q": "¿Cómo se clasifican los protocolos de encaminamiento según su ámbito?",
+      "options": [
+        "TCP y UDP.",
+        "IGP y EGP.",
+        "IPv4 e IPv6.",
+        "LAN y WAN."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 27,
+      "q": "¿Cuál de los siguientes es un protocolo intradominio IGP?",
+      "options": [
+        "BGP.",
+        "OSPF.",
+        "SMTP.",
+        "HTTPS."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 28,
+      "q": "¿Cuál es el protocolo EGP utilizado en Internet?",
+      "options": [
+        "RIP.",
+        "OSPF.",
+        "BGP.",
+        "ICMP."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 29,
+      "q": "¿En qué algoritmo se basa RIP?",
+      "options": [
+        "Dijkstra.",
+        "Bellman-Ford.",
+        "RSA.",
+        "AES."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 30,
+      "q": "¿En qué algoritmo se basa OSPF?",
+      "options": [
+        "Bellman-Ford.",
+        "Dijkstra.",
+        "Diffie-Hellman.",
+        "Round Robin."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 31,
+      "q": "¿Cada cuánto tiempo envía RIP actualizaciones periódicas?",
+      "options": [
+        "Cada 5 segundos.",
+        "Cada 10 segundos.",
+        "Cada 30 segundos.",
+        "Cada 180 segundos."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 32,
+      "q": "¿Qué protocolo tiene una convergencia relativamente lenta?",
+      "options": [
+        "RIP.",
+        "OSPF.",
+        "BGP exclusivamente.",
+        "IS-IS exclusivamente."
+      ],
+      "correctIndex": 0,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 33,
+      "q": "¿Qué protocolo utiliza una estructura jerárquica en áreas?",
+      "options": [
+        "RIP.",
+        "OSPF.",
+        "ARP.",
+        "DHCP."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 34,
+      "q": "¿Qué área actúa como backbone central en OSPF?",
+      "options": [
+        "Área 1.",
+        "Área 10.",
+        "Área 0.",
+        "Área 255."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 35,
+      "q": "¿Qué es BGP?",
+      "options": [
+        "Un protocolo de transferencia de archivos.",
+        "El único protocolo EGP en uso activo en Internet.",
+        "Un protocolo de asignación automática de IP.",
+        "Un sistema operativo de routers."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 36,
+      "q": "¿Qué tipo de BGP se utiliza entre distintos sistemas autónomos?",
+      "options": [
+        "iBGP.",
+        "eBGP.",
+        "RIPng.",
+        "OSPFv2."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 37,
+      "q": "¿Qué tipo de BGP distribuye rutas externas dentro del mismo AS?",
+      "options": [
+        "eBGP.",
+        "iBGP.",
+        "RIPv1.",
+        "OSPF Stub."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 38,
+      "q": "¿Qué atributo de BGP contiene la secuencia de sistemas autónomos atravesados?",
+      "options": [
+        "NEXT_HOP.",
+        "ORIGIN.",
+        "AS_PATH.",
+        "WEIGHT."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 39,
+      "q": "¿Qué puerto TCP utiliza BGP?",
+      "options": [
+        "21.",
+        "80.",
+        "179.",
+        "443."
+      ],
+      "correctIndex": 2,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    },
+    {
+      "number": 40,
+      "q": "¿Qué tecnología permite validar criptográficamente el origen de anuncios BGP?",
+      "options": [
+        "NAT.",
+        "RPKI.",
+        "DHCP.",
+        "VLAN."
+      ],
+      "correctIndex": 1,
+      "sourceFile": "Examen Ud.4.pdf",
+      "ud": "Ud.4"
+    }
+  ]
+}

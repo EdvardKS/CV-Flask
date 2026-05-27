@@ -7,9 +7,9 @@ describe('redes manifests', () => {
 
     const summary = getRedesModeSummary()
     expect(summary).toEqual({
-      autoevaluacionCount: 0,
-      temarioQuizCount: 13,
-      temarioQuestionCount: 167,
+      autoevaluacionCount: 69,
+      temarioQuizCount: 17,
+      temarioQuestionCount: 309,
       conceptTopicCount: 6
     })
 

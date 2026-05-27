@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TEMP_REDES_DIR = ROOT / "temp" / "REDES"
 PUBLIC_DIR = ROOT / "public" / "data" / "quiz"
 REDES_DIR = PUBLIC_DIR / "redes"
+EXAMENES_CLASE_PATH = Path(__file__).resolve().parent / "redes_examenes_clase.json"
 
 
 SUSPICIOUS_MOJIBAKE = ("Â", "Ã", "â", "ð")
@@ -342,6 +343,52 @@ def build_manual_quizzes() -> list[dict]:
     ]
 
 
+def _normalize_question(text: str) -> str:
+    lowered = maybe_fix_mojibake(text or "").lower()
+    return re.sub(r"[^a-z0-9áéíóúñü]+", "", lowered)
+
+
+def build_examenes_clase_quizzes(existing_questions: set[str]) -> list[dict]:
+    if not EXAMENES_CLASE_PATH.exists():
+        return []
+    data = json.loads(EXAMENES_CLASE_PATH.read_text(encoding="utf-8"))
+    quizzes: list[dict] = []
+    for tema_key in sorted(data.keys()):
+        topic_num = int(tema_key.split("-")[1])
+        seen_in_quiz: set[str] = set()
+        questions: list[dict] = []
+        entries = sorted(data[tema_key], key=lambda item: (item.get("ud", ""), item.get("number", 0)))
+        for entry in entries:
+            norm = _normalize_question(entry["q"])
+            if not norm or norm in existing_questions or norm in seen_in_quiz:
+                continue
+            seen_in_quiz.add(norm)
+            questions.append(
+                question(
+                    topic_num,
+                    entry["q"],
+                    entry["options"],
+                    entry["correctIndex"],
+                    sourceFile=entry["sourceFile"],
+                    sourceType="pdf-cuestionario-clase",
+                    ud=entry.get("ud"),
+                )
+            )
+        if not questions:
+            continue
+        quizzes.append(
+            make_quiz(
+                topic_num,
+                f"tema-{topic_num}-examenes-de-clase",
+                f"Tema {topic_num} · Exámenes de clase",
+                ", ".join(sorted({q["sourceFile"] for q in questions})),
+                "pdf-cuestionario-clase",
+                questions,
+            )
+        )
+    return quizzes
+
+
 def build_temario_manifest() -> dict:
     base = deep_fix(load_json(REDES_DIR / "temario.json"))
     generated_quizzes = build_manual_quizzes()
@@ -370,6 +417,16 @@ def build_temario_manifest() -> dict:
     for quiz in generated_quizzes:
         topic = topics[quiz["topic"]]
         topic["quizzes"].append(quiz)
+
+    existing_questions: set[str] = set()
+    for topic in topics.values():
+        for quiz in topic["quizzes"]:
+            for item in quiz["questions"]:
+                norm = _normalize_question(item.get("q", ""))
+                if norm:
+                    existing_questions.add(norm)
+    for quiz in build_examenes_clase_quizzes(existing_questions):
+        topics[quiz["topic"]]["quizzes"].append(quiz)
 
     ordered_topics = []
     for topic_num in range(1, 7):
