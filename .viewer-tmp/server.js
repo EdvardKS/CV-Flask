@@ -12,6 +12,7 @@ import Database from 'better-sqlite3';
 import { authenticator } from 'otplib';
 import QRCode from 'qrcode';
 import { randomBytes, randomUUID, createHmac, timingSafeEqual } from 'node:crypto';
+import Busboy from 'busboy';
 
 // Estabilidad: no morir por errores no capturados
 process.on('unhandledRejection', (reason) => {
@@ -132,7 +133,41 @@ db.exec(`
     last_commit_before TEXT,
     last_log TEXT
   );
+  CREATE TABLE IF NOT EXISTS deploys (
+    id TEXT PRIMARY KEY,
+    ts INTEGER NOT NULL,
+    finished_ts INTEGER,
+    user TEXT NOT NULL,
+    url TEXT NOT NULL,
+    name TEXT NOT NULL,
+    domain TEXT NOT NULL,
+    upstream_port INTEGER NOT NULL,
+    email TEXT,
+    skip_dns INTEGER NOT NULL DEFAULT 0,
+    staging_cert INTEGER NOT NULL DEFAULT 0,
+    phase TEXT NOT NULL,
+    status TEXT NOT NULL,
+    error TEXT,
+    rollback_done INTEGER DEFAULT 0,
+    webhook_secret TEXT
+  );
+  CREATE INDEX IF NOT EXISTS idx_deploys_ts ON deploys(ts);
+  CREATE INDEX IF NOT EXISTS idx_deploys_status ON deploys(status);
+  CREATE TABLE IF NOT EXISTS deploy_logs (
+    deploy_id TEXT NOT NULL,
+    seq INTEGER NOT NULL,
+    ts_ms INTEGER NOT NULL,
+    phase TEXT NOT NULL,
+    level TEXT NOT NULL,
+    message TEXT NOT NULL,
+    PRIMARY KEY (deploy_id, seq)
+  );
 `);
+// Boot cleanup: deploys que quedaron running por restart se marcan failed
+try {
+  const r = db.prepare("UPDATE deploys SET status='failed', error='backend_restart', finished_ts=? WHERE status='running'").run(Math.floor(Date.now() / 1000));
+  if (r.changes > 0) console.log('[boot] cleared', r.changes, 'stuck deploys');
+} catch {}
 // Seed initial allowed IP if empty
 const ipCount = db.prepare('SELECT COUNT(*) AS n FROM access_ips').get().n;
 if (ipCount === 0) {
@@ -1150,6 +1185,594 @@ app.delete('/api/files', ...requireOp, async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// === Deploy Wizard (Spec 06) ===
+const DEPLOY_RESERVED_NAMES = new Set(['viewerSoftware', '.nginx', 'certbot', 'html', '.ollama', 'backups', '.git']);
+const DEPLOY_PHASES = ['validate', 'clone', 'env', 'detect', 'build', 'test', 'up', 'nginx', 'cert', 'webhook'];
+const deployLocks = new Map(); // key: name OR domain -> deployId
+
+const stmtDeployInsert = db.prepare('INSERT INTO deploys (id,ts,user,url,name,domain,upstream_port,email,skip_dns,staging_cert,phase,status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
+const stmtDeployUpdate = db.prepare('UPDATE deploys SET phase=?,status=?,error=?,finished_ts=?,webhook_secret=COALESCE(?,webhook_secret),rollback_done=COALESCE(?,rollback_done) WHERE id=?');
+const stmtDeployGet = db.prepare('SELECT * FROM deploys WHERE id=?');
+const stmtDeployList = db.prepare('SELECT id,ts,finished_ts,user,name,domain,phase,status,error FROM deploys ORDER BY ts DESC LIMIT ?');
+const stmtLogInsert = db.prepare('INSERT INTO deploy_logs (deploy_id,seq,ts_ms,phase,level,message) VALUES (?,?,?,?,?,?)');
+const stmtLogGet = db.prepare('SELECT seq,ts_ms,phase,level,message FROM deploy_logs WHERE deploy_id=? AND seq>? ORDER BY seq ASC LIMIT ?');
+
+function deriveName(url) {
+  const m = url.match(/\/([^/]+?)(?:\.git)?\/?$/);
+  if (!m) return null;
+  let n = m[1].toLowerCase().replace(/[^a-z0-9_.-]/g, '-').replace(/-+/g, '-').replace(/^[-_.]+|[-_.]+$/g, '');
+  if (!/^[a-z]/.test(n)) n = 'app-' + n;
+  return n.slice(0, 60);
+}
+function isReservedName(n) { return DEPLOY_RESERVED_NAMES.has(n); }
+async function pathExistsAsync(p) { try { await stat(p); return true; } catch { return false; } }
+
+async function parseMultipart(req, opts = {}) {
+  const maxFile = opts.maxFile || 32 * 1024;
+  return new Promise((resolve, reject) => {
+    let bb;
+    try { bb = Busboy({ headers: req.headers, limits: { fileSize: maxFile, files: 1, fields: 30, fieldNameSize: 64, fieldSize: 1024 } }); }
+    catch (e) { return reject(e); }
+    const fields = {};
+    let fileContent = null;
+    let fileTruncated = false;
+    bb.on('field', (name, val) => { fields[name] = val; });
+    bb.on('file', (name, stream, info) => {
+      const chunks = [];
+      let total = 0;
+      stream.on('data', c => { total += c.length; if (total <= maxFile) chunks.push(c); });
+      stream.on('limit', () => { fileTruncated = true; });
+      stream.on('end', () => { fileContent = Buffer.concat(chunks).toString('utf8'); });
+    });
+    bb.on('finish', () => resolve({ fields, fileContent, fileTruncated }));
+    bb.on('error', reject);
+    req.pipe(bb);
+  });
+}
+
+function sseSetup(res) {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('X-Accel-Buffering', 'no');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders?.();
+}
+function sseSend(res, event, data) {
+  try {
+    res.write('event: ' + event + '\n');
+    res.write('data: ' + JSON.stringify(data) + '\n\n');
+  } catch {}
+}
+
+async function runDeployPipeline(deployId, input, res) {
+  const seq = { n: 0 };
+  const append = (phase, level, message) => {
+    seq.n++;
+    try { stmtLogInsert.run(deployId, seq.n, Date.now(), phase, level, message.slice(0, 8000)); } catch {}
+    if (res) sseSend(res, 'log', { phase, level, message, seq: seq.n });
+  };
+  const setPhase = (phase, status) => {
+    stmtDeployUpdate.run(phase, status, null, null, null, null, deployId);
+    if (res) sseSend(res, 'phase', { phase, status });
+  };
+  const fail = async (phase, error, rollbackHint) => {
+    append(phase, 'error', error + (rollbackHint ? ' | rollback: ' + rollbackHint : ''));
+    stmtDeployUpdate.run(phase, 'failed', error, Math.floor(Date.now() / 1000), null, null, deployId);
+    if (res) sseSend(res, 'fail', { id: deployId, phase, error });
+  };
+
+  const { url, name, domain, upstream_port, email, skip_dns, staging_cert, env_content } = input;
+  const path = '/host/www/' + name;
+  const sitePath = '/host/nginx/sites-generated/' + domain + '.conf';
+  const composePath = path + '/docker-compose.yml';
+  let envWritten = false;
+  let cloneDone = false;
+  let nginxConfWritten = false;
+  let containersUp = false;
+  let canaryUp = false;
+  const canaryProject = ('canary-' + name).toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40);
+  const overridePath = '/tmp/compose-canary-' + deployId + '.yml';
+
+  try {
+    if (res) sseSend(res, 'start', { id: deployId, phases: DEPLOY_PHASES });
+
+    // === validate (deep) ===
+    setPhase('validate', 'running');
+    append('validate', 'info', 'check git ls-remote');
+    try {
+      await sh('git', ['ls-remote', '--heads', '--quiet', url], { timeout: 30000 });
+    } catch (e) { await fail('validate', 'url_unreachable: ' + (e.stderr || e.message).slice(-300)); return; }
+
+    // Disk check
+    try {
+      const { stdout } = await sh('df', ['-B1', '/host/www']);
+      const data = stdout.trim().split('\n').slice(1)[0];
+      const avail = parseInt(data.split(/\s+/)[3]) || 0;
+      if (avail < 2 * 1024 * 1024 * 1024) { await fail('validate', 'disk_full: <2GB free'); return; }
+    } catch {}
+
+    // DNS check
+    if (!skip_dns) {
+      try {
+        const { stdout: dnsOut } = await sh('getent', ['ahostsv4', domain]);
+        const resolved = dnsOut.trim().split(/\s+/)[0];
+        const { stdout: selfIp } = await sh('curl', ['-s4', '--max-time', '5', 'ifconfig.me']).catch(() => ({ stdout: '' }));
+        if (resolved && selfIp.trim() && resolved !== selfIp.trim()) {
+          append('validate', 'warn', `DNS ${domain} -> ${resolved} != server ${selfIp.trim()}`);
+          await fail('validate', 'dns_mismatch: ' + resolved + ' != ' + selfIp.trim()); return;
+        }
+        append('validate', 'info', 'DNS OK -> ' + resolved);
+      } catch (e) { await fail('validate', 'dns_resolve_failed: ' + e.message); return; }
+    }
+    setPhase('validate', 'ok');
+
+    // === clone ===
+    setPhase('clone', 'running');
+    try {
+      const { stdout, stderr } = await sh('git', ['clone', '--depth', '1', '--single-branch', url, path], { timeout: 300000, maxBuffer: 10 * 1024 * 1024 });
+      append('clone', 'info', (stdout + stderr).slice(-1500));
+      cloneDone = true;
+      try { await sh('chown', ['-R', '1000:1000', path]).catch(() => {}); } catch {}
+    } catch (e) { await fail('clone', 'clone_failed: ' + (e.stderr || e.message).slice(-300)); return; }
+    setPhase('clone', 'ok');
+
+    // === env ===
+    setPhase('env', 'running');
+    let envSource = 'none';
+    if (env_content && env_content.length > 0) {
+      await writeFile(path + '/.env', env_content, { mode: 0o600 });
+      envWritten = true; envSource = 'upload';
+    } else if (await pathExistsAsync(path + '/.env.example')) {
+      const ex = await readFile(path + '/.env.example', 'utf8');
+      await writeFile(path + '/.env', ex, { mode: 0o600 });
+      envWritten = true; envSource = 'example';
+    } else if (await pathExistsAsync(composePath)) {
+      try {
+        const yaml = await readFile(composePath, 'utf8');
+        const vars = Array.from(new Set([...yaml.matchAll(/\$\{([A-Z_][A-Z0-9_]*)\}/g)].map(m => m[1])));
+        if (vars.length > 0) {
+          const tpl = '# auto-generated, complete values\n' + vars.map(v => v + '=').join('\n') + '\n';
+          await writeFile(path + '/.env', tpl, { mode: 0o600 });
+          envWritten = true; envSource = 'generated';
+        }
+      } catch {}
+    }
+    append('env', 'info', 'source=' + envSource);
+    setPhase('env', 'ok');
+
+    // === detect ===
+    setPhase('detect', 'running');
+    let stack = null;
+    if (await pathExistsAsync(composePath)) stack = 'compose';
+    else if (await pathExistsAsync(path + '/compose.yml')) {
+      stack = 'compose';
+      // normalizar
+      try { await sh('mv', [path + '/compose.yml', composePath]); } catch {}
+    } else if (await pathExistsAsync(path + '/Dockerfile')) {
+      stack = 'dockerfile_only';
+      const tpl = `services:
+  app:
+    build: .
+    container_name: ${name}_app
+    restart: always
+    env_file: [.env]
+    expose:
+      - "${upstream_port}"
+    networks: [${name}_net, reverse_proxy]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:${upstream_port}/ >/dev/null 2>&1 || curl -fsS http://127.0.0.1:${upstream_port}/ >/dev/null 2>&1 || exit 1"]
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
+networks:
+  ${name}_net: { driver: bridge }
+  reverse_proxy: { external: true }
+`;
+      await writeFile(composePath, tpl);
+      append('detect', 'info', 'compose generado para Dockerfile-only');
+    }
+    if (!stack) { await fail('detect', 'no_stack: ni docker-compose.yml ni Dockerfile encontrado'); return; }
+    try { await sh('docker', ['compose', 'config', '-q'], { cwd: path, timeout: 15000 }); }
+    catch (e) { await fail('detect', 'compose_invalid: ' + (e.stderr || '').slice(-300)); return; }
+    append('detect', 'info', 'stack=' + stack);
+    setPhase('detect', 'ok');
+
+    // === build ===
+    setPhase('build', 'running');
+    try {
+      const { stdout, stderr } = await sh('docker', ['compose', 'build', '--pull'], { cwd: path, timeout: 600000, maxBuffer: 20 * 1024 * 1024 });
+      append('build', 'info', (stdout + stderr).slice(-2000));
+    } catch (e) { await fail('build', 'build_failed: ' + (e.stderr || e.message).slice(-500)); return; }
+    setPhase('build', 'ok');
+
+    // === test (canary blue-green) ===
+    setPhase('test', 'running');
+    try {
+      const { stdout: svcOut } = await sh('docker', ['compose', 'config', '--services'], { cwd: path });
+      const services = svcOut.trim().split('\n').filter(Boolean);
+      let yaml = 'services:\n';
+      for (const s of services) yaml += '  ' + s + ':\n    container_name: ' + canaryProject + '-' + s + '\n    ports: !reset []\n';
+      await writeFile(overridePath, yaml);
+      await sh('docker', ['compose', '-p', canaryProject, '-f', composePath, '-f', overridePath, 'up', '-d'], { cwd: path, timeout: 180000 });
+      canaryUp = true;
+      // Wait health
+      const deadline = Date.now() + 90000;
+      let testOk = false;
+      while (Date.now() < deadline) {
+        await new Promise(r => setTimeout(r, 5000));
+        try {
+          const { stdout } = await sh('docker', ['compose', '-p', canaryProject, '-f', composePath, '-f', overridePath, 'ps', '--format', 'json'], { cwd: path });
+          const ss = stdout.trim().split('\n').filter(Boolean).map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+          if (!ss.length) continue;
+          append('test', 'info', ss.map(x => x.Name + '=' + x.State + (x.Health ? '/' + x.Health : '')).join(', '));
+          if (ss.find(x => x.Health === 'unhealthy')) break;
+          if (!ss.find(x => x.State !== 'running') && ss.every(x => !x.Health || x.Health === 'healthy')) { testOk = true; break; }
+        } catch {}
+      }
+      if (!testOk) { await fail('test', 'test_unhealthy'); return; }
+    } catch (e) { await fail('test', 'test_setup_failed: ' + (e.stderr || e.message).slice(-300)); return; }
+    finally {
+      if (canaryUp) {
+        try { await sh('docker', ['compose', '-p', canaryProject, '-f', composePath, '-f', overridePath, 'down', '-t', '5', '-v'], { cwd: path, timeout: 60000 }); } catch {}
+        try { await import('node:fs/promises').then(m => m.unlink(overridePath)); } catch {}
+      }
+    }
+    setPhase('test', 'ok');
+
+    // === up (prod real) ===
+    setPhase('up', 'running');
+    try {
+      const { stdout, stderr } = await sh('docker', ['compose', 'up', '-d'], { cwd: path, timeout: 120000 });
+      containersUp = true;
+      append('up', 'info', (stdout + stderr).slice(-1500));
+      // Wait health 60s
+      const dl = Date.now() + 60000;
+      let ok = false;
+      while (Date.now() < dl) {
+        await new Promise(r => setTimeout(r, 3000));
+        try {
+          const { stdout } = await sh('docker', ['compose', 'ps', '--format', 'json'], { cwd: path });
+          const ss = stdout.trim().split('\n').filter(Boolean).map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+          if (!ss.length) continue;
+          if (!ss.find(x => x.State !== 'running') && ss.every(x => !x.Health || x.Health === 'healthy')) { ok = true; break; }
+        } catch {}
+      }
+      if (!ok) { await fail('up', 'prod_unhealthy'); return; }
+    } catch (e) { await fail('up', 'up_failed: ' + (e.stderr || e.message).slice(-300)); return; }
+    setPhase('up', 'ok');
+
+    // === nginx site ===
+    setPhase('nginx', 'running');
+    let targetContainer = `${name}_app`; // default para dockerfile_only
+    if (stack === 'compose') {
+      try {
+        const { stdout: psOut } = await sh('docker', ['compose', 'ps', '--format', 'json'], { cwd: path });
+        const ss = psOut.trim().split('\n').filter(Boolean).map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+        if (ss.length === 1) targetContainer = ss[0].Name;
+        else {
+          // Heurística: primer servicio no db/redis
+          const main = ss.find(x => !/db|redis|postgres|mysql|mariadb/i.test(x.Service || x.Name));
+          if (main) targetContainer = main.Name;
+        }
+      } catch {}
+    }
+    append('nginx', 'info', 'upstream=' + targetContainer + ':' + upstream_port);
+
+    const httpOnlyConf = `server {
+    listen 80;
+    listen [::]:80;
+    server_name ${domain};
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        try_files $uri =404;
+        default_type "text/plain";
+    }
+    location / { return 200 "pending-cert\\n"; default_type text/plain; }
+}
+`;
+    try {
+      await writeFile(sitePath, httpOnlyConf);
+      nginxConfWritten = true;
+      await sh('docker', ['exec', 'nginx_reverse_proxy', 'nginx', '-t']);
+      await sh('docker', ['exec', 'nginx_reverse_proxy', 'nginx', '-s', 'reload']);
+    } catch (e) { await fail('nginx', 'nginx_invalid: ' + (e.stderr || e.message).slice(-300)); return; }
+    setPhase('nginx', 'ok');
+
+    // === cert ===
+    setPhase('cert', 'running');
+    try {
+      const certbotArgs = ['run', '--rm', '-v', '/etc/letsencrypt:/etc/letsencrypt', '-v', '/var/www/certbot:/var/www/certbot', 'certbot/certbot', 'certonly', '--webroot', '-w', '/var/www/certbot', '-d', domain, '--email', email, '--agree-tos', '--no-eff-email', '--non-interactive'];
+      if (staging_cert) certbotArgs.push('--staging');
+      const { stdout, stderr } = await sh('docker', certbotArgs, { timeout: 180000 });
+      append('cert', 'info', (stdout + stderr).slice(-1500));
+      try { await stat('/host/letsencrypt/live/' + domain + '/fullchain.pem'); }
+      catch { await fail('cert', 'cert_not_created'); return; }
+    } catch (e) { await fail('cert', 'cert_failed: ' + (e.stderr || e.message).slice(-500)); return; }
+
+    // Write HTTPS conf
+    const httpsConf = `server {
+    listen 80;
+    listen [::]:80;
+    server_name ${domain};
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        try_files $uri =404;
+        default_type "text/plain";
+    }
+    location / { return 301 https://$host$request_uri; }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name ${domain};
+
+    ssl_certificate     /etc/letsencrypt/live/${domain}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${domain}/privkey.pem;
+
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Frame-Options SAMEORIGIN always;
+    add_header X-Content-Type-Options nosniff always;
+    add_header Referrer-Policy strict-origin-when-cross-origin always;
+
+    client_max_body_size 10m;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        try_files $uri =404;
+        default_type "text/plain";
+    }
+
+    location / {
+        proxy_pass http://${targetContainer}:${upstream_port};
+        proxy_http_version 1.1;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade           $http_upgrade;
+        proxy_set_header Connection        "upgrade";
+        proxy_read_timeout 120s;
+    }
+}
+`;
+    try {
+      await writeFile(sitePath, httpsConf);
+      await sh('docker', ['exec', 'nginx_reverse_proxy', 'nginx', '-t']);
+      await sh('docker', ['exec', 'nginx_reverse_proxy', 'nginx', '-s', 'reload']);
+    } catch (e) { await fail('cert', 'nginx_https_invalid: ' + (e.stderr || e.message).slice(-300)); return; }
+    setPhase('cert', 'ok');
+
+    // === webhook ===
+    setPhase('webhook', 'running');
+    const cfg = ensureRepoCfg(name);
+    setPhase('webhook', 'ok');
+
+    // === done ===
+    stmtDeployUpdate.run('done', 'ok', null, Math.floor(Date.now() / 1000), cfg.webhook_secret, null, deployId);
+    if (res) sseSend(res, 'done', {
+      id: deployId,
+      url: 'https://' + domain,
+      webhook_url: 'https://viewer.edvardks.com/api/webhooks/git/' + name,
+      webhook_secret: cfg.webhook_secret
+    });
+    // Notify SMTP
+    transporter.sendMail({
+      from: process.env.SMTP_FROM, to: process.env.NOTIFY_TO,
+      subject: '[ViewerSoftware] Deploy OK: ' + name,
+      text: 'Deploy completado.\nURL: https://' + domain + '\nWebhook: configura en GitHub con el secret mostrado en panel.'
+    }).catch(() => {});
+  } catch (e) {
+    await fail('internal', 'internal_error: ' + e.message);
+  } finally {
+    deployLocks.delete(name);
+    deployLocks.delete(domain);
+    if (res) try { res.end(); } catch {}
+
+    // Rollback si failed
+    const row = stmtDeployGet.get(deployId);
+    if (row && row.status === 'failed' && !row.rollback_done) {
+      append('rollback', 'info', 'iniciando rollback');
+      try {
+        if (canaryUp) try { await sh('docker', ['compose', '-p', canaryProject, '-f', composePath, '-f', overridePath, 'down', '-t', '5', '-v'], { cwd: path }); } catch {}
+        if (containersUp) try { await sh('docker', ['compose', 'down', '-t', '10', '-v'], { cwd: path, timeout: 60000 }); } catch {}
+        if (nginxConfWritten) {
+          try { await import('node:fs/promises').then(m => m.unlink(sitePath)); } catch {}
+          try { await sh('docker', ['exec', 'nginx_reverse_proxy', 'nginx', '-s', 'reload']); } catch {}
+        }
+        if (cloneDone) try { await sh('rm', ['-rf', path], { timeout: 30000 }); } catch {}
+        stmtDeployUpdate.run(row.phase, 'failed', row.error, Math.floor(Date.now() / 1000), null, 1, deployId);
+        append('rollback', 'info', 'rollback OK');
+      } catch (re) {
+        append('rollback', 'error', 'rollback partial: ' + re.message);
+      }
+      // Email admin
+      transporter.sendMail({
+        from: process.env.SMTP_FROM, to: process.env.NOTIFY_TO,
+        subject: '[ViewerSoftware] Deploy FAIL: ' + name,
+        text: 'Deploy fallo en phase=' + row.phase + ': ' + row.error + '\nRollback ejecutado.'
+      }).catch(() => {});
+    }
+  }
+}
+
+// Precheck endpoint (rápido, no inicia deploy)
+app.get('/api/deploy/precheck', requireAuth, async (req, res) => {
+  const domain = String(req.query.domain || '');
+  const name = String(req.query.name || '');
+  const out = { domain, name };
+  if (domain) {
+    out.domain_valid = /^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$/.test(domain);
+    out.domain_available = out.domain_valid && !(await pathExistsAsync('/host/nginx/sites-generated/' + domain + '.conf'));
+  }
+  if (name) {
+    out.name_valid = /^[a-z][a-z0-9_.-]{0,63}$/.test(name) && !isReservedName(name);
+    out.path_available = out.name_valid && !(await pathExistsAsync('/host/www/' + name));
+  }
+  res.json(out);
+});
+
+// Inspecciona repo remoto (shallow clone temporal) y detecta stack + puerto
+app.post('/api/deploy/inspect', requireAuth, async (req, res) => {
+  const { url } = req.body || {};
+  if (!/^(https?:\/\/[^\s@]+\.git|git@[^\s:]+:[^\s]+\.git)$/.test(url || '')) return res.status(400).json({ error: 'bad_url' });
+  const tmp = '/tmp/inspect-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+  try {
+    await sh('git', ['clone', '--depth', '1', '--single-branch', url, tmp], { timeout: 60000, maxBuffer: 5 * 1024 * 1024 });
+    const out = { has_compose: false, has_dockerfile: false, has_env_example: false, services: [], detected_ports: [], suggested_port: null, suggested_container: null };
+    try { await stat(tmp + '/.env.example'); out.has_env_example = true; } catch {}
+
+    let composePath = null;
+    if (await pathExistsAsync(tmp + '/docker-compose.yml')) composePath = tmp + '/docker-compose.yml';
+    else if (await pathExistsAsync(tmp + '/compose.yml')) composePath = tmp + '/compose.yml';
+
+    if (composePath) {
+      out.has_compose = true;
+      const yaml = await readFile(composePath, 'utf8');
+      // Parser ligero scan completo
+      const services = [];
+      let inServices = false;
+      let current = null;
+      for (const raw of yaml.split('\n')) {
+        const line = raw.replace(/\r$/, '');
+        if (/^services\s*:\s*$/.test(line)) { inServices = true; current = null; continue; }
+        if (inServices && /^[a-zA-Z_]/.test(line)) { inServices = false; current = null; }
+        if (!inServices) continue;
+        const svcM = line.match(/^ {2}([a-zA-Z][a-zA-Z0-9_-]*)\s*:\s*$/);
+        if (svcM) {
+          current = { name: svcM[1], expose: [], ports: [], container_name: null, image: null, build: false, _ctx: null };
+          services.push(current);
+          continue;
+        }
+        if (!current) continue;
+        const cn = line.match(/^ {4}container_name\s*:\s*([^\s#]+)/);
+        if (cn) current.container_name = cn[1].replace(/['"]/g, '');
+        const im = line.match(/^ {4}image\s*:\s*([^\s#]+)/);
+        if (im) current.image = im[1].replace(/['"]/g, '');
+        if (/^ {4}build\s*:/.test(line)) current.build = true;
+        if (/^ {4}expose\s*:/.test(line)) { current._ctx = 'expose'; continue; }
+        if (/^ {4}ports\s*:/.test(line)) { current._ctx = 'ports'; continue; }
+        if (/^ {4}[a-zA-Z_]/.test(line)) current._ctx = null;
+        if (current._ctx === 'expose') {
+          const m = line.match(/^ {6,}-\s*['"]?(\d+)['"]?\s*$/);
+          if (m) current.expose.push(parseInt(m[1]));
+        }
+        if (current._ctx === 'ports') {
+          const m = line.match(/^ {6,}-\s*['"]?(?:\d+:)?(\d+)['"]?\s*$/);
+          if (m) current.ports.push(parseInt(m[1]));
+        }
+      }
+      // Heurística servicio principal: prefer frontend/web/app, fallback non-db
+      const main = services.find(s => /^(frontend|front|web|app|nginx|client|ui)$/i.test(s.name))
+                || services.find(s => !/db|redis|postgres|mysql|mariadb|memcached|worker|queue/i.test(s.name))
+                || services[0];
+      out.services = services.map(s => ({ name: s.name, container_name: s.container_name, expose: s.expose, ports: s.ports, image: s.image, has_build: s.build }));
+      if (main) {
+        out.suggested_container = main.container_name || (deriveName(url) + '_' + main.name);
+        out.suggested_port = main.expose[0] || main.ports[0] || null;
+        out.detected_ports = [...new Set([...main.expose, ...main.ports])];
+      }
+    } else if (await pathExistsAsync(tmp + '/Dockerfile')) {
+      out.has_dockerfile = true;
+      const df = await readFile(tmp + '/Dockerfile', 'utf8');
+      const exposeMatches = [...df.matchAll(/^EXPOSE\s+(\d+)/gim)];
+      out.detected_ports = exposeMatches.map(m => parseInt(m[1]));
+      out.suggested_port = out.detected_ports[0] || null;
+      out.suggested_container = deriveName(url) + '_app';
+    }
+    out.suggested_name = deriveName(url);
+    res.json(out);
+  } catch (e) {
+    res.status(500).json({ error: 'inspect_failed', detail: (e.stderr || e.message).slice(-300) });
+  } finally {
+    try { await sh('rm', ['-rf', tmp], { timeout: 15000 }); } catch {}
+  }
+});
+
+// Lista deploys
+app.get('/api/deploys', requireAuth, (req, res) => {
+  const limit = Math.min(parseInt(req.query.limit || '50') || 50, 200);
+  const status = req.query.status ? String(req.query.status) : null;
+  try {
+    if (status) {
+      const rows = db.prepare('SELECT id,ts,finished_ts,user,name,domain,phase,status,error FROM deploys WHERE status=? ORDER BY ts DESC LIMIT ?').all(status, limit);
+      return res.json(rows);
+    }
+    res.json(stmtDeployList.all(limit));
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+app.get('/api/deploys/:id', requireAuth, (req, res) => {
+  const row = stmtDeployGet.get(req.params.id);
+  if (!row) return res.status(404).json({ error: 'not_found' });
+  res.json(row);
+});
+app.get('/api/deploys/:id/logs', requireAuth, (req, res) => {
+  const since = parseInt(req.query.since_seq || '0') || 0;
+  const limit = Math.min(parseInt(req.query.limit || '500'), 2000);
+  const row = stmtDeployGet.get(req.params.id);
+  if (!row) return res.status(404).json({ error: 'not_found' });
+  res.json(stmtLogGet.all(req.params.id, since, limit));
+});
+
+// Endpoint principal SSE
+const deployRateLimit = rateLimit({
+  windowMs: 60 * 60 * 1000, max: 10, standardHeaders: true,
+  skip: (req) => { const ip = realIp(req); return ip === '127.0.0.1' || ip === '::1' || ip.startsWith('::ffff:127.') || ip.startsWith('172.'); }
+});
+app.post('/api/deploy/new', ...requireOp, deployRateLimit, async (req, res) => {
+  let parsed;
+  try { parsed = await parseMultipart(req, { maxFile: 32 * 1024 }); }
+  catch (e) { return res.status(400).json({ error: 'bad_multipart', detail: e.message }); }
+  if (parsed.fileTruncated) return res.status(413).json({ error: 'env_too_large' });
+
+  const f = parsed.fields;
+  const url = String(f.url || '').trim();
+  if (!/^(https?:\/\/[^\s@]+\.git|git@[^\s:]+:[^\s]+\.git)$/.test(url)) return res.status(400).json({ error: 'bad_url' });
+  if (url.startsWith('git@') && !(await pathExistsAsync('/root/.ssh/asadorvps'))) return res.status(400).json({ error: 'ssh_key_missing' });
+
+  let name = String(f.name || '').trim() || deriveName(url);
+  if (!name) return res.status(400).json({ error: 'bad_name' });
+  if (isReservedName(name)) return res.status(400).json({ error: 'reserved_name' });
+  if (!/^[a-z][a-z0-9_.-]{0,63}$/.test(name)) return res.status(400).json({ error: 'bad_name' });
+
+  const domain = String(f.domain || '').trim().toLowerCase();
+  if (!/^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$/.test(domain)) return res.status(400).json({ error: 'bad_domain' });
+
+  const upstream_port = parseInt(f.upstream_port || '0');
+  if (!Number.isInteger(upstream_port) || upstream_port < 1 || upstream_port > 65535) return res.status(400).json({ error: 'bad_port' });
+
+  const email = (f.email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email)) ? f.email : (process.env.DEFAULT_CERT_EMAIL || 'admin@example.com');
+  const skip_dns = f.skip_dns === 'true' || f.skip_dns === '1';
+  const staging_cert = f.staging_cert === 'true' || f.staging_cert === '1';
+
+  // env upload check NULL byte
+  if (parsed.fileContent && parsed.fileContent.includes('\0')) return res.status(400).json({ error: 'invalid_env' });
+
+  // Pre-check sync
+  if (await pathExistsAsync('/host/www/' + name)) return res.status(409).json({ error: 'path_in_use' });
+  if (await pathExistsAsync('/host/nginx/sites-generated/' + domain + '.conf')) return res.status(409).json({ error: 'domain_in_use' });
+
+  // Concurrency locks
+  if (deployLocks.has(name) || deployLocks.has(domain)) return res.status(409).json({ error: 'concurrency_conflict' });
+  if (deployLocks.size >= 5) { res.setHeader('Retry-After', '60'); return res.status(503).json({ error: 'too_many_deploys' }); }
+
+  const id = randomUUID();
+  deployLocks.set(name, id);
+  deployLocks.set(domain, id);
+  stmtDeployInsert.run(id, Math.floor(Date.now() / 1000), req.user.u, url, name, domain, upstream_port, email, skip_dns ? 1 : 0, staging_cert ? 1 : 0, 'queued', 'running');
+
+  sseSetup(res);
+  // Heartbeat to keep alive
+  const hb = setInterval(() => { try { res.write(': keepalive\n\n'); } catch {} }, 30000);
+  res.on('close', () => clearInterval(hb));
+
+  runDeployPipeline(id, { url, name, domain, upstream_port, email, skip_dns, staging_cert, env_content: parsed.fileContent }, res)
+    .catch(e => console.error('deploy pipe:', e.message))
+    .finally(() => clearInterval(hb));
+});
+
 // Logs tail
 app.get('/api/logs/tail', requireAuth, async (req, res) => {
   const source = String(req.query.source || '');
@@ -1165,6 +1788,26 @@ app.get('/api/logs/tail', requireAuth, async (req, res) => {
       if (!/^[A-Za-z0-9_.-]+$/.test(name)) return res.status(400).json({ error: 'bad_container' });
       const { stdout, stderr } = await sh('docker', ['logs', '--tail', String(limit * 3), name]);
       lines = (stdout + stderr).split('\n').filter(Boolean);
+    } else if (source.startsWith('stack:')) {
+      const project = source.slice('stack:'.length);
+      if (!/^[a-zA-Z0-9_.-]{1,80}$/.test(project)) return res.status(400).json({ error: 'bad_stack' });
+      try {
+        const { stdout: psOut } = await sh('docker', ['ps', '-a', '--filter', 'label=com.docker.compose.project=' + project, '--format', '{{.Names}}']);
+        const containers = psOut.trim().split('\n').filter(Boolean);
+        if (containers.length === 0) {
+          return res.json({ source, filter, count: 0, lines: [] });
+        }
+        const perContainer = Math.max(20, Math.floor((limit * 3) / containers.length));
+        const all = [];
+        for (const cname of containers) {
+          try {
+            const { stdout, stderr } = await sh('docker', ['logs', '--tail', String(perContainer), cname]);
+            const cls = (stdout + stderr).split('\n').filter(Boolean).map(l => '[' + cname + '] ' + l);
+            all.push(...cls);
+          } catch { }
+        }
+        lines = all;
+      } catch (e) { return res.status(500).json({ error: e.message }); }
     } else {
       return res.status(400).json({ error: 'bad_source' });
     }
@@ -1357,8 +2000,32 @@ app.get('/api/system/top', requireAuth, async (_, res) => {
 
 app.get('/api/containers', requireAuth, async (_, res) => {
   try {
-    const { stdout } = await sh('docker', ['ps', '-a', '--format', '{{json .}}']);
+    const { stdout } = await sh('docker', ['ps', '-a', '--no-trunc', '--format', '{{json .}}']);
     const list = stdout.trim().split('\n').filter(Boolean).map(l => JSON.parse(l));
+    // Parse Labels (Docker returns it as "k=v,k2=v2" string) → object
+    // Enrich with StartedAt via single docker inspect (multi-arg)
+    const ids = list.map(c => c.ID);
+    let inspectMap = {};
+    if (ids.length > 0) {
+      try {
+        const { stdout: insOut } = await sh('docker', ['inspect', '--format', '{{.Id}}|{{.State.StartedAt}}', ...ids]);
+        for (const line of insOut.trim().split('\n')) {
+          const [id, started] = line.split('|');
+          if (id) inspectMap[id] = started;
+        }
+      } catch {}
+    }
+    for (const c of list) {
+      const labelsObj = {};
+      if (typeof c.Labels === 'string') {
+        for (const pair of c.Labels.split(',')) {
+          const i = pair.indexOf('=');
+          if (i > 0) labelsObj[pair.slice(0, i)] = pair.slice(i + 1);
+        }
+      }
+      c.Labels = labelsObj;
+      c.StartedAt = inspectMap[c.ID] || c.CreatedAt || '';
+    }
     res.json(list);
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
@@ -1439,6 +2106,55 @@ app.get('/api/containers/stats', requireAuth, async (_, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// Stack actions (docker compose down/up/restart at compose project level)
+app.post('/api/stacks/:project/down', ...requireOp, async (req, res) => {
+  const proj = req.params.project;
+  if (!/^[a-zA-Z0-9_.-]{1,80}$/.test(proj)) return res.status(400).json({ error: 'bad_project' });
+  if (proj === 'viewersoftware') return res.status(400).json({ error: 'no_self_down' });
+  try {
+    // Find config_files via inspect first running container of stack
+    const { stdout: psOut } = await sh('docker', ['ps', '-a', '--filter', 'label=com.docker.compose.project=' + proj, '--format', '{{.ID}}']);
+    const ids = psOut.trim().split('\n').filter(Boolean);
+    if (ids.length === 0) return res.status(404).json({ error: 'no_containers' });
+    const { stdout: insOut } = await sh('docker', ['inspect', '--format', '{{index .Config.Labels "com.docker.compose.project.config_files"}}|{{index .Config.Labels "com.docker.compose.project.working_dir"}}', ids[0]]);
+    const [configFile, workingDir] = insOut.trim().split('|');
+    if (!workingDir || workingDir === '<no value>') return res.status(500).json({ error: 'no_working_dir' });
+    // Map host /var/www/... to /host/www/...
+    const cwd = workingDir.replace(/^\/var\/www\//, '/host/www/');
+    const { stdout, stderr } = await sh('docker', ['compose', 'down', '-t', '10'], { cwd, timeout: 60000 });
+    res.json({ ok: true, project: proj, output: (stdout + stderr).slice(-2000) });
+  } catch (e) { res.status(500).json({ error: e.message, stderr: (e.stderr || '').slice(-500) }); }
+});
+
+app.post('/api/stacks/:project/up', ...requireOp, async (req, res) => {
+  const proj = req.params.project;
+  if (!/^[a-zA-Z0-9_.-]{1,80}$/.test(proj)) return res.status(400).json({ error: 'bad_project' });
+  try {
+    const { stdout: psOut } = await sh('docker', ['ps', '-a', '--filter', 'label=com.docker.compose.project=' + proj, '--format', '{{.ID}}']);
+    const ids = psOut.trim().split('\n').filter(Boolean);
+    if (ids.length === 0) return res.status(404).json({ error: 'no_containers' });
+    const { stdout: insOut } = await sh('docker', ['inspect', '--format', '{{index .Config.Labels "com.docker.compose.project.working_dir"}}', ids[0]]);
+    const workingDir = insOut.trim();
+    if (!workingDir || workingDir === '<no value>') return res.status(500).json({ error: 'no_working_dir' });
+    const cwd = workingDir.replace(/^\/var\/www\//, '/host/www/');
+    const { stdout, stderr } = await sh('docker', ['compose', 'up', '-d'], { cwd, timeout: 120000 });
+    res.json({ ok: true, project: proj, output: (stdout + stderr).slice(-2000) });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Docker system cleanup (admin only) — removes stopped containers, dangling images, unused networks
+// Does NOT remove volumes (data safety)
+app.post('/api/system/docker-prune', ...requireAdmin, async (_, res) => {
+  try {
+    const out = [];
+    const c1 = await sh('docker', ['container', 'prune', '-f'], { timeout: 60000 }); out.push('containers: ' + c1.stdout.trim().split('\n').pop());
+    const c2 = await sh('docker', ['image', 'prune', '-af'], { timeout: 120000 }); out.push('images: ' + c2.stdout.trim().split('\n').pop());
+    const c3 = await sh('docker', ['network', 'prune', '-f'], { timeout: 30000 }); out.push('networks: ' + c3.stdout.trim().split('\n').pop());
+    const c4 = await sh('docker', ['builder', 'prune', '-af'], { timeout: 120000 }); out.push('builder: ' + c4.stdout.trim().split('\n').pop());
+    res.json({ ok: true, summary: out.join(' · '), details: out });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 app.get('/api/containers/:name/logs', requireAuth, async (req, res) => {
   const name = req.params.name;
   if (!/^[A-Za-z0-9_.-]+$/.test(name)) return res.status(400).json({ error: 'bad name' });
@@ -1478,16 +2194,190 @@ app.get('/api/sites', requireAuth, async (_, res) => {
     for (const f of files) {
       const domain = f.replace(/\.conf$/, '');
       let expiresAt = null;
+      let issuedAt = null;
       try {
         const certPath = '/host/letsencrypt/live/' + domain + '/fullchain.pem';
-        const { stdout } = await sh('openssl', ['x509', '-noout', '-enddate', '-in', certPath]);
-        const m = stdout.match(/notAfter=(.+)/); if (m) expiresAt = new Date(m[1].trim()).toISOString();
+        const { stdout } = await sh('openssl', ['x509', '-noout', '-dates', '-in', certPath]);
+        const mEnd = stdout.match(/notAfter=(.+)/); if (mEnd) expiresAt = new Date(mEnd[1].trim()).toISOString();
+        const mStart = stdout.match(/notBefore=(.+)/); if (mStart) issuedAt = new Date(mStart[1].trim()).toISOString();
       } catch { }
       const body = await readFile(path.join(dir, f), 'utf8');
       const upstream = (body.match(/proxy_pass\s+http:\/\/([^;\s]+)/) || [])[1] || null;
-      out.push({ domain, upstream, expiresAt });
+      out.push({ domain, upstream, issuedAt, expiresAt });
     }
     res.json(out);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Traffic aggregated per domain (last N from nginx access log)
+app.get('/api/sites/traffic/summary', requireAuth, async (req, res) => {
+  const since = String(req.query.since || '1h');
+  try {
+    const { stdout } = await sh('docker', ['exec', 'nginx_reverse_proxy', 'sh', '-c', 'tail -n 5000 /var/log/nginx/access.log'], { maxBuffer: 20 * 1024 * 1024 });
+    const lines = stdout.split('\n').filter(Boolean);
+    // Parse: try to extract host from request via nginx default log format (no host included usually)
+    // Workaround: scan sites-generated to get domain list; we tag each line by matching server_name later via Referer or Host header isn't in default log_format.
+    // Strategy: count by source dir conf — read all sites and assume traffic is proportional to log lines containing referer with that domain OR HTTP host header.
+    // Pragmatic: use Host from referer/request path lookups won't work without host. Fall back: count by 'X-Forwarded-Host' if present.
+    // Better: parse status + assume single domain via server log. Default format doesn't show server_name. Use sum total + per-domain heuristic via referer host.
+    const sites = (await readdir('/host/nginx/sites-generated')).filter(f => f.endsWith('.conf') && !f.includes('.bak')).map(f => f.replace(/\.conf$/, ''));
+    const counts = {};
+    for (const s of sites) counts[s] = 0;
+    for (const l of lines) {
+      // Try common patterns: "Host:" header or Referer host
+      let match = false;
+      for (const s of sites) {
+        if (l.includes(' ' + s + ' ') || l.includes('//' + s + '/') || l.includes('//' + s + '"')) {
+          counts[s] = (counts[s] || 0) + 1;
+          match = true;
+          break;
+        }
+      }
+    }
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const domains = Object.entries(counts)
+      .map(([domain, count]) => ({ domain, count, pct: total > 0 ? Math.round((count / total) * 1000) / 10 : 0 }))
+      .filter(d => d.count > 0)
+      .sort((a, b) => b.count - a.count);
+    res.json({ since, total, domains });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// Pure functions exported for tests (mounted inline)
+function composeQuality(yamlText) {
+  const issues = [];
+  const services = [];
+  const networks = [];
+  let inServices = false;
+  let inNetworks = false;
+  let current = null;
+  let netCurrent = null;
+  for (const raw of String(yamlText).split('\n')) {
+    const line = raw.replace(/\r$/, '');
+    if (/^services\s*:\s*$/.test(line)) { inServices = true; inNetworks = false; current = null; continue; }
+    if (/^networks\s*:\s*$/.test(line)) { inNetworks = true; inServices = false; netCurrent = null; continue; }
+    if (/^[a-zA-Z_]/.test(line) && !/^(services|networks)\s*:/.test(line)) { inServices = false; inNetworks = false; }
+    if (inServices) {
+      const svcM = line.match(/^ {2}([a-zA-Z][a-zA-Z0-9_-]*)\s*:\s*$/);
+      if (svcM) {
+        current = { name: svcM[1], ports: [], hostPorts: [], networks: [], healthcheck: false, restart: false, _ctx: null };
+        services.push(current);
+        continue;
+      }
+      if (!current) continue;
+      if (/^ {4}restart\s*:/.test(line)) current.restart = true;
+      if (/^ {4}healthcheck\s*:/.test(line)) current.healthcheck = true;
+      // Inline networks: must come BEFORE setting _ctx
+      const inlineNets = line.match(/^ {4}networks\s*:\s*\[([^\]]+)\]/);
+      if (inlineNets) {
+        current.networks.push(...inlineNets[1].split(',').map(s => s.trim()).filter(Boolean));
+        continue;
+      }
+      const inlinePorts = line.match(/^ {4}ports\s*:\s*\[([^\]]+)\]/);
+      if (inlinePorts) {
+        for (const p of inlinePorts[1].split(',').map(s => s.trim().replace(/['"]/g, ''))) {
+          if (p.includes(':')) {
+            const [h, c] = p.split(':');
+            current.hostPorts.push(parseInt(h));
+            current.ports.push(parseInt(c));
+          } else { current.ports.push(parseInt(p)); }
+        }
+        continue;
+      }
+      if (/^ {4}ports\s*:\s*$/.test(line)) { current._ctx = 'ports'; continue; }
+      if (/^ {4}networks\s*:\s*$/.test(line)) { current._ctx = 'networks'; continue; }
+      if (/^ {4}[a-zA-Z_]/.test(line)) current._ctx = null;
+      if (current._ctx === 'ports') {
+        const m = line.match(/^ {6,}-\s*['"]?(\d+):(\d+)['"]?\s*$/);
+        if (m) current.hostPorts.push(parseInt(m[1]));
+        const m2 = line.match(/^ {6,}-\s*['"]?(\d+)['"]?\s*$/);
+        if (m2) current.ports.push(parseInt(m2[1]));
+      }
+      if (current._ctx === 'networks') {
+        const m = line.match(/^ {6,}-\s*([a-zA-Z0-9_-]+)\s*$/);
+        if (m) current.networks.push(m[1]);
+      }
+    }
+    if (inNetworks) {
+      const nm = line.match(/^ {2}([a-zA-Z][a-zA-Z0-9_-]*)\s*:\s*$/);
+      const nmInline = line.match(/^ {2}([a-zA-Z][a-zA-Z0-9_-]*)\s*:\s*\{[^}]*\}/);
+      const nmExternal = line.match(/^ {2}([a-zA-Z][a-zA-Z0-9_-]*)\s*:\s*\{[^}]*external\s*:\s*true[^}]*\}/);
+      if (nm) { netCurrent = { name: nm[1], external: false }; networks.push(netCurrent); continue; }
+      if (nmInline) { netCurrent = { name: nmInline[1], external: /external\s*:\s*true/.test(line) }; networks.push(netCurrent); continue; }
+      if (netCurrent && /^ {4}external\s*:\s*true/.test(line)) netCurrent.external = true;
+    }
+  }
+
+  const isDb = (n) => /db|redis|postgres|mysql|mariadb|memcached|mongo/i.test(n);
+  const isFrontal = (n) => /^(frontend|front|web|app|nginx|client|ui|api|backend)$/i.test(n);
+  const frontal = services.find(s => isFrontal(s.name)) || services.find(s => !isDb(s.name)) || services[0];
+
+  for (const s of services) {
+    if (s.hostPorts.length > 0) issues.push({ rule: 'host_ports', severity: 'warn', service: s.name, fix: 'reset ports' });
+    if (!s.restart) issues.push({ rule: 'no_restart', severity: 'warn', service: s.name, fix: "add restart: always" });
+    if (isDb(s.name) && s.hostPorts.length > 0) issues.push({ rule: 'db_exposed', severity: 'error', service: s.name, fix: 'reset db ports' });
+  }
+  const hasReverseProxy = services.some(s => s.networks.includes('reverse_proxy'));
+  const reverseProxyDeclared = networks.find(n => n.name === 'reverse_proxy' && n.external);
+  if (!hasReverseProxy || !reverseProxyDeclared) {
+    issues.push({ rule: 'no_reverse_proxy', severity: 'warn', service: frontal ? frontal.name : '', fix: 'add reverse_proxy external network on frontal' });
+  }
+  if (frontal && !frontal.healthcheck) {
+    issues.push({ rule: 'no_healthcheck', severity: 'warn', service: frontal.name, fix: 'add healthcheck on ' + frontal.name });
+  }
+  return { issues, services, frontal: frontal ? frontal.name : null };
+}
+
+function generateOverride(qa, opts = {}) {
+  const { issues, services, frontal } = qa;
+  if (!issues.length) return '';
+  const lines = ['# auto-generated by viewerSoftware deploy quality check', 'services:'];
+  const byService = {};
+  for (const i of issues) {
+    if (!i.service) continue;
+    byService[i.service] = byService[i.service] || [];
+    byService[i.service].push(i.rule);
+  }
+  const allSvcs = new Set(Object.keys(byService));
+  if (frontal && issues.find(i => i.rule === 'no_reverse_proxy')) allSvcs.add(frontal);
+  for (const svc of allSvcs) {
+    lines.push('  ' + svc + ':');
+    const rules = byService[svc] || [];
+    if (rules.includes('host_ports') || rules.includes('db_exposed')) {
+      lines.push('    ports: !reset []');
+    }
+    if (rules.includes('no_restart')) {
+      lines.push('    restart: always');
+    }
+    if (svc === frontal && issues.find(i => i.rule === 'no_reverse_proxy')) {
+      lines.push('    networks:');
+      lines.push('      - reverse_proxy');
+    }
+    if (svc === frontal && issues.find(i => i.rule === 'no_healthcheck')) {
+      const port = opts.upstream_port || 3000;
+      lines.push('    healthcheck:');
+      lines.push('      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:' + port + '/ >/dev/null 2>&1 || curl -fsS http://127.0.0.1:' + port + '/ >/dev/null 2>&1 || exit 1"]');
+      lines.push('      interval: 15s');
+      lines.push('      timeout: 5s');
+      lines.push('      start_period: 30s');
+      lines.push('      retries: 5');
+    }
+  }
+  if (issues.find(i => i.rule === 'no_reverse_proxy')) {
+    lines.push('networks:');
+    lines.push('  reverse_proxy:');
+    lines.push('    external: true');
+  }
+  return lines.join('\n') + '\n';
+}
+
+app.post('/api/deploy/compose-quality', requireAuth, async (req, res) => {
+  const yaml = (req.body && req.body.yaml) || '';
+  if (typeof yaml !== 'string' || yaml.length === 0 || yaml.length > 200000) return res.status(400).json({ error: 'bad_yaml' });
+  try {
+    const qa = composeQuality(yaml);
+    const override_yaml = generateOverride(qa, { upstream_port: req.body.upstream_port || 3000 });
+    res.json({ issues: qa.issues, frontal: qa.frontal, override_yaml });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 

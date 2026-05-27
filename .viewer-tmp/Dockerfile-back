@@ -1,0 +1,14 @@
+FROM node:20-alpine
+WORKDIR /app
+RUN apk add --no-cache docker-cli docker-cli-compose curl python3 make g++ git openssh-client openssl \
+ && git config --global --add safe.directory '*' \
+ && git config --global advice.detachedHead false
+COPY package.json ./
+RUN npm install --omit=dev --no-audit --no-fund
+COPY src ./src
+ENV NODE_ENV=production PORT=4500
+EXPOSE 4500
+HEALTHCHECK --interval=15s --timeout=3s --start-period=10s --retries=5 CMD curl -fsS http://localhost:4500/api/health || exit 1
+COPY entry.sh /entry.sh
+RUN chmod +x /entry.sh
+CMD ["/entry.sh"]

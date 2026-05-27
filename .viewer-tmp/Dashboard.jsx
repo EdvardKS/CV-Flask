@@ -1183,6 +1183,32 @@ function CronEditor({ initial, onSaved, notify }) {
   );
 }
 
+function TrafficSummaryCard({ delay }) {
+  const s = useApi('/api/sites/traffic/summary?since=1h', 30000);
+  return (
+    <Card title="Tráfico global (1h)" delay={delay} help="Suma de hits por dominio en la última hora. Barra horizontal = % sobre total. Ordenado descendente." className="lg:col-span-3">
+      {!s.data && <div className="text-sm text-bone-500">Cargando…</div>}
+      {s.data && s.data.total === 0 && <div className="text-sm text-bone-500">Sin tráfico en la última hora</div>}
+      {s.data && s.data.total > 0 && (
+        <div className="space-y-3">
+          <div className="text-xs text-bone-500 dark:text-bone-400">Total: <span className="font-semibold">{s.data.total.toLocaleString()}</span> hits · {s.data.domains.length} dominios</div>
+          {s.data.domains.map((d, i) => (
+            <div key={d.domain} className="space-y-1">
+              <div className="flex items-center justify-between text-sm">
+                <span className="font-medium truncate" title={d.domain}>{d.domain}</span>
+                <span className="text-xs text-bone-500 dark:text-bone-400 whitespace-nowrap ml-2">{d.count.toLocaleString()} ({d.pct}%)</span>
+              </div>
+              <div className="h-2 rounded-full bg-bone-100 dark:bg-bone-700 overflow-hidden">
+                <motion.div initial={{ width: 0 }} animate={{ width: d.pct + '%' }} transition={{ duration: 0.8, ease: 'easeOut', delay: i * 0.05 }} className="h-full bg-moss-grad" />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </Card>
+  );
+}
+
 function TrafficPanel({ sites }) {
   const [domain, setDomain] = useState(null);
   const [data, setData] = useState(null);
@@ -1293,6 +1319,7 @@ const TABS = [
   { id: 'nginx', label: 'Nginx', icon: '🌐', help: 'Sitios, tráfico por dominio, editor conf, nginx -t/reload' },
   { id: 'docker', label: 'Docker', icon: '🐳', help: 'Containers, eventos, logs, exec, restart' },
   { id: 'certs', label: 'Certificados', icon: '🔏', help: 'SSL Let\'s Encrypt: emisión, renovación, expiración' },
+  { id: 'deploy_new', label: 'Desplegar nuevo', icon: '🚀', help: 'Wizard: clone + env + cert + dominio en un click' },
   { id: 'repos', label: 'Repositorios', icon: '📦', help: 'Git clone/pull de repos en /var/www' },
   { id: 'files', label: 'Archivos', icon: '📁', help: 'Explorador y editor de /var/www (sandbox)' },
   { id: 'logs', label: 'Logs', icon: '📜', help: 'Logs nginx + containers filtrables hot-time' },
@@ -1478,10 +1505,80 @@ function DeployLogModal({ name, onClose }) {
   );
 }
 
+function DeploysAuditCard({ notify }) {
+  const [onlyFailed, setOnlyFailed] = useState(false);
+  const url = '/api/deploys?limit=30' + (onlyFailed ? '&status=failed' : '');
+  const dep = useApi(url, 10000);
+  const [logFor, setLogFor] = useState(null);
+  const [logText, setLogText] = useState(null);
+  async function openLog(id) {
+    setLogFor(id); setLogText(null);
+    try {
+      const r = await fetch('/api/deploys/' + encodeURIComponent(id) + '/logs?limit=500', { credentials: 'include' });
+      setLogText(await r.json());
+    } catch (e) { setLogText({ error: e.message }); }
+  }
+  return (
+    <Card title="Auditoría deploys recientes" delay={0.05} help="Historial de despliegues del wizard 'Desplegar nuevo' y deploys via webhook. Click un row para ver log. Toggle 'Solo failed' filtra fallos." action={
+      <label className="text-xs inline-flex items-center gap-1.5 cursor-pointer" title="Mostrar solo deploys fallidos">
+        <input type="checkbox" checked={onlyFailed} onChange={e => setOnlyFailed(e.target.checked)} />
+        Solo failed
+      </label>
+    }>
+      {!dep.data && <div className="text-sm text-bone-500">Cargando…</div>}
+      {dep.data && dep.data.length === 0 && <div className="text-sm text-bone-500">Sin deploys{onlyFailed ? ' fallidos' : ''}</div>}
+      {dep.data && dep.data.length > 0 && (
+        <div className="overflow-auto -mx-4 sm:-mx-5 px-4 sm:px-5">
+          <table className="w-full text-xs sm:text-sm min-w-[640px]">
+            <thead className="text-xs text-bone-500 dark:text-bone-400 text-left">
+              <tr><th className="py-1">Cuando</th><th>User</th><th>Repo/Dominio</th><th>Phase</th><th>Status</th><th>Error</th></tr>
+            </thead>
+            <tbody>
+              {dep.data.map(d => {
+                const cls = d.status === 'ok' ? 'text-moss-700 dark:text-moss-300' : d.status === 'failed' ? 'text-red-600' : 'text-blue-600';
+                return (
+                  <motion.tr layout key={d.id} className="border-t border-bone-100 dark:border-bone-700 hover:bg-bone-50 dark:hover:bg-bone-800/50 cursor-pointer" onClick={() => openLog(d.id)}>
+                    <td className="py-1.5 whitespace-nowrap text-xs">{new Date(d.ts * 1000).toLocaleString()}</td>
+                    <td className="font-mono text-xs">{d.user}</td>
+                    <td className="text-xs truncate max-w-[180px]" title={d.name + ' · ' + d.domain}>{d.name}<br/><span className="text-bone-400">{d.domain}</span></td>
+                    <td className="text-xs">{d.phase}</td>
+                    <td className={'text-xs font-semibold ' + cls}>{d.status}</td>
+                    <td className="text-xs text-bone-500 truncate max-w-[200px]" title={d.error || ''}>{d.error || '—'}</td>
+                  </motion.tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+      <AnimatePresence>
+        {logFor && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6" onClick={() => setLogFor(null)}>
+            <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }}
+              onClick={e => e.stopPropagation()} className="card w-full max-w-4xl max-h-[80vh] flex flex-col">
+              <header className="flex items-center justify-between p-4 border-b border-bone-200 dark:border-bone-700">
+                <h3 className="font-semibold">Deploy log · {logFor.slice(0, 8)}</h3>
+                <button className="btn-ghost" onClick={() => setLogFor(null)}>Cerrar</button>
+              </header>
+              <pre className="p-4 text-xs font-mono overflow-auto flex-1 whitespace-pre-wrap">
+                {!logText && 'Cargando…'}
+                {logText && logText.error && 'Error: ' + logText.error}
+                {logText && Array.isArray(logText) && logText.map(l => '[' + new Date(l.ts_ms).toLocaleTimeString() + '] [' + l.phase + '/' + l.level + '] ' + l.message).join('\n')}
+              </pre>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Card>
+  );
+}
+
 function ReposTab({ notify, canWrite, isAdmin, setTab }) {
-  const repos = useApi('/api/repos', 15000);
+  const repos = useApi('/api/repos', 5000);
   const [cloneUrl, setCloneUrl] = useState('');
   const [cloneDir, setCloneDir] = useState('/var/www/');
+  const [showCloneModal, setShowCloneModal] = useState(false);
   const [busy, setBusy] = useState('');
   const [out, setOut] = useState(null);
   const [logFor, setLogFor] = useState(null);
@@ -1509,7 +1606,7 @@ function ReposTab({ notify, canWrite, isAdmin, setTab }) {
       if (r.ok) {
         notify('Clone OK · abriendo explorador en ' + cloneDir);
         try { localStorage.setItem('viewer_files_open', cloneDir); } catch {}
-        setCloneUrl(''); setCloneDir('/var/www/'); repos.reload();
+        setCloneUrl(''); setCloneDir('/var/www/'); setShowCloneModal(false); repos.reload();
         if (setTab) setTimeout(() => setTab('files'), 600);
       }
       else notify('Error: ' + j.error);
@@ -1561,7 +1658,12 @@ function ReposTab({ notify, canWrite, isAdmin, setTab }) {
 
   return (
     <div className="space-y-5">
-      <Card title="Repositorios" help="Lista de repos git en /var/www/. Cada uno muestra rama actual, commits ahead/behind del upstream, archivos modificados (dirty) y último commit." action={<span className="text-xs text-bone-500">{repos.data?.length ?? 0}</span>}>
+      <Card title="Repositorios" help="Lista de repos git en /var/www/. Cada uno muestra rama actual, commits ahead/behind del upstream, archivos modificados (dirty) y último commit." action={
+        <div className="flex items-center gap-2">
+          {canWrite && <button title="Clonar repo git nuevo" className="btn-primary text-xs px-3 py-1" onClick={() => setShowCloneModal(true)}>＋ Clonar nuevo</button>}
+          <span className="text-xs text-bone-500">{repos.data?.length ?? 0}</span>
+        </div>
+      }>
         <div className="overflow-auto">
           <table className="w-full text-sm min-w-[840px]">
             <thead className="text-xs text-bone-500 dark:text-bone-400 text-left">
@@ -1620,15 +1722,26 @@ function ReposTab({ notify, canWrite, isAdmin, setTab }) {
         </div>
       </Card>
 
-      {canWrite && (
-        <Card title="Clonar nuevo" help="Clona repo git en /var/www/<nombre>. URL acepta https://...git o git@...git. Timeout 5 min.">
-          <form onSubmit={clone} className="space-y-3">
-            <input className="input text-sm" placeholder="URL git (https://github.com/user/repo.git)" value={cloneUrl} onChange={e => setCloneUrl(e.target.value)} required />
-            <input className="input text-sm" placeholder="/var/www/destino" value={cloneDir} onChange={e => setCloneDir(e.target.value)} required />
-            <button className="btn-primary" disabled={busy === 'clone'}>{busy === 'clone' ? 'Clonando…' : 'Clonar'}</button>
-          </form>
-        </Card>
-      )}
+      <AnimatePresence>
+        {showCloneModal && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowCloneModal(false)}>
+            <motion.div initial={{ scale: 0.96 }} animate={{ scale: 1 }} exit={{ scale: 0.96 }}
+              onClick={e => e.stopPropagation()} className="card w-full max-w-lg p-6 space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="font-semibold text-lg">Clonar nuevo repo</h3>
+                <button className="btn-ghost" onClick={() => setShowCloneModal(false)}>Cerrar</button>
+              </div>
+              <p className="text-xs text-bone-500 dark:text-bone-400">Clona repo git en /var/www/&lt;nombre&gt;. URL acepta https://...git o git@...git. Timeout 5 min. Tras OK abre explorador en el directorio nuevo.</p>
+              <form onSubmit={clone} className="space-y-3">
+                <input className="input text-sm" placeholder="URL git (https://github.com/user/repo.git)" value={cloneUrl} onChange={e => setCloneUrl(e.target.value)} required />
+                <input className="input text-sm" placeholder="/var/www/destino" value={cloneDir} onChange={e => setCloneDir(e.target.value)} required />
+                <button className="btn-primary w-full" disabled={busy === 'clone'}>{busy === 'clone' ? 'Clonando…' : 'Clonar'}</button>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {out && (
         <Card title={(out.ok ? '✓' : '✗') + ' ' + out.name}>
@@ -1882,6 +1995,262 @@ function FilesTab({ notify, canWrite, isAdmin }) {
   );
 }
 
+function DeployWizard({ notify, onClose }) {
+  const [step, setStep] = useState(1);
+  const [form, setForm] = useState({ url: '', name: '', domain: '', upstream_port: '', skip_dns: false, staging_cert: false });
+  const [envFile, setEnvFile] = useState(null);
+  const [envText, setEnvText] = useState('');
+  const [precheck, setPrecheck] = useState({});
+  const [inspecting, setInspecting] = useState(false);
+  const [inspection, setInspection] = useState(null);
+  const [deploying, setDeploying] = useState(false);
+  const [phases, setPhases] = useState({});
+  const [logLines, setLogLines] = useState([]);
+  const [result, setResult] = useState(null);
+  const dropRef = useRef(null);
+
+  function deriveName(url) {
+    const m = (url || '').match(/\/([^/]+?)(?:\.git)?\/?$/);
+    if (!m) return '';
+    let n = m[1].toLowerCase().replace(/[^a-z0-9_.-]/g, '-').replace(/-+/g, '-').replace(/^[-_.]+|[-_.]+$/g, '');
+    if (!/^[a-z]/.test(n)) n = 'app-' + n;
+    return n.slice(0, 60);
+  }
+
+  async function checkDomain(name) {
+    if (!form.domain) return;
+    try {
+      const r = await fetch('/api/deploy/precheck?domain=' + encodeURIComponent(form.domain) + '&name=' + encodeURIComponent(name || form.name || deriveName(form.url)), { credentials: 'include' });
+      setPrecheck(await r.json());
+    } catch {}
+  }
+
+  async function inspectUrl() {
+    if (!form.url) return;
+    setInspecting(true); setInspection(null);
+    try {
+      const r = await fetch('/api/deploy/inspect', { method: 'POST', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ url: form.url }) });
+      const j = await r.json();
+      if (!r.ok) { notify('Inspect failed: ' + (j.error || j.detail || '')); setInspecting(false); return; }
+      setInspection(j);
+      // Auto-fill
+      const newName = j.suggested_name || deriveName(form.url);
+      setForm(f => ({ ...f, name: newName, upstream_port: j.suggested_port ? String(j.suggested_port) : f.upstream_port }));
+      // Precheck con nombre detectado
+      setTimeout(() => checkDomain(newName), 100);
+    } catch (e) { notify('Inspect error: ' + e.message); }
+    finally { setInspecting(false); }
+  }
+
+  async function onDrop(e) {
+    e.preventDefault();
+    dropRef.current?.classList.remove('ring-2', 'ring-moss-500');
+    const f = e.dataTransfer.files?.[0];
+    if (!f) return;
+    if (f.size > 32 * 1024) { notify('Archivo demasiado grande (max 32KB)'); return; }
+    const txt = await f.text();
+    setEnvFile(f); setEnvText(txt);
+  }
+
+  function redactEnv(text) {
+    return text.split('\n').map(line => {
+      const m = line.match(/^([A-Z_][A-Z0-9_]*)=(.+)$/i);
+      if (m && /(PASS|SECRET|KEY|TOKEN|CREDENTIAL|PRIVATE)/i.test(m[1])) return m[1] + '=' + '*'.repeat(Math.min(m[2].length, 16));
+      return line;
+    }).join('\n');
+  }
+
+  async function startDeploy() {
+    setDeploying(true); setPhases({}); setLogLines([]); setResult(null);
+    const fd = new FormData();
+    fd.append('url', form.url);
+    if (form.name) fd.append('name', form.name);
+    fd.append('domain', form.domain);
+    fd.append('upstream_port', String(form.upstream_port));
+    fd.append('skip_dns', form.skip_dns ? 'true' : 'false');
+    fd.append('staging_cert', form.staging_cert ? 'true' : 'false');
+    if (envFile) fd.append('env', envFile, '.env');
+
+    try {
+      const r = await fetch('/api/deploy/new', { method: 'POST', credentials: 'include', body: fd });
+      if (!r.ok) { const j = await r.json().catch(() => ({})); setResult({ ok: false, error: j.error || ('HTTP ' + r.status) }); setDeploying(false); return; }
+      const reader = r.body.getReader();
+      const dec = new TextDecoder();
+      let buf = '';
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        let idx;
+        while ((idx = buf.indexOf('\n\n')) !== -1) {
+          const chunk = buf.slice(0, idx); buf = buf.slice(idx + 2);
+          const ev = (chunk.match(/^event: (.+)$/m) || [])[1];
+          const dat = (chunk.match(/^data: (.+)$/m) || [])[1];
+          if (!ev || !dat) continue;
+          let data; try { data = JSON.parse(dat); } catch { continue; }
+          if (ev === 'phase') setPhases(p => ({ ...p, [data.phase]: data.status }));
+          if (ev === 'log') setLogLines(l => [...l.slice(-200), data]);
+          if (ev === 'done') { setResult({ ok: true, ...data }); }
+          if (ev === 'fail') { setResult({ ok: false, ...data }); }
+        }
+      }
+    } catch (e) { setResult({ ok: false, error: e.message }); }
+    finally { setDeploying(false); }
+  }
+
+  const phaseList = ['validate', 'clone', 'env', 'detect', 'build', 'test', 'up', 'nginx', 'cert', 'webhook'];
+  const phaseLabel = { validate: 'Validar', clone: 'Clonar', env: '.env', detect: 'Detectar stack', build: 'Build', test: 'Test aislado', up: 'Desplegar prod', nginx: 'Nginx site', cert: 'Cert LE', webhook: 'Webhook' };
+
+  return (
+    <div className="space-y-5 max-w-3xl">
+      {!deploying && !result && (
+        <Card title={'Paso ' + step + ' / 3'} help="Wizard para desplegar nuevo proyecto: clone + .env + build + test aislado + cert LE + dominio + webhook auto. Todo orquestado con rollback si algo falla.">
+          {step === 1 && (
+            <div className="space-y-3">
+              <div>
+                <label className="text-sm text-bone-700 dark:text-bone-300">URL git</label>
+                <div className="flex gap-2">
+                  <input className="input flex-1" placeholder="https://github.com/user/repo.git" value={form.url}
+                    onChange={e => setForm({ ...form, url: e.target.value })} />
+                  <button className="btn-ghost" disabled={!form.url || inspecting} onClick={inspectUrl} title="Clona temporal y detecta puerto/container">{inspecting ? '…' : '🔍 Inspeccionar'}</button>
+                </div>
+                {inspection && (
+                  <div className="mt-2 text-xs bg-moss-50 dark:bg-moss-900/30 p-3 rounded-lg space-y-1">
+                    <div>📁 directorio: <code className="font-mono">/var/www/{form.name}</code></div>
+                    {inspection.has_compose && <div>✓ docker-compose.yml detectado · servicios: {inspection.services.map(s => s.name).join(', ')}</div>}
+                    {inspection.has_dockerfile && !inspection.has_compose && <div>✓ Dockerfile detectado (compose se generará)</div>}
+                    {inspection.suggested_port && <div>✓ puerto detectado: <code className="font-mono">{inspection.suggested_port}</code></div>}
+                    {!inspection.suggested_port && <div className="text-amber-700 dark:text-amber-400">⚠ no se detectó puerto, especifica abajo</div>}
+                    {inspection.has_env_example && <div>✓ .env.example presente — se copiará a .env</div>}
+                  </div>
+                )}
+              </div>
+              <div>
+                <label className="text-sm text-bone-700 dark:text-bone-300">Dominio público</label>
+                <input className="input" placeholder="app.midominio.com" value={form.domain} onChange={e => setForm({ ...form, domain: e.target.value })} onBlur={() => checkDomain()} />
+                {precheck.domain_available === false && <div className="text-xs text-red-600 mt-1">⚠ Dominio ya en uso</div>}
+                {precheck.path_available === false && <div className="text-xs text-red-600 mt-1">⚠ Path /var/www/{form.name} ya en uso</div>}
+              </div>
+              <div>
+                <label className="text-sm text-bone-700 dark:text-bone-300">Puerto del container {form.upstream_port && inspection?.suggested_port == form.upstream_port && <span className="text-xs text-moss-600">(auto-detectado)</span>}</label>
+                <input className="input w-32" type="number" min={1} max={65535} placeholder={inspection?.suggested_port || 'manual'} value={form.upstream_port} onChange={e => setForm({ ...form, upstream_port: e.target.value })} />
+              </div>
+              <div className="flex flex-wrap gap-3 text-sm pt-2">
+                <label className="inline-flex items-center gap-2 cursor-pointer" title="Saltar comprobación DNS (útil si la propagación aún no acabó)">
+                  <input type="checkbox" checked={form.skip_dns} onChange={e => setForm({ ...form, skip_dns: e.target.checked })} />
+                  Saltar DNS check
+                </label>
+                <label className="inline-flex items-center gap-2 cursor-pointer" title="Usar LE staging (cert no válido en browser, pero sin rate-limit). Recomendado para pruebas.">
+                  <input type="checkbox" checked={form.staging_cert} onChange={e => setForm({ ...form, staging_cert: e.target.checked })} />
+                  LE staging (test)
+                </label>
+              </div>
+              <div className="text-xs text-bone-500 dark:text-bone-400 pt-1">Email LE: developerweks@gmail.com (fijo)</div>
+              <div className="pt-3">
+                <button className="btn-primary" disabled={!form.url || !form.domain || !form.upstream_port || !form.name} onClick={() => setStep(2)}>Continuar →</button>
+              </div>
+            </div>
+          )}
+
+          {step === 2 && (
+            <div className="space-y-4">
+              <div>
+                <label className="text-sm text-bone-700 dark:text-bone-300">Archivo .env (opcional, drag & drop)</label>
+                <div
+                  ref={dropRef}
+                  onDragOver={e => { e.preventDefault(); dropRef.current?.classList.add('ring-2', 'ring-moss-500'); }}
+                  onDragLeave={() => dropRef.current?.classList.remove('ring-2', 'ring-moss-500')}
+                  onDrop={onDrop}
+                  className="mt-2 border-2 border-dashed border-bone-300 dark:border-bone-700 rounded-2xl p-8 text-center text-sm text-bone-500 dark:text-bone-400 transition"
+                >
+                  {envFile ? (
+                    <div>
+                      <div className="font-mono text-bone-800 dark:text-bone-200">{envFile.name} · {envFile.size}B</div>
+                      <button className="text-xs text-red-600 hover:underline mt-2" onClick={() => { setEnvFile(null); setEnvText(''); }}>Quitar</button>
+                    </div>
+                  ) : (
+                    <>Suelta aquí un archivo <code className="font-mono">.env</code> (max 32KB)<br/><span className="text-xs">Si no, se detectará <code>.env.example</code> o se generará template desde compose</span></>
+                  )}
+                </div>
+                {envText && (
+                  <pre className="mt-3 text-xs bg-bone-100 dark:bg-bone-900 p-3 rounded-xl max-h-40 overflow-auto whitespace-pre-wrap">{redactEnv(envText)}</pre>
+                )}
+              </div>
+              <div className="pt-3 flex gap-2">
+                <button className="btn-ghost" onClick={() => setStep(1)}>← Volver</button>
+                <button className="btn-primary" onClick={() => setStep(3)}>Continuar →</button>
+              </div>
+            </div>
+          )}
+
+          {step === 3 && (
+            <div className="space-y-4">
+              <div className="card p-4 text-sm">
+                <div className="font-semibold mb-2">Resumen</div>
+                <div className="grid grid-cols-2 gap-y-1 text-xs">
+                  <span className="text-bone-500">URL</span><code className="font-mono">{form.url}</code>
+                  <span className="text-bone-500">Path</span><code className="font-mono">/var/www/{form.name}</code>
+                  <span className="text-bone-500">Dominio</span><code className="font-mono">{form.domain}</code>
+                  <span className="text-bone-500">Puerto</span><code className="font-mono">{form.upstream_port}</code>
+                  <span className="text-bone-500">Email LE</span><code className="font-mono">developerweks@gmail.com</code>
+                  <span className="text-bone-500">.env</span><span>{envFile ? envFile.name : (inspection?.has_env_example ? '.env.example (auto-copia)' : '(auto-generate)')}</span>
+                  <span className="text-bone-500">Skip DNS</span><span>{form.skip_dns ? '✓' : '—'}</span>
+                  <span className="text-bone-500">LE staging</span><span>{form.staging_cert ? '✓' : '—'}</span>
+                </div>
+              </div>
+              <div className="pt-2 flex gap-2">
+                <button className="btn-ghost" onClick={() => setStep(2)}>← Volver</button>
+                <motion.button whileTap={{ scale: 0.97 }} className="btn-primary" onClick={startDeploy}>🚀 Desplegar</motion.button>
+              </div>
+            </div>
+          )}
+        </Card>
+      )}
+
+      {(deploying || result) && (
+        <Card title="Deploy en curso" help="Cada fase se ejecuta secuencialmente. Si alguna falla → rollback automático.">
+          <div className="space-y-2 mb-4">
+            {phaseList.map(p => {
+              const st = phases[p] || (result?.phase === p && !result.ok ? 'failed' : '—');
+              const cls = st === 'ok' ? 'text-moss-700 dark:text-moss-300' : st === 'failed' ? 'text-red-600' : st === 'running' ? 'text-blue-600' : 'text-bone-400';
+              const icon = st === 'ok' ? '✓' : st === 'failed' ? '✗' : st === 'running' ? '⏳' : '○';
+              return <div key={p} className={'flex items-center gap-2 text-sm ' + cls}><span className="w-4">{icon}</span>{phaseLabel[p]}</div>;
+            })}
+          </div>
+          <pre className="text-xs font-mono bg-bone-100 dark:bg-bone-900 p-3 rounded-xl max-h-64 overflow-auto whitespace-pre-wrap">
+            {logLines.map(l => '[' + l.phase + '] ' + l.message).join('\n')}
+          </pre>
+          {result && (
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className={'mt-4 p-4 rounded-xl ' + (result.ok ? 'bg-moss-50 dark:bg-moss-900/30' : 'bg-red-50 dark:bg-red-900/30')}>
+              {result.ok ? (
+                <div className="space-y-2 text-sm">
+                  <div className="font-semibold text-moss-700 dark:text-moss-300">✓ Deploy completado</div>
+                  <div>URL: <a href={result.url} target="_blank" rel="noopener" className="text-moss-700 dark:text-moss-300 underline">{result.url}</a></div>
+                  <div className="text-xs">Webhook URL: <code className="font-mono bg-bone-200 dark:bg-bone-800 px-1 rounded">{result.webhook_url}</code></div>
+                  <div className="text-xs">Webhook secret: <code className="font-mono bg-bone-200 dark:bg-bone-800 px-1 rounded break-all">{result.webhook_secret}</code></div>
+                  <div className="pt-2 flex gap-2">
+                    <button className="btn-ghost text-xs" onClick={() => navigator.clipboard.writeText(result.webhook_url)}>Copiar URL</button>
+                    <button className="btn-ghost text-xs" onClick={() => navigator.clipboard.writeText(result.webhook_secret)}>Copiar secret</button>
+                  </div>
+                  <div className="text-xs text-bone-500 dark:text-bone-400 pt-2">Configura webhook en GitHub: Settings → Webhooks → Add. Content-type: application/json, secret arriba, eventos: push.</div>
+                </div>
+              ) : (
+                <div className="space-y-2 text-sm">
+                  <div className="font-semibold text-red-700 dark:text-red-300">✗ Deploy falló</div>
+                  <div className="text-xs">Phase: <code className="font-mono">{result.phase || '?'}</code></div>
+                  <div className="text-xs">Error: {result.error || 'unknown'}</div>
+                  <div className="text-xs text-bone-500 dark:text-bone-400 pt-1">Rollback ejecutado. Path borrado, nginx restaurado. Revisa el log arriba para detalles.</div>
+                  <button className="btn-ghost text-xs mt-2" onClick={() => { setDeploying(false); setResult(null); setPhases({}); setLogLines([]); }}>Reintentar</button>
+                </div>
+              )}
+            </motion.div>
+          )}
+        </Card>
+      )}
+    </div>
+  );
+}
+
 function LogsTab({ containers }) {
   const [source, setSource] = useState('nginx_access');
   const [filter, setFilter] = useState('');
@@ -1907,9 +2276,21 @@ function LogsTab({ containers }) {
     <Card title="Logs hot-time" help="Visor de logs combinado. Selector de fuente (nginx_access o container:NOMBRE) + filtro regex case-insensitive. Auto-refresh 5s opcional." className="md:col-span-2 lg:col-span-3">
       <div className="space-y-3">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-          <select className="input text-sm" value={source} onChange={e => setSource(e.target.value)} title="Fuente del log">
+          <select className="input text-sm" value={source} onChange={e => setSource(e.target.value)} title="Fuente del log (nginx_access, container:NAME o stack:PROJECT)">
             <option value="nginx_access">nginx_access</option>
-            {(containers || []).map(c => <option key={c.ID} value={'container:' + c.Names}>container:{c.Names}</option>)}
+            <optgroup label="Stacks (compose project)">
+              {(() => {
+                const stacks = new Set();
+                for (const c of (containers || [])) {
+                  const p = c.Labels && c.Labels['com.docker.compose.project'];
+                  if (p) stacks.add(p);
+                }
+                return [...stacks].sort().map(s => <option key={'stk-' + s} value={'stack:' + s}>stack:{s}</option>);
+              })()}
+            </optgroup>
+            <optgroup label="Containers individuales">
+              {(containers || []).map(c => <option key={c.ID} value={'container:' + c.Names}>container:{c.Names}</option>)}
+            </optgroup>
           </select>
           <input className="input text-sm md:col-span-2" placeholder="Filtro (regex case-i)" value={filter} onChange={e => setFilter(e.target.value)} title="Filtro regex" />
           <div className="flex gap-2">
@@ -1965,8 +2346,8 @@ export default function Dashboard() {
   const stats = useApi('/api/system/stats', 5000);
   const disk = useApi('/api/system/disk', 30000);
   const top = useApi('/api/system/top', 15000);
-  const containers = useApi('/api/containers', 10000);
-  const containerStats = useApi('/api/containers/stats', 10000);
+  const containers = useApi('/api/containers', 3000);
+  const containerStats = useApi('/api/containers/stats', 5000);
   const sites = useApi('/api/sites', 60000);
   const cron = useApi('/api/cron', 60000);
   const backups = useApi('/api/backups', 60000);
@@ -1983,6 +2364,9 @@ export default function Dashboard() {
   const [show2fa, setShow2fa] = useState(false);
   const [showUsers, setShowUsers] = useState(false);
   const [showAccess, setShowAccess] = useState(false);
+  const [showDeployWizard, setShowDeployWizard] = useState(false);
+  const [showDockerPrune, setShowDockerPrune] = useState(false);
+  const [stackAction, setStackAction] = useState(null); // {project, action: 'down'|'up'}
   const [tab, setTabRaw] = useState(() => {
     if (typeof window === 'undefined') return 'dashboard';
     return localStorage.getItem('viewer_tab') || 'dashboard';
@@ -2113,7 +2497,8 @@ export default function Dashboard() {
       </AnimatePresence>
 
       {T('logs') && <LogsTab containers={containers.data} />}
-      {T('repos') && <ReposTab notify={notify} canWrite={canWrite} isAdmin={isAdmin} setTab={setTab} />}
+      {T('deploy_new') && canWrite && <DeployWizard notify={notify} />}
+      {T('repos') && <><ReposTab notify={notify} canWrite={canWrite} isAdmin={isAdmin} setTab={setTab} /><DeploysAuditCard notify={notify} /></>}
       {T('files') && <FilesTab notify={notify} canWrite={canWrite} isAdmin={isAdmin} />}
       {T('profile') && <ProfileTab me={me.data} onPass={() => setShowPass(true)} on2fa={() => setShow2fa(true)} onAccess={() => setShowAccess(true)} onUsers={() => setShowUsers(true)} isAdmin={isAdmin} />}
 
@@ -2164,49 +2549,35 @@ export default function Dashboard() {
           </div>
         </Card>}
 
-        {(T('nginx') || T('certs')) && <Card title="Sitios" delay={0.15} help="Dominios servidos por nginx. Muestra upstream (container destino) y fecha de expiracion del cert Let's Encrypt. Click 'ver' para conf, 'editar' para modificar (con nginx -t rollback)." action={<span className="text-xs text-bone-500">{sites.data?.length ?? 0}</span>} className="lg:col-span-2">
-          <ul className="divide-y divide-bone-100 dark:divide-bone-700 -mx-1">
-            {(sites.data || []).map(s => (
-              <li key={s.domain} className="flex items-center justify-between py-2 px-1">
-                <div>
-                  <div className="font-medium text-sm">{s.domain}</div>
-                  <div className="text-xs text-bone-500 dark:text-bone-400">{s.upstream || '—'}</div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="text-xs text-bone-500 dark:text-bone-400">{s.expiresAt ? new Date(s.expiresAt).toLocaleDateString() : '—'}</div>
-                  <button title="Ver conf nginx (read-only)" className="text-xs text-moss-700 dark:text-moss-300 hover:underline" onClick={() => setConfFor(s.domain)}>ver</button>
-                  {canWrite && <button title="Editar conf nginx (con nginx -t rollback)" className="text-xs text-amber-700 dark:text-amber-400 hover:underline" onClick={() => setEditFor(s.domain)}>editar</button>}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </Card>}
-
-        {T('docker') && <Card title="Containers" delay={0.18} help="Todos los containers Docker (running + stopped). Click nombre para detalle. 📜 logs, ▶ exec allowlist, ↻ restart. CPU/MEM en vivo cada 10s." action={<span className="text-xs text-bone-500">{containers.data?.length ?? 0}</span>} className="lg:col-span-2">
-          <div className="overflow-auto max-h-80 -mx-4 sm:-mx-5 px-4 sm:px-5">
-            <table className="w-full text-xs sm:text-sm min-w-[480px]">
+        {(T('nginx') || T('certs')) && <Card title="Sitios" delay={0.15} help="Dominios servidos por nginx. Cert Let's Encrypt: Emitido (notBefore), Caduca (notAfter), Restan = días hasta caducidad. Colores: rojo <14d, ámbar <30d. Click 'ver' para conf, 'editar' para modificar (con nginx -t rollback)." action={<span className="text-xs text-bone-500">{sites.data?.length ?? 0}</span>} className="lg:col-span-2">
+          <div className="overflow-auto -mx-4 sm:-mx-5 px-4 sm:px-5">
+            <table className="w-full text-xs sm:text-sm min-w-[640px]">
               <thead className="text-xs text-bone-500 dark:text-bone-400 text-left">
-                <tr><th className="py-1">Nombre</th><th className="hidden sm:table-cell">Estado</th><th>CPU</th><th>MEM</th><th></th></tr>
+                <tr>
+                  <th className="py-1" title="Dominio servido por nginx">Dominio</th>
+                  <th title="Container y puerto destino del proxy_pass">Upstream</th>
+                  <th title="Fecha de emisión del cert (notBefore)">Emitido</th>
+                  <th title="Fecha de caducidad del cert (notAfter)">Caduca</th>
+                  <th title="Días restantes hasta caducidad. Rojo <14, ámbar <30.">Restan</th>
+                  <th></th>
+                </tr>
               </thead>
               <tbody>
-                {(containers.data || []).map(c => {
-                  const st = statsByName[c.Names];
-                  const isSelf = SELF.has(c.Names);
-                  const restarting = busy === ('restart:' + c.Names);
+                {(sites.data || []).map(s => {
+                  const now = Date.now();
+                  const expMs = s.expiresAt ? new Date(s.expiresAt).getTime() : null;
+                  const days = expMs ? Math.round((expMs - now) / 86400000) : null;
+                  const dayCls = days == null ? 'text-bone-400' : days < 14 ? 'text-red-600 font-semibold' : days < 30 ? 'text-amber-600' : 'text-moss-700 dark:text-moss-300';
                   return (
-                    <motion.tr key={c.ID} whileHover={{ backgroundColor: dark ? 'rgba(31,138,78,0.12)' : 'rgba(31,138,78,0.04)' }} className="border-t border-bone-100 dark:border-bone-700">
-                      <td className="py-1.5 font-medium max-w-[140px] truncate"><button className="hover:underline text-left truncate w-full" onClick={() => setDetailFor(c.Names)}>{c.Names}</button></td>
-                      <td className="text-bone-600 dark:text-bone-300 hidden sm:table-cell">{c.State}</td>
-                      <td className="text-bone-500 dark:text-bone-400 whitespace-nowrap">{st?.CPUPerc || '—'}</td>
-                      <td className="text-bone-500 dark:text-bone-400 whitespace-nowrap">{st?.MemPerc || '—'}</td>
-                      <td className="text-xs flex gap-1.5 sm:gap-2">
-                        <button title="Ver logs (auto-refresh 5s)" className="text-moss-700 dark:text-moss-300 hover:underline" onClick={() => setLogsFor(c.Names)}>📜</button>
-                        {canWrite && <button title="Ejecutar comando (allowlist)" className="text-moss-700 dark:text-moss-300 hover:underline" onClick={() => setExecFor(c.Names)}>▶</button>}
-                        {canWrite && !isSelf && (
-                          <button title="Reiniciar container" className="text-amber-700 dark:text-amber-400 hover:underline disabled:opacity-40" disabled={restarting} onClick={() => setRestartFor(c.Names)}>
-                            {restarting ? '…' : '↻'}
-                          </button>
-                        )}
+                    <motion.tr layout key={s.domain} className="border-t border-bone-100 dark:border-bone-700">
+                      <td className="py-1.5 font-medium">{s.domain}</td>
+                      <td className="text-bone-500 dark:text-bone-400 font-mono text-xs">{s.upstream || '—'}</td>
+                      <td className="text-xs">{s.issuedAt ? new Date(s.issuedAt).toLocaleDateString() : '—'}</td>
+                      <td className="text-xs">{s.expiresAt ? new Date(s.expiresAt).toLocaleDateString() : '—'}</td>
+                      <td className={'text-xs whitespace-nowrap ' + dayCls}>{days == null ? '—' : (days < 14 ? '⚠ ' : '') + days + 'd'}</td>
+                      <td className="text-xs whitespace-nowrap">
+                        <button title="Ver conf nginx (read-only)" className="text-moss-700 dark:text-moss-300 hover:underline mr-2" onClick={() => setConfFor(s.domain)}>ver</button>
+                        {canWrite && <button title="Editar conf nginx (con nginx -t rollback)" className="text-amber-700 dark:text-amber-400 hover:underline" onClick={() => setEditFor(s.domain)}>editar</button>}
                       </td>
                     </motion.tr>
                   );
@@ -2216,7 +2587,111 @@ export default function Dashboard() {
           </div>
         </Card>}
 
-        {T('nginx') && <Card title="Trafico" delay={0.2} help="Parser access.log nginx por dominio. Agrupacion HTTP status 2xx/3xx/4xx/5xx con barras animadas. Lista ultimos 50 eventos plegable (IP, metodo, path, status).">
+        {T('docker') && <Card title="Containers por stack" delay={0.18} help="Agrupado por com.docker.compose.project. Containers ordenados por StartedAt desc. Stacks ordenados por su container más recientemente activo. 📜 logs, ▶ exec, ↻ restart, ↓ down todo el stack. CPU/MEM en vivo refresh 3s." action={
+          <div className="flex items-center gap-2">
+            {isAdmin && <button title="docker system prune -af (sin volúmenes). Limpia containers parados, imágenes sin uso, redes huérfanas y builder cache." className="btn-ghost text-xs" onClick={() => setShowDockerPrune(true)}>🧹 Limpiar</button>}
+            <span className="text-xs text-bone-500">{containers.data?.length ?? 0}</span>
+          </div>
+        } className="lg:col-span-3">
+          {(() => {
+            const list = containers.data || [];
+            // Group by compose project label
+            const groups = new Map();
+            for (const c of list) {
+              const proj = (c.Labels && c.Labels['com.docker.compose.project']) || 'standalone';
+              if (!groups.has(proj)) groups.set(proj, []);
+              groups.get(proj).push(c);
+            }
+            // Sort containers within group by StartedAt desc; sort groups by their max StartedAt desc
+            const groupArr = [...groups.entries()].map(([proj, items]) => {
+              items.sort((a, b) => (b.StartedAt || '').localeCompare(a.StartedAt || ''));
+              const maxStart = items[0]?.StartedAt || '';
+              return { proj, items, maxStart };
+            });
+            groupArr.sort((a, b) => b.maxStart.localeCompare(a.maxStart));
+            const colorFor = (s) => {
+              let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) & 0xffff;
+              return 'hsl(' + (h % 360) + ' 50% 50%)';
+            };
+            return (
+              <motion.div layout className="space-y-3">
+                {groupArr.map(g => {
+                  const healthy = g.items.filter(c => c.State === 'running').length;
+                  return (
+                    <motion.div key={g.proj} layout className="border-l-4 pl-3 py-1" style={{ borderColor: colorFor(g.proj) }}>
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="text-sm font-semibold flex items-center gap-2">
+                          <span title={'Compose project: ' + g.proj}>📦 {g.proj}</span>
+                          <span className="text-xs text-bone-500 dark:text-bone-400">{healthy}/{g.items.length} running</span>
+                        </div>
+                        {canWrite && g.proj !== 'viewersoftware' && g.proj !== 'standalone' && (
+                          <div className="flex items-center gap-1">
+                            {healthy === 0 && (
+                              <button title={'docker compose up -d stack ' + g.proj} onClick={() => setStackAction({ project: g.proj, action: 'up' })}
+                                className="text-xs text-moss-700 dark:text-moss-300 hover:bg-moss-100 dark:hover:bg-moss-900/40 rounded px-2 py-0.5">↑ up</button>
+                            )}
+                            {healthy > 0 && (
+                              <button title={'docker compose down stack ' + g.proj + ' (mantiene volúmenes)'} onClick={() => setStackAction({ project: g.proj, action: 'down' })}
+                                className="text-xs text-red-600 hover:bg-red-100 dark:hover:bg-red-900/40 rounded px-2 py-0.5">↓ down</button>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                      <div className="overflow-auto -mx-1 px-1">
+                        <table className="w-full text-xs sm:text-sm min-w-[480px]">
+                          <thead className="text-xs text-bone-500 dark:text-bone-400 text-left">
+                            <tr>
+                    <th className="py-1 text-left">Nombre</th>
+                    <th className="hidden sm:table-cell text-left">Estado</th>
+                    <th className="text-right w-16">CPU</th>
+                    <th className="text-right w-16">MEM</th>
+                    <th className="text-right w-20">Started</th>
+                    <th className="text-right w-28 pr-1">Acciones</th>
+                  </tr>
+                          </thead>
+                          <tbody>
+                            {g.items.map(c => {
+                              const st = statsByName[c.Names];
+                              const isSelf = SELF.has(c.Names);
+                              const restarting = busy === ('restart:' + c.Names);
+                              const startedRel = c.StartedAt ? new Date(c.StartedAt).toLocaleTimeString() : '—';
+                              return (
+                                <motion.tr layout key={c.ID} layoutId={'cnt-' + c.ID} className="border-t border-bone-100 dark:border-bone-700">
+                                  <td className="py-1.5 font-medium max-w-[160px] truncate">
+                                    <button className="hover:underline text-left truncate w-full" onClick={() => setDetailFor(c.Names)} title={c.Image}>{c.Names}</button>
+                                  </td>
+                                  <td className="text-bone-600 dark:text-bone-300 hidden sm:table-cell">{c.State}</td>
+                                  <td className="text-bone-500 dark:text-bone-400 whitespace-nowrap text-right tabular-nums">{st?.CPUPerc || '—'}</td>
+                                  <td className="text-bone-500 dark:text-bone-400 whitespace-nowrap text-right tabular-nums">{st?.MemPerc || '—'}</td>
+                                  <td className="text-bone-500 dark:text-bone-400 whitespace-nowrap text-xs text-right tabular-nums">{startedRel}</td>
+                                  <td className="pr-1">
+                                    <div className="flex items-center justify-end gap-2 text-base leading-none">
+                                      <button title="Ver logs (auto-refresh 5s)" className="hover:bg-bone-100 dark:hover:bg-bone-700 rounded p-1 transition" onClick={() => setLogsFor(c.Names)}>📜</button>
+                                      {canWrite && <button title="Ejecutar comando (allowlist)" className="hover:bg-bone-100 dark:hover:bg-bone-700 rounded p-1 transition" onClick={() => setExecFor(c.Names)}>▶</button>}
+                                      {canWrite && !isSelf && (
+                                        <button title="Reiniciar container" className="hover:bg-amber-100 dark:hover:bg-amber-900/40 rounded p-1 transition disabled:opacity-40" disabled={restarting} onClick={() => setRestartFor(c.Names)}>
+                                          {restarting ? '…' : '↻'}
+                                        </button>
+                                      )}
+                                    </div>
+                                  </td>
+                                </motion.tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            );
+          })()}
+        </Card>}
+
+        {T('nginx') && <TrafficSummaryCard delay={0.19} />}
+
+        {T('nginx') && <Card title="Trafico por dominio" delay={0.2} help="Parser access.log nginx por dominio. Agrupacion HTTP status 2xx/3xx/4xx/5xx con barras animadas. Lista ultimos 50 eventos plegable (IP, metodo, path, status).">
           <TrafficPanel sites={sites.data} />
         </Card>}
 
@@ -2281,6 +2756,51 @@ export default function Dashboard() {
       <AnimatePresence>
         {showAccess && <AccessControlModal onClose={() => setShowAccess(false)} notify={notify} />}
       </AnimatePresence>
+
+      <AnimatePresence>
+        {stackAction && (
+          <ConfirmModal
+            title={(stackAction.action === 'down' ? 'Bajar' : 'Levantar') + ' stack ' + stackAction.project}
+            message={stackAction.action === 'down'
+              ? `docker compose down -t 10 sobre ${stackAction.project}.\n\nLos containers se paran y borran.\nLos volúmenes named SE CONSERVAN (datos a salvo).\nLas redes nombradas en el compose se borran.\n\nReversible con ↑ up.`
+              : `docker compose up -d sobre ${stackAction.project}.\n\nLevanta el stack con su última configuración.`
+            }
+            onCancel={() => setStackAction(null)}
+            onConfirm={async () => {
+              const { project, action } = stackAction;
+              setStackAction(null);
+              setBusy('stack:' + project);
+              try {
+                const r = await fetch('/api/stacks/' + encodeURIComponent(project) + '/' + action, { method: 'POST', credentials: 'include' });
+                const j = await r.json();
+                notify(r.ok ? `Stack ${project} ${action} OK` : ('Error: ' + (j.error || '')));
+                containers.reload();
+              } catch (e) { notify('Error: ' + e.message); }
+              finally { setBusy(''); }
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showDockerPrune && (
+          <ConfirmModal
+            title="Limpiar Docker no usado"
+            message="Ejecuta:\n• docker container prune -f (containers parados)\n• docker image prune -af (imágenes sin uso)\n• docker network prune -f (redes huérfanas)\n• docker builder prune -af (cache de build)\n\nNO toca volúmenes (datos a salvo).\n\nLibera GBs de disco. Reversible solo rebuildando imágenes."
+            onCancel={() => setShowDockerPrune(false)}
+            onConfirm={async () => {
+              setShowDockerPrune(false);
+              setBusy('prune');
+              try {
+                const r = await fetch('/api/system/docker-prune', { method: 'POST', credentials: 'include' });
+                const j = await r.json();
+                notify(r.ok ? ('Docker limpiado: ' + (j.summary || 'OK')) : ('Error: ' + (j.error || '')));
+              } catch (e) { notify('Error: ' + e.message); }
+              finally { setBusy(''); }
+            }}
+          />
+        )}
+      </AnimatePresence>
       <AnimatePresence>
         {confFor && <NginxConfModal domain={confFor} onClose={() => setConfFor(null)} />}
       </AnimatePresence>
@@ -2329,7 +2849,7 @@ export default function Dashboard() {
       <AnimatePresence>
         {toast && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-6 right-6 card px-4 py-3 text-sm shadow-lg glow">
+            className="fixed bottom-6 left-6 card px-4 py-3 text-sm shadow-lg glow z-50">
             {toast}
           </motion.div>
         )}

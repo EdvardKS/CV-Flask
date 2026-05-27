@@ -1,0 +1,17 @@
+feat(v0.21.2): stopped containers card + per-stack docker compose stop
+
+Backend:
+- POST /api/containers/:name/start - docker start <name>
+- POST /api/containers/:name/stop - docker stop -t 10 <name>
+- POST /api/stacks/:project/stop - docker compose stop -t 10 (keeps containers)
+
+Frontend:
+- New card 'Contenedores parados' below 'Eventos Docker 1h' lists exited
+  containers with start button per row
+- Red square stop button in stack header (docker compose stop, reversible
+  with up without recreate)
+- ConfirmModal extended to handle stop action
+
+Tests: 122/122 OK
+
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
