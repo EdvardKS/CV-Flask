@@ -66,6 +66,14 @@
     "curso": 3
   },
   {
+    "id": "ade",
+    "name": "Administración de Empresas",
+    "description": "ADE - 3º curso 2º cuatri. Dirección, finanzas, inversión, financiación, decisión multicriterio y valoración.",
+    "icon": "🏢",
+    "color": "#b45309",
+    "curso": 3
+  },
+  {
     "id": "gestion-tecnologia",
     "name": "Gestión de la Tecnología",
     "description": "GTEC - 4º curso 2º cuatri. Innovación, transferencia, vigilancia e inteligencia competitiva.",
