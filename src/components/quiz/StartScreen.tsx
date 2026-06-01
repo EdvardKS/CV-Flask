@@ -162,15 +162,15 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
           type="checkbox"
           checked={repaso}
           onChange={e => setRepaso(e.target.checked)}
-          className="peer sr-only"
+          className="sr-only"
         />
         <span
           aria-hidden
-          className="relative inline-flex h-7 w-12 shrink-0 items-center rounded-full bg-slate-300 transition peer-checked:bg-amber-500"
+          className={`relative inline-flex h-7 w-12 shrink-0 items-center rounded-full transition-colors duration-200 ${repaso ? 'bg-amber-500' : 'bg-slate-300'}`}
         >
           <span className="pointer-events-none absolute left-2 text-[11px] font-bold leading-none text-white">I</span>
           <span className="pointer-events-none absolute right-2 text-[11px] font-bold leading-none text-slate-500">O</span>
-          <span className="relative z-10 ml-1 h-5 w-5 translate-x-0 rounded-full bg-white shadow transition peer-checked:translate-x-5" />
+          <span className={`relative z-10 ml-1 h-5 w-5 rounded-full bg-white shadow transition-transform duration-200 ${repaso ? 'translate-x-5' : 'translate-x-0'}`} />
         </span>
         <span className="text-sm">
           <span className="font-semibold text-amber-900">Modo repaso · {repaso ? 'I activado' : 'O desactivado'}</span>
