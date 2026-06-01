@@ -157,15 +157,23 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
         </div>
       </div>
 
-      <label className="mt-5 flex cursor-pointer items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-3.5">
+      <label className="mt-5 flex cursor-pointer items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-3.5 transition has-[:checked]:border-amber-400 has-[:checked]:bg-amber-100">
         <input
           type="checkbox"
           checked={repaso}
           onChange={e => setRepaso(e.target.checked)}
-          className="mt-0.5 h-5 w-5 shrink-0 accent-amber-600"
+          className="peer sr-only"
         />
+        <span
+          aria-hidden
+          className="relative inline-flex h-7 w-12 shrink-0 items-center rounded-full bg-slate-300 transition peer-checked:bg-amber-500"
+        >
+          <span className="pointer-events-none absolute left-2 text-[11px] font-bold leading-none text-white">I</span>
+          <span className="pointer-events-none absolute right-2 text-[11px] font-bold leading-none text-slate-500">O</span>
+          <span className="relative z-10 ml-1 h-5 w-5 translate-x-0 rounded-full bg-white shadow transition peer-checked:translate-x-5" />
+        </span>
         <span className="text-sm">
-          <span className="font-semibold text-amber-900">Modo repaso</span>
+          <span className="font-semibold text-amber-900">Modo repaso · {repaso ? 'I activado' : 'O desactivado'}</span>
           <span className="mt-0.5 block text-[13px] leading-relaxed text-amber-800">
             Abre el test con las respuestas correctas, pistas y explicaciones ya mostradas. No puntúa.
           </span>
