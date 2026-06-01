@@ -14,6 +14,7 @@ export type SessionState = {
   finishedAt: number | null
   cuatrimestre?: number | 'all' | 'latest'
   category?: string | 'all'
+  repaso?: boolean
 }
 
 const VERSION = 4
@@ -46,6 +47,7 @@ export type StartOpts = {
   cuatrimestre?: number | 'all' | 'latest'
   category?: string | 'all'
   categories?: string[]
+  repaso?: boolean
 }
 
 export function useQuizSession(subjectId: string, source: Question[], sessionKey = subjectId, preserveOrder = false) {
@@ -89,7 +91,8 @@ export function useQuizSession(subjectId: string, source: Question[], sessionKey
       startedAt: Date.now(),
       finishedAt: null,
       cuatrimestre: opts.cuatrimestre,
-      category: opts.category
+      category: opts.category,
+      repaso: opts.repaso ?? false
     }
     setSession(next)
     save(sessionKey, next)

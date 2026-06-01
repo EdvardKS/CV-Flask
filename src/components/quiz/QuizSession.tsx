@@ -23,7 +23,7 @@ export function QuizSession({ subject, questions, sessionKey, preserveOrder }: P
   const reportedRef = useRef(false)
 
   useEffect(() => {
-    if (session?.finishedAt && !reportedRef.current) {
+    if (session?.finishedAt && !session.repaso && !reportedRef.current) {
       reportedRef.current = true
       postQuizResult(subject, session, getOrCreateClientId())
     }
@@ -40,7 +40,7 @@ export function QuizSession({ subject, questions, sessionKey, preserveOrder }: P
         subject={subject}
         questions={questions}
         hasResume={false}
-        onStart={(limit, cuatrimestre, categories) => start({ limit, cuatrimestre, categories })}
+        onStart={(limit, cuatrimestre, categories, repaso) => start({ limit, cuatrimestre, categories, repaso })}
         onResume={() => { /* no-op */ }}
       />
     )
@@ -61,9 +61,11 @@ export function QuizSession({ subject, questions, sessionKey, preserveOrder }: P
     <QuizRunner
       session={session}
       accent={subject.color}
+      repaso={session.repaso}
       onAnswer={answer}
       onGoto={goto}
       onFinish={finish}
+      onExit={reset}
     />
   )
 }

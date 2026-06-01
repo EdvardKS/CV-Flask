@@ -8,12 +8,14 @@ import type { SessionState } from './useQuizSession'
 type Props = {
   session: SessionState
   accent: string
+  repaso?: boolean
   onAnswer: (value: Answer) => void
   onGoto: (i: number) => void
   onFinish: () => void
+  onExit?: () => void
 }
 
-export function QuizRunner({ session, accent, onAnswer, onGoto, onFinish }: Props) {
+export function QuizRunner({ session, accent, repaso, onAnswer, onGoto, onFinish, onExit }: Props) {
   const total = session.questions.length
   const idx = session.currentIndex
   const q = session.questions[idx]
@@ -24,7 +26,11 @@ export function QuizRunner({ session, accent, onAnswer, onGoto, onFinish }: Prop
     <section className="flex flex-col gap-3 pb-24">
       <div className="flex items-center justify-between text-xs text-slate-500">
         <span className="font-semibold text-slate-700">{idx + 1} / {total}</span>
-        <span>Respondidas: {answered}</span>
+        {repaso ? (
+          <span className="rounded-full bg-amber-100 px-2.5 py-0.5 font-semibold text-amber-800">Modo repaso</span>
+        ) : (
+          <span>Respondidas: {answered}</span>
+        )}
       </div>
       <QuizProgressBar value={idx + 1} max={total} accent={accent} />
 
@@ -32,6 +38,7 @@ export function QuizRunner({ session, accent, onAnswer, onGoto, onFinish }: Prop
         question={q}
         chosen={chosen}
         accent={accent}
+        repaso={repaso}
         onPick={onAnswer}
       />
 
@@ -51,10 +58,17 @@ export function QuizRunner({ session, accent, onAnswer, onGoto, onFinish }: Prop
             disabled={idx >= total - 1}
             className="flex-1 rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:opacity-40"
           >Siguiente →</button>
-          <button
-            onClick={onFinish}
-            className="rounded-xl bg-sky-600 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-sky-600/30 transition hover:brightness-110"
-          >Terminar</button>
+          {repaso ? (
+            <button
+              onClick={onExit}
+              className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-2.5 text-sm font-bold text-amber-800 transition hover:bg-amber-100"
+            >Salir del repaso</button>
+          ) : (
+            <button
+              onClick={onFinish}
+              className="rounded-xl bg-sky-600 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-sky-600/30 transition hover:brightness-110"
+            >Terminar</button>
+          )}
         </div>
       </nav>
     </section>

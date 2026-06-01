@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, type ReactNode } from 'react'
-import { isCorrect, type FillQuestion } from '@lib/quiz/types'
+import { isCorrect, primaryCorrect, type FillQuestion } from '@lib/quiz/types'
 import { ContextBox } from './ContextBox'
 import { FeedbackBanner } from './FeedbackBanner'
 import { AiHelpButton } from './AiHelpButton'
@@ -10,12 +10,14 @@ type Props = {
   question: FillQuestion
   chosen?: string
   accent: string
+  repaso?: boolean
   onSubmit: (value: string) => void
 }
 
-export function FillQuestionCard({ question, chosen, accent, onSubmit }: Props) {
+export function FillQuestionCard({ question, chosen, accent, repaso = false, onSubmit }: Props) {
   const answered = chosen !== undefined
-  const ok = answered && isCorrect(question, chosen)
+  const revealed = answered || repaso
+  const ok = repaso ? true : answered && isCorrect(question, chosen)
   const [draft, setDraft] = useState('')
 
   const submit = (e: React.FormEvent) => {
@@ -26,9 +28,9 @@ export function FillQuestionCard({ question, chosen, accent, onSubmit }: Props) 
     setDraft('')
   }
 
-  const display = answered ? chosen! : draft
+  const display = repaso ? primaryCorrect(question) : answered ? chosen! : draft
   const inputClasses = `flex-1 rounded-xl border px-3 py-2 text-base shadow-sm outline-none transition focus:ring-2 ${
-    answered
+    revealed
       ? ok
         ? 'border-emerald-300 bg-emerald-50 text-emerald-900 focus:ring-emerald-200'
         : 'border-rose-300 bg-rose-50 text-rose-900 focus:ring-rose-200'
@@ -50,7 +52,7 @@ export function FillQuestionCard({ question, chosen, accent, onSubmit }: Props) 
           type="text"
           value={display}
           onChange={e => setDraft(e.target.value)}
-          disabled={answered}
+          disabled={revealed}
           placeholder="Escribe tu respuesta…"
           aria-label="Respuesta"
           autoComplete="off"
@@ -58,7 +60,7 @@ export function FillQuestionCard({ question, chosen, accent, onSubmit }: Props) 
           spellCheck={false}
           className={inputClasses}
         />
-        {!answered && (
+        {!revealed && (
           <button
             type="submit"
             disabled={!draft.trim()}
@@ -67,7 +69,7 @@ export function FillQuestionCard({ question, chosen, accent, onSubmit }: Props) 
           >Comprobar</button>
         )}
       </form>
-      {answered && <FeedbackBanner question={question} ok={ok} />}
+      {revealed && <FeedbackBanner question={question} ok={ok} repaso={repaso} />}
     </article>
   )
 }

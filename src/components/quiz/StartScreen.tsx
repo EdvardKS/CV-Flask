@@ -22,7 +22,7 @@ type Props = {
   subject: SubjectWithCount
   questions: Question[]
   hasResume: boolean
-  onStart: (limit?: number, cuatrimestre?: CuatrimestrePick, categories?: string[]) => void
+  onStart: (limit?: number, cuatrimestre?: CuatrimestrePick, categories?: string[], repaso?: boolean) => void
   onResume: () => void
 }
 
@@ -47,6 +47,7 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
   const [selected, setSelected] = useState<Set<string>>(new Set())
   const [hydrated, setHydrated] = useState(false)
   const [limitChoice, setLimitChoice] = useState<number | 'all'>('all')
+  const [repaso, setRepaso] = useState(false)
   const isMixto = subject.id === 'ingles' && cuatri === 'all'
 
   const cuatriFiltered = useMemo(() => {
@@ -101,7 +102,7 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
   function handleStart() {
     const cats = hasCategories && selected.size > 0 ? [...selected] : undefined
     const limit = limitChoice === 'all' ? undefined : Math.min(limitChoice, effectiveCount)
-    onStart(limit, cuatri, cats)
+    onStart(limit, cuatri, cats, repaso)
   }
 
   const canStart = hasCategories ? selected.size > 0 : cuatriFiltered.length > 0
@@ -156,6 +157,21 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
         </div>
       </div>
 
+      <label className="mt-5 flex cursor-pointer items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-3.5">
+        <input
+          type="checkbox"
+          checked={repaso}
+          onChange={e => setRepaso(e.target.checked)}
+          className="mt-0.5 h-5 w-5 shrink-0 accent-amber-600"
+        />
+        <span className="text-sm">
+          <span className="font-semibold text-amber-900">Modo repaso</span>
+          <span className="mt-0.5 block text-[13px] leading-relaxed text-amber-800">
+            Abre el test con las respuestas correctas, pistas y explicaciones ya mostradas. No puntúa.
+          </span>
+        </span>
+      </label>
+
       <div className="mt-6 flex flex-col gap-2 sm:flex-row">
         <button
           type="button"
@@ -164,7 +180,7 @@ export function StartScreen({ subject, questions, onStart, hasResume, onResume }
           className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3 text-base font-bold text-white shadow-lg transition hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
           style={{ backgroundColor: subject.color }}
         >
-          Empezar test ({resolvedLimit}) <span aria-hidden>▶</span>
+          {repaso ? 'Empezar repaso' : 'Empezar test'} ({resolvedLimit}) <span aria-hidden>▶</span>
         </button>
         {hasResume && (
           <button

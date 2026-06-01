@@ -8,16 +8,18 @@ type Props = {
   question: Question
   chosen?: Answer
   accent: string
+  repaso?: boolean
   onPick: (value: Answer) => void
 }
 
-export function QuestionCard({ question, chosen, accent, onPick }: Props) {
+export function QuestionCard({ question, chosen, accent, repaso, onPick }: Props) {
   if (question.kind === 'fill') {
     return (
       <FillQuestionCard
         question={question}
         chosen={typeof chosen === 'string' ? chosen : undefined}
         accent={accent}
+        repaso={repaso}
         onSubmit={onPick}
       />
     )
@@ -27,6 +29,7 @@ export function QuestionCard({ question, chosen, accent, onPick }: Props) {
       question={question}
       chosen={typeof chosen === 'number' ? chosen : undefined}
       accent={accent}
+      repaso={repaso}
       onPick={onPick}
     />
   )
