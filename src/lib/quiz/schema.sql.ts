@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS quiz_subjects (
   color       TEXT,
   position    INTEGER DEFAULT 0,
   curso       INTEGER,
+  cuatrimestre INTEGER,
   entry_mode  TEXT NOT NULL DEFAULT 'standard',
   updated_at  INTEGER NOT NULL
 );
@@ -25,7 +26,11 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
   code          TEXT,
   is_vocab      INTEGER DEFAULT 0,
   category      TEXT,
-  evidence      TEXT
+  evidence      TEXT,
+  hint          TEXT,
+  explanation_correct TEXT,
+  explanation_wrong   TEXT,
+  group_name    TEXT
 );
 
 CREATE TABLE IF NOT EXISTS quiz_results (

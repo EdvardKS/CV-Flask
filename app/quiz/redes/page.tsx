@@ -35,11 +35,17 @@ export default async function RedesHubPage() {
   const conceptTopics = concepts.topics.map(t => ({ id: t.id, title: t.title, count: t.slides.length }))
 
   return (
-    <QuizPageShell>
+    <QuizPageShell
+      breadcrumb={[
+        { label: 'Mis asignaturas', href: '/quiz' },
+        { label: subject.name }
+      ]}
+    >
       <QuizHeader
-        title={`${subject.icon} ${subject.name}`}
+        title={subject.name}
+        icon={subject.icon}
         subtitle="Elige cómo quieres estudiar: cuestionarios de temario, autoevaluación o repaso guiado por conceptos."
-        back={{ href: '/quiz', label: 'Asignaturas' }}
+        back={{ href: '/quiz', label: 'Mis asignaturas' }}
         accent={subject.color}
       />
       <RedesModeHub

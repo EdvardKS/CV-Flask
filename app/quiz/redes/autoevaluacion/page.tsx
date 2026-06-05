@@ -61,7 +61,14 @@ export default async function RedesAutoevaluacionPage({
   const sessionKey = `redes-autoeval:${filtered.slice().sort().join('+')}`
 
   return (
-    <QuizPageShell>
+    <QuizPageShell
+      wide
+      breadcrumb={[
+        { label: 'Mis asignaturas', href: '/quiz' },
+        { label: 'Redes', href: '/quiz/redes' },
+        { label: 'Autoevaluación' }
+      ]}
+    >
       <QuizHeader
         title="Autoevaluación"
         subtitle={`${questions.length} preguntas · ${selectedTitles}`}

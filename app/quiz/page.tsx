@@ -15,10 +15,10 @@ export default async function QuizHomePage() {
   await ensureQuizSeeded()
   const subjects = listSubjects()
   return (
-    <QuizPageShell>
+    <QuizPageShell breadcrumb={[{ label: 'Mis asignaturas' }]}>
       <QuizHeader
-        title="Tests"
-        subtitle="Selecciona una asignatura. Tu progreso se guarda automáticamente."
+        title="Mis asignaturas"
+        subtitle="Selecciona una asignatura para hacer el test. Tu progreso se guarda automáticamente."
       />
       <SubjectFilters subjects={subjects} />
     </QuizPageShell>

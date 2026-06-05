@@ -22,7 +22,15 @@ export default async function RedesTemarioQuizPage({ params }: { params: Promise
   if (!subject || !quiz) notFound()
 
   return (
-    <QuizPageShell>
+    <QuizPageShell
+      wide
+      breadcrumb={[
+        { label: 'Mis asignaturas', href: '/quiz' },
+        { label: 'Redes', href: '/quiz/redes' },
+        { label: 'Temario', href: '/quiz/redes/temario' },
+        { label: quiz.title }
+      ]}
+    >
       <QuizHeader
         title={quiz.title}
         subtitle={`Tema ${quiz.topic} · ${quiz.questionCount} preguntas`}

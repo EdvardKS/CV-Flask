@@ -4,7 +4,7 @@ import { summarize } from '../summary'
 import type { SessionState } from '../useQuizSession'
 
 const session = (answers: Record<number, number | string>): SessionState => ({
-  subjectId: 'x', seed: 1, currentIndex: 0, startedAt: 0, finishedAt: 100, answers,
+  subjectId: 'x', seed: 1, currentIndex: 0, startedAt: 0, finishedAt: 100, answers, flags: {},
   questions: [
     { kind: 'choice', q: 'a', options: ['a', 'b'], correctIndex: 1 },
     { kind: 'choice', q: 'b', options: ['a', 'b', 'c'], correctIndex: [0, 2] },

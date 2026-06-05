@@ -14,9 +14,17 @@ export default async function EstadisticaTestPage() {
   if (!subject) throw new Error('Subject "estadistica" was not seeded correctly')
   const questions = listQuestions('estadistica')
   return (
-    <QuizPageShell>
+    <QuizPageShell
+      wide
+      breadcrumb={[
+        { label: 'Mis asignaturas', href: '/quiz' },
+        { label: 'Estadística', href: '/quiz/estadistica' },
+        { label: 'Test general' }
+      ]}
+    >
       <QuizHeader
-        title={`${subject.icon} ${subject.name} · Test general`}
+        title={`${subject.name} · Test general`}
+        icon={subject.icon}
         subtitle="Cuestionario tipo test de teoría."
         accent={subject.color}
         back={{ href: '/quiz/estadistica', label: 'Estadística' }}

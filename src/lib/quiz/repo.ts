@@ -9,6 +9,7 @@ type SubjectRow = SubjectMeta & {
   question_count: number
   cuatrimestres_csv: string | null
   curso: number | null
+  cuatrimestre: number | null
   entry_mode: 'standard' | 'hub' | null
 }
 
@@ -24,6 +25,10 @@ type QuestionRow = {
   is_vocab: number
   category: string | null
   evidence: string | null
+  hint: string | null
+  explanation_correct: string | null
+  explanation_wrong: string | null
+  group_name: string | null
 }
 
 type LegacyExamQuestion = {
@@ -89,7 +94,7 @@ function inferCuatris(questions: Question[]): number[] {
 export function listSubjects(): SubjectWithCount[] {
   const db = getQuizDb()
   const rows = db.prepare(`
-    SELECT s.id, s.name, s.description, s.icon, s.color, s.position, s.curso, s.entry_mode,
+    SELECT s.id, s.name, s.description, s.icon, s.color, s.position, s.curso, s.cuatrimestre, s.entry_mode,
            (SELECT COUNT(*) FROM quiz_questions q WHERE q.subject_id=s.id) AS question_count,
            (SELECT GROUP_CONCAT(DISTINCT IFNULL(cuatrimestre, 1))
               FROM quiz_questions q WHERE q.subject_id=s.id) AS cuatrimestres_csv
@@ -119,6 +124,7 @@ export function listSubjects(): SubjectWithCount[] {
       color: row.color ?? '#3a6ea5',
       position: row.position ?? 0,
       curso: row.curso ?? undefined,
+      cuatrimestre: row.cuatrimestre ?? undefined,
       entryMode: row.entry_mode ?? 'standard',
       questionCount: row.question_count || fallbackQuestions?.length || 0,
       cuatrimestres: row.cuatrimestres_csv ? parseCuatris(row.cuatrimestres_csv) : inferCuatris(fallbackQuestions ?? [])
@@ -138,7 +144,11 @@ function rowToQuestion(row: QuestionRow): Question {
     code: row.code ?? undefined,
     isVocab: !!row.is_vocab,
     category: row.category ?? undefined,
-    evidence: row.evidence ?? undefined
+    evidence: row.evidence ?? undefined,
+    hint: row.hint ?? undefined,
+    explanationCorrect: row.explanation_correct ?? undefined,
+    explanationWrong: row.explanation_wrong ?? undefined,
+    group: row.group_name ?? undefined
   }
   if (row.kind === 'fill') {
     return { ...base, kind: 'fill', accept: JSON.parse(row.accept_json ?? '""') }
@@ -154,7 +164,8 @@ function rowToQuestion(row: QuestionRow): Question {
 export function listQuestions(subjectId: string): Question[] {
   const db = getQuizDb()
   const rows = db.prepare(`SELECT q, kind, options_json, correct_json, accept_json,
-      cuatrimestre, context, code, is_vocab, category, evidence
+      cuatrimestre, context, code, is_vocab, category, evidence,
+      hint, explanation_correct, explanation_wrong, group_name
     FROM quiz_questions WHERE subject_id=? ORDER BY position ASC`).all(subjectId) as QuestionRow[]
   const baseQuestions = rows.length === 0 ? readQuestionsFromSeed(subjectId) : rows.map(rowToQuestion)
   if (subjectId !== 'ingles') return baseQuestions

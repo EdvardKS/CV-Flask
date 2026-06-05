@@ -21,12 +21,19 @@ export default async function SubjectQuizPage({ params }: { params: Promise<{ su
   if (!meta) notFound()
   const questions = listQuestions(subject)
   return (
-    <QuizPageShell>
+    <QuizPageShell
+      wide
+      breadcrumb={[
+        { label: 'Mis asignaturas', href: '/quiz' },
+        { label: meta.name }
+      ]}
+    >
       <QuizHeader
-        title={`${meta.icon}  ${meta.name}`}
+        title={meta.name}
+        icon={meta.icon}
         subtitle={meta.description}
         accent={meta.color}
-        back={{ href: '/quiz', label: 'Asignaturas' }}
+        back={{ href: '/quiz', label: 'Mis asignaturas' }}
       />
       <QuizSession subject={meta} questions={questions} />
     </QuizPageShell>

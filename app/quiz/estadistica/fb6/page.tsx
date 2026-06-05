@@ -32,9 +32,17 @@ export default async function EstadisticaFb6Page() {
     cuatrimestres: [2]
   }
   return (
-    <QuizPageShell>
+    <QuizPageShell
+      wide
+      breadcrumb={[
+        { label: 'Mis asignaturas', href: '/quiz' },
+        { label: 'Estadística', href: '/quiz/estadistica' },
+        { label: 'FB6' }
+      ]}
+    >
       <QuizHeader
-        title={`${parent.icon} ${subject.name}`}
+        title={subject.name}
+        icon={parent.icon}
         subtitle="Contraste de diferencias de medias — resuelto en 6 pasos."
         accent={parent.color}
         back={{ href: '/quiz/estadistica', label: 'Estadística' }}

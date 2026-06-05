@@ -18,11 +18,17 @@ export default async function EstadisticaHubPage() {
   const accent = subject.color
 
   return (
-    <QuizPageShell>
+    <QuizPageShell
+      breadcrumb={[
+        { label: 'Mis asignaturas', href: '/quiz' },
+        { label: subject.name }
+      ]}
+    >
       <QuizHeader
-        title={`${subject.icon} ${subject.name}`}
+        title={subject.name}
+        icon={subject.icon}
         subtitle="Elige cómo estudiar: test general de teoría o ejercicio guiado paso a paso."
-        back={{ href: '/quiz', label: 'Asignaturas' }}
+        back={{ href: '/quiz', label: 'Mis asignaturas' }}
         accent={accent}
       />
 

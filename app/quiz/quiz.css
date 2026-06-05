@@ -1,19 +1,35 @@
-/* Escape the OS-style body locks for the standalone /quiz pages.
-   The OS desktop sets html/body to overflow:hidden + user-select:none + 13px Tahoma.
-   /quiz is a normal scrollable web page on a light theme, so we override here. */
+/* Standalone /quiz pages — "Moodle UAX" look.
+   The OS desktop locks html/body (overflow:hidden, user-select:none, 13px Tahoma).
+   These pages are a normal scrollable light web app, so we override those locks. */
 html:has(.quiz-shell),
 html:has(.quiz-shell) body {
   overflow: auto !important;
   height: auto !important;
   min-height: 100%;
   user-select: text !important;
-  background: radial-gradient(ellipse at 20% 10%, #1e3a8a 0%, #0b1530 50%, #050a1a 100%);
-  background-attachment: fixed;
+  background: #f0f2f5;
   font-family:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
-  color: #0f172a; /* slate-900 */
+  color: #1a2733;
+}
+
+/* Design tokens (mirror of palette.ts) for class/style usage inside the shell. */
+.quiz-shell {
+  --mq-page: #f0f2f5;
+  --mq-surface: #ffffff;
+  --mq-border: #dfe3e8;
+  --mq-navy: #0a2d5e;
+  --mq-ink: #1a2733;
+  --mq-muted: #5b6b7b;
+  --mq-link: #1f6fb2;
+  --mq-magenta: #e6007e;
+  --mq-qbody: #e8f2fc;
+  --mq-qbodyBorder: #cfe2f5;
+  --mq-noteBg: #fdf3e3;
+  --mq-noteBorder: #f0d9a8;
+  --mq-noteInk: #7a5a1e;
 }
 
 @media (prefers-reduced-motion: reduce) {

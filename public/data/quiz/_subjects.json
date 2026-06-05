@@ -5,7 +5,8 @@
     "description": "SDIG - 1º curso 2º cuatri. Álgebra de Boole, compuertas, complemento a 2, sumadores.",
     "icon": "🔢",
     "color": "#ea580c",
-    "curso": 1
+    "curso": 1,
+    "cuatrimestre": 2
   },
   {
     "id": "estructura",
@@ -13,7 +14,8 @@
     "description": "ECSO - 2º curso 1º cuatri. Arquitectura, MIPS, memoria, periféricos.",
     "icon": "🧮",
     "color": "#3a6ea5",
-    "curso": 2
+    "curso": 2,
+    "cuatrimestre": 1
   },
   {
     "id": "sistemas-operativos",
@@ -21,7 +23,8 @@
     "description": "ASSO - 2º curso 1º cuatri. Gestión de procesos, memoria, planificación, E/S.",
     "icon": "⚙️",
     "color": "#2e7d32",
-    "curso": 2
+    "curso": 2,
+    "cuatrimestre": 1
   },
   {
     "id": "ingles",
@@ -38,6 +41,7 @@
     "icon": "📊",
     "color": "#d97706",
     "curso": 2,
+    "cuatrimestre": 2,
     "entryMode": "hub"
   },
   {
@@ -47,6 +51,7 @@
     "icon": "🌐",
     "color": "#0f766e",
     "curso": 2,
+    "cuatrimestre": 2,
     "entryMode": "hub"
   },
   {
@@ -55,7 +60,8 @@
     "description": "SOAV - 3º curso 1º cuatri. Hyper-threading, MIMD, hebras, sincronización.",
     "icon": "🧠",
     "color": "#6a1b9a",
-    "curso": 3
+    "curso": 3,
+    "cuatrimestre": 1
   },
   {
     "id": "ia",
@@ -63,7 +69,8 @@
     "description": "IA - 3º curso 2º cuatri. Fundamentos, Machine Learning, Deep Learning, PLN, Visión por Computadora y Robótica.",
     "icon": "🤖",
     "color": "#7c3aed",
-    "curso": 3
+    "curso": 3,
+    "cuatrimestre": 2
   },
   {
     "id": "ade",
@@ -71,7 +78,8 @@
     "description": "ADE - 3º curso 2º cuatri. Dirección, finanzas, inversión, financiación, decisión multicriterio y valoración.",
     "icon": "🏢",
     "color": "#b45309",
-    "curso": 3
+    "curso": 3,
+    "cuatrimestre": 2
   },
   {
     "id": "gestion-tecnologia",
@@ -79,6 +87,7 @@
     "description": "GTEC - 4º curso 2º cuatri. Innovación, transferencia, vigilancia e inteligencia competitiva.",
     "icon": "📈",
     "color": "#0d9488",
-    "curso": 4
+    "curso": 4,
+    "cuatrimestre": 2
   }
 ]

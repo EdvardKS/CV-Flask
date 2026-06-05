@@ -4,27 +4,38 @@ type Props = {
   title?: string
   subtitle?: string
   back?: { href: string; label: string }
+  /** Color de acento de la asignatura (icono/realce). */
   accent?: string
+  /** Emoji/icono de la asignatura, mostrado en chip magenta tipo Moodle. */
+  icon?: string
 }
 
-export function QuizHeader({ title = 'Tests', subtitle, back, accent }: Props) {
+export function QuizHeader({ title = 'Tests', subtitle, back, accent, icon }: Props) {
   return (
     <header className="flex flex-col gap-2">
       {back && (
         <Link
           href={back.href}
-          className="inline-flex w-fit items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-600 ring-1 ring-slate-200 transition hover:text-slate-900 hover:ring-slate-300"
+          className="inline-flex w-fit items-center gap-1 text-[13px] font-semibold text-[var(--mq-link)] hover:underline"
         >
           <span aria-hidden>←</span> {back.label}
         </Link>
       )}
-      <h1
-        className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
-        style={accent ? { color: accent } : undefined}
-      >
-        {title}
-      </h1>
-      {subtitle && <p className="text-sm text-slate-500">{subtitle}</p>}
+      <div className="flex items-center gap-3">
+        {icon && (
+          <span
+            aria-hidden
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-lg text-2xl ring-1"
+            style={{ background: `${accent ?? '#e6007e'}14`, color: accent ?? '#e6007e', borderColor: `${accent ?? '#e6007e'}33` }}
+          >
+            {icon}
+          </span>
+        )}
+        <h1 className="text-2xl font-extrabold tracking-tight text-[var(--mq-navy)] sm:text-[28px]">
+          {title}
+        </h1>
+      </div>
+      {subtitle && <p className="text-sm text-[var(--mq-muted)]">{subtitle}</p>}
     </header>
   )
 }

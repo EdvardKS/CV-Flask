@@ -9,11 +9,13 @@ export type SessionState = {
   seed: number
   questions: Question[]
   answers: Record<number, Answer>
+  flags: Record<number, boolean>
   currentIndex: number
   startedAt: number
   finishedAt: number | null
   cuatrimestre?: number | 'all' | 'latest'
   category?: string | 'all'
+  categories?: string[]
   repaso?: boolean
 }
 
@@ -87,11 +89,13 @@ export function useQuizSession(subjectId: string, source: Question[], sessionKey
       seed,
       questions: qs,
       answers: {},
+      flags: {},
       currentIndex: 0,
       startedAt: Date.now(),
       finishedAt: null,
       cuatrimestre: opts.cuatrimestre,
       category: opts.category,
+      categories: opts.categories,
       repaso: opts.repaso ?? false
     }
     setSession(next)
@@ -115,11 +119,15 @@ export function useQuizSession(subjectId: string, source: Question[], sessionKey
     (idx: number) => update(prev => ({ ...prev, currentIndex: Math.max(0, Math.min(prev.questions.length - 1, idx)) })),
     [update]
   )
+  const toggleFlag = useCallback(
+    (idx: number) => update(prev => ({ ...prev, flags: { ...prev.flags, [idx]: !prev.flags?.[idx] } })),
+    [update]
+  )
   const finish = useCallback(() => update(prev => ({ ...prev, finishedAt: Date.now() })), [update])
   const reset = useCallback(() => {
     clear(sessionKey)
     setSession(null)
   }, [sessionKey])
 
-  return { session, hydrated, start, answer, goto, finish, reset }
+  return { session, hydrated, start, answer, goto, toggleFlag, finish, reset }
 }
