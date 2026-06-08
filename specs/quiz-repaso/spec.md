@@ -1,6 +1,6 @@
 # Spec: Modo Repaso para Quiz
 
-**Estado:** PROPUESTA — pendiente de aprobación. No editar código hasta aprobar.
+**Estado:** IMPLEMENTADA — mergeada (commits `3195d07`, `8664630`, `d943b78`).
 **Fecha:** 2026-06-01
 **Autor:** Claude (dirigido por usuario)
 
