@@ -41,3 +41,6 @@ __pycache__
 /.ccls-cache
 replit.nix
 tmp_*
+
+# Claude Code local state
+/.claude
