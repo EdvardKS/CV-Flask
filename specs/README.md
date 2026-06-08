@@ -49,6 +49,15 @@ Dos tipos de spec conviven:
 | [redes/tasks.md](redes/tasks.md) | Áreas de trabajo + checklist |
 | [redes/implementation.md](redes/implementation.md) | Implementación real (3 modos, visor PDF, APIs, datos) |
 
+### Sistemas Digitales (asignatura — feature en curso)
+
+| Spec | Ámbito |
+|------|--------|
+| [sistemas-digitales/constitution.md](sistemas-digitales/constitution.md) | Principios inamovibles |
+| [sistemas-digitales/clarify.md](sistemas-digitales/clarify.md) | Decisiones confirmadas |
+| [sistemas-digitales/plan.md](sistemas-digitales/plan.md) | Plan (campo `image`, materiales externos, contenido) |
+| [sistemas-digitales/tasks.md](sistemas-digitales/tasks.md) | Checklist por bloques |
+
 ## Convención
 
 - Una feature/subsistema = un `.md` (o subcarpeta si tiene varios docs).
