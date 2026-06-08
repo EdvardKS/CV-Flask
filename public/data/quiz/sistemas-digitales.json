@@ -1,23 +1,454 @@
 [
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-2","q":"Si F(A,B,C) = A·B + A'·C representa una función booleana, ¿cuál de las siguientes expresiones es la simplificación mínima de la función F? (A' = NOT A)","options":["B + C","A·C + B","A + C","A·B + C"],"correctIndex":2},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-2","q":"En una compuerta lógica XNOR de tres entradas (A, B y C), la salida será 1 cuando el número de entradas en estado alto sea par. Si A = 1, B = 0 y C = 1, ¿cuál será la salida de la compuerta?","options":["0","Depende de los valores anteriores de las entradas","No se puede determinar sin una tabla de verdad completa","1"],"correctIndex":3},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-2","q":"¿Cuál de los siguientes factores influye directamente en la velocidad de operación de un sistema digital?","options":["Tensión de alimentación","Margen de ruido","Margen de temperatura de operación","Retardo de conmutación"],"correctIndex":3},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-2","q":"¿Cuál de las siguientes afirmaciones describe mejor el concepto de margen de ruido en un circuito digital?","options":["Es el tiempo que tarda el circuito en cambiar de un estado lógico a otro.","Es el voltaje necesario para alimentar correctamente el circuito digital.","Es el rango de temperaturas en el que el dispositivo puede operar sin fallar.","Es el intervalo de tensiones que el circuito puede ignorar como ruido sin afectar la salida lógica."],"correctIndex":3},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-2","q":"¿Cuál de las siguientes afirmaciones describe una ventaja principal de los ASICs en comparación con dispositivos programables como FPGAs?","options":["Los ASICs permiten una mayor flexibilidad al ser reprogramables y adaptarse a diferentes aplicaciones después de la fabricación.","Los ASICs son más económicos para aplicaciones de baja producción, ya que no requieren procesos de fabricación especializados.","Los ASICs suelen consumir menos energía y ofrecen un rendimiento más alto en tareas específicas, ya que están diseñados y optimizados para una función particular.","Los ASICs son ideales para investigación y desarrollo debido a su capacidad para ser reconfigurados y probados en múltiples configuraciones."],"correctIndex":2},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-2","q":"Dada una función lógica de dos variables F(A,B), que es igual a 1 solo cuando A=1 y B=0, ¿cuál es el mintermino que representa esta combinación? (X' = NOT X)","options":["A' + B","A'·B","A·B'","A + B'"],"correctIndex":2},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-2","q":"Dado el teorema de dualidad en Álgebra de Boole, que establece que cada expresión booleana tiene una expresión dual obtenida al intercambiar los operadores + y · y al complementar cada elemento individual, ¿cuál es la expresión dual de (A+B)·(A+C)?","options":["(A·B)+(A+C)","(A·B)·(A·C)","(A·B)+(A·C)","(A+B)+(A·C)"],"correctIndex":2},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-2","q":"Si una función lógica de tres variables F(A,B,C) es igual a 0 únicamente cuando A=1, B=0 y C=1, ¿cuál es el maxtermino correspondiente a esta combinación? (X' = NOT X)","options":["A·B·C","A + B' + C","A' + B + C'","A' + B + C"],"correctIndex":2},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-2","q":"Si tienes una función lógica de cuatro variables de entrada (A, B, C y D), ¿cuántas filas tendrá la tabla de verdad que representa todas las posibles combinaciones de entradas?","options":["16 columnas","4 filas","8 filas","16 filas"],"correctIndex":3},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-2","q":"Dada una función lógica para una compuerta OR de tres entradas (A, B, y C), ¿cuántas filas en su tabla de verdad tendrán una salida igual a 1?","options":["3 filas","7 filas","1 fila","8 filas"],"correctIndex":1},
-
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-4","q":"¿Qué ocurre si se suma un número y su complemento a 2?","options":["El resultado es 1.","El resultado depende del signo del número.","El resultado es igual al número original.","El resultado es 0."],"correctIndex":3},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-4","q":"Si el número en binario es 101011, ¿cuál será su complemento a 2?","options":["010101 + 1","010110","010100 + 1","010101"],"correctIndex":3},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-4","q":"¿Cuál es el resultado de sumar los números binarios 1011 y 1101 en complemento a 2?","options":["11000","11010","1011","10100"],"correctIndex":0},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-4","q":"Si se tiene el número en complemento a 2 11110110, ¿cuál es su valor decimal?","options":["-12","-6","-8","-10"],"correctIndex":3},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-4","q":"¿Qué representa el bit más significativo (MSB) en un número binario en complemento a 2?","options":["Indica si el número es par o impar.","La paridad del número.","La magnitud del número.","El signo del número."],"correctIndex":3},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-4","q":"En un sumador de 4 bits, ¿qué ocurre si la suma de dos números genera un acarreo en el bit más significativo (MSB)?","options":["Se produce un error de desbordamiento.","Se pierde el acarreo.","El resultado se considera incorrecto.","El acarreo se almacena automáticamente en un registro auxiliar."],"correctIndex":0},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-4","q":"¿Qué representa el resultado de sumar dos números binarios en complemento a 2, cuando el acarreo del bit más significativo es 1?","options":["El resultado es negativo.","El resultado es correcto.","Hay un error de desbordamiento.","El resultado es positivo."],"correctIndex":1},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-4","q":"¿Cuál es el principal propósito de un sumador-restador binario?","options":["Realizar operaciones lógicas entre números binarios.","Sumar números binarios positivos únicamente.","Realizar tanto sumas como restas de números binarios en una sola unidad.","Convertir números decimales en binarios."],"correctIndex":2},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-4","q":"¿Cuál es el complemento a 2 del número binario 0110?","options":["1001","1110","1010","10010"],"correctIndex":2},
-  {"kind":"choice","cuatrimestre":2,"category":"unidad-4","q":"¿Cuál de las siguientes afirmaciones es verdadera para un semisumador?","options":["Necesita dos semisumadores para construir un sumador completo.","Tiene dos salidas: suma y acarreo.","Puede realizar la suma de tres números.","Es capaz de realizar operaciones de resta."],"correctIndex":1}
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-2",
+    "q": "Si F(A,B,C) = A·B + A'·C representa una función booleana, ¿cuál de las siguientes expresiones es la simplificación mínima de la función F? (A' = NOT A)",
+    "options": [
+      "B + C",
+      "A·C + B",
+      "A + C",
+      "A·B + C"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-2",
+    "q": "En una compuerta lógica XNOR de tres entradas (A, B y C), la salida será 1 cuando el número de entradas en estado alto sea par. Si A = 1, B = 0 y C = 1, ¿cuál será la salida de la compuerta?",
+    "options": [
+      "0",
+      "Depende de los valores anteriores de las entradas",
+      "No se puede determinar sin una tabla de verdad completa",
+      "1"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-2",
+    "q": "¿Cuál de los siguientes factores influye directamente en la velocidad de operación de un sistema digital?",
+    "options": [
+      "Tensión de alimentación",
+      "Margen de ruido",
+      "Margen de temperatura de operación",
+      "Retardo de conmutación"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-2",
+    "q": "¿Cuál de las siguientes afirmaciones describe mejor el concepto de margen de ruido en un circuito digital?",
+    "options": [
+      "Es el tiempo que tarda el circuito en cambiar de un estado lógico a otro.",
+      "Es el voltaje necesario para alimentar correctamente el circuito digital.",
+      "Es el rango de temperaturas en el que el dispositivo puede operar sin fallar.",
+      "Es el intervalo de tensiones que el circuito puede ignorar como ruido sin afectar la salida lógica."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-2",
+    "q": "¿Cuál de las siguientes afirmaciones describe una ventaja principal de los ASICs en comparación con dispositivos programables como FPGAs?",
+    "options": [
+      "Los ASICs permiten una mayor flexibilidad al ser reprogramables y adaptarse a diferentes aplicaciones después de la fabricación.",
+      "Los ASICs son más económicos para aplicaciones de baja producción, ya que no requieren procesos de fabricación especializados.",
+      "Los ASICs suelen consumir menos energía y ofrecen un rendimiento más alto en tareas específicas, ya que están diseñados y optimizados para una función particular.",
+      "Los ASICs son ideales para investigación y desarrollo debido a su capacidad para ser reconfigurados y probados en múltiples configuraciones."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-2",
+    "q": "Dada una función lógica de dos variables F(A,B), que es igual a 1 solo cuando A=1 y B=0, ¿cuál es el mintermino que representa esta combinación? (X' = NOT X)",
+    "options": [
+      "A' + B",
+      "A'·B",
+      "A·B'",
+      "A + B'"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-2",
+    "q": "Dado el teorema de dualidad en Álgebra de Boole, que establece que cada expresión booleana tiene una expresión dual obtenida al intercambiar los operadores + y · y al complementar cada elemento individual, ¿cuál es la expresión dual de (A+B)·(A+C)?",
+    "options": [
+      "(A·B)+(A+C)",
+      "(A·B)·(A·C)",
+      "(A·B)+(A·C)",
+      "(A+B)+(A·C)"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-2",
+    "q": "Si una función lógica de tres variables F(A,B,C) es igual a 0 únicamente cuando A=1, B=0 y C=1, ¿cuál es el maxtermino correspondiente a esta combinación? (X' = NOT X)",
+    "options": [
+      "A·B·C",
+      "A + B' + C",
+      "A' + B + C'",
+      "A' + B + C"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-2",
+    "q": "Si tienes una función lógica de cuatro variables de entrada (A, B, C y D), ¿cuántas filas tendrá la tabla de verdad que representa todas las posibles combinaciones de entradas?",
+    "options": [
+      "16 columnas",
+      "4 filas",
+      "8 filas",
+      "16 filas"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-2",
+    "q": "Dada una función lógica para una compuerta OR de tres entradas (A, B, y C), ¿cuántas filas en su tabla de verdad tendrán una salida igual a 1?",
+    "options": [
+      "3 filas",
+      "7 filas",
+      "1 fila",
+      "8 filas"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-4",
+    "q": "¿Qué ocurre si se suma un número y su complemento a 2?",
+    "options": [
+      "El resultado es 1.",
+      "El resultado depende del signo del número.",
+      "El resultado es igual al número original.",
+      "El resultado es 0."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-4",
+    "q": "Si el número en binario es 101011, ¿cuál será su complemento a 2?",
+    "options": [
+      "010101 + 1",
+      "010110",
+      "010100 + 1",
+      "010101"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-4",
+    "q": "¿Cuál es el resultado de sumar los números binarios 1011 y 1101 en complemento a 2?",
+    "options": [
+      "11000",
+      "11010",
+      "1011",
+      "10100"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-4",
+    "q": "Si se tiene el número en complemento a 2 11110110, ¿cuál es su valor decimal?",
+    "options": [
+      "-12",
+      "-6",
+      "-8",
+      "-10"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-4",
+    "q": "¿Qué representa el bit más significativo (MSB) en un número binario en complemento a 2?",
+    "options": [
+      "Indica si el número es par o impar.",
+      "La paridad del número.",
+      "La magnitud del número.",
+      "El signo del número."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-4",
+    "q": "En un sumador de 4 bits, ¿qué ocurre si la suma de dos números genera un acarreo en el bit más significativo (MSB)?",
+    "options": [
+      "Se produce un error de desbordamiento.",
+      "Se pierde el acarreo.",
+      "El resultado se considera incorrecto.",
+      "El acarreo se almacena automáticamente en un registro auxiliar."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-4",
+    "q": "¿Qué representa el resultado de sumar dos números binarios en complemento a 2, cuando el acarreo del bit más significativo es 1?",
+    "options": [
+      "El resultado es negativo.",
+      "El resultado es correcto.",
+      "Hay un error de desbordamiento.",
+      "El resultado es positivo."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-4",
+    "q": "¿Cuál es el principal propósito de un sumador-restador binario?",
+    "options": [
+      "Realizar operaciones lógicas entre números binarios.",
+      "Sumar números binarios positivos únicamente.",
+      "Realizar tanto sumas como restas de números binarios en una sola unidad.",
+      "Convertir números decimales en binarios."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-4",
+    "q": "¿Cuál es el complemento a 2 del número binario 0110?",
+    "options": [
+      "1001",
+      "1110",
+      "1010",
+      "10010"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "unidad-4",
+    "q": "¿Cuál de las siguientes afirmaciones es verdadera para un semisumador?",
+    "options": [
+      "Necesita dos semisumadores para construir un sumador completo.",
+      "Tiene dos salidas: suma y acarreo.",
+      "Puede realizar la suma de tres números.",
+      "Es capaz de realizar operaciones de resta."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "Observa la tabla de verdad de la figura. ¿Qué función booleana S(A,B,C) la representa?",
+    "options": [
+      "S = A·B + A·C + B·C",
+      "S = A⊕B⊕C",
+      "S = Ā·B̄ + Ā·C̄ + B̄·C̄",
+      "S = A + B + C"
+    ],
+    "correctIndex": 0,
+    "image": "/data/quiz/sistemas-digitales/assets/q1.jpg",
+    "hint": "esta función da 1 solo cuando al menos DOS de las tres entradas son 1 simultáneamente. Se llama «función mayoría».",
+    "evidence": "La función A·B + A·C + B·C se llama función mayoría : la salida vale 1 cuando la mayoría de las entradas (al menos 2 de las 3) valen 1. Los tres términos cubren exactamente los cuatro minterms donde S=1: {3, 5, 6, 7}. La opción b (XOR) produciría S=1 en las filas {1,2,4,7} — no coincide. La d (OR) produciría S=1 en {1,2,3,4,5,6,7} — tampoco. La c usa complementos que producen el resultado contrario."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "Una función de 3 variables tiene los minterms Σm(0,1,2,5). ¿Cuál es su forma canónica de maxterms (producto de sumas)?",
+    "options": [
+      "ΠM(3, 4, 6, 7)",
+      "ΠM(3, 4, 9, 16)",
+      "ΠM(2, 9, 36, 49)",
+      "Σm(0, 1, 2, 5)"
+    ],
+    "correctIndex": 0,
+    "image": "/data/quiz/sistemas-digitales/assets/q2.jpg",
+    "hint": "ΠM siempre contiene los índices que NO están en Σm. Son complementarios.",
+    "evidence": "Con n=3 variables los índices válidos son {0,1,...,7}. Los minterms ocupan {0,1,2,5}, así que los maxterms son el complemento: {3,4,6,7} . Las opciones b, c y d contienen índices imposibles (≥8 para 3 variables), lo que las invalida directamente sin necesidad de calcular nada."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "Un chip de memoria RAM tiene una capacidad de 4 KB. ¿Cuántos bits de dirección interna necesita para seleccionar una celda dentro del chip?",
+    "options": [
+      "16 bits",
+      "8 bits",
+      "12 bits",
+      "2 bits"
+    ],
+    "correctIndex": 2,
+    "image": "/data/quiz/sistemas-digitales/assets/q3.jpg",
+    "hint": "1 KB = 2¹⁰, 2 KB = 2¹¹, 4 KB = 2¹², 8 KB = 2¹³, 16 KB = 2¹⁴. Memoriza esta tabla.",
+    "evidence": "4 KB = 4096 = 2¹², por tanto se necesitan 12 bits para las líneas de dirección que seleccionan celda dentro del chip (A₀–A₁₁). 16 bits cubriría chips de 64 KB, 8 bits solo 256 B, y 2 bits solo 4 celdas — ninguno coincide con la capacidad de 4 KB."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "Calcula el resultado de la división 30₁₆ ÷ 1000₂ y exprésalo correctamente. ¿Cuál es la opción válida?",
+    "options": [
+      "1010₂",
+      "10₁₀",
+      "6₈",
+      "15₁₆"
+    ],
+    "correctIndex": 2,
+    "image": "/data/quiz/sistemas-digitales/assets/q4.jpg",
+    "hint": "ante una operación con distintas bases → todo a decimal, opera, convierte el resultado.",
+    "evidence": "0x30 = 48₁₀ y 1000₂ = 8₁₀. La división 48÷8 = 6, que en octal sigue siendo 6₈ (los dígitos 0-7 son idénticos en decimal y octal). Las otras opciones representan el valor 10 o el 21 en decimal — ninguno es el cociente correcto."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "Con el decodificador de la figura (A→S3, B→S2, C→S1, D→S0) se quiere implementar F = A·B·C·D̄ + Ā·B̄·C̄·D + Ā·B·C·D̄. ¿Qué circuito la implementa?",
+    "options": [
+      "Circuito 1",
+      "Circuito 3",
+      "Circuito 4",
+      "Circuito 2"
+    ],
+    "correctIndex": 3,
+    "image": "/data/quiz/sistemas-digitales/assets/q5.jpg",
+    "hint": "cada término de un minterm con 4 variables es simplemente su índice binario. Escríbelo como 4 bits y ya tienes ABCD.",
+    "evidence": "Los tres términos de la función corresponden a los minterms 1, 6 y 14 del decoder. Para salidas activas-altas, la operación OR de esas salidas implementa la función. El circuito 2 conecta exactamente las salidas 01, 06 y 14 a una puerta OR."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "A partir del mapa de Karnaugh de la figura, obtén la expresión mínima como Producto de Sumas (POS).",
+    "options": [
+      "(A + D)·(Ā + D̄)",
+      "(Ā + D̄)·(A + D)",
+      "(A + D̄)·(Ā + D)",
+      "(A·D̄) + (Ā·D)"
+    ],
+    "correctIndex": 2,
+    "image": "/data/quiz/sistemas-digitales/assets/q6.jpg",
+    "hint": "para los ceros, el «0 se va sin complementar, el 1 se complementa». Es el inverso de la regla SOP.",
+    "evidence": "Los ceros se agrupan en {1,3,5,7} donde A=0 y D=1 → (A+D̄), y en {8,10,12,14} donde A=1 y D=0 → (Ā+D). Las variables B y C no aparecen porque cambian dentro de cada grupo. Curioso: esta expresión POS es equivalente a la expresión SOP de la pregunta 10 — son la misma función escrita de dos formas distintas."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "Dada la función POS (A + D̄)·(Ā + D), ¿qué circuito de la figura la implementa correctamente?",
+    "options": [
+      "Circuito 1",
+      "Circuito 2",
+      "Circuito 4",
+      "Circuito 3"
+    ],
+    "correctIndex": 3,
+    "image": "/data/quiz/sistemas-digitales/assets/q7.jpg",
+    "hint": "escribe qué variables necesita la función, dibuja el esquema en papel, y luego busca el circuito que lo hace igual.",
+    "evidence": "La función POS (A+D̄)·(Ā+D) solo involucra A y D, descartando los circuitos 1 y 4 (que usan C). El circuito 3 implementa correctamente la estructura OR-AND con una burbuja (inversión) en D para la primera OR y una burbuja en A para la segunda OR."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "El contador con flip-flops T de la figura arranca en Q3Q2Q1 = 111 y realimenta T1 = Q3. ¿Qué captura del analizador lógico corresponde a su funcionamiento?",
+    "options": [
+      "Captura 2",
+      "Captura 4",
+      "Captura 1",
+      "Captura 3"
+    ],
+    "correctIndex": 1,
+    "image": "/data/quiz/sistemas-digitales/assets/q8.jpg",
+    "hint": "el eje X es el tiempo (cada división = un pulso de CLK), el eje Y es el nivel lógico (alto=1, bajo=0). Una señal «alta» durante 4 ciclos antes de bajar indica que tiene periodo 8.",
+    "evidence": "El contador arranca en 111 (=7) y cuenta descendentemente. Q1 alterna cada ciclo (periodo 2T), Q2 cada 2 ciclos (4T) y Q3 cada 4 ciclos (8T). Las tres señales comienzan en alto. La captura 4 es la única que refleja este patrón con todas las señales iniciando en 1."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "Un sistema de memoria de 16 KB se construye con chips de 4 KB. ¿Cuántos bits de selección de chip (chip select) hacen falta?",
+    "options": [
+      "1 bit",
+      "2 bits",
+      "4 bits",
+      "3 bits"
+    ],
+    "correctIndex": 1,
+    "image": "/data/quiz/sistemas-digitales/assets/q9.jpg",
+    "hint": "el bus de direcciones total tiene 14 bits (para 16 KB = 2¹⁴). Los 12 bits bajos (A₀–A₁₁) son dirección interna. Los 2 bits altos (A₁₂, A₁₃) son chip select. 12+2 = 14 ✓",
+    "evidence": "16 KB / 4 KB = 4 chips. Para seleccionar entre 4 chips se necesita log₂(4) = 2 bits . Con esos dos bits se pueden codificar las 4 combinaciones: 00 (RAM0), 01 (RAM1), 10 (RAM2), 11 (RAM3)."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "A partir del mapa de Karnaugh de la figura, obtén la expresión mínima como Suma de Productos (SOP).",
+    "options": [
+      "A·D̄ + Ā·D",
+      "A·B + C·D",
+      "Ā·D + A·D̄",
+      "A·D + Ā·D̄"
+    ],
+    "correctIndex": 3,
+    "image": "/data/quiz/sistemas-digitales/assets/q10.jpg",
+    "hint": "para los unos, el «1 se queda tal cual, el 0 se complementa».",
+    "evidence": "Los unos se agrupan en {0,2,4,6} donde A=0 y D=0 → Ā·D̄, y en {9,11,13,15} donde A=1 y D=1 → A·D. Esta función es el XNOR de A y D: da 1 cuando A y D tienen el mismo valor."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "En un mapa de memoria de 4 chips de 4 KB ubicados consecutivamente desde 0x0000, ¿qué rango de direcciones ocupa el chip RAM2?",
+    "options": [
+      "0x0000 – 0x0FFF",
+      "0x1000 – 0x1FFF",
+      "0x2000 – 0x2FFF",
+      "0x3000 – 0x3FFF"
+    ],
+    "correctIndex": 2,
+    "image": "/data/quiz/sistemas-digitales/assets/q11.jpg",
+    "hint": "hex: 4 KB = 0x1000. Simplemente suma 0x1000 a la dirección de inicio anterior para obtener la siguiente. En hex, 0x0FFF + 1 = 0x1000, 0x1FFF + 1 = 0x2000, etc.",
+    "evidence": "Cada chip ocupa 0x1000 posiciones. Contando desde 0: RAM0 (0x0000–0x0FFF), RAM1 (0x1000–0x1FFF), RAM2 (0x2000–0x2FFF) , RAM3 (0x3000–0x3FFF)."
+  },
+  {
+    "kind": "choice",
+    "cuatrimestre": 2,
+    "category": "simulacro-examen",
+    "q": "Dada la función SOP A·D + Ā·D̄, ¿qué circuito de la figura la implementa correctamente?",
+    "options": [
+      "Circuito 2",
+      "Circuito 1",
+      "Circuito 3",
+      "Circuito 4"
+    ],
+    "correctIndex": 1,
+    "image": "/data/quiz/sistemas-digitales/assets/q12.jpg",
+    "hint": "A·D + Ā·D̄ es la función XNOR(A,D) — da 1 cuando A y D son iguales.",
+    "evidence": "SOP = A·D + Ā·D̄ solo usa A y D. La estructura AND-OR correcta tiene dos puertas AND (una con A,D directas; otra con A,D negadas) conectadas a una OR. El circuito 1 implementa exactamente eso."
+  }
 ]

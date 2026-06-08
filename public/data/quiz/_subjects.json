@@ -6,7 +6,19 @@
     "icon": "🔢",
     "color": "#ea580c",
     "curso": 1,
-    "cuatrimestre": 2
+    "cuatrimestre": 2,
+    "materials": [
+      {
+        "title": "Simulacro de examen resuelto",
+        "url": "/data/quiz/sistemas-digitales/simulacro-examen.html",
+        "icon": "📝"
+      },
+      {
+        "title": "Guía de escritura activa",
+        "url": "/data/quiz/sistemas-digitales/guia-escritura.html",
+        "icon": "✍️"
+      }
+    ]
   },
   {
     "id": "estructura",
