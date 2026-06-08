@@ -48,8 +48,8 @@ export function QuestionFrame({ number, status, flagged, onToggleFlag, children 
           type="button"
           onClick={onToggleFlag}
           aria-pressed={flagged}
-          className={`inline-flex items-center gap-1 text-[12px] font-semibold transition ${
-            flagged ? 'text-[var(--mq-magenta)]' : 'text-[var(--mq-link)] hover:underline'
+          className={`inline-flex items-center gap-1 border-0 bg-transparent p-0 text-[12px] font-semibold outline-none transition focus-visible:underline ${
+            flagged ? 'text-[var(--mq-magenta)] hover:underline' : 'text-[var(--mq-link)] hover:underline'
           }`}
         >
           <span aria-hidden>{flagged ? '🚩' : '⚐'}</span>

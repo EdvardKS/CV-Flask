@@ -61,7 +61,7 @@ export function QuestionNavPanel({
       <button
         type="button"
         onClick={onToggleView}
-        className="mt-4 block text-[13px] font-semibold text-[var(--mq-link)] hover:underline"
+        className="mt-4 block border-0 bg-transparent p-0 text-[13px] font-semibold text-[var(--mq-link)] outline-none transition hover:underline focus-visible:underline"
       >
         {viewMode === 'single' ? 'Mostrar todas las preguntas' : 'Mostrar una página cada vez'}
       </button>
