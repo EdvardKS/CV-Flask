@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS quiz_subjects (
   curso       INTEGER,
   cuatrimestre INTEGER,
   entry_mode  TEXT NOT NULL DEFAULT 'standard',
+  materials_json TEXT,
   updated_at  INTEGER NOT NULL
 );
 
@@ -30,7 +31,8 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
   hint          TEXT,
   explanation_correct TEXT,
   explanation_wrong   TEXT,
-  group_name    TEXT
+  group_name    TEXT,
+  image         TEXT
 );
 
 CREATE TABLE IF NOT EXISTS quiz_results (

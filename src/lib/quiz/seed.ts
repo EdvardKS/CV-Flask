@@ -25,14 +25,15 @@ async function fileMtime(p: string): Promise<number> {
 }
 
 function upsertSubject(db: Database.Database, m: SubjectMeta) {
-  db.prepare(`INSERT INTO quiz_subjects(id,name,description,icon,color,position,curso,cuatrimestre,entry_mode,updated_at)
-              VALUES(@id,@name,@description,@icon,@color,@position,@curso,@cuatrimestre,@entry_mode,@updated_at)
+  db.prepare(`INSERT INTO quiz_subjects(id,name,description,icon,color,position,curso,cuatrimestre,entry_mode,materials_json,updated_at)
+              VALUES(@id,@name,@description,@icon,@color,@position,@curso,@cuatrimestre,@entry_mode,@materials_json,@updated_at)
               ON CONFLICT(id) DO UPDATE SET
                 name=excluded.name, description=excluded.description,
                 icon=excluded.icon, color=excluded.color,
                 position=excluded.position, curso=excluded.curso,
                 cuatrimestre=excluded.cuatrimestre,
                 entry_mode=excluded.entry_mode,
+                materials_json=excluded.materials_json,
                 updated_at=excluded.updated_at`)
     .run({
       ...m,
@@ -40,6 +41,7 @@ function upsertSubject(db: Database.Database, m: SubjectMeta) {
       curso: m.curso ?? null,
       cuatrimestre: m.cuatrimestre ?? null,
       entry_mode: m.entryMode ?? 'standard',
+      materials_json: m.materials && m.materials.length ? JSON.stringify(m.materials) : null,
       updated_at: Date.now()
     })
 }
@@ -47,8 +49,8 @@ function upsertSubject(db: Database.Database, m: SubjectMeta) {
 function insertQuestion(db: Database.Database, subjectId: string, q: Question, pos: number) {
   const isChoice = q.kind === 'choice'
   db.prepare(`INSERT INTO quiz_questions
-    (subject_id,position,q,kind,options_json,correct_json,accept_json,cuatrimestre,context,code,is_vocab,category,evidence,hint,explanation_correct,explanation_wrong,group_name)
-    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(
+    (subject_id,position,q,kind,options_json,correct_json,accept_json,cuatrimestre,context,code,is_vocab,category,evidence,hint,explanation_correct,explanation_wrong,group_name,image)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(
       subjectId, pos, q.q, q.kind,
       isChoice ? JSON.stringify(q.options) : '[]',
       isChoice ? JSON.stringify(q.correctIndex) : 'null',
@@ -62,7 +64,8 @@ function insertQuestion(db: Database.Database, subjectId: string, q: Question, p
       q.hint ?? null,
       q.explanationCorrect ?? null,
       q.explanationWrong ?? null,
-      q.group ?? null
+      q.group ?? null,
+      q.image ?? null
     )
 }
 

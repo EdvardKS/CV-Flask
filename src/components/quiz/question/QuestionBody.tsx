@@ -36,6 +36,14 @@ export function QuestionBody({ question, accent, prompt, children }: Props) {
 {question.code}
         </pre>
       )}
+      {question.image && (
+        <img
+          src={question.image}
+          alt="Figura de la pregunta"
+          loading="lazy"
+          className="mt-3 w-full max-w-xl rounded-md border border-[var(--mq-qbodyBorder,#cfe2f5)] bg-white"
+        />
+      )}
       <div className="mt-4">{children}</div>
     </div>
   )

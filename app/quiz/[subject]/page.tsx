@@ -4,6 +4,7 @@ import { getSubject, listQuestions } from '@lib/quiz/repo'
 import { QuizPageShell } from '@components/quiz/QuizPageShell'
 import { QuizHeader } from '@components/quiz/QuizHeader'
 import { QuizSession } from '@components/quiz/QuizSession'
+import { SubjectMaterials } from '@components/quiz/SubjectMaterials'
 
 export const dynamic = 'force-dynamic'
 
@@ -35,6 +36,9 @@ export default async function SubjectQuizPage({ params }: { params: Promise<{ su
         accent={meta.color}
         back={{ href: '/quiz', label: 'Mis asignaturas' }}
       />
+      {meta.materials && meta.materials.length > 0 && (
+        <SubjectMaterials materials={meta.materials} accent={meta.color} />
+      )}
       <QuizSession subject={meta} questions={questions} />
     </QuizPageShell>
   )

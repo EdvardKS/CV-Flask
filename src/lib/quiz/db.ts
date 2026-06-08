@@ -18,6 +18,7 @@ function migrateQuestionsTable(db: Database.Database) {
   if (!has('explanation_correct')) db.exec('ALTER TABLE quiz_questions ADD COLUMN explanation_correct TEXT')
   if (!has('explanation_wrong')) db.exec('ALTER TABLE quiz_questions ADD COLUMN explanation_wrong TEXT')
   if (!has('group_name')) db.exec('ALTER TABLE quiz_questions ADD COLUMN group_name TEXT')
+  if (!has('image')) db.exec('ALTER TABLE quiz_questions ADD COLUMN image TEXT')
 }
 
 function migrateSubjectsTable(db: Database.Database) {
@@ -26,6 +27,7 @@ function migrateSubjectsTable(db: Database.Database) {
   if (!has('curso')) db.exec('ALTER TABLE quiz_subjects ADD COLUMN curso INTEGER')
   if (!has('cuatrimestre')) db.exec('ALTER TABLE quiz_subjects ADD COLUMN cuatrimestre INTEGER')
   if (!has('entry_mode')) db.exec("ALTER TABLE quiz_subjects ADD COLUMN entry_mode TEXT NOT NULL DEFAULT 'standard'")
+  if (!has('materials_json')) db.exec('ALTER TABLE quiz_subjects ADD COLUMN materials_json TEXT')
 }
 
 export function getQuizDb(): Database.Database {

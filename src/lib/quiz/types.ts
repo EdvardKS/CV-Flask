@@ -1,5 +1,12 @@
 import { z } from 'zod'
 
+export const subjectMaterialSchema = z.object({
+  title: z.string().min(1),
+  url: z.string().min(1),
+  icon: z.string().min(1).optional()
+})
+export type SubjectMaterial = z.infer<typeof subjectMaterialSchema>
+
 export const subjectMetaSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/, 'lowercase, dashes, digits only'),
   name: z.string().min(1),
@@ -9,7 +16,8 @@ export const subjectMetaSchema = z.object({
   position: z.number().int().optional(),
   curso: z.number().int().min(1).max(6).optional(),
   cuatrimestre: z.number().int().min(1).max(2).optional(),
-  entryMode: z.enum(['standard', 'hub']).optional().default('standard')
+  entryMode: z.enum(['standard', 'hub']).optional().default('standard'),
+  materials: z.array(subjectMaterialSchema).optional()
 })
 export type SubjectMeta = z.infer<typeof subjectMetaSchema>
 
@@ -27,6 +35,7 @@ const baseFields = {
   code: z.string().optional(),
   category: z.string().optional(),
   group: z.string().optional(),
+  image: z.string().min(1).optional(),
   cuatrimestre: z.number().int().min(1).max(2).optional(),
   isVocab: z.boolean().optional(),
   sourceFile: z.string().min(1).optional(),
