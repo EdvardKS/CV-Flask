@@ -49,8 +49,8 @@ export function QuizRunner({ session, accent, repaso, onAnswer, onGoto, onToggle
 
   return (
     <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-5">
-      {/* Navegación: colapsable en móvil, barra lateral fija en escritorio */}
-      <details className="rounded-lg border border-[var(--mq-border)] bg-white p-3 shadow-sm lg:hidden">
+      {/* Navegación: colapsable en móvil (fija bajo la barra superior), barra lateral fija en escritorio */}
+      <details className="sticky top-14 z-20 order-1 rounded-lg border border-[var(--mq-border)] bg-white/95 p-3 shadow-sm backdrop-blur lg:hidden">
         <summary className="cursor-pointer text-[14px] font-bold text-[var(--mq-navy)]">
           Navegación · {answered}/{total} respondidas
         </summary>
@@ -123,7 +123,7 @@ export function QuizRunner({ session, accent, repaso, onAnswer, onGoto, onToggle
         )}
       </div>
 
-      <aside className="order-1 hidden lg:sticky lg:top-20 lg:order-2 lg:block">
+      <aside className="order-1 hidden lg:sticky lg:top-20 lg:order-2 lg:block lg:max-h-[calc(100dvh-6rem)] lg:overflow-y-auto">
         {navPanel}
       </aside>
     </div>
