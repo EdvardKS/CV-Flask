@@ -38,6 +38,7 @@ Dos tipos de spec conviven:
 | [quiz/data-layer.md](quiz/data-layer.md) | SQLite (better-sqlite3): esquema, seed, repo, APIs |
 | [quiz/estadistica.md](quiz/estadistica.md) | Asignatura Estadística (hub, test, ejercicio fb6) |
 | [quiz-repaso/spec.md](quiz-repaso/spec.md) | **Feature** Modo repaso (implementada) |
+| [quiz-image-lightbox/](quiz-image-lightbox/) | **Feature** Visor de imágenes con zoom/paneo (constitution/clarify/plan/tasks/tdd) |
 
 ### Redes (asignatura)
 
