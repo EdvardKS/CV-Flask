@@ -39,6 +39,7 @@ Dos tipos de spec conviven:
 | [quiz/estadistica.md](quiz/estadistica.md) | Asignatura Estadística (hub, test, ejercicio fb6) |
 | [quiz-repaso/spec.md](quiz-repaso/spec.md) | **Feature** Modo repaso (implementada) |
 | [quiz-image-lightbox/](quiz-image-lightbox/) | **Feature** Visor de imágenes con zoom/paneo (constitution/clarify/plan/tasks/tdd) |
+| [quiz-area-and-motion/](quiz-area-and-motion/) | **Feature** Área personal + filtros por curso + buscador + animaciones cinematográficas |
 
 ### Redes (asignatura)
 
