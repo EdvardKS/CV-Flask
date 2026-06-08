@@ -7,7 +7,7 @@ html:has(.quiz-shell) body {
   height: auto !important;
   min-height: 100%;
   user-select: text !important;
-  background: #f0f2f5;
+  background: #f4f6f8;
   font-family:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
@@ -17,14 +17,14 @@ html:has(.quiz-shell) body {
 
 /* Design tokens (mirror of palette.ts) for class/style usage inside the shell. */
 .quiz-shell {
-  --mq-page: #f0f2f5;
+  --mq-page: #f4f6f8;
   --mq-surface: #ffffff;
-  --mq-border: #dfe3e8;
-  --mq-navy: #0a2d5e;
-  --mq-ink: #1a2733;
-  --mq-muted: #5b6b7b;
-  --mq-link: #1f6fb2;
-  --mq-magenta: #e6007e;
+  --mq-border: #d9e0e7;
+  --mq-navy: #113763;
+  --mq-ink: #1f2d3a;
+  --mq-muted: #607083;
+  --mq-link: #246da8;
+  --mq-magenta: #c2416b;
   --mq-qbody: #e8f2fc;
   --mq-qbodyBorder: #cfe2f5;
   --mq-noteBg: #fdf3e3;

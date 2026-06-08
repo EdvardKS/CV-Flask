@@ -2,6 +2,7 @@
   {
     "id": "sistemas-digitales",
     "name": "Sistemas Digitales",
+    "code": "SDIG",
     "description": "SDIG - 1º curso 2º cuatri. Álgebra de Boole, compuertas, complemento a 2, sumadores.",
     "icon": "🔢",
     "color": "#ea580c",
@@ -23,6 +24,7 @@
   {
     "id": "estructura",
     "name": "Estructura de Computadores",
+    "code": "ECSO",
     "description": "ECSO - 2º curso 1º cuatri. Arquitectura, MIPS, memoria, periféricos.",
     "icon": "🧮",
     "color": "#3a6ea5",
@@ -32,6 +34,7 @@
   {
     "id": "sistemas-operativos",
     "name": "Administración de SSOO",
+    "code": "ASSO",
     "description": "ASSO - 2º curso 1º cuatri. Gestión de procesos, memoria, planificación, E/S.",
     "icon": "⚙️",
     "color": "#2e7d32",
@@ -41,6 +44,7 @@
   {
     "id": "ingles",
     "name": "Inglés B2",
+    "code": "GB",
     "description": "Gramática, condicionales, vocabulario, phrasal verbs.",
     "icon": "🇬🇧",
     "color": "#c62828",
@@ -49,6 +53,7 @@
   {
     "id": "estadistica",
     "name": "Estadística",
+    "code": "EST",
     "description": "EST - 2º curso 2º cuatri. Contrastes de hipótesis, errores tipo I y II, potencia, nivel de significación.",
     "icon": "📊",
     "color": "#d97706",
@@ -59,6 +64,7 @@
   {
     "id": "redes",
     "name": "Redes",
+    "code": "RED",
     "description": "RED - 2º curso 2º cuatri. LAN, VLAN, encaminamiento, IPv6 y seguridad en comunicaciones.",
     "icon": "🌐",
     "color": "#0f766e",
@@ -69,6 +75,7 @@
   {
     "id": "ssoo-avanzados",
     "name": "SSOO Avanzados",
+    "code": "SOAV",
     "description": "SOAV - 3º curso 1º cuatri. Hyper-threading, MIMD, hebras, sincronización.",
     "icon": "🧠",
     "color": "#6a1b9a",
@@ -78,6 +85,7 @@
   {
     "id": "ia",
     "name": "Inteligencia Artificial",
+    "code": "IA",
     "description": "IA - 3º curso 2º cuatri. Fundamentos, Machine Learning, Deep Learning, PLN, Visión por Computadora y Robótica.",
     "icon": "🤖",
     "color": "#7c3aed",
@@ -87,6 +95,7 @@
   {
     "id": "ade",
     "name": "Administración de Empresas",
+    "code": "ADE",
     "description": "ADE - 3º curso 2º cuatri. Dirección, finanzas, inversión, financiación, decisión multicriterio y valoración.",
     "icon": "🏢",
     "color": "#b45309",
@@ -96,6 +105,7 @@
   {
     "id": "gestion-tecnologia",
     "name": "Gestión de la Tecnología",
+    "code": "GTEC",
     "description": "GTEC - 4º curso 2º cuatri. Innovación, transferencia, vigilancia e inteligencia competitiva.",
     "icon": "📈",
     "color": "#0d9488",

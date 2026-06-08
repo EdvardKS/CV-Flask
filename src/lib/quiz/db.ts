@@ -24,6 +24,7 @@ function migrateQuestionsTable(db: Database.Database) {
 function migrateSubjectsTable(db: Database.Database) {
   const cols = db.prepare('PRAGMA table_info(quiz_subjects)').all() as { name: string }[]
   const has = (name: string) => cols.some(col => col.name === name)
+  if (!has('code')) db.exec('ALTER TABLE quiz_subjects ADD COLUMN code TEXT')
   if (!has('curso')) db.exec('ALTER TABLE quiz_subjects ADD COLUMN curso INTEGER')
   if (!has('cuatrimestre')) db.exec('ALTER TABLE quiz_subjects ADD COLUMN cuatrimestre INTEGER')
   if (!has('entry_mode')) db.exec("ALTER TABLE quiz_subjects ADD COLUMN entry_mode TEXT NOT NULL DEFAULT 'standard'")

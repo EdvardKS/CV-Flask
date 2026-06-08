@@ -11,6 +11,7 @@ export const subjectMetaSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/, 'lowercase, dashes, digits only'),
   name: z.string().min(1),
   description: z.string().default(''),
+  code: z.string().min(1).optional(),
   icon: z.string().default('📝'),
   color: z.string().default('#3a6ea5'),
   position: z.number().int().optional(),

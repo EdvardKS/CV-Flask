@@ -15,6 +15,10 @@ function groupLabel(curso?: number, cuatri?: number): string {
   return curso !== undefined ? `${cursoPart} · ${cuatriPart}` : cursoPart
 }
 
+function countLabel(count: number): string {
+  return `${count} ${count === 1 ? 'asignatura' : 'asignaturas'}`
+}
+
 export function SubjectFilters({ subjects }: { subjects: SubjectWithCount[] }) {
   const [query, setQuery] = useState('')
   const [curso, setCurso] = useState<number | null>(null)
@@ -44,41 +48,44 @@ export function SubjectFilters({ subjects }: { subjects: SubjectWithCount[] }) {
   }
 
   return (
-    <motion.div initial="hidden" animate="show" variants={m.section} className="flex flex-col gap-5">
-      {/* Buscador */}
-      <motion.div variants={m.item} className="group relative">
-        <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[var(--mq-muted)] transition-colors group-focus-within:text-[var(--mq-link)]" aria-hidden>
-          <SearchIcon />
-        </span>
-        <input
-          type="search"
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          placeholder="¿Qué asignatura estás buscando?"
-          aria-label="Buscar asignatura"
-          className="w-full rounded-2xl border-2 border-[var(--mq-border)] bg-white py-3.5 pl-12 pr-11 text-[15px] font-medium text-[var(--mq-ink)] shadow-sm outline-none transition-all duration-200 placeholder:font-normal placeholder:text-[var(--mq-muted)] hover:border-slate-300 focus:border-[var(--mq-link)] focus:shadow-[0_0_0_4px_rgba(31,111,178,0.14)] [&::-webkit-search-cancel-button]:appearance-none"
-        />
-        {query && (
-          <button
-            type="button"
-            onClick={() => setQuery('')}
-            aria-label="Limpiar búsqueda"
-            className="absolute right-3 top-1/2 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-full text-[var(--mq-muted)] transition hover:bg-slate-100 hover:text-[var(--mq-ink)]"
-          >✕</button>
+    <motion.div initial="hidden" animate="show" variants={m.section} className="flex w-full max-w-5xl flex-col gap-5">
+      <motion.div
+        variants={m.item}
+        className="flex flex-col gap-3 rounded-lg border border-[var(--mq-border)] bg-[var(--mq-surface)] p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.05)] md:flex-row md:items-center"
+      >
+        <div className="group relative min-w-0 flex-1">
+          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--mq-muted)] transition-colors group-focus-within:text-[var(--mq-link)]" aria-hidden>
+            <SearchIcon />
+          </span>
+          <input
+            type="search"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            placeholder="Buscar asignatura"
+            aria-label="Buscar asignatura"
+            className="h-10 w-full rounded-md border border-transparent bg-[var(--mq-page)] py-2 pl-10 pr-10 text-[14px] font-medium text-[var(--mq-ink)] outline-none transition-all duration-200 placeholder:font-normal placeholder:text-[var(--mq-muted)] hover:bg-white focus:border-[var(--mq-link)] focus:bg-white focus:shadow-[0_0_0_3px_rgba(31,111,178,0.12)] [&::-webkit-search-cancel-button]:appearance-none"
+          />
+          {query && (
+            <button
+              type="button"
+              onClick={() => setQuery('')}
+              aria-label="Limpiar búsqueda"
+              className="absolute right-2 top-1/2 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-full text-[var(--mq-muted)] transition hover:bg-slate-100 hover:text-[var(--mq-ink)]"
+            >✕</button>
+          )}
+        </div>
+
+        {cursos.length > 1 && (
+          <div className="flex max-w-full overflow-x-auto rounded-md border border-[var(--mq-border)] bg-[var(--mq-page)] p-1" role="group" aria-label="Filtrar por curso">
+            <CursoPill active={curso === null} onClick={() => setCurso(null)} reduce={m.reduce}>Todos</CursoPill>
+            {cursos.map(c => (
+              <CursoPill key={c} active={curso === c} onClick={() => setCurso(c)} reduce={m.reduce}>
+                {cursoLabel(c)}
+              </CursoPill>
+            ))}
+          </div>
         )}
       </motion.div>
-
-      {/* Filtro por curso */}
-      {cursos.length > 1 && (
-        <motion.div variants={m.item} className="flex flex-wrap items-center gap-1.5" role="group" aria-label="Filtrar por curso">
-          <CursoPill active={curso === null} onClick={() => setCurso(null)} reduce={m.reduce}>Todos</CursoPill>
-          {cursos.map(c => (
-            <CursoPill key={c} active={curso === c} onClick={() => setCurso(c)} reduce={m.reduce}>
-              {cursoLabel(c)}
-            </CursoPill>
-          ))}
-        </motion.div>
-      )}
 
       {filtered.length === 0 ? (
         <motion.p
@@ -91,16 +98,16 @@ export function SubjectFilters({ subjects }: { subjects: SubjectWithCount[] }) {
       ) : (
         groups.map(group => (
           <section key={group.key} className="flex flex-col gap-3">
-            <h2 className="flex items-center gap-2 border-b border-[var(--mq-border)] pb-1.5 text-[13px] font-bold uppercase tracking-wide text-[var(--mq-muted)]">
+            <h2 className="flex items-center gap-3 border-b border-[var(--mq-border)] pb-2 text-[14px] font-bold text-[var(--mq-navy)]">
               {group.label}
-              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-semibold normal-case">{group.subjects.length}</span>
+              <span className="rounded-full bg-[var(--mq-surface)] px-2.5 py-0.5 text-[12px] font-semibold text-[var(--mq-muted)] ring-1 ring-[var(--mq-border)]">{countLabel(group.subjects.length)}</span>
             </h2>
             <motion.ul
               key={`${group.key}-${curso ?? 'all'}`}
               variants={m.container}
               initial="hidden"
               animate="show"
-              className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+              className="grid gap-4 md:grid-cols-2"
             >
               {group.subjects.map(s => (
                 <li key={s.id} className="flex"><SubjectCard subject={s} /></li>
@@ -119,17 +126,17 @@ function CursoPill({ active, onClick, reduce, children }: { active: boolean; onC
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className="relative rounded-full px-4 py-1.5 text-[13px] font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[var(--mq-link)]"
+      className="relative h-8 shrink-0 rounded px-3.5 text-[13px] font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[var(--mq-link)]"
     >
       {active && (
         <motion.span
           layoutId="curso-pill"
           transition={reduce ? { duration: 0 } : springSnappy}
-          className="absolute inset-0 rounded-full bg-[var(--mq-navy)] shadow-sm"
+          className="absolute inset-0 rounded bg-white shadow-sm ring-1 ring-[var(--mq-border)]"
           aria-hidden
         />
       )}
-      <span className={`relative z-10 ${active ? 'text-white' : 'text-[var(--mq-muted)] hover:text-[var(--mq-navy)]'}`}>{children}</span>
+      <span className={`relative z-10 ${active ? 'text-[var(--mq-navy)]' : 'text-[var(--mq-muted)] hover:text-[var(--mq-navy)]'}`}>{children}</span>
     </button>
   )
 }

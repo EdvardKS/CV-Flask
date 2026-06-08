@@ -25,10 +25,11 @@ async function fileMtime(p: string): Promise<number> {
 }
 
 function upsertSubject(db: Database.Database, m: SubjectMeta) {
-  db.prepare(`INSERT INTO quiz_subjects(id,name,description,icon,color,position,curso,cuatrimestre,entry_mode,materials_json,updated_at)
-              VALUES(@id,@name,@description,@icon,@color,@position,@curso,@cuatrimestre,@entry_mode,@materials_json,@updated_at)
+  db.prepare(`INSERT INTO quiz_subjects(id,name,description,code,icon,color,position,curso,cuatrimestre,entry_mode,materials_json,updated_at)
+              VALUES(@id,@name,@description,@code,@icon,@color,@position,@curso,@cuatrimestre,@entry_mode,@materials_json,@updated_at)
               ON CONFLICT(id) DO UPDATE SET
                 name=excluded.name, description=excluded.description,
+                code=excluded.code,
                 icon=excluded.icon, color=excluded.color,
                 position=excluded.position, curso=excluded.curso,
                 cuatrimestre=excluded.cuatrimestre,
@@ -37,6 +38,7 @@ function upsertSubject(db: Database.Database, m: SubjectMeta) {
                 updated_at=excluded.updated_at`)
     .run({
       ...m,
+      code: m.code ?? null,
       position: m.position ?? 0,
       curso: m.curso ?? null,
       cuatrimestre: m.cuatrimestre ?? null,

@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS quiz_subjects (
   id          TEXT PRIMARY KEY,
   name        TEXT NOT NULL,
   description TEXT,
+  code        TEXT,
   icon        TEXT,
   color       TEXT,
   position    INTEGER DEFAULT 0,

@@ -8,6 +8,7 @@ import { questionsSchema, subjectMaterialSchema, subjectMetaSchema, type Questio
 type SubjectRow = SubjectMeta & {
   question_count: number
   cuatrimestres_csv: string | null
+  code: string | null
   curso: number | null
   cuatrimestre: number | null
   entry_mode: 'standard' | 'hub' | null
@@ -106,7 +107,7 @@ function inferCuatris(questions: Question[]): number[] {
 export function listSubjects(): SubjectWithCount[] {
   const db = getQuizDb()
   const rows = db.prepare(`
-    SELECT s.id, s.name, s.description, s.icon, s.color, s.position, s.curso, s.cuatrimestre, s.entry_mode, s.materials_json,
+    SELECT s.id, s.name, s.description, s.code, s.icon, s.color, s.position, s.curso, s.cuatrimestre, s.entry_mode, s.materials_json,
            (SELECT COUNT(*) FROM quiz_questions q WHERE q.subject_id=s.id) AS question_count,
            (SELECT GROUP_CONCAT(DISTINCT IFNULL(cuatrimestre, 1))
               FROM quiz_questions q WHERE q.subject_id=s.id) AS cuatrimestres_csv
@@ -132,6 +133,7 @@ export function listSubjects(): SubjectWithCount[] {
       id: row.id,
       name: row.name,
       description: row.description ?? '',
+      code: row.code ?? undefined,
       icon: row.icon ?? 'ðŸ“',
       color: row.color ?? '#3a6ea5',
       position: row.position ?? 0,
