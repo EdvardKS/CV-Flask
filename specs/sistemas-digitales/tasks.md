@@ -31,9 +31,11 @@
 
 ## Bloque 4 — verificación
 
-- [x] Test de regresión `sistemas-digitales.test.ts` (32 preguntas, 12 con imagen, materiales).
+- [x] Test de datos `sistemas-digitales.test.ts` (32 preguntas, 12 con imagen, materiales).
+- [x] Test de persistencia `sistemas-digitales-persistence.test.ts` (round-trip `image`/`materials` por SQLite).
+- [x] Ciclos TDD documentados en [tdd.md](tdd.md).
 - [x] `pnpm typecheck` verde.
-- [x] `pnpm test` verde (31 tests, incl. seed/repo con columnas nuevas).
+- [x] `pnpm test` verde (34 tests, 100%).
 - [ ] Comprobación manual en navegador (imágenes + botones de material).
 
 ## Notas de implementación

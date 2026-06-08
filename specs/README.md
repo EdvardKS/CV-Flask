@@ -57,6 +57,7 @@ Dos tipos de spec conviven:
 | [sistemas-digitales/clarify.md](sistemas-digitales/clarify.md) | Decisiones confirmadas |
 | [sistemas-digitales/plan.md](sistemas-digitales/plan.md) | Plan (campo `image`, materiales externos, contenido) |
 | [sistemas-digitales/tasks.md](sistemas-digitales/tasks.md) | Checklist por bloques |
+| [sistemas-digitales/tdd.md](sistemas-digitales/tdd.md) | Ciclos TDD (red→green→refactor) y suite de tests |
 
 ## Convención
 
