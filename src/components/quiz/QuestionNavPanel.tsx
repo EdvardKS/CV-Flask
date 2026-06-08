@@ -31,7 +31,7 @@ export function QuestionNavPanel({
     <div className="rounded-lg border border-[var(--mq-border)] bg-white p-4 shadow-sm">
       <h2 className="text-[15px] font-bold text-[var(--mq-navy)]">Navegación por el cuestionario</h2>
 
-      <div className="mt-3 grid grid-cols-7 gap-1.5 sm:grid-cols-6">
+      <div className="mt-3 grid grid-cols-6 gap-2">
         {questions.map((q, i) => {
           const state = cellState(q, answers[i], repaso ?? false)
           const current = i === currentIndex && viewMode === 'single'
@@ -43,16 +43,16 @@ export function QuestionNavPanel({
               aria-current={current ? 'true' : undefined}
               aria-label={`Ir a la pregunta ${i + 1}`}
               className={clsx(
-                'relative grid h-9 place-items-center rounded border text-[13px] font-semibold tabular-nums transition',
+                'relative grid aspect-square w-full min-w-0 place-items-center overflow-hidden rounded border text-[13px] font-semibold leading-none tabular-nums transition',
                 state === 'empty' && 'border-slate-300 bg-white text-[var(--mq-ink)] hover:bg-slate-50',
                 state === 'ok' && 'border-[#86c79a] bg-[#dff0d8] text-[#2f6b2f]',
                 state === 'err' && 'border-[#d99] bg-[#f2dede] text-[#a33a3a]',
                 state === 'review' && 'border-[var(--mq-qbodyBorder)] bg-[var(--mq-qbody)] text-[var(--mq-navy)]',
-                current && 'ring-2 ring-[var(--mq-link)] ring-offset-1'
+                current && 'z-10 ring-2 ring-inset ring-[var(--mq-link)]'
               )}
             >
               {i + 1}
-              {flags?.[i] && <span aria-hidden className="absolute -right-1 -top-1 text-[10px]">🚩</span>}
+              {flags?.[i] && <span aria-hidden className="absolute right-0.5 top-0.5 text-[9px] leading-none">🚩</span>}
             </button>
           )
         })}
