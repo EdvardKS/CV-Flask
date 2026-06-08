@@ -18,7 +18,7 @@ export function UaxTopBar() {
   const pathname = usePathname()
   return (
     <header className="sticky top-0 z-30 border-b border-[var(--mq-border)] bg-white/95 backdrop-blur">
-      <div className="mx-auto flex h-14 w-full max-w-6xl items-center gap-3 px-3 sm:gap-6 sm:px-6">
+      <div className="flex h-14 w-full items-center gap-3 px-3 sm:gap-6 sm:px-6 lg:px-8">
         <Link href="/quiz" className="flex shrink-0 items-center gap-2" aria-label="Inicio de tests">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

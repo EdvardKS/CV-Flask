@@ -4,13 +4,13 @@ import { Breadcrumb, type Crumb } from './chrome/Breadcrumb'
 type Props = {
   children: ReactNode
   breadcrumb?: Crumb[]
-  /** Examen usa ancho extra para alojar el panel de navegación lateral. */
+  /** Obsoleto: el quiz es ahora fluid (ancho completo). Se mantiene por compatibilidad. */
   wide?: boolean
 }
 
-export function QuizPageShell({ children, breadcrumb, wide }: Props) {
+export function QuizPageShell({ children, breadcrumb }: Props) {
   return (
-    <main className={`mx-auto flex w-full flex-col gap-4 px-3 pb-24 pt-4 sm:px-6 sm:pt-6 ${wide ? 'max-w-6xl' : 'max-w-5xl'}`}>
+    <main className="flex w-full flex-col gap-4 px-3 pb-24 pt-4 sm:px-6 sm:pt-6 lg:px-8">
       {breadcrumb && breadcrumb.length > 0 && <Breadcrumb items={breadcrumb} />}
       {children}
     </main>
