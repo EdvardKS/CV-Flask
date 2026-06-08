@@ -38,6 +38,30 @@
   {
     "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
+    "q": "¿Quién acuñó el término IA?",
+    "options": [
+      "John McCarthy",
+      "Alan Turing",
+      "Herbert Simon",
+      "Marvin Minsky"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué es un hiperparámetro en una red neuronal?",
+    "options": [
+      "Un conjunto de datos de prueba",
+      "Un valor calculado automáticamente durante el entrenamiento, ajustado muy minuciosamente",
+      "Un parámetro definido antes del entrenamiento para ajustar el modelo",
+      "Una salida de la red neuronal, la respuesta a una entrada dada"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
     "q": "¿Qué se busca al usar algoritmos genéticos?",
     "options": [
       "Clasificar imágenes automáticamente.",
