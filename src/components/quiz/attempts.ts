@@ -40,6 +40,33 @@ export function getAttempt(subjectId: string, id: string): AttemptRecord | null 
   return loadAttempts(subjectId).find(a => a.id === id) ?? null
 }
 
+/**
+ * Agrega los intentos de TODAS las asignaturas guardados en este navegador,
+ * ordenados del más reciente al más antiguo. Para el «área personal».
+ */
+export function loadAllAttempts(): AttemptRecord[] {
+  if (typeof localStorage === 'undefined') return []
+  const prefix = `quiz:attempts:v${VERSION}:`
+  const out: AttemptRecord[] = []
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i)
+    if (!k || !k.startsWith(prefix)) continue
+    try {
+      const parsed = JSON.parse(localStorage.getItem(k) ?? '[]')
+      if (Array.isArray(parsed)) out.push(...(parsed as AttemptRecord[]))
+    } catch { /* ignora claves corruptas */ }
+  }
+  return out.sort((a, b) => b.finishedAt - a.finishedAt)
+}
+
+/** Corta una porción de `size` elementos (página 0-based). Clampa los límites. */
+export function paginate<T>(list: T[], page: number, size: number): T[] {
+  if (size <= 0) return []
+  const pages = Math.max(1, Math.ceil(list.length / size))
+  const p = Math.min(Math.max(0, page), pages - 1)
+  return list.slice(p * size, p * size + size)
+}
+
 export function clearAttempts(subjectId: string): void {
   try { localStorage.removeItem(key(subjectId)) } catch { /* noop */ }
 }

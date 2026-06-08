@@ -5,8 +5,9 @@ import { usePathname } from 'next/navigation'
 
 const NAV = [
   { label: 'Portal Universitario', href: '/' },
-  { label: 'Área personal', href: '/' },
-  { label: 'Mis asignaturas', href: '/quiz' }
+  { label: 'Área personal', href: '/quiz/area-personal' },
+  { label: 'Mis asignaturas', href: '/quiz' },
+  { label: 'Conoce IAEKS.com', href: 'https://iaeks.com', external: true }
 ] as const
 
 /**
@@ -34,7 +35,22 @@ export function UaxTopBar() {
 
         <nav className="hidden flex-1 items-center gap-5 text-sm font-semibold md:flex" aria-label="Principal">
           {NAV.map(item => {
-            const active = item.href === '/quiz' && pathname.startsWith('/quiz')
+            if ('external' in item && item.external) {
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[var(--mq-link)] transition-colors hover:text-[var(--mq-navy)]"
+                >
+                  {item.label}<span aria-hidden className="text-[11px]">↗</span>
+                </a>
+              )
+            }
+            const active = item.href === '/quiz'
+              ? pathname === '/quiz' || pathname.startsWith('/quiz/') && !pathname.startsWith('/quiz/area-personal')
+              : item.href !== '/' && pathname.startsWith(item.href)
             return (
               <Link
                 key={item.label}
