@@ -62,6 +62,42 @@
   {
     "cuatrimestre": 2,
     "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué tipo de algoritmo se utiliza para clasificar datos con etiquetas predefinidas?",
+    "options": [
+      "Aprendizaje no supervisado.",
+      "Algoritmos genéticos.",
+      "Big Data.",
+      "Aprendizaje supervisado."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Cuál es una característica esencial de un sistema de IA?",
+    "options": [
+      "Reducción del uso de algoritmos.",
+      "Alta capacidad de almacenamiento.",
+      "Capacidad de tomar decisiones autónomas basadas en datos.",
+      "Ejecución de operaciones manuales."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
+    "q": "¿Qué es la Inteligencia Artificial?",
+    "options": [
+      "Un sistema para almacenar grandes cantidades de datos.",
+      "Un método para optimizar algoritmos matemáticos básicos.",
+      "La simulación de procesos humanos como el razonamiento y el aprendizaje en máquinas.",
+      "Un conjunto de herramientas para crear hardware."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "cuatrimestre": 2,
+    "category": "UD1 - Fundamentos de IA",
     "q": "¿Qué se busca al usar algoritmos genéticos?",
     "options": [
       "Clasificar imágenes automáticamente.",
@@ -143,7 +179,6 @@
     ],
     "correctIndex": 1
   },
-
   {
     "cuatrimestre": 2,
     "category": "UD2 - Machine Learning",
@@ -264,7 +299,6 @@
     ],
     "correctIndex": 1
   },
-
   {
     "cuatrimestre": 2,
     "category": "UD3 - Deep Learning",
@@ -385,7 +419,6 @@
     ],
     "correctIndex": 0
   },
-
   {
     "cuatrimestre": 2,
     "category": "UD4 - Procesamiento del Lenguaje Natural",
@@ -506,7 +539,6 @@
     ],
     "correctIndex": 3
   },
-
   {
     "cuatrimestre": 2,
     "category": "UD5 - Visión por Computadora",
@@ -627,7 +659,6 @@
     ],
     "correctIndex": 3
   },
-
   {
     "cuatrimestre": 2,
     "category": "UD6 - Robótica",
