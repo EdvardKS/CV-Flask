@@ -50,7 +50,8 @@ export const metadata: Metadata = {
     site: '@edvardks'
   },
   icons: { icon: '/favicon.ico' },
-  manifest: '/manifest.webmanifest'
+  manifest: '/manifest.webmanifest',
+  verification: { google: 'kFbj5Q2wIECy_Zt63Z9WnHIOi-DbfezJ82_epIMjVeM' }
 }
 
 export const viewport: Viewport = {
