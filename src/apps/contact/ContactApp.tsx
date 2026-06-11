@@ -6,6 +6,8 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useT } from '@lib/i18n/config'
 
+const CONTACT_EMAIL = 'developerweks@gmail.com'
+
 const schema = z.object({
   name: z.string().min(2).max(120),
   email: z.string().email().max(200),
@@ -15,30 +17,17 @@ type FormData = z.infer<typeof schema>
 
 export function ContactApp() {
   const t = useT()
-  const [state, setState] = useState<'idle' | 'sending' | 'ok' | 'error'>('idle')
-  const [errorMsg, setErrorMsg] = useState('')
+  const [state, setState] = useState<'idle' | 'ok'>('idle')
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
     resolver: zodResolver(schema)
   })
 
-  const onSubmit = async (data: FormData) => {
-    setState('sending')
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}))
-        throw new Error(body.error ?? `HTTP ${res.status}`)
-      }
-      setState('ok')
-      reset()
-    } catch (e) {
-      setErrorMsg(e instanceof Error ? e.message : String(e))
-      setState('error')
-    }
+  const onSubmit = (data: FormData) => {
+    const subject = encodeURIComponent(`Contacto web — ${data.name}`)
+    const body = encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`)
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+    setState('ok')
+    reset()
   }
 
   const input: React.CSSProperties = {
@@ -50,8 +39,12 @@ export function ContactApp() {
   if (state === 'ok') {
     return (
       <div style={{ textAlign: 'center', padding: 40 }}>
-        <div style={{ fontSize: 48 }}>✅</div>
+        <div style={{ fontSize: 48 }}>📧</div>
         <h2>{t('messageSent')}</h2>
+        <p style={{ fontSize: 12, color: '#444' }}>
+          Si no se abrió tu cliente de correo, escríbeme a{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+        </p>
         <button onClick={() => setState('idle')}>OK</button>
       </div>
     )
@@ -76,7 +69,6 @@ export function ContactApp() {
       </div>
       <button
         type="submit"
-        disabled={state === 'sending'}
         style={{
           padding: '8px 16px',
           background: 'linear-gradient(180deg, #3a6ea5, #1941a5)',
@@ -87,9 +79,11 @@ export function ContactApp() {
           cursor: 'pointer'
         }}
       >
-        {state === 'sending' ? `${t('send')}…` : t('send')}
+        {t('send')}
       </button>
-      {state === 'error' && <div style={err}>⚠️ {errorMsg}</div>}
+      <p style={{ fontSize: 11, color: '#555', margin: 0 }}>
+        O directamente: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </p>
     </form>
   )
 }
