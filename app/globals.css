@@ -27,6 +27,21 @@ html, body {
   user-select: none;
 }
 
+/* Contenido SEO oculto visualmente pero rastreable (Google + lectores de pantalla).
+   user-select:text neutraliza el user-select:none global del body. */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  user-select: text;
+}
+
 /* Desktop */
 .xp-desktop {
   position: fixed;

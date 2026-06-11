@@ -5,7 +5,7 @@ const BASE = 'https://edvardks.com'
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
   return [
-    { url: `${BASE}/`, lastModified: now, priority: 1 },
+    { url: `${BASE}/`, lastModified: now, priority: 1, images: [`${BASE}/assets/photos/file.jpg`] },
     { url: `${BASE}/cv`, lastModified: now, priority: 0.9 },
     { url: `${BASE}/projects`, lastModified: now, priority: 0.8 },
     { url: `${BASE}/quiz`, lastModified: now, priority: 0.7 },

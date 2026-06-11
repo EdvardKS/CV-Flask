@@ -2,13 +2,52 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Edvard K. — OS Portfolio',
-  description: 'Portfolio interactivo estilo Windows XP: CV, proyectos, quizzes de sistemas operativos y Padel Scout.',
   metadataBase: new URL('https://edvardks.com'),
+  title: {
+    default: 'Edvard Khachatryan Sahakyan — Científico de datos | Portfolio',
+    template: '%s · Edvard Khachatryan Sahakyan'
+  },
+  description:
+    'Edvard Khachatryan Sahakyan, Científico de datos (Data Scientist) en JNC Sistemas Informáticos e Ingeniero Informático en formación en la Universidad Alfonso X el Sabio (UAX), Madrid (España). Portfolio interactivo estilo Windows XP: CV, proyectos de IA/MLOps, certificaciones y quizzes.',
+  keywords: [
+    'Edvard Khachatryan Sahakyan',
+    'Edvard Khachatryan',
+    'EdvardKS',
+    'Científico de datos',
+    'Data Scientist',
+    'Ingeniero Informático',
+    'Universidad Alfonso X el Sabio',
+    'UAX',
+    'MLOps',
+    'LLMOps',
+    'Python',
+    'SQL',
+    'Docker',
+    'Inteligencia Artificial',
+    'Madrid',
+    'España'
+  ],
+  authors: [{ name: 'Edvard Khachatryan Sahakyan', url: 'https://edvardks.com' }],
+  creator: 'Edvard Khachatryan Sahakyan',
+  publisher: 'Edvard Khachatryan Sahakyan',
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'Edvard K. — OS Portfolio',
-    description: 'Portfolio interactivo estilo Windows XP.',
-    type: 'website'
+    type: 'profile',
+    url: 'https://edvardks.com',
+    siteName: 'Edvard Khachatryan Sahakyan — Portfolio',
+    title: 'Edvard Khachatryan Sahakyan — Científico de datos',
+    description:
+      'Científico de datos (Data Scientist) e Ingeniero Informático en formación (UAX), Madrid (España). CV, proyectos de IA/MLOps y portfolio interactivo estilo Windows XP.',
+    locale: 'es_ES',
+    alternateLocale: ['en_US', 'hy_AM']
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Edvard Khachatryan Sahakyan — Científico de datos',
+    description:
+      'Científico de datos e Ingeniero Informático en formación (UAX). Portfolio estilo Windows XP.',
+    creator: '@edvardks',
+    site: '@edvardks'
   },
   icons: { icon: '/favicon.ico' },
   manifest: '/manifest.webmanifest'

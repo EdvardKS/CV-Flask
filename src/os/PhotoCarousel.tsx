@@ -4,9 +4,10 @@ import { useWM } from './store'
 import { APPS_BY_ID } from '@apps/_registry'
 
 const PHOTOS = [
-  { src: '/assets/photos/edvard-1.png', label: 'Edvard K.' },
-  { src: '/assets/photos/edvard-2.png', label: 'Edvard K.' },
-  { src: '/assets/photos/edvard-3.jpg', label: 'Edvard K.' }
+  { src: '/assets/photos/file.jpg', label: 'Edvard Khachatryan Sahakyan' },
+  { src: '/assets/photos/edvard-1.png', label: 'Edvard Khachatryan Sahakyan' },
+  { src: '/assets/photos/edvard-2.png', label: 'Edvard Khachatryan Sahakyan' },
+  { src: '/assets/photos/edvard-3.jpg', label: 'Edvard Khachatryan Sahakyan' }
 ]
 
 export function PhotoCarousel() {
@@ -29,7 +30,7 @@ export function PhotoCarousel() {
             title="Abrir mi CV"
             aria-label={`Foto ${p.label} — abrir CV`}
           >
-            <img src={p.src} alt={p.label} loading="lazy" />
+            <img src={p.src} alt={`${p.label} — Científico de datos`} loading="lazy" width={180} height={180} />
             <span className="photo-card-label">{p.label}</span>
           </button>
         ))}
