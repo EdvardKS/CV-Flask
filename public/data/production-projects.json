@@ -1,0 +1,93 @@
+[
+  {
+    "id": "viewer",
+    "name": "ViewerSoftware · Panel VPS",
+    "icon": "🖥️",
+    "image": "/assets/projects/viewer.jpg",
+    "url": "https://viewer.edvardks.com",
+    "private_panel": true,
+    "description": "Panel de control del servidor en tiempo real: deploys CI/CD, Docker, nginx + certificados, relay SMTP, ciberseguridad, páginas de error/mantenimiento y chat-ingeniero. Acceso restringido (2FA + allowlist).",
+    "tags": ["Astro", "React", "Express", "WebSocket", "Docker", "nginx", "SQLite"]
+  },
+  {
+    "id": "iaeks",
+    "name": "IA con Edu",
+    "icon": "🤖",
+    "image": "/assets/projects/iaeks.jpg",
+    "url": "https://iaeks.com",
+    "description": "Marca y landing de consultoría: IA y datos aplicados a decisiones y operaciones rentables para pymes.",
+    "tags": ["Next.js", "IA", "Landing", "SEO"]
+  },
+  {
+    "id": "ailedu",
+    "name": "AILEDU",
+    "icon": "📚",
+    "image": "/assets/projects/ailedu.jpg",
+    "url": "https://ailedu.edvardks.com",
+    "description": "App educativa/productividad: finanzas, calendario y tareas compartidas en una sola app, con OCR e IA.",
+    "tags": ["Fullstack", "IA", "OCR", "Docker", "MinIO"]
+  },
+  {
+    "id": "gestor",
+    "name": "Gestoría Navarro",
+    "icon": "📁",
+    "image": "/assets/projects/gestor.jpg",
+    "url": "https://gestor.iaeks.com",
+    "description": "Web + panel para administración de fincas y trámites inmobiliarios en Villena: comunidades, cuentas, juntas y gestión documental.",
+    "tags": ["Next.js", "Express", "Panel", "Docker"]
+  },
+  {
+    "id": "asador",
+    "name": "Asador La Morenica",
+    "icon": "🍗",
+    "image": "/assets/projects/asador.jpg",
+    "url": "https://asadorlamorenica.com",
+    "description": "Web y gestión para asador (pollos a la leña, Villena): pedidos/encargos en tiempo real (SSE) y panel interno.",
+    "tags": ["Next.js", "Express", "SSE", "Docker"]
+  },
+  {
+    "id": "basket",
+    "name": "Villena Basket League",
+    "icon": "🏀",
+    "image": "/assets/projects/basket.jpg",
+    "url": "https://basket.edvardks.com",
+    "description": "Plataforma de la liga 3×3 (VBL): equipos, partidos, clasificaciones y gestión del torneo.",
+    "tags": ["Fullstack", "Docker", "DB"]
+  },
+  {
+    "id": "pcs",
+    "name": "Padel Coaching Sergio",
+    "icon": "🎾",
+    "image": "/assets/projects/pcs.jpg",
+    "url": "https://pcs.iaeks.com",
+    "description": "Web de clases personalizadas de pádel: presentación, servicios y contacto.",
+    "tags": ["Web", "Landing", "Docker"]
+  },
+  {
+    "id": "miyo",
+    "name": "Fiestas App (Miyo)",
+    "icon": "🎉",
+    "image": "/assets/projects/miyo.jpg",
+    "url": "https://miyo.edvardks.com",
+    "description": "App de fiestas/eventos locales: programa, info y participación.",
+    "tags": ["Next.js", "MongoDB", "Docker"]
+  },
+  {
+    "id": "smtp",
+    "name": "SMTP Relay (Postfix+DKIM)",
+    "icon": "✉️",
+    "image": "/assets/projects/smtp.svg",
+    "url": null,
+    "description": "Relay de correo propio para todas las apps del VPS: Postfix + OpenDKIM (firma DKIM/SPF/DMARC), solo salida, cola y reintentos, monitorizado desde el panel.",
+    "tags": ["Postfix", "OpenDKIM", "Docker", "Infra", "Email"]
+  },
+  {
+    "id": "ia",
+    "name": "IA local (Ollama)",
+    "icon": "🧠",
+    "image": "/assets/projects/ia.svg",
+    "url": null,
+    "description": "LLM ejecutándose en el propio servidor (red privada docker): resúmenes, RAG y clasificación sin enviar datos a terceros. Integrado en el panel y el digest diario.",
+    "tags": ["Ollama", "LLM", "on-premise", "Docker"]
+  }
+]

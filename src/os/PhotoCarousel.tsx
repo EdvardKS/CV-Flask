@@ -4,9 +4,6 @@ import { useWM } from './store'
 import { APPS_BY_ID } from '@apps/_registry'
 
 const PHOTOS = [
-  { src: '/assets/photos/file.jpg', label: 'Edvard Khachatryan Sahakyan' },
-  { src: '/assets/photos/edvard-1.png', label: 'Edvard Khachatryan Sahakyan' },
-  { src: '/assets/photos/edvard-2.png', label: 'Edvard Khachatryan Sahakyan' },
   { src: '/assets/photos/edvard-3.jpg', label: 'Edvard Khachatryan Sahakyan' }
 ]
 

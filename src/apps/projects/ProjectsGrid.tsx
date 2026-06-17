@@ -15,6 +15,18 @@ export type GhProject = {
   tags: string[]
 }
 
+// Live apps running on this VPS (shown first, with a screenshot + direct link).
+export type ProdProject = {
+  id: string
+  name: string
+  icon: string
+  image: string
+  url: string | null
+  private_panel?: boolean
+  description: string
+  tags: string[]
+}
+
 function resolveInternal(url: string | undefined | null): { appId: string; params?: Record<string, string> } | null {
   if (!url || !url.startsWith('/')) return null
   const clean = url.split('?')[0].replace(/\/$/, '') || '/'
@@ -30,6 +42,7 @@ function resolveInternal(url: string | undefined | null): { appId: string; param
 
 export function ProjectsGrid() {
   const [projects, setProjects] = useState<GhProject[] | null>(null)
+  const [prod, setProd] = useState<ProdProject[]>([])
   const [error, setError] = useState<string | null>(null)
   const openApp = useWM(s => s.openApp)
 
@@ -38,6 +51,10 @@ export function ProjectsGrid() {
       .then(r => r.json() as Promise<GhProject[]>)
       .then(setProjects)
       .catch(e => setError(e instanceof Error ? e.message : String(e)))
+    fetch('/data/production-projects.json', { cache: 'force-cache' })
+      .then(r => r.json() as Promise<ProdProject[]>)
+      .then(setProd)
+      .catch(() => setProd([]))
   }, [])
 
   if (error) return <p style={{ color: '#c00' }}>Error: {error}</p>
@@ -55,8 +72,39 @@ export function ProjectsGrid() {
   }
 
   return (
-    <ul className="gh-projects-grid">
-      {projects.map(p => (
+    <>
+      {prod.length > 0 && (
+        <section className="prod-section">
+          <h3 className="prod-section-title">🟢 En producción <span>· apps live en este servidor</span></h3>
+          <ul className="prod-grid">
+            {prod.map(p => (
+              <li key={p.id} className="prod-card">
+                {p.url ? (
+                  <a className="prod-shot" href={p.url} target="_blank" rel="noopener noreferrer" title={'Abrir ' + p.name}>
+                    <img src={p.image} alt={p.name} loading="lazy" />
+                    <span className="prod-open">Abrir →</span>
+                  </a>
+                ) : (
+                  <div className="prod-shot is-service"><img src={p.image} alt={p.name} loading="lazy" /></div>
+                )}
+                <div className="prod-body">
+                  <strong className="prod-name">{p.icon} {p.name}{p.private_panel && <span className="prod-pill">🔒 panel</span>}</strong>
+                  <p className="prod-desc">{p.description}</p>
+                  <div className="gh-project-tags">{p.tags.map(t => <span key={t} className="gh-tl-badge-item">{t}</span>)}</div>
+                  {p.url ? (
+                    <a className="gh-project-btn primary" href={p.url} target="_blank" rel="noopener noreferrer">🌐 Visitar</a>
+                  ) : (
+                    <span className="prod-internal">Servicio interno · infra</span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+          <h3 className="prod-section-title repos">📦 Repositorios en GitHub</h3>
+        </section>
+      )}
+      <ul className="gh-projects-grid">
+        {projects.map(p => (
         <li key={p.id} className="gh-project-card">
           <header className="gh-project-head">
             <span className="gh-project-icon" aria-hidden>{p.icon}</span>
@@ -96,7 +144,8 @@ export function ProjectsGrid() {
           </footer>
         </li>
       ))}
-    </ul>
+      </ul>
+    </>
   )
 }
 
