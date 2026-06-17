@@ -4,7 +4,7 @@ import { useWM } from './store'
 import { APPS_BY_ID } from '@apps/_registry'
 
 const PHOTOS = [
-  { src: '/assets/photos/edvard-3.jpg', label: 'Edvard Khachatryan Sahakyan' }
+  { src: '/assets/photos/file.jpg', label: 'Edvard Khachatryan Sahakyan' }
 ]
 
 export function PhotoCarousel() {
