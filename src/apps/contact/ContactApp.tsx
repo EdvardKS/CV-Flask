@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useT } from '@lib/i18n/config'
 
-const CONTACT_EMAIL = 'developerweks@gmail.com'
+// No email address is ever rendered in the markup — it lives only on the server
+// (CONTACT_RECIPIENT). The form POSTs to /api/contact; bots can't harvest it.
 
 const schema = z.object({
   name: z.string().min(2).max(120),
@@ -17,17 +18,27 @@ type FormData = z.infer<typeof schema>
 
 export function ContactApp() {
   const t = useT()
-  const [state, setState] = useState<'idle' | 'ok'>('idle')
+  const [state, setState] = useState<'idle' | 'sending' | 'ok' | 'error'>('idle')
+  const hpRef = useRef<HTMLInputElement>(null)         // honeypot — must stay empty
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
     resolver: zodResolver(schema)
   })
 
-  const onSubmit = (data: FormData) => {
-    const subject = encodeURIComponent(`Contacto web — ${data.name}`)
-    const body = encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`)
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
-    setState('ok')
-    reset()
+  const onSubmit = async (data: FormData) => {
+    setState('sending')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, company: hpRef.current?.value || '' })
+      })
+      if (!res.ok) throw new Error('send failed')
+      setState('ok')
+      reset()
+      if (hpRef.current) hpRef.current.value = ''
+    } catch {
+      setState('error')
+    }
   }
 
   const input: React.CSSProperties = {
@@ -42,8 +53,7 @@ export function ContactApp() {
         <div style={{ fontSize: 48 }}>📧</div>
         <h2>{t('messageSent')}</h2>
         <p style={{ fontSize: 12, color: '#444' }}>
-          Si no se abrió tu cliente de correo, escríbeme a{' '}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          Te he enviado una confirmación por email. Te responderé lo antes posible.
         </p>
         <button onClick={() => setState('idle')}>OK</button>
       </div>
@@ -67,8 +77,15 @@ export function ContactApp() {
         <textarea {...register('message')} style={{ ...input, minHeight: 140, resize: 'vertical' }} />
         {errors.message && <div style={err}>{errors.message.message}</div>}
       </div>
+      {/* honeypot — invisible to humans; bots that fill it get silently dropped */}
+      <input ref={hpRef} type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true"
+        style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
+      {state === 'error' && (
+        <div style={err}>No se pudo enviar. Inténtalo de nuevo en unos minutos.</div>
+      )}
       <button
         type="submit"
+        disabled={state === 'sending'}
         style={{
           padding: '8px 16px',
           background: 'linear-gradient(180deg, #3a6ea5, #1941a5)',
@@ -76,14 +93,12 @@ export function ContactApp() {
           border: '1px solid #1941a5',
           borderRadius: 3,
           fontWeight: 'bold',
-          cursor: 'pointer'
+          cursor: state === 'sending' ? 'wait' : 'pointer',
+          opacity: state === 'sending' ? 0.7 : 1
         }}
       >
-        {t('send')}
+        {state === 'sending' ? '…' : t('send')}
       </button>
-      <p style={{ fontSize: 11, color: '#555', margin: 0 }}>
-        O directamente: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-      </p>
     </form>
   )
 }

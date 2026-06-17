@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
-import { sendContactEmail } from '@lib/email'
+import { sendContactEmail, sendContactAck } from '@lib/email'
 
 const schema = z.object({
   name: z.string().min(2).max(120),
@@ -30,12 +30,19 @@ export async function POST(req: Request) {
   }
   let body: unknown
   try { body = await req.json() } catch { return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 }) }
+  // Honeypot: real users never see/fill `company`; bots do. Pretend success + drop.
+  const hp = (body as Record<string, unknown> | null)?.company
+  if (typeof hp === 'string' && hp.trim().length > 0) {
+    return NextResponse.json({ ok: true })
+  }
   const parsed = schema.safeParse(body)
   if (!parsed.success) {
     return NextResponse.json({ error: 'Validation', details: parsed.error.flatten() }, { status: 400 })
   }
   try {
     await sendContactEmail(parsed.data)
+    // Acknowledge the sender (best-effort: never fail the request over this).
+    sendContactAck(parsed.data).catch(() => {})
     return NextResponse.json({ ok: true })
   } catch (e) {
     console.error('[contact]', e)
