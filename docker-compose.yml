@@ -16,6 +16,7 @@ services:
     networks:
       - reverse_proxy
       - ollama_net
+      - mail_net
 
 volumes:
   padel_data:
@@ -25,4 +26,7 @@ networks:
   reverse_proxy:
     external: true
   ollama_net:
+    external: true
+  # Shared SMTP relay network (host "smtp"). Created once: docker network create mail_net
+  mail_net:
     external: true

@@ -45,3 +45,6 @@ tmp_*
 # Claude Code local state
 /.claude
 scripts/_sdig_extract.json
+
+*.bak
+*.bak.*
