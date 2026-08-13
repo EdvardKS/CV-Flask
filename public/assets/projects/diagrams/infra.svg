@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="system-ui,Segoe UI,sans-serif">
+  <defs>
+    <marker id="f" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/></marker>
+    <marker id="fb" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#38bdf8"/></marker>
+    <marker id="fg" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#58c896"/></marker>
+    <marker id="fa" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/></marker>
+  </defs>
+
+  <rect width="1200" height="760" fill="#0f172a"/>
+  <text x="40" y="50" fill="#e2e8f0" font-size="25" font-weight="700">Arquitectura del servidor</text>
+  <text x="40" y="76" fill="#94a3b8" font-size="13">Una máquina · 10 aplicaciones independientes · una red privada por proyecto</text>
+
+  <rect x="40" y="104" width="180" height="66" rx="12" fill="#111827" stroke="#334155"/>
+  <text x="130" y="132" fill="#e2e8f0" font-size="14" text-anchor="middle" font-weight="700">Internet</text>
+  <text x="130" y="152" fill="#64748b" font-size="11" text-anchor="middle">443 / 80</text>
+
+  <rect x="290" y="96" width="200" height="82" rx="12" fill="#0b2c3d" stroke="#38bdf8" stroke-width="2"/>
+  <text x="390" y="124" fill="#7dd3fc" font-size="15" text-anchor="middle" font-weight="700">Proxy inverso</text>
+  <text x="390" y="145" fill="#cbd5e1" font-size="11" text-anchor="middle">reparte por dominio · TLS</text>
+  <text x="390" y="163" fill="#64748b" font-size="10" text-anchor="middle">único contenedor con puertos públicos</text>
+
+  <path d="M220 137 H288" stroke="#64748b" stroke-width="2.5" marker-end="url(#f)"/>
+
+  <rect x="560" y="96" width="180" height="82" rx="12" fill="#111827" stroke="#334155"/>
+  <text x="650" y="124" fill="#e2e8f0" font-size="13" text-anchor="middle" font-weight="700">Certificados</text>
+  <text x="650" y="145" fill="#94a3b8" font-size="11" text-anchor="middle">Let's Encrypt</text>
+  <text x="650" y="163" fill="#64748b" font-size="10" text-anchor="middle">renovación diaria por cron</text>
+  <path d="M492 137 H558" stroke="#64748b" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#f)"/>
+
+  <text x="40" y="228" fill="#7dd3fc" font-size="13" font-weight="700">UNA RED PRIVADA POR PROYECTO</text>
+  <text x="330" y="228" fill="#64748b" font-size="11">el proxy solo alcanza la fachada · la base de datos no publica ningún puerto</text>
+
+  <g>
+    <rect x="40" y="246" width="255" height="186" rx="12" fill="#0b1220" stroke="#1e293b" stroke-dasharray="6 4"/>
+    <text x="56" y="270" fill="#94a3b8" font-size="11" font-weight="700">red · asador</text>
+    <rect x="56" y="282" width="105" height="46" rx="8" fill="#132132" stroke="#38bdf8"/>
+    <text x="108" y="303" fill="#7dd3fc" font-size="11" text-anchor="middle" font-weight="700">web</text>
+    <text x="108" y="319" fill="#64748b" font-size="9" text-anchor="middle">fachada</text>
+    <rect x="174" y="282" width="105" height="46" rx="8" fill="#132132" stroke="#334155"/>
+    <text x="226" y="309" fill="#cbd5e1" font-size="11" text-anchor="middle">worker</text>
+    <rect x="56" y="342" width="105" height="46" rx="8" fill="#132132" stroke="#334155"/>
+    <text x="108" y="369" fill="#cbd5e1" font-size="11" text-anchor="middle">PostgreSQL</text>
+    <rect x="174" y="342" width="105" height="46" rx="8" fill="#132132" stroke="#334155"/>
+    <text x="226" y="369" fill="#cbd5e1" font-size="11" text-anchor="middle">Redis</text>
+    <text x="167" y="412" fill="#475569" font-size="10" text-anchor="middle">sin puertos publicados</text>
+  </g>
+
+  <g>
+    <rect x="315" y="246" width="255" height="186" rx="12" fill="#0b1220" stroke="#1e293b" stroke-dasharray="6 4"/>
+    <text x="331" y="270" fill="#94a3b8" font-size="11" font-weight="700">red · tienda</text>
+    <rect x="331" y="282" width="105" height="46" rx="8" fill="#132132" stroke="#38bdf8"/>
+    <text x="383" y="303" fill="#7dd3fc" font-size="11" text-anchor="middle" font-weight="700">web</text>
+    <text x="383" y="319" fill="#64748b" font-size="9" text-anchor="middle">fachada</text>
+    <rect x="449" y="282" width="105" height="46" rx="8" fill="#132132" stroke="#334155"/>
+    <text x="501" y="309" fill="#cbd5e1" font-size="11" text-anchor="middle">API</text>
+    <rect x="331" y="342" width="223" height="46" rx="8" fill="#132132" stroke="#334155"/>
+    <text x="442" y="369" fill="#cbd5e1" font-size="11" text-anchor="middle">MySQL</text>
+    <text x="442" y="412" fill="#475569" font-size="10" text-anchor="middle">sin puertos publicados</text>
+  </g>
+
+  <g>
+    <rect x="590" y="246" width="255" height="186" rx="12" fill="#0b1220" stroke="#1e293b" stroke-dasharray="6 4"/>
+    <text x="606" y="270" fill="#94a3b8" font-size="11" font-weight="700">red · finanzas</text>
+    <rect x="606" y="282" width="105" height="46" rx="8" fill="#132132" stroke="#38bdf8"/>
+    <text x="658" y="303" fill="#7dd3fc" font-size="11" text-anchor="middle" font-weight="700">app</text>
+    <text x="658" y="319" fill="#64748b" font-size="9" text-anchor="middle">fachada</text>
+    <rect x="724" y="282" width="105" height="46" rx="8" fill="#132132" stroke="#334155"/>
+    <text x="776" y="309" fill="#cbd5e1" font-size="11" text-anchor="middle">OCR</text>
+    <rect x="606" y="342" width="105" height="46" rx="8" fill="#132132" stroke="#334155"/>
+    <text x="658" y="369" fill="#cbd5e1" font-size="11" text-anchor="middle">PostgreSQL</text>
+    <rect x="724" y="342" width="105" height="46" rx="8" fill="#132132" stroke="#334155"/>
+    <text x="776" y="369" fill="#cbd5e1" font-size="11" text-anchor="middle">objetos</text>
+    <text x="717" y="412" fill="#475569" font-size="10" text-anchor="middle">sin puertos publicados</text>
+  </g>
+
+  <g>
+    <rect x="865" y="246" width="295" height="186" rx="12" fill="#0b1220" stroke="#1e293b" stroke-dasharray="6 4"/>
+    <text x="881" y="270" fill="#94a3b8" font-size="11" font-weight="700">… y 7 proyectos más, con la misma forma</text>
+    <text x="1012" y="330" fill="#475569" font-size="34" text-anchor="middle">· · ·</text>
+    <text x="1012" y="372" fill="#64748b" font-size="11" text-anchor="middle">cada uno en su red,</text>
+    <text x="1012" y="392" fill="#64748b" font-size="11" text-anchor="middle">sin ver a los vecinos</text>
+  </g>
+
+  <path d="M390 180 V246" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#fb)"/>
+  <path d="M370 182 C 240 210, 150 220, 120 280" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#fb)"/>
+  <path d="M415 182 C 560 210, 640 215, 662 280" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#fb)"/>
+  <path d="M430 180 C 700 200, 950 200, 1000 244" stroke="#38bdf8" stroke-width="1.6" fill="none" stroke-dasharray="4 4" marker-end="url(#fb)"/>
+
+  <text x="40" y="482" fill="#58c896" font-size="13" font-weight="700">SERVICIOS COMPARTIDOS</text>
+  <text x="290" y="482" fill="#64748b" font-size="11">accesibles solo desde dentro · ningún puerto abierto al exterior</text>
+
+  <rect x="40" y="500" width="255" height="94" rx="12" fill="#0d2018" stroke="#1f8a4e"/>
+  <text x="167" y="528" fill="#58c896" font-size="13" text-anchor="middle" font-weight="700">✉️ Relay de correo</text>
+  <text x="167" y="550" fill="#cbd5e1" font-size="11" text-anchor="middle">firma DKIM · solo salida</text>
+  <text x="167" y="572" fill="#64748b" font-size="10" text-anchor="middle">las apps no guardan credenciales</text>
+
+  <rect x="315" y="500" width="255" height="94" rx="12" fill="#0d2018" stroke="#1f8a4e"/>
+  <text x="442" y="528" fill="#58c896" font-size="13" text-anchor="middle" font-weight="700">🤖 IA local</text>
+  <text x="442" y="550" fill="#cbd5e1" font-size="11" text-anchor="middle">modelos en la propia máquina</text>
+  <text x="442" y="572" fill="#64748b" font-size="10" text-anchor="middle">los datos no salen del servidor</text>
+
+  <rect x="590" y="500" width="570" height="94" rx="12" fill="#2a1a06" stroke="#f59e0b" stroke-width="2"/>
+  <text x="875" y="528" fill="#fbbf24" font-size="14" text-anchor="middle" font-weight="700">🛠️ Panel de control (privado)</text>
+  <text x="875" y="550" fill="#fcd34d" font-size="11" text-anchor="middle">despliega · renueva certificados · vigila contenedores · copias · alertas</text>
+  <text x="875" y="572" fill="#a16207" font-size="10" text-anchor="middle">doble factor · sin dirección publicada · no accesible desde Internet abierto</text>
+
+  <path d="M167 432 V498" stroke="#58c896" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#fg)"/>
+  <path d="M442 432 V498" stroke="#58c896" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#fg)"/>
+  <path d="M875 500 C 875 460, 1010 450, 1012 434" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#fa)"/>
+  <path d="M700 500 C 500 470, 420 460, 400 182" stroke="#f59e0b" stroke-width="1.6" fill="none" stroke-dasharray="4 4" marker-end="url(#fa)"/>
+
+  <rect x="40" y="626" width="1120" height="94" rx="12" fill="#0b1220" stroke="#1e293b"/>
+  <text x="60" y="652" fill="#e2e8f0" font-size="12" font-weight="700">Lo que sostiene esto</text>
+  <text x="60" y="676" fill="#94a3b8" font-size="11">· El proxy es el único con puertos abiertos. Todo lo demás vive en redes privadas de Docker.</text>
+  <text x="60" y="696" fill="#94a3b8" font-size="11">· Copias nocturnas de cada base de datos, verificadas y fuera de su volumen: si el volumen se corrompe, la copia sobrevive.</text>
+  <text x="60" y="714" fill="#94a3b8" font-size="11">· Vigilantes cada minuto que levantan lo que se cae, y avisos por correo cuando algo no vuelve solo.</text>
+</svg>

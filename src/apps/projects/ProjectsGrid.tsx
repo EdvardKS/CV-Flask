@@ -15,6 +15,17 @@ export type GhProject = {
   tags: string[]
 }
 
+export type ProjectShot = { src: string; caption: string }
+
+export type ProjectDetailData = {
+  que_es: string
+  objetivo: string
+  stack?: string[]
+  shots?: ProjectShot[]
+  diagram?: string
+  highlight?: { title: string; body: string }
+}
+
 // Live apps running on this VPS (shown first, with a screenshot + direct link).
 export type ProdProject = {
   id: string
@@ -25,6 +36,7 @@ export type ProdProject = {
   private_panel?: boolean
   description: string
   tags: string[]
+  detail?: ProjectDetailData
 }
 
 function resolveInternal(url: string | undefined | null): { appId: string; params?: Record<string, string> } | null {
@@ -40,7 +52,7 @@ function resolveInternal(url: string | undefined | null): { appId: string; param
   return null
 }
 
-export function ProjectsGrid() {
+export function ProjectsGrid({ onOpenDetail }: { onOpenDetail?: (p: ProdProject) => void } = {}) {
   const [projects, setProjects] = useState<GhProject[] | null>(null)
   const [prod, setProd] = useState<ProdProject[]>([])
   const [error, setError] = useState<string | null>(null)
@@ -75,11 +87,16 @@ export function ProjectsGrid() {
     <>
       {prod.length > 0 && (
         <section className="prod-section">
-          <h3 className="prod-section-title">🟢 En producción <span>· apps live en este servidor</span></h3>
+          <h3 className="prod-section-title">🟢 En producción <span>· apps y servicios vivos en este servidor · pulsa una tarjeta para entrar</span></h3>
           <ul className="prod-grid">
             {prod.map(p => (
               <li key={p.id} className="prod-card">
-                {p.url ? (
+                {p.detail ? (
+                  <button className="prod-shot as-button" onClick={() => onOpenDetail?.(p)} title={'Ver ficha de ' + p.name}>
+                    <img src={p.image} alt={p.name} loading="lazy" />
+                    <span className="prod-open">Ver ficha →</span>
+                  </button>
+                ) : p.url ? (
                   <a className="prod-shot" href={p.url} target="_blank" rel="noopener noreferrer" title={'Abrir ' + p.name}>
                     <img src={p.image} alt={p.name} loading="lazy" />
                     <span className="prod-open">Abrir →</span>
@@ -91,11 +108,16 @@ export function ProjectsGrid() {
                   <strong className="prod-name">{p.icon} {p.name}{p.private_panel && <span className="prod-pill">🔒 panel</span>}</strong>
                   <p className="prod-desc">{p.description}</p>
                   <div className="gh-project-tags">{p.tags.map(t => <span key={t} className="gh-tl-badge-item">{t}</span>)}</div>
-                  {p.url ? (
-                    <a className="gh-project-btn primary" href={p.url} target="_blank" rel="noopener noreferrer">🌐 Visitar</a>
-                  ) : (
-                    <span className="prod-internal">Servicio interno · infra</span>
-                  )}
+                  <div className="prod-actions">
+                    {p.detail && (
+                      <button className="gh-project-btn primary" onClick={() => onOpenDetail?.(p)}>📄 Ver ficha</button>
+                    )}
+                    {p.url ? (
+                      <a className="gh-project-btn ghost" href={p.url} target="_blank" rel="noopener noreferrer">🌐 Visitar</a>
+                    ) : (
+                      <span className="prod-internal">Servicio interno · infra</span>
+                    )}
+                  </div>
                 </div>
               </li>
             ))}
