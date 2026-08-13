@@ -6,17 +6,54 @@
     "image": "/assets/projects/asador/home.jpg",
     "url": "https://asadorlamorenica.com",
     "description": "Asador de pollos a la leña en Villena: encargos online, control de stock en tiempo real y predicción de cuántas barras montar.",
-    "tags": ["Next.js", "Astro", "PostgreSQL", "Redis", "Docker"],
+    "tags": [
+      "Next.js",
+      "Astro",
+      "PostgreSQL",
+      "Redis",
+      "Docker"
+    ],
     "detail": {
       "que_es": "El negocio real de un asador de pollos a la leña, llevado a software. La parte pública recoge encargos sin obligar a crear cuenta y publica contenido local (fiestas, clima, alérgenos); la parte privada es el panel con el que se despacha el día: stock, pedidos, caja y avisos por WhatsApp.",
       "objetivo": "Que el asador deje de apuntar los encargos en papel y sepa, antes de encender el horno, cuánto va a vender hoy.",
-      "stack": ["Next.js", "Astro", "Express", "PostgreSQL", "Redis", "BullMQ", "Docker"],
+      "stack": [
+        "Next.js",
+        "Astro",
+        "Express",
+        "PostgreSQL",
+        "Redis",
+        "BullMQ",
+        "Docker"
+      ],
       "shots": [
-        { "src": "/assets/projects/asador/home.jpg", "caption": "Portada pública. El reclamo es local y directo, sin carrusel ni pantalla de bienvenida." },
-        { "src": "/assets/projects/asador/encargar.jpg", "caption": "Encargo sin cuenta: pedir no exige registrarse, que es donde se caían los pedidos antes." },
-        { "src": "/assets/projects/asador/fiestas.jpg", "caption": "Programa de Moros y Cristianos, con los actos ratificados y su fuente oficial." },
-        { "src": "/assets/projects/asador/clima.jpg", "caption": "Clima de Villena. No es decoración: alimenta la predicción de venta." },
-        { "src": "/assets/projects/asador/alergenos.jpg", "caption": "Alérgenos por producto, obligatorio por normativa y casi siempre olvidado." }
+        {
+          "src": "/assets/projects/asador/home.jpg",
+          "caption": "Portada pública. El reclamo es local y directo, sin carrusel ni pantalla de bienvenida."
+        },
+        {
+          "src": "/assets/projects/asador/encargar.jpg",
+          "caption": "Encargo sin cuenta: pedir no exige registrarse, que es donde se caían los pedidos antes."
+        },
+        {
+          "src": "/assets/projects/asador/fiestas.jpg",
+          "caption": "Programa de Moros y Cristianos, con los actos ratificados y su fuente oficial."
+        },
+        {
+          "src": "/assets/projects/asador/clima.jpg",
+          "caption": "Clima de Villena. No es decoración: alimenta la predicción de venta."
+        },
+        {
+          "src": "/assets/projects/asador/alergenos.jpg",
+          "caption": "Alérgenos por producto, obligatorio por normativa y casi siempre olvidado."
+        },
+        {
+          "src": "/assets/projects/asador/movil.jpg",
+          "caption": "En móvil, con los accesos a WhatsApp y teléfono siempre a mano."
+        },
+        {
+          "src": "/assets/projects/asador/movil-encargar.jpg",
+          "caption": "El encargo desde el móvil, que es como llega la mayoría."
+        }
       ],
       "diagram": "/assets/projects/diagrams/asador.svg",
       "highlight": {
@@ -32,13 +69,47 @@
     "image": "/assets/projects/micheck/home.jpg",
     "url": "https://miyo.edvardks.com",
     "description": "Seguimiento de hábitos con mecánicas de videojuego: niveles, rachas y logros. Funciona sin conexión y se instala en el móvil.",
-    "tags": ["PWA", "SQLite", "Suscripciones", "Offline"],
+    "tags": [
+      "PWA",
+      "SQLite",
+      "Suscripciones",
+      "Offline"
+    ],
     "detail": {
       "que_es": "Una app para apuntar lo que quieres repetir cada día y marcarlo de un toque. Suma experiencia, sube de nivel, enciende rachas y desbloquea logros. Se instala como aplicación en el móvil y sigue funcionando sin cobertura.",
       "objetivo": "Que registrar un hábito cueste menos esfuerzo que saltárselo.",
-      "stack": ["PWA", "Service Worker", "SQLite", "Node", "Docker"],
+      "stack": [
+        "PWA",
+        "Service Worker",
+        "SQLite",
+        "Node",
+        "Docker"
+      ],
       "shots": [
-        { "src": "/assets/projects/micheck/home.jpg", "caption": "Portada: la promesa en una frase y dos botones. Gratis, sin anuncios, en español." }
+        {
+          "src": "/assets/projects/micheck/home.jpg",
+          "caption": "Portada: la promesa en una frase y dos botones. Gratis, sin anuncios, en español."
+        },
+        {
+          "src": "/assets/projects/micheck/movil.jpg",
+          "caption": "En el móvil, que es donde se usa de verdad: se instala como app y se marca de un toque."
+        },
+        {
+          "src": "/assets/projects/micheck/entrar.jpg",
+          "caption": "Acceso. La sesión aguanta para no pedir contraseña cada día."
+        },
+        {
+          "src": "/assets/projects/micheck/registro.jpg",
+          "caption": "Alta de cuenta gratuita, sin pasar por ninguna tienda de aplicaciones."
+        },
+        {
+          "src": "/assets/projects/micheck/ayuda.jpg",
+          "caption": "Ayuda dentro de la propia app, explicando niveles, rachas y logros."
+        },
+        {
+          "src": "/assets/projects/micheck/movil-ayuda.jpg",
+          "caption": "La misma ayuda en móvil: el contenido se reordena, no se recorta."
+        }
       ],
       "diagram": "/assets/projects/diagrams/micheck.svg",
       "highlight": {
@@ -54,14 +125,51 @@
     "image": "/assets/projects/iaeks/home.jpg",
     "url": "https://iaeks.com",
     "description": "Web de consultoría en IA y datos, con un panel privado que lleva clientes, proyectos, tiempo dedicado y facturación.",
-    "tags": ["React", "Express", "PostgreSQL", "Puppeteer"],
+    "tags": [
+      "React",
+      "Express",
+      "PostgreSQL",
+      "Puppeteer"
+    ],
     "detail": {
       "que_es": "La cara pública es una web de servicios de IA y automatización. Detrás hay un panel que funciona como el sistema de gestión del negocio: clientes, proyectos, horas dedicadas, cargos y facturas, más el registro de visitas de la propia web.",
       "objetivo": "Que el trabajo hecho para cada cliente quede registrado con su tiempo, y que la factura salga de ahí en vez de de la memoria.",
-      "stack": ["React", "Express", "PostgreSQL", "Puppeteer", "Docker"],
+      "stack": [
+        "React",
+        "Express",
+        "PostgreSQL",
+        "Puppeteer",
+        "Docker"
+      ],
       "shots": [
-        { "src": "/assets/projects/iaeks/home.jpg", "caption": "Portada pública, orientada a explicar servicios sin jerga." },
-        { "src": "/assets/projects/iaeks/acceso.jpg", "caption": "Acceso al panel privado, protegido con verificación anti-bot." }
+        {
+          "src": "/assets/projects/iaeks/home.jpg",
+          "caption": "Portada pública, orientada a explicar servicios sin jerga."
+        },
+        {
+          "src": "/assets/projects/iaeks/acceso.jpg",
+          "caption": "Acceso al panel privado, protegido con verificación anti-bot."
+        },
+        {
+          "src": "/assets/projects/iaeks/casos.jpg",
+          "caption": "Casos: resultados concretos en vez de promesas genéricas."
+        },
+        {
+          "src": "/assets/projects/iaeks/proceso.jpg",
+          "caption": "El proceso de trabajo explicado paso a paso antes de contratar."
+        },
+        {
+          "src": "/assets/projects/iaeks/precios.jpg",
+          "caption": "Precios públicos, que en consultoría no es lo habitual."
+        },
+        {
+          "src": "/assets/projects/iaeks/cursos.jpg",
+          "caption": "Formación, la otra pata del negocio."
+        },
+        {
+          "src": "/assets/projects/iaeks/sobre-mi.jpg",
+          "caption": "Quién está detrás, con nombre y cara."
+        }
       ],
       "diagram": "/assets/projects/diagrams/iaeks.svg",
       "highlight": {
@@ -77,13 +185,33 @@
     "image": "/assets/projects/ailedu/home.jpg",
     "url": "https://ailedu.edvardks.com",
     "description": "App de finanzas, calendario y tareas para parejas: paneles compartidos, OCR de tickets y avisos al móvil.",
-    "tags": ["PWA", "OCR", "PostgreSQL", "MinIO", "FastAPI"],
+    "tags": [
+      "PWA",
+      "OCR",
+      "PostgreSQL",
+      "MinIO",
+      "FastAPI"
+    ],
     "detail": {
       "que_es": "Una aplicación para dos personas que comparten gastos y agenda. Se crean paneles compartidos, se invita por correo, y lo que se apunta en uno puede publicarse en el del otro. Los tickets se suben en foto y el sistema les saca los datos.",
       "objetivo": "Quitar la fricción de llevar las cuentas en común, que casi siempre acaba en una hoja de cálculo que nadie actualiza.",
-      "stack": ["React", "Express", "PostgreSQL", "MinIO", "FastAPI", "Web Push"],
+      "stack": [
+        "React",
+        "Express",
+        "PostgreSQL",
+        "MinIO",
+        "FastAPI",
+        "Web Push"
+      ],
       "shots": [
-        { "src": "/assets/projects/ailedu/home.jpg", "caption": "Entrada a la aplicación, pensada primero para móvil." }
+        {
+          "src": "/assets/projects/ailedu/home.jpg",
+          "caption": "Entrada a la aplicación, pensada primero para móvil."
+        },
+        {
+          "src": "/assets/projects/ailedu/movil.jpg",
+          "caption": "En móvil: es donde se fotografía el ticket, así que es la vista que manda."
+        }
       ],
       "diagram": "/assets/projects/diagrams/ailedu.svg",
       "highlight": {
@@ -99,16 +227,42 @@
     "image": "/assets/projects/pcs/home.jpg",
     "url": "https://pcs.iaeks.com",
     "description": "Gestión de un entrenador de pádel: alumnos, bonos, clases y balance, con páginas de captación por zona.",
-    "tags": ["Hono", "SQLite", "SEO", "Docker"],
+    "tags": [
+      "Hono",
+      "SQLite",
+      "SEO",
+      "Docker"
+    ],
     "detail": {
       "que_es": "La herramienta diaria de un entrenador de pádel. Lleva alumnos, bonos de clases que se van descontando, calendario de clases, ingresos y gastos, y la deuda pendiente de cada uno. La parte pública son páginas de captación por localidad.",
       "objetivo": "Saber en cualquier momento quién tiene bono, quién debe y qué se ha ingresado este mes, sin cuadernos ni notas del móvil.",
-      "stack": ["Hono", "SQLite", "TypeScript", "Docker"],
+      "stack": [
+        "Hono",
+        "SQLite",
+        "TypeScript",
+        "Docker"
+      ],
       "shots": [
-        { "src": "/assets/projects/pcs/home.jpg", "caption": "Portada, orientada a convertir visita en solicitud de clase." },
-        { "src": "/assets/projects/pcs/villena.jpg", "caption": "Página por zona: Villena. Contenido propio, no la misma plantilla con la ciudad cambiada." },
-        { "src": "/assets/projects/pcs/alicante.jpg", "caption": "La misma idea para la provincia de Alicante." },
-        { "src": "/assets/projects/pcs/login.jpg", "caption": "Acceso al panel del entrenador." }
+        {
+          "src": "/assets/projects/pcs/home.jpg",
+          "caption": "Portada, orientada a convertir visita en solicitud de clase."
+        },
+        {
+          "src": "/assets/projects/pcs/villena.jpg",
+          "caption": "Página por zona: Villena. Contenido propio, no la misma plantilla con la ciudad cambiada."
+        },
+        {
+          "src": "/assets/projects/pcs/alicante.jpg",
+          "caption": "La misma idea para la provincia de Alicante."
+        },
+        {
+          "src": "/assets/projects/pcs/login.jpg",
+          "caption": "Acceso al panel del entrenador."
+        },
+        {
+          "src": "/assets/projects/pcs/movil.jpg",
+          "caption": "Versión móvil de la portada."
+        }
       ],
       "diagram": "/assets/projects/diagrams/pcs.svg",
       "highlight": {
@@ -124,13 +278,54 @@
     "image": "/assets/projects/todoagricola/home.jpg",
     "url": "https://todoagricola.iaeks.com",
     "description": "Tienda de fruta y verdura de Villena: catálogo, pedidos, suscripciones y pago online.",
-    "tags": ["Next.js", "Express", "MySQL", "Docker"],
+    "tags": [
+      "Next.js",
+      "Express",
+      "MySQL",
+      "Docker"
+    ],
     "detail": {
       "que_es": "El comercio de barrio con venta online. Catálogo de fruta y verdura, carrito, pedidos y suscripción para quien quiere su cesta cada semana sin volver a pedirla.",
       "objetivo": "Dar a una tienda local un canal de venta propio, sin depender de plataformas que se llevan comisión y se quedan con el cliente.",
-      "stack": ["Next.js 16", "Express", "MySQL 8.4", "Docker"],
+      "stack": [
+        "Next.js 16",
+        "Express",
+        "MySQL 8.4",
+        "Docker"
+      ],
       "shots": [
-        { "src": "/assets/projects/todoagricola/home.jpg", "caption": "Portada de la tienda con el producto de temporada." }
+        {
+          "src": "/assets/projects/todoagricola/home.jpg",
+          "caption": "Portada de la tienda con el producto de temporada."
+        },
+        {
+          "src": "/assets/projects/todoagricola/frutas.jpg",
+          "caption": "Catálogo de fruta, con el producto de temporada por delante."
+        },
+        {
+          "src": "/assets/projects/todoagricola/cestas.jpg",
+          "caption": "Cestas: el formato que se convierte en suscripción semanal."
+        },
+        {
+          "src": "/assets/projects/todoagricola/despensa.jpg",
+          "caption": "Despensa, para la compra que no es fresco."
+        },
+        {
+          "src": "/assets/projects/todoagricola/empresas.jpg",
+          "caption": "Canal de empresas, con condiciones distintas al particular."
+        },
+        {
+          "src": "/assets/projects/todoagricola/blog.jpg",
+          "caption": "Blog de temporada: capta búsquedas y sostiene el posicionamiento."
+        },
+        {
+          "src": "/assets/projects/todoagricola/contacto.jpg",
+          "caption": "Contacto directo con la tienda."
+        },
+        {
+          "src": "/assets/projects/todoagricola/movil.jpg",
+          "caption": "En móvil, que es por donde entra la mayoría del tráfico de una tienda local."
+        }
       ],
       "diagram": "/assets/projects/diagrams/todoagricola.svg",
       "highlight": {
@@ -146,15 +341,35 @@
     "image": "/assets/projects/diagrams/infra-card.svg",
     "url": null,
     "description": "Cómo está montado de verdad este servidor: un proxy, una red aislada por proyecto y un panel que lo vigila todo.",
-    "tags": ["Docker", "nginx", "Aislamiento", "Observabilidad"],
+    "tags": [
+      "Docker",
+      "nginx",
+      "Aislamiento",
+      "Observabilidad"
+    ],
     "detail": {
       "que_es": "Este mismo servidor, contado tal y como está hoy. Una sola máquina aloja una decena de aplicaciones independientes: un proxy reparte por dominio, cada proyecto vive en su red privada, y un panel de control centraliza despliegue, certificados, copias y vigilancia.",
       "objetivo": "Que meter una aplicación más no ponga en riesgo a las que ya están, y que cualquier caída se vea antes de que la vea un cliente.",
-      "stack": ["Docker Compose", "nginx", "Let's Encrypt", "Postfix", "cron"],
+      "stack": [
+        "Docker Compose",
+        "nginx",
+        "Let's Encrypt",
+        "Postfix",
+        "cron"
+      ],
       "shots": [
-        { "src": "/assets/projects/diagrams/infra.svg", "caption": "Mapa completo: entrada por el proxy, una red por proyecto y servicios compartidos." },
-        { "src": "/assets/projects/diagrams/infra-deploy.svg", "caption": "Ciclo de despliegue: de un push en el repositorio a la versión nueva sirviendo." },
-        { "src": "/assets/projects/diagrams/infra-vigilancia.svg", "caption": "Qué se vigila, cada cuánto, y qué se corrige solo cuando algo falla." }
+        {
+          "src": "/assets/projects/diagrams/infra.svg",
+          "caption": "Mapa completo: entrada por el proxy, una red por proyecto y servicios compartidos."
+        },
+        {
+          "src": "/assets/projects/diagrams/infra-deploy.svg",
+          "caption": "Ciclo de despliegue: de un push en el repositorio a la versión nueva sirviendo."
+        },
+        {
+          "src": "/assets/projects/diagrams/infra-vigilancia.svg",
+          "caption": "Qué se vigila, cada cuánto, y qué se corrige solo cuando algo falla."
+        }
       ],
       "diagram": "/assets/projects/diagrams/infra.svg",
       "highlight": {
@@ -171,11 +386,22 @@
     "url": null,
     "private_panel": true,
     "description": "Aplicación privada que despliega, renueva certificados, vigila y avisa. Sin acceso público, y sin publicar su dirección.",
-    "tags": ["Node", "Docker", "Observabilidad", "2FA"],
+    "tags": [
+      "Node",
+      "Docker",
+      "Observabilidad",
+      "2FA"
+    ],
     "detail": {
       "que_es": "La aplicación desde la que se opera el servidor: despliegue de cada proyecto, renovación de certificados, copias de seguridad, estado de los contenedores, cola de correo y alertas. Es privada, con doble factor, y no se publica ni su dirección ni su interfaz.",
       "objetivo": "Reunir en un sitio las operaciones que, si no, se hacen por consola, a mano y con riesgo de equivocarse.",
-      "stack": ["Node", "API de Docker", "SQLite", "TOTP", "WebSocket"],
+      "stack": [
+        "Node",
+        "API de Docker",
+        "SQLite",
+        "TOTP",
+        "WebSocket"
+      ],
       "shots": [],
       "diagram": "/assets/projects/diagrams/infra-vigilancia.svg",
       "highlight": {
@@ -191,11 +417,21 @@
     "image": "/assets/projects/smtp.svg",
     "url": null,
     "description": "Postfix con firma DKIM que envía el correo de todas las apps del servidor sin depender de un proveedor externo.",
-    "tags": ["Postfix", "OpenDKIM", "SPF/DMARC"],
+    "tags": [
+      "Postfix",
+      "OpenDKIM",
+      "SPF/DMARC"
+    ],
     "detail": {
       "que_es": "Un servicio de envío de correo compartido por todas las aplicaciones del servidor. Solo envía, nunca recibe. Firma cada mensaje para que los buzones de destino lo acepten como legítimo.",
       "objetivo": "Que ninguna aplicación tenga que llevar credenciales de un proveedor de correo, ni sus avisos acaben en spam.",
-      "stack": ["Postfix", "OpenDKIM", "SPF", "DMARC", "Docker"],
+      "stack": [
+        "Postfix",
+        "OpenDKIM",
+        "SPF",
+        "DMARC",
+        "Docker"
+      ],
       "shots": [],
       "diagram": "/assets/projects/smtp.svg",
       "highlight": {
@@ -211,11 +447,20 @@
     "image": "/assets/projects/ia.svg",
     "url": null,
     "description": "Pasarela de modelos de lenguaje ejecutándose en el propio servidor, compartida por varias aplicaciones.",
-    "tags": ["Ollama", "Fastify", "SQLite"],
+    "tags": [
+      "Ollama",
+      "Fastify",
+      "SQLite"
+    ],
     "detail": {
       "que_es": "Un servicio que ejecuta modelos de lenguaje dentro del servidor y los ofrece a las demás aplicaciones por una única puerta, con caché, métricas y equivalencias entre modelos.",
       "objetivo": "Usar modelos de lenguaje sin enviar los datos de los clientes a un tercero ni pagar por consulta.",
-      "stack": ["Ollama", "Fastify", "SQLite", "Docker"],
+      "stack": [
+        "Ollama",
+        "Fastify",
+        "SQLite",
+        "Docker"
+      ],
       "shots": [],
       "diagram": "/assets/projects/ia.svg",
       "highlight": {
