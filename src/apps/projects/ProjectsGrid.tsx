@@ -59,11 +59,11 @@ export function ProjectsGrid({ onOpenDetail }: { onOpenDetail?: (p: ProdProject)
   const openApp = useWM(s => s.openApp)
 
   useEffect(() => {
-    fetch('/data/github-projects.json', { cache: 'force-cache' })
+    fetch('/data/github-projects.json?v=2', { cache: 'no-cache' })
       .then(r => r.json() as Promise<GhProject[]>)
       .then(setProjects)
       .catch(e => setError(e instanceof Error ? e.message : String(e)))
-    fetch('/data/production-projects.json', { cache: 'force-cache' })
+    fetch('/data/production-projects.json?v=2', { cache: 'no-cache' })
       .then(r => r.json() as Promise<ProdProject[]>)
       .then(setProd)
       .catch(() => setProd([]))

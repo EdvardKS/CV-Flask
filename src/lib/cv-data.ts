@@ -55,7 +55,7 @@ export function pickLocalized(value: unknown, locale: Locale): string {
 }
 
 export async function loadCVData(): Promise<CVData> {
-  const res = await fetch('/data/cv_data.json', { cache: 'force-cache' })
+  const res = await fetch('/data/cv_data.json', { cache: 'no-cache' })
   if (!res.ok) throw new Error(`Failed to load cv_data.json: ${res.status}`)
   return res.json() as Promise<CVData>
 }

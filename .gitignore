@@ -48,3 +48,7 @@ scripts/_sdig_extract.json
 
 *.bak
 *.bak.*
+
+# Copias de trabajo del panel de infraestructura: nunca deben versionarse aquí.
+# Este repositorio es público y esos ficheros revelan endpoints, dominio y despliegue.
+.viewer-tmp/
