@@ -1157,6 +1157,9 @@ html, body {
 .gh-project-title-btn {
   background: none;
   border: none;
+  /* El estilo global de <button> pinta el biselado de Windows 98 con box-shadow:
+     aquí el título es texto enlazado, no un botón, así que se anula. */
+  box-shadow: none;
   padding: 0;
   color: inherit;
   font: inherit;
@@ -1164,7 +1167,11 @@ html, body {
   cursor: pointer;
   text-align: left;
 }
+.gh-project-title-btn:hover,
+.gh-project-title-btn:active,
+.gh-project-title-btn:focus { box-shadow: none; background: none; }
 .gh-project-title-btn:hover { text-decoration: underline; }
+.gh-project-title-btn:focus-visible { outline: 2px solid #0969da; outline-offset: 2px; border-radius: 3px; }
 .gh-project-meta {
   display: flex;
   gap: 4px;
