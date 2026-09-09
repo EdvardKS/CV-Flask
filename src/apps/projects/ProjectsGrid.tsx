@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { useWM } from '@os/store'
 import { APPS_BY_ID } from '@apps/_registry'
 
+export type ProjectCategory = 'ml' | 'dl' | 'genai' | 'web'
+
 export type GhProject = {
   id: string
   name: string
@@ -13,7 +15,24 @@ export type GhProject = {
   private?: boolean
   description: string
   tags: string[]
+  category?: ProjectCategory
 }
+
+/**
+ * El orden manda: primero machine learning y ciencia de datos, después deep learning,
+ * después IA generativa, y las webs al final.
+ */
+const CATEGORIES: { id: ProjectCategory; title: string; blurb: string; lead?: boolean }[] = [
+  {
+    id: 'ml',
+    title: '📊 Machine learning y ciencia de datos',
+    blurb: 'Datos reales, pipelines de scikit-learn y modelos que se leen por su matriz de confusión, no por su accuracy.',
+    lead: true,
+  },
+  { id: 'dl', title: '🧠 Deep learning', blurb: 'Redes convolucionales, grafos y aprendizaje por refuerzo, entrenados de principio a fin.' },
+  { id: 'genai', title: '✨ IA generativa y agentes', blurb: 'RAG, agentes y modelos de lenguaje corriendo en local, en producción.' },
+  { id: 'web', title: '🌐 Web y aplicaciones', blurb: 'Producto: lo que la gente usa cada día.' },
+]
 
 export type ProjectShot = { src: string; caption: string }
 
@@ -85,54 +104,74 @@ export function ProjectsGrid({ onOpenDetail }: { onOpenDetail?: (p: ProdProject)
 
   return (
     <>
-      {prod.length > 0 && (
-        <section className="prod-section">
-          <h3 className="prod-section-title">🟢 En producción <span>· apps y servicios vivos en este servidor · pulsa una tarjeta para entrar</span></h3>
-          <ul className="prod-grid">
-            {prod.map(p => (
-              <li key={p.id} className="prod-card">
-                {p.detail ? (
-                  <button className="prod-shot as-button" onClick={() => onOpenDetail?.(p)} title={'Ver ficha de ' + p.name}>
-                    <img src={p.image} alt={p.name} loading="lazy" />
-                    <span className="prod-open">Ver ficha →</span>
-                  </button>
-                ) : p.url ? (
-                  <a className="prod-shot" href={p.url} target="_blank" rel="noopener noreferrer" title={'Abrir ' + p.name}>
-                    <img src={p.image} alt={p.name} loading="lazy" />
-                    <span className="prod-open">Abrir →</span>
-                  </a>
-                ) : (
-                  <div className="prod-shot is-service"><img src={p.image} alt={p.name} loading="lazy" /></div>
-                )}
-                <div className="prod-body">
-                  <strong className="prod-name">{p.icon} {p.name}{p.private_panel && <span className="prod-pill">🔒 panel</span>}</strong>
-                  <p className="prod-desc">{p.description}</p>
-                  <div className="gh-project-tags">{p.tags.map(t => <span key={t} className="gh-tl-badge-item">{t}</span>)}</div>
-                  <div className="prod-actions">
-                    {p.detail && (
-                      <button className="gh-project-btn primary" onClick={() => onOpenDetail?.(p)}>📄 Ver ficha</button>
-                    )}
-                    {p.url ? (
-                      <a className="gh-project-btn ghost" href={p.url} target="_blank" rel="noopener noreferrer">🌐 Visitar</a>
-                    ) : (
-                      <span className="prod-internal">Servicio interno · infra</span>
-                    )}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <h3 className="prod-section-title repos">📦 Repositorios en GitHub</h3>
-        </section>
-      )}
-      <ul className="gh-projects-grid">
-        {projects.map(p => (
-        <li key={p.id} className="gh-project-card">
+      {CATEGORIES.map(cat => {
+        const items = projects.filter(p => (p.category ?? 'web') === cat.id)
+        const conProduccion = cat.id === 'web' && prod.length > 0
+        if (items.length === 0 && !conProduccion) return null
+        return (
+          <section key={cat.id} className={cat.lead ? 'cat-section is-lead' : 'cat-section'}>
+            <h3 className="cat-title">
+              {cat.title}
+              <span className="cat-count">{items.length + (conProduccion ? prod.length : 0)}</span>
+            </h3>
+            <p className="cat-blurb">{cat.blurb}</p>
+            {conProduccion && (
+              <section className="prod-section">
+                <h3 className="prod-section-title">🟢 En producción <span>· apps y servicios vivos en este servidor · pulsa una tarjeta para ver su ficha</span></h3>
+                <ul className="prod-grid">
+                  {prod.map(p => (
+                    <li key={p.id} className="prod-card">
+                      {p.detail ? (
+                        <button className="prod-shot as-button" onClick={() => onOpenDetail?.(p)} title={'Ver ficha de ' + p.name}>
+                          <img src={p.image} alt={p.name} loading="lazy" />
+                          <span className="prod-open">Ver ficha →</span>
+                        </button>
+                      ) : p.url ? (
+                        <a className="prod-shot" href={p.url} target="_blank" rel="noopener noreferrer" title={'Abrir ' + p.name}>
+                          <img src={p.image} alt={p.name} loading="lazy" />
+                          <span className="prod-open">Abrir →</span>
+                        </a>
+                      ) : (
+                        <div className="prod-shot is-service"><img src={p.image} alt={p.name} loading="lazy" /></div>
+                      )}
+                      <div className="prod-body">
+                        <strong className="prod-name">{p.icon} {p.name}{p.private_panel && <span className="prod-pill">🔒 panel</span>}</strong>
+                        <p className="prod-desc">{p.description}</p>
+                        <div className="gh-project-tags">{p.tags.map(t => <span key={t} className="gh-tl-badge-item">{t}</span>)}</div>
+                        <div className="prod-actions">
+                          {p.detail && (
+                            <button className="gh-project-btn primary" onClick={() => onOpenDetail?.(p)}>📄 Ver ficha</button>
+                          )}
+                          {p.url ? (
+                            <a className="gh-project-btn ghost" href={p.url} target="_blank" rel="noopener noreferrer">🌐 Visitar</a>
+                          ) : (
+                            <span className="prod-internal">Servicio interno · infra</span>
+                          )}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+            <ul className="gh-projects-grid">
+              {items.map(p => <ProjectCard key={p.id} p={p} onOpen={open} />)}
+            </ul>
+          </section>
+        )
+      })}
+    </>
+  )
+}
+
+function ProjectCard({ p, onOpen }: { p: GhProject; onOpen: (p: GhProject) => void }) {
+  return (
+        <li className="gh-project-card">
           <header className="gh-project-head">
             <span className="gh-project-icon" aria-hidden>{p.icon}</span>
             <div className="gh-project-title-wrap">
               <strong className="gh-project-title">
-                <button onClick={() => open(p)} className="gh-project-title-btn">{p.name}</button>
+                <button onClick={() => onOpen(p)} className="gh-project-title-btn">{p.name}</button>
               </strong>
               <div className="gh-project-meta">
                 <span className={p.private ? 'gh-project-pill is-private' : 'gh-project-pill is-public'}>
@@ -148,7 +187,7 @@ export function ProjectsGrid({ onOpenDetail }: { onOpenDetail?: (p: ProdProject)
           </div>
           <footer className="gh-project-actions">
             {p.internal ? (
-              <button className="gh-project-btn primary" onClick={() => open(p)}>🪟 Abrir ventana</button>
+              <button className="gh-project-btn primary" onClick={() => onOpen(p)}>🪟 Abrir ventana</button>
             ) : p.private ? (
               <button className="gh-project-btn secondary" disabled title="Repositorio privado">
                 🔒 Privado
@@ -165,9 +204,6 @@ export function ProjectsGrid({ onOpenDetail }: { onOpenDetail?: (p: ProdProject)
             )}
           </footer>
         </li>
-      ))}
-      </ul>
-    </>
   )
 }
 

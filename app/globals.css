@@ -1571,9 +1571,39 @@ html, body {
 
 /* ── Proyectos: sección "En producción" (apps live del VPS) ───────────── */
 .prod-section { margin-bottom: 18px; }
-.prod-section-title { margin: 4px 0 12px; font-size: 15px; color: #0f172a; font-weight: 700; }
+/* ── Secciones de proyectos por disciplina ─────────────────────────────────
+   El orden lo fija ProjectsGrid: machine learning y ciencia de datos primero,
+   después deep learning, IA generativa y, al final, web. La primera sección va
+   destacada porque es la que queremos que se lea sí o sí. */
+.cat-section { margin: 0 0 30px; }
+.cat-section:last-child { margin-bottom: 8px; }
+.cat-title { display: flex; align-items: center; gap: 9px; margin: 0; font-size: 17px; font-weight: 800; color: #0f172a; letter-spacing: -.01em; }
+.cat-count { font-size: 11px; font-weight: 700; color: #475569; background: #e2e8f0; border-radius: 999px; padding: 2px 9px; }
+.cat-blurb { margin: 5px 0 14px; font-size: 12.5px; line-height: 1.5; color: #64748b; max-width: 62ch; }
+.cat-section.is-lead {
+  position: relative;
+  padding: 18px 18px 20px;
+  margin-bottom: 34px;
+  border-radius: 16px;
+  border: 1px solid #bae6fd;
+  background: linear-gradient(180deg, #f0f9ff 0%, #fff 62%);
+}
+.cat-section.is-lead .cat-title { font-size: 19px; }
+.cat-section.is-lead .cat-count { background: #0284c7; color: #fff; }
+.cat-section.is-lead .cat-blurb { color: #0c4a6e; }
+.cat-section.is-lead::before {
+  content: 'Lo que más me interesa';
+  position: absolute; top: -9px; left: 16px;
+  font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: #fff; background: #0284c7; border-radius: 999px; padding: 2px 10px;
+}
+@media (max-width: 720px) {
+  .cat-section.is-lead { padding: 16px 12px 14px; }
+  .cat-title { font-size: 15px; }
+  .cat-section.is-lead .cat-title { font-size: 16px; }
+}
+.prod-section-title { margin: 4px 0 12px; font-size: 13.5px; color: #0f172a; font-weight: 700; }
 .prod-section-title span { color: #64748b; font-weight: 400; font-size: 12px; }
-.prod-section-title.repos { margin-top: 22px; border-top: 1px solid #e2e8f0; padding-top: 16px; }
 .prod-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
 .prod-card { border: 1px solid #d0d7de; border-radius: 12px; overflow: hidden; background: #fff; display: flex; flex-direction: column; transition: box-shadow .15s, transform .15s; }
 .prod-card:hover { box-shadow: 0 8px 24px rgba(2,6,23,.12); transform: translateY(-2px); }
