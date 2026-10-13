@@ -91,6 +91,11 @@ export function ProjectsGrid({ onOpenDetail }: { onOpenDetail?: (p: ProdProject)
   if (error) return <p style={{ color: '#c00' }}>Error: {error}</p>
   if (!projects) return <p>Cargando proyectos…</p>
 
+  const openFicha = (slug: string) => {
+    const ficha = APPS_BY_ID.ficha
+    if (ficha) openApp(ficha, { path: `/projects/${slug}` })
+  }
+
   const open = (p: GhProject) => {
     if (p.internal) {
       const r = resolveInternal(p.internal)
@@ -155,7 +160,7 @@ export function ProjectsGrid({ onOpenDetail }: { onOpenDetail?: (p: ProdProject)
               </section>
             )}
             <ul className="gh-projects-grid">
-              {items.map(p => <ProjectCard key={p.id} p={p} onOpen={open} />)}
+              {items.map(p => <ProjectCard key={p.id} p={p} onOpen={open} onOpenFicha={openFicha} />)}
             </ul>
           </section>
         )
@@ -164,7 +169,7 @@ export function ProjectsGrid({ onOpenDetail }: { onOpenDetail?: (p: ProdProject)
   )
 }
 
-function ProjectCard({ p, onOpen }: { p: GhProject; onOpen: (p: GhProject) => void }) {
+function ProjectCard({ p, onOpen, onOpenFicha }: { p: GhProject; onOpen: (p: GhProject) => void; onOpenFicha: (slug: string) => void }) {
   return (
         <li className="gh-project-card">
           <header className="gh-project-head">
@@ -203,7 +208,15 @@ function ProjectCard({ p, onOpen }: { p: GhProject; onOpen: (p: GhProject) => vo
                 <GhIcon /> Ver en GitHub
               </a>
             )}
-            <a className="gh-project-btn ghost" href={`/projects/${p.id}`} title={'Ficha de ' + p.name}>
+            <a
+              className="gh-project-btn ghost"
+              href={`/projects/${p.id}`}
+              title={'Ficha de ' + p.name}
+              onClick={event => {
+                event.preventDefault()
+                onOpenFicha(p.id)
+              }}
+            >
               📄 Ficha
             </a>
           </footer>

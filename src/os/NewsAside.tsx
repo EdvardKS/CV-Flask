@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { useUI } from './uiStore'
 import { BLOG_POSTS, blogPath } from '@lib/blog/posts'
+import { useWM } from './store'
+import { APPS_BY_ID } from '@apps/_registry'
 
 type NewsItem = {
   id: string
@@ -30,6 +32,14 @@ export function NewsAside() {
   const [loading, setLoading] = useState(false)
   const open = useUI(s => s.notificationsOpen)
   const setOpen = useUI(s => s.setNotifications)
+  const openApp = useWM(s => s.openApp)
+
+  const openBlog = (event: React.MouseEvent, path: string) => {
+    const blog = APPS_BY_ID.blog
+    if (!blog) return
+    event.preventDefault()
+    openApp(blog, { path })
+  }
 
   const load = useCallback(async (force = false) => {
     setLoading(true)
@@ -80,14 +90,14 @@ export function NewsAside() {
             <ul>
               {BLOG_POSTS.slice(0, 4).map(post => (
                 <li key={post.slug}>
-                  <a href={blogPath(post.slug)}>
+                  <a href={blogPath(post.slug)} onClick={event => openBlog(event, blogPath(post.slug))}>
                     <strong>{post.title}</strong>
                     <span>{post.topic} · {post.readingMinutes} min</span>
                   </a>
                 </li>
               ))}
             </ul>
-            <a className="news-notes-all" href="/blog">Ver el blog →</a>
+            <a className="news-notes-all" href="/blog" onClick={event => openBlog(event, '/blog')}>Ver el blog →</a>
           </section>
 
           <div className="news-meta">

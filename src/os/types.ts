@@ -35,6 +35,7 @@ export type AppManifest = {
   defaultSize: { width: number; height: number }
   minSize?: { width: number; height: number }
   singleton?: boolean
+  hidden?: boolean
   deepLink?: string
   description?: string
   externalUrl?: string       // If set, double-click opens this URL in a new tab (no window).

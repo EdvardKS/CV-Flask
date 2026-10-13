@@ -44,6 +44,7 @@ export default function BlogIndexPage() {
         {BLOG_POSTS.map(post => (
           <li key={post.slug}>
             <Link href={blogPath(post.slug)}>
+              <img className="doc-post-thumb" src={post.cover.src} alt={post.cover.alt} width={1280} height={800} loading="lazy" />
               <span className="doc-post-meta">
                 {post.topic} · {post.date} · {post.readingMinutes} min
               </span>

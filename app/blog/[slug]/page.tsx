@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       description: post.description,
       publishedTime: post.date,
       authors: ['Edvard Khachatryan Sahakyan'],
-      tags: post.tags
+      tags: post.tags,
+      images: [{ url: post.cover.src, alt: post.cover.alt }]
     }
   }
 }
@@ -88,6 +89,7 @@ export default async function BlogPostPage({ params }: Params) {
       inLanguage: 'es-ES',
       keywords: post.tags.join(', '),
       mainEntityOfPage: url,
+      image: `${BASE}${post.cover.src}`,
       author: { '@type': 'Person', name: 'Edvard Khachatryan Sahakyan', url: BASE },
       publisher: { '@type': 'Person', name: 'Edvard Khachatryan Sahakyan', url: BASE }
     },
@@ -116,6 +118,15 @@ export default async function BlogPostPage({ params }: Params) {
         </p>
         <h1>{post.title}</h1>
         <p className="doc-lead">{post.description}</p>
+        <figure className="doc-figure">
+          <img className="doc-cover" src={post.cover.src} alt={post.cover.alt} width={1280} height={800} />
+          <figcaption>
+            Foto:{' '}
+            <a href={post.cover.credit.href} target="_blank" rel="noopener nofollow">
+              {post.cover.credit.label}
+            </a>
+          </figcaption>
+        </figure>
         {post.body.map((block, index) => (
           <Block key={index} block={block} />
         ))}

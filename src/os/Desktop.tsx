@@ -37,7 +37,7 @@ export function Desktop() {
     return () => window.removeEventListener('mousedown', onClickAway)
   }, [])
 
-  const sorted = [...APPS].sort((a, b) => {
+  const sorted = APPS.filter(app => !app.hidden).sort((a, b) => {
     const order = ['cv', 'mini-project', 'tool', 'system']
     return order.indexOf(a.category) - order.indexOf(b.category)
   })

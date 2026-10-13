@@ -24,7 +24,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
   const groups = (['cv', 'mini-project', 'tool', 'system'] as AppCategory[]).map(cat => ({
     cat,
     label: GROUP_LABELS[cat],
-    apps: APPS.filter(a => a.category === cat)
+    apps: APPS.filter(a => a.category === cat && !a.hidden)
   })).filter(g => g.apps.length > 0)
 
   return (

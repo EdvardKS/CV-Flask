@@ -12,12 +12,14 @@ import aiManifest from './ai/manifest'
 import iaeksManifest from './iaeks/manifest'
 import f5Manifest from './f5/manifest'
 import blogManifest from './blog/manifest'
+import fichaManifest from './ficha/manifest'
 
 export const APPS: AppManifest[] = [
   cvManifest,
   aiManifest,
   projectsManifest,
   blogManifest,
+  fichaManifest,
   quizManifest,
   padelManifest,
   contactManifest,

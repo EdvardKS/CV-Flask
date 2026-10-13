@@ -18,9 +18,12 @@ const FOOTER = [
   { href: 'https://www.linkedin.com/in/edvardks/', label: 'LinkedIn' }
 ]
 
+const EMBED_FLAG = "if(window.self!==window.top)document.documentElement.classList.add('is-embedded')"
+
 export function DocShell({ children }: { children: ReactNode }) {
   return (
     <div className="doc-page">
+      <script dangerouslySetInnerHTML={{ __html: EMBED_FLAG }} />
       <header className="doc-top">
         <Link href="/" className="doc-brand">
           EdvardKS <span>PC</span>
