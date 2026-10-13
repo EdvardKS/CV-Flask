@@ -189,19 +189,23 @@ function ProjectCard({ p, onOpen }: { p: GhProject; onOpen: (p: GhProject) => vo
             {p.internal ? (
               <button className="gh-project-btn primary" onClick={() => onOpen(p)}>🪟 Abrir ventana</button>
             ) : p.private ? (
-              <button className="gh-project-btn secondary" disabled title="Repositorio privado">
-                🔒 Privado
-              </button>
+              p.url.startsWith('https://github.com/') ? (
+                <button className="gh-project-btn secondary" disabled title="Repositorio privado">
+                  🔒 Privado
+                </button>
+              ) : (
+                <a className="gh-project-btn primary" href={p.url} target="_blank" rel="noopener noreferrer">
+                  🌐 Ver el caso
+                </a>
+              )
             ) : (
               <a className="gh-project-btn primary" href={p.url} target="_blank" rel="noopener noreferrer">
                 <GhIcon /> Ver en GitHub
               </a>
             )}
-            {!p.private && (
-              <a className="gh-project-btn ghost" href={p.url} target="_blank" rel="noopener noreferrer" title="Ver en GitHub">
-                <GhIcon />
-              </a>
-            )}
+            <a className="gh-project-btn ghost" href={`/projects/${p.id}`} title={'Ficha de ' + p.name}>
+              📄 Ficha
+            </a>
           </footer>
         </li>
   )

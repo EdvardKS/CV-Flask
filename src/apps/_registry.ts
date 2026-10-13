@@ -11,11 +11,13 @@ import githubManifest from './github/manifest'
 import aiManifest from './ai/manifest'
 import iaeksManifest from './iaeks/manifest'
 import f5Manifest from './f5/manifest'
+import blogManifest from './blog/manifest'
 
 export const APPS: AppManifest[] = [
   cvManifest,
   aiManifest,
   projectsManifest,
+  blogManifest,
   quizManifest,
   padelManifest,
   contactManifest,

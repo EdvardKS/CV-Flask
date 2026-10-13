@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ProjectsGrid, type ProdProject } from './ProjectsGrid'
 import { ProjectDetail } from './ProjectDetail'
+import { ActivityGadget } from '@os/ActivityGadget'
 
 export function ProjectsApp() {
   const [detalle, setDetalle] = useState<ProdProject | null>(null)
@@ -16,6 +17,7 @@ export function ProjectsApp() {
         <p style={{ margin: '4px 0 0', color: '#64748b', fontSize: 12 }}>
           Apps en producción con ficha, capturas y diagrama de flujo — y los repos en GitHub.
         </p>
+        <ActivityGadget variant="window" />
       </header>
       <ProjectsGrid onOpenDetail={setDetalle} />
     </div>

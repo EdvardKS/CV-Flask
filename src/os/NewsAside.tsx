@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { useUI } from './uiStore'
+import { BLOG_POSTS, blogPath } from '@lib/blog/posts'
 
 type NewsItem = {
   id: string
@@ -73,6 +74,21 @@ export function NewsAside() {
               </div>
             </div>
           )}
+
+          <section className="news-notes">
+            <span className="news-notes-title">Lo que pienso</span>
+            <ul>
+              {BLOG_POSTS.slice(0, 4).map(post => (
+                <li key={post.slug}>
+                  <a href={blogPath(post.slug)}>
+                    <strong>{post.title}</strong>
+                    <span>{post.topic} · {post.readingMinutes} min</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a className="news-notes-all" href="/blog">Ver el blog →</a>
+          </section>
 
           <div className="news-meta">
             <span>

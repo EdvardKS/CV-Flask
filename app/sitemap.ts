@@ -1,4 +1,6 @@
 import type { MetadataRoute } from 'next'
+import { PROJECTS, projectPath } from '@lib/projects/catalog'
+import { BLOG_POSTS, blogPath } from '@lib/blog/posts'
 
 const BASE = 'https://edvardks.com'
 
@@ -14,6 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/quiz/ssoo-avanzados`, lastModified: now, priority: 0.6 },
     { url: `${BASE}/quiz/ingles`, lastModified: now, priority: 0.6 },
     { url: `${BASE}/padel`, lastModified: now, priority: 0.7 },
-    { url: `${BASE}/contact`, lastModified: now, priority: 0.5 }
+    { url: `${BASE}/contact`, lastModified: now, priority: 0.5 },
+    { url: `${BASE}/blog`, lastModified: now, priority: 0.8 },
+    ...BLOG_POSTS.map(post => ({ url: `${BASE}${blogPath(post.slug)}`, lastModified: new Date(post.date), priority: 0.7 })),
+    ...PROJECTS.map(project => ({ url: `${BASE}${projectPath(project.slug)}`, lastModified: now, priority: 0.6 }))
   ]
 }

@@ -326,6 +326,38 @@
     ]
   },
   {
+    "id": "justificantes-ia",
+    "name": "Lectura de justificantes con IA",
+    "icon": "🧾",
+    "url": "https://iaeks.com/casos/torneos",
+    "private": true,
+    "category": "genai",
+    "description": "Los justificantes de transferencia que suben los jugadores de un torneo, en foto o en PDF, se leen con un modelo de lenguaje con visión: extrae el importe, razona si cuadra con lo que debía pagar la pareja y deja el total editable para que el club lo ratifique.",
+    "tags": [
+      "Visión",
+      "LLM",
+      "Extracción de datos",
+      "Validación humana",
+      "Producción"
+    ]
+  },
+  {
+    "id": "bot-telegram-ia",
+    "name": "Bot de Telegram con IA",
+    "icon": "🤖",
+    "url": "https://iaeks.com/bots-telegram-ia",
+    "private": true,
+    "category": "genai",
+    "description": "Bot privado de Telegram conectado a un agente que opera servidores en producción: estado de las webs, copias de seguridad e incidencias, con texto, voz, fotos y archivos. Solo obedece a usuarios emparejados y registra cada orden.",
+    "tags": [
+      "Agentes",
+      "Telegram",
+      "Ciberseguridad",
+      "Operaciones",
+      "Producción"
+    ]
+  },
+  {
     "id": "basketclub",
     "name": "Basket Club",
     "icon": "🏀",

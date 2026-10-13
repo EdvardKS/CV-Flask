@@ -1,4 +1,6 @@
 import { personJsonLd } from '@lib/seo/person'
+import { DISCIPLINES, DISCIPLINE_ORDER, projectPath, projectsByDiscipline } from '@lib/projects/catalog'
+import { BLOG_POSTS, blogPath } from '@lib/blog/posts'
 
 /**
  * Contenido SSR rastreable para la home (que por lo demás es un escritorio
@@ -33,7 +35,27 @@ export function SeoHomeContent() {
             Credly: edvardks
           </a>
           <a href="https://edvardks.com/cv">CV de Edvard Khachatryan Sahakyan</a>
+          <a href="https://iaeks.com" rel="me noopener">iaeks.com: consultoría de IA y datos</a>
         </nav>
+        <nav aria-label="Blog">
+          <h2>Blog</h2>
+          <a href="/blog">Lo que pienso y cómo trabajo</a>
+          {BLOG_POSTS.map(post => (
+            <a key={post.slug} href={blogPath(post.slug)}>
+              {post.title}
+            </a>
+          ))}
+        </nav>
+        {DISCIPLINE_ORDER.map(discipline => (
+          <nav key={discipline} aria-label={DISCIPLINES[discipline].title}>
+            <h2>{DISCIPLINES[discipline].title}</h2>
+            {projectsByDiscipline(discipline).map(project => (
+              <a key={project.slug} href={projectPath(project.slug)}>
+                {project.name}
+              </a>
+            ))}
+          </nav>
+        ))}
       </header>
       <script
         type="application/ld+json"

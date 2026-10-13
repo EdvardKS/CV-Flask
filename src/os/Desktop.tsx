@@ -9,6 +9,7 @@ import { StartMenu } from './StartMenu'
 import { AiWallpaper } from './AiWallpaper'
 import { PhotoCarousel } from './PhotoCarousel'
 import { NewsAside } from './NewsAside'
+import { ActivityGadget } from './ActivityGadget'
 import { useWM } from './store'
 
 export function Desktop() {
@@ -49,6 +50,7 @@ export function Desktop() {
         <header className="xp-desktop-header">
           <h1 className="xp-desktop-title">EdvardKS PC</h1>
           <span className="xp-desktop-subtitle">AI · Engineering · Portfolio</span>
+          <ActivityGadget />
         </header>
 
         <ul className="xp-icon-grid" role="list">
