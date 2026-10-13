@@ -1792,3 +1792,31 @@ html:has(.doc-page), body:has(.doc-page) { height: auto; overflow: auto; }
 .doc-foot nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; margin-top: 12px; }
 .doc-foot nav a { color: #94a3b8; text-decoration: none; }
 .doc-foot nav a:hover { color: #67e8f9; }
+
+.activity-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+.activity-tabs button {
+  all: unset;
+  cursor: pointer;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+.activity-tabs button:hover { color: #e2e8f0; border-color: rgba(34, 211, 238, 0.6); }
+.activity-tabs button.is-on { color: #06121f; background: #67e8f9; border-color: #67e8f9; font-weight: 700; }
+.activity-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 10px;
+  color: #94a3b8;
+}
+.activity-foot strong { color: #67e8f9; }
+.activity-foot a { color: #67e8f9; text-decoration: none; }
+.activity-gadget.is-window .activity-tabs { justify-content: flex-start; }
