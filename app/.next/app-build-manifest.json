@@ -72,6 +72,20 @@
       "static/chunks/main-app-7cd157164926fbf9.js",
       "static/chunks/app/api/errores/iniciar/route-4dbde89a72c41d9e.js"
     ],
+    "/api/quiz/[subject]/route": [
+      "static/chunks/webpack-3e83c01a12db2981.js",
+      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
+      "static/chunks/6381-812fb9709682396a.js",
+      "static/chunks/main-app-7cd157164926fbf9.js",
+      "static/chunks/app/api/quiz/[subject]/route-4dbde89a72c41d9e.js"
+    ],
+    "/api/news/route": [
+      "static/chunks/webpack-3e83c01a12db2981.js",
+      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
+      "static/chunks/6381-812fb9709682396a.js",
+      "static/chunks/main-app-7cd157164926fbf9.js",
+      "static/chunks/app/api/news/route-4dbde89a72c41d9e.js"
+    ],
     "/api/quiz/redes/concepts/route": [
       "static/chunks/webpack-3e83c01a12db2981.js",
       "static/chunks/6d6cfd68-89cc5adadfccd116.js",
@@ -85,20 +99,6 @@
       "static/chunks/6381-812fb9709682396a.js",
       "static/chunks/main-app-7cd157164926fbf9.js",
       "static/chunks/app/api/quiz/redes/concepts/[topic]/route-4dbde89a72c41d9e.js"
-    ],
-    "/api/news/route": [
-      "static/chunks/webpack-3e83c01a12db2981.js",
-      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
-      "static/chunks/6381-812fb9709682396a.js",
-      "static/chunks/main-app-7cd157164926fbf9.js",
-      "static/chunks/app/api/news/route-4dbde89a72c41d9e.js"
-    ],
-    "/api/quiz/[subject]/route": [
-      "static/chunks/webpack-3e83c01a12db2981.js",
-      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
-      "static/chunks/6381-812fb9709682396a.js",
-      "static/chunks/main-app-7cd157164926fbf9.js",
-      "static/chunks/app/api/quiz/[subject]/route-4dbde89a72c41d9e.js"
     ],
     "/api/quiz/redes/summary/route": [
       "static/chunks/webpack-3e83c01a12db2981.js",
@@ -159,6 +159,16 @@
       "static/chunks/940-a08678e27bb09613.js",
       "static/chunks/app/page-39ce59d99c969ede.js"
     ],
+    "/contact/page": [
+      "static/chunks/webpack-3e83c01a12db2981.js",
+      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
+      "static/chunks/6381-812fb9709682396a.js",
+      "static/chunks/main-app-7cd157164926fbf9.js",
+      "static/chunks/8816-c9ea2b15a82e5344.js",
+      "static/chunks/1310-f852604e469def6f.js",
+      "static/chunks/940-a08678e27bb09613.js",
+      "static/chunks/app/contact/page-86bf217aa0c9c6ed.js"
+    ],
     "/cv/page": [
       "static/chunks/webpack-3e83c01a12db2981.js",
       "static/chunks/6d6cfd68-89cc5adadfccd116.js",
@@ -178,16 +188,6 @@
       "static/chunks/1310-f852604e469def6f.js",
       "static/chunks/940-a08678e27bb09613.js",
       "static/chunks/app/padel/page-86bf217aa0c9c6ed.js"
-    ],
-    "/contact/page": [
-      "static/chunks/webpack-3e83c01a12db2981.js",
-      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
-      "static/chunks/6381-812fb9709682396a.js",
-      "static/chunks/main-app-7cd157164926fbf9.js",
-      "static/chunks/8816-c9ea2b15a82e5344.js",
-      "static/chunks/1310-f852604e469def6f.js",
-      "static/chunks/940-a08678e27bb09613.js",
-      "static/chunks/app/contact/page-86bf217aa0c9c6ed.js"
     ],
     "/blog/page": [
       "static/chunks/webpack-3e83c01a12db2981.js",
@@ -242,15 +242,6 @@
       "static/chunks/1838-3a82bbde17b3d906.js",
       "static/chunks/app/quiz/[subject]/page-dacf6ab4584653c6.js"
     ],
-    "/quiz/page": [
-      "static/chunks/webpack-3e83c01a12db2981.js",
-      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
-      "static/chunks/6381-812fb9709682396a.js",
-      "static/chunks/main-app-7cd157164926fbf9.js",
-      "static/chunks/6383-92a7d6a93acabcec.js",
-      "static/chunks/1302-47cf8d14ddf63f88.js",
-      "static/chunks/app/quiz/page-b722e5f30d72d780.js"
-    ],
     "/quiz/area-personal/page": [
       "static/chunks/webpack-3e83c01a12db2981.js",
       "static/chunks/6d6cfd68-89cc5adadfccd116.js",
@@ -260,34 +251,6 @@
       "static/chunks/8816-c9ea2b15a82e5344.js",
       "static/chunks/1302-47cf8d14ddf63f88.js",
       "static/chunks/app/quiz/area-personal/page-802b53e2141166d8.js"
-    ],
-    "/quiz/estadistica/page": [
-      "static/chunks/webpack-3e83c01a12db2981.js",
-      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
-      "static/chunks/6381-812fb9709682396a.js",
-      "static/chunks/main-app-7cd157164926fbf9.js",
-      "static/chunks/6383-92a7d6a93acabcec.js",
-      "static/chunks/app/quiz/estadistica/page-e09cd82410d342ea.js"
-    ],
-    "/quiz/estadistica/fb6/page": [
-      "static/chunks/webpack-3e83c01a12db2981.js",
-      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
-      "static/chunks/6381-812fb9709682396a.js",
-      "static/chunks/main-app-7cd157164926fbf9.js",
-      "static/chunks/6383-92a7d6a93acabcec.js",
-      "static/chunks/8816-c9ea2b15a82e5344.js",
-      "static/chunks/1838-3a82bbde17b3d906.js",
-      "static/chunks/app/quiz/estadistica/fb6/page-af1451c50a1e685c.js"
-    ],
-    "/quiz/redes/autoevaluacion/page": [
-      "static/chunks/webpack-3e83c01a12db2981.js",
-      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
-      "static/chunks/6381-812fb9709682396a.js",
-      "static/chunks/main-app-7cd157164926fbf9.js",
-      "static/chunks/6383-92a7d6a93acabcec.js",
-      "static/chunks/8816-c9ea2b15a82e5344.js",
-      "static/chunks/1838-3a82bbde17b3d906.js",
-      "static/chunks/app/quiz/redes/autoevaluacion/page-dff678dce098974f.js"
     ],
     "/quiz/estadistica/test/page": [
       "static/chunks/webpack-3e83c01a12db2981.js",
@@ -299,6 +262,43 @@
       "static/chunks/1838-3a82bbde17b3d906.js",
       "static/chunks/app/quiz/estadistica/test/page-ab813ff22138c07a.js"
     ],
+    "/quiz/estadistica/fb6/page": [
+      "static/chunks/webpack-3e83c01a12db2981.js",
+      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
+      "static/chunks/6381-812fb9709682396a.js",
+      "static/chunks/main-app-7cd157164926fbf9.js",
+      "static/chunks/6383-92a7d6a93acabcec.js",
+      "static/chunks/8816-c9ea2b15a82e5344.js",
+      "static/chunks/1838-3a82bbde17b3d906.js",
+      "static/chunks/app/quiz/estadistica/fb6/page-af1451c50a1e685c.js"
+    ],
+    "/quiz/page": [
+      "static/chunks/webpack-3e83c01a12db2981.js",
+      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
+      "static/chunks/6381-812fb9709682396a.js",
+      "static/chunks/main-app-7cd157164926fbf9.js",
+      "static/chunks/6383-92a7d6a93acabcec.js",
+      "static/chunks/1302-47cf8d14ddf63f88.js",
+      "static/chunks/app/quiz/page-b722e5f30d72d780.js"
+    ],
+    "/quiz/estadistica/page": [
+      "static/chunks/webpack-3e83c01a12db2981.js",
+      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
+      "static/chunks/6381-812fb9709682396a.js",
+      "static/chunks/main-app-7cd157164926fbf9.js",
+      "static/chunks/6383-92a7d6a93acabcec.js",
+      "static/chunks/app/quiz/estadistica/page-e09cd82410d342ea.js"
+    ],
+    "/quiz/redes/autoevaluacion/page": [
+      "static/chunks/webpack-3e83c01a12db2981.js",
+      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
+      "static/chunks/6381-812fb9709682396a.js",
+      "static/chunks/main-app-7cd157164926fbf9.js",
+      "static/chunks/6383-92a7d6a93acabcec.js",
+      "static/chunks/8816-c9ea2b15a82e5344.js",
+      "static/chunks/1838-3a82bbde17b3d906.js",
+      "static/chunks/app/quiz/redes/autoevaluacion/page-dff678dce098974f.js"
+    ],
     "/quiz/redes/conceptos/[topic]/page": [
       "static/chunks/webpack-3e83c01a12db2981.js",
       "static/chunks/6d6cfd68-89cc5adadfccd116.js",
@@ -309,14 +309,6 @@
       "static/chunks/5488-fd59964134ad2475.js",
       "static/chunks/app/quiz/redes/conceptos/[topic]/page-3fe83ca56fdf1050.js"
     ],
-    "/quiz/redes/conceptos/page": [
-      "static/chunks/webpack-3e83c01a12db2981.js",
-      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
-      "static/chunks/6381-812fb9709682396a.js",
-      "static/chunks/main-app-7cd157164926fbf9.js",
-      "static/chunks/6383-92a7d6a93acabcec.js",
-      "static/chunks/app/quiz/redes/conceptos/page-e09cd82410d342ea.js"
-    ],
     "/quiz/redes/page": [
       "static/chunks/webpack-3e83c01a12db2981.js",
       "static/chunks/6d6cfd68-89cc5adadfccd116.js",
@@ -324,6 +316,14 @@
       "static/chunks/main-app-7cd157164926fbf9.js",
       "static/chunks/6383-92a7d6a93acabcec.js",
       "static/chunks/app/quiz/redes/page-94056bb2106d5cd5.js"
+    ],
+    "/quiz/redes/conceptos/page": [
+      "static/chunks/webpack-3e83c01a12db2981.js",
+      "static/chunks/6d6cfd68-89cc5adadfccd116.js",
+      "static/chunks/6381-812fb9709682396a.js",
+      "static/chunks/main-app-7cd157164926fbf9.js",
+      "static/chunks/6383-92a7d6a93acabcec.js",
+      "static/chunks/app/quiz/redes/conceptos/page-e09cd82410d342ea.js"
     ],
     "/quiz/redes/temario/[quizId]/page": [
       "static/chunks/webpack-3e83c01a12db2981.js",
