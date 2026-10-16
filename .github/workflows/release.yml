@@ -63,10 +63,13 @@ jobs:
           OUT="$GITHUB_WORKSPACE/out"
           mkdir -p "$OUT/app"
           cp -a .next/standalone/. "$OUT/app/"
-          mkdir -p "$OUT/app/.next"
-          cp -a .next/static "$OUT/app/.next/static"
-          cp -a public "$OUT/app/public"
-          cp -a legacy-src "$OUT/app/legacy-src"
+          # Copiar el CONTENIDO (dir/.): el standalone ya trae algunos de estos
+          # directorios a medias (p. ej. legacy-src/padel_cli.py, que traza) y
+          # `cp -a dir destino` los anidaría en destino/dir.
+          mkdir -p "$OUT/app/.next/static" "$OUT/app/public" "$OUT/app/legacy-src"
+          cp -a .next/static/. "$OUT/app/.next/static/"
+          cp -a public/. "$OUT/app/public/"
+          cp -a legacy-src/. "$OUT/app/legacy-src/"
           # Puntos de montaje: el código se monta de solo lectura y docker no
           # puede crearlos ahí. Los datos viven en volúmenes, no en la release.
           for d in public/padel-data public/news-cache data/quiz .next/cache; do
