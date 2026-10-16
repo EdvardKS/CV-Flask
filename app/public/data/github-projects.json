@@ -1,0 +1,620 @@
+[
+  {
+    "id": "booking-randomforest",
+    "name": "Booking · Random Forest + PCA",
+    "icon": "🌲",
+    "url": "https://github.com/EdvardKS/Booking-RandomForest-Pipeline",
+    "category": "ml",
+    "description": "Pipeline de scikit-learn sobre el dataset Hotel Bookings: escalado, reducción de dimensionalidad con PCA y clasificación con Random Forest. El dataset está desbalanceado, así que la lectura va por classification_report y no por accuracy.",
+    "tags": [
+      "scikit-learn",
+      "Random Forest",
+      "PCA",
+      "Pipeline",
+      "pandas"
+    ]
+  },
+  {
+    "id": "booking-decisiontree",
+    "name": "Booking · Árbol de decisión",
+    "icon": "🌳",
+    "url": "https://github.com/EdvardKS/Booking-DecissionTree-Pipeline",
+    "category": "ml",
+    "description": "El mismo problema atacado con otro pipeline: StandardScaler, selección de variables con SelectKBest y un DecisionTreeClassifier. Sirve para comparar contra el Random Forest con idéntico preprocesado.",
+    "tags": [
+      "scikit-learn",
+      "Decision Tree",
+      "SelectKBest",
+      "Pipeline",
+      "EDA"
+    ]
+  },
+  {
+    "id": "booking-logistic",
+    "name": "Booking · Regresión logística",
+    "icon": "📈",
+    "url": "https://github.com/EdvardKS/Booking-LogisticRegression-1",
+    "category": "ml",
+    "description": "Punto de partida de la serie: exploración del dataset, tratamiento del desbalanceo de la variable objetivo y una regresión logística como modelo base contra el que medir el resto.",
+    "tags": [
+      "scikit-learn",
+      "Regresión logística",
+      "Balanceo",
+      "pandas",
+      "seaborn"
+    ]
+  },
+  {
+    "id": "bigdata-etl",
+    "name": "ETL con Logstash y Kafka",
+    "icon": "🛠️",
+    "url": "https://github.com/EdvardKS/Specialization-BigdataApplied",
+    "category": "ml",
+    "description": "Especialización de big data aplicado: scraping de productos en Python, proceso ETL con Logstash y Kafka, y cuadros de mando sobre el resultado. Incluye la memoria del proceso completo.",
+    "tags": [
+      "Python",
+      "Logstash",
+      "Kafka",
+      "ETL",
+      "Dashboards"
+    ]
+  },
+  {
+    "id": "financial-aapl",
+    "name": "Análisis financiero de AAPL",
+    "icon": "💹",
+    "url": "https://github.com/EdvardKS/AI-Analysis-Financial-AAPL",
+    "category": "ml",
+    "description": "Análisis y predicción sobre la serie financiera de Apple con técnicas de inteligencia artificial. El repositorio recoge la memoria del estudio y sus conclusiones.",
+    "tags": [
+      "Series temporales",
+      "Predicción",
+      "Finanzas",
+      "Python"
+    ]
+  },
+  {
+    "id": "dl-facial",
+    "name": "Puntos faciales y emociones",
+    "icon": "😀",
+    "url": "https://github.com/EdvardKS/DeepLearning-Convulotional-FacialExpression",
+    "category": "dl",
+    "description": "Dos redes convolucionales encadenadas: la primera localiza los puntos clave de la cara por regresión y la segunda clasifica la emoción en cinco categorías. Con aumento de datos, EarlyStopping y los pesos entrenados incluidos.",
+    "tags": [
+      "TensorFlow",
+      "Keras",
+      "CNN",
+      "Visión artificial",
+      "Data augmentation"
+    ]
+  },
+  {
+    "id": "dl-cifar10",
+    "name": "ResNet sobre CIFAR-10",
+    "icon": "🖼️",
+    "url": "https://github.com/EdvardKS/DeepLearning-Convolutional-ResNet-cifar10",
+    "category": "dl",
+    "description": "Red convolucional con arquitectura ResNet y transferencia de aprendizaje sobre CIFAR-10, de la asignatura de programación de inteligencia artificial en el IES Abastos.",
+    "tags": [
+      "Deep learning",
+      "ResNet",
+      "Transfer learning",
+      "CIFAR-10"
+    ]
+  },
+  {
+    "id": "pytorch-flowers",
+    "name": "Clasificador de flores en PyTorch",
+    "icon": "🌸",
+    "url": "https://github.com/EdvardKS/nanodegree-aws-pytorch-image-classifier",
+    "category": "dl",
+    "description": "Proyecto del nanodegree de AWS y Udacity: clasificador de imágenes de flores entrenado en PyTorch y convertido después en una aplicación de línea de comandos con sus argumentos de entrenamiento e inferencia.",
+    "tags": [
+      "PyTorch",
+      "CNN",
+      "Transfer learning",
+      "CLI",
+      "AWS"
+    ]
+  },
+  {
+    "id": "rl-mountaincar",
+    "name": "Q-Learning · MountainCar",
+    "icon": "🏔️",
+    "url": "https://github.com/EdvardKS/Reinforced-Gym-MountainCarv0",
+    "category": "dl",
+    "description": "Aprendizaje por refuerzo sobre el entorno MountainCar-v0 de Gym: tabla Q discretizada, política entrenada y guardada, y la fórmula de Q-Learning explicada paso a paso en el propio cuaderno.",
+    "tags": [
+      "Reinforcement learning",
+      "Q-Learning",
+      "Gym",
+      "NumPy"
+    ]
+  },
+  {
+    "id": "relbench",
+    "name": "RelBench · deep learning relacional",
+    "icon": "🕸️",
+    "url": "https://github.com/EdvardKS/RelBench-BS",
+    "category": "dl",
+    "description": "Redes neuronales de grafos aplicadas directamente sobre bases de datos relacionales, sin aplanar las tablas a mano. Entrenado sobre el conjunto de Amazon con PyTorch Geometric, con el checkpoint del modelo incluido.",
+    "tags": [
+      "PyTorch Geometric",
+      "GNN",
+      "Grafos",
+      "RelBench",
+      "SQL"
+    ]
+  },
+  {
+    "id": "ragasus",
+    "name": "ragasus",
+    "icon": "🍣",
+    "url": "https://github.com/EdvardKS/ragasus",
+    "private": true,
+    "category": "genai",
+    "description": "Monorepo fullstack para BI conversacional: SQL Server en solo lectura, Ollama local en la LAN y RAG con PostgreSQL + pgvector. Backend NestJS modular y frontend Next.js con App Router.",
+    "tags": [
+      "NestJS",
+      "Next.js",
+      "Ollama",
+      "pgvector",
+      "RAG",
+      "BI"
+    ]
+  },
+  {
+    "id": "spark8sia",
+    "name": "spark8sia · servidor de modelos",
+    "icon": "⚡",
+    "url": "https://github.com/EdvardKS/spark8sia",
+    "private": true,
+    "category": "genai",
+    "description": "Todo lo necesario para replicar y operar el servidor de modelos del DGX Spark: chat y visión, coder, embeddings, imagen, vídeo, base vectorial y pasarela. Pensado para levantarlo de cero desde el repositorio si la máquina se pierde.",
+    "tags": [
+      "DGX",
+      "LLM",
+      "Embeddings",
+      "Docker",
+      "Infraestructura"
+    ]
+  },
+  {
+    "id": "ai-hub",
+    "name": "ai-hub",
+    "icon": "🧩",
+    "url": "https://github.com/EdvardKS/ai-hub",
+    "private": true,
+    "category": "genai",
+    "description": "Sustituto directo del contenedor de Ollama del VPS: empaqueta el motor de inferencia y añade una pasarela en Fastify con llamada a herramientas, caché de prompts, selección de modelo y métricas.",
+    "tags": [
+      "Ollama",
+      "Fastify",
+      "Tool calling",
+      "Métricas",
+      "Docker"
+    ]
+  },
+  {
+    "id": "agentic-pdf-pipeline",
+    "name": "agentic-pdf-pipeline",
+    "icon": "📄",
+    "url": "https://github.com/EdvardKS/agentic-pdf-pipeline",
+    "category": "genai",
+    "description": "Canalización de ingesta de PDF basada en agentes, con LangGraph para la orquestación y CrewAI para el reparto de papeles entre ellos.",
+    "tags": [
+      "LangGraph",
+      "CrewAI",
+      "Agentes",
+      "Python",
+      "RAG"
+    ]
+  },
+  {
+    "id": "agentic-rag-langgraph",
+    "name": "agentic-rag-langgraph",
+    "icon": "🔁",
+    "url": "https://github.com/EdvardKS/agentic-rag-langgraph",
+    "category": "genai",
+    "description": "RAG con agentes en LangGraph: detecta y evita reprocesar duplicados por sha256 y genera manifiestos de lo ingerido, para que reindexar no signifique volver a pagar el mismo trabajo.",
+    "tags": [
+      "LangGraph",
+      "RAG",
+      "Agentes",
+      "Deduplicación",
+      "Python"
+    ]
+  },
+  {
+    "id": "lavbotdocker",
+    "name": "LavBotDocker",
+    "icon": "🤖",
+    "url": "https://github.com/EdvardKS/LavBotDocker",
+    "category": "genai",
+    "description": "Pila RAG modular y contenedorizada: canal de ingesta consciente de secciones para PDF, base vectorial Qdrant y API en FastAPI, todo levantable con Docker.",
+    "tags": [
+      "RAG",
+      "Qdrant",
+      "FastAPI",
+      "Docker",
+      "Python"
+    ]
+  },
+  {
+    "id": "teriyaki",
+    "name": "teriyaki",
+    "icon": "🍜",
+    "url": "https://github.com/EdvardKS/teriyaki-v1.7",
+    "category": "genai",
+    "description": "Experimentos de RAG sobre Qdrant en cuadernos, con el foco puesto en la privacidad: el contenido no sale de la máquina que lo procesa.",
+    "tags": [
+      "RAG",
+      "Qdrant",
+      "LLM",
+      "Jupyter",
+      "Privacidad"
+    ]
+  },
+  {
+    "id": "kuberagent",
+    "name": "kuberagent",
+    "icon": "☸️",
+    "url": "https://github.com/EdvardKS/kuberagent",
+    "category": "genai",
+    "description": "Agente que opera sobre Kubernetes: traduce intenciones en operaciones del clúster y devuelve el estado en lenguaje natural.",
+    "tags": [
+      "Kubernetes",
+      "Agentes",
+      "Python",
+      "DevOps"
+    ]
+  },
+  {
+    "id": "coconut",
+    "name": "coconut",
+    "icon": "🥥",
+    "url": "https://github.com/EdvardKS/coconut-v1.0",
+    "category": "genai",
+    "description": "Modelo de lenguaje corriendo en local con TinyLlama 1.1B cuantizado en GGUF: cuánto se puede hacer sin depender de una API externa ni de una GPU grande.",
+    "tags": [
+      "TinyLlama",
+      "GGUF",
+      "LLM local",
+      "Cuantización",
+      "Python"
+    ]
+  },
+  {
+    "id": "llmops-langchain",
+    "name": "LLMOps con LangChain",
+    "icon": "🧪",
+    "url": "https://github.com/EdvardKS/LLMOps-BuildRealWorldApp-LLM",
+    "category": "genai",
+    "description": "Cuadernos del curso de LLMOps: cómo llevar una aplicación con modelos de lenguaje del cuaderno a algo que se pueda desplegar, medir y mantener.",
+    "tags": [
+      "LLMOps",
+      "LangChain",
+      "Jupyter",
+      "Despliegue"
+    ]
+  },
+  {
+    "id": "masterclass-llama",
+    "name": "Masterclass Llama 3.2 3B",
+    "icon": "🦙",
+    "url": "https://github.com/EdvardKS/MasterClass-Llama323B",
+    "category": "genai",
+    "description": "Sesión práctica sobre Llama 3.2 de 3B parámetros: carga, ajuste y uso del modelo en cuadernos.",
+    "tags": [
+      "Llama",
+      "LLM",
+      "Jupyter",
+      "Fine-tuning"
+    ]
+  },
+  {
+    "id": "ft-llama-arq",
+    "name": "ft_llama_arq",
+    "icon": "🏗️",
+    "url": "https://github.com/EdvardKS/ft_llama_arq",
+    "category": "genai",
+    "description": "Notas y arquitectura para el ajuste fino de modelos Llama: qué capas se tocan, con qué datos y con qué coste.",
+    "tags": [
+      "Fine-tuning",
+      "Llama",
+      "Arquitectura"
+    ]
+  },
+  {
+    "id": "justificantes-ia",
+    "name": "Lectura de justificantes con IA",
+    "icon": "🧾",
+    "url": "https://iaeks.com/casos/torneos",
+    "private": true,
+    "category": "genai",
+    "description": "Los justificantes de transferencia que suben los jugadores de un torneo, en foto o en PDF, se leen con un modelo de lenguaje con visión: extrae el importe, razona si cuadra con lo que debía pagar la pareja y deja el total editable para que el club lo ratifique.",
+    "tags": [
+      "Visión",
+      "LLM",
+      "Extracción de datos",
+      "Validación humana",
+      "Producción"
+    ]
+  },
+  {
+    "id": "bot-telegram-ia",
+    "name": "Bot de Telegram con IA",
+    "icon": "🤖",
+    "url": "https://iaeks.com/bots-telegram-ia",
+    "private": true,
+    "category": "genai",
+    "description": "Bot privado de Telegram conectado a un agente que opera servidores en producción: estado de las webs, copias de seguridad e incidencias, con texto, voz, fotos y archivos. Solo obedece a usuarios emparejados y registra cada orden.",
+    "tags": [
+      "Agentes",
+      "Telegram",
+      "Ciberseguridad",
+      "Operaciones",
+      "Producción"
+    ]
+  },
+  {
+    "id": "basketclub",
+    "name": "Basket Club",
+    "icon": "🏀",
+    "url": "https://github.com/EdvardKS/basketclub",
+    "category": "web",
+    "description": "Gestión integral de clubes de baloncesto en producción: calendario, asistencia, partidos, mensajería, blog, biblioteca de entrenos con editor de jugadas y firma digital del RGPD. Monorepo con React 19, Express 5 y PostgreSQL.",
+    "tags": [
+      "React 19",
+      "Express 5",
+      "PostgreSQL",
+      "Drizzle",
+      "Docker"
+    ],
+    "private": true
+  },
+  {
+    "id": "chickenmanagement",
+    "name": "ChickenManagement",
+    "icon": "🍗",
+    "url": "https://github.com/EdvardKS/ChickenManagement",
+    "category": "web",
+    "description": "Panel de gestión del asador: stock en tiempo real, pedidos y caja del día.",
+    "tags": [
+      "Next.js",
+      "Express",
+      "TypeScript",
+      "Docker",
+      "Radix UI"
+    ],
+    "private": true
+  },
+  {
+    "id": "todoagricola-repo",
+    "name": "Todo Agrícola",
+    "icon": "🌾",
+    "url": "https://github.com/EdvardKS/todoagricola",
+    "category": "web",
+    "description": "Tienda y catálogo agrícola con panel de administración.",
+    "tags": [
+      "Next.js",
+      "Express",
+      "MySQL",
+      "Docker"
+    ],
+    "private": true
+  },
+  {
+    "id": "pcs-repo",
+    "name": "Padel Coaching Sergio",
+    "icon": "🎾",
+    "url": "https://github.com/EdvardKS/pcs",
+    "category": "web",
+    "description": "Web de un entrenador de pádel con reservas y contenido optimizado para búsqueda local.",
+    "tags": [
+      "Hono",
+      "SQLite",
+      "SEO",
+      "Docker"
+    ],
+    "private": true
+  },
+  {
+    "id": "micheck-repo",
+    "name": "MiCheck",
+    "icon": "✅",
+    "url": "https://github.com/EdvardKS/micheck",
+    "category": "web",
+    "description": "Aplicación web progresiva de listas de comprobación con funcionamiento sin conexión y suscripciones.",
+    "tags": [
+      "PWA",
+      "SQLite",
+      "Offline",
+      "Suscripciones"
+    ],
+    "private": true
+  },
+  {
+    "id": "ailedu-repo",
+    "name": "AILEDU",
+    "icon": "📚",
+    "url": "https://github.com/EdvardKS/ailedu",
+    "category": "web",
+    "description": "Plataforma educativa con reconocimiento óptico de caracteres y almacenamiento de objetos.",
+    "tags": [
+      "PWA",
+      "OCR",
+      "PostgreSQL",
+      "MinIO",
+      "FastAPI"
+    ],
+    "private": true
+  },
+  {
+    "id": "iaconedu-repo",
+    "name": "IA con Edu",
+    "icon": "🎓",
+    "url": "https://github.com/EdvardKS/iaconedu",
+    "category": "web",
+    "description": "Sitio de divulgación y servicios de inteligencia artificial, con generación de contenido automatizada.",
+    "tags": [
+      "React",
+      "Express",
+      "PostgreSQL",
+      "Puppeteer"
+    ],
+    "private": true
+  },
+  {
+    "id": "cv-flask",
+    "name": "Este mismo sitio",
+    "icon": "🖥️",
+    "url": "https://github.com/EdvardKS/CV-Flask",
+    "category": "web",
+    "description": "El escritorio web que estás usando: ventanas, aplicaciones y currículum navegable, con asistente conectado a un modelo local.",
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Ollama",
+      "Docker",
+      "React"
+    ],
+    "internal": "/cv"
+  },
+  {
+    "id": "gestorinmuebles",
+    "name": "Gestor de inmuebles",
+    "icon": "🏠",
+    "url": "https://github.com/EdvardKS/gestorinmuebles",
+    "category": "web",
+    "description": "Gestión de cartera inmobiliaria: fichas de propiedades, contactos y seguimiento.",
+    "tags": [
+      "TypeScript",
+      "Next.js",
+      "PostgreSQL"
+    ],
+    "private": true
+  },
+  {
+    "id": "gestoriaeks",
+    "name": "Gestoría EKS",
+    "icon": "🗂️",
+    "url": "https://github.com/EdvardKS/gestoriaeks",
+    "category": "web",
+    "description": "Generador de documentos y formularios para una gestoría, con plantillas reutilizables.",
+    "tags": [
+      "TypeScript",
+      "Formularios",
+      "PDF"
+    ],
+    "private": true
+  },
+  {
+    "id": "basketball-tournaments",
+    "name": "basketballtournaments",
+    "icon": "🏆",
+    "url": "https://github.com/EdvardKS/basketballtournaments",
+    "category": "web",
+    "description": "Gestión de torneos de baloncesto: cuadros, calendario y resultados.",
+    "tags": [
+      "Fullstack",
+      "Deporte",
+      "Torneos"
+    ]
+  },
+  {
+    "id": "torneopadel",
+    "name": "Torneo Pádel Managment",
+    "icon": "🎾",
+    "url": "https://github.com/EdvardKS/TorneoPadelManagment",
+    "category": "web",
+    "description": "Gestión de torneos de pádel: inscripciones, cuadros y seguimiento de partidos.",
+    "tags": [
+      "TypeScript",
+      "Torneos",
+      "Docker"
+    ],
+    "private": true
+  },
+  {
+    "id": "club-connect",
+    "name": "club-connect",
+    "icon": "🔗",
+    "url": "https://github.com/EdvardKS/club-connect",
+    "category": "web",
+    "description": "Conexión entre clubes y sus socios: comunicación y gestión de altas.",
+    "tags": [
+      "TypeScript",
+      "Fullstack"
+    ]
+  },
+  {
+    "id": "viewersoftware",
+    "name": "viewerSoftware",
+    "icon": "📡",
+    "url": "https://github.com/EdvardKS/viewerSoftware",
+    "category": "web",
+    "description": "Herramienta de despliegue y observación de los servicios del servidor.",
+    "tags": [
+      "JavaScript",
+      "Despliegue",
+      "Observabilidad"
+    ],
+    "private": true
+  },
+  {
+    "id": "miyo",
+    "name": "miyo",
+    "icon": "📸",
+    "url": "https://github.com/EdvardKS/miyo",
+    "category": "web",
+    "description": "Red social para compartir eventos: los invitados suben sus fotos a un álbum común.",
+    "tags": [
+      "JavaScript",
+      "Social",
+      "Eventos",
+      "Fotos"
+    ]
+  },
+  {
+    "id": "formularioweb",
+    "name": "FormularioWebConValidacion",
+    "icon": "📝",
+    "url": "https://github.com/EdvardKS/FormularioWebConValidacion",
+    "category": "web",
+    "description": "Formulario web con validación completa en cliente, centrado en la experiencia de relleno.",
+    "tags": [
+      "Web",
+      "Validación",
+      "UX",
+      "Formularios"
+    ],
+    "private": true
+  },
+  {
+    "id": "elasticsearch-fullstack",
+    "name": "Elasticsearch fullstack",
+    "icon": "🔍",
+    "url": "https://github.com/EdvardKS/elasticsearch-fullstack-node-mustague",
+    "category": "web",
+    "description": "Aplicación de búsqueda y análisis sobre Elasticsearch, con Node en el servidor y plantillas en el cliente.",
+    "tags": [
+      "Elasticsearch",
+      "Node.js",
+      "Vue",
+      "Búsqueda"
+    ]
+  },
+  {
+    "id": "nauticas",
+    "name": "Náuticas Torrevieja",
+    "icon": "⛵",
+    "url": "https://github.com/EdvardKS/nauticas_torrevieja_app",
+    "category": "web",
+    "description": "Aplicación para las actividades náuticas de Torrevieja.",
+    "tags": [
+      "App",
+      "Reservas"
+    ]
+  }
+]

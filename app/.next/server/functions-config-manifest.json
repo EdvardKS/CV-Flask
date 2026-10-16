@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "functions": {
+    "/opengraph-image": {},
+    "/api/errores/finalizar": {},
+    "/api/errores/iniciar": {},
+    "/api/news": {},
+    "/api/ai/chat": {},
+    "/api/resumen": {}
+  }
+}

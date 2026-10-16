@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Panel de Scouting | Padel Scout</title>
+    <meta name="description" content="Registro de errores no forzados y aciertos de pádel por jugador, partido y set.">
+    <meta name="theme-color" content="#081a32">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Scout Errores">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/pwa/icons/apple-touch-icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/padel-legacy/padel-dashboard.css">
+</head>
+<body class="padel-app page-errores">
+    <main class="page-shell container-fluid">
+        <section id="player-intro" class="hero-grid">
+            <article class="intro-copy card shadow-sm border-0">
+                <span class="eyebrow">Scouting de rendimiento</span>
+                <h1 class="page-title">Panel de scouting para pádel</h1>
+                <p class="page-lead">
+                    Captura cada set con botones grandes de <strong>+1</strong> y <strong>-1</strong>,
+                    diferenciando errores y aciertos en resto, fondo, red y definición para un análisis más fino.
+                </p>
+                <div class="feature-strip">
+                    <span class="feature-pill">100vh en desktop</span>
+                    <span class="feature-pill">CSV por jugador</span>
+                    <span class="feature-pill">Errores + aciertos</span>
+                </div>
+            </article>
+
+            <aside class="player-panel card shadow-sm border-0">
+                <span class="eyebrow">Introducir nombre de jugador</span>
+                <h2 class="panel-title">Abrir sesión de scouting</h2>
+                <p class="panel-text">
+                    Introduce el jugador para abrir su histórico en <strong>`output/&lt;nombre_saneado&gt;.csv`</strong>
+                    y cargar el siguiente partido disponible.
+                </p>
+
+                <form id="player-form" class="player-form">
+                    <label class="input-label" for="jugador-input">
+                        Nombre del jugador
+                        <input
+                            id="jugador-input"
+                            class="text-input"
+                            type="text"
+                            name="jugador"
+                            placeholder="Ej. Juan Pérez"
+                            autocomplete="off"
+                            required
+                        >
+                    </label>
+
+                    <div class="button-row">
+                        <button id="start-session-btn" class="primary-btn" type="submit">Iniciar sesión</button>
+                    </div>
+                </form>
+
+                <p class="helper-text">Una vez se valide el nombre, desaparecerá esta pantalla y quedará solo la vista operativa.</p>
+                <div id="player-message" class="status-message" role="status" aria-live="polite"></div>
+            </aside>
+        </section>
+
+        <section id="session-layout" class="session-layout hidden">
+            <div class="row g-2 session-grid align-items-stretch">
+                <div class="col-12 col-lg-9">
+                    <div class="counter-stack d-flex flex-column gap-2 h-100">
+                        
+                        <article class="counter-section counter-block counter-block--errores-defensa card border shadow-sm">
+                            <div class="card-body p-2">
+                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                    <div>
+                                        <p class="section-kicker mb-1">Fondo de pista</p>
+                                        <h3 class="section-title mb-0">Errores no forzados</h3>
+                                    </div>
+                                    <small class="block-hint">Info en <strong>?</strong></small>
+                                </div>
+
+                                <div class="row g-2 counter-grid">
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Doble_Falta">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">DF</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Se suma cuando se pierden los dos servicios. Indica falta de concentración o técnica de saque."
+                                                        aria-label="Ver descripción de Doble falta"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Doble_Falta" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Doble falta</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Doble falta">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Doble falta">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Resto_Derecha_Fallado">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">RD</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Error al devolver el saque con la derecha. Corta el punto antes de construir el intercambio."
+                                                        aria-label="Ver descripción de Resto derecha"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Resto_Derecha_Fallado" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Resto derecha</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Resto derecha">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Resto derecha">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Resto_Reves_Fallado">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">RR</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Error al devolver el saque con el revés. Penaliza el inicio del punto y la lectura del servicio rival."
+                                                        aria-label="Ver descripción de Resto revés"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Resto_Reves_Fallado" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Resto revés</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Resto revés">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Resto revés">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Globo_Malo">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">GL</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Globo que se queda corto o que va directo al cristal de fondo."
+                                                        aria-label="Ver descripción de Globo malo"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Globo_Malo" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Globo malo</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Globo malo">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Globo malo">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Error_Fondo_Derecha">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">FD</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Fallo no forzado de derecha desde el fondo, incluida salida de pared, que no supera la red o cede el punto."
+                                                        aria-label="Ver descripción de Fondo derecha"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Error_Fondo_Derecha" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Fondo derecha</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Fondo derecha">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Fondo derecha">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Error_Fondo_Reves">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">FR</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Fallo no forzado de revés desde el fondo, incluida salida de pared, que no supera la red o cede el punto."
+                                                        aria-label="Ver descripción de Fondo revés"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Error_Fondo_Reves" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Fondo revés</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Fondo revés">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Fondo revés">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Bajada_Derecha_Error">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">BD</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Error en una bajada de pared o bajada de bola con la derecha que termina en fallo no forzado."
+                                                        aria-label="Ver descripción de Bajada derecha"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Bajada_Derecha_Error" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Bajada derecha</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Bajada derecha">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Bajada derecha">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Bajada_Reves_Error">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">BR</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Error en una bajada de pared o bajada de bola con el revés que termina en fallo no forzado."
+                                                        aria-label="Ver descripción de Bajada revés"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Bajada_Reves_Error" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Bajada revés</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Bajada revés">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Bajada revés">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Posicionamiento_Fondo_Error">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">PF</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Mala colocación en el fondo que provoca distancia incorrecta a la bola, mala lectura o pérdida del punto."
+                                                        aria-label="Ver descripción de Pos. fondo"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Posicionamiento_Fondo_Error" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Pos. fondo</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Pos. fondo">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Pos. fondo">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="counter-section counter-block counter-block--errores-ataque card border shadow-sm">
+                            <div class="card-body p-2">
+                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                    <div>
+                                        <p class="section-kicker mb-1">Zona de red</p>
+                                        <h3 class="section-title mb-0">Errores no forzados</h3>
+                                    </div>
+                                    <small class="block-hint">Info en <strong>?</strong></small>
+                                </div>
+
+                                <div class="row g-2 counter-grid">
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Error_Volea_Derecha">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">VD</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Error no forzado de volea de derecha en transición o en zona de definición."
+                                                        aria-label="Ver descripción de Volea derecha"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Error_Volea_Derecha" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Volea derecha</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Volea derecha">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Volea derecha">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Error_Volea_Reves">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">VR</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Error no forzado de volea de revés en transición o en zona de definición."
+                                                        aria-label="Ver descripción de Volea revés"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Error_Volea_Reves" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Volea revés</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Volea revés">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Volea revés">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Posicionamiento_Volea_Error">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">PV</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Mala colocación o ajuste en zona de volea que genera el error no forzado."
+                                                        aria-label="Ver descripción de Pos. volea"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Posicionamiento_Volea_Error" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Pos. volea</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Pos. volea">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Pos. volea">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Tirar_Ficha_Error">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">TF</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Acción táctica aleatoria o precipitada al tirar ficha que rompe la estructura del punto y acaba en fallo."
+                                                        aria-label="Ver descripción de Tirar ficha"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Tirar_Ficha_Error" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Tirar ficha</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Tirar ficha">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Tirar ficha">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Bandeja_Error">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">BV</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Error en bandeja o víbora que va a la red o al cristal sin ser una bola comprometida."
+                                                        aria-label="Ver descripción de Bandeja/Víbora"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Bandeja_Error" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Bandeja/Víbora</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Bandeja/Víbora">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Bandeja/Víbora">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Smash_Error">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">SM</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Smash que no se trae a campo propio, no sale x4/x3 o acaba en la red o los cristales."
+                                                        aria-label="Ver descripción de Remate fallido"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Smash_Error" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Remate fallido</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Remate fallido">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Remate fallido">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="counter-section counter-block counter-block--aciertos-defensa card border shadow-sm">
+                            <div class="card-body p-2">
+                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                    <div>
+                                        <p class="section-kicker mb-1">Fondo de pista</p>
+                                        <h3 class="section-title mb-0">Aciertos</h3>
+                                    </div>
+                                    <small class="block-hint">Info en <strong>?</strong></small>
+                                </div>
+
+                                <div class="row g-2 counter-grid">
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Winner_Derecha">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">WD</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Golpe de fondo potente o angulado con la mano dominante que el rival no puede tocar."
+                                                        aria-label="Ver descripción de Winner derecha"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Winner_Derecha" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Winner derecha</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Winner derecha">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Winner derecha">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Winner_Reves">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">WR</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Punto directo de revés, plano o cortado, que supera al rival por velocidad o colocación."
+                                                        aria-label="Ver descripción de Winner revés"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Winner_Reves" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Winner revés</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Winner revés">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Winner revés">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Resto_Ganador_Derecha">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">RGD</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Devolución de saque con la derecha que termina en punto o deja una bola muerta."
+                                                        aria-label="Ver descripción de Resto ganador derecha"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Resto_Ganador_Derecha" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Resto ganador derecha</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Resto ganador derecha">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Resto ganador derecha">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Resto_Ganador_Reves">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">RGR</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Resto agresivo de revés que descoloca totalmente a la pareja que saca."
+                                                        aria-label="Ver descripción de Resto ganador revés"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Resto_Ganador_Reves" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Resto ganador revés</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Resto ganador revés">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Resto ganador revés">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Globo_De_Oro">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">GO</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Globo preciso que sobrepasa a los rivales y bota profundo para tomar la red con ventaja total."
+                                                        aria-label="Ver descripción de Globo de oro"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Globo_De_Oro" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Globo de oro</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Globo de oro">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Globo de oro">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Chiquita_Ganadora">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">CH</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Bola suave a los pies del rival que fuerza el error o habilita el contraataque definitivo."
+                                                        aria-label="Ver descripción de Chiquita ganadora"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Chiquita_Ganadora" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Chiquita ganadora</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Chiquita ganadora">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Chiquita ganadora">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Bajada_De_Pared">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">BP</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Ataque agresivo tras rebote en pared de fondo que termina en punto directo."
+                                                        aria-label="Ver descripción de Bajada de pared"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Bajada_De_Pared" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Bajada de pared</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Bajada de pared">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Bajada de pared">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="counter-section counter-block counter-block--aciertos-ataque card border shadow-sm">
+                            <div class="card-body p-2">
+                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                    <div>
+                                        <p class="section-kicker mb-1">Zona de red</p>
+                                        <h3 class="section-title mb-0">Aciertos</h3>
+                                    </div>
+                                    <small class="block-hint">Info en <strong>?</strong></small>
+                                </div>
+
+                                <div class="row g-2 counter-grid">
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Remate_Finalizador">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">RF</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Remate por arriba que saca la bola de la pista o la trae al campo propio para cerrar."
+                                                        aria-label="Ver descripción de Remate finalizador"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Remate_Finalizador" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Remate finalizador</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Remate finalizador">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Remate finalizador">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Volea_Derecha_Ganadora">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">VGD</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Volea de derecha firme, profunda o con ángulo que no vuelve."
+                                                        aria-label="Ver descripción de Volea derecha ganadora"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Volea_Derecha_Ganadora" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Volea derecha ganadora</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Volea derecha ganadora">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Volea derecha ganadora">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Volea_Reves_Ganadora">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">VGR</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Volea de revés cruzada o al cuerpo que define el punto en la red."
+                                                        aria-label="Ver descripción de Volea revés ganadora"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Volea_Reves_Ganadora" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Volea revés ganadora</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Volea revés ganadora">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Volea revés ganadora">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Bandeja_Vibora_Definitiva">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">BVD</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Bandeja o víbora ejecutada con agresividad o efecto suficiente para cerrar el punto."
+                                                        aria-label="Ver descripción de Bandeja/Víbora definitiva"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Bandeja_Vibora_Definitiva" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Bandeja/Víbora definitiva</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Bandeja/Víbora definitiva">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Bandeja/Víbora definitiva">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Volea_Bloqueo_Contraataque">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">VB</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Punto ganado al bloquear un golpe fuerte rival y usar su potencia para abrir espacio."
+                                                        aria-label="Ver descripción de Volea de bloqueo"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Volea_Bloqueo_Contraataque" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Volea de bloqueo</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Volea de bloqueo">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Volea de bloqueo">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                        <div class="counter-card card border shadow-sm h-100 w-100" data-field="Dormilona">
+                                            <div class="card-body p-2 d-flex flex-column justify-content-between h-100">
+                                                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                                    <span class="counter-badge">DR</span>
+                                                    <span
+                                                        class="tooltip-dot"
+                                                        tabindex="0"
+                                                        data-tooltip="Volea con retroceso y mucho efecto que se queda pegada a la red tras el remate rival."
+                                                        aria-label="Ver descripción de Dormilona"
+                                                    >?</span>
+                                                </div>
+
+                                                <div class="counter-main text-center mb-2">
+                                                    <output class="counter-number d-block fs-2 fw-bold lh-1" id="value-Dormilona" for="">0</output>
+                                                    <h4 class="counter-name small mb-0 mt-2">Dormilona</h4>
+                                                </div>
+
+                                                <div class="counter-controls d-grid gap-1">
+                                                    <button class="count-btn minus btn btn-outline-danger w-100" type="button" data-action="decrease" aria-label="Restar uno a Dormilona">-1</button>
+                                                    <button class="count-btn plus btn btn-outline-success w-100" type="button" data-action="increase" aria-label="Sumar uno a Dormilona">+1</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+                        
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-3">
+                    <div class="side-panel d-flex flex-column gap-2 h-100">
+                        <article class="summary-sidecard card border shadow-sm">
+                            <div class="card-body p-2 d-flex flex-column gap-2">
+                                <div class="control-header">
+                                    <p class="section-kicker mb-1">Control de sesión</p>
+                                    <h2 class="control-player-name mb-0" id="player-heading">Jugador</h2>
+                                    <p class="panel-text compact-text mb-0" id="session-subtext">Sesión de scouting lista para capturar errores.</p>
+                                </div>
+
+                                <div class="row g-2 session-stats">
+                                    <div class="col-12">
+                                        <article class="session-stat session-stat-highlight card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">Balance actual</span>
+                                            <strong id="current-balance" class="meta-value">0</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-6">
+                                        <article class="session-stat card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">ID partido</span>
+                                            <strong id="match-id" class="meta-value">1</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-6">
+                                        <article class="session-stat card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">Set actual</span>
+                                            <strong id="current-set" class="meta-value">1</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-6">
+                                        <article class="session-stat card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">Errores</span>
+                                            <strong id="current-errors" class="meta-value">0</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-6">
+                                        <article class="session-stat card border shadow-sm h-100">
+                                            <div class="card-body p-2">
+                                            <span class="meta-label">Aciertos</span>
+                                            <strong id="current-successes" class="meta-value">0</strong>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+
+                                <div class="row g-2 action-bar action-grid">
+                                    <div class="col-12 col-sm-6 col-lg-12">
+                                        <button id="change-set-btn" class="secondary-btn btn btn-primary w-100" type="button">Cambio de Set</button>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-lg-12">
+                                        <button id="finalize-match-btn" class="danger-btn btn btn-warning w-100" type="button">Finalizar Partido</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button id="change-player-btn" class="ghost-btn btn btn-outline-light w-100" type="button">Cambiar jugador</button>
+                                    </div>
+                                </div>
+
+                                <div id="session-message" class="status-message mb-0" role="status" aria-live="polite"></div>
+                            </div>
+                        </article>
+
+                        <article class="saved-sets-card card border shadow-sm">
+                            <div class="card-body p-2 d-flex flex-column gap-2">
+                                <div>
+                                    <p class="section-kicker mb-1">Revisión rápida</p>
+                                    <h3 class="section-title mb-0">Sets capturados</h3>
+                                </div>
+
+                                <div class="priority-strip hidden">
+                                    <div class="priority-copy">
+                                        <span class="priority-kicker">Mayor error a corregir</span>
+                                        <strong id="priority-label" class="priority-label">Sin datos</strong>
+                                        <p id="priority-value" class="priority-value mb-0">Empieza a contar para detectar qué corregir primero.</p>
+                                    </div>
+                                    <div class="live-chart-wrap">
+                                        <canvas id="live-error-chart"></canvas>
+                                    </div>
+                                </div>
+
+                                <div id="saved-sets" class="saved-sets-list">
+                                    <div class="saved-set-item">
+                                        <p class="muted-text mb-0">Todavía no hay sets guardados en esta sesión.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script>
+        window.erroresConfig = {"counterBlocks": [{"id": "errores-defensa", "title": "Errores no forzados", "subtitle": "Fondo de pista", "fields": [{"key": "Doble_Falta", "short": "DF", "label": "Doble falta"}, {"key": "Resto_Derecha_Fallado", "short": "RD", "label": "Resto derecha"}, {"key": "Resto_Reves_Fallado", "short": "RR", "label": "Resto revés"}, {"key": "Globo_Malo", "short": "GL", "label": "Globo malo"}, {"key": "Error_Fondo_Derecha", "short": "FD", "label": "Fondo derecha"}, {"key": "Error_Fondo_Reves", "short": "FR", "label": "Fondo revés"}, {"key": "Bajada_Derecha_Error", "short": "BD", "label": "Bajada derecha"}, {"key": "Bajada_Reves_Error", "short": "BR", "label": "Bajada revés"}, {"key": "Posicionamiento_Fondo_Error", "short": "PF", "label": "Pos. fondo"}]}, {"id": "errores-ataque", "title": "Errores no forzados", "subtitle": "Zona de red", "fields": [{"key": "Error_Volea_Derecha", "short": "VD", "label": "Volea derecha"}, {"key": "Error_Volea_Reves", "short": "VR", "label": "Volea revés"}, {"key": "Posicionamiento_Volea_Error", "short": "PV", "label": "Pos. volea"}, {"key": "Tirar_Ficha_Error", "short": "TF", "label": "Tirar ficha"}, {"key": "Bandeja_Error", "short": "BV", "label": "Bandeja/Víbora"}, {"key": "Smash_Error", "short": "SM", "label": "Remate fallido"}]}, {"id": "aciertos-defensa", "title": "Aciertos", "subtitle": "Fondo de pista", "fields": [{"key": "Winner_Derecha", "short": "WD", "label": "Winner derecha"}, {"key": "Winner_Reves", "short": "WR", "label": "Winner revés"}, {"key": "Resto_Ganador_Derecha", "short": "RGD", "label": "Resto ganador derecha"}, {"key": "Resto_Ganador_Reves", "short": "RGR", "label": "Resto ganador revés"}, {"key": "Globo_De_Oro", "short": "GO", "label": "Globo de oro"}, {"key": "Chiquita_Ganadora", "short": "CH", "label": "Chiquita ganadora"}, {"key": "Bajada_De_Pared", "short": "BP", "label": "Bajada de pared"}]}, {"id": "aciertos-ataque", "title": "Aciertos", "subtitle": "Zona de red", "fields": [{"key": "Remate_Finalizador", "short": "RF", "label": "Remate finalizador"}, {"key": "Volea_Derecha_Ganadora", "short": "VGD", "label": "Volea derecha ganadora"}, {"key": "Volea_Reves_Ganadora", "short": "VGR", "label": "Volea revés ganadora"}, {"key": "Bandeja_Vibora_Definitiva", "short": "BVD", "label": "Bandeja/Víbora definitiva"}, {"key": "Volea_Bloqueo_Contraataque", "short": "VB", "label": "Volea de bloqueo"}, {"key": "Dormilona", "short": "DR", "label": "Dormilona"}]}], "errorLabels": {"Doble_Falta": "Doble falta", "Resto_Derecha_Fallado": "Resto derecha", "Resto_Reves_Fallado": "Resto revés", "Globo_Malo": "Globo malo", "Error_Fondo_Derecha": "Fondo derecha", "Error_Fondo_Reves": "Fondo revés", "Bajada_Derecha_Error": "Bajada derecha", "Bajada_Reves_Error": "Bajada revés", "Posicionamiento_Fondo_Error": "Posicionamiento fondo", "Error_Volea_Derecha": "Volea derecha", "Error_Volea_Reves": "Volea revés", "Posicionamiento_Volea_Error": "Posicionamiento volea", "Tirar_Ficha_Error": "Tirar ficha", "Bandeja_Error": "Bandeja/Víbora", "Smash_Error": "Remate fallido"}, "errorTooltips": {"Doble_Falta": "Se suma cuando se pierden los dos servicios. Indica falta de concentración o técnica de saque.", "Resto_Derecha_Fallado": "Error al devolver el saque con la derecha. Corta el punto antes de construir el intercambio.", "Resto_Reves_Fallado": "Error al devolver el saque con el revés. Penaliza el inicio del punto y la lectura del servicio rival.", "Globo_Malo": "Globo que se queda corto o que va directo al cristal de fondo.", "Error_Fondo_Derecha": "Fallo no forzado de derecha desde el fondo, incluida salida de pared, que no supera la red o cede el punto.", "Error_Fondo_Reves": "Fallo no forzado de revés desde el fondo, incluida salida de pared, que no supera la red o cede el punto.", "Bajada_Derecha_Error": "Error en una bajada de pared o bajada de bola con la derecha que termina en fallo no forzado.", "Bajada_Reves_Error": "Error en una bajada de pared o bajada de bola con el revés que termina en fallo no forzado.", "Posicionamiento_Fondo_Error": "Mala colocación en el fondo que provoca distancia incorrecta a la bola, mala lectura o pérdida del punto.", "Error_Volea_Derecha": "Error no forzado de volea de derecha en transición o en zona de definición.", "Error_Volea_Reves": "Error no forzado de volea de revés en transición o en zona de definición.", "Posicionamiento_Volea_Error": "Mala colocación o ajuste en zona de volea que genera el error no forzado.", "Tirar_Ficha_Error": "Acción táctica aleatoria o precipitada al tirar ficha que rompe la estructura del punto y acaba en fallo.", "Bandeja_Error": "Error en bandeja o víbora que va a la red o al cristal sin ser una bola comprometida.", "Smash_Error": "Smash que no se trae a campo propio, no sale x4/x3 o acaba en la red o los cristales.", "Winner_Derecha": "Golpe de fondo potente o angulado con la mano dominante que el rival no puede tocar.", "Winner_Reves": "Punto directo de revés, plano o cortado, que supera al rival por velocidad o colocación.", "Resto_Ganador_Derecha": "Devolución de saque con la derecha que termina en punto o deja una bola muerta.", "Resto_Ganador_Reves": "Resto agresivo de revés que descoloca totalmente a la pareja que saca.", "Globo_De_Oro": "Globo preciso que sobrepasa a los rivales y bota profundo para tomar la red con ventaja total.", "Chiquita_Ganadora": "Bola suave a los pies del rival que fuerza el error o habilita el contraataque definitivo.", "Bajada_De_Pared": "Ataque agresivo tras rebote en pared de fondo que termina en punto directo.", "Remate_Finalizador": "Remate por arriba que saca la bola de la pista o la trae al campo propio para cerrar.", "Volea_Derecha_Ganadora": "Volea de derecha firme, profunda o con ángulo que no vuelve.", "Volea_Reves_Ganadora": "Volea de revés cruzada o al cuerpo que define el punto en la red.", "Bandeja_Vibora_Definitiva": "Bandeja o víbora ejecutada con agresividad o efecto suficiente para cerrar el punto.", "Volea_Bloqueo_Contraataque": "Punto ganado al bloquear un golpe fuerte rival y usar su potencia para abrir espacio.", "Dormilona": "Volea con retroceso y mucho efecto que se queda pegada a la red tras el remate rival."}, "errorFields": ["Doble_Falta", "Resto_Derecha_Fallado", "Resto_Reves_Fallado", "Globo_Malo", "Error_Fondo_Derecha", "Error_Fondo_Reves", "Bajada_Derecha_Error", "Bajada_Reves_Error", "Posicionamiento_Fondo_Error", "Error_Volea_Derecha", "Error_Volea_Reves", "Posicionamiento_Volea_Error", "Tirar_Ficha_Error", "Bandeja_Error", "Smash_Error"], "successFields": ["Winner_Derecha", "Winner_Reves", "Resto_Ganador_Derecha", "Resto_Ganador_Reves", "Globo_De_Oro", "Chiquita_Ganadora", "Bajada_De_Pared", "Remate_Finalizador", "Volea_Derecha_Ganadora", "Volea_Reves_Ganadora", "Bandeja_Vibora_Definitiva", "Volea_Bloqueo_Contraataque", "Dormilona"]};
+    </script>
+    <script src="/pwa/register-sw.js" defer></script>
+    <script src="/padel-legacy/player-session.js" defer></script>
+    <script src="/padel-legacy/errores.js" defer></script>
+
+<script>
+  // Auto-fill jugador-input and auto-submit when arriving via ?jugador=
+  (function () {
+    try {
+      var q = new URLSearchParams(window.location.search).get('jugador');
+      if (!q) return;
+      var tryFill = function () {
+        var inp = document.getElementById('jugador-input');
+        var form = document.getElementById('player-form');
+        if (!inp) return false;
+        inp.value = q;
+        inp.dispatchEvent(new Event('input', { bubbles: true }));
+        if (form) {
+          setTimeout(function () { form.requestSubmit ? form.requestSubmit() : form.submit(); }, 60);
+        }
+        return true;
+      };
+      if (!tryFill()) {
+        var n = 0;
+        var t = setInterval(function () { if (tryFill() || ++n > 40) clearInterval(t); }, 100);
+      }
+    } catch (e) { console.warn('autofill', e); }
+  })();
+</script>
+</body>
+</html>

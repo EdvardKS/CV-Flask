@@ -1,0 +1,1488 @@
+[
+  {
+    "id": 1,
+    "pregunta": "Which sentence is correct?",
+    "respuestas": [
+      {"letra": "a", "texto": "I need some information."},
+      {"letra": "b", "texto": "I need an information."},
+      {"letra": "c", "texto": "I need a information."},
+      {"letra": "d", "texto": "I need many information."}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 2,
+    "pregunta": "Choose the correct option to complete the sentence: 'I don't have _______ time to finish this.'",
+    "respuestas": [
+      {"letra": "a", "texto": "some"},
+      {"letra": "b", "texto": "any"},
+      {"letra": "c", "texto": "many"},
+      {"letra": "d", "texto": "a lot"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 3,
+    "pregunta": "Before you can use the service, you need to ______ on their website.",
+    "respuestas": [
+      {"letra": "a", "texto": "upload"},
+      {"letra": "b", "texto": "chat"},
+      {"letra": "c", "texto": "download"},
+      {"letra": "d", "texto": "sign up"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 4,
+    "pregunta": "She is ________ (intelligent) student in the class.",
+    "respuestas": [
+      {"letra": "a", "texto": "the most intelligent"},
+      {"letra": "b", "texto": "more intelligent"},
+      {"letra": "c", "texto": "most intelligent"},
+      {"letra": "d", "texto": "intelligentest"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 5,
+    "pregunta": "What does 'HTTP' stand for?",
+    "respuestas": [
+      {"letra": "a", "texto": "HyperText Transfer Process"},
+      {"letra": "b", "texto": "Hyper Transfer Text Protocol"},
+      {"letra": "c", "texto": "HyperText Transfer Protocol"},
+      {"letra": "d", "texto": "HyperText Transmission Protocol"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 6,
+    "pregunta": "Choose the correct option to complete the sentence: 'He doesn't have _______ money.'",
+    "respuestas": [
+      {"letra": "a", "texto": "some"},
+      {"letra": "b", "texto": "any"},
+      {"letra": "c", "texto": "many"},
+      {"letra": "d", "texto": "a"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 7,
+    "pregunta": "This book is ________ (interesting) than the movie.",
+    "respuestas": [
+      {"letra": "a", "texto": "more interesting"},
+      {"letra": "b", "texto": "interestinger"},
+      {"letra": "c", "texto": "interestingest"},
+      {"letra": "d", "texto": "most interesting"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 8,
+    "pregunta": "The ______ about the history of ancient civilizations was very informative.",
+    "respuestas": [
+      {"letra": "a", "texto": "quiz show"},
+      {"letra": "b", "texto": "chat show"},
+      {"letra": "c", "texto": "documentary"},
+      {"letra": "d", "texto": "horror"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 9,
+    "pregunta": "Which sentence is correct?",
+    "respuestas": [
+      {"letra": "a", "texto": "I have a apple."},
+      {"letra": "b", "texto": "I have an apples."},
+      {"letra": "c", "texto": "I have an apple."},
+      {"letra": "d", "texto": "I have a apples."}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 10,
+    "pregunta": "The emails ______ (send) by the manager yesterday.",
+    "respuestas": [
+      {"letra": "a", "texto": "are sent"},
+      {"letra": "b", "texto": "sent"},
+      {"letra": "c", "texto": "were sent"},
+      {"letra": "d", "texto": "will be sent"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 11,
+    "pregunta": "The ______ features celebrities discussing their latest projects and personal stories.",
+    "respuestas": [
+      {"letra": "a", "texto": "quiz show"},
+      {"letra": "b", "texto": "horror"},
+      {"letra": "c", "texto": "documentary"},
+      {"letra": "d", "texto": "chat show"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 12,
+    "pregunta": "What is the correct question form for: 'He will arrive at 5 PM'?",
+    "respuestas": [
+      {"letra": "a", "texto": "Will he arrive at 5 PM?"},
+      {"letra": "b", "texto": "He will arrive at 5 PM?"},
+      {"letra": "c", "texto": "Does he will arrive at 5 PM?"},
+      {"letra": "d", "texto": "Arrives he at 5 PM?"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 13,
+    "pregunta": "They ____________ every Monday at 12.30.",
+    "respuestas": [
+      {"letra": "a", "texto": "are coming"},
+      {"letra": "b", "texto": "come"},
+      {"letra": "c", "texto": "did come"},
+      {"letra": "d", "texto": "would come"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 14,
+    "pregunta": "What does 'get over' mean?",
+    "respuestas": [
+      {"letra": "a", "texto": "To fall into"},
+      {"letra": "b", "texto": "To give up"},
+      {"letra": "c", "texto": "To start"},
+      {"letra": "d", "texto": "To recover from"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 15,
+    "pregunta": "What is 'phishing'?",
+    "respuestas": [
+      {"letra": "a", "texto": "Installing malware"},
+      {"letra": "b", "texto": "Sending spam emails"},
+      {"letra": "c", "texto": "Fraudulent attempts to obtain sensitive information"},
+      {"letra": "d", "texto": "Hacking into a computer"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 16,
+    "pregunta": "The package _____________ next Monday.",
+    "respuestas": [
+      {"letra": "a", "texto": "is being delivered"},
+      {"letra": "b", "texto": "was delivered"},
+      {"letra": "c", "texto": "will be delivered"},
+      {"letra": "d", "texto": "has been delivered"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 17,
+    "pregunta": "She decided to ______ the job offer because it didn't meet her expectations.",
+    "respuestas": [
+      {"letra": "a", "texto": "turn up"},
+      {"letra": "b", "texto": "turn down"},
+      {"letra": "c", "texto": "turn out"},
+      {"letra": "d", "texto": "turn off"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 18,
+    "pregunta": "This is ________ (interesting) book I've ever read.",
+    "respuestas": [
+      {"letra": "a", "texto": "interestingest"},
+      {"letra": "b", "texto": "more interesting"},
+      {"letra": "c", "texto": "the most interesting"},
+      {"letra": "d", "texto": "most interesting"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 19,
+    "pregunta": "I need to ______ the lights before we leave the house.",
+    "respuestas": [
+      {"letra": "a", "texto": "turn down"},
+      {"letra": "b", "texto": "turn off"},
+      {"letra": "c", "texto": "turn up"},
+      {"letra": "d", "texto": "turn into"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 20,
+    "pregunta": "'I live in Madrid,' he said. He said he ____________________ in Madrid.",
+    "respuestas": [
+      {"letra": "a", "texto": "lived"},
+      {"letra": "b", "texto": "lives"},
+      {"letra": "c", "texto": "living"},
+      {"letra": "d", "texto": "live"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 21,
+    "pregunta": "If I studied harder, I would get better grades. What type of conditional sentence is this?",
+    "respuestas": [
+      {"letra": "a", "texto": "Zero conditional"},
+      {"letra": "b", "texto": "First conditional"},
+      {"letra": "c", "texto": "Second conditional"},
+      {"letra": "d", "texto": "Third conditional"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 22,
+    "pregunta": "The report ___ by the end of the week.",
+    "respuestas": [
+      {"letra": "a", "texto": "will be finished"},
+      {"letra": "b", "texto": "will finished"},
+      {"letra": "c", "texto": "finishes"},
+      {"letra": "d", "texto": "is finished"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 23,
+    "pregunta": "Which tag question is correctly formed?",
+    "respuestas": [
+      {"letra": "a", "texto": "She doesn't like coffee, doesn't she?"},
+      {"letra": "b", "texto": "She doesn't like coffee, does she?"},
+      {"letra": "c", "texto": "She doesn't like coffee, isn't she?"},
+      {"letra": "d", "texto": "She doesn't like coffee, she does?"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 24,
+    "pregunta": "Today is ________ (hot) than yesterday.",
+    "respuestas": [
+      {"letra": "a", "texto": "more hot"},
+      {"letra": "b", "texto": "hottest"},
+      {"letra": "c", "texto": "hotter"},
+      {"letra": "d", "texto": "hot"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 25,
+    "pregunta": "'I'll live in Madrid,' he said. He said he ____________________ in Madrid.",
+    "respuestas": [
+      {"letra": "a", "texto": "will live"},
+      {"letra": "b", "texto": "lives"},
+      {"letra": "c", "texto": "live"},
+      {"letra": "d", "texto": "would live"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 26,
+    "pregunta": "Yesterday was ________ (hot) day of the year.",
+    "respuestas": [
+      {"letra": "a", "texto": "most hot"},
+      {"letra": "b", "texto": "the hottest"},
+      {"letra": "c", "texto": "the hotter"},
+      {"letra": "d", "texto": "hotter"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 27,
+    "pregunta": "Find the correct form of reported speech. She said, 'I am reading a book.'",
+    "respuestas": [
+      {"letra": "a", "texto": "She said she was reading a book."},
+      {"letra": "b", "texto": "She said I am reading a book."},
+      {"letra": "c", "texto": "She said she is reading a book."},
+      {"letra": "d", "texto": "She said she read a book."}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 28,
+    "pregunta": "He won a lot of money by answering all the questions correctly on the ______.",
+    "respuestas": [
+      {"letra": "a", "texto": "horror"},
+      {"letra": "b", "texto": "chat show"},
+      {"letra": "c", "texto": "documentary"},
+      {"letra": "d", "texto": "quiz show"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 29,
+    "pregunta": "This exam is ________ (difficult) than the last one.",
+    "respuestas": [
+      {"letra": "a", "texto": "difficultest"},
+      {"letra": "b", "texto": "most difficult"},
+      {"letra": "c", "texto": "more difficult"},
+      {"letra": "d", "texto": "difficulter"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 30,
+    "pregunta": "You ______ study English every day (advice)",
+    "respuestas": [
+      {"letra": "a", "texto": "should"},
+      {"letra": "b", "texto": "can"},
+      {"letra": "c", "texto": "better"},
+      {"letra": "d", "texto": "could"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 31,
+    "pregunta": "What does 'take off' mean?",
+    "respuestas": [
+      {"letra": "a", "texto": "To delay"},
+      {"letra": "b", "texto": "To put on"},
+      {"letra": "c", "texto": "To land"},
+      {"letra": "d", "texto": "To remove"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 32,
+    "pregunta": "If you ______ the oven too early, the cake might not be fully baked.",
+    "respuestas": [
+      {"letra": "a", "texto": "turn on"},
+      {"letra": "b", "texto": "turn out"},
+      {"letra": "c", "texto": "turn off"},
+      {"letra": "d", "texto": "turn up"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 33,
+    "pregunta": "Choose the correct option to complete the sentence: 'Do you have _______ questions?'",
+    "respuestas": [
+      {"letra": "a", "texto": "much"},
+      {"letra": "b", "texto": "any"},
+      {"letra": "c", "texto": "a"},
+      {"letra": "d", "texto": "a lot"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 34,
+    "pregunta": "What does 'take after' mean?",
+    "respuestas": [
+      {"letra": "a", "texto": "To lead"},
+      {"letra": "b", "texto": "To follow"},
+      {"letra": "c", "texto": "To chase"},
+      {"letra": "d", "texto": "To resemble"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 35,
+    "pregunta": "Which sentence is correct?",
+    "respuestas": [
+      {"letra": "a", "texto": "I bought a bread."},
+      {"letra": "b", "texto": "I bought many bread."},
+      {"letra": "c", "texto": "I bought some bread."},
+      {"letra": "d", "texto": "I bought a breads."}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 36,
+    "pregunta": "The window ___ last night during the storm.",
+    "respuestas": [
+      {"letra": "a", "texto": "was broken"},
+      {"letra": "b", "texto": "breaks"},
+      {"letra": "c", "texto": "was breaking"},
+      {"letra": "d", "texto": "has broken"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 37,
+    "pregunta": "Which verb changes in its past tense and past participle forms?",
+    "respuestas": [
+      {"letra": "a", "texto": "COME"},
+      {"letra": "b", "texto": "HIT"},
+      {"letra": "c", "texto": "LET"},
+      {"letra": "d", "texto": "PUT"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 38,
+    "pregunta": "Which sentence is in the second conditional?",
+    "respuestas": [
+      {"letra": "a", "texto": "If I were rich, I would travel the world."},
+      {"letra": "b", "texto": "If I was rich, I travel the world."},
+      {"letra": "c", "texto": "If I were rich, I travel the world."},
+      {"letra": "d", "texto": "If I will be rich, I would travel the world."}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 39,
+    "pregunta": "Her keys ________________ this morning when leaving the house.",
+    "respuestas": [
+      {"letra": "a", "texto": "were lost"},
+      {"letra": "b", "texto": "were loosen"},
+      {"letra": "c", "texto": "could have lost"},
+      {"letra": "d", "texto": "was lost"},
+      {"letra": "e", "texto": "were losted"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 40,
+    "pregunta": "'I will visit Madrid before moving to Barcelona,' she said. She said she ___________________ Madrid before moving to Barcelona.",
+    "respuestas": [
+      {"letra": "a", "texto": "visiting"},
+      {"letra": "b", "texto": "visit"},
+      {"letra": "c", "texto": "would visit"},
+      {"letra": "d", "texto": "will visit"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 41,
+    "pregunta": "Which of the following contains both a free and a bound morpheme?",
+    "respuestas": [
+      {"letra": "a", "texto": "Tree"},
+      {"letra": "b", "texto": "Book"},
+      {"letra": "c", "texto": "Dogs"},
+      {"letra": "d", "texto": "Car"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 42,
+    "pregunta": "The new software update ______ (install) automatically tonight at midnight.",
+    "respuestas": [
+      {"letra": "a", "texto": "will install"},
+      {"letra": "b", "texto": "is installed"},
+      {"letra": "c", "texto": "will be installed"},
+      {"letra": "d", "texto": "installed"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 43,
+    "pregunta": "In the word 'running,' what type of morpheme is 'run'?",
+    "respuestas": [
+      {"letra": "a", "texto": "Suffix"},
+      {"letra": "b", "texto": "Free"},
+      {"letra": "c", "texto": "Inflectional"},
+      {"letra": "d", "texto": "Bound"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 44,
+    "pregunta": "This hotel is ________ (expensive) in the city.",
+    "respuestas": [
+      {"letra": "a", "texto": "the most expensive"},
+      {"letra": "b", "texto": "most expensive"},
+      {"letra": "c", "texto": "more expensive"},
+      {"letra": "d", "texto": "the more expensive"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 45,
+    "pregunta": "What is the past participle of 'HEAR'?",
+    "respuestas": [
+      {"letra": "a", "texto": "HERD"},
+      {"letra": "b", "texto": "HEAREN"},
+      {"letra": "c", "texto": "HEARED"},
+      {"letra": "d", "texto": "HEARD"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 46,
+    "pregunta": "'I can speak Spanish,' she said. She said she ____________________ speak Spanish.",
+    "respuestas": [
+      {"letra": "a", "texto": "could"},
+      {"letra": "b", "texto": "speak"},
+      {"letra": "c", "texto": "speaks"},
+      {"letra": "d", "texto": "can"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 47,
+    "pregunta": "What is the past tense of 'TAKE'?",
+    "respuestas": [
+      {"letra": "a", "texto": "TAKSEN"},
+      {"letra": "b", "texto": "TAKEN"},
+      {"letra": "c", "texto": "TOOK"},
+      {"letra": "d", "texto": "TAKED"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 48,
+    "pregunta": "She said, 'I am reading a book.'",
+    "respuestas": [
+      {"letra": "a", "texto": "She said she is reading a book."},
+      {"letra": "b", "texto": "She said she read a book."},
+      {"letra": "c", "texto": "She said I am reading a book."},
+      {"letra": "d", "texto": "She said she was reading a book."}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 49,
+    "pregunta": "The book _____ by the author last year.",
+    "respuestas": [
+      {"letra": "a", "texto": "was written"},
+      {"letra": "b", "texto": "had written"},
+      {"letra": "c", "texto": "wrote"},
+      {"letra": "d", "texto": "is written"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 50,
+    "pregunta": "What is the past tense of 'BE'?",
+    "respuestas": [
+      {"letra": "a", "texto": "WAS/WERE"},
+      {"letra": "b", "texto": "BEEN"},
+      {"letra": "c", "texto": "AM"},
+      {"letra": "d", "texto": "IS"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 51,
+    "pregunta": "He _____ be very tired after such a long journey. (deducción)",
+    "respuestas": [
+      {"letra": "a", "texto": "may"},
+      {"letra": "b", "texto": "will"},
+      {"letra": "c", "texto": "can"},
+      {"letra": "d", "texto": "must"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 52,
+    "pregunta": "The reports ______ (prepare) for the meeting by the team last night.",
+    "respuestas": [
+      {"letra": "a", "texto": "were prepared"},
+      {"letra": "b", "texto": "are prepared"},
+      {"letra": "c", "texto": "will be prepared"},
+      {"letra": "d", "texto": "prepared"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 53,
+    "pregunta": "The Human Resources manager suggested ________ to her after a month.",
+    "respuestas": [
+      {"letra": "a", "texto": "writing"},
+      {"letra": "b", "texto": "that write"},
+      {"letra": "c", "texto": "write"},
+      {"letra": "d", "texto": "to write"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 54,
+    "pregunta": "He asked, 'Do you like pizza?'",
+    "respuestas": [
+      {"letra": "a", "texto": "He asked do you like pizza."},
+      {"letra": "b", "texto": "He asked if I like pizza."},
+      {"letra": "c", "texto": "He asked if I liked pizza."},
+      {"letra": "d", "texto": "He asked if you like pizza."}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 55,
+    "pregunta": "The new stadium ______ (build) to host the Olympics last March.",
+    "respuestas": [
+      {"letra": "a", "texto": "was built"},
+      {"letra": "b", "texto": "built"},
+      {"letra": "c", "texto": "will be built"},
+      {"letra": "d", "texto": "is built"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 56,
+    "pregunta": "Please ______ the radio; I can't concentrate with that noise.",
+    "respuestas": [
+      {"letra": "a", "texto": "turn up"},
+      {"letra": "b", "texto": "turn away"},
+      {"letra": "c", "texto": "turn on"},
+      {"letra": "d", "texto": "turn off"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 57,
+    "pregunta": "What is the bound morpheme in the word 'teacher'?",
+    "respuestas": [
+      {"letra": "a", "texto": "tea"},
+      {"letra": "b", "texto": "-er"},
+      {"letra": "c", "texto": "each"},
+      {"letra": "d", "texto": "teach"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 58,
+    "pregunta": "Which sentence is correct?",
+    "respuestas": [
+      {"letra": "a", "texto": "There is many apples in the basket."},
+      {"letra": "b", "texto": "There are many apples in the basket."},
+      {"letra": "c", "texto": "There is a lot of apples in the basket."},
+      {"letra": "d", "texto": "There are much apples in the basket."}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 59,
+    "pregunta": "He said, 'I have finished my homework.'",
+    "respuestas": [
+      {"letra": "a", "texto": "He said he had finished his homework."},
+      {"letra": "b", "texto": "He said he finished his homework."},
+      {"letra": "c", "texto": "He said he finishes his homework."},
+      {"letra": "d", "texto": "He said he has finished his homework."}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 60,
+    "pregunta": "We ____________ (study) for a Maths test at the moment.",
+    "respuestas": [
+      {"letra": "a", "texto": "were studying"},
+      {"letra": "b", "texto": "studying"},
+      {"letra": "c", "texto": "studied"},
+      {"letra": "d", "texto": "are studying"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 61,
+    "pregunta": "The car ___ while we were on vacation.",
+    "respuestas": [
+      {"letra": "a", "texto": "repaired"},
+      {"letra": "b", "texto": "was being repair"},
+      {"letra": "c", "texto": "was being repaired"},
+      {"letra": "d", "texto": "is being repaired"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 62,
+    "pregunta": "Which sentence is correct?",
+    "respuestas": [
+      {"letra": "a", "texto": "She has much friend."},
+      {"letra": "b", "texto": "She has much friends."},
+      {"letra": "c", "texto": "She has a lot friends."},
+      {"letra": "d", "texto": "She has many friends."}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 63,
+    "pregunta": "What is the past participle of 'BREAK'?",
+    "respuestas": [
+      {"letra": "a", "texto": "BROKED"},
+      {"letra": "b", "texto": "BREAKED"},
+      {"letra": "c", "texto": "BREAKEN"},
+      {"letra": "d", "texto": "BROKEN"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 64,
+    "pregunta": "The cookies ______ (bake) by my grandmother every Christmas.",
+    "respuestas": [
+      {"letra": "a", "texto": "bake"},
+      {"letra": "b", "texto": "baked"},
+      {"letra": "c", "texto": "is baked"},
+      {"letra": "d", "texto": "are baked"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 65,
+    "pregunta": "The project _____ next month.",
+    "respuestas": [
+      {"letra": "a", "texto": "is completed"},
+      {"letra": "b", "texto": "completed"},
+      {"letra": "c", "texto": "will be completed"},
+      {"letra": "d", "texto": "will complete"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 66,
+    "pregunta": "The art exhibition ______ (hold) in the downtown gallery at the moment.",
+    "respuestas": [
+      {"letra": "a", "texto": "is being held"},
+      {"letra": "b", "texto": "held"},
+      {"letra": "c", "texto": "will be held"},
+      {"letra": "d", "texto": "is holded"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 67,
+    "pregunta": "What is the correct comparative adverb?",
+    "respuestas": [
+      {"letra": "a", "texto": "His work is harder than his colleague's."},
+      {"letra": "b", "texto": "He sings louder than her."},
+      {"letra": "c", "texto": "She drives more carefully than him."},
+      {"letra": "d", "texto": "She writes more neat than anyone else."}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 68,
+    "pregunta": "The new smartphone model ______ (release) next month.",
+    "respuestas": [
+      {"letra": "a", "texto": "released"},
+      {"letra": "b", "texto": "is released"},
+      {"letra": "c", "texto": "will release"},
+      {"letra": "d", "texto": "will be released"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 69,
+    "pregunta": "Which sentence correctly forms a choice question?",
+    "respuestas": [
+      {"letra": "a", "texto": "Coffee or tea, do you like?"},
+      {"letra": "b", "texto": "Do you prefer coffee and tea?"},
+      {"letra": "c", "texto": "Do you prefer coffee or tea?"},
+      {"letra": "d", "texto": "Do prefer coffee you or tea?"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 70,
+    "pregunta": "Which sentence is in the future continuous?",
+    "respuestas": [
+      {"letra": "a", "texto": "She will travel next week."},
+      {"letra": "b", "texto": "She will be traveling next week."},
+      {"letra": "c", "texto": "She travels next week."},
+      {"letra": "d", "texto": "She has traveled next week."}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 71,
+    "pregunta": "What does 'go out' mean?",
+    "respuestas": [
+      {"letra": "a", "texto": "To remain"},
+      {"letra": "b", "texto": "To enter"},
+      {"letra": "c", "texto": "To finish"},
+      {"letra": "d", "texto": "To exit"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 72,
+    "pregunta": "What does 'work out' mean?",
+    "respuestas": [
+      {"letra": "a", "texto": "To eat out"},
+      {"letra": "b", "texto": "To fail"},
+      {"letra": "c", "texto": "To exercise"},
+      {"letra": "d", "texto": "To relax"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 73,
+    "pregunta": "'I'm going to visit Madrid,' she said. She said she ____________________ to visit Madrid.",
+    "respuestas": [
+      {"letra": "a", "texto": "going"},
+      {"letra": "b", "texto": "was going"},
+      {"letra": "c", "texto": "goes"},
+      {"letra": "d", "texto": "is going"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 74,
+    "pregunta": "You _____ finish your homework before watching TV. (ORDEN fuerte)",
+    "respuestas": [
+      {"letra": "a", "texto": "must"},
+      {"letra": "b", "texto": "may"},
+      {"letra": "c", "texto": "can"},
+      {"letra": "d", "texto": "could"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 75,
+    "pregunta": "Which of the following is a free morpheme?",
+    "respuestas": [
+      {"letra": "a", "texto": "-ed"},
+      {"letra": "b", "texto": "play"},
+      {"letra": "c", "texto": "re-"},
+      {"letra": "d", "texto": "-s"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 76,
+    "pregunta": "What does 'worked up' mean?",
+    "respuestas": [
+      {"letra": "a", "texto": "To become excited"},
+      {"letra": "b", "texto": "To delay"},
+      {"letra": "c", "texto": "To calm down"},
+      {"letra": "d", "texto": "To finish early"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 77,
+    "pregunta": "It's the top gadget for reading.",
+    "respuestas": [
+      {"letra": "a", "texto": "Ebook reader"},
+      {"letra": "b", "texto": "Car"},
+      {"letra": "c", "texto": "Laptop"},
+      {"letra": "d", "texto": "Mobile phone"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 78,
+    "pregunta": "What does 'take up' mean?",
+    "respuestas": [
+      {"letra": "a", "texto": "To start a hobby"},
+      {"letra": "b", "texto": "To decline"},
+      {"letra": "c", "texto": "To accept"},
+      {"letra": "d", "texto": "To stop"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 79,
+    "pregunta": "Mount Everest is ________ (high) mountain in the world.",
+    "respuestas": [
+      {"letra": "a", "texto": "the high"},
+      {"letra": "b", "texto": "the higher"},
+      {"letra": "c", "texto": "the highest"},
+      {"letra": "d", "texto": "higher"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 80,
+    "pregunta": "The documentary ______ (film) over a period of three years between 2020 and 2023.",
+    "respuestas": [
+      {"letra": "a", "texto": "was filmed"},
+      {"letra": "b", "texto": "filmed"},
+      {"letra": "c", "texto": "will be filmed"},
+      {"letra": "d", "texto": "is filmed"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 81,
+    "pregunta": "Choose the most appropriate word to complete the sentence: If you find a useful website, you should ___ it.",
+    "respuestas": [
+      {"letra": "a", "texto": "Stream"},
+      {"letra": "b", "texto": "Download"},
+      {"letra": "c", "texto": "Bookmark"},
+      {"letra": "d", "texto": "Search"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 82,
+    "pregunta": "Choose the correct tag question for: 'He can drive a car, ___?'",
+    "respuestas": [
+      {"letra": "a", "texto": "can he?"},
+      {"letra": "b", "texto": "can't he?"},
+      {"letra": "c", "texto": "is he?"},
+      {"letra": "d", "texto": "does he?"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 83,
+    "pregunta": "Which verb means 'smell' in Spanish?",
+    "respuestas": [
+      {"letra": "a", "texto": "OIR"},
+      {"letra": "b", "texto": "DECIR"},
+      {"letra": "c", "texto": "Oler"},
+      {"letra": "d", "texto": "VER"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 84,
+    "pregunta": "Maria promised she _______________ with me to the movies.",
+    "respuestas": [
+      {"letra": "a", "texto": "come"},
+      {"letra": "b", "texto": "would come"},
+      {"letra": "c", "texto": "is coming"},
+      {"letra": "d", "texto": "would come"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 85,
+    "pregunta": "'We will graduate from University next May' they said. They said they ____________ from university next May.",
+    "respuestas": [
+      {"letra": "a", "texto": "would graduate"},
+      {"letra": "b", "texto": "will graduate"},
+      {"letra": "c", "texto": "graduating"},
+      {"letra": "d", "texto": "graduate"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 86,
+    "pregunta": "Which of the following words contains only free morphemes?",
+    "respuestas": [
+      {"letra": "a", "texto": "Quickly"},
+      {"letra": "b", "texto": "Unhappy"},
+      {"letra": "c", "texto": "Playground"},
+      {"letra": "d", "texto": "Cats"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 87,
+    "pregunta": "What does 'work on' mean?",
+    "respuestas": [
+      {"letra": "a", "texto": "To improve, exert effort"},
+      {"letra": "b", "texto": "To ignore"},
+      {"letra": "c", "texto": "To delay"},
+      {"letra": "d", "texto": "To avoid"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 88,
+    "pregunta": "Which verb means 'conseguir' in Spanish?",
+    "respuestas": [
+      {"letra": "a", "texto": "GET"},
+      {"letra": "b", "texto": "COME"},
+      {"letra": "c", "texto": "MAKE"},
+      {"letra": "d", "texto": "SAY"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 89,
+    "pregunta": "She is ________ (tall) than her brother.",
+    "respuestas": [
+      {"letra": "a", "texto": "more tall"},
+      {"letra": "b", "texto": "tall"},
+      {"letra": "c", "texto": "tallest"},
+      {"letra": "d", "texto": "taller"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 90,
+    "pregunta": "She _____ play the piano very well, she has been offered a job before graduating.",
+    "respuestas": [
+      {"letra": "a", "texto": "might"},
+      {"letra": "b", "texto": "must"},
+      {"letra": "c", "texto": "can"},
+      {"letra": "d", "texto": "could"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 91,
+    "pregunta": "When you ______ the corner, you'll see the building on your right.",
+    "respuestas": [
+      {"letra": "a", "texto": "turn off"},
+      {"letra": "b", "texto": "turn around"},
+      {"letra": "c", "texto": "turn up"},
+      {"letra": "d", "texto": "turn on"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 92,
+    "pregunta": "In which genre would you typically find 'The Lord of the Rings'?",
+    "respuestas": [
+      {"letra": "a", "texto": "Science Fiction"},
+      {"letra": "b", "texto": "Fantasy"},
+      {"letra": "c", "texto": "Mystery"},
+      {"letra": "d", "texto": "Romance"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 93,
+    "pregunta": "The cake ___ by Tom for his sister's birthday party last weekend.",
+    "respuestas": [
+      {"letra": "a", "texto": "was baking"},
+      {"letra": "b", "texto": "was baked"},
+      {"letra": "c", "texto": "bakes"},
+      {"letra": "d", "texto": "is baking"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 94,
+    "pregunta": "Which verb doesn't change in its past tense and past participle forms?",
+    "respuestas": [
+      {"letra": "a", "texto": "SHUT"},
+      {"letra": "b", "texto": "READ"},
+      {"letra": "c", "texto": "HURT"},
+      {"letra": "d", "texto": "TAKE"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 95,
+    "pregunta": "Choose the correct option to complete the sentence: 'There aren't _______ cookies left.'",
+    "respuestas": [
+      {"letra": "a", "texto": "any"},
+      {"letra": "b", "texto": "much"},
+      {"letra": "c", "texto": "some"},
+      {"letra": "d", "texto": "manie"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 96,
+    "pregunta": "She usually ____________ (go) to the gym on Saturdays.",
+    "respuestas": [
+      {"letra": "a", "texto": "goes"},
+      {"letra": "b", "texto": "went"},
+      {"letra": "c", "texto": "go"},
+      {"letra": "d", "texto": "going"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 97,
+    "pregunta": "Make sure to ___ to the Wi-Fi network to avoid using your mobile data.",
+    "respuestas": [
+      {"letra": "a", "texto": "Surf"},
+      {"letra": "b", "texto": "Search"},
+      {"letra": "c", "texto": "Connect"},
+      {"letra": "d", "texto": "Sign up"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 98,
+    "pregunta": "I need to ______ my vacation photos to the cloud storage.",
+    "respuestas": [
+      {"letra": "a", "texto": "upload"},
+      {"letra": "b", "texto": "download"},
+      {"letra": "c", "texto": "sign up"},
+      {"letra": "d", "texto": "chat"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 99,
+    "pregunta": "'I'm living in Madrid,' he said. He said he ____________________ in Madrid.",
+    "respuestas": [
+      {"letra": "a", "texto": "living"},
+      {"letra": "b", "texto": "is living"},
+      {"letra": "c", "texto": "was living"},
+      {"letra": "d", "texto": "live"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 100,
+    "pregunta": "What does 'get along' mean?",
+    "respuestas": [
+      {"letra": "a", "texto": "To depart"},
+      {"letra": "b", "texto": "To get on well"},
+      {"letra": "c", "texto": "To fight"},
+      {"letra": "d", "texto": "To argue"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 101,
+    "pregunta": "You _____ speak to your teacher if you have any questions. (advise)",
+    "respuestas": [
+      {"letra": "a", "texto": "might"},
+      {"letra": "b", "texto": "should"},
+      {"letra": "c", "texto": "must"},
+      {"letra": "d", "texto": "would"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 102,
+    "pregunta": "What is the past tense of 'SEE'?",
+    "respuestas": [
+      {"letra": "a", "texto": "SAW"},
+      {"letra": "b", "texto": "SIGHT"},
+      {"letra": "c", "texto": "SEEN"},
+      {"letra": "d", "texto": "SEEING"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 103,
+    "pregunta": "The song _____ on the radio right now.",
+    "respuestas": [
+      {"letra": "a", "texto": "was played"},
+      {"letra": "b", "texto": "is playing"},
+      {"letra": "c", "texto": "plays"},
+      {"letra": "d", "texto": "is played"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 104,
+    "pregunta": "What type of book is typically categorized as a thriller novel?",
+    "respuestas": [
+      {"letra": "a", "texto": "A story about love and relationships"},
+      {"letra": "b", "texto": "A story about fantasy worlds and aliens"},
+      {"letra": "c", "texto": "A story about mystery and suspense"},
+      {"letra": "d", "texto": "A story about horror and supernatural beings"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 105,
+    "pregunta": "What type of morpheme is 'dis-' in 'disagree'?",
+    "respuestas": [
+      {"letra": "a", "texto": "Inflectional"},
+      {"letra": "b", "texto": "Free"},
+      {"letra": "c", "texto": "Bound"},
+      {"letra": "d", "texto": "Root"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 106,
+    "pregunta": "Choose the correct tag question structure for Challenge 14.",
+    "respuestas": [
+      {"letra": "a", "texto": "You're coming to the party, aren't you?"},
+      {"letra": "b", "texto": "Never have I seen such a beautiful sunset, have they?"},
+      {"letra": "c", "texto": "Which AI created the most famous painting? did it?"},
+      {"letra": "d", "texto": "I seen such a beautiful sunset. Have you?"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 107,
+    "pregunta": "He ____________ (watch) TV when I called him.",
+    "respuestas": [
+      {"letra": "a", "texto": "was watching"},
+      {"letra": "b", "texto": "watched"},
+      {"letra": "c", "texto": "is watching"},
+      {"letra": "d", "texto": "watches"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 108,
+    "pregunta": "What does 'Wi-Fi' stand for?",
+    "respuestas": [
+      {"letra": "a", "texto": "Wide Fidelity"},
+      {"letra": "b", "texto": "Wireless Fidelity"},
+      {"letra": "c", "texto": "Wired Fidelity"},
+      {"letra": "d", "texto": "Wireless Internet"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 109,
+    "pregunta": "The cookies _____ by the children yesterday.",
+    "respuestas": [
+      {"letra": "a", "texto": "are baked"},
+      {"letra": "b", "texto": "baked"},
+      {"letra": "c", "texto": "bake"},
+      {"letra": "d", "texto": "were baked"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 110,
+    "pregunta": "What type of morpheme is 'un-' in 'unhappy'?",
+    "respuestas": [
+      {"letra": "a", "texto": "Inflectional"},
+      {"letra": "b", "texto": "Bound"},
+      {"letra": "c", "texto": "Free"},
+      {"letra": "d", "texto": "Root"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 111,
+    "pregunta": "Which sentence is in the future perfect?",
+    "respuestas": [
+      {"letra": "a", "texto": "She will have completed the project by Monday."},
+      {"letra": "b", "texto": "She completes the project by Monday."},
+      {"letra": "c", "texto": "She has completed the project by Monday."},
+      {"letra": "d", "texto": "She will complete the project by Monday."}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 112,
+    "pregunta": "Which of the following is a bound morpheme?",
+    "respuestas": [
+      {"letra": "a", "texto": "run"},
+      {"letra": "b", "texto": "-ness"},
+      {"letra": "c", "texto": "cat"},
+      {"letra": "d", "texto": "house"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 113,
+    "pregunta": "Match each internet verb with its correct collocation. BROWSE",
+    "respuestas": [
+      {"letra": "a", "texto": "A file from the internet"},
+      {"letra": "b", "texto": "For a topic on a search engine"},
+      {"letra": "c", "texto": "For a new service"},
+      {"letra": "d", "texto": "The web for information"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 114,
+    "pregunta": "The new ______ film was so scary that I couldn't sleep afterwards.",
+    "respuestas": [
+      {"letra": "a", "texto": "documentary"},
+      {"letra": "b", "texto": "horror"},
+      {"letra": "c", "texto": "quiz show"},
+      {"letra": "d", "texto": "chat show"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 115,
+    "pregunta": "The house _____ by the new owners soon.",
+    "respuestas": [
+      {"letra": "a", "texto": "will be sold"},
+      {"letra": "b", "texto": "will sell"},
+      {"letra": "c", "texto": "is sold"},
+      {"letra": "d", "texto": "sells"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 116,
+    "pregunta": "She asked, 'Where are you going?'",
+    "respuestas": [
+      {"letra": "a", "texto": "She asked where are you going."},
+      {"letra": "b", "texto": "She asked where am I going."},
+      {"letra": "c", "texto": "She asked where I was going."},
+      {"letra": "d", "texto": "She asked where you are going."}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 117,
+    "pregunta": "The famous actor ______ (interview) on the chat show last night.",
+    "respuestas": [
+      {"letra": "a", "texto": "interviewed"},
+      {"letra": "b", "texto": "was interviewed"},
+      {"letra": "c", "texto": "will be interviewed"},
+      {"letra": "d", "texto": "is interviewed"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 118,
+    "pregunta": "Choose the correct form of the Past Simple for the sentence: 'I ___ (to see) that movie last week.'",
+    "respuestas": [
+      {"letra": "a", "texto": "saw"},
+      {"letra": "b", "texto": "seeing"},
+      {"letra": "c", "texto": "see"},
+      {"letra": "d", "texto": "have seen"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 119,
+    "pregunta": "My car is ________ (fast) than yours.",
+    "respuestas": [
+      {"letra": "a", "texto": "more fast"},
+      {"letra": "b", "texto": "fast"},
+      {"letra": "c", "texto": "fastest"},
+      {"letra": "d", "texto": "faster"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 120,
+    "pregunta": "Choose the correct option to complete the sentence: 'How _______ milk is in the fridge?'",
+    "respuestas": [
+      {"letra": "a", "texto": "much"},
+      {"letra": "b", "texto": "some"},
+      {"letra": "c", "texto": "many"},
+      {"letra": "d", "texto": "any"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 121,
+    "pregunta": "What is the free morpheme in the word 'unbelievable'?",
+    "respuestas": [
+      {"letra": "a", "texto": "-able"},
+      {"letra": "b", "texto": "un-"},
+      {"letra": "c", "texto": "believ-"},
+      {"letra": "d", "texto": "believe"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 122,
+    "pregunta": "The awarded credit ______ let the company go into bankruptcy.",
+    "respuestas": [
+      {"letra": "a", "texto": "was"},
+      {"letra": "b", "texto": "isn't"},
+      {"letra": "c", "texto": "didn't"},
+      {"letra": "d", "texto": "don't"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 123,
+    "pregunta": "What does 'go on' mean?",
+    "respuestas": [
+      {"letra": "a", "texto": "To stop"},
+      {"letra": "b", "texto": "To continue"},
+      {"letra": "c", "texto": "To rest"},
+      {"letra": "d", "texto": "To decline"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 124,
+    "pregunta": "Dad ______________ at the moment to visit the new house.",
+    "respuestas": [
+      {"letra": "a", "texto": "come"},
+      {"letra": "b", "texto": "will come"},
+      {"letra": "c", "texto": "is coming"},
+      {"letra": "d", "texto": "would come"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 125,
+    "pregunta": "Fill in the blank: __________ you open the window? It is quite hot in here. (this is a request)",
+    "respuestas": [
+      {"letra": "a", "texto": "Must"},
+      {"letra": "b", "texto": "Are"},
+      {"letra": "c", "texto": "Do"},
+      {"letra": "d", "texto": "Could"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 126,
+    "pregunta": "I ____________ (visit) my cousin last Wednesday.",
+    "respuestas": [
+      {"letra": "a", "texto": "visit"},
+      {"letra": "b", "texto": "visited"},
+      {"letra": "c", "texto": "visits"},
+      {"letra": "d", "texto": "visiting"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 127,
+    "pregunta": "We ___________ (take) an exam at the moment.",
+    "respuestas": [
+      {"letra": "a", "texto": "are taking"},
+      {"letra": "b", "texto": "takes"},
+      {"letra": "c", "texto": "took"},
+      {"letra": "d", "texto": "taking"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 128,
+    "pregunta": "The answers to the quiz ______ (provide) at the end of each session on Mondays.",
+    "respuestas": [
+      {"letra": "a", "texto": "will be provided"},
+      {"letra": "b", "texto": "is provided"},
+      {"letra": "c", "texto": "will be provide"},
+      {"letra": "d", "texto": "provided"}
+    ],
+    "correcta": "a"
+  },
+  {
+    "id": 129,
+    "pregunta": "Julio _______________ to Spain in the future.",
+    "respuestas": [
+      {"letra": "a", "texto": "come"},
+      {"letra": "b", "texto": "is coming"},
+      {"letra": "c", "texto": "will come"},
+      {"letra": "d", "texto": "would come"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 130,
+    "pregunta": "Which sentence is in the future continuous?",
+    "respuestas": [
+      {"letra": "a", "texto": "Next year, we will finish college."},
+      {"letra": "b", "texto": "Next year, we will have finished college."},
+      {"letra": "c", "texto": "Next year, we will finishing college."},
+      {"letra": "d", "texto": "Next year, we will be finishing college."}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 131,
+    "pregunta": "What is the past tense of 'READ'?",
+    "respuestas": [
+      {"letra": "a", "texto": "READED"},
+      {"letra": "b", "texto": "READEN"},
+      {"letra": "c", "texto": "RED"},
+      {"letra": "d", "texto": "READ"}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 132,
+    "pregunta": "They said, 'We will go to the park.'",
+    "respuestas": [
+      {"letra": "a", "texto": "They said they are going to the park."},
+      {"letra": "b", "texto": "They said they will go to the park."},
+      {"letra": "c", "texto": "They said we will go to the park."},
+      {"letra": "d", "texto": "They said they would go to the park."}
+    ],
+    "correcta": "d"
+  },
+  {
+    "id": 133,
+    "pregunta": "They _____ be at home, it is already 9pm. (deducción)",
+    "respuestas": [
+      {"letra": "a", "texto": "might"},
+      {"letra": "b", "texto": "will"},
+      {"letra": "c", "texto": "must"},
+      {"letra": "d", "texto": "could"}
+    ],
+    "correcta": "c"
+  },
+  {
+    "id": 134,
+    "pregunta": "In the word 'dogs,' what type of morpheme is '-s'?",
+    "respuestas": [
+      {"letra": "a", "texto": "Free"},
+      {"letra": "b", "texto": "Bound"},
+      {"letra": "c", "texto": "Root"},
+      {"letra": "d", "texto": "Derivational"}
+    ],
+    "correcta": "b"
+  },
+  {
+    "id": 135,
+    "pregunta": "It is not necessary ________ a bow tie in the interview.",
+    "respuestas": [
+      {"letra": "a", "texto": "of wearing"},
+      {"letra": "b", "texto": "wearing"},
+      {"letra": "c", "texto": "wear"},
+      {"letra": "d", "texto": "to wear"}
+    ],
+    "correcta": "d"
+  }
+]

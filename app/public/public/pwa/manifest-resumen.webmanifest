@@ -1,0 +1,25 @@
+{
+  "id": "/pwa/resumen",
+  "name": "Padel Scout Resumen",
+  "short_name": "Scout Resumen",
+  "description": "App instalable para consultar el dashboard integral de scouting en la vista de resumen.",
+  "start_url": "/resumen",
+  "scope": "/resumen",
+  "display": "standalone",
+  "background_color": "#081a32",
+  "theme_color": "#081a32",
+  "icons": [
+    {
+      "src": "/static/pwa/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/static/pwa/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

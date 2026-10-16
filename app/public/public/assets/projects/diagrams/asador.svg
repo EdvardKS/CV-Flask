@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 600" font-family="system-ui,Segoe UI,sans-serif">
+  <defs>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#38bdf8"/></marker>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#f59e0b"/></marker>
+    <marker id="a3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#58c896"/></marker>
+  </defs>
+  <rect width="1100" height="600" fill="#0f172a"/>
+  <text x="40" y="46" fill="#e2e8f0" font-size="23" font-weight="700">Asador La Morenica · del encargo al horno</text>
+  <text x="40" y="72" fill="#94a3b8" font-size="13">Objetivo: saber cuánto montar antes de encenderlo, y no perder ningún encargo</text>
+
+  <rect x="40" y="106" width="200" height="80" rx="12" fill="#111827" stroke="#334155"/>
+  <text x="140" y="136" fill="#e2e8f0" font-size="13" text-anchor="middle" font-weight="700">Cliente</text>
+  <text x="140" y="158" fill="#94a3b8" font-size="11" text-anchor="middle">encarga sin crear cuenta</text>
+  <text x="140" y="176" fill="#64748b" font-size="10" text-anchor="middle">web pública</text>
+
+  <rect x="300" y="98" width="220" height="96" rx="12" fill="#0b2c3d" stroke="#38bdf8" stroke-width="2"/>
+  <text x="410" y="128" fill="#7dd3fc" font-size="14" text-anchor="middle" font-weight="700">Aplicación</text>
+  <text x="410" y="150" fill="#cbd5e1" font-size="11" text-anchor="middle">pedidos · stock · caja</text>
+  <text x="410" y="170" fill="#cbd5e1" font-size="11" text-anchor="middle">panel del encargado</text>
+  <text x="410" y="188" fill="#64748b" font-size="10" text-anchor="middle">fachada del proyecto</text>
+
+  <rect x="580" y="98" width="200" height="96" rx="12" fill="#111827" stroke="#334155"/>
+  <text x="680" y="128" fill="#e2e8f0" font-size="13" text-anchor="middle" font-weight="700">Cola de trabajos</text>
+  <text x="680" y="150" fill="#94a3b8" font-size="11" text-anchor="middle">avisos WhatsApp</text>
+  <text x="680" y="170" fill="#94a3b8" font-size="11" text-anchor="middle">correos y tareas lentas</text>
+  <text x="680" y="188" fill="#64748b" font-size="10" text-anchor="middle">no bloquean el pedido</text>
+
+  <rect x="840" y="98" width="220" height="96" rx="12" fill="#111827" stroke="#334155"/>
+  <text x="950" y="128" fill="#e2e8f0" font-size="13" text-anchor="middle" font-weight="700">Base de datos</text>
+  <text x="950" y="150" fill="#94a3b8" font-size="11" text-anchor="middle">pedidos · stock · histórico</text>
+  <text x="950" y="170" fill="#94a3b8" font-size="11" text-anchor="middle">de venta por día</text>
+  <text x="950" y="188" fill="#64748b" font-size="10" text-anchor="middle">copia nocturna verificada</text>
+
+  <path d="M242 146 H298" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#a1)"/>
+  <path d="M522 146 H578" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#a1)"/>
+  <path d="M782 146 H838" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#a1)"/>
+
+  <text x="40" y="256" fill="#f59e0b" font-size="13" font-weight="700">LO QUE ALIMENTA LA PREDICCIÓN</text>
+
+  <rect x="40" y="274" width="230" height="92" rx="12" fill="#2a1a06" stroke="#f59e0b"/>
+  <text x="155" y="302" fill="#fbbf24" font-size="12" text-anchor="middle" font-weight="700">Clima de Villena</text>
+  <text x="155" y="324" fill="#fcd34d" font-size="11" text-anchor="middle">histórico y previsión 7 días</text>
+  <text x="155" y="344" fill="#a16207" font-size="10" text-anchor="middle">se sincroniza cada 2 días</text>
+
+  <rect x="300" y="274" width="230" height="92" rx="12" fill="#2a1a06" stroke="#f59e0b"/>
+  <text x="415" y="302" fill="#fbbf24" font-size="12" text-anchor="middle" font-weight="700">Festivos y fiestas</text>
+  <text x="415" y="324" fill="#fcd34d" font-size="11" text-anchor="middle">nacionales, autonómicos</text>
+  <text x="415" y="344" fill="#a16207" font-size="10" text-anchor="middle">y los dos locales de Villena</text>
+
+  <rect x="560" y="274" width="230" height="92" rx="12" fill="#2a1a06" stroke="#f59e0b"/>
+  <text x="675" y="302" fill="#fbbf24" font-size="12" text-anchor="middle" font-weight="700">Venta histórica</text>
+  <text x="675" y="324" fill="#fcd34d" font-size="11" text-anchor="middle">qué se vendió cada día</text>
+  <text x="675" y="344" fill="#a16207" font-size="10" text-anchor="middle">y a qué hora</text>
+
+  <rect x="820" y="266" width="240" height="108" rx="12" fill="#0d2018" stroke="#1f8a4e" stroke-width="2"/>
+  <text x="940" y="298" fill="#58c896" font-size="14" text-anchor="middle" font-weight="700">Recomendación</text>
+  <text x="940" y="322" fill="#cbd5e1" font-size="12" text-anchor="middle">"monta N barras"</text>
+  <text x="940" y="346" fill="#94a3b8" font-size="10" text-anchor="middle">se guarda cada vez que se muestra</text>
+
+  <path d="M272 320 H298" stroke="#f59e0b" stroke-width="2" marker-end="url(#a2)"/>
+  <path d="M532 320 H558" stroke="#f59e0b" stroke-width="2" marker-end="url(#a2)"/>
+  <path d="M792 320 H818" stroke="#f59e0b" stroke-width="2" marker-end="url(#a2)"/>
+
+  <rect x="600" y="424" width="460" height="96" rx="12" fill="#0b1220" stroke="#58c896" stroke-dasharray="6 4"/>
+  <text x="830" y="452" fill="#58c896" font-size="13" text-anchor="middle" font-weight="700">El encargado corrige al cerrar el día</text>
+  <text x="830" y="476" fill="#cbd5e1" font-size="11" text-anchor="middle">venta real y sobrante, frente a lo que se había calculado</text>
+  <text x="830" y="498" fill="#94a3b8" font-size="10" text-anchor="middle">la diferencia entre ambos es la señal con la que el modelo mejora</text>
+
+  <path d="M940 376 V422" stroke="#58c896" stroke-width="2" marker-end="url(#a3)"/>
+  <path d="M600 472 C 400 472, 300 440, 300 376" stroke="#58c896" stroke-width="2" fill="none" stroke-dasharray="5 4" marker-end="url(#a3)"/>
+  <text x="330" y="440" fill="#64748b" font-size="10">vuelve al histórico</text>
+
+  <rect x="40" y="424" width="520" height="96" rx="12" fill="#0b1220" stroke="#1e293b"/>
+  <text x="60" y="452" fill="#e2e8f0" font-size="12" font-weight="700">Medición de uso propia, sin terceros</text>
+  <text x="60" y="474" fill="#94a3b8" font-size="11">Las visitas se registran en la propia base de datos. No se guarda la IP:</text>
+  <text x="60" y="494" fill="#94a3b8" font-size="11">se convierte en un código con una clave que cambia cada día, y nada se</text>
+  <text x="60" y="512" fill="#94a3b8" font-size="11">escribe en el navegador, así que rechazar no deja rastro que borrar.</text>
+
+  <text x="40" y="566" fill="#64748b" font-size="11">Sin cookies de seguimiento · sin peticiones a terceros · consentimiento pedido antes de medir, y revocable en un clic</text>
+</svg>

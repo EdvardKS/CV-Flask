@@ -1,0 +1,1002 @@
+[
+  {
+    "q": "En un procesador con soporte para hyper-threading:",
+    "options": [
+      "Existen dos unidades de control.",
+      "Existen dos unidades aritmético-logicas.",
+      "Existen dos contadores de programa.",
+      "Puede haber en ejecucion threads de distintos procesos simultaneamente."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "La incorporacion de hebras resulta ventajosa porque:",
+    "options": [
+      "La imagen de memoria del proceso es mas pequena.",
+      "Los cambios de contexto entre procesos son mas rapidos.",
+      "Los cambios de contexto entre hebras son mas rapidos.",
+      "La ejecucion de los procesos se acelera."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Las arquitecturas MIMD:",
+    "options": [
+      "Secuencian varios flujos de instrucciones.",
+      "Se asocian al procesamiento vectorial.",
+      "Incorporan varias unidades de control. β",
+      "Se asocian a unidades segmentadas."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Si en una arquitectura se realizan las mismas operaciones de forma redundante sobre un flujo de datos:",
+    "options": [
+      "Es una arquitectura MiSD.",
+      "Es una arquitectura SIMD. Es una arquitectura SiSD.",
+      "Es una arquitectura SisD.",
+      "Es una arquitectura MIMD."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Por multithreading se entiende:",
+    "options": [
+      "Soporte para la creacion y administracion de hilos de ejecucion.",
+      "Mecanismos para evitar accesos concurrentes a recursos compartidos.",
+      "Mecanismos para evitar accesos concurrentes a zona de memoria compartida.",
+      "Soporte para varios procesos activos simultaneamente."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Si en una arquitectura existen varias unidades de control:",
+    "options": [
+      "Es una arquitectura MisD.",
+      "Es una arquitectura SiSD.",
+      "Es una arquitectura SIMD.",
+      "Es una arquitectura MIMD."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "El modelo Von-Newman tradicional de computacion:",
+    "options": [
+      "Es una arquitectura MiMD.",
+      "Es una arquitectura MiSsD.",
+      "Es una arquitectura SiSD.",
+      "Es una arquitectura SIMD."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "En un sistema MiMD donde toda la memoria es compartida:",
+    "options": [
+      "Es forzosamente un sistema fuertemente acoplado.",
+      "Es forzosamente un sistema debilmente acoplado.",
+      "Es forzosamente una sistema NUMA.",
+      "Es forzosamente un sistema UMA. acoplado."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En una red multietapa:",
+    "options": [
+      "Cualquier camino es posible en un instante determinado.",
+      "No todos los caminos son posibles en cada instante.",
+      "No puede haber las mismas etapas que conmutadores por etapa.",
+      "Siempre hay mas etapas que conmutadores por etapa."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La incorporacion de hebras resulta ventajosa porque:",
+    "options": [
+      "El contexto del proceso se reduce.",
+      "La imagen de memoria del proceso ahora puede copiarse.",
+      "No se requiere dar de alta un nuevo proceso para una misma funcionalidad.",
+      "La ejecucion de los procesos se acelera. una misma funcionalidad."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Las arquitecturas SIMD:",
+    "options": [
+      "Incorporan redundancia en los recursos de proceso.",
+      "Se asocian a unidades segmentadas.",
+      "Incorporan varias unidades de control.",
+      "Secuencian varios flujos de instrucciones. proceso."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En un sistema MiMD donde un procesador no puede acceder directamente a todos los modulos de memoria:",
+    "options": [
+      "Es un sistema UMA.",
+      "Es una sistema NUMA.",
+      "Es un sistema de barras cruzadas.",
+      "Es un sistema debilmente acoplado."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Las arquitecturas SIMD:",
+    "options": [
+      "Incorporan varias unidades de control.",
+      "Se asocian a unidades segmentadas.",
+      "Se asocian al procesamiento vectorial.",
+      "Secuencian varios flujos de instrucciones."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Si una misma instruccion puede aplicarse simultaneamente a varios datos:",
+    "options": [
+      "Es una arquitectura MiSD.",
+      "Es una arquitectura SIMD.",
+      "Es una arquitectura SiSD.",
+      "Es una arquitectura MIMD."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "En una red multietapa: numero de procesadores y modulos de memoria.",
+    "options": [
+      "Hay mas enlaces que en una red de barras cruzadas para el mismo numero de procesadores y modulos de memoria.",
+      "Cada modulo de memoria se conecta a un unico conmutador.",
+      "Hay mas conmutadores que en una red de barras cruzadas para el mismo numero de procesadores y modulos de memoria pero menos enlaces.",
+      "Hay mas conmutadores que en una red de barras cruzadas para el mismo numero de procesadores y modulos de memoria."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La incorporacion de hebras resulta ventajosa porque:",
+    "options": [
+      "Los cambios de contexto entre hebras son mas rapidos.",
+      "Las hebras se planifican por lotes por parte del sistema operativo.",
+      "Las pilas comparten la pila del proceso.",
+      "Las hebras administran sus propios recursos."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En un sistema MiMD donde todos los procesadores tardan el mismo tiempo t en acceder a cualquier modulo de memoria:",
+    "options": [
+      "Es una sistema NUMA.",
+      "Es un sistema de barras cruzadas.",
+      "Es un sistema debilmente acoplado.",
+      "Es un sistema UMA."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "En un procesador con soporte para multi-threading:",
+    "options": [
+      "Existen varias unidades de control.",
+      "Existen juegos de registros replicados.",
+      "Puede haber en ejecucion threads de distintos procesos simultaneamente.",
+      "Solo es posible ejecutar instrucciones de unico thread."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El metodo snoopy-writethrough: Mantiene la coherencia entre las memorias caches y la memoria principal.",
+    "options": [
+      "Mantiene la coherencia entre las memorias caches y la memoria principal.",
+      "No hace falta si solo hay 2 procesadores. Monitoriza las operaciones de lectura de memoria.",
+      "Monitoriza las operaciones de lectura de memoria.",
+      "No necesite monitorizar el bus."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En un sistema barras cruzadas con N procesadores y N modulos de memoria:",
+    "options": [
+      "Hay N * N enlaces.",
+      "Hay N * N conmutadores.",
+      "Hay 2 elevado a N conmutadores.",
+      "Hay 2 elevado a N enlaces."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La complejidad en un arbol red-black:",
+    "options": [
+      "Es O(n)",
+      "Es O(1)",
+      "Es O(nlog(n))",
+      "Es O(log(n) ①"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Si el 20% de una aplicacion es secuencial:",
+    "options": [
+      "Su ganancia de velocidad es 20.",
+      "Su ganancia de velocidad como maximo es 80. Su ganancia de velocidad como maximo es 20.",
+      "Su ganancia de velocidad como maximo es 20.",
+      "Su ganancia de velocidad como maximo es 1/ (20/100)."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "En un planificador O(n) :",
+    "options": [
+      "El tiempo invertido en elegir un proceso es proporcional a n.",
+      "Se tarda siempre lo mismo en elegir un proceso para su ejecucion.",
+      "El tiempo invertido en elegir un proceso de entre n es n.",
+      "La complejidad es constante."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "De acuerdo con la ley de Amdahl:",
+    "options": [
+      "La ganancia de velocidad de ejecucion de las aplicaciones no esta limitada.",
+      "La ganancia de velocidad es constante y solo depende de las partes no secuenciales del codigo.",
+      "La ganancia de velocidad es proporcional al numero de procesadores introducidos. La ganancia de velocidad no tiene un crecimiento lineal.",
+      "La ganancia de velocidad no tiene un crecimiento lineal."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "En un planificador O(n) :",
+    "options": [
+      "El tiempo invertido en elegir un proceso crece logaritmicamente.",
+      "El tiempo invertido en elegir un proceso crece exponencialmente.",
+      "El tiempo invertido en elegir un proceso es constante.",
+      "El tiempo invertido en elegir un proceso crece linealmente."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Si el 20% de una aplicacion es secuencial:",
+    "options": [
+      "Su ganancia de velocidad como maximo es 80.",
+      "Su ganancia de velocidad es 20.",
+      "Su ganancia de velocidad como maximo es 1/0,2).",
+      "Su ganancia de velocidad como maximo es 1/ (1 - 20/100),"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "A la hora disenar codigo para computacion paralela:",
+    "options": [
+      "No es adecuado utilizar memoria compartida.",
+      "No afectan las dependencias entre datos.",
+      "Es importante tener cuenta las necesidades de comunicacion/sincronizacion.",
+      "No es adecuado utilizar hebras."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Si el 75% de una aplicacion es paralelizable:",
+    "options": [
+      "Su ganancia de velocidad minima es 20.",
+      "Su ganancia de velocidad minima es 4.",
+      "Su ganancia de velocidad maxima es 20.",
+      "Su ganancia de velocidad maxima es 4."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "La instruccion find-first-bit-set:",
+    "options": [
+      "Tiene complejidad O(1) .",
+      "Tiene complejidad O(n) .",
+      "Utiliza 2 bytes.",
+      "Utiliza 4 bytes."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "La instruccion find-first-bit-set:",
+    "options": [
+      "Utiliza 160 bits.",
+      "Utiliza 32 bits.",
+      "Utiliza 20 bits.",
+      "Utiliza 40 bits."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Cambiar un proceso de procesador:",
+    "options": [
+      "Acelera la ejecucion del proceso.",
+      "Reduce el consumo de memoria del proceso.",
+      "No tiene asociada ninguna carga computacional.",
+      "Invalida el contenido de la memoria cache."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "En las colas para procesos de usuario del array active:",
+    "options": [
+      "La prioridad de los procesos es estatica.",
+      "No puedo haber procesos con prioridad menor de 1o0.",
+      "Se pueden reencolar procesos tras acabar su quantum.",
+      "La prioridad de los procesos va de -20 a 19."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "En un planificador O(1): El tiempo invertido en elegir un proceso crece exponencialmente.",
+    "options": [
+      "El tiempo invertido en elegir un proceso crece exponencialmente.",
+      "El tiempo invertido en elegir un proceso crece logaritmicamente.",
+      "El tiempo invertido en elegir un proceso crece linealmente.",
+      "El tiempo invertido en elegir un proceso es constante."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "En las colas RT del array expired:",
+    "options": [
+      "Se introducen los procesos RT planificados con niceness menor que -20.",
+      "Se introducen los procesos RT planificados con FiFO cuando agotan su quantum.",
+      "Nunca habra procesos introducidos.",
+      "Se introducen los procesos RT planificados con Round-Robin cuando agotan su quantum."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "La instruccion find-first-bit-set:",
+    "options": [
+      "Determina el proceso mas prioritario del sistema.",
+      "Determina la cola no vacia de mayor prioridad.",
+      "Determina la cola no vacia de menor prioridad.",
+      "Determina la cola vacia de mayor prioridad."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El concepto de fair clock que introducen los planificadores CFS:",
+    "options": [
+      "Hace que cada tarea avance su tiempo de espera en la misma cantidad.",
+      "Hace que las tareas en espera acumulen las mismas unidades que la tarea en ejecuci\"n.",
+      "La tarea en ejecuci\"n s\"lo puede ejecutar el mismo tiempo que lleva esperando el resto.",
+      "Representa un contador del tiempo de espera para cada una de las tareas."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La instruccion find-first-bit-set:",
+    "options": [
+      "Utiliza 160 bytes.",
+      "Utiliza 32 bytes. β",
+      "Utiliza 20 bytes.",
+      "Utiliza 40 bytes."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Si el 25% de una aplicacion es secuencial:",
+    "options": [
+      "Su ganancia de velocidad maxima es 4.",
+      "Su ganancia de velocidad minima es 20.",
+      "Su ganancia de velocidad minima es 4.",
+      "Su ganancia de velocidad maxima es 20."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "De acuerdo con la ley de Amdahl:",
+    "options": [
+      "La ganancia de velocidad esta afectada por las necesidades de sincronizacion entre los modulos de una aplicacion.",
+      "La ganancia de velocidad de ejecucion de las aplicaciones esta preestablecida. La ganancia de velocidad solo depende del numero de procesadores del sistema.",
+      "La ganancia de velocidad solo depende del numero de procesadores del sistema.",
+      "La ganancia de velocidad esta afectada por el sistema operativo que se utilice. modulos de una aplicacion."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En las colas RT del array active:",
+    "options": [
+      "Se introducen los procesos de usuarios cuando su niceness es menor que -20.",
+      "Se introducen solo los procesos RT planificados con Round-Robin.",
+      "Se introducen solo los procesos RT planificados con FIFO.",
+      "La prioridad de los procesos es estatica."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "El uso de técnicas de cifrado pretende resolver:",
+    "options": [
+      "Los problemas derivados de la heterogeneidad en un sistema distribuido.",
+      "Los problemas derivados de la extensibilidad de un sistema distribuido.",
+      "Los problemas derivados de la escalabilidad de un sistema distribuido.",
+      "Los problemas derivados de la seguridad en un sistema distribuido."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Los nodos de un sistema distribuido y de un cluster se parecen en:",
+    "options": [
+      "Ambos tienen su propio sistema operativo.",
+      "Los primeros tienen su propio sistema operativo y los segundos no.",
+      "Los primeros son sistemas multiprocesadores y los segundos no.",
+      "Los primeros son sistemas multicomputadores y los segundos no."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "El uso de un middleware pretende resolver:",
+    "options": [
+      "Los problemas derivados de la extensibilidad de un sistema distribuido.",
+      "Los problemas derivados de la heterogeneidad en un sistema distribuido.",
+      "Los problemas derivados de la escalabilidad de un sistema distribuido.",
+      "Los problemas derivados de la transparencia a la ubicacion en un sistema distribuido."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "iCual de las siguientes afirmaciones sobre los sistemas distribuidos es cierta\":",
+    "options": [
+      "No pueden utilizarse para aumentar la velocidad de ejecucion de aplicaciones.",
+      "No son sistemas concurrentes.",
+      "No son sistemas escalables.",
+      "Son sistemas que favorecen el acceso a recursos compartidos. ("
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "En un sistema distribuido, heterogeneidad significa:",
+    "options": [
+      "Que todos los sistemas utilizan la misma arquitectura.",
+      "Que todos los elementos utilizan los mismos protocolos.",
+      "Que se pueden anadir nuevos elementos al sistema.",
+      "Que los elementos integrantes del sistema pueden tener diferencias significativas."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Si un servicio se solicita de forma distinta en la maquina donde reside que en resto:",
+    "options": [
+      "Podemos afirmar que el sistema no es transparente a la ubicacion.",
+      "Podemos afirmar que el sistema no es transparente a la concurrencia.",
+      "Podemos afirmar que el sistema no es transparente a la movilidad.",
+      "Podemos afirmar que el sistema no es transparente al acceso."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Que un servicio se solicite como 127.0.0.1/service desde una maquina y como 198.162.1.32/service desde otra indica:",
+    "options": [
+      "Transparencia acceso pero no a la ubicacion.",
+      "Transparencia a la ubicacion pero no a la movilidad. Transparencia a la ubicacion pero no al acceso",
+      "Transparencia a la ubicacion pero no al acceso.",
+      "Transparencia acceso pero no a la movilidad."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "iCual de las siguientes no es una caracteristica de los sistemas distribuidos\":",
+    "options": [
+      "Son sistemas que se basan en el uso de memoria compartida.",
+      "Son sistemas que no tienen necesidades de sincronizacion y comunicacion.",
+      "Son sistemas donde hay replicacion.",
+      "Son sistemas tolerantes a fallos."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En un sistema multicomputador MPP:",
+    "options": [
+      "Cada nodo lleva su propio sistema operativo.",
+      "La memoria es distribuida.",
+      "La memoria es compartida.",
+      "Los procesadores no estan interconectados."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El uso de protocolos abiertos pretende resolver:",
+    "options": [
+      "Los problemas derivados de la seguridad en un sistema distribuido.",
+      "Los problemas derivados de la heterogeneidad en un sistema distribuido.",
+      "Los problemas derivados de la extensibilidad de un sistema distribuido. Los problemas derivados de la escalabilidad de un sistema distribuido.",
+      "Los problemas derivados de la escalabilidad de un sistema distribuido."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Si un cierto proceso puede ejecutarse en una maquina pero no en otra:",
+    "options": [
+      "Podemos afirmar que el sistema no es transparente al acceso.",
+      "Podemos afirmar que el sistema no es transparente a la concurrencia.",
+      "Podemos afirmar que el sistema no es transparente a la ubicacion.",
+      "Podemos afirmar que el sistema no es transparente a la movilidad."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Si un cierto servicio no funciona correctamente cuando lo solicitan varios procesos:",
+    "options": [
+      "Podemos afirmar que el sistema no es transparente a la movilidad.",
+      "Podemos afirmar que el sistema no es transparente a la ubicacion.",
+      "Podemos afirmar que el sistema no es transparente al acceso.",
+      "Podemos afirmar que el sistema no es transparente a la concurrencia."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "iCual de las siguientes es una caracteristica de los sistemas distribuidos\":",
+    "options": [
+      "Son sistemas que no tienen necesidades de sincronizacion y comunicacion.",
+      "Son sistemas intolerantes a fallos.",
+      "Son sistemas donde no hay replicacion.",
+      "Son sistemas que no disponen de memoria compartida."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "iCual de las siguientes es una caracteristica de los sistemas distribuidos\":",
+    "options": [
+      "Son sistemas donde no hay paralelismo.",
+      "Son sistemas con puntos de fallo localizados.",
+      "Son sistemas intolerantes a fallos.",
+      "Son sistemas sin un reloj global de referencia."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "iCual de las siguientes es una desventaja de los sistemas distribuidos\":",
+    "options": [
+      "No existen elementos que puedan dar lugar a cuellos de botellas.",
+      "El software a desarrollar es mas sencillo.",
+      "La distribucion no requiere ningun coste.",
+      "Hay un decremento en la seguridad de la informacion."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Si en un sistema distribuido ocurre que el incremento del usuarios degrada notablemente su rendimiento:",
+    "options": [
+      "Podemos afirmar que el sistema no es transparente a la concurrencia.",
+      "Podemos afirmar que el sistema no es seguro.",
+      "Podemos afirmar que el sistema no es escalable.",
+      "Podemos afirmar que el sistema no es extensible."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Si para acceder a un determinado servicio es necesario conocer la maquina donde reside su servidor:",
+    "options": [
+      "Podemos afirmar que el sistema no es transparente a la concurrencia.",
+      "Podemos afirmar que el sistema no es transparente a la ubicacion.",
+      "Podemos afirmar que el sistema no es transparente al acceso.",
+      "Podemos afirmar que el sistema no es transparente a la movilidad."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "iCual de las siguientes no es una caracteristica de los sistemas distribuidos\":",
+    "options": [
+      "Los sistemas son escalables.",
+      "Los sistemas tienen acceso a servicios de otros sistemas.",
+      "Tienen buena relaci\"n coste/rendimiento.",
+      "Los mecanismos de comunicaci\"n no pueden embeberse en lenguajes de programaci\"n."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Que un servidor de correo electronico reenvie automaticamente correos devueltos es un ejempo de:",
+    "options": [
+      "Transparencia a la movilidad.",
+      "Transparencia a la escalabilidad. Transparencia a la ubicacion.",
+      "Transparencia a la ubicacion.",
+      "Transparencia a los fallos."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "iCual de las siguientes no es una caracteristica de los sistemas distribuidos\":",
+    "options": [
+      "Son sistemas que integran elementos identicos.",
+      "Son sistemas con necesidades de sincronizacion y comunicacion.",
+      "Son sistemas donde la ocurrencia de fallos no esta localizada.",
+      "Son sistemas donde no existe un reloj global de referencia."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Podemos afirmar que .NET:",
+    "options": [
+      "Es un mecanismo de comunicacion de bajo nivel basado en Poo.",
+      "Es un mecanismo de comunicacion de alto nivel que utiliza sockets.",
+      "Es un mecanismo de comunicacion de bajo nivel que no utiliza sockets.",
+      "Es un mecanismo de comunicacion de alto nivel que no utiliza sockets."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Se puede afirmar que los sockets:",
+    "options": [
+      "Son mecanismos de comunicacion a nivel de red.",
+      "Son mecanismos de comunicacion a nivel de transporte.",
+      "Son mecanismos de comunicacion de alto nivel.",
+      "No pueden utilizarse para utilizar procesos ubicados en la misma maquina."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Los stream sockets:",
+    "options": [
+      "Proporcionan un mecanismo orientado a conexion.",
+      "No garantizan el orden de entrega de los mensajes.",
+      "Permiten una implementacion del protocolo UDP.",
+      "Intercalan separacion entre los mensajes."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Podemos afirmar que RPC:",
+    "options": [
+      "Es un mecanismo de comunicacion de alto nivel que no utiliza sockets.",
+      "Es un mecanismo de comunicacion de alto nivel que utiliza sockets.",
+      "Es un mecanismo de comunicacion de bajo nivel.",
+      "Es un mecanismo de comunicacion de alto nivel basado en POo."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Si un mecanismo de comunicacion es asincrono:",
+    "options": [
+      "La primitiva send siempre es bloqueante.",
+      "La primitiva send puede ser bloqueante o no bloqueante.",
+      "La primitiva receive siempre es bloqueante.",
+      "La primitiva receive puede ser bloqueante o no bloqueante."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Si en un mecanismo de comunicacion los mensajes tienen longitud fija:",
+    "options": [
+      "No se puenden utilizar primitivas bloqueantes.",
+      "Su procesamiento se realiza de forma mas rapida que si la longitud es variable.",
+      "Su procesamiento se realiza de forma menos agil.",
+      "Nunca se desperdicia capacidad del mensaje en los envios."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La funcion bind se utiliza para:",
+    "options": [
+      "Asignar un puerto a una estructura in_addr. Asignar un puerto a una estructura sockaddr.",
+      "Asignar un puerto a una estructura sockaddr.",
+      "Asignar una direccion IP a una estructura in_addr.",
+      "Asignar una estructura sockaddr como direccion de un socket."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Podemos afirmar que RMl:",
+    "options": [
+      "Es un mecanismo de comunicacion de alto nivel que no utiliza sockets.",
+      "Es un mecanismo de comunicacion de alto nivel que utiliza sockets.",
+      "Es un mecanismo de comunicacion de bajo nivel que no utiliza sockets.",
+      "Es un mecanismo de comunicacion de bajo nivel que utiliza sockets."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Si en un mecanismo de comunicacion los mensajes tienen longitud variable:",
+    "options": [
+      "Las primitivas ahorran tiempo al no tener que determinar la estructura de los mensajes",
+      "Su numero de campos es fijo pero la longitud de estos puede variar.",
+      "Su numero de campos es variable pero la longitud de estos es fija.",
+      "El aprovechamiento de la red es mas eficiente."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "La funcion accept:",
+    "options": [
+      "Hace que se cree un nuevo socket para el cliente y cierra el actual.",
+      "Hace que se cree un nuevo socket para el cliente y mantiene el actual.",
+      "Proporciona al cliente un nuevo socket de comunicacion.",
+      "Solo se ejecuta en protocolos orientados a conexion."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Los datagram sockets:",
+    "options": [
+      "Permiten una implementacion del protocolo TCP.",
+      "Intercalan separacion entre los mensajes.",
+      "Garantizan el orden de entrega de los mensajes.",
+      "Proporcionan un mecanismo orientado a conexion."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Se puede afirmar que los sockets:",
+    "options": [
+      "Son mecanismos de comunicacion a nivel de enlace.",
+      "Son mecanismos de comunicacion de bajo nivel.",
+      "Se corresponden con direcciones IP mas un identificador de proceso. Solo permiten comunicar procesos ubicados en la misma maquina.",
+      "Solo permiten comunicar procesos ubicados en la misma maquina."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "La funcion connect:",
+    "options": [
+      "Se ejecuta en protocolos orientados y no orientados a conexion.",
+      "Puede asignar automaticamente una direccion de transporte al proceo.",
+      "Proporciona al cliente un nuevo socket de comunicacion.",
+      "Devuelve el socket proporcionado por el servidor."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "Los raw sockets:",
+    "options": [
+      "Permiten una manipulacion directa de las propiedades del protocolo IP.",
+      "Permiten una manipulacion directa de las propiedades del protocolo TCP.",
+      "Permiten una manipulacion directa de las propiedades del protocolo ACK.",
+      "Permiten una manipulacion directa de las propiedades del protocolo UDP."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "La funcion accept:",
+    "options": [
+      "Crea un socket para intercambiar informacion con el cliente.",
+      "Es una funcion no bloqueante.",
+      "Crea un socket que es compartido por todos los clientes.",
+      "Devuelve el socket por el que servidor escucha peticiones de conexion."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "Podemos afirmar que CORBA:",
+    "options": [
+      "Es un mecanismo de comunicacion que no utiliza sockets.",
+      "Es un mecanismo de comunicacion de alto nivel.",
+      "Es un mecanismo de comunicacion de bajo nivel.",
+      "Es un mecanismo de comunicacion integrado en el sistema operativo."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El segundo parametro de listen indica:",
+    "options": [
+      "El numero minimo de conexiones que puede aceptar un socket.",
+      "El numero maximo de conexiones que, una vez aceptadas, podran quedar a la espera de recibir un nuevo socket con el cliente",
+      "El numero maximo de conexiones que puede aceptar un socket.",
+      "El numero maximo de conexiones que podran quedar encoladas a la espera de ser aceptadas."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Si en un mecanismo de comunicacion los mensajes tienen longitud fija",
+    "options": [
+      "Su numero de campos es variable pero la longitud de estos es fija",
+      "Las primitivas ahorran tiempo al poder omitir algunos campos.",
+      "Su numero de campos es fijo pero la longitud de estos puede variar.",
+      "Las primitivas ahorran tiempo al no tener que determinar la estructura de los mensajes."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Si se utiliza comunicacion directa entre procesos:",
+    "options": [
+      "Se puede recibir un mensaje de un buzon pero no enviarlo a este tipo de estructuras.",
+      "La primitiva send siempre sera bloqueante pero receive puede no serlo.",
+      "Las primitivas send y receive siempre especificaran procesos.",
+      "Las primitivas send y receive siempre especificaran procesos."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "La funcion accept:",
+    "options": [
+      "Devuelve el socket que utilizo el cliente para hacer connect.",
+      "Devuelve el socket creado para intercambiar informacion con el cliente.",
+      "Devuelve el socket por el que servidor escucha peticiones de conexion.",
+      "Devuelve un socket para escritura y otro para lectura."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "En el servicio de nombrado:",
+    "options": [
+      "Un dominio se asocia con una sola ruta.",
+      "Un servidor se asocia con un solo dominio.",
+      "Una ruta se asocia con un solo dominio.",
+      "Un dominio se asocia con varios servidores."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "El valor aleatorio R para la seguridad de los UFID:",
+    "options": [
+      "Se almacena en el UFID del cliente.",
+      "Se vincula a un archivo.",
+      "Se vincula a un dominio.",
+      "Se vincula a un servidor."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El UFID de un archivo:",
+    "options": [
+      "Es gestionado por el servicio de identificacion. Puede ser compartido por varios archivos.",
+      "Puede ser compartido por varios archivos.",
+      "Identifica los atributos de un archivo.",
+      "Tiene tramos correspondientes a la ruta del archivo."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "iCual de las siguientes no es una propiedad de los sistemas de archivos distribuidos\":",
+    "options": [
+      "Transparencia a la escabilidad.",
+      "Transparencia a la APl que indique el cliente.",
+      "Transparencia a la movilidad.",
+      "Transparencia a la ubicacion."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El sistema de nombrado no gestiona aspectos relacionados con:",
+    "options": [
+      "Los tipos de archivos.",
+      "Los privilegios de acceso por parte de los usuarios.",
+      "El numero de usuarios que mantiene abierto el archivo.",
+      "El propietario del archivo."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "El servidor de archivos no gestiona aspectos relacionados con:",
+    "options": [
+      "La ruta de acceso al archivo.",
+      "El ultimo acceso en modo lectura al archivo.",
+      "La consulta de los atributos del archivo.",
+      "La fecha de creacion del archivo."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En el servicio de nombrado:",
+    "options": [
+      "Un dominio se asocia con varios servidores.",
+      "A un dominio le corresponden varios servidores.",
+      "A una ruta le corresponden varios dominios.",
+      "A un servidor le pueden corresponder varios dominios."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "Con respecto al diseno de los sistemas de archivos distribuidos:",
+    "options": [
+      "Es preferible favorecer numeros elevados de operaciones de comparticion.",
+      "Es preferible homogeneizar el tratamiento de todos los archivos.",
+      "Son preferibles archivos no muy grandes.",
+      "Es preferible integrar los archivos temporales como parte del sistema de archivos distribuido."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "El valor aleatorio R para la seguridad de los UFID:",
+    "options": [
+      "Se envia al cliente para que calcule el valor de la peticion.",
+      "Se utiliza para determinar la ruta del archivo almacenado.",
+      "Se envia al cliente como parte de su UFID. β",
+      "No se devuelve al cliente como parte de su UFID,"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "iCual de las siguientes no es una propiedad de los sistemas de archivos distribuidos\":",
+    "options": [
+      "Ofrecen mecanismos para la identificacion univoca de los archivos.",
+      "Ofrecen sistemas de respaldo y back-up.",
+      "Proporcionan mecanismos para el acceso concurrente a la informacion. Proporcionan un mecanismo de almacenamiento duradero.",
+      "Proporcionan un mecanismo de almacenamiento duradero."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El UFID de un archivo:",
+    "options": [
+      "Es unico en el sistema.",
+      "Es gestionado por el servicio de archivos.",
+      "Solo es conocido en los sistemas clientes.",
+      "Solo es conocido en los servidores."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En la navegacion recursiva:",
+    "options": [
+      "Cada servidor responde al cliente.",
+      "El cliente consulta todas las rutas a todos los servidores.",
+      "Solo se envia una respuesta al cliente desde los servidores.",
+      "El servidor resuelve su parte de la ruta e informa del cliente del siguiente servidor a consultar."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "Con respecto al diseno de los sistemas de archivos distribuidos:",
+    "options": [
+      "Es preferible integrar los archivos temporales como parte del sistema de archivos distribuido. Son preferibles archivos de gran tamano.",
+      "Son preferibles archivos de gran tamano.",
+      "Es preferible homogeneizar el tratamiento de todos los archivos.",
+      "Es preferible favorecer la baja frecuencia de las operaciones de comparticion."
+    ],
+    "correctIndex": 3
+  },
+  {
+    "q": "El sistema de nombrado gestiona aspectos relacionados con:",
+    "options": [
+      "La ruta de acceso al archivo.",
+      "La consulta de los atributos del archivo.",
+      "El ultimo acceso realizado sobre el archivo.",
+      "El tamano del archivo."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "En la navegacion iterativa:",
+    "options": [
+      "Un servidor resuelve su parte de la ruta y las de otros servidores.",
+      "El servidor resuelve su parte de la ruta e informa del cliente del siguiente servidor a consultar.",
+      "El cliente consulta todas las rutas a todos los servidores.",
+      "Resuelta una parte de la ruta, el cliente pregunta por el resto a un servidor cualquiera."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "El servidor de archivos gestiona aspectos relacionados con:",
+    "options": [
+      "Los tipos de archivos.",
+      "El propietario del archivo.",
+      "La consulta de los atributos del archivo.",
+      "Los privilegios de acceso por parte de los usuarios."
+    ],
+    "correctIndex": 2
+  },
+  {
+    "q": "El valor aleatorio C para la seguridad de los UFID:",
+    "options": [
+      "Se envia al cliente por el servidor de archivos.",
+      "Se envia por el cliente como parte del UFiD del archivo.",
+      "Se calcula como resultado de la operacion de R y A. (",
+      "Se almacena en el UFID que mantiene el servidor."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "En la navegacion iterativa:",
+    "options": [
+      "El cliente consulta todas las rutas a todos los servidores.",
+      "Cada servidor no consulta a otros servidores por partes de la ruta que no le corresponden.",
+      "Solo se envia una respuesta al cliente desde los servidores.",
+      "Cada servidor consulta a otros servidores por partes de la ruta que no le corresponden."
+    ],
+    "correctIndex": 1
+  },
+  {
+    "q": "iCual de las siguientes no es una propiedad de los sistemas de archivos distribuidos\":",
+    "options": [
+      "Separacion e integracion del contenido de los archivos en el sistema.",
+      "Transparencia a la replicacion.",
+      "Identificacion unica de archivos.",
+      "Sistema de almacenamiento permanente."
+    ],
+    "correctIndex": 0
+  },
+  {
+    "q": "iCual de las siguientes no es una propiedad de los sistemas de archivos distribuidos\":",
+    "options": [
+      "Limitacion de la tasa de transferencia de archivos a traves de la red.",
+      "Transparencia a la operacion concurrente.",
+      "Gestion de la seguridad.",
+      "Tolerancia a fallos."
+    ],
+    "correctIndex": 0
+  }
+]

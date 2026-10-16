@@ -1,0 +1,75 @@
+[
+  {
+    "category": "FB6 · Paso 1/6 — Tipo de contraste",
+    "context": "Servidores A y B: la carga de trabajo sigue una distribución normal, con desviaciones típicas σ_A = 6 ms y σ_B = 7 ms. Se prueba una optimización que pretende igualar los tiempos medios de respuesta.\nMuestras: n_A = 10 con media x̄_A = 20 ms; n_B = 15 con media x̄_B = 30 ms.\nNivel de significación α = 5%.",
+    "q": "¿Qué tipo de contraste realizaría?",
+    "options": [
+      "Contraste de media de población normal y varianza desconocida.",
+      "Contraste de varianza de población normal.",
+      "Contraste de diferencias de medias de poblaciones normales y varianzas conocidas."
+    ],
+    "correctIndex": 2,
+    "evidence": "Se comparan las medias de DOS poblaciones (servidor A y servidor B), ambas con distribución normal y con desviaciones típicas CONOCIDAS (σ_A=6, σ_B=7). Por eso el contraste adecuado es el de diferencias de medias de poblaciones normales con varianzas conocidas. Hipótesis: H₀: μ_A = μ_B frente a H₁: μ_A ≠ μ_B (bilateral, porque queremos saber si son iguales o no)."
+  },
+  {
+    "category": "FB6 · Paso 2/6 — Distribución del estadístico",
+    "context": "Servidores A y B: la carga de trabajo sigue una distribución normal, con desviaciones típicas σ_A = 6 ms y σ_B = 7 ms. Se prueba una optimización que pretende igualar los tiempos medios de respuesta.\nMuestras: n_A = 10 con media x̄_A = 20 ms; n_B = 15 con media x̄_B = 30 ms.\nNivel de significación α = 5%.",
+    "q": "¿Cómo se distribuye el estadístico que tiene que utilizar?",
+    "options": [
+      "N(0,1)",
+      "T Student",
+      "Chi-cuadrado"
+    ],
+    "correctIndex": 0,
+    "evidence": "Como las varianzas poblacionales son CONOCIDAS, el estadístico de contraste sigue una distribución Normal estándar N(0,1). Si las varianzas fueran desconocidas, usaríamos la T de Student. La Chi-cuadrado se usa para contrastes de varianza, no de medias."
+  },
+  {
+    "category": "FB6 · Paso 3/6 — Valor del estadístico",
+    "context": "Servidores A y B: la carga de trabajo sigue una distribución normal, con desviaciones típicas σ_A = 6 ms y σ_B = 7 ms. Se prueba una optimización que pretende igualar los tiempos medios de respuesta.\nMuestras: n_A = 10 con media x̄_A = 20 ms; n_B = 15 con media x̄_B = 30 ms.\nNivel de significación α = 5%.",
+    "q": "¿Cuánto vale el estadístico de contraste? (Use 3 decimales)",
+    "options": [
+      "-3.817",
+      "-3.800",
+      "-4.000",
+      "-2.500"
+    ],
+    "correctIndex": 0,
+    "evidence": "Z = (x̄_A - x̄_B) / √(σ_A²/n_A + σ_B²/n_B) = (20 - 30) / √(6²/10 + 7²/15) = -10 / √(3.6 + 3.267) = -10 / √6.867 = -10 / 2.620 = -3.817. El signo negativo indica que la media de A es menor que la de B."
+  },
+  {
+    "category": "FB6 · Paso 4/6 — Número de regiones críticas",
+    "context": "Servidores A y B: la carga de trabajo sigue una distribución normal, con desviaciones típicas σ_A = 6 ms y σ_B = 7 ms. Se prueba una optimización que pretende igualar los tiempos medios de respuesta.\nMuestras: n_A = 10 con media x̄_A = 20 ms; n_B = 15 con media x̄_B = 30 ms.\nNivel de significación α = 5%.",
+    "q": "¿Cuántas regiones críticas hay?",
+    "options": [
+      "1",
+      "2"
+    ],
+    "correctIndex": 1,
+    "evidence": "El contraste es BILATERAL porque H₁: μ_A ≠ μ_B (distinta, no mayor ni menor). En un contraste bilateral siempre hay 2 regiones críticas: una en la cola izquierda y otra en la cola derecha de la distribución. Si fuera unilateral (H₁: μ_A > μ_B o H₁: μ_A < μ_B) habría solo 1 región crítica."
+  },
+  {
+    "category": "FB6 · Paso 5/6 — Valores críticos",
+    "context": "Servidores A y B: la carga de trabajo sigue una distribución normal, con desviaciones típicas σ_A = 6 ms y σ_B = 7 ms. Se prueba una optimización que pretende igualar los tiempos medios de respuesta.\nMuestras: n_A = 10 con media x̄_A = 20 ms; n_B = 15 con media x̄_B = 30 ms.\nNivel de significación α = 5%.",
+    "q": "¿Cuáles son los valores que determinan las regiones críticas? (3 decimales)",
+    "options": [
+      "-1.960 y +1.960",
+      "-1.645 y +1.645",
+      "-2.576 y +2.576",
+      "-1.282 y +1.282"
+    ],
+    "correctIndex": 0,
+    "evidence": "Con α = 5% y contraste bilateral, el nivel de significación se reparte entre las dos colas: α/2 = 2.5% en cada cola. En la N(0,1), el valor z que deja el 2.5% en la cola derecha es z₀.₀₂₅ = 1.960. Por tanto los valores críticos son -1.960 y +1.960. Si fuera unilateral con α=5% sería ±1.645, y con α=1% bilateral sería ±2.576."
+  },
+  {
+    "category": "FB6 · Paso 6/6 — Decisión",
+    "context": "Servidores A y B: la carga de trabajo sigue una distribución normal, con desviaciones típicas σ_A = 6 ms y σ_B = 7 ms. Se prueba una optimización que pretende igualar los tiempos medios de respuesta.\nMuestras: n_A = 10 con media x̄_A = 20 ms; n_B = 15 con media x̄_B = 30 ms.\nNivel de significación α = 5%.",
+    "q": "¿La empresa aceptará la optimización propuesta?",
+    "options": [
+      "No, la empresa rechaza la optimización porque no se puede aceptar la hipótesis nula.",
+      "Sí, la empresa acepta la optimización porque los tiempos medios de respuesta se igualan.",
+      "No, la empresa rechaza el estudio porque los tiempos medios de respuesta se igualan."
+    ],
+    "correctIndex": 0,
+    "evidence": "El estadístico calculado es Z = -3.817. Como |-3.817| = 3.817 > 1.960 (valor crítico), el estadístico CAE EN LA REGIÓN CRÍTICA. Por tanto se RECHAZA H₀ (μ_A = μ_B). Estadísticamente los tiempos medios de respuesta son diferentes: la optimización NO ha conseguido igualarlos, y la empresa NO aceptará la optimización propuesta."
+  }
+]

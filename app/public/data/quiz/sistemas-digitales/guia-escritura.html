@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Guía de Escritura Activa — Electrónica Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #d4eaf8;
+  --card:     #ffffff;
+  --border:   #aacde8;
+  --acc:      #1a6fa8;
+  --acc2:     #0d4f7a;
+  --text:     #1a2e3d;
+  --muted:    #5a7a8f;
+  --write-bg: #fffbe6;
+  --write-bd: #e0a010;
+  --copy-bg:  #edfaf3;
+  --copy-bd:  #1e9960;
+  --test-bg:  #f5eeff;
+  --test-bd:  #7a3cb5;
+  --schema-bg:#edf5fc;
+  --schema-bd:#4a9fd4;
+  --shadow:   rgba(20,60,100,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);
+  font-family:'Source Sans 3',sans-serif;font-size:16px;line-height:1.75;
+  padding-bottom:80px}
+b{color:var(--acc2);font-weight:600}
+
+header{background:linear-gradient(135deg,#1a6fa8 0%,#0d4f7a 100%);
+  color:white;padding:44px 52px 36px;box-shadow:0 3px 16px var(--shadow)}
+.hinner{max-width:960px;margin:0 auto}
+header h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;
+  line-height:1.2;margin-bottom:8px}
+header .sub{font-size:.95rem;opacity:.88;font-style:italic}
+.how-box{margin-top:20px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);
+  border-radius:10px;padding:16px 20px;font-size:.88rem;line-height:1.7}
+.how-box strong{color:#fde77a}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px}
+.leg{display:flex;align-items:center;gap:7px;font-size:.8rem;background:rgba(0,0,0,.2);
+  border-radius:20px;padding:4px 12px}
+.ldot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+main{max-width:960px;margin:32px auto;padding:0 18px;
+  display:flex;flex-direction:column;gap:0}
+
+.section{background:var(--card);border-radius:16px;
+  box-shadow:0 2px 14px var(--shadow);margin-bottom:28px;overflow:hidden}
+.sec-header{background:linear-gradient(90deg,var(--acc) 0%,#2388c8 100%);
+  color:white;padding:18px 26px;display:flex;align-items:center;gap:14px}
+.sec-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;
+  background:rgba(255,255,255,.2);width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sec-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700}
+.sec-sub{font-size:.82rem;opacity:.85;margin-top:2px}
+.sec-body{padding:24px 26px;display:flex;flex-direction:column;gap:20px}
+
+/* mini intro */
+.concept-intro{font-size:.9rem;line-height:1.75;color:#2a3d50;
+  background:var(--schema-bg);border-left:4px solid var(--schema-bd);
+  border-radius:0 8px 8px 0;padding:12px 16px}
+
+/* BOXES */
+.write-box{background:var(--write-bg);border:2px dashed var(--write-bd);
+  border-radius:12px;padding:18px 20px}
+.copy-box{background:var(--copy-bg);border:2px solid var(--copy-bd);
+  border-radius:12px;padding:18px 20px}
+.test-box{background:var(--test-bg);border:2px solid var(--test-bd);
+  border-radius:12px;padding:18px 20px}
+
+.box-lbl{display:flex;align-items:center;gap:8px;font-family:'Playfair Display',serif;
+  font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;
+  margin-bottom:12px}
+.box-lbl .ico{font-size:1.1rem}
+.lbl-write{color:var(--write-bd)}
+.lbl-copy{color:var(--copy-bd)}
+.lbl-test{color:var(--test-bd)}
+
+.write-box p,.copy-box p,.test-box p{font-size:.9rem;margin-bottom:8px;color:#2a3d50}
+.write-box p:last-child,.copy-box p:last-child,.test-box p:last-child{margin-bottom:0}
+
+.lines{margin-top:10px;display:flex;flex-direction:column;gap:4px}
+.ln{height:22px;border-bottom:1.5px solid #c0c8d0;width:100%}
+
+.cblock{font-family:'JetBrains Mono',monospace;font-size:.84rem;
+  background:rgba(26,111,168,.07);border:1px solid rgba(26,111,168,.2);
+  border-radius:6px;padding:10px 14px;margin:8px 0;line-height:2;color:#1a2e3d}
+.cblock2{font-family:'JetBrains Mono',monospace;font-size:.84rem;
+  background:rgba(30,153,96,.06);border:1px solid rgba(30,153,96,.2);
+  border-radius:6px;padding:10px 14px;margin:8px 0;line-height:2;color:#1a2e3d}
+
+/* TABLES inside boxes */
+table.tt2{border-collapse:collapse;font-family:'JetBrains Mono',monospace;
+  font-size:.83rem;margin:8px 0}
+table.tt2 th{background:rgba(26,111,168,.12);color:var(--acc2);padding:6px 14px;
+  border:1px solid #aac8de;font-weight:600;text-align:center}
+table.tt2 td{padding:5px 14px;border:1px solid #c8dce8;text-align:center}
+table.tt2 tr:nth-child(even) td{background:rgba(26,111,168,.04)}
+.t1{color:#1e9960;font-weight:700}
+.t0{color:#aaa}
+
+/* SCHEMA / DIAGRAM wrapper */
+.schema-wrap{background:var(--schema-bg);border:1.5px solid var(--schema-bd);
+  border-radius:12px;padding:18px;overflow-x:auto}
+.schema-title{font-family:'Playfair Display',serif;font-weight:600;font-size:.85rem;
+  color:var(--acc);letter-spacing:.04em;text-transform:uppercase;margin-bottom:12px;
+  display:flex;align-items:center;gap:7px}
+
+/* lists */
+ul.dotlist{padding-left:20px;font-size:.9rem;margin:4px 0}
+ul.dotlist li{margin-bottom:5px}
+ol.exlist{padding-left:20px;font-size:.9rem;margin:4px 0}
+ol.exlist li{margin-bottom:6px}
+
+.check-list{list-style:none;padding-left:0;font-size:.9rem}
+.check-list li{margin-bottom:8px;display:flex;gap:9px;align-items:flex-start}
+.check-list li::before{content:"☐";font-size:1.1rem;color:var(--test-bd);flex-shrink:0;margin-top:1px}
+
+footer{text-align:center;font-size:.78rem;color:var(--muted);
+  padding:24px;border-top:1px solid var(--border);margin-top:16px;font-style:italic}
+</style></head><body>
+<header>
+  <div class="hinner">
+    <h1>Guía de Escritura Activa<br>Electrónica Digital</h1>
+    <div class="sub">Aprende escribiendo · Coge tu libreta y bolígrafo antes de empezar</div>
+    <div class="how-box">
+      <strong>¿Cómo funciona esta guía?</strong> Cada sección te muestra un concepto con un mapa o esquema
+      y luego te da instrucciones exactas de qué escribir en tu libreta. Escribir a mano fuerza tu cerebro
+      a procesar la información de verdad — no simplemente a leerla. Sigue el orden y no pases
+      a la siguiente sección sin completar los ejercicios de escritura.
+      <div class="legend">
+        <div class="leg"><div class="ldot" style="background:#e0a010"></div> Escribe algo nuevo</div>
+        <div class="leg"><div class="ldot" style="background:#1e9960"></div> Copia este contenido exacto</div>
+        <div class="leg"><div class="ldot" style="background:#7a3cb5"></div> Test — ponlo a prueba</div>
+        <div class="leg"><div class="ldot" style="background:#4a9fd4"></div> Mapa / diagrama visual</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+
+<div class="section" id="s1">
+  <div class="sec-header">
+    <div class="sec-num">1</div>
+    <div><div class="sec-title">Sistemas de Numeración</div>
+      <div class="sec-sub">Binario · Octal · Decimal · Hexadecimal</div></div>
+  </div>
+  <div class="sec-body">
+
+    <div class="concept-intro">
+      Los ordenadores usan <b>base 2 (binario)</b> porque sus transistores solo tienen dos estados.
+      Nosotros usamos la <b>base 16 (hexadecimal)</b> para representar números binarios largos de forma
+      compacta. Cada <b>dígito hex equivale a exactamente 4 bits</b>.
+    </div>
+
+    <div class="schema-wrap">
+      <div class="schema-title">🗺 Mapa Mental — Las 4 Bases</div>
+      <svg viewBox="0 0 720 340" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family:'Source Sans 3',sans-serif">
+        <!-- CENTER -->
+        <ellipse cx="360" cy="170" rx="72" ry="40" fill="#1a6fa8"/>
+        <text x="360" y="164" text-anchor="middle" fill="white" font-size="13" font-weight="700">BASES</text>
+        <text x="360" y="180" text-anchor="middle" fill="white" font-size="13" font-weight="700">NUMÉRICAS</text>
+        <!-- Branch BINARIO (top-left) -->
+        <line x1="295" y1="145" x2="155" y2="72" stroke="#e74c3c" stroke-width="2.5"/>
+        <rect x="55" y="44" width="180" height="56" rx="10" fill="#e74c3c"/>
+        <text x="145" y="66" text-anchor="middle" fill="white" font-size="13" font-weight="700">BINARIO</text>
+        <text x="145" y="83" text-anchor="middle" fill="white" font-size="11">Base 2 · dígitos: 0,1</text>
+        <text x="145" y="96" text-anchor="middle" fill="white" font-size="10.5">usa el ordenador</text>
+        <!-- Branch HEX (top-right) -->
+        <line x1="425" y1="145" x2="565" y2="72" stroke="#8e44ad" stroke-width="2.5"/>
+        <rect x="485" y="44" width="185" height="56" rx="10" fill="#8e44ad"/>
+        <text x="577" y="66" text-anchor="middle" fill="white" font-size="13" font-weight="700">HEXADECIMAL</text>
+        <text x="577" y="83" text-anchor="middle" fill="white" font-size="11">Base 16 · 0-9 y A-F</text>
+        <text x="577" y="96" text-anchor="middle" fill="white" font-size="10.5">compacta el binario</text>
+        <!-- Branch OCTAL (bottom-left) -->
+        <line x1="295" y1="195" x2="155" y2="268" stroke="#27ae60" stroke-width="2.5"/>
+        <rect x="55" y="243" width="180" height="56" rx="10" fill="#27ae60"/>
+        <text x="145" y="265" text-anchor="middle" fill="white" font-size="13" font-weight="700">OCTAL</text>
+        <text x="145" y="282" text-anchor="middle" fill="white" font-size="11">Base 8 · dígitos: 0-7</text>
+        <text x="145" y="295" text-anchor="middle" fill="white" font-size="10.5">grupos de 3 bits</text>
+        <!-- Branch DECIMAL (bottom-right) -->
+        <line x1="425" y1="195" x2="565" y2="268" stroke="#f39c12" stroke-width="2.5"/>
+        <rect x="485" y="243" width="185" height="56" rx="10" fill="#f39c12"/>
+        <text x="577" y="265" text-anchor="middle" fill="white" font-size="13" font-weight="700">DECIMAL</text>
+        <text x="577" y="282" text-anchor="middle" fill="white" font-size="11">Base 10 · dígitos: 0-9</text>
+        <text x="577" y="295" text-anchor="middle" fill="white" font-size="10.5">nuestro uso cotidiano</text>
+        <!-- CONVERSION ARROW labels -->
+        <text x="360" y="314" text-anchor="middle" fill="#5a7a8f" font-size="10.5" font-style="italic">
+          Hex↔Bin: grupos de 4 bits  |  Oct↔Bin: grupos de 3 bits  |  Cualquiera→Dec: valor posicional
+        </text>
+      </svg>
+    </div>
+
+    <div class="copy-box">
+      <div class="box-lbl lbl-copy"><span class="ico">📋</span>COPIA ESTE MAPA Y ESTA TABLA — en tu libreta, dibuja el mapa de arriba tal y como aparece con los 4 colores (usa rotuladores o boli y subrayadores). Luego copia la tabla debajo.</div>
+      <p>Tabla de conversión rápida — cópiala en tu libreta con una columna adicional vacía para que tu ojo vea el patrón:</p>
+      <div class="cblock2">Dec | Bin  | Oct | Hex
+ 0  | 0000 |  0  |  0
+ 1  | 0001 |  1  |  1
+ 2  | 0010 |  2  |  2
+ 3  | 0011 |  3  |  3
+ 4  | 0100 |  4  |  4
+ 5  | 0101 |  5  |  5
+ 6  | 0110 |  6  |  6
+ 7  | 0111 |  7  |  7
+ 8  | 1000 | 10  |  8
+ 9  | 1001 | 11  |  9
+10  | 1010 | 12  |  A
+11  | 1011 | 13  |  B
+12  | 1100 | 14  |  C
+13  | 1101 | 15  |  D
+14  | 1110 | 16  |  E
+15  | 1111 | 17  |  F</div>
+      <p>Mientras copias, di en voz alta cada fila. Por ejemplo: "cuatro, en binario cero-uno-cero-cero, en octal cuatro, en hex cuatro".</p>
+    </div>
+
+    <div class="write-box">
+      <div class="box-lbl lbl-write"><span class="ico">✍️</span>ESCRIBE — Métodos de conversión paso a paso</div>
+      <p>En tu libreta, escribe el título <b>"CONVERSIONES"</b> y luego los 4 métodos que aparecen abajo, con el ejemplo resuelto. Escríbelos a mano, no los copies mecánicamente — intenta entenderlos mientras los escribes:</p>
+      <div class="cblock">MÉTODO 1 — Decimal → Binario (divisiones por 2)
+  Ejemplo: 13 → 13÷2=6 r1 | 6÷2=3 r0 | 3÷2=1 r1 | 1÷2=0 r1
+  Lee restos de abajo arriba: 1101₂ ✓
+
+MÉTODO 2 — Decimal → Hex (divisiones por 16)
+  Ejemplo: 255 → 255÷16=15 r15(F) | 15÷16=0 r15(F) → FF₁₆ ✓
+
+MÉTODO 3 — Binario → Hex (grupos de 4 desde la derecha)
+  Ejemplo: 10101111₂ → 1010|1111 → A|F → AF₁₆ ✓
+
+MÉTODO 4 — Cualquier base → Decimal (valor posicional)
+  Ejemplo: 1011₂ = 1×2³+0×2²+1×2¹+1×2⁰ = 8+0+2+1 = 11₁₀ ✓</div>
+      <p>Ahora <b>practica tú solo</b> en tu libreta estas conversiones (respuestas al final de la sección):</p>
+      <div class="cblock">a) 25₁₀ = ___₂        b) 3A₁₆ = ___₁₀
+c) 1100 1010₂ = ___₁₆  d) 7F₁₆ = ___₂</div>
+      <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+      <p style="font-size:.8rem;color:#888;margin-top:8px">Respuestas: a)11001₂  b)58₁₀  c)CA₁₆  d)01111111₂</p>
+    </div>
+
+    <div class="test-box">
+      <div class="box-lbl lbl-test"><span class="ico">🧠</span>TEST — Sin mirar nada, responde en tu libreta</div>
+      <ul class="check-list">
+        <li>¿Cuántos bits necesitas para representar el número 16? (pista: 16 = 2⁴)</li>
+        <li>¿Cuánto vale B₁₆ en decimal?</li>
+        <li>Convierte 0x30 a decimal (aparece en el examen)</li>
+        <li>¿Qué es 1000₂ en decimal? (aparece en el examen)</li>
+        <li>¿Cuántos dígitos hex equivalen a 8 bits?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s2">
+  <div class="sec-header">
+    <div class="sec-num">2</div>
+    <div><div class="sec-title">Álgebra de Boole y Puertas Lógicas</div>
+      <div class="sec-sub">AND · OR · NOT · NAND · NOR · XOR · XNOR</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="concept-intro">
+      La <b>Álgebra de Boole</b> trabaja solo con dos valores: 0 y 1. Los tres operadores
+      fundamentales (AND, OR, NOT) permiten construir cualquier función lógica. Los operadores
+      derivados (NAND, NOR, XOR) son combinaciones de los fundamentales. Las <b>Leyes de De Morgan</b>
+      permiten convertir entre AND y OR usando negaciones.
+    </div>
+
+    <div class="schema-wrap">
+      <div class="schema-title">🗺 Mapa Mental — Operadores Booleanos</div>
+      <svg viewBox="0 0 720 380" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family:'Source Sans 3',sans-serif">
+        <!-- CENTER -->
+        <ellipse cx="360" cy="190" rx="80" ry="44" fill="#1a6fa8"/>
+        <text x="360" y="184" text-anchor="middle" fill="white" font-size="13" font-weight="700">ÁLGEBRA</text>
+        <text x="360" y="200" text-anchor="middle" fill="white" font-size="13" font-weight="700">DE BOOLE</text>
+        <!-- BÁSICOS (left) -->
+        <line x1="280" y1="170" x2="130" y2="90" stroke="#e74c3c" stroke-width="2.5"/>
+        <rect x="20" y="60" width="200" height="58" rx="10" fill="#e74c3c"/>
+        <text x="120" y="82" text-anchor="middle" fill="white" font-size="12.5" font-weight="700">BÁSICOS</text>
+        <text x="120" y="98" text-anchor="middle" fill="white" font-size="11">AND (·)  OR (+)  NOT (¬)</text>
+        <text x="120" y="112" text-anchor="middle" fill="white" font-size="10.5">los 3 operadores base</text>
+        <!-- DERIVADOS (right) -->
+        <line x1="440" y1="170" x2="590" y2="90" stroke="#8e44ad" stroke-width="2.5"/>
+        <rect x="500" y="60" width="200" height="58" rx="10" fill="#8e44ad"/>
+        <text x="600" y="82" text-anchor="middle" fill="white" font-size="12.5" font-weight="700">DERIVADOS</text>
+        <text x="600" y="98" text-anchor="middle" fill="white" font-size="11">NAND  NOR  XOR  XNOR</text>
+        <text x="600" y="112" text-anchor="middle" fill="white" font-size="10.5">combinaciones de básicos</text>
+        <!-- LEYES (bottom-left) -->
+        <line x1="295" y1="222" x2="155" y2="300" stroke="#27ae60" stroke-width="2.5"/>
+        <rect x="30" y="272" width="240" height="70" rx="10" fill="#27ae60"/>
+        <text x="150" y="293" text-anchor="middle" fill="white" font-size="12.5" font-weight="700">LEYES</text>
+        <text x="150" y="309" text-anchor="middle" fill="white" font-size="10.5">Identidad, Nulidad, Absorción</text>
+        <text x="150" y="324" text-anchor="middle" fill="white" font-size="10.5">Idempotencia, Complemento</text>
+        <text x="150" y="336" text-anchor="middle" fill="white" font-size="10.5">Doble negación</text>
+        <!-- DE MORGAN (bottom-right) -->
+        <line x1="425" y1="222" x2="565" y2="300" stroke="#e67e22" stroke-width="2.5"/>
+        <rect x="450" y="272" width="240" height="70" rx="10" fill="#e67e22"/>
+        <text x="570" y="293" text-anchor="middle" fill="white" font-size="12.5" font-weight="700">DE MORGAN</text>
+        <text x="570" y="309" text-anchor="middle" fill="white" font-size="10.5">¬(A·B) = Ā+B̄</text>
+        <text x="570" y="324" text-anchor="middle" fill="white" font-size="10.5">¬(A+B) = Ā·B̄</text>
+        <text x="570" y="336" text-anchor="middle" fill="white" font-size="10.5">¡las más usadas en examen!</text>
+      </svg>
+    </div>
+
+    <div class="copy-box">
+      <div class="box-lbl lbl-copy"><span class="ico">📋</span>COPIA — Las 7 tablas de verdad en tu libreta</div>
+      <p>Dibuja esta rejilla en tu libreta. Cada mini-tabla debe quedar clara con su nombre encima. Usa un color distinto para los resultados "1" (verde, por ejemplo) y los "0" (negro normal):</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-top:10px">
+        <div>
+          <p style="font-weight:700;font-size:.85rem;color:#e74c3c;margin-bottom:4px">AND (A·B)</p>
+          <table class="tt2"><tr><th>A</th><th>B</th><th>S</th></tr>
+            <tr><td class="t0">0</td><td class="t0">0</td><td class="t0">0</td></tr>
+            <tr><td class="t0">0</td><td class="t1">1</td><td class="t0">0</td></tr>
+            <tr><td class="t1">1</td><td class="t0">0</td><td class="t0">0</td></tr>
+            <tr><td class="t1">1</td><td class="t1">1</td><td class="t1">1</td></tr>
+          </table>
+          <p style="font-size:.78rem;color:#888;margin-top:3px">Solo 1 si los dos son 1</p>
+        </div>
+        <div>
+          <p style="font-weight:700;font-size:.85rem;color:#27ae60;margin-bottom:4px">OR (A+B)</p>
+          <table class="tt2"><tr><th>A</th><th>B</th><th>S</th></tr>
+            <tr><td>0</td><td>0</td><td class="t0">0</td></tr>
+            <tr><td>0</td><td>1</td><td class="t1">1</td></tr>
+            <tr><td>1</td><td>0</td><td class="t1">1</td></tr>
+            <tr><td>1</td><td>1</td><td class="t1">1</td></tr>
+          </table>
+          <p style="font-size:.78rem;color:#888;margin-top:3px">0 solo si los dos son 0</p>
+        </div>
+        <div>
+          <p style="font-weight:700;font-size:.85rem;color:#2980b9;margin-bottom:4px">NOT (Ā)</p>
+          <table class="tt2"><tr><th>A</th><th>Ā</th></tr>
+            <tr><td class="t0">0</td><td class="t1">1</td></tr>
+            <tr><td class="t1">1</td><td class="t0">0</td></tr>
+          </table>
+          <p style="font-size:.78rem;color:#888;margin-top:3px">Invierte el valor</p>
+        </div>
+        <div>
+          <p style="font-weight:700;font-size:.85rem;color:#e67e22;margin-bottom:4px">NAND</p>
+          <table class="tt2"><tr><th>A</th><th>B</th><th>S</th></tr>
+            <tr><td>0</td><td>0</td><td class="t1">1</td></tr>
+            <tr><td>0</td><td>1</td><td class="t1">1</td></tr>
+            <tr><td>1</td><td>0</td><td class="t1">1</td></tr>
+            <tr><td>1</td><td>1</td><td class="t0">0</td></tr>
+          </table>
+          <p style="font-size:.78rem;color:#888;margin-top:3px">NOT(AND): 0 si los dos son 1</p>
+        </div>
+        <div>
+          <p style="font-weight:700;font-size:.85rem;color:#8e44ad;margin-bottom:4px">NOR</p>
+          <table class="tt2"><tr><th>A</th><th>B</th><th>S</th></tr>
+            <tr><td>0</td><td>0</td><td class="t1">1</td></tr>
+            <tr><td>0</td><td>1</td><td class="t0">0</td></tr>
+            <tr><td>1</td><td>0</td><td class="t0">0</td></tr>
+            <tr><td>1</td><td>1</td><td class="t0">0</td></tr>
+          </table>
+          <p style="font-size:.78rem;color:#888;margin-top:3px">NOT(OR): 1 solo si los dos son 0</p>
+        </div>
+        <div>
+          <p style="font-weight:700;font-size:.85rem;color:#c0392b;margin-bottom:4px">XOR (⊕)</p>
+          <table class="tt2"><tr><th>A</th><th>B</th><th>S</th></tr>
+            <tr><td>0</td><td>0</td><td class="t0">0</td></tr>
+            <tr><td>0</td><td>1</td><td class="t1">1</td></tr>
+            <tr><td>1</td><td>0</td><td class="t1">1</td></tr>
+            <tr><td>1</td><td>1</td><td class="t0">0</td></tr>
+          </table>
+          <p style="font-size:.78rem;color:#888;margin-top:3px">1 si son distintos</p>
+        </div>
+        <div>
+          <p style="font-weight:700;font-size:.85rem;color:#16a085;margin-bottom:4px">XNOR</p>
+          <table class="tt2"><tr><th>A</th><th>B</th><th>S</th></tr>
+            <tr><td>0</td><td>0</td><td class="t1">1</td></tr>
+            <tr><td>0</td><td>1</td><td class="t0">0</td></tr>
+            <tr><td>1</td><td>0</td><td class="t0">0</td></tr>
+            <tr><td>1</td><td>1</td><td class="t1">1</td></tr>
+          </table>
+          <p style="font-size:.78rem;color:#888;margin-top:3px">1 si son iguales</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="write-box">
+      <div class="box-lbl lbl-write"><span class="ico">✍️</span>ESCRIBE — Leyes de De Morgan con tu propio ejemplo</div>
+      <p>En tu libreta, escribe estas dos leyes con letras grandes y enmarcadas en un recuadro. Memorízalas:</p>
+      <div class="cblock">LEY 1: ¬(A · B) = Ā + B̄
+"La negación de un AND es un OR de negados"
+
+LEY 2: ¬(A + B) = Ā · B̄
+"La negación de un OR es un AND de negados"
+
+TRUCO para recordarlas: "rompe la barra, cambia el operador"
+  ─────  →  ─  ─    y   · ↔ +
+  A·B         Ā  B̄</div>
+      <p>Ahora aplícalas tú: escribe en tu libreta las expresiones equivalentes de:</p>
+      <div class="cblock">a) ¬(X · Y · Z) = ___
+b) ¬(P + Q)    = ___
+c) Ā · B̄        = ¬(___)  (De Morgan al revés)</div>
+      <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+      <p style="font-size:.8rem;color:#888;margin-top:6px">Respuestas: a) X̄+Ȳ+Z̄  b) P̄·Q̄  c) ¬(A+B)</p>
+    </div>
+
+    <div class="test-box">
+      <div class="box-lbl lbl-test"><span class="ico">🧠</span>TEST — Sin mirar, di en voz alta</div>
+      <ul class="check-list">
+        <li>¿Cuándo da 1 un AND de 3 entradas?</li>
+        <li>¿Cuándo da 0 un OR de 4 entradas?</li>
+        <li>¿Qué hace XOR cuando las dos entradas son iguales?</li>
+        <li>Aplica De Morgan: ¬(A·B̄·C) = ?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s3">
+  <div class="sec-header">
+    <div class="sec-num">3</div>
+    <div><div class="sec-title">Tablas de Verdad · Minterms · Maxterms</div>
+      <div class="sec-sub">Leer funciones booleanas desde la tabla</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="concept-intro">
+      Una <b>tabla de verdad</b> muestra la salida de una función para cada combinación posible de entradas.
+      Con n variables hay 2ⁿ filas. Los índices donde F=1 son los <b>minterms (Σm)</b>;
+      los índices donde F=0 son los <b>maxterms (ΠM)</b>. Siempre se cumplen:
+      Σm ∪ ΠM = {0,1,…,2ⁿ−1} y Σm ∩ ΠM = ∅.
+    </div>
+
+    <div class="schema-wrap">
+      <div class="schema-title">📊 Diagrama — Del enunciado a Σm y ΠM</div>
+      <svg viewBox="0 0 720 200" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family:'Source Sans 3',sans-serif">
+        <!-- Step 1 -->
+        <rect x="10" y="60" width="140" height="80" rx="10" fill="#1a6fa8"/>
+        <text x="80" y="95" text-anchor="middle" fill="white" font-size="12" font-weight="700">ENUNCIADO</text>
+        <text x="80" y="113" text-anchor="middle" fill="white" font-size="11">"3 variables"</text>
+        <text x="80" y="128" text-anchor="middle" fill="white" font-size="11">→ 2³ = 8 filas</text>
+        <!-- arrow -->
+        <polygon points="155,100 175,92 175,108" fill="#555"/>
+        <line x1="150" y1="100" x2="176" y2="100" stroke="#555" stroke-width="2"/>
+        <!-- Step 2 -->
+        <rect x="180" y="60" width="160" height="80" rx="10" fill="#2d6a8f"/>
+        <text x="260" y="95" text-anchor="middle" fill="white" font-size="12" font-weight="700">TABLA DE VERDAD</text>
+        <text x="260" y="113" text-anchor="middle" fill="white" font-size="11">Rellenas A,B,C y F</text>
+        <text x="260" y="128" text-anchor="middle" fill="white" font-size="11">para cada fila</text>
+        <!-- arrow -->
+        <polygon points="345,82 365,74 365,90" fill="#1e9960"/>
+        <line x1="340" y1="82" x2="366" y2="82" stroke="#1e9960" stroke-width="2"/>
+        <polygon points="345,118 365,110 365,126" fill="#c0392b"/>
+        <line x1="340" y1="118" x2="366" y2="118" stroke="#c0392b" stroke-width="2"/>
+        <!-- Step 3a minterms -->
+        <rect x="370" y="46" width="160" height="50" rx="10" fill="#1e9960"/>
+        <text x="450" y="67" text-anchor="middle" fill="white" font-size="12" font-weight="700">MINTERMS Σm</text>
+        <text x="450" y="84" text-anchor="middle" fill="white" font-size="11">índices donde F = 1</text>
+        <!-- Step 3b maxterms -->
+        <rect x="370" y="104" width="160" height="50" rx="10" fill="#c0392b"/>
+        <text x="450" y="125" text-anchor="middle" fill="white" font-size="12" font-weight="700">MAXTERMS ΠM</text>
+        <text x="450" y="142" text-anchor="middle" fill="white" font-size="11">índices donde F = 0</text>
+        <!-- arrow to simplification -->
+        <polygon points="535,82 555,74 555,90" fill="#8e44ad"/>
+        <line x1="530" y1="82" x2="556" y2="82" stroke="#8e44ad" stroke-width="2"/>
+        <polygon points="535,118 555,110 555,126" fill="#8e44ad"/>
+        <line x1="530" y1="118" x2="556" y2="118" stroke="#8e44ad" stroke-width="2"/>
+        <!-- Step 4 -->
+        <rect x="560" y="60" width="148" height="80" rx="10" fill="#8e44ad"/>
+        <text x="634" y="90" text-anchor="middle" fill="white" font-size="11.5" font-weight="700">SIMPLIFICA</text>
+        <text x="634" y="107" text-anchor="middle" fill="white" font-size="10.5">K-map o álgebra</text>
+        <text x="634" y="122" text-anchor="middle" fill="white" font-size="10.5">→ SOP o POS</text>
+        <!-- Nota -->
+        <text x="360" y="178" text-anchor="middle" fill="#5a7a8f" font-size="10.5" font-style="italic">
+          Σm ∪ ΠM = todos los índices  |  Si Σm = {1,3}, entonces ΠM = {0,2,4,5,6,7} (para n=3)
+        </text>
+      </svg>
+    </div>
+
+    <div class="write-box">
+      <div class="box-lbl lbl-write"><span class="ico">✍️</span>ESCRIBE — Construye esta tabla de verdad completa</div>
+      <p>En tu libreta, dibuja una tabla con columnas A, B, C, F y 8 filas (n=3 → 2³=8). Rellena las columnas A,B,C en orden binario (000 a 111). Luego calcula F = A·B + C para cada fila:</p>
+      <div class="cblock">A | B | C | A·B | F = A·B + C
+0 | 0 | 0 |  0  |   0
+0 | 0 | 1 |  0  |   1
+0 | 1 | 0 |  0  |   0
+0 | 1 | 1 |  0  |   1
+1 | 0 | 0 |  0  |   0
+1 | 0 | 1 |  0  |   1
+1 | 1 | 0 |  1  |   1
+1 | 1 | 1 |  1  |   1</div>
+      <p>Después de copiarla, escribe debajo:</p>
+      <div class="cblock">Σm = { ___, ___, ___, ___, ___ }   (filas donde F=1)
+ΠM = { ___, ___ }               (filas donde F=0)</div>
+      <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+      <p style="font-size:.8rem;color:#888;margin-top:6px">Respuesta: Σm={1,3,5,6,7}  ΠM={0,2,4}</p>
+    </div>
+
+    <div class="test-box">
+      <div class="box-lbl lbl-test"><span class="ico">🧠</span>TEST</div>
+      <ul class="check-list">
+        <li>Si F = Σm(0,1,2,5) con 3 variables, ¿qué es ΠM? (sin calcular, solo complementando)</li>
+        <li>¿Cuántas filas tiene la tabla de verdad de una función con 4 variables?</li>
+        <li>¿Puede un índice ser a la vez minterm y maxterm? ¿Por qué?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s4">
+  <div class="sec-header">
+    <div class="sec-num">4</div>
+    <div><div class="sec-title">Mapas de Karnaugh (K-map)</div>
+      <div class="sec-sub">Simplificación visual de funciones booleanas</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="concept-intro">
+      El K-map organiza la tabla de verdad en una rejilla donde <b>celdas adyacentes solo difieren en 1 bit</b>.
+      Para <b>SOP</b> (Suma de Productos) agrupamos los <b>unos</b>. Para <b>POS</b> (Producto de Sumas)
+      agrupamos los <b>ceros</b>. Los grupos deben ser potencias de 2 (1,2,4,8,16) y lo más grandes posible.
+    </div>
+
+    <div class="schema-wrap">
+      <div class="schema-title">🗺 Mapa Mental — SOP vs POS</div>
+      <svg viewBox="0 0 720 300" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family:'Source Sans 3',sans-serif">
+        <!-- CENTER -->
+        <ellipse cx="360" cy="150" rx="75" ry="42" fill="#1a6fa8"/>
+        <text x="360" y="144" text-anchor="middle" fill="white" font-size="13" font-weight="700">K-MAP</text>
+        <text x="360" y="162" text-anchor="middle" fill="white" font-size="11">4 variables (16 celdas)</text>
+        <!-- SOP -->
+        <line x1="290" y1="125" x2="140" y2="60" stroke="#1e9960" stroke-width="2.5"/>
+        <rect x="10" y="22" width="220" height="76" rx="10" fill="#1e9960"/>
+        <text x="120" y="45" text-anchor="middle" fill="white" font-size="13" font-weight="700">SOP — Suma de Productos</text>
+        <text x="120" y="62" text-anchor="middle" fill="white" font-size="11">Agrupa los UNOS (1s)</text>
+        <text x="120" y="77" text-anchor="middle" fill="white" font-size="11">Var=1→directa · Var=0→complementada</text>
+        <text x="120" y="91" text-anchor="middle" fill="white" font-size="10.5">Resultado: A·B + C̄·D</text>
+        <!-- POS -->
+        <line x1="430" y1="125" x2="580" y2="60" stroke="#e74c3c" stroke-width="2.5"/>
+        <rect x="490" y="22" width="220" height="76" rx="10" fill="#e74c3c"/>
+        <text x="600" y="45" text-anchor="middle" fill="white" font-size="13" font-weight="700">POS — Producto de Sumas</text>
+        <text x="600" y="62" text-anchor="middle" fill="white" font-size="11">Agrupa los CEROS (0s)</text>
+        <text x="600" y="77" text-anchor="middle" fill="white" font-size="11">Var=0→directa · Var=1→complementada</text>
+        <text x="600" y="91" text-anchor="middle" fill="white" font-size="10.5">Resultado: (A+B)·(C̄+D)</text>
+        <!-- REGLAS bottom -->
+        <line x1="340" y1="192" x2="200" y2="260" stroke="#f39c12" stroke-width="2.5"/>
+        <rect x="20" y="232" width="300" height="58" rx="10" fill="#f39c12"/>
+        <text x="170" y="253" text-anchor="middle" fill="white" font-size="12.5" font-weight="700">REGLAS PARA GRUPOS</text>
+        <text x="170" y="270" text-anchor="middle" fill="white" font-size="10.5">Tamaño: 1, 2, 4, 8 ó 16 celdas</text>
+        <text x="170" y="284" text-anchor="middle" fill="white" font-size="10.5">Solo adyacentes · Tan grandes como sea posible</text>
+        <!-- RESULTADO -->
+        <line x1="390" y1="192" x2="530" y2="260" stroke="#8e44ad" stroke-width="2.5"/>
+        <rect x="400" y="232" width="300" height="58" rx="10" fill="#8e44ad"/>
+        <text x="550" y="253" text-anchor="middle" fill="white" font-size="12.5" font-weight="700">VARIABLE EN RESULTADO</text>
+        <text x="550" y="270" text-anchor="middle" fill="white" font-size="10.5">Aparece si es CONSTANTE en el grupo</text>
+        <text x="550" y="284" text-anchor="middle" fill="white" font-size="10.5">Si cambia en el grupo → NO aparece</text>
+      </svg>
+    </div>
+
+    <div class="copy-box">
+      <div class="box-lbl lbl-copy"><span class="ico">📋</span>COPIA — La estructura del K-map de 4 variables</div>
+      <p>Dibuja en tu libreta esta rejilla con <b>exactamente los mismos números</b>. Esta numeración es siempre la misma — memorízala:</p>
+      <div style="overflow-x:auto;margin:10px 0">
+      <table style="border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:.86rem">
+        <tr><th style="padding:8px 14px;border:1.5px solid #aac;background:#edf5fc;color:#1a6fa8">AB\CD</th>
+          <th style="padding:8px 16px;border:1.5px solid #aac;background:#edf5fc;color:#1a6fa8">00</th>
+          <th style="padding:8px 16px;border:1.5px solid #aac;background:#edf5fc;color:#1a6fa8">01</th>
+          <th style="padding:8px 16px;border:1.5px solid #aac;background:#edf5fc;color:#1a6fa8">11</th>
+          <th style="padding:8px 16px;border:1.5px solid #aac;background:#edf5fc;color:#1a6fa8">10</th></tr>
+        <tr><th style="padding:8px 14px;border:1.5px solid #aac;background:#edf5fc;color:#1a6fa8">00</th>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m0</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m1</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m3</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m2</td></tr>
+        <tr><th style="padding:8px 14px;border:1.5px solid #aac;background:#edf5fc;color:#1a6fa8">01</th>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m4</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m5</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m7</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m6</td></tr>
+        <tr><th style="padding:8px 14px;border:1.5px solid #aac;background:#edf5fc;color:#1a6fa8">11</th>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m12</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m13</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m15</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m14</td></tr>
+        <tr><th style="padding:8px 14px;border:1.5px solid #aac;background:#edf5fc;color:#1a6fa8">10</th>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m8</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m9</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m11</td>
+          <td style="padding:10px 18px;border:1.5px solid #aac;text-align:center;color:#888">m10</td></tr>
+      </table>
+      </div>
+      <p>Después, al lado, escribe las reglas en un recuadro:</p>
+      <div class="cblock2">SOP (agrupar 1s): var=1→directa, var=0→complementada, var varía→no aparece
+POS (agrupar 0s): var=0→directa, var=1→complementada, var varía→no aparece
+¡Los bordes del mapa se tocan! El m0 es adyacente al m8 (arriba-abajo) y al m2 (izq-der)</div>
+    </div>
+
+    <div class="write-box">
+      <div class="box-lbl lbl-write"><span class="ico">✍️</span>ESCRIBE — Resuelve el K-map del examen</div>
+      <p>Dibuja el K-map del examen (preguntas 6 y 10) en tu libreta. Marca los 1s y los 0s con colores distintos, luego rodea los grupos y escribe los términos:</p>
+      <div class="cblock">K-map del examen:
+        CD=00  CD=01  CD=11  CD=10
+AB=00:   1      0      0      1
+AB=01:   1      0      0      1
+AB=11:   0      1      1      0
+AB=10:   0      1      1      0
+
+Grupos de 1s (SOP):
+→ Grupo {0,2,4,6}:  constantes A=0, D=0  → término: Ā·D̄
+→ Grupo {9,11,13,15}: constantes A=1, D=1 → término: A·D
+SOP = A·D + Ā·D̄
+
+Grupos de 0s (POS):
+→ Grupo {1,3,5,7}:  constantes A=0, D=1  → término: (A+D̄)
+→ Grupo {8,10,12,14}: constantes A=1, D=0 → término: (Ā+D)
+POS = (A+D̄)·(Ā+D)</div>
+      <p>Ahora encierra físicamente en tu libreta cada grupo con un óvalo de un color distinto.</p>
+      <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+    </div>
+
+    <div class="test-box">
+      <div class="box-lbl lbl-test"><span class="ico">🧠</span>TEST</div>
+      <ul class="check-list">
+        <li>¿Qué tiene de especial el orden de las columnas del K-map (00, 01, 11, 10)? ¿Por qué no es 00, 01, 10, 11?</li>
+        <li>¿Cuántas variables tiene un término que proviene de un grupo de 8 celdas en un K-map de 4 variables?</li>
+        <li>¿Puede una celda pertenecer a dos grupos diferentes?</li>
+        <li>Si el grupo tiene 4 celdas en un K-map de 4 variables, ¿cuántas variables aparecen en el término?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s5">
+  <div class="sec-header">
+    <div class="sec-num">5</div>
+    <div><div class="sec-title">Decodificadores</div>
+      <div class="sec-sub">Implementar funciones booleanas con decoder + puerta OR</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="concept-intro">
+      Un <b>decodificador n-a-2ⁿ</b> activa exactamente una de sus 2ⁿ salidas según el número binario
+      que forman sus n entradas. Para implementar cualquier función booleana, simplemente conecta las
+      salidas que corresponden a los <b>minterms</b> de la función a una <b>puerta OR</b>.
+    </div>
+
+    <div class="schema-wrap">
+      <div class="schema-title">📊 Diagrama — Decoder 4-a-16 con función OR</div>
+      <svg viewBox="0 0 720 260" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family:'Source Sans 3',sans-serif">
+        <!-- Inputs -->
+        <text x="28" y="95" fill="#1a6fa8" font-size="13" font-weight="700">A</text>
+        <text x="28" y="120" fill="#1a6fa8" font-size="13" font-weight="700">B</text>
+        <text x="28" y="145" fill="#1a6fa8" font-size="13" font-weight="700">C</text>
+        <text x="28" y="170" fill="#1a6fa8" font-size="13" font-weight="700">D</text>
+        <line x1="40" y1="92" x2="110" y2="92" stroke="#1a6fa8" stroke-width="2"/>
+        <line x1="40" y1="117" x2="110" y2="117" stroke="#1a6fa8" stroke-width="2"/>
+        <line x1="40" y1="142" x2="110" y2="142" stroke="#1a6fa8" stroke-width="2"/>
+        <line x1="40" y1="167" x2="110" y2="167" stroke="#1a6fa8" stroke-width="2"/>
+        <!-- Decoder box -->
+        <rect x="110" y="40" width="160" height="180" rx="10" fill="#2d6a8f"/>
+        <text x="190" y="74" text-anchor="middle" fill="white" font-size="11" font-weight="700">DECODER</text>
+        <text x="190" y="92" text-anchor="middle" fill="white" font-size="10.5">4-a-16</text>
+        <!-- S labels -->
+        <text x="122" y="105" fill="white" font-size="10">S3=A</text>
+        <text x="122" y="122" fill="white" font-size="10">S2=B</text>
+        <text x="122" y="139" fill="white" font-size="10">S1=C</text>
+        <text x="122" y="156" fill="white" font-size="10">S0=D</text>
+        <!-- output lines - show selected ones -->
+        <text x="248" y="58" fill="white" font-size="9.5">00→</text>
+        <text x="248" y="74" fill="white" font-size="9.5">01→</text>
+        <text x="248" y="90" fill="white" font-size="9.5">02→</text>
+        <text x="248" y="106" fill="white" font-size="9.5">03→</text>
+        <text x="248" y="122" fill="white" font-size="9.5">04→</text>
+        <text x="248" y="138" fill="white" font-size="9.5">05→</text>
+        <text x="248" y="154" fill="white" font-size="9.5">06→</text>
+        <text x="248" y="170" fill="white" font-size="9.5">07→</text>
+        <text x="248" y="186" fill="white" font-size="9.5">...</text>
+        <text x="248" y="202" fill="white" font-size="9.5">14→</text>
+        <!-- highlighted outputs 01, 06, 14 -->
+        <line x1="270" y1="71" x2="450" y2="71" stroke="#f0b429" stroke-width="3"/>
+        <line x1="270" y1="151" x2="450" y2="151" stroke="#f0b429" stroke-width="3"/>
+        <line x1="270" y1="199" x2="450" y2="199" stroke="#f0b429" stroke-width="3"/>
+        <!-- gray outputs -->
+        <line x1="270" y1="55" x2="340" y2="55" stroke="#888" stroke-width="1.5"/>
+        <line x1="270" y1="87" x2="340" y2="87" stroke="#888" stroke-width="1.5"/>
+        <line x1="270" y1="103" x2="340" y2="103" stroke="#888" stroke-width="1.5"/>
+        <line x1="270" y1="119" x2="340" y2="119" stroke="#888" stroke-width="1.5"/>
+        <line x1="270" y1="135" x2="340" y2="135" stroke="#888" stroke-width="1.5"/>
+        <line x1="270" y1="167" x2="340" y2="167" stroke="#888" stroke-width="1.5"/>
+        <line x1="270" y1="183" x2="340" y2="183" stroke="#888" stroke-width="1.5"/>
+        <!-- labels for selected -->
+        <text x="280" y="67" fill="#f0b429" font-size="10" font-weight="700">→ minterm 1</text>
+        <text x="280" y="147" fill="#f0b429" font-size="10" font-weight="700">→ minterm 6</text>
+        <text x="280" y="195" fill="#f0b429" font-size="10" font-weight="700">→ minterm 14</text>
+        <!-- OR gate -->
+        <path d="M450,60 C465,60 475,65 480,71 C475,77 465,82 450,82 C460,71 450,71 450,60" fill="#1e9960"/>
+        <path d="M450,140 C465,140 475,145 480,151 C475,157 465,162 450,162 C460,151 450,151 450,140" fill="#1e9960"/>
+        <path d="M450,188 C465,188 475,193 480,199 C475,205 465,210 450,210 C460,199 450,199 450,188" fill="#1e9960"/>
+        <!-- OR gate symbol -->
+        <path d="M453,84 Q470,100 480,118 Q490,100 507,118 Q517,100 530,118 Q540,100 547,118 Q517,150 480,162 Q443,150 453,118 Q443,100 453,84 Z" fill="#1e9960"/>
+        <text x="490" y="128" text-anchor="middle" fill="white" font-size="16" font-weight="700">OR</text>
+        <!-- lines to OR -->
+        <line x1="450" y1="71" x2="453" y2="90" stroke="#f0b429" stroke-width="2.5"/>
+        <line x1="450" y1="151" x2="453" y2="122" stroke="#f0b429" stroke-width="2.5"/>
+        <line x1="450" y1="199" x2="460" y2="156" stroke="#f0b429" stroke-width="2.5"/>
+        <!-- Output -->
+        <line x1="547" y1="124" x2="610" y2="124" stroke="#1e9960" stroke-width="3"/>
+        <text x="615" y="120" fill="#1e9960" font-size="13" font-weight="700">F(A,B,C,D)</text>
+        <text x="615" y="136" fill="#1e9960" font-size="10.5">= minterms 1+6+14</text>
+        <!-- Caption -->
+        <text x="360" y="240" text-anchor="middle" fill="#5a7a8f" font-size="10.5" font-style="italic">Las salidas resaltadas (1, 6, 14) se unen a la puerta OR. Las demás están sin conectar.</text>
+      </svg>
+    </div>
+
+    <div class="write-box">
+      <div class="box-lbl lbl-write"><span class="ico">✍️</span>ESCRIBE — El método para cualquier función con decoder</div>
+      <p>Copia este procedimiento en tu libreta como una <b>receta de 4 pasos</b> (en un recuadro destacado):</p>
+      <div class="cblock">IMPLEMENTAR F con DECODER + OR
+═══════════════════════════════
+PASO 1: Identifica cuántas variables tiene F → elige decoder n-a-2ⁿ
+PASO 2: Conecta las variables a las entradas del decoder
+         (ojo al orden: qué variable va a S0, cuál a S3...)
+PASO 3: Para cada término de F, calcula su índice:
+         índice = valor_ABCD interpretado como binario
+         Ejemplo: A·B̄·C·D̄ → A=1,B=0,C=1,D=0 → 1010₂ = 10
+PASO 4: Conecta las salidas de esos índices a una puerta OR</div>
+      <p>Ahora practica: para la función F = Ā·B·C̄ + A·B̄·C, ¿qué salidas del decoder conectarías?</p>
+      <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+      <p style="font-size:.8rem;color:#888;margin-top:6px">Respuesta: Ā·B·C̄ = 010₂=2, A·B̄·C = 101₂=5. Salidas: 2 y 5 → OR</p>
+    </div>
+
+    <div class="test-box">
+      <div class="box-lbl lbl-test"><span class="ico">🧠</span>TEST</div>
+      <ul class="check-list">
+        <li>Si tienes un decoder 3-a-8 con A→S2, B→S1, C→S0, ¿qué salida activa la combinación A=1, B=0, C=1?</li>
+        <li>¿Por qué se usa una puerta OR para los minterms y no una puerta AND?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s6">
+  <div class="sec-header">
+    <div class="sec-num">6</div>
+    <div><div class="sec-title">Flip-Flops</div>
+      <div class="sec-sub">D · T · JK · SR — Memoria de 1 bit</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="concept-intro">
+      Un <b>flip-flop</b> almacena 1 bit. Cambia su estado solo en el <b>flanco del reloj (CLK)</b>.
+      Esto los diferencia de las puertas lógicas (que son combinacionales): los flip-flops tienen
+      <b>memoria</b> — recuerdan lo que tenían antes. El tipo T es el más simple para contadores.
+    </div>
+
+    <div class="schema-wrap">
+      <div class="schema-title">📊 Comparativa — Los 4 tipos de Flip-Flop</div>
+      <svg viewBox="0 0 720 230" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family:'Source Sans 3',sans-serif">
+        <!-- Headers -->
+        <rect x="10" y="10" width="160" height="36" rx="8" fill="#1a6fa8"/>
+        <text x="90" y="33" text-anchor="middle" fill="white" font-size="13" font-weight="700">Tipo D</text>
+        <rect x="185" y="10" width="160" height="36" rx="8" fill="#e74c3c"/>
+        <text x="265" y="33" text-anchor="middle" fill="white" font-size="13" font-weight="700">Tipo T</text>
+        <rect x="360" y="10" width="160" height="36" rx="8" fill="#27ae60"/>
+        <text x="440" y="33" text-anchor="middle" fill="white" font-size="13" font-weight="700">Tipo JK</text>
+        <rect x="535" y="10" width="175" height="36" rx="8" fill="#8e44ad"/>
+        <text x="622" y="33" text-anchor="middle" fill="white" font-size="13" font-weight="700">Tipo SR</text>
+        <!-- D content -->
+        <rect x="10" y="52" width="160" height="160" rx="8" fill="#edf5fc" stroke="#aacde8" stroke-width="1.5"/>
+        <text x="90" y="74" text-anchor="middle" fill="#1a2e3d" font-size="11" font-weight="700">Q(t+1) = D</text>
+        <line x1="20" y1="82" x2="162" y2="82" stroke="#aacde8" stroke-width="1"/>
+        <text x="90" y="100" text-anchor="middle" fill="#555" font-size="10.5" font-style="italic">D=0 → Q=0</text>
+        <text x="90" y="116" text-anchor="middle" fill="#555" font-size="10.5" font-style="italic">D=1 → Q=1</text>
+        <text x="90" y="140" text-anchor="middle" fill="#1a6fa8" font-size="10">Copia D en cada CLK</text>
+        <text x="90" y="157" text-anchor="middle" fill="#1a6fa8" font-size="10">Usado en registros</text>
+        <text x="90" y="196" text-anchor="middle" fill="#888" font-size="9.5" font-style="italic">El más simple</text>
+        <!-- T content -->
+        <rect x="185" y="52" width="160" height="160" rx="8" fill="#fef5f5" stroke="#f0b0b0" stroke-width="1.5"/>
+        <text x="265" y="74" text-anchor="middle" fill="#1a2e3d" font-size="11" font-weight="700">Q(t+1) = T⊕Q(t)</text>
+        <line x1="195" y1="82" x2="337" y2="82" stroke="#f0b0b0" stroke-width="1"/>
+        <text x="265" y="100" text-anchor="middle" fill="#555" font-size="10.5" font-style="italic">T=0 → mantiene Q</text>
+        <text x="265" y="116" text-anchor="middle" fill="#555" font-size="10.5" font-style="italic">T=1 → cambia Q (toggle)</text>
+        <text x="265" y="140" text-anchor="middle" fill="#e74c3c" font-size="10" font-weight="700">★ El del examen</text>
+        <text x="265" y="157" text-anchor="middle" fill="#e74c3c" font-size="10">Usado en contadores</text>
+        <text x="265" y="196" text-anchor="middle" fill="#888" font-size="9.5" font-style="italic">Toggle = alternar</text>
+        <!-- JK content -->
+        <rect x="360" y="52" width="160" height="160" rx="8" fill="#f0faf5" stroke="#a0d8b8" stroke-width="1.5"/>
+        <text x="440" y="74" text-anchor="middle" fill="#1a2e3d" font-size="11" font-weight="700">J=0,K=0 → guarda</text>
+        <line x1="370" y1="82" x2="512" y2="82" stroke="#a0d8b8" stroke-width="1"/>
+        <text x="440" y="100" text-anchor="middle" fill="#555" font-size="10.5">J=1, K=0 → Set (→1)</text>
+        <text x="440" y="116" text-anchor="middle" fill="#555" font-size="10.5">J=0, K=1 → Reset (→0)</text>
+        <text x="440" y="132" text-anchor="middle" fill="#555" font-size="10.5">J=1, K=1 → toggle</text>
+        <text x="440" y="157" text-anchor="middle" fill="#27ae60" font-size="10">El más completo</text>
+        <text x="440" y="196" text-anchor="middle" fill="#888" font-size="9.5" font-style="italic">No tiene estado prohibido</text>
+        <!-- SR content -->
+        <rect x="535" y="52" width="175" height="160" rx="8" fill="#f8f0ff" stroke="#c8a8e8" stroke-width="1.5"/>
+        <text x="622" y="74" text-anchor="middle" fill="#1a2e3d" font-size="11" font-weight="700">S=0,R=0 → guarda</text>
+        <line x1="545" y1="82" x2="702" y2="82" stroke="#c8a8e8" stroke-width="1"/>
+        <text x="622" y="100" text-anchor="middle" fill="#555" font-size="10.5">S=1, R=0 → Set (→1)</text>
+        <text x="622" y="116" text-anchor="middle" fill="#555" font-size="10.5">S=0, R=1 → Reset (→0)</text>
+        <text x="622" y="132" text-anchor="middle" fill="#c0392b" font-size="10.5">S=1, R=1 → ⚠️ PROHIBIDO</text>
+        <text x="622" y="157" text-anchor="middle" fill="#8e44ad" font-size="10">El más básico</text>
+        <text x="622" y="196" text-anchor="middle" fill="#888" font-size="9.5" font-style="italic">State prohibido → evitar</text>
+      </svg>
+    </div>
+
+    <div class="copy-box">
+      <div class="box-lbl lbl-copy"><span class="ico">📋</span>COPIA — El comportamiento del T flip-flop y la secuencia del contador</div>
+      <p>En tu libreta, dibuja esta tabla de excitación del FF-T (la necesitarás en el examen) y debajo la secuencia del contador del examen:</p>
+      <div class="cblock2">FLIP-FLOP TIPO T — tabla de excitación
+T=0 → Q(t+1) = Q(t)    (no cambia, se queda igual)
+T=1 → Q(t+1) = Q̄(t)   (cambia, alterna entre 0 y 1)
+Fórmula: Q(t+1) = T ⊕ Q(t)
+
+CONTADOR DESCENDENTE 3 bits (Q3Q2Q1 = estado inicial 111):
+CLK  Q3  Q2  Q1   Decimal
+ 0    1   1   1      7   ← inicio
+ 1    1   1   0      6
+ 2    1   0   1      5
+ 3    1   0   0      4
+ 4    0   1   1      3
+ 5    0   1   0      2
+ 6    0   0   1      1
+ 7    0   0   0      0
+ 8    1   1   1      7   ← vuelve al principio</div>
+    </div>
+
+    <div class="write-box">
+      <div class="box-lbl lbl-write"><span class="ico">✍️</span>ESCRIBE — Cómo leer un oscilograma</div>
+      <p>Dibuja en tu libreta el siguiente esquema de señales de tiempo para el contador de arriba. Usa una regla para los niveles alto y bajo, y el CLK como referencia:</p>
+      <div class="cblock">CLK: _|‾|_|‾|_|‾|_|‾|_|‾|_|‾|_|‾|_|‾|_
+ Q1: ‾‾|_|‾|_|‾|_|‾|_|‾‾  (cambia cada CLK, periodo 2T)
+ Q2: ‾‾‾‾|__|‾‾|__|‾‾‾‾    (cambia cada 2 CLK, periodo 4T)
+ Q3: ‾‾‾‾‾‾‾‾|________|‾‾‾ (cambia cada 4 CLK, periodo 8T)
+      ^inicio=111           ^en CLK4 Q3 baja
+
+ Observa: Q3 es la señal MÁS LENTA, Q1 la MÁS RÁPIDA
+ Todas empiezan en ALTO porque el estado inicial es 111</div>
+    </div>
+
+    <div class="test-box">
+      <div class="box-lbl lbl-test"><span class="ico">🧠</span>TEST</div>
+      <ul class="check-list">
+        <li>¿Qué significa que T=1 en un flip-flop T?</li>
+        <li>¿Cuál es la diferencia entre un circuito combinacional y uno secuencial?</li>
+        <li>En el oscilograma del examen, ¿cuántos pulsos de CLK tarda Q3 en cambiar de estado?</li>
+        <li>Si Q=1 y T=0, ¿cuál es Q en el siguiente CLK?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s7">
+  <div class="sec-header">
+    <div class="sec-num">7</div>
+    <div><div class="sec-title">Memorias RAM</div>
+      <div class="sec-sub">Bus de datos · Bus de direcciones · Mapa de memoria</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="concept-intro">
+      Una memoria RAM es como un array de casillas numeradas. Para acceder a una casilla, indicas su
+      <b>dirección</b> por el bus de direcciones. Los datos entran/salen por el <b>bus de datos</b>.
+      Con varios chips pequeños se construye una memoria grande: algunos bits de la dirección
+      seleccionan el chip (<b>chip select</b>) y los demás seleccionan la celda dentro del chip.
+    </div>
+
+    <div class="schema-wrap">
+      <div class="schema-title">📊 Diagrama — Arquitectura de memoria con 4 chips</div>
+      <svg viewBox="0 0 720 280" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family:'Source Sans 3',sans-serif">
+        <!-- CPU -->
+        <rect x="10" y="100" width="100" height="80" rx="10" fill="#1a6fa8"/>
+        <text x="60" y="136" text-anchor="middle" fill="white" font-size="13" font-weight="700">CPU</text>
+        <text x="60" y="153" text-anchor="middle" fill="white" font-size="10.5">procesador</text>
+        <!-- Address bus (top) -->
+        <rect x="115" y="80" width="480" height="24" rx="4" fill="#e74c3c" opacity=".85"/>
+        <text x="355" y="97" text-anchor="middle" fill="white" font-size="11" font-weight="700">BUS DE DIRECCIONES (14 bits: A13..A0)</text>
+        <text x="100" y="97" fill="#e74c3c" font-size="10" text-anchor="end">A13→A0</text>
+        <!-- Address bus arrow -->
+        <polygon points="110,92 118,88 118,96" fill="#e74c3c"/>
+        <line x1="110" y1="92" x2="115" y2="92" stroke="#e74c3c" stroke-width="2"/>
+        <!-- Data bus (bottom) -->
+        <rect x="115" y="174" width="480" height="24" rx="4" fill="#27ae60" opacity=".85"/>
+        <text x="355" y="191" text-anchor="middle" fill="white" font-size="11" font-weight="700">BUS DE DATOS (8 bits)</text>
+        <line x1="110" y1="186" x2="115" y2="186" stroke="#27ae60" stroke-width="2"/>
+        <polygon points="110,182 118,186 110,190" fill="#27ae60"/>
+        <polygon points="120,182 112,186 120,190" fill="#27ae60"/>
+        <!-- 4 Chips -->
+        <rect x="118" y="110" width="100" height="58" rx="8" fill="#8e44ad"/>
+        <text x="168" y="133" text-anchor="middle" fill="white" font-size="11" font-weight="700">RAM0</text>
+        <text x="168" y="149" text-anchor="middle" fill="white" font-size="10">0x0000–0x0FFF</text>
+        <text x="168" y="162" text-anchor="middle" fill="white" font-size="9.5">A11..A0 (12 bits)</text>
+
+        <rect x="232" y="110" width="100" height="58" rx="8" fill="#8e44ad"/>
+        <text x="282" y="133" text-anchor="middle" fill="white" font-size="11" font-weight="700">RAM1</text>
+        <text x="282" y="149" text-anchor="middle" fill="white" font-size="10">0x1000–0x1FFF</text>
+        <text x="282" y="162" text-anchor="middle" fill="white" font-size="9.5">A11..A0 (12 bits)</text>
+
+        <rect x="346" y="110" width="100" height="58" rx="8" fill="#8e44ad"/>
+        <text x="396" y="133" text-anchor="middle" fill="white" font-size="11" font-weight="700">RAM2</text>
+        <text x="396" y="149" text-anchor="middle" fill="white" font-size="10">0x2000–0x2FFF</text>
+        <text x="396" y="162" text-anchor="middle" fill="white" font-size="9.5">A11..A0 (12 bits)</text>
+
+        <rect x="460" y="110" width="100" height="58" rx="8" fill="#8e44ad"/>
+        <text x="510" y="133" text-anchor="middle" fill="white" font-size="11" font-weight="700">RAM3</text>
+        <text x="510" y="149" text-anchor="middle" fill="white" font-size="10">0x3000–0x3FFF</text>
+        <text x="510" y="162" text-anchor="middle" fill="white" font-size="9.5">A11..A0 (12 bits)</text>
+
+        <!-- Decoder for chip select -->
+        <rect x="580" y="80" width="128" height="118" rx="10" fill="#e67e22"/>
+        <text x="644" y="102" text-anchor="middle" fill="white" font-size="11" font-weight="700">DECODER</text>
+        <text x="644" y="118" text-anchor="middle" fill="white" font-size="10">A13,A12</text>
+        <text x="644" y="134" text-anchor="middle" fill="white" font-size="10">(chip select)</text>
+        <text x="644" y="155" text-anchor="middle" fill="white" font-size="10.5">00→RAM0</text>
+        <text x="644" y="170" text-anchor="middle" fill="white" font-size="10.5">01→RAM1</text>
+        <text x="644" y="185" text-anchor="middle" fill="white" font-size="10.5">10→RAM2</text>
+        <!-- connect A13,A12 to decoder -->
+        <line x1="580" y1="109" x2="596" y2="109" stroke="#e74c3c" stroke-width="2"/>
+        <!-- notes -->
+        <text x="360" y="250" text-anchor="middle" fill="#5a7a8f" font-size="10.5" font-style="italic">
+          Los bits A13,A12 seleccionan el chip. Los bits A11..A0 seleccionan la celda dentro del chip.
+        </text>
+        <text x="360" y="266" text-anchor="middle" fill="#5a7a8f" font-size="10.5" font-style="italic">
+          12 bits internos + 2 bits chip select = 14 bits totales = log₂(16 KB) ✓
+        </text>
+      </svg>
+    </div>
+
+    <div class="write-box">
+      <div class="box-lbl lbl-write"><span class="ico">✍️</span>ESCRIBE — Los 4 cálculos clave de memoria</div>
+      <p>En tu libreta, escribe estas 4 fórmulas en un recuadro grande. Son las que usarás en cada pregunta de memoria:</p>
+      <div class="cblock">FÓRMULAS DE MEMORIA
+══════════════════════════════════════════════
+① Bits de dirección del chip:
+   x tal que 2ˣ = capacidad del chip
+   Ej: chip de 4KB → 4096 = 2¹² → 12 bits
+
+② Número de chips necesarios:
+   num_chips = memoria_total ÷ capacidad_chip
+   Ej: 16KB ÷ 4KB = 4 chips
+
+③ Bits de selección de chip (chip select):
+   y tal que 2ʸ = num_chips
+   Ej: 4 chips → 4=2² → 2 bits
+
+④ Mapa de memoria (rango de cada chip):
+   inicio_chip_N  = N × tamaño_chip
+   fin_chip_N     = (N+1) × tamaño_chip - 1
+   Ej: RAM2 → inicio=2×0x1000=0x2000, fin=0x2FFF</div>
+      <p>Ahora practica: sistema de 32 KB con chips de 8 KB. ¿Cuántos chips? ¿Cuántos bits de chip select? ¿Cuál es el rango de RAM1?</p>
+      <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+      <p style="font-size:.8rem;color:#888;margin-top:6px">Respuesta: 4 chips, 2 bits CS, RAM1: 0x2000–0x3FFF</p>
+    </div>
+
+    <div class="test-box">
+      <div class="box-lbl lbl-test"><span class="ico">🧠</span>TEST FINAL DE MEMORIA</div>
+      <ul class="check-list">
+        <li>¿Cuántos bits de dirección necesita un sistema de 64 KB? (sin calcular, razona)</li>
+        <li>¿Cuál es la dirección hexadecimal de inicio del chip RAM3 en el sistema del examen?</li>
+        <li>¿Por qué se usan los bits más significativos para chip select en lugar de los menos significativos?</li>
+        <li>Si el bus de datos es de 8 bits, ¿cuántos bytes caben en cada dirección?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s8">
+  <div class="sec-header">
+    <div class="sec-num">8</div>
+    <div><div class="sec-title">Mapa Mental Global — Todos los conceptos conectados</div>
+      <div class="sec-sub">El esquema definitivo que debes copiar y estudiar</div></div>
+  </div>
+  <div class="sec-body">
+
+    <div class="schema-wrap">
+      <div class="schema-title">🗺 Gran Mapa — Electrónica Digital</div>
+      <svg viewBox="0 0 720 460" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family:'Source Sans 3',sans-serif">
+        <!-- CENTER -->
+        <ellipse cx="360" cy="230" rx="88" ry="48" fill="#0d4f7a"/>
+        <text x="360" y="223" text-anchor="middle" fill="white" font-size="14" font-weight="700">ELECTRÓNICA</text>
+        <text x="360" y="242" text-anchor="middle" fill="white" font-size="14" font-weight="700">DIGITAL</text>
+
+        <!-- Branch 1: Numeración (top) -->
+        <line x1="360" y1="182" x2="360" y2="110" stroke="#e74c3c" stroke-width="2.5"/>
+        <rect x="248" y="68" width="224" height="44" rx="10" fill="#e74c3c"/>
+        <text x="360" y="86" text-anchor="middle" fill="white" font-size="12" font-weight="700">SISTEMAS DE NUMERACIÓN</text>
+        <text x="360" y="104" text-anchor="middle" fill="white" font-size="10.5">Bin · Oct · Dec · Hex  |  conversiones</text>
+
+        <!-- Branch 2: Álgebra Boole (top-left) -->
+        <line x1="280" y1="198" x2="155" y2="118" stroke="#8e44ad" stroke-width="2.5"/>
+        <rect x="18" y="80" width="210" height="56" rx="10" fill="#8e44ad"/>
+        <text x="123" y="101" text-anchor="middle" fill="white" font-size="12" font-weight="700">ÁLGEBRA DE BOOLE</text>
+        <text x="123" y="116" text-anchor="middle" fill="white" font-size="10.5">AND OR NOT  |  NAND NOR XOR</text>
+        <text x="123" y="130" text-anchor="middle" fill="white" font-size="10.5">Leyes · De Morgan</text>
+
+        <!-- Branch 3: K-map (left) -->
+        <line x1="272" y1="230" x2="138" y2="230" stroke="#27ae60" stroke-width="2.5"/>
+        <rect x="10" y="200" width="128" height="60" rx="10" fill="#27ae60"/>
+        <text x="74" y="222" text-anchor="middle" fill="white" font-size="12" font-weight="700">K-MAP</text>
+        <text x="74" y="238" text-anchor="middle" fill="white" font-size="10.5">SOP: agrupar 1s</text>
+        <text x="74" y="253" text-anchor="middle" fill="white" font-size="10.5">POS: agrupar 0s</text>
+
+        <!-- Branch 4: Tablas verdad (top-right) -->
+        <line x1="440" y1="198" x2="565" y2="118" stroke="#f39c12" stroke-width="2.5"/>
+        <rect x="490" y="80" width="218" height="56" rx="10" fill="#f39c12"/>
+        <text x="599" y="101" text-anchor="middle" fill="white" font-size="12" font-weight="700">TABLAS DE VERDAD</text>
+        <text x="599" y="116" text-anchor="middle" fill="white" font-size="10.5">Minterms Σm  |  Maxterms ΠM</text>
+        <text x="599" y="130" text-anchor="middle" fill="white" font-size="10.5">n vars → 2ⁿ filas</text>
+
+        <!-- Branch 5: Decodificador (right) -->
+        <line x1="448" y1="230" x2="582" y2="230" stroke="#16a085" stroke-width="2.5"/>
+        <rect x="582" y="200" width="128" height="60" rx="10" fill="#16a085"/>
+        <text x="646" y="222" text-anchor="middle" fill="white" font-size="12" font-weight="700">DECODER</text>
+        <text x="646" y="238" text-anchor="middle" fill="white" font-size="10.5">n-a-2ⁿ  |  + OR</text>
+        <text x="646" y="253" text-anchor="middle" fill="white" font-size="10.5">impl. Σm</text>
+
+        <!-- Branch 6: Flip-Flops (bottom-left) -->
+        <line x1="298" y1="268" x2="165" y2="356" stroke="#c0392b" stroke-width="2.5"/>
+        <rect x="18" y="328" width="210" height="68" rx="10" fill="#c0392b"/>
+        <text x="123" y="350" text-anchor="middle" fill="white" font-size="12" font-weight="700">FLIP-FLOPS</text>
+        <text x="123" y="366" text-anchor="middle" fill="white" font-size="10.5">D · T · JK · SR</text>
+        <text x="123" y="382" text-anchor="middle" fill="white" font-size="10.5">T: T=0 guarda · T=1 toggle</text>
+        <text x="123" y="396" text-anchor="middle" fill="white" font-size="10.5">Circuitos SECUENCIALES</text>
+
+        <!-- Branch 7: Contadores (bottom) -->
+        <line x1="360" y1="278" x2="360" y2="360" stroke="#2980b9" stroke-width="2.5"/>
+        <rect x="248" y="358" width="224" height="58" rx="10" fill="#2980b9"/>
+        <text x="360" y="380" text-anchor="middle" fill="white" font-size="12" font-weight="700">CONTADORES</text>
+        <text x="360" y="396" text-anchor="middle" fill="white" font-size="10.5">3 bits: cuenta 0-7 | Up/Down</text>
+        <text x="360" y="410" text-anchor="middle" fill="white" font-size="10.5">Q1=rápido · Q3=lento</text>
+
+        <!-- Branch 8: Memorias (bottom-right) -->
+        <line x1="422" y1="268" x2="555" y2="356" stroke="#e67e22" stroke-width="2.5"/>
+        <rect x="492" y="328" width="218" height="68" rx="10" fill="#e67e22"/>
+        <text x="601" y="350" text-anchor="middle" fill="white" font-size="12" font-weight="700">MEMORIAS RAM</text>
+        <text x="601" y="366" text-anchor="middle" fill="white" font-size="10.5">Bus datos · Bus dir.</text>
+        <text x="601" y="382" text-anchor="middle" fill="white" font-size="10.5">Bits internos + Chip select</text>
+        <text x="601" y="396" text-anchor="middle" fill="white" font-size="10.5">Mapa de memoria (hex)</text>
+      </svg>
+    </div>
+
+    <div class="copy-box">
+      <div class="box-lbl lbl-copy"><span class="ico">📋</span>COPIA — Este es el mapa que debes tener en tu libreta</div>
+      <p>Copia este mapa mental completo en <b>una página doble</b> de tu libreta. Usa un color diferente para cada rama. Después de copiarlo, <b>sin mirar</b>, intenta escribir al lado de cada nodo 2 datos o fórmulas clave de ese tema.</p>
+    </div>
+
+    <div class="write-box">
+      <div class="box-lbl lbl-write"><span class="ico">✍️</span>EJERCICIO FINAL DE SÍNTESIS</div>
+      <p>En tu libreta, resuelve de memoria (sin mirar las notas) este problema completo que combina los 8 temas:</p>
+      <div class="cblock">PROBLEMA INTEGRADOR:
+Tienes chips de 8 KB, quieres 32 KB de memoria total, bus de datos = 8 bits.
+
+1. ¿Cuántos chips necesitas?
+2. ¿Cuántos bits de dirección interna tiene cada chip?
+3. ¿Cuántos bits de chip select necesitas?
+4. ¿Cuál es el rango de direcciones del chip nº 2 (RAM2)?
+5. El bus de direcciones total tiene _____ bits.
+6. Los bits más significativos del bus (A____ y A____) son el chip select.
+7. Si el chip select es 11 en binario, ¿a qué chip accedes?</div>
+      <div class="lines"><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+      <p style="font-size:.8rem;color:#888;margin-top:8px">Respuestas: 1)4 chips · 2)13 bits · 3)2 bits · 4)0x4000–0x5FFF · 5)15 bits · 6)A14,A13 · 7)RAM3</p>
+    </div>
+
+    <div class="test-box">
+      <div class="box-lbl lbl-test"><span class="ico">🧠</span>AUTOTEST FINAL — ¿Estás listo?</div>
+      <ul class="check-list">
+        <li>¿Puedo construir la tabla de verdad de una función con 3 variables desde cero?</li>
+        <li>¿Puedo dibujar el K-map de 4 variables con los números en el orden correcto?</li>
+        <li>¿Sé agrupar los 1s (SOP) y los 0s (POS) y escribir la expresión resultante?</li>
+        <li>¿Puedo calcular qué salidas del decoder corresponden a un término de la función?</li>
+        <li>¿Recuerdo qué hace el flip-flop T cuando T=1 y cuando T=0?</li>
+        <li>¿Puedo trazar la secuencia de estados de un contador de 3 bits?</li>
+        <li>¿Sé calcular bits de dirección interna, número de chips y rango de cada chip?</li>
+        <li>¿Puedo convertir entre binario, hexadecimal y decimal sin tabla de referencia?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</main><footer>Guía de escritura activa · Electrónica Digital · Escribe, no solo leas</footer>
+</body></html>

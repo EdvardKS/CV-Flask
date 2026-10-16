@@ -1,0 +1,1216 @@
+{
+  "subjectId": "redes",
+  "topics": [
+    {
+      "id": "UD1",
+      "topic": 1,
+      "title": "Tema 1 · Dispositivos de interconexión y niveles OSI",
+      "questionCount": 10
+    },
+    {
+      "id": "UD2",
+      "topic": 2,
+      "title": "Tema 2 · Tecnologías LAN/WLAN, protocolos de acceso al medio y VLAN",
+      "questionCount": 10
+    },
+    {
+      "id": "UD3",
+      "topic": 3,
+      "title": "Tema 3 · Cableado estructurado y normativa ANSI/TIA/EIA-568",
+      "questionCount": 10
+    },
+    {
+      "id": "UD4",
+      "topic": 4,
+      "title": "Tema 4 · Encaminamiento: vector de distancia, estado del enlace y vector camino",
+      "questionCount": 10
+    },
+    {
+      "id": "UD5",
+      "topic": 5,
+      "title": "Tema 5 · Repaso general (dispositivos, IP, seguridad, encaminamiento, cableado)",
+      "questionCount": 19
+    },
+    {
+      "id": "UD6",
+      "topic": 6,
+      "title": "Tema 6 · Criptografía, firma digital y seguridad",
+      "questionCount": 10
+    }
+  ],
+  "questions": [
+    {
+      "kind": "choice",
+      "q": "Los conmutadores operan, normalmente, en el nivel:",
+      "options": [
+        "4.",
+        "1.",
+        "2.",
+        "3."
+      ],
+      "correctIndex": 2,
+      "category": "UD1",
+      "hint": "Trabajan con direcciones MAC (tramas).",
+      "explanationCorrect": "Correcto. Los conmutadores (switches) operan en el nivel 2 (enlace) porque conmutan tramas según direcciones MAC.",
+      "explanationWrong": "Incorrecto. Nivel 2 (enlace). Nivel 1 es físico (repetidores), nivel 3 es red (routers), nivel 4 es transporte (sin dispositivos).",
+      "sourceFile": "autoevaluacion-UAX-UD1.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los dispositivos de nivel 1 se llaman:",
+      "options": [
+        "Router.",
+        "Conmutadores.",
+        "Puentes.",
+        "Repetidores."
+      ],
+      "correctIndex": 3,
+      "category": "UD1",
+      "hint": "Solo regeneran la señal eléctrica.",
+      "explanationCorrect": "Correcto. Los repetidores operan en nivel 1 (físico) regenerando la señal sin entender su contenido.",
+      "explanationWrong": "Incorrecto. Repetidores. Routers=L3, switches/puentes=L2.",
+      "sourceFile": "autoevaluacion-UAX-UD1.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los patch panel operan en el nivel:",
+      "options": [
+        "Nivel 1.",
+        "Nivel 2.",
+        "Nivel 0.",
+        "Nivel 3."
+      ],
+      "correctIndex": 2,
+      "category": "UD1",
+      "hint": "Es un elemento pasivo de cableado.",
+      "explanationCorrect": "Correcto. Los patch panel son pasivos: solo organizan cableado, no procesan señal, por eso se sitúan en nivel 0.",
+      "explanationWrong": "Incorrecto. Nivel 0: son elementos pasivos sin electrónica activa.",
+      "sourceFile": "autoevaluacion-UAX-UD1.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los dispositivos de nivel tres se conocen como:",
+      "options": [
+        "Routers.",
+        "Switch.",
+        "Hubs.",
+        "Pasarela."
+      ],
+      "correctIndex": 0,
+      "category": "UD1",
+      "hint": "Encaminan paquetes según dirección IP.",
+      "explanationCorrect": "Correcto. Los routers operan en nivel 3 (red), usando direcciones IP para encaminar paquetes.",
+      "explanationWrong": "Incorrecto. Routers. Switch/hub son L2/L1, pasarela L5.",
+      "sourceFile": "autoevaluacion-UAX-UD1.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los dispositivos de nivel 4 entienden:",
+      "options": [
+        "De voltajes y de MAC.",
+        "De voltajes, de MAC y de IP.",
+        "No existen dispositivos de nivel 4.",
+        "De voltajes, de MAC, de IP y de puertos."
+      ],
+      "correctIndex": 2,
+      "category": "UD1",
+      "hint": "Pregunta capciosa sobre el modelo de dispositivos por nivel.",
+      "explanationCorrect": "Correcto. No existen dispositivos hardware específicos de nivel 4; el transporte se gestiona en los extremos.",
+      "explanationWrong": "Incorrecto. No existen dispositivos de nivel 4: el transporte (TCP/UDP) se procesa en los hosts finales, no en equipos de red.",
+      "sourceFile": "autoevaluacion-UAX-UD1.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los conmutadores de dos niveles:",
+      "options": [
+        "Se suelen conocer con el nombre de Hubs, operan en dos niveles (físico y enlace), pero no presentan función de aprendizaje.",
+        "Son fácilmente escalables para crear redes cada vez más grandes. Dicha escabilidad se realiza mediante puertos especiales presentes en los conmutadores.",
+        "La gestión de las tramas se hace por software exclusivamente.",
+        "No pueden funcionar en modo rápido pero sí como almacenamiento y envío."
+      ],
+      "correctIndex": 1,
+      "category": "UD1",
+      "hint": "Piensa en puertos uplink/trunk.",
+      "explanationCorrect": "Correcto. Los switches L2 escalan mediante puertos especiales (uplink/trunk) que permiten interconectarlos para crear redes mayores.",
+      "explanationWrong": "Incorrecto. Son escalables mediante puertos especiales (uplink). Los hubs sí son L1, no L2; la gestión es por hardware (ASIC).",
+      "sourceFile": "autoevaluacion-UAX-UD1.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los dispositivos de nivel cinco se usan para:",
+      "options": [
+        "Convertir la señal en señales de radio.",
+        "Proteger al usuario.",
+        "Permitir el trasvase de datos entre redes que no comparten formatos.",
+        "Reconstruir la señal."
+      ],
+      "correctIndex": 2,
+      "category": "UD1",
+      "hint": "Traducen entre protocolos diferentes.",
+      "explanationCorrect": "Correcto. Las pasarelas (gateways) traducen entre redes con distintos formatos/protocolos a nivel de aplicación.",
+      "explanationWrong": "Incorrecto. Permiten interconectar redes con formatos distintos (traducción a nivel aplicación).",
+      "sourceFile": "autoevaluacion-UAX-UD1.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los dispositivos de nivel cinco se conocen como:",
+      "options": [
+        "Hubs.",
+        "Pasarela.",
+        "Switch.",
+        "Routers."
+      ],
+      "correctIndex": 1,
+      "category": "UD1",
+      "hint": "Gateway en inglés.",
+      "explanationCorrect": "Correcto. Las pasarelas (gateways) operan a nivel de aplicación.",
+      "explanationWrong": "Incorrecto. Pasarela (gateway). Hub=L1, switch=L2, router=L3.",
+      "sourceFile": "autoevaluacion-UAX-UD1.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los dispositivos de nivel 5 entienden:",
+      "options": [
+        "De voltajes, de MAC, de IP y de puertos.",
+        "De voltajes y de MAC.",
+        "De voltajes, de MAC y de IP.",
+        "De voltajes, de MAC, de IP, de puertos y de aplicaciones."
+      ],
+      "correctIndex": 3,
+      "category": "UD1",
+      "hint": "Encapsulan todos los niveles inferiores.",
+      "explanationCorrect": "Correcto. Una pasarela procesa hasta el nivel de aplicación, por lo que conoce todos los niveles inferiores.",
+      "explanationWrong": "Incorrecto. Entienden todo: voltajes, MAC, IP, puertos y aplicaciones.",
+      "sourceFile": "autoevaluacion-UAX-UD1.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los dispositivos de nivel 3:",
+      "options": [
+        "Pueden conectarse con los repetidores.",
+        "Pueden conectarse con los conmutadores de nivel 2.",
+        "Pueden conectarse con los equipos finales.",
+        "Todas las respuestas son correctas."
+      ],
+      "correctIndex": 3,
+      "category": "UD1",
+      "hint": "Los routers son flexibles en interconexión.",
+      "explanationCorrect": "Correcto. Los routers pueden conectarse con cualquier dispositivo de niveles inferiores y con equipos finales.",
+      "explanationWrong": "Incorrecto. Todas son válidas: los routers admiten conexiones con repetidores, switches L2 y hosts.",
+      "sourceFile": "autoevaluacion-UAX-UD1.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los medios de transmisión que admite Ethernet son:",
+      "options": [
+        "Cable de fibra óptica.",
+        "Cable de par trenzado.",
+        "Cable coaxial fino y grueso.",
+        "Todas las respuestas son correctas."
+      ],
+      "correctIndex": 3,
+      "category": "UD2",
+      "hint": "Ethernet histórico soportó varios medios.",
+      "explanationCorrect": "Correcto. Ethernet ha admitido coaxial (10BASE2/5), par trenzado (10/100/1000BASE-T) y fibra (1000BASE-SX/LX).",
+      "explanationWrong": "Incorrecto. Todas: fibra, par trenzado y coaxial fino/grueso.",
+      "sourceFile": "autoevaluacion-UAX-UD2.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo Bluetooth usa frecuencias de radio de:",
+      "options": [
+        "5GHz.",
+        "1GHz.",
+        "10GHz.",
+        "2,4GHz."
+      ],
+      "correctIndex": 3,
+      "category": "UD2",
+      "hint": "Misma banda ISM que WiFi 2.4.",
+      "explanationCorrect": "Correcto. Bluetooth opera en la banda ISM de 2,4 GHz.",
+      "explanationWrong": "Incorrecto. 2,4 GHz (banda ISM).",
+      "sourceFile": "autoevaluacion-UAX-UD2.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo Ethernet tambien se llama:",
+      "options": [
+        "802.11.",
+        "802.3.",
+        "802.1.",
+        "802.2."
+      ],
+      "correctIndex": 1,
+      "category": "UD2",
+      "hint": "Estándar IEEE para redes cableadas.",
+      "explanationCorrect": "Correcto. IEEE 802.3 es Ethernet. 802.11 es WiFi.",
+      "explanationWrong": "Incorrecto. 802.3. 802.11=WiFi, 802.2=LLC, 802.1=gestión/VLAN.",
+      "sourceFile": "autoevaluacion-UAX-UD2.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo de las redes WiFi sigue el estándar:",
+      "options": [
+        "802.15.",
+        "802.3.",
+        "802.14.",
+        "802.11."
+      ],
+      "correctIndex": 3,
+      "category": "UD2",
+      "hint": "WiFi = IEEE 802.??",
+      "explanationCorrect": "Correcto. 802.11 es el estándar WiFi.",
+      "explanationWrong": "Incorrecto. 802.11. 802.15=WPAN/Bluetooth, 802.3=Ethernet.",
+      "sourceFile": "autoevaluacion-UAX-UD2.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los problemas que presentan las comunicaciones inalámbricas son:",
+      "options": [
+        "La estación saturada y la estación expuesta.",
+        "La estación oculta y la estación saturada.",
+        "La estación expuesta y la estación oculta.",
+        "La estación oculta, la estación saturada y la estación expuesta."
+      ],
+      "correctIndex": 2,
+      "category": "UD2",
+      "hint": "Dos problemas clásicos: una oye más, otra menos.",
+      "explanationCorrect": "Correcto. Estación oculta (no detecta colisión) y estación expuesta (cree colisión donde no la hay).",
+      "explanationWrong": "Incorrecto. Solo oculta y expuesta. 'Saturada' no es un problema clásico de medio inalámbrico.",
+      "sourceFile": "autoevaluacion-UAX-UD2.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo VPN se utiliza para:",
+      "options": [
+        "Conectar redes locales físicamente alejadas.",
+        "Proporcionar seguridad dentro de la red local.",
+        "Segmentar las redes locales.",
+        "Conectar redes locales físicamente cercanas."
+      ],
+      "correctIndex": 0,
+      "category": "UD2",
+      "hint": "Túnel cifrado sobre Internet.",
+      "explanationCorrect": "Correcto. VPN crea un túnel seguro para unir redes locales a través de Internet.",
+      "explanationWrong": "Incorrecto. Conectar redes físicamente alejadas mediante un túnel cifrado por Internet.",
+      "sourceFile": "autoevaluacion-UAX-UD2.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo CSMA/CA se usa en:",
+      "options": [
+        "Transmisiones cableadas.",
+        "Transmisiones inalámbricas.",
+        "Transmisiones asíncronas.",
+        "Transmisiones en banda saturada."
+      ],
+      "correctIndex": 1,
+      "category": "UD2",
+      "hint": "CA = Collision Avoidance.",
+      "explanationCorrect": "Correcto. CSMA/CA se usa en WiFi porque en inalámbrico no es posible detectar colisiones (CD), solo evitarlas.",
+      "explanationWrong": "Incorrecto. Inalámbricas: en WiFi no se pueden detectar colisiones, solo evitarlas.",
+      "sourceFile": "autoevaluacion-UAX-UD2.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo de acceso al medio de las redes inalámbricas es:",
+      "options": [
+        "CSMA.",
+        "CSMA/CA.",
+        "Aloha puro.",
+        "MACAW."
+      ],
+      "correctIndex": 1,
+      "category": "UD2",
+      "hint": "Variante de CSMA con evitación.",
+      "explanationCorrect": "Correcto. CSMA/CA es el método de acceso al medio en 802.11.",
+      "explanationWrong": "Incorrecto. CSMA/CA.",
+      "sourceFile": "autoevaluacion-UAX-UD2.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Las VLAN se configuran:",
+      "options": [
+        "Por hardware y software.",
+        "Por hardware.",
+        "Por software.",
+        "Las VLAN no se pueden configurar, vienen impuesta por el fabricante."
+      ],
+      "correctIndex": 2,
+      "category": "UD2",
+      "hint": "Etiquetas lógicas en el switch.",
+      "explanationCorrect": "Correcto. Las VLAN se configuran por software en los switches gestionables.",
+      "explanationWrong": "Incorrecto. Por software, mediante configuración en switches gestionables.",
+      "sourceFile": "autoevaluacion-UAX-UD2.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Antes de la existencia de VLAN la pertenencia a una red local era:",
+      "options": [
+        "Un criterio económico.",
+        "Un criterio estructural.",
+        "Un criterio geográfico.",
+        "Un criterio lógico."
+      ],
+      "correctIndex": 2,
+      "category": "UD2",
+      "hint": "Dependía de a qué switch físico te conectabas.",
+      "explanationCorrect": "Correcto. Antes de las VLAN, pertenecer a una LAN dependía de la ubicación física (cableado).",
+      "explanationWrong": "Incorrecto. Geográfico: dependía de a qué switch/segmento estabas conectado físicamente.",
+      "sourceFile": "autoevaluacion-UAX-UD2.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "¿Cuál es la distancia máxima permitida para el cableado horizontal según la normativa ANSI/TIA/EIA-568?",
+      "options": [
+        "70 metros",
+        "80 metros",
+        "100 metros",
+        "90 metros"
+      ],
+      "correctIndex": 3,
+      "category": "UD3",
+      "hint": "Más 10 m de latiguillos = 100 m total.",
+      "explanationCorrect": "Correcto. 90 m de horizontal + hasta 10 m de patch cords = 100 m totales.",
+      "explanationWrong": "Incorrecto. 90 m. Los 100 m incluyen los latiguillos; el horizontal puro son 90 m.",
+      "sourceFile": "autoevaluacion-UAX-UD3.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "La versión del protocolo ANSI/TIA/EIA-568.C elimina un medio de transmisión como válido, que es:",
+      "options": [
+        "El cable corrugado.",
+        "El cable de fibra óptica.",
+        "El cable de par trenzado.",
+        "El cable coaxial."
+      ],
+      "correctIndex": 3,
+      "category": "UD3",
+      "hint": "Medio obsoleto en Ethernet moderna.",
+      "explanationCorrect": "Correcto. La 568.C elimina el cable coaxial como medio válido.",
+      "explanationWrong": "Incorrecto. Coaxial: quedó obsoleto frente a par trenzado y fibra.",
+      "sourceFile": "autoevaluacion-UAX-UD3.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El Área de trabajo (WA, Work Area):",
+      "options": [
+        "Son las ubicaciones destinadas para los equipos finales utilizados por los usuarios individuales",
+        "Es donde se van a ubicar los servidores dentro del edificio",
+        "Es el lugar donde se realizan las conexiones de los sistemas intermedios",
+        "Es una asociación cuya misión es desarrollar normas de cableado industrial para las telecomunicaciones"
+      ],
+      "correctIndex": 0,
+      "category": "UD3",
+      "hint": "WA = puesto del usuario.",
+      "explanationCorrect": "Correcto. El WA es la zona donde se ubican los equipos finales del usuario.",
+      "explanationWrong": "Incorrecto. Es donde se sitúan los equipos finales del usuario; los servidores van en sala de equipos.",
+      "sourceFile": "autoevaluacion-UAX-UD3.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "¿Qué función principal cumple la sala de telecomunicaciones (TC) en un sistema de cableado estructurado?",
+      "options": [
+        "Asegurar la conexión directa entre los dispositivos finales y el servidor.",
+        "Almacenar los servidores y dispositivos de telecomunicaciones para todo el edificio.",
+        "Centralizar el cableado horizontal y alojar los equipos de interconexión.",
+        "Actuar como punto de acceso para el cableado vertical de todo el edificio."
+      ],
+      "correctIndex": 2,
+      "category": "UD3",
+      "hint": "Punto de unión entre horizontal y vertical por planta.",
+      "explanationCorrect": "Correcto. La TC concentra el cableado horizontal de la planta y aloja switches/patch panels.",
+      "explanationWrong": "Incorrecto. Centraliza el cableado horizontal y aloja la electrónica de interconexión por planta.",
+      "sourceFile": "autoevaluacion-UAX-UD3.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El uso del cableado estructurado se ha demostrado que:",
+      "options": [
+        "Todas las respuestas son correctas.",
+        "Provoca menores tasas de fallos.",
+        "La administración de la red es más sencilla.",
+        "Facilita la movilidad del personal dentro de las oficinas."
+      ],
+      "correctIndex": 0,
+      "category": "UD3",
+      "hint": "Tres beneficios bien conocidos.",
+      "explanationCorrect": "Correcto. El cableado estructurado reduce fallos, simplifica administración y facilita movilidad.",
+      "explanationWrong": "Incorrecto. Todas: menos fallos, fácil administración y mayor movilidad.",
+      "sourceFile": "autoevaluacion-UAX-UD3.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los organismos que intervienen en el desarrollo de la normativa del cableado estructurado son:",
+      "options": [
+        "ANSI, EIA e IEEE.",
+        "ANSI, EIA, IEEE y TIA.",
+        "ANSI, EIA.",
+        "ANSI, EIA, IEEE, TIA e ISO."
+      ],
+      "correctIndex": 3,
+      "category": "UD3",
+      "hint": "Cinco siglas, incluida la internacional.",
+      "explanationCorrect": "Correcto. ANSI, EIA, IEEE, TIA e ISO son los cinco organismos que intervienen.",
+      "explanationWrong": "Incorrecto. ANSI, EIA, IEEE, TIA e ISO (ISO aporta la dimensión internacional).",
+      "sourceFile": "autoevaluacion-UAX-UD3.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los tipos de fibra óptica son:",
+      "options": [
+        "Fibra monomodo.",
+        "Fibra monomodo y multimodo.",
+        "Fibra monomodo, multimodo y gradual.",
+        "Fibra multimodo."
+      ],
+      "correctIndex": 1,
+      "category": "UD3",
+      "hint": "Dos grandes familias según el número de modos.",
+      "explanationCorrect": "Correcto. Las dos familias principales son monomodo y multimodo (gradual es un subtipo de multimodo).",
+      "explanationWrong": "Incorrecto. Monomodo y multimodo. La 'gradual' es un tipo de multimodo, no una categoría independiente.",
+      "sourceFile": "autoevaluacion-UAX-UD3.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "La versión del protocolo ANSI/TIA/EIA-568.C data de:",
+      "options": [
+        "2001.",
+        "2010.",
+        "2014.",
+        "2005."
+      ],
+      "correctIndex": 2,
+      "category": "UD3",
+      "hint": "Década 2010s.",
+      "explanationCorrect": "Correcto. La revisión 568.C es de 2014.",
+      "explanationWrong": "Incorrecto. 2014.",
+      "sourceFile": "autoevaluacion-UAX-UD3.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Según las normas de cableado estructurado, ¿qué característica define un sistema de cableado flexible y genérico?",
+      "options": [
+        "Permite conectar dispositivos de distintos fabricantes y soportar tecnologías de voz, datos y video.",
+        "Puede utilizar cualquier tipo de medio de transmisión sin restricción de estándares.",
+        "Requiere la instalación de hubs y routers en las áreas de trabajo para aumentar la movilidad.",
+        "Limita el uso de conexiones de fibra óptica en el cableado vertical."
+      ],
+      "correctIndex": 0,
+      "category": "UD3",
+      "hint": "Multi-fabricante y multi-servicio.",
+      "explanationCorrect": "Correcto. Es genérico porque soporta voz, datos y vídeo de cualquier fabricante respetando los estándares.",
+      "explanationWrong": "Incorrecto. Soporta voz/datos/vídeo de cualquier fabricante; sí debe respetar estándares.",
+      "sourceFile": "autoevaluacion-UAX-UD3.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Las salas de equipos son:",
+      "options": [
+        "El lugar donde se realizan las conexiones de los sistemas intermedios.",
+        "El lugar por donde las líneas de comunicaciones entran en el edificio.",
+        "Las ubicaciones destinadas para los equipos finales utilizados por los usuarios individuales.",
+        "El lugar donde se van a ubicar los servidores dentro del edificio."
+      ],
+      "correctIndex": 3,
+      "category": "UD3",
+      "hint": "CPD del edificio.",
+      "explanationCorrect": "Correcto. La sala de equipos (ER) aloja los servidores y equipamiento principal del edificio.",
+      "explanationWrong": "Incorrecto. Aloja los servidores del edificio. La acometida es por donde entran las líneas; la TC concentra horizontal.",
+      "sourceFile": "autoevaluacion-UAX-UD3.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El router que da acceso al AS se conoce como:",
+      "options": [
+        "Router externo.",
+        "Router frontera.",
+        "Router gestor.",
+        "Todas las respuestas son correctas."
+      ],
+      "correctIndex": 1,
+      "category": "UD4",
+      "hint": "Border router.",
+      "explanationCorrect": "Correcto. El router frontera conecta el AS con el exterior y ejecuta BGP.",
+      "explanationWrong": "Incorrecto. Router frontera (border router): conecta el AS con otros AS.",
+      "sourceFile": "autoevaluacion-UAX-UD4.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo vector camino tiene como misión:",
+      "options": [
+        "Crear la tabla de encaminamiento interdominio.",
+        "Controlar el acceso de la red a Internet.",
+        "Crear la tabla de encaminamiento intradominio.",
+        "Controlar el ancho de banda que utiliza el SA."
+      ],
+      "correctIndex": 0,
+      "category": "UD4",
+      "hint": "Lo usa BGP entre AS.",
+      "explanationCorrect": "Correcto. Vector camino (BGP) construye tablas de encaminamiento entre dominios (AS).",
+      "explanationWrong": "Incorrecto. Interdominio. Intradominio se hace con RIP/OSPF (vector distancia/estado del enlace).",
+      "sourceFile": "autoevaluacion-UAX-UD4.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "La novedad principal del protocolo vector camino es:",
+      "options": [
+        "La ruta se almacena parcialmente.",
+        "La forma de calcular la métrica.",
+        "Para calcular la ruta se tienen en cuenta condicionantes políticos.",
+        "La velocidad baja de convergencia."
+      ],
+      "correctIndex": 2,
+      "category": "UD4",
+      "hint": "Decisiones no técnicas también pesan.",
+      "explanationCorrect": "Correcto. BGP permite incluir políticas (acuerdos comerciales, preferencias) en la decisión de ruta.",
+      "explanationWrong": "Incorrecto. Políticas: la ruta elegida puede depender de acuerdos entre operadores, no solo métrica.",
+      "sourceFile": "autoevaluacion-UAX-UD4.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Aparte de los problemas propios del protocolo vector de distancia RIP, tiene el siguiente inconveniente:",
+      "options": [
+        "No es capaz de usar máscaras de red ni VLSM.",
+        "No funciona bien con redes pequeñas.",
+        "Todas las respuestas son correctas.",
+        "La seguridad es demasiado estricta."
+      ],
+      "correctIndex": 0,
+      "category": "UD4",
+      "hint": "RIPv1 era classful.",
+      "explanationCorrect": "Correcto. RIPv1 no soporta VLSM/máscaras (classful). RIPv2 sí.",
+      "explanationWrong": "Incorrecto. RIP (v1) no soporta VLSM ni máscaras de subred.",
+      "sourceFile": "autoevaluacion-UAX-UD4.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo estado del enlace, con respecto al protocolo vector de distancia, tiene como novedad:",
+      "options": [
+        "Las tablas se construyen manualmente.",
+        "Se calcula la ruta más larga.",
+        "Se mide el retardo a cada router vecino.",
+        "La información no se comparte con los router vecinos."
+      ],
+      "correctIndex": 2,
+      "category": "UD4",
+      "hint": "OSPF mide el coste del enlace.",
+      "explanationCorrect": "Correcto. Estado del enlace mide el retardo/coste a cada vecino y lo difunde por toda la red.",
+      "explanationWrong": "Incorrecto. Se mide retardo a vecinos y se inunda esa información para construir el mapa completo.",
+      "sourceFile": "autoevaluacion-UAX-UD4.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "La solución para evitar los problemas intrínsecos del protocolo vector de distancia consiste en:",
+      "options": [
+        "Definición de infinito.",
+        "Horizonte dividido.",
+        "Horizonte dividido y retorno envenenado.",
+        "Todas las respuestas son correctas."
+      ],
+      "correctIndex": 3,
+      "category": "UD4",
+      "hint": "Mitigan el count-to-infinity.",
+      "explanationCorrect": "Correcto. Las tres técnicas (infinito, horizonte dividido, retorno envenenado) combaten el problema de cuenta a infinito.",
+      "explanationWrong": "Incorrecto. Todas: definición de infinito, horizonte dividido y retorno envenenado.",
+      "sourceFile": "autoevaluacion-UAX-UD4.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "La implementación del protocolo vector de distancia para ser usado en IPv6 es:",
+      "options": [
+        "RIPv2 for IPv6.",
+        "RIPv3.",
+        "RIPng.",
+        "RIPv6."
+      ],
+      "correctIndex": 2,
+      "category": "UD4",
+      "hint": "ng = next generation.",
+      "explanationCorrect": "Correcto. RIPng (next generation) es la versión de RIP para IPv6.",
+      "explanationWrong": "Incorrecto. RIPng (RIP next generation) para IPv6.",
+      "sourceFile": "autoevaluacion-UAX-UD4.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Cuál de las siguientes líneas de datos no admite OSPF:",
+      "options": [
+        "Líneas punto a punto.",
+        "Redes multiacceso sin difusión (redes WAN).",
+        "Redes monoacceso con difusión (redes PAN).",
+        "Redes multiacceso con difusión (redes LAN)."
+      ],
+      "correctIndex": 2,
+      "category": "UD4",
+      "hint": "OSPF se diseñó para LAN/WAN/p2p.",
+      "explanationCorrect": "Correcto. OSPF soporta p2p, multiacceso con/sin difusión; las 'monoacceso con difusión (PAN)' no son un tipo soportado.",
+      "explanationWrong": "Incorrecto. Redes monoacceso con difusión (PAN) no son una categoría que OSPF admita.",
+      "sourceFile": "autoevaluacion-UAX-UD4.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo vector de distancia:",
+      "options": [
+        "Es un protocolo intradominio.",
+        "Las tablas se construyen automáticamente.",
+        "Todas las respuestas son correctas.",
+        "Se almacena la menor distancia a cada destino."
+      ],
+      "correctIndex": 2,
+      "category": "UD4",
+      "hint": "Varias afirmaciones ciertas a la vez.",
+      "explanationCorrect": "Correcto. Vector distancia es intradominio, construye tablas automáticamente y guarda la mínima distancia.",
+      "explanationWrong": "Incorrecto. Todas: intradominio, automático y guarda mínima distancia.",
+      "sourceFile": "autoevaluacion-UAX-UD4.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo de encaminamiento interdominio es:",
+      "options": [
+        "Encaminamiento basado en estado del camino.",
+        "Encaminamiento basado en estado del enlace.",
+        "Encaminamiento basado en vector camino.",
+        "Encaminamiento basado en vector de distancia."
+      ],
+      "correctIndex": 2,
+      "category": "UD4",
+      "hint": "BGP es el ejemplo real.",
+      "explanationCorrect": "Correcto. Vector camino (path vector, BGP) es el protocolo interdominio estándar.",
+      "explanationWrong": "Incorrecto. Vector camino. Estado del enlace y vector distancia son intradominio.",
+      "sourceFile": "autoevaluacion-UAX-UD4.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo BGP:",
+      "options": [
+        "Determina las mejores rutas a las redes vecinas basándose en la capacidad de alcanzarlo y en el camino más corto",
+        "Determina las mejores rutas a las redes vecinas basándose exclusivamente en la capacidad para alcanzarlo.",
+        "Es un protocolo ejemplo de estado de enlace",
+        "Determina las mejores rutas a las redes vecinas basándose en la capacidad de alcanzarlo y la política del AS"
+      ],
+      "correctIndex": 3,
+      "category": "UD5",
+      "hint": "BGP es vector camino con políticas.",
+      "explanationCorrect": "Correcto. BGP combina alcanzabilidad con políticas del AS para elegir ruta.",
+      "explanationWrong": "Incorrecto. Alcanzabilidad + política del AS. BGP es vector camino, no estado del enlace.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Que la información de los equipos sólo pueda ser modificada por las personas autorizadas a ello y de forma controlada es un concepto asociado a:",
+      "options": [
+        "Confiabilidad",
+        "Disponibilidad",
+        "No repudio",
+        "Integridad"
+      ],
+      "correctIndex": 3,
+      "category": "UD5",
+      "hint": "Pilar CIA: la 'I'.",
+      "explanationCorrect": "Correcto. Integridad: la información solo se modifica por autorizados y de forma controlada.",
+      "explanationWrong": "Incorrecto. Integridad. Disponibilidad=acceso, no repudio=no negar autoría.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo Aloha puro en comparación con el Aloha ranurado:",
+      "options": [
+        "En Aloha Puro cuando un emisor tiene una trama para transmitir empieza a hacerlo de forma automática, mientras que en el ranurado debe esperar de forma obligatoria a que empiece la siguiente ranura.",
+        "Si se produce una colisión en el Aloha Ranurado, el emisor espera un tiempo aleatorio mientras que en el Puro el tiempo está determinado.",
+        "Aloha Puro es más complejo de implementar que el ranurado",
+        "La eficacia de Aloha ranurado es de un 18%, frente al 37% de Aloha puro."
+      ],
+      "correctIndex": 0,
+      "category": "UD5",
+      "hint": "Ranurado = slots de tiempo.",
+      "explanationCorrect": "Correcto. Aloha puro transmite cuando quiere; el ranurado solo al inicio de cada slot.",
+      "explanationWrong": "Incorrecto. Aloha puro transmite inmediatamente; el ranurado espera al inicio de la ranura. (La eficiencia es 18% puro vs 37% ranurado, al revés que la d).",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El protocolo ICMP de una pila TCP/IP pertenece a la capa:",
+      "options": [
+        "Aplicación",
+        "Red",
+        "Transporte",
+        "Enlace"
+      ],
+      "correctIndex": 1,
+      "category": "UD5",
+      "hint": "ICMP va encapsulado en IP.",
+      "explanationCorrect": "Correcto. ICMP es de capa de red (mismo nivel que IP).",
+      "explanationWrong": "Incorrecto. Red: ICMP se transporta en datagramas IP y se considera parte de la capa de red.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Equipos ubicados en el mismo país de mas de 100 km de distancia conforman una red:",
+      "options": [
+        "Personal",
+        "Red Extensa",
+        "Local",
+        "Metropolitana"
+      ],
+      "correctIndex": 1,
+      "category": "UD5",
+      "hint": "WAN.",
+      "explanationCorrect": "Correcto. >100 km dentro del mismo país es WAN (red extensa).",
+      "explanationWrong": "Incorrecto. WAN (Red Extensa). Metropolitana es a escala ciudad, LAN edificio, PAN persona.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "OSPF se diseñó pensando en:",
+      "options": [
+        "Solo pudiera usar una métrica de distancia, el retardo",
+        "El tiempo de adaptación ante cambios no es vital",
+        "No permitía balanceo de carga",
+        "Fuera un protocolo abierto"
+      ],
+      "correctIndex": 3,
+      "category": "UD5",
+      "hint": "Open Shortest Path First.",
+      "explanationCorrect": "Correcto. OSPF = 'Open' SPF: estándar abierto no propietario.",
+      "explanationWrong": "Incorrecto. Es abierto (Open SPF). Soporta varias métricas, rápida convergencia y balanceo.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Un puente transparente es un dispositivo de nivel:",
+      "options": [
+        "3",
+        "4",
+        "1",
+        "2"
+      ],
+      "correctIndex": 3,
+      "category": "UD5",
+      "hint": "Trabaja con MAC.",
+      "explanationCorrect": "Correcto. Los puentes operan en nivel 2 (enlace).",
+      "explanationWrong": "Incorrecto. Nivel 2 (enlace): conmutan tramas según MAC.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Las salas donde se ubican los dispositivos de interconexión que permiten el cambio entre el cableado vertical y el horizontal se denomina:",
+      "options": [
+        "Sala de equipos",
+        "Sala de telecomunicaciones",
+        "Acometida de entrada",
+        "Sala de cambio"
+      ],
+      "correctIndex": 1,
+      "category": "UD5",
+      "hint": "TC por planta.",
+      "explanationCorrect": "Correcto. La sala de telecomunicaciones (TC) une vertical (backbone) con horizontal.",
+      "explanationWrong": "Incorrecto. Sala de telecomunicaciones (TC). La sala de equipos aloja servidores.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El receptor óptico más sensible de los expuestos a continuación es:",
+      "options": [
+        "LASER",
+        "Fotodiodo",
+        "Diodo PIN",
+        "Diodo de Avalancha"
+      ],
+      "correctIndex": 3,
+      "category": "UD5",
+      "hint": "APD multiplica internamente la señal.",
+      "explanationCorrect": "Correcto. El diodo de avalancha (APD) tiene ganancia interna, siendo el receptor más sensible.",
+      "explanationWrong": "Incorrecto. Diodo de avalancha (APD): gana sensibilidad por multiplicación interna. El LASER es emisor, no receptor.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "La retransmisión es un ataque:",
+      "options": [
+        "Pasivo",
+        "Activo de modificación",
+        "Activo de interrupción",
+        "Activo de inserción"
+      ],
+      "correctIndex": 3,
+      "category": "UD5",
+      "hint": "Replay attack reinyecta tramas.",
+      "explanationCorrect": "Correcto. La retransmisión (replay) reinyecta mensajes válidos capturados: activo de inserción.",
+      "explanationWrong": "Incorrecto. Activo de inserción: el atacante reinyecta mensajes capturados.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El router que da acceso al AS se conoce como:",
+      "options": [
+        "Router frontera",
+        "Todas son correctas",
+        "Router gestor",
+        "Router externo"
+      ],
+      "correctIndex": 0,
+      "category": "UD5",
+      "hint": "Border router.",
+      "explanationCorrect": "Correcto. Router frontera (border).",
+      "explanationWrong": "Incorrecto. Router frontera.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Ethernet utiliza tecnología:",
+      "options": [
+        "CSMA/CA",
+        "CSMA/CD con variante persistente-1",
+        "Aloha ranurado",
+        "CSMA no persistente"
+      ],
+      "correctIndex": 1,
+      "category": "UD5",
+      "hint": "CD = detección de colisión.",
+      "explanationCorrect": "Correcto. Ethernet usa CSMA/CD 1-persistente: escucha continuo y transmite en cuanto está libre.",
+      "explanationWrong": "Incorrecto. CSMA/CD 1-persistente. CSMA/CA es WiFi.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "La fragmentación de un datagrama en IPv6 se da:",
+      "options": [
+        "Origen",
+        "Origen y destino",
+        "No se puede fragmentar",
+        "Origen, destino y todos los nodos intermedios"
+      ],
+      "correctIndex": 0,
+      "category": "UD5",
+      "hint": "Path MTU Discovery en IPv6.",
+      "explanationCorrect": "Correcto. En IPv6 solo el origen fragmenta; los routers intermedios no lo hacen.",
+      "explanationWrong": "Incorrecto. Solo el origen (a diferencia de IPv4). Los routers IPv6 no fragmentan.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "La cabecera que es utilizada para incluir información que solamente puede ser procesada en el destino del paquete se le conoce como:",
+      "options": [
+        "Opciones de destino",
+        "AH",
+        "Fragmentación",
+        "Enrutamiento"
+      ],
+      "correctIndex": 0,
+      "category": "UD5",
+      "hint": "Destination Options (IPv6).",
+      "explanationCorrect": "Correcto. La cabecera 'Opciones de destino' la procesa solo el destino final.",
+      "explanationWrong": "Incorrecto. Opciones de destino. AH es autenticación, no exclusivo del destino.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El cableado que utilizaría entre los patch panel hasta los conectores de pared en un área de trabajo sería:",
+      "options": [
+        "Fibra óptica",
+        "Oblicuo",
+        "Horizontal",
+        "Vertical"
+      ],
+      "correctIndex": 2,
+      "category": "UD5",
+      "hint": "Conecta TC ↔ roseta.",
+      "explanationCorrect": "Correcto. El cableado horizontal va del patch panel (TC) hasta la roseta del puesto.",
+      "explanationWrong": "Incorrecto. Horizontal. El vertical interconecta plantas (backbone).",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "B se comunica con A; C escucha la señal y piensa que no puede comunicarse con D aunque sí podría. Este problema es:",
+      "options": [
+        "Estación Nodal",
+        "Estación Expuesta",
+        "Estación Codificada",
+        "Estación Oculta"
+      ],
+      "correctIndex": 1,
+      "category": "UD5",
+      "hint": "Cree colisión donde no la hay.",
+      "explanationCorrect": "Correcto. Estación expuesta: detecta señal y se calla sin necesidad.",
+      "explanationWrong": "Incorrecto. Expuesta: C oye a B y se calla aunque podría hablar con D. Oculta es lo opuesto (no oye y colisiona).",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Los hackers que se dedican a buscar fallos de seguridad y explotarlos en su propio beneficio se denominan:",
+      "options": [
+        "Sombrero gris",
+        "Sombrero blanco",
+        "Sombrero rojo",
+        "Sombrero negro"
+      ],
+      "correctIndex": 3,
+      "category": "UD5",
+      "hint": "Color del villano.",
+      "explanationCorrect": "Correcto. Sombrero negro (black hat): atacan en beneficio propio.",
+      "explanationWrong": "Incorrecto. Sombrero negro. Blanco=ético, gris=intermedio.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Respecto a IPv6 señale la opción INCORRECTA:",
+      "options": [
+        "Implementa un mecanismo para añadir fácilmente campos de control opcionales para permitir que desarrollos futuros puedan ser integrados sin necesidad de modificar el protocolo",
+        "No hay control de errores",
+        "IPv6 ofrece un servicio orientado a conexión",
+        "Implementa mecanismos de seguridad para proporcionar autenticación, integridad y confidencialidad si así lo requiere el usuario"
+      ],
+      "correctIndex": 2,
+      "category": "UD5",
+      "hint": "IP siempre fue datagramas.",
+      "explanationCorrect": "Correcto. IPv6 NO es orientado a conexión: sigue siendo datagrama (no orientado a conexión), como IPv4.",
+      "explanationWrong": "Incorrecto. La falsa es 'IPv6 orientado a conexión': IP siempre es no orientado a conexión.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "El cifrado asimétrico:",
+      "options": [
+        "Es un cifrado inseguro",
+        "Usa dos tipos de claves",
+        "Ninguna de las anteriores",
+        "Usa una única clave pero algoritmos distintos para cifrar y descifrar"
+      ],
+      "correctIndex": 1,
+      "category": "UD5",
+      "hint": "Clave pública y clave privada.",
+      "explanationCorrect": "Correcto. Asimétrico usa par de claves: pública y privada.",
+      "explanationWrong": "Incorrecto. Usa dos claves (pública/privada), no una sola.",
+      "sourceFile": "autoevaluacion-UAX-UD5.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "¿Cuál de las siguientes afirmaciones describe mejor la diferencia entre cifrado simétrico y asimétrico?",
+      "options": [
+        "En el cifrado simétrico se emplean dos claves iguales y públicas; en el asimétrico, dos claves iguales y privadas.",
+        "En el cifrado asimétrico es obligatorio intercambiar primero la clave secreta; en el simétrico no.",
+        "En el cifrado simétrico se emplean dos claves distintas; en el asimétrico, solo una.",
+        "En el cifrado simétrico se usa la misma clave para cifrar y descifrar; en el asimétrico se usan claves pública y privada."
+      ],
+      "correctIndex": 3,
+      "category": "UD6",
+      "hint": "Recuerda AES vs RSA.",
+      "explanationCorrect": "Correcto. Simétrico: misma clave. Asimétrico: par pública/privada.",
+      "explanationWrong": "Incorrecto. Simétrico = misma clave para cifrar/descifrar; asimétrico = par pública+privada.",
+      "sourceFile": "autoevaluacion-UAX-UD6.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Una Autoridad de Certificación (CA) se encarga fundamentalmente de:",
+      "options": [
+        "Almacenar copias de seguridad de los archivos confidenciales de los usuarios.",
+        "Bloquear todo tráfico no cifrado en la red local de una empresa.",
+        "Inyectar claves privadas en los equipos para garantizar la firma digital.",
+        "Emitir y revocar certificados digitales que vinculan una identidad con una clave pública."
+      ],
+      "correctIndex": 3,
+      "category": "UD6",
+      "hint": "PKI: emite certificados X.509.",
+      "explanationCorrect": "Correcto. La CA firma certificados que vinculan identidad ↔ clave pública.",
+      "explanationWrong": "Incorrecto. Emite y revoca certificados que ligan identidad con clave pública (PKI).",
+      "sourceFile": "autoevaluacion-UAX-UD6.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "¿Cuál de los siguientes algoritmos se considera una implementación de cifrado asimétrico?",
+      "options": [
+        "3DES",
+        "RSA",
+        "RC4",
+        "AES"
+      ],
+      "correctIndex": 1,
+      "category": "UD6",
+      "hint": "Rivest-Shamir-Adleman.",
+      "explanationCorrect": "Correcto. RSA es asimétrico. AES, 3DES, RC4 son simétricos.",
+      "explanationWrong": "Incorrecto. RSA. AES/3DES/RC4 son simétricos.",
+      "sourceFile": "autoevaluacion-UAX-UD6.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Cuando se desea intercambiar de forma segura una clave simétrica a través de un canal inseguro, se suele emplear:",
+      "options": [
+        "Una función hash como SHA-256 para encapsular la clave.",
+        "Cifrado asimétrico (ej. RSA) para enviar la clave simétrica.",
+        "Exclusivamente un canal VPN sin cifrado.",
+        "Un protocolo DNS para compartir la clave automáticamente."
+      ],
+      "correctIndex": 1,
+      "category": "UD6",
+      "hint": "Esquema híbrido tipo TLS.",
+      "explanationCorrect": "Correcto. Se cifra la clave simétrica con la pública del receptor (esquema híbrido).",
+      "explanationWrong": "Incorrecto. Cifrado asimétrico (RSA) para transportar la clave simétrica. Hash no cifra.",
+      "sourceFile": "autoevaluacion-UAX-UD6.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "Según lo visto, la principal finalidad de una función hash (ej. SHA-256) es:",
+      "options": [
+        "Proporcionar claves de cifrado para intercambiar mensajes de manera segura.",
+        "Generar una salida de tamaño fijo para verificar la integridad de la información.",
+        "Asegurar la confidencialidad del mensaje cifrándolo de extremo a extremo.",
+        "Aumentar la velocidad de transmisión de datos en redes inalámbricas."
+      ],
+      "correctIndex": 1,
+      "category": "UD6",
+      "hint": "Resumen de longitud fija.",
+      "explanationCorrect": "Correcto. Hash produce digest de tamaño fijo para comprobar integridad.",
+      "explanationWrong": "Incorrecto. Genera digest fijo para integridad; no cifra ni transporta claves.",
+      "sourceFile": "autoevaluacion-UAX-UD6.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "En un intercambio Diffie–Hellman (DH):",
+      "options": [
+        "Ambos interlocutores generan una clave pública y otra privada para cifrar grandes volúmenes de datos.",
+        "Se requiere que las partes compartan previamente una clave secreta simétrica.",
+        "Las partes pueden acordar una clave simétrica de sesión sin haberse comunicado antes de forma segura.",
+        "Su objetivo principal es firmar digitalmente documentos largos de manera más rápida."
+      ],
+      "correctIndex": 2,
+      "category": "UD6",
+      "hint": "Key agreement sin pre-secreto.",
+      "explanationCorrect": "Correcto. DH permite acordar clave de sesión sobre canal inseguro sin pre-compartir secretos.",
+      "explanationWrong": "Incorrecto. DH = key agreement: acuerdan clave de sesión sin compartirla previamente.",
+      "sourceFile": "autoevaluacion-UAX-UD6.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "¿Cuál de estos servicios NO lo aporta la firma digital por sí sola?",
+      "options": [
+        "Confidencialidad de los datos.",
+        "Autenticidad del remitente.",
+        "No repudio.",
+        "Integridad del documento."
+      ],
+      "correctIndex": 0,
+      "category": "UD6",
+      "hint": "Firmar ≠ cifrar.",
+      "explanationCorrect": "Correcto. La firma digital da autenticidad, integridad y no repudio, pero NO confidencialidad (eso requiere cifrar el contenido).",
+      "explanationWrong": "Incorrecto. No aporta confidencialidad. Para eso hay que cifrar adicionalmente el mensaje.",
+      "sourceFile": "autoevaluacion-UAX-UD6.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "¿Por qué se suele recomendar un cifrado de enlace en redes privadas dedicadas?",
+      "options": [
+        "Porque los datos viajan siempre en texto claro y es más fácil enrutarlos.",
+        "Porque se evita por completo el uso de claves en los nodos.",
+        "Porque no se permite realizar cifrado extremo a extremo en redes privadas.",
+        "Porque cada router descifra y re-cifra, protegiendo así cada tramo de la conexión."
+      ],
+      "correctIndex": 3,
+      "category": "UD6",
+      "hint": "Cifrado hop-by-hop.",
+      "explanationCorrect": "Correcto. Cifrado de enlace: cada salto descifra y vuelve a cifrar, protegiendo cada tramo.",
+      "explanationWrong": "Incorrecto. Cada router descifra y vuelve a cifrar, asegurando cada tramo.",
+      "sourceFile": "autoevaluacion-UAX-UD6.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "En la firma digital, el emisor aplica la clave privada sobre:",
+      "options": [
+        "La cabecera IP del paquete de datos.",
+        "El mensaje original completo.",
+        "El hash (resumen) del mensaje.",
+        "El mensaje cifrado con AES."
+      ],
+      "correctIndex": 2,
+      "category": "UD6",
+      "hint": "Se firma el digest, no el mensaje entero.",
+      "explanationCorrect": "Correcto. Se aplica la clave privada al hash del mensaje (firmar el digest es más eficiente).",
+      "explanationWrong": "Incorrecto. Sobre el hash del mensaje, no sobre el mensaje completo.",
+      "sourceFile": "autoevaluacion-UAX-UD6.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    },
+    {
+      "kind": "choice",
+      "q": "¿Qué tipo de ataque pretende únicamente \"escuchar\" o \"espiar\" la comunicación sin modificarla?",
+      "options": [
+        "Ataque de fabricación (inyectar mensajes falsos).",
+        "Ataque de interceptación (pasivo).",
+        "Ataque de modificación (alterar datos).",
+        "Ataque de interrupción (DoS)."
+      ],
+      "correctIndex": 1,
+      "category": "UD6",
+      "hint": "Eavesdropping = pasivo.",
+      "explanationCorrect": "Correcto. Interceptación pasiva: solo escucha, no altera.",
+      "explanationWrong": "Incorrecto. Interceptación (pasivo): solo observa el tráfico. Modificación/fabricación/interrupción son activos.",
+      "sourceFile": "autoevaluacion-UAX-UD6.pdf",
+      "sourceType": "pdf-autoevaluacion"
+    }
+  ]
+}

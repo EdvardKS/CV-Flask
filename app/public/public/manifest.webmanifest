@@ -1,0 +1,13 @@
+{
+  "name": "Edvard K. — OS Portfolio",
+  "short_name": "Edvard OS",
+  "description": "Portfolio interactivo estilo Windows XP",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#5a7eda",
+  "theme_color": "#245edc",
+  "icons": [
+    { "src": "/pwa/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/pwa/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

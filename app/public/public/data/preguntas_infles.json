@@ -1,0 +1,2946 @@
+[
+  {
+    "q": "Which sentence is in the second conditional?",
+    "options": [
+      "If I were rich, I would travel the world.",
+      "If I was rich, I travel the world.",
+      "If I were rich, I travel the world.",
+      "If I will be rich, I would travel the world."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses the Present Continuous correctly?",
+    "options": [
+      "He has worked at the moment.",
+      "He is working at the moment.",
+      "He work at the moment.",
+      "He worked at the moment."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the present simple tense?",
+    "options": [
+      "They were playing basketball yesterday.",
+      "She is singing a song right now.",
+      "I eat breakfast every morning.",
+      "He will finish his work by 5 PM."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which modal verb is used to give advice?",
+    "options": [
+      "Must",
+      "Might",
+      "Should",
+      "Can"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "What tense is used to describe actions that happened at a specific time in the past?",
+    "options": [
+      "Present tense",
+      "Past tense",
+      "Future tense",
+      "Present perfect tense"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "What is the correct question tag for 'She is tired'?",
+    "options": [
+      "Hasn’t she?",
+      "Doesn’t she?",
+      "Isn’t she?",
+      "Didn’t she?"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly uses a gerund?",
+    "options": [
+      "I enjoy to swim.",
+      "I enjoy swim.",
+      "I enjoy swimming.",
+      "I enjoy to swimming."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the past simple?",
+    "options": [
+      "She finished her homework.",
+      "She is finishing her homework.",
+      "She has finished her homework.",
+      "She finishes her homework."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "What is the correct form of the Present Simple for the sentence: \"She ___ (to work) every day.\"",
+    "options": [
+      "working",
+      "works",
+      "worked",
+      "has worked"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "have visited Paris many times,\" what tense is \"have visited\"?",
+    "options": [
+      "Future tense",
+      "Present perfect tense",
+      "Past tense",
+      "Present tense"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses reported speech correctly?",
+    "options": [
+      "I told him that he could leave early.",
+      "He said: \"I will go to the party.\"",
+      "They asked where was the nearest bus stop.",
+      "She said: \"He is studying for his exam.\""
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which option correctly changes \"I am going to the party\" into reported speech?",
+    "options": [
+      "He said that he went to the party.",
+      "He said that he goes to the party.",
+      "He said that he was going to the party.",
+      "He said that he is going to the party."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "What is the reported form of \"I will visit my grandparents next week\"?",
+    "options": [
+      "He said that he will visit his grandparents next week.",
+      "He said that he would visit his grandparents the following week.",
+      "He said that he would visit his grandparents next week.",
+      "He said that he would visit my grandparents next the following week."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "What is the reported speech of \"I have finished my homework\"?",
+    "options": [
+      "He said that he finishes his homework.",
+      "He said that he had finished his homework.",
+      "He said that he is finished his homework.",
+      "He said that he finish his homework."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "When do we use a relative clause?",
+    "options": [
+      "To give orders",
+      "To express wishes",
+      "To ask questions",
+      "To provide additional information about a noun"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "What is the purpose of a relative pronoun?",
+    "options": [
+      "To indicate possession",
+      "To connect a dependent clause to its antecedent",
+      "To express a command",
+      "To link a verb to a subject"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "What is the reporting counterpart of \"what time is it\"?",
+    "options": [
+      "She asked what time it was?",
+      "she asked what time is it",
+      "she asked what time it is",
+      "She asked what time it was"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence contains a correct relative clause?",
+    "options": [
+      "The man who is wearing a blue hat.",
+      "The woman bought some apples yesterday.",
+      "That book he read it last night.",
+      "She doesn’t know what is he doing."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "What is the purpose of reported speech?",
+    "options": [
+      "To report the weather",
+      "To retell what someone else said",
+      "To tell a story about what someone said",
+      "To quote what someone said"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly uses a relative pronoun?",
+    "options": [
+      "He is the one what finished first in the race.",
+      "The car who is parked outside is mine.",
+      "The girl that is reading a book is my sister.",
+      "This is the house whom we lived in last year."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which of the following is the correct WH-question for asking about frequency?",
+    "options": [
+      "Why does she visit her parents?",
+      "What time does she arrive?",
+      "How often does she visit her parents?",
+      "Where does she usually go?"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct yes/no question to inquire about someone’s experience:",
+    "options": [
+      "Have you never been to Paris?",
+      "Did you ever been to Paris?",
+      "Have you ever been to Paris?",
+      "You never go to Paris, don’t you?"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which of these sentences is a tag question used to seek agreement?",
+    "options": [
+      "He can swim, isn’t he?",
+      "They will attend, isn’t it?",
+      "You're coming with us, aren’t you?",
+      "She sings beautifully, does she?"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct yes/no question",
+    "options": [
+      "you know what time it is?",
+      "Do you know what time is it?",
+      "Have you known what time it is?",
+      "Do you know what time it is?"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct form of a yes/no question to confirm a completed action:",
+    "options": [
+      "Is you finished your homework?",
+      "Did you finish your homework?",
+      "Has you finished your homework?",
+      "Are you finished your homework?"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Identify the correct WH-question to ask about the manner of doing something:",
+    "options": [
+      "How does she manage her time so well?",
+      "Where does she work?",
+      "What is she doing right now?",
+      "Why is she late?"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is a tag question that checks for confirmation?",
+    "options": [
+      "He isn’t coming, isn’t he?",
+      "You don’t know him, do you?",
+      "They aren’t ready, are they?",
+      "She’s your friend, is she?"
+    ],
+    "correctIndex": [
+      1,
+      2
+    ],
+    "isVocab": false
+  },
+  {
+    "q": "Identify the correct WH-question to inquire about future plans:",
+    "options": [
+      "Where did you go last week?",
+      "How long have you been here?",
+      "What will you be doing tomorrow?",
+      "Why are you studying English?"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Identify the correct WH-question for asking about someone’s preferences:",
+    "options": [
+      "What do you like to do in your free time?",
+      "What did you do last weekend?",
+      "Where did you go last weekend?",
+      "How many times have you travelled by plane?"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is a tag question used to express surprise?",
+    "options": [
+      "They are going, are they?",
+      "She didn’t call you, didn’t she?",
+      "He won’t be there, will they?",
+      "You aren’t leaving already, are you?"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the past perfect tense?",
+    "options": [
+      "She had left before I arrived.",
+      "She left before I arrive.",
+      "She has left before I arrived.",
+      "She was leaving before I arrived."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses 'going to' for a future plan?",
+    "options": [
+      "I will go to the cinema yesterday.",
+      "I am going to visit my aunt tomorrow.",
+      "I go to visit my aunt tomorrow.",
+      "I visited my aunt tomorrow."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence shows a spontaneous decision?",
+    "options": [
+      "I am going to buy a new phone next week.",
+      "Look, it's raining. I'll take an umbrella.",
+      "I was going to buy a new phone next week.",
+      "I buy a new phone next week."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the present perfect tense?",
+    "options": [
+      "I have visited Paris.",
+      "I visit Paris last year.",
+      "I visited Paris.",
+      "I am visiting Paris."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the past continuous tense?",
+    "options": [
+      "They were watching TV when I called.",
+      "They watch TV when I called.",
+      "They have watched TV when I called.",
+      "They watched TV when I call."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses the present perfect continuous correctly?",
+    "options": [
+      "She has been studying for two hours.",
+      "She is studying for two hours.",
+      "She studied for two hours.",
+      "She has study for two hours."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is a zero conditional?",
+    "options": [
+      "If it rains, we will stay inside.",
+      "If you heat ice, it melts.",
+      "If I had time, I would help you.",
+      "If she studied, she would pass."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is a first conditional?",
+    "options": [
+      "If it rains, we stayed inside.",
+      "If it rains, we will stay inside.",
+      "If it rained, we would stay inside.",
+      "If it had rained, we would have stayed inside."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is a third conditional?",
+    "options": [
+      "If I knew, I would tell you.",
+      "If I know, I will tell you.",
+      "If I had known, I would have told you.",
+      "If I was knowing, I would tell you."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the passive voice (present simple)?",
+    "options": [
+      "They clean the room every day.",
+      "The room is cleaned every day.",
+      "The room cleaned every day.",
+      "The room is cleaning every day."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the passive voice (past simple)?",
+    "options": [
+      "The cake baked yesterday.",
+      "The cake was baked yesterday.",
+      "The cake is baked yesterday.",
+      "The cake has baked yesterday."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence reports a question correctly?",
+    "options": [
+      "She asked where did I live.",
+      "She asked where I lived.",
+      "She asked where I live?",
+      "She asked where do I live."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which modal shows strong obligation?",
+    "options": [
+      "Should",
+      "May",
+      "Must",
+      "Might"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which modal shows prohibition?",
+    "options": [
+      "Mustn't",
+      "Shouldn't",
+      "Might",
+      "Could"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which modal expresses ability?",
+    "options": [
+      "Can",
+      "May",
+      "Must",
+      "Would"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses 'used to' for a past habit?",
+    "options": [
+      "I use to play tennis.",
+      "I used to play tennis.",
+      "I was use to play tennis.",
+      "I am used to play tennis."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct form: There ___ a book on the table.",
+    "options": [
+      "are",
+      "is",
+      "were",
+      "be"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which article is correct? ___ hour",
+    "options": [
+      "a",
+      "an",
+      "the",
+      "no article"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which preposition is correct? I usually sleep ___ night.",
+    "options": [
+      "on",
+      "in",
+      "at",
+      "by"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which phrasal verb means 'take care of'?",
+    "options": [
+      "look after",
+      "look for",
+      "look up",
+      "look down"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "Which phrasal verb means 'stop doing'?",
+    "options": [
+      "give up",
+      "give in",
+      "give out",
+      "give away"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "Choose the correct collocation: ___ a decision",
+    "options": [
+      "do",
+      "make",
+      "take",
+      "have"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct collocation: ___ homework",
+    "options": [
+      "make",
+      "do",
+      "take",
+      "give"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses 'fewer' correctly?",
+    "options": [
+      "There is fewer water today.",
+      "There are fewer students today.",
+      "There is fewer money today.",
+      "There are fewer furniture today."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which comparative is correct?",
+    "options": [
+      "more big",
+      "bigger",
+      "biggest",
+      "most big"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which superlative is correct?",
+    "options": [
+      "the best",
+      "the goodest",
+      "the more good",
+      "the most better"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct object pronoun: She invited ___ to the party.",
+    "options": [
+      "I",
+      "me",
+      "my",
+      "mine"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct possessive adjective: ___ car is red.",
+    "options": [
+      "She",
+      "Her",
+      "Hers",
+      "Him"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct demonstrative: Those are ___ shoes.",
+    "options": [
+      "this",
+      "that",
+      "these",
+      "those"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which determiner fits? ___ student must bring an ID card.",
+    "options": [
+      "Each",
+      "Much",
+      "Many",
+      "Few"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct word: I don't like ___ of these options.",
+    "options": [
+      "either",
+      "neither",
+      "both",
+      "all"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct word: ___ of my parents work from home.",
+    "options": [
+      "Either",
+      "Neither",
+      "Both",
+      "None"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct word: She has lived here ___ 2018.",
+    "options": [
+      "for",
+      "since",
+      "during",
+      "by"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct word: I have waited ___ two hours.",
+    "options": [
+      "since",
+      "for",
+      "by",
+      "from"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct word: I have ___ finished my homework.",
+    "options": [
+      "yet",
+      "already",
+      "still",
+      "never"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct word: Have you finished your homework ___?",
+    "options": [
+      "already",
+      "yet",
+      "still",
+      "since"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct word: He is ___ working on the project.",
+    "options": [
+      "still",
+      "already",
+      "yet",
+      "since"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which indirect question is correct?",
+    "options": [
+      "Could you tell me where is the station?",
+      "Could you tell me where the station is?",
+      "Could you tell me where does the station is?",
+      "Could you tell me where the station are?"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which relative pronoun refers to a place?",
+    "options": [
+      "who",
+      "which",
+      "where",
+      "whose"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which relative pronoun shows possession?",
+    "options": [
+      "who",
+      "whose",
+      "which",
+      "where"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct verb form: I enjoy ___ books.",
+    "options": [
+      "read",
+      "to read",
+      "reading",
+      "reads"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct verb form: She decided ___ a new job.",
+    "options": [
+      "to find",
+      "finding",
+      "find",
+      "found"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct form: I want ___ English.",
+    "options": [
+      "learn",
+      "to learn",
+      "learning",
+      "learned"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct word: She is ___ tired to go out.",
+    "options": [
+      "so",
+      "such",
+      "too",
+      "enough"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct phrase: It was ___ good movie.",
+    "options": [
+      "so",
+      "such a",
+      "too",
+      "very"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct connector: I stayed home ___ it was raining.",
+    "options": [
+      "because",
+      "because of",
+      "despite",
+      "although"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct connector: I stayed home ___ the rain.",
+    "options": [
+      "because",
+      "because of",
+      "although",
+      "so"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct connector: ___ it was late, we kept working.",
+    "options": [
+      "Because",
+      "Although",
+      "So",
+      "Since of"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct form: She is old ___ to drive.",
+    "options": [
+      "too",
+      "enough",
+      "very",
+      "so"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct form: It is ___ hot to work outside.",
+    "options": [
+      "too",
+      "enough",
+      "so",
+      "such"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct quantifier: I have ___ time this week.",
+    "options": [
+      "a few",
+      "few",
+      "a little",
+      "many"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct quantifier: There are ___ people at the meeting.",
+    "options": [
+      "a little",
+      "few",
+      "much",
+      "a few"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct word: Is ___ there?",
+    "options": [
+      "somebody",
+      "anybody",
+      "nobody",
+      "everybody"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct form: There ___ some milk in the fridge.",
+    "options": [
+      "are",
+      "is",
+      "were",
+      "be"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct form: There ___ many cars outside.",
+    "options": [
+      "is",
+      "are",
+      "was",
+      "be"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is an imperative?",
+    "options": [
+      "Close the door.",
+      "You closed the door.",
+      "Did you close the door?",
+      "You are closing the door."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct past simple form: work",
+    "options": [
+      "workt",
+      "worked",
+      "working",
+      "works"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct past simple form: go",
+    "options": [
+      "goed",
+      "went",
+      "goes",
+      "gone"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses the passive voice correctly?",
+    "options": [
+      "The report wrote yesterday.",
+      "The report was written yesterday.",
+      "The report was write yesterday.",
+      "The report is writing yesterday."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses subject-verb agreement correctly?",
+    "options": [
+      "The list of items are on the table.",
+      "The list of items is on the table.",
+      "The list of items were on the table.",
+      "The list of items be on the table."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses the present simple for routines?",
+    "options": [
+      "She goes to the gym every day.",
+      "She is going to the gym now.",
+      "She went to the gym yesterday.",
+      "She has gone to the gym."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct option: I ____ my homework yesterday.",
+    "options": [
+      "have finished",
+      "finished",
+      "has finished",
+      "have finish"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the past simple tense?",
+    "options": [
+      "They watched a movie last night.",
+      "They are watching a movie now.",
+      "They have watched a movie.",
+      "They were watching a movie."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence:",
+    "options": [
+      "I was cooking when the phone rang.",
+      "I cooked when the phone was ringing.",
+      "I am cooking when the phone rang.",
+      "I have cooked when the phone rang."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses 'will' for a promise?",
+    "options": [
+      "I will call you tonight.",
+      "I am going to call you tonight.",
+      "I call you tonight.",
+      "I called you tonight."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses 'going to' for a plan?",
+    "options": [
+      "I am going to start a new course next week.",
+      "I will start a new course next week.",
+      "I start a new course next week.",
+      "I started a new course next week."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the best option: Look at those clouds! It ____ rain.",
+    "options": [
+      "is going to",
+      "will",
+      "goes to",
+      "is"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct form: By 2030, she ____ her degree.",
+    "options": [
+      "will have finished",
+      "will finish",
+      "has finished",
+      "finished"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correctly punctuated second conditional sentence:",
+    "options": [
+      "If I had time, I would learn Japanese.",
+      "If I had time I would learn Japanese.",
+      "I would learn Japanese, if I had time.",
+      "If I had time; I would learn Japanese."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in reported speech?",
+    "options": [
+      "He said he was tired.",
+      "He said, \"I am tired.\"",
+      "He says, \"I was tired.\"",
+      "He is saying, \"I am tired.\""
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses 'said' or 'told' correctly?",
+    "options": [
+      "She told me the news.",
+      "She said me the news.",
+      "She told the news.",
+      "She said me."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct reported form: \"I am tired.\"",
+    "options": [
+      "He said he was tired.",
+      "He said he is tired.",
+      "He said he were tired.",
+      "He says he was tired."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct question tag: You are coming, ___?",
+    "options": [
+      "aren't you",
+      "are you",
+      "do you",
+      "did you"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses a relative clause correctly?",
+    "options": [
+      "The woman who lives next door is a doctor.",
+      "The woman which lives next door is a doctor.",
+      "The woman where lives next door is a doctor.",
+      "The woman whose lives next door is a doctor."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "What is the correct translation of 'technology'?",
+    "options": [
+      "en línea",
+      "tecnología",
+      "estar a la altura de",
+      "concentración"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'dispositivo' en ingl?s?",
+    "options": [
+      "tablet",
+      "social media",
+      "turn on",
+      "device"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'smartphone'?",
+    "options": [
+      "teléfono inteligente",
+      "herramienta",
+      "abandonar",
+      "llevar a cabo"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'tableta' en ingl?s?",
+    "options": [
+      "social media",
+      "to create",
+      "walk someone through",
+      "tablet"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'laptop'?",
+    "options": [
+      "ordenador portátil",
+      "salud mental",
+      "carga útil / contenido de datos",
+      "comunicarse"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'ordenador de sobremesa' en ingl?s?",
+    "options": [
+      "well-being",
+      "desktop computer",
+      "rack up",
+      "walk someone through"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'screen'?",
+    "options": [
+      "Traducción al español",
+      "concentración",
+      "pantalla",
+      "hábitos"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'aplicación' en ingl?s?",
+    "options": [
+      "app (application)",
+      "payload",
+      "concentration",
+      "artist"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'software'?",
+    "options": [
+      "tableta",
+      "expulsar",
+      "software",
+      "correo electrónico"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'hardware' en ingl?s?",
+    "options": [
+      "live up to",
+      "to avoid",
+      "hardware",
+      "originality"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'internet'?",
+    "options": [
+      "datos",
+      "crear",
+      "internet",
+      "reducir"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'en línea' en ingl?s?",
+    "options": [
+      "to improve",
+      "to avoid",
+      "stress",
+      "online"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'offline'?",
+    "options": [
+      "hábitos",
+      "cerrar sesión",
+      "humano",
+      "fuera de línea"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'redes sociales' en ingl?s?",
+    "options": [
+      "social media",
+      "artist",
+      "rack up",
+      "lifestyle"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'website'?",
+    "options": [
+      "pantalla",
+      "sitio web",
+      "equilibrio",
+      "teléfono inteligente"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'correo electrónico' en ingl?s?",
+    "options": [
+      "to assist",
+      "artificial intelligence (AI)",
+      "email",
+      "technology"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'message'?",
+    "options": [
+      "mensaje",
+      "mejorar",
+      "comunicación",
+      "humano"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'comunicación' en ingl?s?",
+    "options": [
+      "communication",
+      "to log out",
+      "to connect",
+      "app (application)"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'digital communication'?",
+    "options": [
+      "obra de arte",
+      "usuario",
+      "comunicación digital",
+      "hacer una copia de seguridad"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'comunicarse' en ingl?s?",
+    "options": [
+      "to communicate",
+      "message",
+      "to imitate",
+      "digital break"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'to connect'?",
+    "options": [
+      "aplicación",
+      "conectar",
+      "equilibrio",
+      "reducir"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'compartir' en ingl?s?",
+    "options": [
+      "well-being",
+      "cut down (on)",
+      "design",
+      "to share"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'to download'?",
+    "options": [
+      "dispositivo",
+      "descargar",
+      "desconexión digital",
+      "sitio web"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'subir' en ingl?s?",
+    "options": [
+      "creativity",
+      "to upload",
+      "desktop computer",
+      "social media"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'user'?",
+    "options": [
+      "apagar",
+      "usuario",
+      "humano",
+      "comunicación"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'datos' en ingl?s?",
+    "options": [
+      "back up",
+      "ethics",
+      "to limit",
+      "data"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'file'?",
+    "options": [
+      "atención",
+      "archivo",
+      "pantalla",
+      "inteligencia artificial"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'nube' en ingl?s?",
+    "options": [
+      "to share",
+      "design",
+      "cloud",
+      "laptop"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'cloud computing'?",
+    "options": [
+      "asistir / ayudar",
+      "computación en la nube",
+      "arte",
+      "saludable"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'carga útil / contenido de datos' en ingl?s?",
+    "options": [
+      "digital addiction",
+      "well-being",
+      "payload",
+      "offline"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'backup'?",
+    "options": [
+      "Traducción / significado",
+      "archivo",
+      "creatividad",
+      "copia de seguridad"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'hacer una copia de seguridad' en ingl?s?",
+    "options": [
+      "machine-generated",
+      "app (application)",
+      "to back up",
+      "risk"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'to log in'?",
+    "options": [
+      "ordenador de sobremesa",
+      "carga útil / contenido de datos",
+      "internet",
+      "iniciar sesión"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'cerrar sesión' en ingl?s?",
+    "options": [
+      "to disconnect",
+      "to log out",
+      "to log in",
+      "to create"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'Inglés / Phrasal verb'?",
+    "options": [
+      "saludable",
+      "Traducción al español",
+      "inteligencia artificial",
+      "explicar paso a paso"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'desconexión digital' en ingl?s?",
+    "options": [
+      "machine",
+      "digital break",
+      "payload",
+      "ethical"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'screen time'?",
+    "options": [
+      "tiempo de pantalla",
+      "máquina",
+      "mejorar",
+      "descargar"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'adicción' en ingl?s?",
+    "options": [
+      "authorship",
+      "give up",
+      "to share",
+      "addiction"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'digital addiction'?",
+    "options": [
+      "adicción digital",
+      "autoría",
+      "herramienta",
+      "estar a la altura de"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'desconectar' en ingl?s?",
+    "options": [
+      "turn on",
+      "Inglés",
+      "walk someone through",
+      "to disconnect"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'balance'?",
+    "options": [
+      "equilibrio",
+      "desventaja",
+      "hacer copia de seguridad",
+      "abandonar"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'salud mental' en ingl?s?",
+    "options": [
+      "mental health",
+      "artificial intelligence (AI)",
+      "message",
+      "design"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'stress'?",
+    "options": [
+      "cerrar sesión",
+      "en línea",
+      "autoría",
+      "estrés"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'concentración' en ingl?s?",
+    "options": [
+      "to limit",
+      "to generate",
+      "email",
+      "concentration"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'attention'?",
+    "options": [
+      "ventaja",
+      "generado por máquina",
+      "redes sociales",
+      "atención"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'estilo de vida' en ingl?s?",
+    "options": [
+      "turn off",
+      "to relax",
+      "lifestyle",
+      "payload"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'habits'?",
+    "options": [
+      "autoría",
+      "hábitos",
+      "redes sociales",
+      "datos"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'saludable' en ingl?s?",
+    "options": [
+      "hardware",
+      "healthy",
+      "machine",
+      "communication"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'unhealthy'?",
+    "options": [
+      "computación en la nube",
+      "poco saludable",
+      "hacer copia de seguridad",
+      "encender"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'reducir' en ingl?s?",
+    "options": [
+      "to reduce",
+      "online",
+      "digital addiction",
+      "turn on"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'to improve'?",
+    "options": [
+      "Traducción al español",
+      "mejorar",
+      "reducir",
+      "salud mental"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'evitar' en ingl?s?",
+    "options": [
+      "live up to",
+      "to connect",
+      "to avoid",
+      "desktop computer"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'to limit'?",
+    "options": [
+      "ordenador portátil",
+      "limitar",
+      "Traducción al español",
+      "asistir / ayudar"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'relajarse' en ingl?s?",
+    "options": [
+      "to disconnect",
+      "to relax",
+      "app (application)",
+      "cloud"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'well-being'?",
+    "options": [
+      "Traducción al español",
+      "bienestar",
+      "evitar",
+      "limitar"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'Traducción / significado' en ingl?s?",
+    "options": [
+      "digital break",
+      "hardware",
+      "Phrasal verb",
+      "creativity"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'back up'?",
+    "options": [
+      "generado por máquina",
+      "hacer copia de seguridad",
+      "conectar",
+      "hacer una copia de seguridad"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'expulsar' en ingl?s?",
+    "options": [
+      "rack up",
+      "to relax",
+      "kick out",
+      "communication"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'rack up'?",
+    "options": [
+      "pantalla",
+      "subir",
+      "acumular (deuda, puntos, tiempo)",
+      "máquina"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'estar a la altura de' en ingl?s?",
+    "options": [
+      "human",
+      "artwork",
+      "live up to",
+      "walk someone through"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'walk someone through'?",
+    "options": [
+      "adicción",
+      "explicar paso a paso",
+      "ventaja",
+      "hacer copia de seguridad"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'give up'?",
+    "options": [
+      "explicar paso a paso",
+      "equilibrio",
+      "abandonar",
+      "iniciar sesión"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'llevar a cabo' en ingl?s?",
+    "options": [
+      "screen time",
+      "stress",
+      "carry out",
+      "tablet"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'turn off'?",
+    "options": [
+      "apagar",
+      "hardware",
+      "estar a la altura de",
+      "nube"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'encender' en ingl?s?",
+    "options": [
+      "turn off",
+      "turn on",
+      "to generate",
+      "to share"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'Inglés'?",
+    "options": [
+      "mejorar",
+      "compartir",
+      "Traducción al español",
+      "usuario"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'inteligencia artificial' en ingl?s?",
+    "options": [
+      "cloud computing",
+      "artificial intelligence (AI)",
+      "to upload",
+      "backup"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'machine'?",
+    "options": [
+      "estilo de vida",
+      "máquina",
+      "hacer una copia de seguridad",
+      "autoría"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'algoritmo' en ingl?s?",
+    "options": [
+      "to relax",
+      "algorithm",
+      "to create",
+      "carry out"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'data'?",
+    "options": [
+      "datos",
+      "copia de seguridad",
+      "obra de arte",
+      "adicción digital"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'creatividad' en ingl?s?",
+    "options": [
+      "digital addiction",
+      "to back up",
+      "creativity",
+      "screen"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'creative'?",
+    "options": [
+      "originalidad",
+      "creativo",
+      "subir",
+      "creatividad"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'arte' en ingl?s?",
+    "options": [
+      "art",
+      "cloud computing",
+      "screen time",
+      "to log in"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'artist'?",
+    "options": [
+      "artista",
+      "mensaje",
+      "compartir",
+      "teléfono inteligente"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'obra de arte' en ingl?s?",
+    "options": [
+      "tablet",
+      "offline",
+      "social media",
+      "artwork"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'design'?",
+    "options": [
+      "diseño",
+      "creatividad",
+      "acumular (deuda, puntos, tiempo)",
+      "datos"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'herramienta' en ingl?s?",
+    "options": [
+      "to log out",
+      "to download",
+      "walk someone through",
+      "tool"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'human'?",
+    "options": [
+      "limitar",
+      "humano",
+      "nube",
+      "bienestar"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'generado por máquina' en ingl?s?",
+    "options": [
+      "machine-generated",
+      "ethical",
+      "to create",
+      "machine"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'originality'?",
+    "options": [
+      "limitar",
+      "ética",
+      "originalidad",
+      "reemplazar"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'autoría' en ingl?s?",
+    "options": [
+      "internet",
+      "carry out",
+      "to disconnect",
+      "authorship"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'to create'?",
+    "options": [
+      "creatividad",
+      "crear",
+      "hacer copia de seguridad",
+      "mensaje"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'generar' en ingl?s?",
+    "options": [
+      "carry out",
+      "to communicate",
+      "device",
+      "to generate"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'to imitate'?",
+    "options": [
+      "cerrar sesión",
+      "dispositivo",
+      "imitar",
+      "reemplazar"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'reemplazar' en ingl?s?",
+    "options": [
+      "app (application)",
+      "user",
+      "social media",
+      "to replace"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'to assist'?",
+    "options": [
+      "máquina",
+      "asistir / ayudar",
+      "cerrar sesión",
+      "herramienta"
+    ],
+    "correctIndex": 1,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'ético' en ingl?s?",
+    "options": [
+      "digital addiction",
+      "to download",
+      "ethical",
+      "device"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'ethics'?",
+    "options": [
+      "equilibrio",
+      "evitar",
+      "ética",
+      "mensaje"
+    ],
+    "correctIndex": 2,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'riesgo' en ingl?s?",
+    "options": [
+      "risk",
+      "healthy",
+      "art",
+      "habits"
+    ],
+    "correctIndex": 0,
+    "isVocab": true
+  },
+  {
+    "q": "What is the correct translation of 'advantage'?",
+    "options": [
+      "usuario",
+      "subir",
+      "tecnología",
+      "ventaja"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "?C?mo se dice 'desventaja' en ingl?s?",
+    "options": [
+      "turn off",
+      "hardware",
+      "artificial intelligence (AI)",
+      "disadvantage"
+    ],
+    "correctIndex": 3,
+    "isVocab": true
+  },
+  {
+    "q": "Which word is a relative pronoun?",
+    "options": [
+      "Yet",
+      "And",
+      "But",
+      "Which"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the future continuous tense?",
+    "options": [
+      "I will eat lunch at noon.",
+      "She will be reading a book tomorrow afternoon.",
+      "He is going to be playing the piano.",
+      "They are going to study for the exam last night."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which of the following sentences is in Future Simple?",
+    "options": [
+      "She has finished the project tomorrow.",
+      "She will finish the project tomorrow.",
+      "She finishes the project tomorrow.",
+      "She is finishing the project tomorrow."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the future continuous?",
+    "options": [
+      "She travels next week.",
+      "She will be traveling next week.",
+      "She has traveled next week.",
+      "She will travel next week."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the present perfect?",
+    "options": [
+      "She has visited Spain twice.",
+      "She visited Spain twice.",
+      "She is visiting Spain.",
+      "She will visit Spain."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "In \"They have visited Paris many times,\" what tense is \"have visited\"?",
+    "options": [
+      "Past tense",
+      "Future tense",
+      "Present tense",
+      "Present perfect tense"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "What is the main idea of the text?",
+    "options": [
+      "People should forget negative experiences",
+      "Memories are always accurate",
+      "Memories shape our identities and relationships",
+      "Childhood is the best time of life"
+    ],
+    "correctIndex": 2,
+    "code": "Part 1: Verb Tenses (4 points)\nComplete the sentences using the correct form of the verb in parentheses.\n1. She usually Respuesta 1 Pregunta 1 (to check) her emails in the morning.\n2. At the moment, I Respuesta 2 Pregunta 1 (to read) an article about the impact of social media.\n3. They Respuesta 3 Pregunta 1 (to finish) the report yesterday.\n4. By the time the meeting started, I Respuesta 4 Pregunta 1 (to send) the email to the client.\n5. Next year, I Respuesta 5 Pregunta 1 (to attend) a conference on communication technologies.\n6. I Respuesta 6 Pregunta 1 (to work) on my project when my internet connection failed.\n7. We Respuesta 7 Pregunta 1 (to develop) a new app by the end of this month.\n8. Tomorrow at this time, I Respuesta 8 Pregunta 1 (to present) our findings at the meeting.\nRetroalimentación\nParcialmente correcta\nPuntos para este envío: 3,00/4,00. Contando con los intentos anteriores, daría 3,50/4,00.\nPregunta 2\nCorrecta\nSe puntúa 2,00 sobre 2,00\nMarcar pregunta\nEnunciado de la pregunta\nPart 2: Vocabulary (2 points) Match each term related to technology communication with its correct definition.\nThe use of various forms of communication, such as text, audio, and video.\nRespuesta 1 Pregunta 2 A. Cloud Computing B. Multimedia C. Social Media D. Digital Literacy.\nPlatforms like Facebook and Twitter that allow users to interact and share content.\nRespuesta 2 Pregunta 2 A. Cloud Computing B. Multimedia C. Social Media D. Digital Literacy.\nThe ability to understand and use digital tools effectively.\nRespuesta 3 Pregunta 2 A. Cloud Computing B. Multimedia C. Social Media D. Digital Literacy.\nThe technology that allows data to be stored and accessed remotely on the internet.\nRespuesta 4 Pregunta 2 A. Cloud Computing B. Multimedia C. Social Media D. Digital Literacy.\nRetroalimentación\nCorrecta\nPuntos para este envío: 2,00/2,00.\nPregunta 3\nCorrecta\nSe puntúa 2,00 sobre 2,00\nMarcar pregunta\nEnunciado de la pregunta\nRead the following text and answer the questions below.\nText:\nIn today's world, technological communication plays a crucial role in both personal and professional environments. The ability to communicate effectively using digital tools is a key skill for success. One of the most important aspects of technological communication is the use of multimedia, which combines text, video, and audio to convey messages more effectively. Cloud computing is another essential element, enabling users to store and access information from anywhere, at any time. As we become more reliant on digital tools, having strong digital literacy is essential to navigate the complex digital world.\nRetroalimentación\nLa respuesta correcta es:\nWhat does \"cloud computing\" allow users to do? → It allows users to store and access information from anywhere.,\nAccording to the text, why is technological communication important? → It plays a crucial role in both personal and professional environments.,\nWhat are two key elements of technological communication mentioned in the text? → Multimedia and cloud computing.,\nWhat combines text, video, and audio to convey messages more effectively? → multimedia\nCorrecta\nPuntos para este envío: 2,00/2,00.\nPregunta 4\nFinalizado\nSe puntúa 2,00 sobre 2,00\nMarcar pregunta\nEnunciado de la pregunta\nPart 4: Short Answer (2 points)\nWrite a short paragraph (100-120 words) explaining how technological communication has changed the way we interact with others. Include examples of tools or platforms you use regularly.\nTexto de la respuesta Pregunta 4\nTechnological communication has drastically transformed how we interact,bridging geographical gaps and enabling instant connectivity. In the past, professional and personal exchanges were sloweb and location-dependent.\nToday, tools like WhatsApp allow for inmediate personal updates, while platforms such as Microsoft Teams or Zoom have revolutionized professional collaboration, making remote work viable. As an engineering student, I also use Discord and GitHub to coordinate projects and share code in real time.\nAlthough this shift has reduced face-to-face contact, it has undeniably increased efficiency and global accessibility, allowing us to maintain relationships and work flows regardless of physical distance.\nConsequently, mastering these digital channelsl is now a fundamental requirement for any successful engineer.\nCLE 2 Feedback U2Final del formulario\nPregunta 1\nCorrecta\nSe puntúa 1,00 sobre 1,00\nMarcar pregunta\nEnunciado de la pregunta\nMemories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "How can memories strengthen relationships?",
+    "options": [
+      "By helping people forget shared experiences",
+      "By focusing on individual achievements",
+      "By creating conflicts over different perspectives",
+      "By recalling and sharing past experiences"
+    ],
+    "correctIndex": 3,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "Which phrase best describes how memories are described in the text?",
+    "options": [
+      "Irrelevant to our present lives",
+      "Personal interpretations influenced by emotions",
+      "Unchangeable facts",
+      "Objective recordings of events"
+    ],
+    "correctIndex": 1,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "Why might memories of an event change over time?",
+    "options": [
+      "Because they are forgotten completely",
+      "Because they were too perfect to be true",
+      "Because they were recorded incorrectly",
+      "Because time and emotions alter our perception"
+    ],
+    "correctIndex": 3,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "Why do people often remember difficult times more positively later on?",
+    "options": [
+      "Because those times were actually easy",
+      "Because they forget the bad parts",
+      "Because they grow and learn from those experiences",
+      "Because they have no other memories"
+    ],
+    "correctIndex": 2,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "Which of these could be an example of a \"shared sense of identity\" mentioned in the text?",
+    "options": [
+      "Someone studying for an exam",
+      "A person reading a book alone",
+      "Watching a new movie by oneself",
+      "People celebrating a holiday they all remember fondly"
+    ],
+    "correctIndex": 3,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "What is an example of a joyful memory motivating someone, mentioned in the text?",
+    "options": [
+      "Missing a school dance",
+      "Failing an interview",
+      "Visiting a friend",
+      "Winning a sports match"
+    ],
+    "correctIndex": 3,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "What might the phrase \"the good old days\" imply in the text?",
+    "options": [
+      "A time that was very boring",
+      "A period that people look back on fondly",
+      "A difficult time that nobody wants to remember",
+      "A future time that is hoped for"
+    ],
+    "correctIndex": 1,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "What does the text suggest about memories and the sense of self?",
+    "options": [
+      "Memories should be forgotten to grow",
+      "Memories are the only thing that defines us",
+      "Memories help shape our identity and relationships",
+      "Memories are not important to who we are"
+    ],
+    "correctIndex": 2,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": true
+  },
+  {
+    "q": "What does the author suggest about the reliability of memories?",
+    "options": [
+      "They can be altered by emotions and time",
+      "They are always accurate",
+      "They are recorded like a video",
+      "They are often perfect and complete"
+    ],
+    "correctIndex": 0,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": true
+  },
+  {
+    "q": "How might current emotions affect past memories, according to the text?",
+    "options": [
+      "They make memories clearer",
+      "They make memories disappear",
+      "They can change how we remember an event",
+      "They always make memories negative"
+    ],
+    "correctIndex": 2,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "How can memories influence our decisions today?",
+    "options": [
+      "By always giving us the correct answer",
+      "By making us live in the past",
+      "By helping us avoid repeating past mistakes",
+      "By preventing us from trying new things"
+    ],
+    "correctIndex": 2,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "What does the word \"nostalgia\" mean in the context of the text?",
+    "options": [
+      "Fear of the future",
+      "Regret for lost opportunities",
+      "Satisfaction with the present",
+      "Longing for the past"
+    ],
+    "correctIndex": 3,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": true
+  },
+  {
+    "q": "Which of the following might evoke a memory of childhood, according to the text?",
+    "options": [
+      "A familiar smell",
+      "A new song",
+      "A photograph of a stranger",
+      "An old book"
+    ],
+    "correctIndex": 0,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.\nMemories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": false
+  },
+  {
+    "q": "What is the meaning of \"reminiscing\" in the context of the text?",
+    "options": [
+      "Forgetting past events",
+      "Reflecting on the past",
+      "Ignoring old experiences",
+      "Imagining the future"
+    ],
+    "correctIndex": 1,
+    "code": "Memories shape who we are. Reflecting on past experiences often evokes emotions—sometimes nostalgia, other times regret or even joy. Many people find themselves reminiscing about their childhood, recalling carefree days spent playing outside, exploring the world with a sense of wonder that can be difficult to recapture as adults. The smell of a particular dish might remind someone of family gatherings, while an old song may transport them back to a school dance or a summer holiday.\nMemories have the power to influence our decisions. People often compare current situations to past experiences, using what they learned from previous successes or failures to guide their actions. A person who once failed at a job interview may remember the mistakes they made and use that experience to prepare better for the next opportunity. Similarly, a joyful memory, like winning a sports match, can motivate someone to pursue their goals, believing that such moments of success are possible again.\nHowever, memories are not always reliable. Our brains do not record everything perfectly, and often we unconsciously alter details. Sometimes we remember situations differently from how they happened, influenced by our feelings or the passage of time. The way we perceive an event changes depending on our present emotions. For instance, a person may look back at a challenging period and remember it more positively if they feel they have grown as a result.\nThe power of memory is not just personal; it also shapes our relationships. Recalling shared experiences strengthens connections with friends and family. Telling stories about \"the good old days\" brings people closer and helps create a shared sense of identity. Ultimately, our memories, both real and reconstructed, help shape our sense of self and the bonds we form with others.",
+    "isVocab": true
+  },
+  {
+    "q": "Identify the correct WH-question for asking about someone's preferences:",
+    "options": [
+      "What do you like to do in your free time?",
+      "How many times have you travelled by plane?",
+      "Where did you go last weekend?",
+      "What did you do last weekend?"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct yes/no question to inquire about someone's experience:",
+    "options": [
+      "Did you ever been to Paris?",
+      "You never go to Paris, don't you?",
+      "Have you never been to Paris?",
+      "Have you ever been to Paris?"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence follows the zero conditional structure?",
+    "options": [
+      "If you heat ice, it melts.",
+      "If you heat ice, it will melt.",
+      "If you heat ice, it would melt.",
+      "If you heated ice, it would melt."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly uses the present continuous?",
+    "options": [
+      "She studying English now.",
+      "She studied English now.",
+      "She is studying English now.",
+      "She studies English now."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence uses Future Continuous correctly?",
+    "options": [
+      "I studied at this time tomorrow.",
+      "I will be studying at this time tomorrow.",
+      "I have been studying at this time tomorrow.",
+      "I am studying at this time tomorrow."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct yes/no question:",
+    "options": [
+      "Have you known what time it is?",
+      "Do you know what time is it?",
+      "Do you know what time it is?",
+      "you know what time it is?"
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the present simple tense?",
+    "options": [
+      "She works at a bank.",
+      "She will work tomorrow.",
+      "She is working on a project.",
+      "She was working late."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for a defining relative clause.",
+    "options": [
+      "The dog that is sleeping is mine.",
+      "The dog sleeping is mine.",
+      "The dog, which is sleeping, is mine.",
+      "The dog which is sleeping is mine."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure.",
+    "options": [
+      "The dog let out.",
+      "Whom let the dogs out?",
+      "Who the dog out?",
+      "Who let the dogs out?"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 25.Which one uses inversion for emphasis?",
+    "options": [
+      "I have never seen such a beautiful sunset.",
+      "Never I have seen such a beautiful sunset.",
+      "Never I seen such a beautiful sunset.",
+      "Never have I seen such a beautiful sunset."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct structure to fill the gap with present perfect: They ___ (never/see) a ghost before.",
+    "options": [
+      "They have never sawn a ghost before.",
+      "They never saw a ghost before.",
+      "They have seen never a ghost before.",
+      "They have never seen a ghost before."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the future continuous?",
+    "options": [
+      "Next year, we will finish college.",
+      "Next year, we will have finished college.",
+      "Next year, we will be finishing college.",
+      "Next year, we will finishing college."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the right definition for APPROPRIATION",
+    "options": [
+      "The action of stealing someone else's property.",
+      "Accidentally or without intending to do so.",
+      "The act of taking something for one's own use, typically without permission.",
+      "State or assert that something is the case, typically without providing evidence or proof."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 26. Direct Speech: \"I want to learn Spanish,\" she said. Reported Speech: She said that she ___________ to learn Spanish.",
+    "options": [
+      "She said that she will want to learn Spanish.",
+      "She said that she had wanted to learn Spanish.",
+      "She said that she wanted to learn Spanish.",
+      "She said that she would learn Spanish."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the past perfect tense?",
+    "options": [
+      "She had already left when I arrived.",
+      "She is leaving when I arrive.",
+      "She left when I arrived.",
+      "She was leaving when I arrived."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which word best fits this sentence: 'The ______ of AI-generated images raises ethical concerns.'",
+    "options": [
+      "luxurious",
+      "creation",
+      "theft",
+      "use"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 23. Direct Speech: \"We will visit London next summer,\" they said. Reported Speech: They said that they ___________ London...",
+    "options": [
+      "They said that they would go to London the following Summer",
+      "They said that they would visit London next Summer",
+      "They said that they would not visit London the following Summer",
+      "They said that they would visit London the following Summer"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 27. They ___ (leave) by the time I arrived.",
+    "options": [
+      "They had left by the time I arrived.",
+      "They will have left by the time I arrived.",
+      "They will leave by the time I arrived.",
+      "They had leaved by the time I arrived."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct tag question structure for Challenge 14.",
+    "options": [
+      "Which AI created the most famous painting? did it?",
+      "I seen such a beautiful sunset. Have you?",
+      "Never have I seen such a beautiful sunset, have they?",
+      "You're coming to the party, aren't you?"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct question structure for Challenge 12: A choice question.",
+    "options": [
+      "Which color do you prefer?",
+      "You prefer red, don't you?\"",
+      "What color do you prefer, red?",
+      "Which color do you prefer, red or blue?"
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which modal verb expresses necessity?",
+    "options": [
+      "Need",
+      "Should",
+      "Can",
+      "Might"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct option for Challenge 20. Choose the correct definition for RISING",
+    "options": [
+      "Extreme or very strong in degree or strength.",
+      "The act of taking something for one's own use, typically without permission.",
+      "Going up, increasing.",
+      "Extremely comfortable, elegant, and expensive."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct definition for THEFT.",
+    "options": [
+      "Happening or done without delay; instant.",
+      "The act of taking something for one's own use, typically without permission.",
+      "Extremely comfortable, elegant, and expensive.",
+      "The action of stealing someone else's property."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct structure to fill the gaps with present perfect: I ___ (just/finish) my homework.",
+    "options": [
+      "I just have finished my homework.",
+      "I just finished my homework.",
+      "I have just finished my homework.",
+      "I have just finish my homework."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct option for Challenge 21. Choose the correct definition for UNINTENTIONALLY.",
+    "options": [
+      "Happening or done without delay; instant.",
+      "The act of taking something for one's own use, typically without permission.",
+      "State or assert that something is the case, typically without providing evidence or proof.",
+      "Accidentally or without intending to do so."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly uses the past continuous?",
+    "options": [
+      "She sleeps when I call.",
+      "She slept when I called.",
+      "She was sleeping when I called.",
+      "She is sleeping when I called."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Find the correct Non-restrictive (=non-defining) relative clause.",
+    "options": [
+      "My brother who lives in London , is coming to visit next week.",
+      "My brother, who lives in London , is coming to visit next week.",
+      "My brother, who lives in London is coming to visit next week.",
+      "My brother who lives in London is coming to visit next week."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the future perfect?",
+    "options": [
+      "She will complete the project by Monday.",
+      "She will have completed the project by Monday.",
+      "She has completed the project by Monday.",
+      "She completes the project by Monday."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly uses the future simple?",
+    "options": [
+      "She has called you later.",
+      "She was calling you later.",
+      "She is calling you later.",
+      "She will call you later."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly converts direct speech to indirect speech? \"I am happy\", she said.",
+    "options": [
+      "She said that she was happy.",
+      "She said that she will be happy.",
+      "She says that she was happy.",
+      "She said she is happy."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 21. He ___ (go) to the store yesterday.",
+    "options": [
+      "He will go to the store yesterday.",
+      "He has gone to the store yesterday.",
+      "He gone to the store yesterday.",
+      "He went to the store yesterday."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in indirect speech?",
+    "options": [
+      "He said that Mark wrote the book.",
+      "\"Mark wrote the book,\" he said.",
+      "He said \"The book was written by Mark.\"",
+      "He said: \"Mark writes the book.\""
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly forms a choice question?",
+    "options": [
+      "Coffee or tea, do you like?",
+      "Do you prefer coffee or tea?",
+      "Do you prefer coffee and tea?",
+      "Do prefer coffee you or tea?"
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct structure for Challenge 15.",
+    "options": [
+      "This bag is too heavy enough for me to carry.",
+      "This bag too is heavy for me to carry.",
+      "This bag is too heavy for me to carry.",
+      "This bag is enough heavy for me to carry."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "What kind of structure is this? My sister, who is sitting at the front, is very intelligent.",
+    "options": [
+      "Non-restrictive relative clause",
+      "Non-restrictive embedded clause",
+      "Restrictive conditional clause",
+      "Restrictive relative clause"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence is in the past perfect?",
+    "options": [
+      "By the time we arrived, the movie was starting .",
+      "When we arrived, the movie started.",
+      "When we arrived, the movie has started .",
+      "By the time we arrived, the movie had started ."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct structure for Challenge 11. The restaurant ___________ we ate at last night was expensive.",
+    "options": [
+      "The restaurant which we ate at last night was expensive.",
+      "The restaurant which we ate at last night was expensive.",
+      "The restaurant we ate last night was expensive.",
+      "The restaurant where we ate last night was expensive."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for future plans This week we (meet) ________ at 5 PM on Wednesday in the cafeteria.",
+    "options": [
+      "This week we shall meet at 5pm on Wednesday in the cafeteria.",
+      "This week, we will meet at 5 pm on Wednesday in the cafeteria.",
+      "This week, we are having a meeting at 5 pm on Wednesday in the cafeteria.",
+      "This week we are meeting at 5 pm on Wednesday in the cafeteria."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for a non-defining relative clause.",
+    "options": [
+      "The dog, which is sleeping, is mine.",
+      "The dog that is sleeping is mine.",
+      "The dog which is sleeping is mine.",
+      "The dog, that is sleeping, is mine."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for Challenge 22. She ___ (already/eat) before we got there.",
+    "options": [
+      "She has already eaten before we got there.",
+      "She ate before already we got there.",
+      "She already had eaten before we got there.",
+      "She had already eaten before we got there."
+    ],
+    "correctIndex": 3,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the most suitable verb to fill the gap. The Earth ___ (orbit) around the sun.",
+    "options": [
+      "The earth orbit around the sun.",
+      "The earth orbited around the sun.",
+      "The earth orbits around the sun.",
+      "The earth is orbitig around the sun."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Which sentence correctly uses a relative in indirect speech?",
+    "options": [
+      "He asked me what time did I go to bed.",
+      "He asked me who the man that had come the day before was.",
+      "She asked me who was the man who came the day before.",
+      "He asked me who was the man, who was wearing a black shirt."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the incorrect structure for Challenge 16.",
+    "options": [
+      "He is enough strong to lift that box.",
+      "The weather is too cold to go outside.",
+      "She isn’t fast enough to win the race.",
+      "This room is big enough for all of us."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the most appropriate sentence according to the context.`",
+    "options": [
+      "We are having dinner at a restaurant tonight.",
+      "Look! It is going to rain next year.",
+      "Look! It will rain outside right now. .",
+      "It is snowing, it is so hot and dry outside."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "In \"She will have completed the project by next Friday,\" what tense is \"will have completed\"?",
+    "options": [
+      "Future perfect tense",
+      "Perfect tense",
+      "Future tense",
+      "Present tense"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct form of the Past Simple for the sentence: \"I ___ (to see) that movie last week.\"",
+    "options": [
+      "saw",
+      "seeing",
+      "see",
+      "have seen"
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct question structure for Challenge 13.",
+    "options": [
+      "The coffee is enough hot to drink.",
+      "The coffee is hot too to drink.",
+      "The coffee is too hot to drink.",
+      "The coffee is too hot enough to drink."
+    ],
+    "correctIndex": 2,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct sentence structure for My sister ___ (work) in a bank since 1999.",
+    "options": [
+      "My siter works in a bank since 1999.",
+      "My siter has worked in a bank since 1999.",
+      "My siter is working in a bank since 1999.",
+      "My siter worked in a bank since 1999."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct option for Challenge 18. Choose the correct definition for INTENSE.",
+    "options": [
+      "Extreme or very strong in degree or strength.",
+      "State or assert that something is the case, typically without providing evidence or proof.",
+      "Happening or done without delay; instant.",
+      "Extremely comfortable, elegant, and expensive."
+    ],
+    "correctIndex": 0,
+    "isVocab": false
+  },
+  {
+    "q": "Choose the correct option for Challenge 19. Choose the correct definition for CLAIM.",
+    "options": [
+      "Increasing in amount, number, value, or level.",
+      "State or assert that something is the case, typically without providing evidence or proof.",
+      "The act of taking something for one's own use, typically without permission.",
+      "Happening or done without delay; instant."
+    ],
+    "correctIndex": 1,
+    "isVocab": false
+  }
+]

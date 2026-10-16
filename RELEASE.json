@@ -1,0 +1,7 @@
+{
+  "project": "edvardks",
+  "source_sha": "1905f375a01fd13b8dfc11bdfc749b91e3a409cc",
+  "built_at": "2026-10-16T14:29:40Z",
+  "main_service": "web",
+  "upstream_port": 3000
+}

@@ -1,0 +1,237 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/pdf/Udacity_Nanodegree.pdf",
+      "destination": "https://www.udacity.com/certificate/e/abae816e-2dce-11ef-ab44-a3d071e8ff9a",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/pdf/Udacity_Nanodegree\\.pdf(?:/)?$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [
+      {
+        "source": "/padel-legacy/errores",
+        "destination": "/padel-legacy/errores.html",
+        "regex": "^/padel-legacy/errores(?:/)?$"
+      },
+      {
+        "source": "/padel-legacy/resumen",
+        "destination": "/padel-legacy/resumen.html",
+        "regex": "^/padel-legacy/resumen(?:/)?$"
+      }
+    ],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/api/quiz/redes/concepts/[topic]",
+      "regex": "^/api/quiz/redes/concepts/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtopic": "nxtPtopic"
+      },
+      "namedRegex": "^/api/quiz/redes/concepts/(?<nxtPtopic>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/quiz/redes/temario/[quizId]",
+      "regex": "^/api/quiz/redes/temario/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPquizId": "nxtPquizId"
+      },
+      "namedRegex": "^/api/quiz/redes/temario/(?<nxtPquizId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/quiz/[subject]",
+      "regex": "^/api/quiz/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsubject": "nxtPsubject"
+      },
+      "namedRegex": "^/api/quiz/(?<nxtPsubject>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/blog/[slug]",
+      "regex": "^/blog/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/blog/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/projects/[slug]",
+      "regex": "^/projects/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/projects/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/quiz/redes/conceptos/[topic]",
+      "regex": "^/quiz/redes/conceptos/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtopic": "nxtPtopic"
+      },
+      "namedRegex": "^/quiz/redes/conceptos/(?<nxtPtopic>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/quiz/redes/temario/[quizId]",
+      "regex": "^/quiz/redes/temario/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPquizId": "nxtPquizId"
+      },
+      "namedRegex": "^/quiz/redes/temario/(?<nxtPquizId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/quiz/[subject]",
+      "regex": "^/quiz/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsubject": "nxtPsubject"
+      },
+      "namedRegex": "^/quiz/(?<nxtPsubject>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/blog",
+      "regex": "^/blog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
+      "page": "/cv",
+      "regex": "^/cv(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cv(?:/)?$"
+    },
+    {
+      "page": "/opengraph-image",
+      "regex": "^/opengraph\\-image(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/opengraph\\-image(?:/)?$"
+    },
+    {
+      "page": "/padel",
+      "regex": "^/padel(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/padel(?:/)?$"
+    },
+    {
+      "page": "/projects",
+      "regex": "^/projects(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/projects(?:/)?$"
+    },
+    {
+      "page": "/quiz",
+      "regex": "^/quiz(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quiz(?:/)?$"
+    },
+    {
+      "page": "/quiz/area-personal",
+      "regex": "^/quiz/area\\-personal(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quiz/area\\-personal(?:/)?$"
+    },
+    {
+      "page": "/quiz/estadistica",
+      "regex": "^/quiz/estadistica(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quiz/estadistica(?:/)?$"
+    },
+    {
+      "page": "/quiz/estadistica/fb6",
+      "regex": "^/quiz/estadistica/fb6(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quiz/estadistica/fb6(?:/)?$"
+    },
+    {
+      "page": "/quiz/estadistica/test",
+      "regex": "^/quiz/estadistica/test(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quiz/estadistica/test(?:/)?$"
+    },
+    {
+      "page": "/quiz/redes",
+      "regex": "^/quiz/redes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quiz/redes(?:/)?$"
+    },
+    {
+      "page": "/quiz/redes/autoevaluacion",
+      "regex": "^/quiz/redes/autoevaluacion(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quiz/redes/autoevaluacion(?:/)?$"
+    },
+    {
+      "page": "/quiz/redes/conceptos",
+      "regex": "^/quiz/redes/conceptos(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quiz/redes/conceptos(?:/)?$"
+    },
+    {
+      "page": "/quiz/redes/temario",
+      "regex": "^/quiz/redes/temario(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quiz/redes/temario(?:/)?$"
+    },
+    {
+      "page": "/robots.txt",
+      "regex": "^/robots\\.txt(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/robots\\.txt(?:/)?$"
+    },
+    {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}
