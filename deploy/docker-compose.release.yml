@@ -1,0 +1,61 @@
+# docker-compose.yml de la rama `release` (despliegue solo de releases).
+#
+# El CI lo copia tal cual a la raíz de `release`, junto a app/ (artefactos del
+# build) y RELEASE.json. El servidor no compila: ejecuta ./app con la MISMA
+# imagen con la que el CI compiló (node 20 + python3 en Alpine; better-sqlite3
+# es nativo y tiene que coincidir con la libc y el ABI de node). python3 hace
+# falta en ejecución: el módulo de pádel llama a legacy-src/padel_cli.py.
+#
+# `name: edvardks` mantiene los volúmenes de siempre (edvardks_padel_data, ...)
+# aunque el directorio cambie de nombre.
+name: edvardks
+
+services:
+  web:
+    image: nikolaik/python-nodejs@sha256:4d21fe172b5c5c91ff6b68ce670aa0ad1132e5bcd67fbf78bb8cab6cddff0b17
+    container_name: flask
+    restart: unless-stopped
+    user: "1001:1001"
+    working_dir: /app
+    command: ["node", "server.js"]
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: "1"
+      PORT: "3000"
+      HOSTNAME: 0.0.0.0
+      PADEL_DATA_DIR: /app/public/padel-data
+      QUIZ_DB_PATH: /app/data/quiz/quiz.db
+      QUIZ_SEED_DIR: /app/public/data/quiz
+    env_file:
+      - .env
+    volumes:
+      - ./app:/app:ro
+      - padel_data:/app/public/padel-data
+      - news_cache:/app/public/news-cache
+      - quiz_data:/app/data/quiz
+    tmpfs:
+      # Next escribe aquí la caché de imágenes y de fetch; el código es de solo lectura.
+      - /app/.next/cache:uid=1001,gid=1001,mode=0755
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.status<500?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    networks:
+      - reverse_proxy
+      - ollama_net
+      - mail_net
+
+volumes:
+  padel_data:
+  news_cache:
+  quiz_data:
+
+networks:
+  reverse_proxy:
+    external: true
+  ollama_net:
+    external: true
+  mail_net:
+    external: true

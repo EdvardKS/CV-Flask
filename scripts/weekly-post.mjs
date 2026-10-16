@@ -234,20 +234,22 @@ function buildBody(draft, news) {
   return body
 }
 
-function deploy(slug) {
-  log('construyendo la imagen')
-  run('sudo', ['-n', 'docker', 'compose', 'build', 'web'])
-  run('sudo', ['-n', 'docker', 'compose', 'up', '-d', 'web'])
-
-  for (let attempt = 0; attempt < 12; attempt += 1) {
-    spawnSync('sleep', ['5'])
+// Desde el 16-10-2026 el servidor no compila (modo release): el push a master
+// lanza el CI (.github/workflows/release.yml), que publica la rama `release`, y
+// el panel la despliega al recibir el webhook. Aquí solo se espera a que la
+// entrada responda.
+function waitPublished(slug) {
+  log('esperando a que el CI y el despliegue la publiquen')
+  for (let attempt = 0; attempt < 60; attempt += 1) {
+    spawnSync('sleep', ['30'])
     const status = spawnSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', `${SITE}/blog/${slug}`], { encoding: 'utf8' }).stdout
     if (status === '200') return
   }
-  throw new Error('la entrada no responde 200 tras el despliegue')
+  throw new Error('la entrada no responde 200 media hora después del push: revisa el CI en GitHub y el panel')
 }
 
 async function main() {
+  run('git', ['pull', '-q', '--ff-only'])
   const posts = readPosts()
   const original = readFileSync(POSTS_FILE, 'utf8')
   const today = new Date().toISOString().slice(0, 10)
@@ -312,19 +314,22 @@ async function main() {
   }
 
   writeFileSync(POSTS_FILE, `${JSON.stringify(next, null, 2)}\n`)
+  let committed = false
   try {
-    deploy(slug)
     const files = ['src/lib/blog/posts.json']
     if (image && existsSync(image.file)) files.push(path.relative(ROOT, image.file))
     run('git', ['add', ...files])
     run('git', ['commit', '-q', '-m', `Blog: entrada semanal «${post.title}»`])
+    committed = true
     run('git', ['push', '-q', 'origin', 'HEAD'])
-    log(`publicada ${SITE}/blog/${slug}`)
   } catch (error) {
+    if (committed) run('git', ['reset', '-q', 'HEAD~1'])
     writeFileSync(POSTS_FILE, original)
     if (image) rmSync(image.file, { force: true })
     throw error
   }
+  waitPublished(slug)
+  log(`publicada ${SITE}/blog/${slug}`)
 }
 
 main().catch(error => {

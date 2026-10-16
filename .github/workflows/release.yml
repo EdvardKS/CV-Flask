@@ -1,0 +1,101 @@
+# CI de edvardks.com: tests + build y, si todo pasa, publica la rama `release`
+# (solo artefactos) que el panel del servidor despliega.
+# El servidor no compila (despliegue solo de releases).
+#
+# Se ejecuta DENTRO de la imagen de producción (la de deploy/docker-compose.release.yml)
+# para que better-sqlite3 se compile para la misma libc y el mismo node. Por eso
+# no se usan acciones JavaScript (actions/checkout, setup-node...): no funcionan
+# en contenedores Alpine. Todo son comandos.
+name: release
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    container:
+      image: nikolaik/python-nodejs@sha256:4d21fe172b5c5c91ff6b68ce670aa0ad1132e5bcd67fbf78bb8cab6cddff0b17
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      REPO_URL: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+    steps:
+      - name: Herramientas
+        run: |
+          apk add --no-cache git make g++
+          git config --global --add safe.directory '*'
+          pip install --no-cache-dir --break-system-packages jinja2 || pip install --no-cache-dir jinja2
+          corepack enable
+
+      - name: Código
+        run: |
+          git init -q src && cd src
+          git remote add origin "$REPO_URL"
+          git fetch -q --depth 1 origin "$GITHUB_SHA"
+          git checkout -q FETCH_HEAD
+
+      - name: Dependencias
+        working-directory: src
+        run: pnpm install --frozen-lockfile
+
+      - name: Tests
+        working-directory: src
+        run: pnpm test
+
+      - name: Build
+        working-directory: src
+        run: |
+          (cd legacy-src && python3 render_templates.py)
+          pnpm build
+
+      - name: Montar el árbol de release
+        working-directory: src
+        run: |
+          OUT="$GITHUB_WORKSPACE/out"
+          mkdir -p "$OUT/app"
+          cp -a .next/standalone/. "$OUT/app/"
+          mkdir -p "$OUT/app/.next"
+          cp -a .next/static "$OUT/app/.next/static"
+          cp -a public "$OUT/app/public"
+          cp -a legacy-src "$OUT/app/legacy-src"
+          # Puntos de montaje: el código se monta de solo lectura y docker no
+          # puede crearlos ahí. Los datos viven en volúmenes, no en la release.
+          for d in public/padel-data public/news-cache data/quiz .next/cache; do
+            rm -rf "$OUT/app/$d"; mkdir -p "$OUT/app/$d"; touch "$OUT/app/$d/.keep"
+          done
+          rm -f "$OUT"/app/.env*
+          cp deploy/docker-compose.release.yml "$OUT/docker-compose.yml"
+          printf '.env\n' > "$OUT/.gitignore"
+          cat > "$OUT/RELEASE.json" <<EOF
+          {
+            "project": "edvardks",
+            "source_sha": "$GITHUB_SHA",
+            "built_at": "$(date -u +%FT%TZ)",
+            "main_service": "web",
+            "upstream_port": 3000
+          }
+          EOF
+
+      - name: Publicar la rama release
+        working-directory: out
+        run: |
+          git init -q -b release
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add origin "$REPO_URL"
+          # Encadena con la release anterior (historial para «Volver a <sha>»);
+          # la primera vez la rama nace huérfana.
+          if git fetch -q --depth 1 origin release; then git reset -q --soft FETCH_HEAD; fi
+          git add -A
+          git commit -q -m "release ${GITHUB_SHA}" --allow-empty
+          git push -q origin HEAD:release
+          echo "release publicada para ${GITHUB_SHA}"
