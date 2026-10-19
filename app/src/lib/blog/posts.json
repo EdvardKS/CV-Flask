@@ -601,5 +601,103 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "transacciones-databricks-muse-spark-cma-nube",
+    "title": "Transacciones en Databricks, Meta abre Muse Spark y el regulador británico aprieta",
+    "description": "Tres noticias de la semana: transacciones multisentencia en Databricks, el modelo abierto Muse Spark Open de Meta y la revisión de la CMA sobre cambiar de nube.",
+    "date": "2026-10-19",
+    "topic": "Big data",
+    "readingMinutes": 5,
+    "tags": [
+      "Databricks",
+      "Apache Iceberg",
+      "Modelos abiertos",
+      "Meta",
+      "Portabilidad cloud",
+      "Regulación"
+    ],
+    "cover": {
+      "src": "/blog/transacciones-databricks-muse-spark-cma-nube.webp",
+      "alt": "Filas de armarios de servidores en un centro de datos",
+      "credit": {
+        "label": "Derrick Coetzee from Berkeley, CA, USA, CC0, vía Wikimedia Commons",
+        "href": "https://commons.wikimedia.org/wiki/File:Technician_with_laptop_working_on_server_rack_at_NERSC.jpg"
+      }
+    },
+    "body": [
+      {
+        "type": "p",
+        "text": "Esta semana me quedo con tres noticias que tocan las tres patas de mi trabajo: los datos, los modelos y la infraestructura donde corren. Ninguna es la más ruidosa de la semana, pero las tres cambian decisiones concretas que tomo al diseñar un sistema para una empresa pequeña. Las cuento con lo que dice cada fuente y separo lo comprobado de lo que solo afirma la empresa."
+      },
+      {
+        "type": "h2",
+        "text": "Databricks da por estables las transacciones multisentencia en Delta e Iceberg"
+      },
+      {
+        "type": "p",
+        "text": "El 16 de octubre de 2026 Databricks anunció en su blog la disponibilidad general de las transacciones multisentencia sobre Delta Lake y Apache Iceberg, limitadas a tablas gestionadas por Unity Catalog. Llevaban en vista previa pública desde marzo. Según la empresa, se pueden combinar con procedimientos almacenados y tablas temporales, y también escribir en tablas de streaming, de modo que los procesos posteriores no reciban datos a medias. Cita a Fivetran y a Accolade como usuarios en producción y habla de un rendimiento 4,7 veces mayor con transacciones concurrentes, pero sin explicar con qué lo compara. Todo esto lo cuenta la propia Databricks y no he visto todavía una medición independiente."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Para un ingeniero de datos es una buena noticia, porque quita mucho código de apaño. Cuando monto una ETL que actualiza varias tablas, siempre tengo que pensar qué pasa si falla a mitad: compensaciones, marcas de estado o reprocesos. Una transacción atómica de verdad resuelve buena parte de eso, sobre todo en historificaciones tipo SCD2, donde cerrar una versión y abrir la siguiente tiene que ser todo o nada. La condición de que sean tablas gestionadas por Unity Catalog no es un detalle menor: el formato es abierto, pero la garantía la da su catálogo. La cifra de 4,7 veces no me dice nada mientras no sepa contra qué se compara. Antes de mover cargas críticas lo probaría con mis propios volúmenes y con escrituras concurrentes reales."
+      },
+      {
+        "type": "h2",
+        "text": "Meta publica Muse Spark Open, un modelo de pesos abiertos para código y agentes"
+      },
+      {
+        "type": "p",
+        "text": "Según AFP, recogido por Khaleej Times el 16 de octubre de 2026, Meta lanzó el jueves 15 Muse Spark Open, un modelo de pesos abiertos orientado a programación y a tareas de agentes de largo recorrido. Meta asegura que rivaliza con los modelos abiertos chinos de referencia, como Qwen, Kimi K3 o GLM, y que en algunos casos los supera. También dice que está optimizado para los chips M5 Ultra de Apple y que puede funcionar en dos Mac Studio, aunque sigue necesitando mucha potencia de cálculo. La agencia deja claro que todas las afirmaciones de rendimiento vienen de Meta y no están verificadas por terceros. Los términos de la licencia no aparecen en esa información, así que hay que revisarlos en la ficha oficial del modelo."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Que un gran laboratorio estadounidense vuelva a publicar pesos abiertos de este nivel amplía las opciones para quien, como yo, prefiere modelos en local cuando los datos son sensibles. Pero «pesos abiertos» no quiere decir «uso libre». Antes de meterlo en un proyecto de cliente leería la licencia entera, sobre todo las condiciones comerciales. Lo de las dos Mac Studio es un dato de marketing: no es el equipo de una pyme normal y no dice nada de la latencia ni del coste por consulta. Las comparativas con modelos chinos las firma Meta, así que esperaré a ver evaluaciones independientes y lo probaré con mis propias tareas de código y de agentes. Si diseño para poder cambiar de modelo, incorporarlo o descartarlo me cuesta poco."
+      },
+      {
+        "type": "h2",
+        "text": "El regulador británico revisa lo que han hecho AWS y Microsoft para facilitar el cambio de nube"
+      },
+      {
+        "type": "p",
+        "text": "El 16 de octubre de 2026 la CMA, la autoridad de competencia del Reino Unido, publicó su primera revisión desde que en marzo aceptó compromisos voluntarios de AWS y Microsoft en lugar de abrir una investigación formal sobre la nube. Entre los avances que enumera están la conexión de sus centros de datos con rivales, empezando por Google, la eliminación de las tarifas de transferencia de datos al cambiar de proveedor y una vía para pedir más interoperabilidad. Los próximos focos son la gestión de identidades y permisos entre nubes y que las arquitecturas portables puedan migrarse sin trabas. Ese mismo día propuso dar a Microsoft el estatus de mercado estratégico en software empresarial, con atención a sus licencias en nubes rivales y a la libertad de elegir herramientas de IA distintas de Copilot. Microsoft no comparte esa visión, la decisión final llegará antes de febrero de 2027 y habrá otra revisión de la nube en primavera de 2027."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: No es una norma española ni europea, pero marca la dirección del mercado y suele acabar afectando a las condiciones que nos ofrecen aquí. Que el siguiente foco sean las identidades y los permisos entre nubes me parece acertado: en mi experiencia, mover datos se puede hacer; lo que de verdad ata son los roles, las políticas y las credenciales repartidas por todos los servicios. Por eso defino los permisos en código y documento cada acceso desde el primer día, para que una migración no empiece con arqueología. Conviene recordar que los compromisos son voluntarios y que la gratuidad de la transferencia tiene condiciones. A un cliente pequeño le sigo diciendo lo mismo: la portabilidad se diseña desde el principio, no se le pide al proveedor cuando ya quieres irte."
+      },
+      {
+        "type": "h2",
+        "text": "Lo que me llevo"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Voy a probar las transacciones de Databricks en un proceso SCD2 con escrituras concurrentes antes de quitar código de compensación, y no me fío de la cifra de 4,7 veces sin saber con qué se compara.",
+          "Un formato abierto no basta: si la garantía depende de un catálogo concreto, lo apunto como dependencia del proveedor.",
+          "Antes de usar un modelo de pesos abiertos con un cliente, leo la licencia y lo evalúo con tareas propias, no con las comparativas del fabricante.",
+          "Mantengo los permisos y las identidades definidos en código y documentados, porque es lo que más cuesta mover al cambiar de nube.",
+          "La portabilidad se diseña al principio: capas que permitan cambiar de modelo y de nube sin rehacer el sistema."
+        ]
+      },
+      {
+        "type": "links",
+        "title": "Fuentes",
+        "items": [
+          {
+            "label": "Blog de Databricks: «Transactions are Generally Available, advancing warehousing on the Lakehouse»",
+            "href": "https://www.databricks.com/blog/transactions-are-generally-available-advancing-warehousing-lakehouse"
+          },
+          {
+            "label": "Khaleej Times (AFP): «Meta unveils new 'open' AI model to rival Chinese competition»",
+            "href": "https://www.khaleejtimes.com/business/tech/meta-open-ai-model-rival-chinese-competition"
+          },
+          {
+            "label": "The Next Web: «UK watchdog says AWS and Microsoft must do more to ease cloud switching»",
+            "href": "https://thenextweb.com/news/cma-aws-microsoft-cloud-switching-barriers"
+          }
+        ]
+      }
+    ]
   }
 ]

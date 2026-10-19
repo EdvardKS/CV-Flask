@@ -2,10 +2,10 @@
   "version": 1,
   "functions": {
     "/opengraph-image": {},
+    "/api/ai/chat": {},
+    "/api/errores/finalizar": {},
     "/api/errores/iniciar": {},
     "/api/news": {},
-    "/api/errores/finalizar": {},
-    "/api/resumen": {},
-    "/api/ai/chat": {}
+    "/api/resumen": {}
   }
 }
