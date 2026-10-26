@@ -699,5 +699,103 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "duckdb-2-torchtpu-revision-codigo-agentes",
+    "title": "DuckDB 2.0 ya hace de servidor, PyTorch llega a las TPU y la revisión de código frena",
+    "description": "DuckDB 2.0 estrena modo servidor, Google y Meta abren TorchTPU y un estudio de 718 empresas muestra que los agentes de IA trasladan el atasco a la revisión de código.",
+    "date": "2026-10-26",
+    "topic": "Big data",
+    "readingMinutes": 5,
+    "tags": [
+      "DuckDB",
+      "PyTorch",
+      "TPU",
+      "agentes de IA",
+      "revisión de código",
+      "big data"
+    ],
+    "cover": {
+      "src": "/blog/duckdb-2-torchtpu-revision-codigo-agentes.webp",
+      "alt": "Hardware de servidores en un centro de datos usado para análisis de datos y entrenamiento de modelos",
+      "credit": {
+        "label": "PiMaster3, CC BY-SA 3.0, vía Wikimedia Commons",
+        "href": "https://commons.wikimedia.org/wiki/File:Primary_Human_Language_Families_Map.png"
+      }
+    },
+    "body": [
+      {
+        "type": "p",
+        "text": "Esta semana elijo tres noticias que tocan tres partes de mi trabajo: la base de datos analítica que más uso en proyectos pequeños, el hardware en el que se entrenan los modelos y la forma en que trabajo con agentes que programan. Ninguna es épica. Las tres cambian decisiones que tomo un martes cualquiera. Como siempre, separo lo que cuentan las propias empresas de lo que está medido por otros."
+      },
+      {
+        "type": "h2",
+        "text": "DuckDB 2.0 deja de ser solo una base de datos embebida"
+      },
+      {
+        "type": "p",
+        "text": "El 21 de octubre de 2026 el equipo de DuckDB publicó la versión 2.0.0, con soporte de larga duración hasta al menos octubre de 2027. La novedad principal es un protocolo propio, Quack, que permite ejecutar DuckDB como servidor y conectarse a él con la nueva sentencia CONNECT. El servidor usa un token, por defecto solo escucha en localhost y el propio equipo recomienda ponerlo detrás de un proxy inverso con TLS. También llegan la lectura asíncrona de Parquet y CSV (según el equipo, mucho más rápida sobre almacenamiento de objetos como S3, aunque no dan cifras concretas), un tipo VARIANT para datos semiestructurados, disparadores y un modo para agentes en la línea de comandos. Avisan de algo importante: los ficheros creados con la 2.0 no se pueden abrir con versiones anteriores, y aconsejan probar en un sistema paralelo y, si la carga es crítica, esperar al primer parche, previsto para noviembre."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Para una pyme, DuckDB ya cubría mucho análisis sin montar un clúster ni pagar un almacén de datos en la nube. El modo servidor quita su principal limitación: que varias personas o procesos consulten la misma base sin copiar ficheros. Lo que más valoro es que el servidor salga cerrado por defecto, con token y solo en localhost. Aun así, no lo expondría a la red sin proxy con TLS y sin registro de accesos, igual que con cualquier otro servicio que monte en mis servidores. Lo de la incompatibilidad de ficheros es la parte que puede hacer daño: si un proceso actualiza la librería y reescribe la base, los demás clientes con la 1.x dejan de leerla. Fijaré versiones en los contenedores Docker y haré copia de los ficheros antes de tocar nada. Lo de la velocidad sobre S3 lo mediré con mis propias consultas antes de creérmelo."
+      },
+      {
+        "type": "h2",
+        "text": "TorchTPU, PyTorch nativo en las TPU de Google"
+      },
+      {
+        "type": "p",
+        "text": "El 21 de octubre de 2026, durante la PyTorch Conference de Norteamérica, Google y Meta presentaron TorchTPU, un backend nativo y de código abierto para ejecutar PyTorch en las TPU de Google. Sustituye al antiguo puente PyTorch/XLA. La idea que venden es que portar un modelo sea casi cambiar model.to(\"cuda\") por model.to(\"tpu\"), con compatibilidad con torch.compile, vLLM, SGLang y TorchTitan. Según la crónica de InfoQ, la misma semana AWS sacó en beta pública TorchNeuron, un backend equivalente para sus chips Trainium. Las cifras de rendimiento y escalado las da Google, y la propia empresa reconoce que ese cambio de una línea hace que el modelo funcione, pero no que rinda al máximo: hay que ajustar el reparto entre chips y algunas operaciones."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Entreno con PyTorch desde hace tiempo, y la razón práctica para quedarme en GPU de Nvidia siempre ha sido que todo funciona sin pelearse con el código. Si portar a TPU o a Trainium deja de exigir reescribir el modelo, vuelvo a poder elegir proveedor por precio y disponibilidad, que es justo como me gusta diseñar. Pero no me creo lo de la línea única hasta probarlo, y la propia Google admite que no alcanza el rendimiento completo sin ajustes. Además, depender del hardware de un solo proveedor sigue siendo depender de alguien, aunque el código sea abierto. Para una pyme que entrena modelos modestos esto no cambia nada mañana. Para quien hace ajuste fino en la nube, abre la puerta a comparar precios de verdad."
+      },
+      {
+        "type": "h2",
+        "text": "Los agentes escriben más código y el atasco pasa a la revisión"
+      },
+      {
+        "type": "p",
+        "text": "El 22 de octubre de 2026 InfoQ publicó un análisis de un estudio que describe como de Harvard, basado en datos de la empresa de analítica Jellyfish sobre más de 700 empresas y unos 700.000 trabajadores entre 2021 y marzo de 2026. Con agentes de IA, las líneas de código subieron un 30 %, las solicitudes de cambio (pull requests) un 23 % y las tareas de Jira resueltas un 12 %. Con asistentes de autocompletado, el aumento fue menor y en casi todos los casos no fue estadísticamente significativo. A la vez, el tiempo medio de revisión de cada solicitud subió un 49 %, los comentarios un 53 % y se duplicó la proporción de cambios que hubo que corregir. Los datos vienen de un único proveedor y el propio artículo señala dudas sobre cómo se aíslan los efectos de la IA."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Esto coincide con lo que veo trabajando a diario con agentes que programan bajo mi supervisión: escribir ha dejado de ser el cuello de botella y revisar se ha convertido en el trabajo principal. Un 30 % más de código no vale nada si nadie lo entiende antes de que llegue a producción. Por eso pido a los agentes cambios pequeños, con pruebas incluidas y un objetivo claro, y no acepto solicitudes enormes aunque compilen. Tomo las cifras con cautela: es un solo proveedor de datos, y cinco años de herramientas muy distintas mezcladas en el mismo análisis. Lo que sí me llevo es el patrón: el beneficio real se mide en tareas cerradas, no en líneas escritas."
+      },
+      {
+        "type": "h2",
+        "text": "Lo que me llevo"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Antes de actualizar a DuckDB 2.0: fijar versiones en Docker, copiar los ficheros y probar en paralelo, porque las versiones antiguas no leen lo que escribe la nueva.",
+          "Si expongo DuckDB como servidor, siempre detrás de un proxy con TLS, con token y con registro de accesos.",
+          "Con TorchTPU y TorchNeuron puedo volver a comparar nubes por precio para el ajuste fino, pero midiendo yo el rendimiento y no con la cifra del fabricante.",
+          "A los agentes les pido cambios pequeños y con pruebas: revisar es ahora el cuello de botella.",
+          "La productividad la mido en tareas cerradas y en errores que llegan a producción, no en líneas de código."
+        ]
+      },
+      {
+        "type": "links",
+        "title": "Fuentes",
+        "items": [
+          {
+            "label": "DuckDB — Announcing DuckDB 2.0.0 LTS «Cinnamon Teal»",
+            "href": "https://duckdb.org/2026/10/21/announcing-duckdb-200"
+          },
+          {
+            "label": "PyTorch Blog — Introducing TorchTPU",
+            "href": "https://pytorch.org/blog/introducing-torchtpu/"
+          },
+          {
+            "label": "InfoQ — Harvard study: AI coding tools and the code review bottleneck",
+            "href": "https://www.infoq.com/news/2026/10/jellyfish-ai-productivity/"
+          }
+        ]
+      }
+    ]
   }
 ]
