@@ -797,5 +797,103 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "spark-tiempo-real-mistral-large-4-bigquery-git",
+    "title": "Spark en tiempo real sin Flink, Mistral Large 4 abierto y BigQuery con Git",
+    "description": "Databricks saca de beta el modo en tiempo real de Spark, Mistral libera los pesos de Large 4 y BigQuery integra Git. Lo que cambia y lo que todavía no me creo.",
+    "date": "2026-11-02",
+    "topic": "Big data",
+    "readingMinutes": 5,
+    "tags": [
+      "Spark",
+      "Databricks",
+      "Mistral",
+      "modelos abiertos",
+      "BigQuery",
+      "ingeniería de datos"
+    ],
+    "cover": {
+      "src": "/blog/spark-tiempo-real-mistral-large-4-bigquery-git.webp",
+      "alt": "Filas de armarios con servidores en un centro de datos",
+      "credit": {
+        "label": "Derrick Coetzee from Berkeley, CA, USA, CC0, vía Wikimedia Commons",
+        "href": "https://commons.wikimedia.org/wiki/File:Technician_with_laptop_working_on_server_rack_at_NERSC.jpg"
+      }
+    },
+    "body": [
+      {
+        "type": "p",
+        "text": "Esta semana me quedo con tres novedades que tocan el trabajo de cada día. Una es de flujos de datos, otra de modelos que se pueden instalar en un servidor propio y la tercera de algo tan poco vistoso como versionar SQL. Dos vienen de la propia empresa que vende el producto, así que separo lo que anuncian de lo que ya está comprobado."
+      },
+      {
+        "type": "h2",
+        "text": "Databricks da por terminado el modo en tiempo real de Spark Declarative Pipelines"
+      },
+      {
+        "type": "p",
+        "text": "El 29 de octubre de 2026 Databricks anunció en su blog que el modo en tiempo real (Real-Time Mode) de Spark Declarative Pipelines pasa a disponibilidad general. En lugar de trabajar por microlotes, el motor ejecuta todas las etapas a la vez y pasa cada dato a la siguiente en cuanto lo produce. Según la empresa, consigue latencias de milisegundos, va hasta un 92 % más rápido que Flink en una prueba suya con casos de clientes y su Feature Store llega a 200 ms de p99 desde Kafka hasta el almacén en línea. Para activarlo hay que poner el pipeline en modo continuo, activar una opción de configuración y declarar los flujos con el disparador \"RealTime\" hacia un destino. Algunas cosas siguen pendientes, como agrupar varios flujos en un mismo pipeline o el ajuste automático de particiones."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Las cifras de rendimiento son de Databricks y las ha medido con sus propias pruebas, así que de momento no me las creo. Lo que sí tiene valor es la idea. Si una sola herramienta cubre lotes, ETL y flujos de baja latencia, hay un motor menos que mantener, vigilar y aprender. En los flujos que he montado con Kafka y Logstash, lo caro nunca fue la latencia. Lo caro era tener dos sistemas que se comportaban distinto ante el mismo dato erróneo. Antes de cambiar nada, compararía la latencia y el coste por núcleo con una carga real mía y miraría qué orígenes y destinos admite de verdad, porque la entrada del blog los manda a la documentación."
+      },
+      {
+        "type": "h2",
+        "text": "Mistral libera los pesos de Large 4, un modelo de un billón de parámetros"
+      },
+      {
+        "type": "p",
+        "text": "El 29 de octubre de 2026 Mistral publicó en Hugging Face los pesos de Mistral Large 4, que llevaba en vista previa desde principios de mes. Es un modelo de mezcla de expertos con un billón de parámetros en total y unos 52.000 millones activos, según el nombre del repositorio. Se distribuye con una licencia propia, un MIT modificado que permite el uso comercial pero exige un acuerdo aparte a quien quiera venderlo como servicio. TechCrunch cuenta que Mistral lo orienta a la ciberseguridad y que puede instalarse en servidores propios. Las comparaciones con GLM-5.3 y los resultados en Terminal-Bench o en índices de Artificial Analysis los aporta la propia Mistral, y nadie los ha comprobado todavía de forma independiente."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Que un laboratorio europeo publique los pesos de un modelo de este tamaño me parece importante para no depender de un único proveedor. Pero conviene ser realista: un billón de parámetros no corre en el servidor de una pyme, ni siquiera cuantizado. Hacen falta varias GPU de gama alta. Para la mayoría de mis casos sigue siendo más sensato un modelo mediano en local, o este mismo a través de un proveedor que lo aloje en Europa. Antes de usarlo leería con calma la licencia, porque la restricción sobre los servicios de modelos afecta directamente a quien, como yo, monta soluciones para terceros. Y no me fiaré de sus resultados hasta pasarlo por mi propio conjunto de evaluación."
+      },
+      {
+        "type": "h2",
+        "text": "BigQuery integra Git y prueba a devolver los resultados en Arrow"
+      },
+      {
+        "type": "p",
+        "text": "Las notas de versión de BigQuery recogen varios cambios entre el 26 y el 30 de octubre de 2026. El 27 pasaron a disponibilidad general los repositorios Git de BigQuery Studio, que sirven para versionar scripts SQL y cuadernos, junto con la función AI.COUNT_TOKENS y la conexión del agente de ingeniería de datos con Google Drive. El 30 llegó en vista previa la posibilidad de recibir los resultados de las consultas directamente en formato Apache Arrow. El 26, también en vista previa, las funciones definidas por el usuario en Python empezaron a poder montar volúmenes para leer dependencias desde Cloud Storage."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Es lo menos llamativo de la semana y seguramente lo que más se nota en el día a día. Demasiado SQL de producción vive todavía en la consola, sin historial ni revisión, y cuando algo falla nadie sabe quién cambió qué. Tener Git integrado elimina la excusa. Lo de Arrow importa si sacas datos hacia Python o DuckDB, porque te ahorra conversiones. Pero está en vista previa, y no meto en producción nada que no tenga garantías de servicio. AI.COUNT_TOKENS me parece útil para calcular el coste antes de lanzar una consulta con un modelo sobre una tabla grande, algo que en las pymes conviene tener controlado desde el primer día."
+      },
+      {
+        "type": "h2",
+        "text": "Lo que me llevo"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Juntar lotes y flujos en tiempo real en un mismo motor tiene sentido, pero las cifras de Databricks hay que medirlas con datos reales antes de darlas por buenas.",
+          "Que los pesos de un modelo sean abiertos no quiere decir que puedas usarlo en local. Antes de decidir, hay que mirar el hardware que pide y la letra pequeña de la licencia.",
+          "Las métricas que una empresa da de su propio modelo no cuentan hasta que el modelo pasa por mi conjunto de evaluación.",
+          "Todo el SQL de producción va a Git, también el que se escribe en la consola de la nube.",
+          "Las funciones que siguen en vista previa sirven para probar, no para clientes."
+        ]
+      },
+      {
+        "type": "links",
+        "title": "Fuentes",
+        "items": [
+          {
+            "label": "Databricks Blog: Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines",
+            "href": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks"
+          },
+          {
+            "label": "TechCrunch: Mistral releases weights for its trillion-parameter AI model, targeting cybersecurity",
+            "href": "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/"
+          },
+          {
+            "label": "Google Cloud: notas de versión de BigQuery",
+            "href": "https://docs.cloud.google.com/bigquery/docs/release-notes"
+          }
+        ]
+      }
+    ]
   }
 ]
