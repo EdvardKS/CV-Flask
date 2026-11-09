@@ -895,5 +895,103 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "agentes-tuberias-cache-nubes-coste-idioma",
+    "title": "Agentes que arreglan tuberías, caché entre nubes y lo que cuesta no hablar inglés",
+    "description": "Snowflake lanza agentes que proponen arreglos de tuberías, BigQuery cachea datos entre nubes y un estudio mide cuánta energía extra gasta la IA fuera del inglés.",
+    "date": "2026-11-09",
+    "topic": "Big data",
+    "readingMinutes": 6,
+    "tags": [
+      "Snowflake",
+      "BigQuery",
+      "ingeniería de datos",
+      "multinube",
+      "LLM",
+      "eficiencia energética"
+    ],
+    "cover": {
+      "src": "/blog/agentes-tuberias-cache-nubes-coste-idioma.webp",
+      "alt": "Filas de armarios de servidores en un centro de datos",
+      "credit": {
+        "label": "Derrick Coetzee from Berkeley, CA, USA, CC0, vía Wikimedia Commons",
+        "href": "https://commons.wikimedia.org/wiki/File:Technician_with_laptop_working_on_server_rack_at_NERSC.jpg"
+      }
+    },
+    "body": [
+      {
+        "type": "p",
+        "text": "Esta semana he elegido tres noticias que tocan el trabajo diario más que el escaparate. Una va de agentes que vigilan tuberías de datos, otra de lo que cuesta mover datos entre nubes y la tercera de algo que en España solemos pasar por alto: hacer preguntas a un modelo en un idioma que no es el inglés tiene un coste. Ninguna de las tres es épica, pero las tres cambian decisiones que tomo con clientes."
+      },
+      {
+        "type": "h2",
+        "text": "Snowflake pone agentes a revisar tuberías, pero el humano aprueba"
+      },
+      {
+        "type": "p",
+        "text": "El 3 de noviembre de 2026, en su evento Expedition, Snowflake anunció un paquete que llama ingeniería de datos autónoma. Sus agentes CoCo pueden ejecutarse en contenedores aislados gestionados por Snowflake en lugar de en el portátil del ingeniero, programar tareas recurrentes como revisar la salud de una tubería o investigar trabajos fallidos, y trabajar con un alcance de sesión restringido; estas tres piezas salen ya como disponibilidad general. Según la nota, el agente busca la causa probable del fallo, propone un arreglo y el ingeniero decide qué pasa a producción; los cambios por GitHub siguen el proceso de revisión habitual del equipo. Las cifras que acompañan el anuncio, como una latencia mediana de 3 segundos hasta tener el dato listo o hasta 20 GB/s por tabla en streaming, salen de pruebas internas de la propia Snowflake y de testimonios de sus clientes, sin verificación de terceros."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Lo que me interesa no es la palabra autónoma, que es marketing, sino el diseño que hay debajo: entorno aislado, permisos recortados, tareas programadas y aprobación humana antes de producción. Es justo el orden que sigo cuando dejo a un agente tocar algo que importa, y me alegra ver que un proveedor grande lo convierte en producto en vez de vender un botón mágico. Para una pyme de la zona, Snowflake suele ser más plataforma de la que necesita, pero el patrón se puede copiar con herramientas modestas: un agente que lee registros de las ETL, propone el arreglo en una rama y espera a que yo lo revise. Las cifras de latencia y de ahorro no las doy por buenas hasta verlas medidas fuera de la casa. Y me quedo con una duda práctica: cuánto cuesta en créditos tener agentes revisando tuberías cada hora, porque eso la nota no lo dice."
+      },
+      {
+        "type": "h2",
+        "text": "BigQuery cachea datos de otras nubes para recortar la salida"
+      },
+      {
+        "type": "p",
+        "text": "Las notas de versión de BigQuery recogen que el 2 de noviembre de 2026 pasó a disponibilidad general la caché entre nubes de su Lakehouse. Viene desactivada por defecto y, si se activa sobre un catálogo federado o una conexión entre nubes, guarda copia de los ficheros remotos en una región de Google Cloud para reducir los costes de salida de datos y acelerar las consultas siguientes. Ese mismo día también quedó en disponibilidad general el acceso entre nubes a catálogos como Databricks Unity Catalog, AWS Glue Data Catalog y Snowflake Horizon Catalog, con opción de ir por internet público o por interconexión privada y controles de servicio de VPC. Es documentación oficial de Google, así que describe lo que hace la función, no cuánto ahorra en la práctica."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: El coste de salida de datos es la factura que nadie mira hasta que llega, y es una de las razones por las que muchas arquitecturas acaban atadas a una sola nube. Que BigQuery pueda leer catálogos de otros proveedores y cachear lo que trae va en la línea que defiendo: poder cambiar de pieza sin mover todo el dato de golpe. Me gusta que venga apagada por defecto, porque una caché es una copia más del dato y eso tiene implicaciones de gobierno y de dónde reside la información. Antes de activarla en un proyecto real quiero entender bien cómo se invalida cuando el fichero de origen cambia, porque una consulta rápida sobre datos viejos es peor que una consulta lenta. No lo he probado todavía, así que mi siguiente paso sería medir la factura de salida con y sin caché sobre una carga conocida."
+      },
+      {
+        "type": "h2",
+        "text": "Preguntar a un modelo fuera del inglés gasta más y acierta menos"
+      },
+      {
+        "type": "p",
+        "text": "El 5 de noviembre de 2026 la Universidad de Míchigan difundió un estudio, presentado en la conferencia EMNLP, que mide la energía de inferencia de modelos de lenguaje en distintos idiomas. Probaron tres modelos abiertos, Qwen 3, Gemma 3 y Llama 3.1, con preguntas de comprensión lectora en 122 idiomas y problemas de matemáticas traducidos, midiendo el consumo con el marco ML.Energy. Según la nota, generar texto en idiomas distintos del inglés gasta entre 1,4 y 180 veces más energía, con la mayoría de lenguas de Europa occidental en el doble o menos, y los idiomas que más gastan tienden además a obtener peor precisión. La causa principal que señalan es que esos textos necesitan más tokens, lo que también encarece los servicios que cobran por token. La nota no da cifras concretas para el español."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Este estudio me parece más útil para una pyme española que muchos lanzamientos de modelos, porque toca dos cosas que sí pagan: la factura por token y la calidad de la respuesta. Si el español cae en la franja de hasta el doble que el inglés, un asistente interno o un sistema RAG puede costar bastante más de lo que sugiere una calculadora hecha con ejemplos en inglés. La lección práctica que saco es medir con los textos reales del cliente, en su idioma, tanto los tokens por consulta como los aciertos, y no extrapolar de pruebas en inglés. También me reafirma en evaluar los modelos en local con nuestro propio idioma antes de elegir, porque el tokenizador importa tanto como el tamaño del modelo. Lo de traducir la pregunta al inglés que proponen los autores lo veo con cautela: añade un paso que puede introducir errores y que habría que medir igual que todo lo demás."
+      },
+      {
+        "type": "h2",
+        "text": "Lo que me llevo"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Si dejo a un agente vigilar tuberías de datos, lo hago con entorno aislado, permisos mínimos y aprobación humana antes de producción, lo venda quien lo venda.",
+          "Las cifras de latencia y de ahorro de un proveedor sobre su producto no entran en mis decisiones hasta verlas medidas fuera de la casa.",
+          "Antes de diseñar una arquitectura entre nubes calculo el coste de salida de datos, y si uso una caché compruebo cómo se invalida.",
+          "Mido tokens por consulta y precisión con textos reales en español del cliente, no con ejemplos en inglés.",
+          "Al comparar modelos, sobre todo en local, evalúo también el tokenizador en mi idioma, no solo el tamaño o el benchmark."
+        ]
+      },
+      {
+        "type": "links",
+        "title": "Fuentes",
+        "items": [
+          {
+            "label": "Snowflake: «Snowflake Delivers the Foundation for Autonomous Data Engineering»",
+            "href": "https://www.snowflake.com/en/news/press-releases/expedition-2026-autonomous-data-engineering/"
+          },
+          {
+            "label": "Google Cloud: notas de versión de BigQuery (2 de noviembre de 2026)",
+            "href": "https://docs.cloud.google.com/bigquery/docs/release-notes"
+          },
+          {
+            "label": "EurekAlert / Universidad de Míchigan: «Generative AI uses more energy on non-English text»",
+            "href": "https://www.eurekalert.org/news-releases/1150646"
+          }
+        ]
+      }
+    ]
   }
 ]
