@@ -3,5 +3,13 @@
     "x-nextjs-stale-time": "300",
     "x-nextjs-prerender": "1",
     "x-next-cache-tags": "_N_T_/layout,_N_T_/cv/layout,_N_T_/cv/page,_N_T_/cv"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/346366b63edfdd08d29d329ac38fea65fb25091f6cf252029e9b695feefa5250/$/cv",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/cv/page"
+    },
+    "isFallback": false
   }
 }

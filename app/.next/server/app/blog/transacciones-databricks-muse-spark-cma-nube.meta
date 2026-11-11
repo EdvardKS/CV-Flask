@@ -3,5 +3,13 @@
     "x-nextjs-stale-time": "300",
     "x-nextjs-prerender": "1",
     "x-next-cache-tags": "_N_T_/layout,_N_T_/blog/layout,_N_T_/blog/[slug]/layout,_N_T_/blog/[slug]/page,_N_T_/blog/transacciones-databricks-muse-spark-cma-nube"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/598124ea42a7fa20b1ca4e05fb72834de73e98d2ec5bfb5863d326020e1250db/$/blog/transacciones-databricks-muse-spark-cma-nube",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/blog/[slug]/page"
+    },
+    "isFallback": false
   }
 }

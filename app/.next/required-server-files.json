@@ -165,7 +165,6 @@
       "imgOptTimeoutInSeconds": 7,
       "imgOptMaxInputPixels": 268402689,
       "imgOptSequentialRead": null,
-      "imgOptSkipMetadata": null,
       "isrFlushToDisk": true,
       "workerThreads": false,
       "optimizeCss": false,
@@ -342,6 +341,6 @@
     ".next/required-server-files.json"
   ],
   "ignore": [
-    "node_modules/.pnpm/next@15.5.18_@babel+core@7.29.0_react-dom@19.2.6_react@19.2.6__react@19.2.6/node_modules/next/dist/compiled/@ampproject/toolbox-optimizer/**/*"
+    "node_modules/.pnpm/next@15.5.29_@babel+core@7.29.0_react-dom@19.2.6_react@19.2.6__react@19.2.6/node_modules/next/dist/compiled/@ampproject/toolbox-optimizer/**/*"
   ]
 }

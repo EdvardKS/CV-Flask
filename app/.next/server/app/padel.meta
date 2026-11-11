@@ -3,5 +3,13 @@
     "x-nextjs-stale-time": "300",
     "x-nextjs-prerender": "1",
     "x-next-cache-tags": "_N_T_/layout,_N_T_/padel/layout,_N_T_/padel/page,_N_T_/padel"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/5a61791470d32c47a4ef4cc09f8e96f085a5715dd24187a8fc6fdec3d21bd8c6/$/padel",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/padel/page"
+    },
+    "isFallback": false
   }
 }

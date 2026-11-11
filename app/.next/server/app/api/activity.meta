@@ -1,1 +1,1 @@
-{"status":200,"headers":{"content-type":"application/json","x-next-cache-tags":"_N_T_/layout,_N_T_/api/layout,_N_T_/api/activity/layout,_N_T_/api/activity/route,_N_T_/api/activity"}}
+{"status":200,"headers":{"content-type":"application/json","x-next-cache-tags":"_N_T_/layout,_N_T_/api/layout,_N_T_/api/activity/layout,_N_T_/api/activity/route,_N_T_/api/activity"},"routeCache":{"key":"/route-cache/APP_ROUTE/50725e3e12bd11408d7b8b85e525ca50a92865cce6ee086fde0cd1985c9dc6f8/$/api/activity","owner":{"kind":"APP_ROUTE","sourceRoute":"/api/activity/route"},"isFallback":false}}
