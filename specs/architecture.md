@@ -245,7 +245,7 @@ pnpm dev          # http://localhost:3000
 
 ### 5.1 Dockerfile — multi-stage
 
-[Dockerfile](Dockerfile), base `node:20-alpine`, tres etapas:
+[Dockerfile](Dockerfile), base `node:22-alpine`, tres etapas:
 
 1. **`deps`**: `corepack enable`, instala toolchain de compilación nativa
    (`python3 make g++` — necesario para `better-sqlite3`) y `pnpm install

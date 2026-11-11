@@ -24,7 +24,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     container:
-      image: nikolaik/python-nodejs@sha256:4d21fe172b5c5c91ff6b68ce670aa0ad1132e5bcd67fbf78bb8cab6cddff0b17
+      image: nikolaik/python-nodejs@sha256:35aa41ff5afdb4277bbb50929835af3f894e5909ef9527a5b9d58691ffe0b492
     env:
       NEXT_TELEMETRY_DISABLED: "1"
       REPO_URL: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
