@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer'
+import nodemailer, { type Transporter } from 'nodemailer'
 
 export type ContactPayload = {
   name: string
@@ -9,7 +9,7 @@ export type ContactPayload = {
 // From must be *@mail.iaeks.com for the relay's OpenDKIM to sign.
 const FROM = process.env.SMTP_FROM ?? 'web@mail.iaeks.com'
 
-let transporter: nodemailer.Transporter | null = null
+let transporter: Transporter | null = null
 function getTransporter() {
   if (transporter) return transporter
   const host = process.env.SMTP_HOST
