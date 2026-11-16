@@ -993,5 +993,87 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "emulador-aws-brecha-railway-bigquery-limites",
+    "title": "AWS lleva su nube al portátil, Railway pierde claves de IA y BigQuery pone límites",
+    "description": "Emulador local de AWS hecho por agentes, el robo de claves de IA en Railway con 740.000 dólares en cargos y BigQuery con linaje y límites por proyecto.",
+    "date": "2026-11-16",
+    "topic": "Cloud",
+    "readingMinutes": 3,
+    "tags": [
+      "AWS",
+      "seguridad",
+      "BigQuery",
+      "agentes de IA",
+      "linaje de datos",
+      "costes cloud"
+    ],
+    "cover": {
+      "src": "/blog/emulador-aws-brecha-railway-bigquery-limites.webp",
+      "alt": "Filas de servidores en un centro de datos",
+      "credit": {
+        "label": "Derrick Coetzee from Berkeley, CA, USA, CC0, vía Wikimedia Commons",
+        "href": "https://commons.wikimedia.org/wiki/File:Technician_with_laptop_working_on_server_rack_at_NERSC.jpg"
+      }
+    },
+    "body": [
+      {
+        "type": "p",
+        "text": "Esta semana las tres noticias que me importan van de lo mismo: controlar qué se ejecuta, dónde y con qué credenciales. AWS saca un emulador para probar en local, Railway explica cómo le robaron claves de IA a sus clientes y BigQuery añade linaje y topes de consumo por proyecto. Ninguna es épica, pero las tres cambian cosas que hago cada semana."
+      },
+      {
+        "type": "h2",
+        "text": "AWS publica un emulador local y dice que lo han escrito agentes"
+      },
+      {
+        "type": "p",
+        "text": "El 11 de noviembre de 2026 AWS lanzó AWS Emulator, una herramienta gratuita y con el código en GitHub que replica las API de sus servicios en local. Las SDK, la CLI y los agentes de programación se redirigen con la variable AWS_ENDPOINT_URL, sin tocar el código. Según InfoWorld, está escrita en Rust y funciona en Linux, macOS y Windows. AWS asegura que el código lo escribieron agentes autónomos sin revisión humana, pero eso lo dice la propia empresa. Los analistas citados avisan de que no simula límites de peticiones, caídas ni diferencias entre regiones, que no aísla el código que ejecuta y que las operaciones no verificadas devuelven errores 503."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: Para mí esto cambia más el día a día que cualquier modelo nuevo. Cuando un agente programa bajo mi supervisión, cada ciclo contra la nube real cuesta tiempo y dinero y deja recursos huérfanos. Probar en local acorta ese ciclo. Ahora bien, que pase en local no significa que esté listo: los permisos no se aplican igual que en producción y no hay aislamiento, así que lo usaría sin credenciales reales en la máquina. Lo de que nadie revisó el código no me tranquiliza; prefiero esperar a que otros midan la fidelidad por servicio antes de fiarme de las cifras de AWS."
+      },
+      {
+        "type": "h2",
+        "text": "BigQuery: linaje por tabla y topes de consumo por proyecto"
+      },
+      {
+        "type": "p",
+        "text": "Las notas de versión de BigQuery recogen varios cambios entre el 9 y el 12 de noviembre de 2026. El linaje a nivel de tabla para las tuberías de BigQuery en Knowledge Catalog pasa a disponibilidad general el 12. El 11 llegan, también en disponibilidad general, los límites máximos de slots y de concurrencia por proyecto dentro de una reserva, aunque solo en las ediciones Enterprise y Enterprise Plus. El 9 aparecen en vista previa la atribución de costes de cómputo a cada proyecto y las funciones de compresión Zstd. Es documentación de Google sobre su propio producto, sin evaluación externa."
+      },
+      {
+        "type": "p",
+        "text": "Mi opinión: El linaje me parece lo más útil: cuando un informe sale mal, saber de qué tablas viene ahorra horas, y para cumplir con cualquier auditoría es casi obligatorio. Los topes por proyecto resuelven un problema real, que un proceso mal escrito se coma la capacidad de los demás, pero quedarse en las ediciones caras deja fuera a muchas empresas pequeñas. La atribución de costes va en la línea correcta: si no sé quién gasta, no puedo decidir nada. Aun así, no quiero que el linaje de mis datos viva solo dentro de un proveedor; lo exportaría o lo replicaría para poder cambiar de nube sin perderlo."
+      },
+      {
+        "type": "h2",
+        "text": "Lo que me llevo"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Usaré emuladores locales para los ciclos de prueba de los agentes, siempre sin credenciales reales en la máquina, y validaré contra la nube antes de desplegar.",
+          "Cada clave de IA tendrá su proyecto, su límite de gasto y su alerta de consumo; reviso también la rotación.",
+          "Evitaré credenciales de larga duración en plataformas de despliegue y revisaré qué variables de entorno guarda cada servicio.",
+          "El linaje y la atribución de costes van desde el primer día, y en un formato que pueda llevarme si cambio de proveedor.",
+          "Las cifras que AWS y Google dan de sus propias herramientas las trato como punto de partida, no como prueba."
+        ]
+      },
+      {
+        "type": "links",
+        "title": "Fuentes",
+        "items": [
+          {
+            "label": "InfoWorld: AWS unveils local emulator service to help enterprises accelerate app development and testing",
+            "href": "https://www.infoworld.com/article/4247383/aws-unveils-local-emulator-service-to-help-enterprises-accelerate-app-development-and-testing.html"
+          },
+          {
+            "label": "Google Cloud: notas de versión de BigQuery",
+            "href": "https://docs.cloud.google.com/bigquery/docs/release-notes"
+          }
+        ]
+      }
+    ]
   }
 ]
